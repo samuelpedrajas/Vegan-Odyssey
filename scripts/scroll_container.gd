@@ -36,6 +36,7 @@ func _gui_input(event):  #-- NOTE: Automatically converted by Godot 2 to 3 conve
 		if clicked_excuse == null:
 			clicked_excuse = null
 			return
+		g.play_audio("click")
 		var excuse_popup = g.open_popup("excuse_explanation")
 		excuse_popup.setup(clicked_excuse)
 		clicked_excuse = null

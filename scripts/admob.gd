@@ -8,7 +8,7 @@ var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your A
 func _ready():
 	if(Engine.has_singleton("AdMob")):
 		admob = Engine.get_singleton("AdMob")
-		admob.init(isReal, get_instance_ID())
+		admob.init(isReal, get_instance_id())
 		admob.loadBanner(adBannerId, isTop)
 	
 	get_tree().connect("screen_resized", self, "on_resize")

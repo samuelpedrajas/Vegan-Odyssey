@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/excuse_explanation.gd" type="Script" id=1]
 [ext_resource path="res://animations/open_window.tres" type="Animation" id=2]
@@ -16,7 +16,9 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("window:modulate:a")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -24,85 +26,108 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="excuse_explanation" type="Node2D"]
+[node name="excuse_explanation" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="animation" type="AnimationPlayer" parent="."]
+[node name="animation" type="AnimationPlayer" parent="." index="0"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/close = SubResource( 1 )
 anims/open = ExtResource( 2 )
-playback_active = true
-playback_speed = 1.0
 blend_times = [  ]
-autoplay = ""
 
-[node name="clickable_space" type="Button" parent="."]
+[node name="clickable_space" type="Button" parent="." index="1"]
 
 modulate = Color( 1, 1, 1, 0 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags_horizontal = 1
-size_flags_vertical = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -540.0
 margin_top = -2400.0
 margin_right = 540.0
 margin_bottom = 2400.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 flat = false
+align = 1
 
-[node name="window" type="Node2D" parent="."]
+[node name="window" type="Node2D" parent="." index="2"]
 
-scale = Vector2( 0.9, 0.9 )
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1e-05, 1e-05 )
 
-[node name="non_clickable_space" type="Control" parent="window"]
+[node name="non_clickable_space" type="Control" parent="window" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags_horizontal = 1
-size_flags_vertical = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -400.0
 margin_top = -360.0
 margin_right = 400.0
 margin_bottom = 450.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="background" type="Sprite" parent="window"]
+[node name="background" type="Sprite" parent="window" index="1"]
 
 position = Vector2( 0, -0.100969 )
 scale = Vector2( 0.986801, 0.868072 )
 texture = ExtResource( 3 )
 
-[node name="excuse_image" type="Sprite" parent="window"]
+[node name="excuse_image" type="Sprite" parent="window" index="2"]
 
 position = Vector2( 0, -25.5556 )
 texture = ExtResource( 4 )
 
-[node name="ok_button" type="TextureButton" parent="window"]
+[node name="ok_button" type="TextureButton" parent="window" index="3"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags_horizontal = 1
-size_flags_vertical = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -100.0
 margin_top = 453.0
 margin_right = 100.0
 margin_bottom = 653.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished" binds=[  ]]
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
 
-[connection signal="pressed" from="clickable_space" to="." method="_on_clickable_space_pressed" binds=[  ]]
+[connection signal="pressed" from="clickable_space" to="." method="_on_clickable_space_pressed"]
 
-[connection signal="pressed" from="window/ok_button" to="." method="_on_ok_button_pressed" binds=[  ]]
+[connection signal="pressed" from="window/ok_button" to="." method="_on_ok_button_pressed"]
+
+

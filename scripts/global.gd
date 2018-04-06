@@ -27,7 +27,7 @@ var transition
 
 func _ready():
 	# prevent quitting using back button
-	get_tree().set_auto_accept_quit(false)
+	get_tree().set_quit_on_go_back(false)
 
 	game = get_tree().get_root().get_node("game")
 	music_node = game.get_node("music")
@@ -131,7 +131,7 @@ func _set_sound_on(v):
 
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
 		play_audio("click")
 		if not popup_stack.empty():
 			close_popup()

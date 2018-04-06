@@ -18,9 +18,9 @@ func _on_excuse_pressed():
 
 
 func set_lock():
-	button.visible = !(true)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
-	get_node("text").visible = !(true)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
-	lock.visible = !(false)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	button.visible = false  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	get_node("text").visible = false #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	lock.visible = true  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
 
 
 func set_actual():
