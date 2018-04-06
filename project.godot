@@ -1,0 +1,39 @@
+[android]
+
+modules = "org/godotengine/godot/GodotAdMob"
+
+[application]
+
+config/icon = "res://icon.png"
+config/name = "Gaia 2048"
+run/main_scene = "res://scenes/game.tscn"
+
+[autoload]
+
+admob = "*res://scripts/admob.gd"
+cfg = "*res://scripts/cfg.gd"
+g = "*res://scripts/global.gd"
+
+[display]
+
+window/handheld/orientation = "portrait"
+window/size/height = 1920
+window/size/width = 1080
+window/stretch/aspect = "keep"
+window/stretch/mode = "2d"
+
+[importer_defaults]
+
+texture = {
+"flags/filter": true,
+"flags/mipmaps": true
+}
+
+[input]
+
+click = [ InputEvent(MBUTTON,1) ]
+
+[rendering]
+
+environment/default_clear_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+
