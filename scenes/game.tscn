@@ -95,7 +95,7 @@ func _on_game_broccoli_number_changed(n):
 	get_node(\"circle_animation\").play(\"used\")
 	if n == 0:
 		set_disabled(true)
-		label.set_opacity(0.5)
+		label.modulate = Color(1, 1, 1, 0.5)
 "
 
 [sub_resource type="Animation" id=7]
@@ -251,7 +251,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="board" type="Node2D" parent="board_layer" index="0"]
 
-editor/display_folded = true
 position = Vector2( 30, 460 )
 script = ExtResource( 7 )
 
@@ -564,6 +563,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
 
 [node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
 

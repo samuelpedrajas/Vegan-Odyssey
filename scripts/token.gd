@@ -102,3 +102,10 @@ func _on_button_pressed():
 	if is_selectable and g.game.broccolis > 0:
 		g.game.use_broccoli(self)
 
+
+func save():
+	return {
+		"pos.x": current_pos.x,
+		"pos.y": current_pos.y,
+		"level": level
+	}

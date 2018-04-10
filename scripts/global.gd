@@ -35,8 +35,7 @@ func _ready():
 	click_sound = game.get_node("click")
 	transition = game.get_node("transition")
 
-	if not load_game():
-		save_game()
+	load_game()
 
 
 func start_event(name):
@@ -90,10 +89,14 @@ func play_audio(sample):
 func save_game():
 	savegame.open("user://savegame.save", File.WRITE)
 	var game_status = {
+		'broccolis': game.broccolis,
 		'highest_max': game.highest_max,
 		'highest_score': game.highest_score,
+		'current_score': game.current_score,
+		'current_max': game.current_max,
 		'music_on': music_on,
-		'sound_on': sound_on
+		'sound_on': sound_on,
+		'matrix': game.save()
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -101,14 +104,19 @@ func save_game():
 
 func load_game():
 	if !savegame.file_exists("user://savegame.save"):
-		return false
+		game.call_deferred("restart_game")
+		return
 
 	savegame.open("user://savegame.save", File.READ)
 	var game_status = parse_json(savegame.get_line())
 	game.highest_score = game_status['highest_score']
 	game.highest_max = game_status['highest_max']
+	game.current_score = game_status['current_score']
+	game.current_max = game_status['current_max']
+	game.broccolis = game_status['broccolis']
 	self.music_on = game_status['music_on']
 	self.sound_on = game_status['sound_on']
+	game.call_deferred("load_info", game_status["matrix"])
 	savegame.close()
 
 

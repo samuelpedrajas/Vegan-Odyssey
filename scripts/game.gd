@@ -7,7 +7,7 @@ var highest_score = 0 setget _set_highest_score
 var current_score = 0 setget _set_current_score
 
 # items
-var broccolis = 3
+var broccolis = 3 setget _set_broccolis
 
 # keep board state
 var matrix = {}
@@ -32,9 +32,8 @@ onready var broccoli = preload("res://scenes/broccoli_selection.tscn")
 
 func use_broccoli(token):
 	if broccolis > 0:
-		broccolis -= 1
+		self.broccolis -= 1
 		g.play_audio("click")
-		emit_signal("broccoli_number_changed", broccolis)
 		matrix.erase(token.current_pos)
 		token.die()
 
@@ -68,6 +67,7 @@ func restart_game():
 		token.queue_free()
 	_spawn_token()
 	input_handler.blocked = false
+	g.save_game()
 
 
 ########## DEBUG MODE ##########
@@ -99,9 +99,6 @@ func _ready():
 
 	# only needed once
 	_set_direction_pivots()
-
-	_spawn_token()
-	input_handler.blocked = false
 
 
 func _set_direction_pivots():
@@ -291,3 +288,25 @@ func _set_highest_score(v):
 	highest_score = v
 	emit_signal("highest_score_changed", highest_score)
 
+
+func _set_broccolis(v):
+	broccolis = v
+	emit_signal("broccoli_number_changed", broccolis)
+
+
+func save():
+	var info = {}
+	for key in matrix.keys():
+		info[key] = matrix[key].save()  # this is implemented in token.gd
+	return info
+
+
+func load_info(info):
+	for key in info.keys():
+		var t = token.instance()
+		var token_info = info[key]
+		var current_pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
+		board.add_child(t)  # t.setup() needs access to the board, so add it before
+		t.setup(current_pos, tween, int(token_info["level"]))
+		matrix[current_pos] = t
+	input_handler.blocked = false
