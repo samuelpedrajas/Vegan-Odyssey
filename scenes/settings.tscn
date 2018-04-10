@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://animations/close_window.tres" type="Animation" id=2]
@@ -9,12 +9,14 @@
 [ext_resource path="res://fonts/polypty.font" type="BitmapFont" id=7]
 [ext_resource path="res://images/switch_on.png" type="Texture" id=8]
 [ext_resource path="res://images/switch_off.png" type="Texture" id=9]
-[ext_resource path="res://images/exit_button.png" type="Texture" id=10]
-[ext_resource path="res://images/exit_button_pressed.png" type="Texture" id=11]
-[ext_resource path="res://images/close_window.png" type="Texture" id=12]
-[ext_resource path="res://images/close_window_pressed.png" type="Texture" id=13]
+[ext_resource path="res://images/reset_progress_button.png" type="Texture" id=10]
+[ext_resource path="res://images/reset_progress_button_pressed.png" type="Texture" id=11]
+[ext_resource path="res://images/exit_button.png" type="Texture" id=12]
+[ext_resource path="res://images/exit_button_pressed.png" type="Texture" id=13]
+[ext_resource path="res://images/close_window.png" type="Texture" id=14]
+[ext_resource path="res://images/close_window_pressed.png" type="Texture" id=15]
 
-[node name="settings" type="Node2D"]
+[node name="settings" type="Node2D" index="0"]
 
 pause_mode = 2
 z_index = 1
@@ -59,8 +61,7 @@ align = 1
 
 [node name="window" type="Node2D" parent="." index="2"]
 
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.9, 0.9 )
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
 
@@ -71,7 +72,7 @@ anchor_bottom = 0.0
 margin_left = -500.0
 margin_top = -680.0
 margin_right = 500.0
-margin_bottom = 320.0
+margin_bottom = 533.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -81,9 +82,9 @@ size_flags_vertical = 1
 
 [node name="background" type="Sprite" parent="window" index="1"]
 
-position = Vector2( 0, -102.751 )
-scale = Vector2( 1, 0.802781 )
+position = Vector2( 0, 8.84648 )
 texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="header" type="Sprite" parent="window" index="2"]
 
@@ -234,16 +235,16 @@ group = null
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 
-[node name="exit_button" type="TextureButton" parent="window" index="5"]
+[node name="reset_progress" type="TextureButton" parent="window" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -295.0
-margin_top = 59.0
-margin_right = 282.0
-margin_bottom = 231.0
+margin_left = -375.0
+margin_top = 65.0
+margin_right = 375.0
+margin_bottom = 289.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -257,8 +258,33 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="close_button" type="TextureButton" parent="window" index="6"]
+[node name="exit_button" type="TextureButton" parent="window" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -295.0
+margin_top = 257.0
+margin_right = 282.0
+margin_bottom = 429.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+
+[node name="close_button" type="TextureButton" parent="window" index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -279,8 +305,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
 
@@ -289,6 +315,8 @@ texture_pressed = ExtResource( 13 )
 [connection signal="toggled" from="window/music_control/switch" to="." method="_on_switch_music_toggled"]
 
 [connection signal="toggled" from="window/sound_control/switch" to="." method="_on_switch_sound_toggled"]
+
+[connection signal="pressed" from="window/reset_progress" to="." method="_on_reset_progress_pressed"]
 
 [connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
 

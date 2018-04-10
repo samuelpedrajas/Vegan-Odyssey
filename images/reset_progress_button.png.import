@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exit_button_pressed.png-3ee5ac3647adeb99a101e01c8b9bb996.stex"
+path="res://.import/reset_progress_button.png-082d4c84d0e1ba5f20194ee5632c7445.stex"
 
 [deps]
 
-source_file="res://images/exit_button_pressed.png"
-source_md5="b19469e6d6e7792813224d137e835181"
+source_file="res://images/reset_progress_button.png"
+source_md5="4008b448e1af73d5e86da6991c34fa2c"
 
-dest_files=[ "res://.import/exit_button_pressed.png-3ee5ac3647adeb99a101e01c8b9bb996.stex" ]
-dest_md5="3147e7b7d748c9c6b8c4af13d87fabb9"
+dest_files=[ "res://.import/reset_progress_button.png-082d4c84d0e1ba5f20194ee5632c7445.stex" ]
+dest_md5="91c53fe2d446fa8d91a02a87e6dcff1f"
 
 [params]
 

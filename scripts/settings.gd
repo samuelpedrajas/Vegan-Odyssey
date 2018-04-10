@@ -49,3 +49,6 @@ func _on_close_button_pressed():
 func _on_clickable_space_pressed():
 	g.close_popup()
 
+
+func _on_reset_progress_pressed():
+	print("LLL")

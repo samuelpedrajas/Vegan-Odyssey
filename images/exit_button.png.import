@@ -7,10 +7,10 @@ path="res://.import/exit_button.png-c83063d73ba8b647f451612c0c827e07.stex"
 [deps]
 
 source_file="res://images/exit_button.png"
-source_md5="746474950275c1329034f7a5a55e8b22"
+source_md5="1ac76649d3416f11bbae8a5e7a6d47f3"
 
 dest_files=[ "res://.import/exit_button.png-c83063d73ba8b647f451612c0c827e07.stex" ]
-dest_md5="d4e904ef77f4852d6416db5e37657d5b"
+dest_md5="9a0f01ad2952ef22e13cbe53e3129443"
 
 [params]
 
