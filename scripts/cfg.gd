@@ -1,6 +1,7 @@
 extends Node
 
 const DEBUG_MODE = false
+const DEV_MODE = true
 const GOAL = 9
 
 # Directions available for input
