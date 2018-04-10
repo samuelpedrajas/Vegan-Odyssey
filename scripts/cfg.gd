@@ -20,8 +20,11 @@ const SETTINGS_WINDOW_POS = Vector2(540, 1000)
 const BOOK_WINDOW_POS = Vector2(540, 700)
 const EXIT_WINDOW_POS = Vector2(540, 850)
 const RESET_WINDOW_POS = Vector2(540, 850)
+const RESET_PROGRESS_WINDOW_POS = Vector2(540, 850)
 const EXCUSE_WINDOW_POS = Vector2(540, 800)
 const SCROLL_THRESHOLD = 10
+
+const SAVE_GAME_PATH = "user://savegame.save"
 
 # excuse info
 var EXCUSES = [

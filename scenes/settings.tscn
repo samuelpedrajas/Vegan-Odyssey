@@ -16,7 +16,7 @@
 [ext_resource path="res://images/close_window.png" type="Texture" id=14]
 [ext_resource path="res://images/close_window_pressed.png" type="Texture" id=15]
 
-[node name="settings" type="Node2D" index="0"]
+[node name="settings" type="Node2D"]
 
 pause_mode = 2
 z_index = 1
@@ -61,7 +61,8 @@ align = 1
 
 [node name="window" type="Node2D" parent="." index="2"]
 
-scale = Vector2( 0.9, 0.9 )
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
 

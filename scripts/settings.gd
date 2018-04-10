@@ -51,4 +51,5 @@ func _on_clickable_space_pressed():
 
 
 func _on_reset_progress_pressed():
-	print("LLL")
+	g.play_audio("click")
+	g.open_popup("reset_progress_confirmation")

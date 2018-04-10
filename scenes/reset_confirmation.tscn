@@ -119,6 +119,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="ok_button" type="TextureButton" parent="window" index="3"]
 

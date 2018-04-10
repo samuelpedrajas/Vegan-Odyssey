@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/exit_confirmation.gd" type="Script" id=1]
+[ext_resource path="res://scripts/reset_progress_confirmation.gd" type="Script" id=1]
 [ext_resource path="res://animations/open_window.tres" type="Animation" id=2]
-[ext_resource path="res://images/popup.png" type="Texture" id=3]
-[ext_resource path="res://fonts/message.font" type="BitmapFont" id=4]
+[ext_resource path="res://images/medium_popup.png" type="Texture" id=3]
+[ext_resource path="res://fonts/message_smaller.font" type="BitmapFont" id=4]
 [ext_resource path="res://images/ok_button.png" type="Texture" id=5]
 [ext_resource path="res://images/ok_button_pressed.png" type="Texture" id=6]
 [ext_resource path="res://images/cancel_button.png" type="Texture" id=7]
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="exit_confirmation" type="Node2D" index="0"]
+[node name="reset_progress_confirmation" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -81,9 +81,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -400.0
-margin_top = -360.0
+margin_top = -411.0
 margin_right = 400.0
-margin_bottom = 450.0
+margin_bottom = 514.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -96,29 +96,47 @@ size_flags_vertical = 1
 scale = Vector2( 0.791763, 0.666224 )
 texture = ExtResource( 3 )
 
-[node name="message" type="Label" parent="window" index="2"]
+[node name="message" type="RichTextLabel" parent="window" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -315.0
-margin_top = -235.0
-margin_right = 315.0
-margin_bottom = 235.0
+margin_left = -356.0
+margin_top = -356.0
+margin_right = 359.0
+margin_bottom = 306.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
+rect_clip_content = true
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
-text = "Are you sure you wanna quit the game?"
-align = 1
-autowrap = true
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]All the game
+data including
+the current
+board will be
+deleted
+[color=red]permanently[/color].
+Continue?[/center]"
+visible_characters = -1
 percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+meta_underlined = true
+tab_size = 4
+text = "All the game
+data including
+the current
+board will be
+deleted
+permanently.
+Continue?"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Rect", "custom_fonts", "custom_styles" ]
 
 [node name="ok_button" type="TextureButton" parent="window" index="3"]
 
@@ -127,9 +145,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 50.0
-margin_top = 260.0
+margin_top = 320.0
 margin_right = 250.0
-margin_bottom = 460.0
+margin_bottom = 520.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -143,6 +161,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Rect" ]
 
 [node name="cancel_button" type="TextureButton" parent="window" index="4"]
 
@@ -151,9 +170,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -250.0
-margin_top = 260.0
+margin_top = 320.0
 margin_right = -50.0
-margin_bottom = 460.0
+margin_bottom = 520.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -167,6 +186,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Rect" ]
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
 

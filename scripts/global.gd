@@ -7,6 +7,7 @@ onready var popup_scene_dict = {
 	"settings": preload("res://scenes/settings.tscn"),
 	"exit_confirmation": preload("res://scenes/exit_confirmation.tscn"),
 	"reset_confirmation": preload("res://scenes/reset_confirmation.tscn"),
+	"reset_progress_confirmation": preload("res://scenes/reset_progress_confirmation.tscn"),
 	"book": preload("res://scenes/book.tscn"),
 	"excuse_explanation": preload("res://scenes/excuse_explanation.tscn")
 }
@@ -79,6 +80,11 @@ func close_popup():
 		popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 
 
+func close_popups():
+	while !popup_stack.empty():
+		close_popup()
+
+
 func play_audio(sample):
 	if sample == "merge":
 		merge_sound.play()
@@ -87,7 +93,7 @@ func play_audio(sample):
 
 
 func save_game():
-	savegame.open("user://savegame.save", File.WRITE)
+	savegame.open(cfg.SAVE_GAME_PATH, File.WRITE)
 	var game_status = {
 		'broccolis': game.broccolis,
 		'highest_max': game.highest_max,
@@ -103,7 +109,7 @@ func save_game():
 
 
 func load_game():
-	if !savegame.file_exists("user://savegame.save"):
+	if !savegame.file_exists(cfg.SAVE_GAME_PATH):
 		game.call_deferred("restart_game")
 		return
 
