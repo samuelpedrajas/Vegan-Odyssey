@@ -28,6 +28,7 @@ func _on_ok_button_pressed():
 	g.game.highest_max = 1
 	g.game.highest_score = 0
 	g.game.broccolis = 0
+	g.game.current_score = 0
 	g.play_audio("click")
 	g.close_popups()
 	g.transition.restart_game()
