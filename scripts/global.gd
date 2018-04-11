@@ -11,6 +11,9 @@ onready var popup_scene_dict = {
 	"book": preload("res://scenes/book.tscn"),
 	"excuse_explanation": preload("res://scenes/excuse_explanation.tscn")
 }
+onready var event_scene_dict = {
+	"broccoli": preload("res://scenes/broccoli_selection.tscn")
+}
 var current_event
 
 # SETTINGS
@@ -41,7 +44,8 @@ func _ready():
 
 func start_event(name):
 	if name == "broccoli":
-		current_event = game.start_broccoli_selection()
+		current_event = event_scene_dict[name].instance()
+		game.get_node("event_layer").add_child(current_event)
 
 
 func stop_event():

@@ -13,9 +13,9 @@ var broccolis = 3 setget _set_broccolis
 var matrix = {}
 
 # child nodes
-var board
-var input_handler
-var tween
+onready var board = $"board_layer/board"
+onready var input_handler = $"input_handler"
+onready var tween = $"tween"
 
 # first positions in each direction line
 var direction_pivots = {}
@@ -27,7 +27,6 @@ signal broccoli_number_changed
 
 # for instancing tokens
 onready var token = preload("res://scenes/token.tscn")
-onready var broccoli = preload("res://scenes/broccoli_selection.tscn")
 
 
 func use_broccoli(token):
@@ -45,12 +44,6 @@ func use_broccoli(token):
 		var t = _spawn_token()
 		t.set_selectable_state()
 		t.get_node("broccoli_spawn").set_active(true)
-
-
-func start_broccoli_selection():
-	var scene = broccoli.instance()
-	get_node("event_layer").add_child(scene)
-	return scene
 
 
 func restart_game():
@@ -73,9 +66,6 @@ func restart_game():
 ########## DEBUG MODE ##########
 
 func _debug_func():
-	tween = get_node("tween")
-	board = get_node("board_layer/board")
-
 	var lvl = 1
 	for i in range(0, 3):
 		for j in range(0, 3):
@@ -89,10 +79,6 @@ func _ready():
 	if cfg.DEBUG_MODE:
 		_debug_func()
 		return
-	# get some child nodes
-	input_handler = get_node("input_handler")
-	tween = get_node("tween")
-	board = get_node("board_layer/board")
 
 	# the input handler will parse the input and send it to move function
 	input_handler.connect("user_input", self, "_move")
