@@ -1,7 +1,7 @@
 extends Node
 
 # game scores
-var highest_max = 1
+var highest_max = cfg.MIN_HIGHEST_MAX
 var current_max = 1
 var highest_score = 0 setget _set_highest_score
 var current_score = 0 setget _set_current_score

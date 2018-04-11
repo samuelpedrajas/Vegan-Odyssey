@@ -3,6 +3,7 @@ extends Node
 const DEBUG_MODE = false
 const DEV_MODE = true
 const GOAL = 9
+const MIN_HIGHEST_MAX = 4
 
 # Directions available for input
 const DIRECTIONS = [
