@@ -230,20 +230,21 @@ func _handle_game_status():
 	if current_max == cfg.GOAL:
 		win()
 	else:
-		_spawn_token()
+		var lvl = int(randi() % 3 == 1) + 1
+		_spawn_token(lvl)
 		if not _check_moves_available() and broccolis == 0:
 			game_over()
 		input_handler.blocked = false
 
 
-func _spawn_token():
+func _spawn_token(level=1):
 	var pos = _get_empty_position()
 	if pos == null:
 		return
 
 	var t = token.instance()
 	board.add_child(t)  # t.setup() needs access to the board, so add it before
-	t.setup(pos, tween, 1)
+	t.setup(pos, tween, level)
 	matrix[pos] = t
 
 	return t
