@@ -24,7 +24,7 @@ func _on_animation_finished(anim_name):
 func _on_ok_button_pressed():
 	g.play_audio("click")
 	g.close_popup()
-	g.transition.restart_game()
+	g.restart_game()
 
 
 func _on_cancel_button_pressed():

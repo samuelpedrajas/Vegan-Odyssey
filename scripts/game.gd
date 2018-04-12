@@ -16,6 +16,7 @@ var matrix = {}
 onready var board = $"board_layer/board"
 onready var input_handler = $"input_handler"
 onready var tween = $"tween"
+onready var transition = $"transition"
 
 # first positions in each direction line
 var direction_pivots = {}
@@ -34,11 +35,13 @@ func _ready():
 		_debug_func()
 		return
 
-	# the input handler will parse the input and send it to move function
-	input_handler.connect("user_input", self, "move_tokens")
-
 	# only needed once
 	_set_direction_pivots()
+
+
+func new_game():
+	spawn_token()
+	input_handler.blocked = false
 
 
 func _set_direction_pivots():
@@ -148,21 +151,28 @@ func use_broccoli(token):
 		t.get_node("broccoli_spawn").set_active(true)
 
 
-func restart_game():
+func restart_current_game():
 	# here the screen is already black
 	self.current_score = 0
-	current_max = 1
+	self.current_max = 1
 	# remove all tokens from the tween
 	tween.remove_all()
 	# clear the matrix
 	matrix.clear()
+
 	# remove all tokens one by one
 	for token in get_tree().get_nodes_in_group("token"):
 		token.hide()
 		token.queue_free()
-	spawn_token()
-	input_handler.blocked = false
-	g.save_game()
+
+
+func reset_progress():
+	restart_current_game()
+
+	# update other amounts
+	self.highest_max = cfg.MIN_HIGHEST_MAX
+	self.highest_score = 0
+	self.broccolis = 0
 
 
 ### SAVE / LOAD FUNCTIONS ###
@@ -175,14 +185,23 @@ func save():
 	return info
 
 
-func load_info(info):
-	for key in info.keys():
+func load_game(info):
+	self.highest_score = info['highest_score']
+	self.highest_max = info['highest_max']
+	self.current_score = info['current_score']
+	self.current_max = info['current_max']
+	self.broccolis = info['broccolis']
+
+	# set tokens on their positions
+	var m = info["matrix"]
+	for key in m.keys():
 		var t = token.instance()
-		var token_info = info[key]
+		var token_info = m[key]
 		var current_pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
 		board.add_child(t)  # t.setup() needs access to the board, so add it before
 		t.setup(current_pos, tween, int(token_info["level"]))
 		matrix[current_pos] = t
+
 	input_handler.blocked = false
 
 
@@ -293,12 +312,12 @@ func _is_valid_position(p):
 
 func win():
 	print("Win")
-	g.transition.restart_game()
+	g.restart_game()
 
 
 func game_over():
 	print("Game over")
-	g.transition.restart_game()
+	g.restart_game()
 
 
 

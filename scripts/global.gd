@@ -26,7 +26,6 @@ var click_sound
 var savegame = File.new()
 
 var game
-var transition
 
 
 func _ready():
@@ -37,7 +36,6 @@ func _ready():
 	music_node = game.get_node("music")
 	merge_sound = game.get_node("merge")
 	click_sound = game.get_node("click")
-	transition = game.get_node("transition")
 
 	load_game()
 
@@ -65,11 +63,10 @@ func open_popup(name):
 
 		var popup = popup_scene_dict[name].instance()
 		popup.set_z_index(popup_stack.size())
-		g.game.get_node("popup_layer").add_child(popup)
+		game.get_node("popup_layer").add_child(popup)
 		popup_stack.append(popup)
 
 		return popup
-
 
 
 func close_popup():
@@ -114,20 +111,58 @@ func save_game():
 
 func load_game():
 	if !savegame.file_exists(cfg.SAVE_GAME_PATH):
-		game.call_deferred("restart_game")
-		return
+		game.call_deferred("new_game")
+	else:
+		savegame.open("user://savegame.save", File.READ)
+		var game_status = parse_json(savegame.get_line())
 
-	savegame.open("user://savegame.save", File.READ)
-	var game_status = parse_json(savegame.get_line())
-	game.highest_score = game_status['highest_score']
-	game.highest_max = game_status['highest_max']
-	game.current_score = game_status['current_score']
-	game.current_max = game_status['current_max']
-	game.broccolis = game_status['broccolis']
-	self.music_on = game_status['music_on']
-	self.sound_on = game_status['sound_on']
-	game.call_deferred("load_info", game_status["matrix"])
-	savegame.close()
+		self.music_on = game_status['music_on']
+		self.sound_on = game_status['sound_on']
+		game.call_deferred("load_game", game_status)
+		savegame.close()
+
+
+func restart_game():
+	game.input_handler.blocked = true
+
+	game.transition.play("close")
+	# wait until screen is black
+	yield(game.transition, 'animation_finished')
+
+	game.restart_current_game()
+
+	var t = game.spawn_token()
+	# wait until token spawns
+	yield(t.animation, "animation_finished")
+
+	game.transition.play("open")
+	yield(game.transition, "animation_finished")
+
+	game.input_handler.blocked = false
+
+
+func reset_progress():
+	var dir = Directory.new()
+	if dir.file_exists(cfg.SAVE_GAME_PATH):
+		dir.remove(cfg.SAVE_GAME_PATH)
+
+	game.input_handler.blocked = true
+
+	game.transition.play("close")
+	# wait until screen is black
+	yield(game.transition, 'animation_finished')
+
+	close_popups()
+	game.reset_progress()
+
+	var t = game.spawn_token()
+	# wait until token spawns
+	yield(t.animation, "animation_finished")
+
+	game.transition.play("open")
+	yield(game.transition, "animation_finished")
+
+	game.input_handler.blocked = false
 
 
 func _set_music_on(v):

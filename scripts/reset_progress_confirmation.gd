@@ -22,16 +22,8 @@ func _on_animation_finished(anim_name):
 
 
 func _on_ok_button_pressed():
-	var dir = Directory.new()
-	if dir.file_exists(cfg.SAVE_GAME_PATH):
-		dir.remove(cfg.SAVE_GAME_PATH)
-	g.game.highest_max = cfg.MIN_HIGHEST_MAX
-	g.game.highest_score = 0
-	g.game.broccolis = 0
-	g.game.current_score = 0
+	g.reset_progress()
 	g.play_audio("click")
-	g.close_popups()
-	g.transition.restart_game()
 
 
 func _on_cancel_button_pressed():

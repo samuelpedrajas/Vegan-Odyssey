@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/merge.wav" type="AudioStream" id=2]
@@ -14,19 +14,20 @@
 [ext_resource path="res://fonts/token_label.font" type="BitmapFont" id=12]
 [ext_resource path="res://images/score_post.png" type="Texture" id=13]
 [ext_resource path="res://images/max_score_post.png" type="Texture" id=14]
-[ext_resource path="res://images/bottom_border.png" type="Texture" id=15]
-[ext_resource path="res://images/menu_button.png" type="Texture" id=16]
-[ext_resource path="res://images/menu_button_pressed.png" type="Texture" id=17]
-[ext_resource path="res://images/restart_button.png" type="Texture" id=18]
-[ext_resource path="res://images/restart_button_pressed.png" type="Texture" id=19]
-[ext_resource path="res://images/book.png" type="Texture" id=20]
-[ext_resource path="res://images/book_pressed.png" type="Texture" id=21]
-[ext_resource path="res://images/broccoli.png" type="Texture" id=22]
-[ext_resource path="res://images/broccoli_pressed.png" type="Texture" id=23]
-[ext_resource path="res://images/broccoli_disabled.png" type="Texture" id=24]
-[ext_resource path="res://images/n_broccolis.png" type="Texture" id=25]
-[ext_resource path="res://fonts/small.font" type="BitmapFont" id=26]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=27]
+[ext_resource path="res://scripts/lower_buttons.gd" type="Script" id=15]
+[ext_resource path="res://images/bottom_border.png" type="Texture" id=16]
+[ext_resource path="res://images/menu_button.png" type="Texture" id=17]
+[ext_resource path="res://images/menu_button_pressed.png" type="Texture" id=18]
+[ext_resource path="res://images/restart_button.png" type="Texture" id=19]
+[ext_resource path="res://images/restart_button_pressed.png" type="Texture" id=20]
+[ext_resource path="res://images/book.png" type="Texture" id=21]
+[ext_resource path="res://images/book_pressed.png" type="Texture" id=22]
+[ext_resource path="res://images/broccoli.png" type="Texture" id=23]
+[ext_resource path="res://images/broccoli_pressed.png" type="Texture" id=24]
+[ext_resource path="res://images/broccoli_disabled.png" type="Texture" id=25]
+[ext_resource path="res://images/n_broccolis.png" type="Texture" id=26]
+[ext_resource path="res://fonts/small.font" type="BitmapFont" id=27]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=28]
 
 [sub_resource type="GDScript" id=1]
 
@@ -50,55 +51,6 @@ func _ready():
 
 func set_highest_score(s):
 	set_text(str(s))
-"
-
-[sub_resource type="GDScript" id=3]
-
-script/source = "extends TextureButton
-
-func _on_menu_pressed():
-	g.play_audio(\"click\")
-	g.open_popup(\"settings\")
-"
-
-[sub_resource type="GDScript" id=4]
-
-script/source = "extends TextureButton
-
-func _on_reset_pressed():
-	g.play_audio(\"click\")
-	g.open_popup(\"reset_confirmation\")
-"
-
-[sub_resource type="GDScript" id=5]
-
-script/source = "extends TextureButton
-
-
-func _on_excuses_pressed():
-	g.play_audio(\"click\")
-	g.open_popup(\"book\")
-"
-
-[sub_resource type="GDScript" id=6]
-
-script/source = "extends TextureButton
-
-func _on_broccoli_pressed():
-	g.play_audio(\"click\")
-	g.start_event(\"broccoli\")
-
-
-func _on_game_broccoli_number_changed(n):
-	var label = get_node(\"circle/n_broccolis\")
-	label.set_text(str(n))
-	get_node(\"circle_animation\").play(\"used\")
-	if n == 0:
-		set_disabled(true)
-		label.modulate.a = 0.5
-	else:
-		set_disabled(false)
-		label.modulate.a = 1.0
 "
 
 [sub_resource type="Animation" id=7]
@@ -166,24 +118,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 1.0, 0.0 ]
 }
-
-[sub_resource type="GDScript" id=10]
-
-script/source = "extends AnimationPlayer
-
-
-func restart_game():
-	get_tree().set_pause(true)
-	play(\"close\")
-
-
-func _on_transition_finished(anim_name):
-	if anim_name == \"close\":
-		g.game.restart_game()
-		play(\"open\")
-	else:
-		get_tree().set_pause(false)
-"
 
 [node name="game" type="Node2D" index="0"]
 
@@ -435,11 +369,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 15 )
 
 [node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
 
 position = Vector2( 540, 210 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
 
@@ -461,9 +396,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-script = SubResource( 3 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
 
 [node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
 
@@ -485,9 +419,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-script = SubResource( 4 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
 
 [node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
 
@@ -509,9 +442,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 21 )
-script = SubResource( 5 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
 
 [node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
 
@@ -533,15 +465,14 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 23 )
-texture_disabled = ExtResource( 24 )
-script = SubResource( 6 )
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_disabled = ExtResource( 25 )
 
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
 
 position = Vector2( 141.724, 24.5668 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle" index="0"]
 
@@ -559,7 +490,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 26 )
+custom_fonts/font = ExtResource( 27 )
 text = "3"
 align = 1
 valign = 1
@@ -605,7 +536,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="black_screen" type="Sprite" parent="transition_layer" index="0"]
 
 modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 27 )
+texture = ExtResource( 28 )
 centered = false
 
 [node name="transition" type="AnimationPlayer" parent="." index="11"]
@@ -619,18 +550,17 @@ playback_speed = 1.0
 anims/close = SubResource( 8 )
 anims/open = SubResource( 9 )
 blend_times = [  ]
-script = SubResource( 10 )
 
-[connection signal="broccoli_number_changed" from="." to="hud_layer/hud/lower_buttons/broccoli" method="_on_game_broccoli_number_changed"]
+[connection signal="broccoli_number_changed" from="." to="hud_layer/hud/lower_buttons" method="_on_game_broccoli_number_changed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer/hud/lower_buttons/menu" method="_on_menu_pressed"]
+[connection signal="user_input" from="input_handler" to="." method="move_tokens"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer/hud/lower_buttons/reset" method="_on_reset_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer/hud/lower_buttons" method="_on_menu_pressed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer/hud/lower_buttons/excuses" method="_on_excuses_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer/hud/lower_buttons" method="_on_reset_pressed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer/hud/lower_buttons/broccoli" method="_on_broccoli_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer/hud/lower_buttons" method="_on_excuses_pressed"]
 
-[connection signal="animation_finished" from="transition" to="transition" method="_on_transition_finished"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer/hud/lower_buttons" method="_on_broccoli_pressed"]
 
 
