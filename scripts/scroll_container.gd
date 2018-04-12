@@ -22,11 +22,11 @@ func setup():
 
 	# add vertical scroll bar
 	var v_scroll = VScrollBar.new()
-	v_scroll.modulate.a = 0  # weird pixels in lower-left corner otherwise  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	v_scroll.modulate.a = 0  # weird pixels in lower-left corner otherwise
 	v_box.add_child(v_scroll)
 
 
-func _gui_input(event):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+func _gui_input(event):
 	tap_actual_position = event.position
 	if event.is_action_pressed("click"):
 		# if clicked, save the position

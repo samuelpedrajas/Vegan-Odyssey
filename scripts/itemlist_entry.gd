@@ -18,12 +18,12 @@ func _on_excuse_pressed():
 
 
 func set_lock():
-	button.visible = false  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	button.visible = false
 	get_node("text").visible = false #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
-	lock.visible = true  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	lock.visible = true
 
 
 func set_actual():
-	actual.visible = !(false)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	actual.visible = true
 	button.set_texture(actual_sprite)
 

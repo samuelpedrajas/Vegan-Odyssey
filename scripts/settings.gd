@@ -17,7 +17,7 @@ func _ready():
 	var sound_switch = get_node("window/sound_control/switch")
 	music_switch.set_pressed(not g.music_on)
 	sound_switch.set_pressed(not g.sound_on)
-	set_position(cfg.SETTINGS_WINDOW_POS)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	set_position(cfg.SETTINGS_WINDOW_POS)
 	animation.play("open")
 
 

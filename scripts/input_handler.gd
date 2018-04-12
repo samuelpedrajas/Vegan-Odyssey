@@ -6,7 +6,8 @@ signal user_input
 
 var blocked = true
 
-func _check_move_and_collide(input_vector):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+
+func _check_move(input_vector):
 	if input_vector.length() > cfg.MOTION_DISTANCE:
 		# Don't needed, but could improve performance?
 		input_vector = input_vector.normalized()
@@ -17,7 +18,8 @@ func _check_move_and_collide(input_vector):  #-- NOTE: Automatically converted b
 				emit_signal("user_input", direction)
 				break
 
-func _gui_input(event):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+
+func _gui_input(event):
 	if blocked:
 		return
 	if event.is_action_pressed("click"):
@@ -25,8 +27,8 @@ func _gui_input(event):  #-- NOTE: Automatically converted by Godot 2 to 3 conve
 		tap_start_position = event.position
 	elif event.is_action_released("click"):
 		# if released, erase de position and check if we can make a move
-		var got_the_info = tap_start_position != null and event.position != null  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+		var got_the_info = tap_start_position != null and event.position != null
 		if got_the_info:
-			_check_move_and_collide(event.position - tap_start_position)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+			_check_move(event.position - tap_start_position)
 			tap_start_position = null
 

@@ -95,10 +95,10 @@ func _on_game_broccoli_number_changed(n):
 	get_node(\"circle_animation\").play(\"used\")
 	if n == 0:
 		set_disabled(true)
-		label.modulate = Color(1, 1, 1, 0.5)
+		label.modulate.a = 0.5
 	else:
 		set_disabled(false)
-		label.modulate = Color(1, 1, 1, 1)
+		label.modulate.a = 1.0
 "
 
 [sub_resource type="Animation" id=7]

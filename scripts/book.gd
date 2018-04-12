@@ -14,7 +14,7 @@ func close():
 
 
 func _ready():
-	set_position(cfg.BOOK_WINDOW_POS)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	set_position(cfg.BOOK_WINDOW_POS)
 	scroll_container.setup()
 	animation.play("open")
 

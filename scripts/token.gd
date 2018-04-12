@@ -16,7 +16,7 @@ func setup(pos, t, lvl):
 	tween = t
 	current_pos = pos
 	_set_content()
-	set_position(_get_world_position(pos))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	set_position(_get_world_position(pos))
 	animation.play("spawn")
 
 
@@ -46,27 +46,27 @@ func is_merging():
 
 func define_tweening():
 	# get the real world position since destination is a position in the matrix
-	var world_pos = _get_world_position(current_pos)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	var world_pos = _get_world_position(current_pos)
 
 	# interpolate the position
 	tween.interpolate_method(
-		self, "set_position", get_position(), world_pos,  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+		self, "set_position", get_position(), world_pos,
 		cfg.ANIMATION_TIME, tween.TRANS_LINEAR, tween.EASE_IN
 	)
 	# decrease opacity for a smoother animation
-	modulate.a = cfg.MOVEMENT_OPACITY  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	modulate.a = cfg.MOVEMENT_OPACITY
 
 
 func update_state():
 	# set pos just in case the tweening failed
-	set_position(_get_world_position(current_pos))  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
-	modulate.a = 1  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	set_position(_get_world_position(current_pos))
+	modulate.a = 1
 
 	# if it's flagged as merge -> merge it
 	if token_to_merge_with:
 		token_to_merge_with.increase_value()
 		token_to_merge_with = null
-		tween.remove(self, 'position')  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+		tween.remove(self, 'position')
 		hide()
 		queue_free()
 		return
@@ -87,7 +87,7 @@ func _set_content():
 	level_label.set_text(str(level))
 
 
-func _get_world_position(pos):  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+func _get_world_position(pos):
 	var offset = Vector2(336 / 2, 334 / 2)
 	return get_parent().map_to_world(current_pos) + offset
 

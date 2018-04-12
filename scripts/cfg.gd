@@ -75,4 +75,3 @@ var EXCUSES = [
 		"text": "What about proteins?"
 	}
 ]
-

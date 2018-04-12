@@ -12,7 +12,7 @@ func close():
 
 
 func _ready():
-	set_position(cfg.EXCUSE_WINDOW_POS)  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+	set_position(cfg.EXCUSE_WINDOW_POS)
 	animation.play("open")
 
 
