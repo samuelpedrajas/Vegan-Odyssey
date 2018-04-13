@@ -1,7 +1,7 @@
 extends ScrollContainer
 
 
-onready var ExcuseEntry = preload("res://scenes/itemlist_entry.tscn")
+onready var ExcuseEntry = preload("res://scenes/other/itemlist_entry.tscn")
 var tap_start_position
 var tap_actual_position
 var clicked_excuse = null

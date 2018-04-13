@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/reset_progress_confirmation.gd" type="Script" id=1]
+[ext_resource path="res://scripts/popups/reset_progress_confirmation.gd" type="Script" id=1]
 [ext_resource path="res://animations/open_window.tres" type="Animation" id=2]
 [ext_resource path="res://images/medium_popup.png" type="Texture" id=3]
 [ext_resource path="res://fonts/message_smaller.font" type="BitmapFont" id=4]

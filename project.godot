@@ -20,10 +20,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-admob="*res://scripts/admob.gd"
-cfg="*res://scripts/cfg.gd"
-g="*res://scripts/global.gd"
-settings="*res://scripts/settings.gd"
+admob="*res://scripts/autoload/admob.gd"
+cfg="*res://scripts/autoload/cfg.gd"
+g="*res://scripts/autoload/global.gd"
+settings="*res://scripts/autoload/settings.gd"
 
 [display]
 

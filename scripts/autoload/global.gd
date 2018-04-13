@@ -4,15 +4,15 @@ extends Node
 # POPUP MANAGMENT
 var popup_stack = []
 onready var popup_scene_dict = {
-	"settings_menu": preload("res://scenes/settings_menu.tscn"),
-	"exit_confirmation": preload("res://scenes/exit_confirmation.tscn"),
-	"reset_confirmation": preload("res://scenes/reset_confirmation.tscn"),
-	"reset_progress_confirmation": preload("res://scenes/reset_progress_confirmation.tscn"),
-	"book": preload("res://scenes/book.tscn"),
-	"excuse_explanation": preload("res://scenes/excuse_explanation.tscn")
+	"settings_menu": preload("res://scenes/popups/settings_menu.tscn"),
+	"exit_confirmation": preload("res://scenes/popups/exit_confirmation.tscn"),
+	"reset_confirmation": preload("res://scenes/popups/reset_confirmation.tscn"),
+	"reset_progress_confirmation": preload("res://scenes/popups/reset_progress_confirmation.tscn"),
+	"book": preload("res://scenes/popups/book.tscn"),
+	"excuse_explanation": preload("res://scenes/popups/excuse_explanation.tscn")
 }
 onready var event_scene_dict = {
-	"broccoli": preload("res://scenes/broccoli_selection.tscn")
+	"broccoli": preload("res://scenes/events/broccoli_selection.tscn")
 }
 var current_event
 

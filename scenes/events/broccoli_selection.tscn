@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/broccoli_selection.gd" type="Script" id=1]
+[ext_resource path="res://scripts/events/broccoli_selection.gd" type="Script" id=1]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=2]
 [ext_resource path="res://fonts/small.font" type="BitmapFont" id=3]
 
