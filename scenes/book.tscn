@@ -54,8 +54,7 @@ align = 1
 
 [node name="window" type="Node2D" parent="." index="2"]
 
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.9, 0.9 )
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
 

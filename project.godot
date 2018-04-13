@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 admob="*res://scripts/admob.gd"
 cfg="*res://scripts/cfg.gd"
 g="*res://scripts/global.gd"
+settings="*res://scripts/settings.gd"
 
 [display]
 

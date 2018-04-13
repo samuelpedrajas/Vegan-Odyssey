@@ -36,7 +36,7 @@ func _gui_input(event):
 		if clicked_excuse == null:
 			clicked_excuse = null
 			return
-		g.play_audio("click")
+		g.game.sounds.play_audio("click")
 		var excuse_popup = g.open_popup("excuse_explanation")
 		excuse_popup.setup(clicked_excuse)
 		clicked_excuse = null

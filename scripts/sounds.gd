@@ -1,0 +1,24 @@
+extends AudioStreamPlayer
+
+
+var library = {
+	"click": preload("res://audio/click.wav"),
+	"merge": preload("res://audio/merge.wav")
+}
+
+
+func _ready():
+	settings.connect("sound_settings_changed", self, "update_settings")
+	update_settings()
+
+
+func play_audio(name):
+	set_stream(library[name])
+	play()
+
+
+func update_settings():
+	if not settings.sound_on:
+		self.bus = "Silence"
+	else:
+		self.bus = "Master"

@@ -17,6 +17,8 @@ onready var board = $"board_layer/board"
 onready var input_handler = $"input_handler"
 onready var tween = $"tween"
 onready var transition = $"transition"
+onready var music = $"music"
+onready var sounds = $"sounds"
 
 # first positions in each direction line
 var direction_pivots = {}
@@ -137,7 +139,7 @@ func spawn_token(level=1):
 func use_broccoli(token):
 	if broccolis > 0:
 		self.broccolis -= 1
-		g.play_audio("click")
+		sounds.play_audio("click")
 		matrix.erase(token.current_pos)
 		token.die()
 
@@ -242,7 +244,7 @@ func move_tokens(direction):
 
 	if board_changed.merge:
 		# play merge sound if there was at least one merge in the board
-		get_node("merge").play()
+		sounds.play_audio("merge")
 
 	if board_changed.movement:
 		input_handler.blocked = true

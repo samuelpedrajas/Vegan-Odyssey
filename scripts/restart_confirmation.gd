@@ -22,7 +22,7 @@ func _on_animation_finished(anim_name):
 
 
 func _on_ok_button_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.close_popup()
 	g.restart_game()
 
@@ -30,7 +30,7 @@ func _on_ok_button_pressed():
 func _on_cancel_button_pressed():
 	if cfg.DEV_MODE:
 		g.game.broccolis += 1
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.close_popup()
 
 

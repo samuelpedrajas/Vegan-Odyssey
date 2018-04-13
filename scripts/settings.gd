@@ -1,55 +1,30 @@
 extends Node2D
 
 
-onready var animation = get_node("animation")
+var music_on = true setget _set_music
+var sound_on = true setget _set_sound
 
-var is_closing = false
-
-
-func close():
-	g.save_game()
-	animation.play("close")
-	is_closing = true
+signal music_settings_changed
+signal sound_settings_changed
 
 
-func _ready():
-	var music_switch = get_node("window/music_control/switch")
-	var sound_switch = get_node("window/sound_control/switch")
-	music_switch.set_pressed(not g.music_on)
-	sound_switch.set_pressed(not g.sound_on)
-	set_position(cfg.SETTINGS_WINDOW_POS)
-	animation.play("open")
+func save():
+	return {
+		'music_on': music_on,
+		'sound_on': sound_on
+	}
 
 
-func _on_animation_finished(anim_name):
-	if is_closing:
-		queue_free()
+func load(info):
+	self.music_on = info.music_on
+	self.sound_on = info.sound_on
 
 
-func _on_switch_sound_toggled(b):
-	g.sound_on = not b
-	g.play_audio("click")
+func _set_music(v):
+	music_on = v
+	emit_signal("music_settings_changed")
 
 
-func _on_switch_music_toggled(b):
-	g.music_on = not b
-	g.play_audio("click")
-
-
-func _on_exit_button_pressed():
-	g.play_audio("click")
-	g.open_popup("exit_confirmation")
-
-
-func _on_close_button_pressed():
-	g.play_audio("click")
-	g.close_popup()
-
-
-func _on_clickable_space_pressed():
-	g.close_popup()
-
-
-func _on_reset_progress_pressed():
-	g.play_audio("click")
-	g.open_popup("reset_progress_confirmation")
+func _set_sound(v):
+	sound_on = v
+	emit_signal("sound_settings_changed")

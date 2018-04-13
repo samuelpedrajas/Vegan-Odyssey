@@ -4,22 +4,22 @@ extends Container
 ### ON PRESSED ACTIONS ###
 
 func _on_menu_pressed():
-	g.play_audio("click")
-	g.open_popup("settings")
+	g.game.sounds.play_audio("click")
+	g.open_popup("settings_menu")
 
 
 func _on_reset_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.open_popup("reset_confirmation")
 
 
 func _on_excuses_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.open_popup("book")
 
 
 func _on_broccoli_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.start_event("broccoli")
 
 

@@ -4,7 +4,7 @@ extends Node
 # POPUP MANAGMENT
 var popup_stack = []
 onready var popup_scene_dict = {
-	"settings": preload("res://scenes/settings.tscn"),
+	"settings_menu": preload("res://scenes/settings_menu.tscn"),
 	"exit_confirmation": preload("res://scenes/exit_confirmation.tscn"),
 	"reset_confirmation": preload("res://scenes/reset_confirmation.tscn"),
 	"reset_progress_confirmation": preload("res://scenes/reset_progress_confirmation.tscn"),
@@ -16,13 +16,6 @@ onready var event_scene_dict = {
 }
 var current_event
 
-# SETTINGS
-var music_on = true setget _set_music_on
-var music_node
-var sound_on = true setget _set_sound_on
-var merge_sound
-var click_sound
-
 var savegame = File.new()
 
 var game
@@ -33,9 +26,6 @@ func _ready():
 	get_tree().set_quit_on_go_back(false)
 
 	game = get_tree().get_root().get_node("game")
-	music_node = game.get_node("music")
-	merge_sound = game.get_node("merge")
-	click_sound = game.get_node("click")
 
 	load_game()
 
@@ -86,13 +76,6 @@ func close_popups():
 		close_popup()
 
 
-func play_audio(sample):
-	if sample == "merge":
-		merge_sound.play()
-	else:
-		click_sound.play()
-
-
 func save_game():
 	savegame.open(cfg.SAVE_GAME_PATH, File.WRITE)
 	var game_status = {
@@ -101,9 +84,9 @@ func save_game():
 		'highest_score': game.highest_score,
 		'current_score': game.current_score,
 		'current_max': game.current_max,
-		'music_on': music_on,
-		'sound_on': sound_on,
-		'matrix': game.save()
+		'matrix': game.save(),
+		'sound_on': settings.sound_on,
+		'music_on': settings.music_on
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -115,10 +98,9 @@ func load_game():
 	else:
 		savegame.open("user://savegame.save", File.READ)
 		var game_status = parse_json(savegame.get_line())
-
-		self.music_on = game_status['music_on']
-		self.sound_on = game_status['sound_on']
 		game.call_deferred("load_game", game_status)
+		settings.sound_on = game_status['sound_on']
+		settings.music_on = game_status['music_on']
 		savegame.close()
 
 
@@ -163,24 +145,6 @@ func reset_progress():
 	yield(game.transition, "animation_finished")
 
 	game.input_handler.blocked = false
-
-
-func _set_music_on(v):
-	if v:
-		music_node.play()
-	else:
-		music_node.stop()
-	music_on = v
-
-
-func _set_sound_on(v):
-	if not v:
-		merge_sound.bus = "Silence"
-		click_sound.bus = "Silence"
-	else:
-		merge_sound.bus = "Master"
-		click_sound.bus = "Master"
-	sound_on = v
 
 
 func _notification(what):

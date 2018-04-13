@@ -28,12 +28,12 @@ func _on_animation_finished(anim_name):
 
 
 func _on_ok_button_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.close_popup()
 
 
 func _on_cancel_button_pressed():
-	g.play_audio("click")
+	g.game.sounds.play_audio("click")
 	g.close_popup()
 
 

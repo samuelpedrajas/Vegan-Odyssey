@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="exit_confirmation" type="Node2D" index="0"]
+[node name="exit_confirmation" type="Node2D"]
 
 pause_mode = 2
 script = ExtResource( 1 )
