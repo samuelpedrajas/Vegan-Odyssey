@@ -120,7 +120,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -548,8 +548,6 @@ playback_speed = 1.0
 anims/close = SubResource( 4 )
 anims/open = SubResource( 5 )
 blend_times = [  ]
-
-[connection signal="broccoli_number_changed" from="." to="hud_layer/hud/lower_buttons" method="_on_game_broccoli_number_changed"]
 
 [connection signal="user_input" from="input_handler" to="." method="move_tokens"]
 

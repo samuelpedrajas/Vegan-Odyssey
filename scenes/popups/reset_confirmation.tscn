@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="reset_confirmation" type="Node2D"]
+[node name="reset_confirmation" type="Node2D" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -74,6 +74,7 @@ align = 1
 
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1e-05, 1e-05 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
 

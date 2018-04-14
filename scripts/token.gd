@@ -14,13 +14,15 @@ func setup(pos, t, lvl):
 	level = lvl
 	tween = t
 	current_pos = pos
-	_set_content()
+	set_content()
 	set_position(_get_world_position(pos))
 
 
-func die():
-	animation.play_backwards("spawn")
-	yield(animation, "animation_finished")
+func die(animate=true):
+	tween.remove(self, 'position')
+	if animate:
+		animation.play_backwards("spawn")
+		yield(animation, "animation_finished")
 	queue_free()
 
 
@@ -61,22 +63,12 @@ func update_state():
 
 	# if it's flagged as merge -> merge it
 	if token_to_merge_with:
-		token_to_merge_with.increase_value()
-		token_to_merge_with = null
-		tween.remove(self, 'position')
-		hide()
-		queue_free()
-		return
+		token_to_merge_with.set_content()
+		token_to_merge_with.animation.play("merge")
+		die(false)
 
 
-func increase_value():
-	level += 1
-	_set_content()
-	# play merge animation
-	get_node("animation").play("merge")
-
-
-func _set_content():
+func set_content():
 	var token_sprite = get_node("token_sprite")
 	var level_label = get_node("token_sprite/level")
 	var texture = get_parent().get_token_content(level)

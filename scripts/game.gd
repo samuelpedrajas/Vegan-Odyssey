@@ -64,34 +64,21 @@ func _set_direction_pivots():
 ### GAME LOOP ###
 
 
-func game_loop():
-	# user input is blocked here
-	# update score and update token state
-	for token in get_tree().get_nodes_in_group("token"):
-		if token.is_merging():
-			# manage scores
-			var achieved_level = token.level + 1
-			self.current_score += pow(2, achieved_level)
-			self.highest_score = highest_score if highest_score > current_score else current_score
-			self.current_max = achieved_level if achieved_level > current_max else current_max
-			self.highest_max = current_max if current_max > highest_max else highest_max
-		token.update_state()
+func update_scores(token_level):
+	self.current_score += pow(2, token_level)
+	self.highest_score = highest_score if highest_score > current_score else current_score
+	self.current_max = token_level if token_level > current_max else current_max
+	self.highest_max = current_max if current_max > highest_max else highest_max
 
+
+func checkpoint():
 	g.save_game()
 
-	# have you won?
+	# has the user won or lost?
 	if current_max == cfg.GOAL:
 		win()
-	else:
-		var lvl = int(randi() % 3 == 1) + 1  # 1/3 -> 2, 2/3 -> 1
-		var t = spawn_token(null, lvl, true)
-		yield(t.animation, "animation_finished")
-
-		if not _check_moves_available() and broccolis == 0:
-			game_over()
-
-	# get control back to user
-	get_tree().get_root().set_disable_input(false)
+	elif not _check_moves_available() and broccolis == 0:
+		game_over()
 
 
 func _check_moves_available():
@@ -243,10 +230,6 @@ func _set_broccolis(v):
 
 
 func move_tokens(direction):
-	# prevent user input
-	get_tree().get_root().set_disable_input(true)
-
-	# information about the events in the board
 	var board_changed = {
 		"movement": false,  # did the tokens moved?
 		"merge": false  # did any token merged with another one?
@@ -260,16 +243,24 @@ func move_tokens(direction):
 		board_changed.merge = board_changed.merge or line_changes.merge
 
 	if board_changed.merge:
-		# play merge sound if there was at least one merge in the board
+		# play merge sound if there was at least one merge in the board and update scores
 		sounds.play_audio("merge")
 
 	if board_changed.movement:
+		# spawn token of level 1 or 2
+		# 1/3 -> 2, 2/3 -> 1
+		spawn_token(null, int(randi() % 3 == 1) + 1, true)
+
+		# if win or lost, block user input
+		if current_max == cfg.GOAL or (not _check_moves_available() and broccolis == 0):
+			get_tree().get_root().set_disable_input(true)
+
 		tween.start()
-		# When the animation of all tokens is finished -> prepare next round
-		tween.interpolate_callback(self, tween.get_runtime(), "game_loop")
-	else:
-		# if there is no movement, get the control back to the user
-		get_tree().get_root().set_disable_input(false)
+		# update score and update token state
+		for token in get_tree().get_nodes_in_group("token"):
+			tween.interpolate_callback(token, tween.get_runtime(), "update_state")
+
+		tween.interpolate_callback(self, tween.get_runtime(), "checkpoint")
 
 
 func _move_line(position, direction):
@@ -295,6 +286,10 @@ func _move_line(position, direction):
 			line_changes.merge = true
 			current_token.token_to_merge_with = last_token
 
+			# increase level and update scores
+			last_token.level += 1
+			update_scores(last_token.level)
+
 		# move current token after moving the ones after it
 		_move_token(current_token, token_destination)
 
@@ -312,14 +307,13 @@ func _move_line(position, direction):
 
 
 func _move_token(token, destination):
+	matrix.erase(token.current_pos)
+
+	if !token.token_to_merge_with:
+		matrix[destination] = token
+
 	if token.current_pos != destination:
-		matrix.erase(token.current_pos)  # the token is not in that position anymore
-		# update the token position in the matrix if it's not gonna be merged
-		# (otherwise we'd override the token that's gonna be increased)
-		if !token.token_to_merge_with:
-			matrix[destination] = token
-	
-		token.current_pos = destination  # update the current position
+		token.current_pos = destination
 		token.define_tweening()
 
 
