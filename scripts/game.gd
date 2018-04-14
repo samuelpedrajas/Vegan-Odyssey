@@ -113,6 +113,9 @@ func spawn_token(pos=null, level=1, animation=true):
 	else:
 		t.set_scale(Vector2(1.0, 1.0))
 
+	# debug purposes
+	_print_matrix()
+
 	return t
 
 
@@ -262,6 +265,10 @@ func move_tokens(direction):
 
 		tween.interpolate_callback(self, tween.get_runtime(), "checkpoint")
 
+	# debug purposes
+	print('=========')
+	_print_matrix()
+
 
 func _move_line(position, direction):
 	var line_changes = {
@@ -347,3 +354,17 @@ func _debug_func():
 			board.add_child(t)
 			t.setup(Vector2(j, i), tween, lvl)
 			lvl += 1
+
+
+func _print_matrix():
+	var i; var j;
+	for i in range(3):
+		var line = ""
+		for j in range(3):
+			var pos = Vector2(j, i)
+			if matrix.has(pos):
+				line += str(pow(2, matrix[pos].level)) + '\t'
+			else:
+				line += '-\t'
+
+		print(line)
