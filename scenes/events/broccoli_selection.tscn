@@ -119,6 +119,4 @@ blend_times = [  ]
 
 [connection signal="pressed" from="clickabe_area" to="." method="_on_clickabe_area_pressed"]
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
-
 

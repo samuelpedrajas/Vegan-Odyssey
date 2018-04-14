@@ -4,8 +4,6 @@ var tap_start_position
 
 signal user_input
 
-var blocked = true
-
 
 func _check_move(input_vector):
 	if input_vector.length() > cfg.MOTION_DISTANCE:
@@ -20,8 +18,6 @@ func _check_move(input_vector):
 
 
 func _gui_input(event):
-	if blocked:
-		return
 	if event.is_action_pressed("click"):
 		# if clicked, save the position
 		tap_start_position = event.position

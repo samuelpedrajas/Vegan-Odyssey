@@ -25,55 +25,84 @@ func _ready():
 	# prevent quitting using back button
 	get_tree().set_quit_on_go_back(false)
 
+	# prevent user_input
+	get_tree().get_root().set_disable_input(false)
+
 	game = get_tree().get_root().get_node("game")
 
-	load_game()
+	if !savegame.file_exists(cfg.SAVE_GAME_PATH):
+		game.call_deferred("new_game")
+	else:
+		load_game()
 
 
 func start_event(name):
-	if name == "broccoli":
+	if not current_event:
+		# disallow input until event is started
+		get_tree().get_root().set_disable_input(true)
+
 		current_event = event_scene_dict[name].instance()
 		game.get_node("event_layer").add_child(current_event)
+		current_event.start()
+
+		yield(current_event.animation, "animation_finished")
+
+		# animation is finished
+		get_tree().get_root().set_disable_input(false)
 
 
 func stop_event():
-	if current_event != null:
-		current_event.close()
-		current_event = null
-	else:
-		print("SOMETHING WEIRD GOING ON")
+	# disallow input until event is started
+	get_tree().get_root().set_disable_input(true)
+
+	current_event.stop()
+
+	yield(current_event, "tree_exited")
+	current_event = null
+
+	# animation is finished
+	get_tree().get_root().set_disable_input(false)
 
 
 func open_popup(name):
+	# disallow input until the window is opened
+	get_tree().get_root().set_disable_input(true)
+
 	if not name in popup_stack:
-		get_tree().set_pause(true)
-		# pause other windows
+		# pause everything
 		if not popup_stack.empty():
 			popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_STOP)
+		else:
+			get_tree().set_pause(true)
 
 		var popup = popup_scene_dict[name].instance()
 		popup.set_z_index(popup_stack.size())
 		game.get_node("popup_layer").add_child(popup)
+		popup.open()
 		popup_stack.append(popup)
-
+		yield(popup.animation, "animation_finished")
+		get_tree().get_root().set_disable_input(false)
+		# TODO:  fix this, used in scroll_container.gd
 		return popup
+
+	get_tree().get_root().set_disable_input(false)
 
 
 func close_popup():
+	# disallow input until the window is closed
+	get_tree().get_root().set_disable_input(true)
+
 	if not popup_stack.empty():
 		var popup = popup_stack.back()
 		popup_stack.pop_back()
 		popup.close()
+		yield(popup, "tree_exited")
 
 	if popup_stack.empty():
 		get_tree().set_pause(false)
 	else:
 		popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-
-
-func close_popups():
-	while !popup_stack.empty():
-		close_popup()
+	get_tree().get_root().set_disable_input(false)
 
 
 func save_game():
@@ -93,19 +122,21 @@ func save_game():
 
 
 func load_game():
-	if !savegame.file_exists(cfg.SAVE_GAME_PATH):
-		game.call_deferred("new_game")
-	else:
-		savegame.open("user://savegame.save", File.READ)
-		var game_status = parse_json(savegame.get_line())
-		game.call_deferred("load_game", game_status)
-		settings.sound_on = game_status['sound_on']
-		settings.music_on = game_status['music_on']
-		savegame.close()
+	savegame.open("user://savegame.save", File.READ)
+	var game_status = parse_json(savegame.get_line())
+
+	# set parameters
+	settings.sound_on = game_status['sound_on']
+	settings.music_on = game_status['music_on']
+
+	# send the info to the game scene
+	game.call_deferred("load_game", game_status)
+
+	savegame.close()
 
 
 func restart_game():
-	game.input_handler.blocked = true
+	get_tree().get_root().set_disable_input(true)
 
 	game.transition.play("close")
 	# wait until screen is black
@@ -113,43 +144,47 @@ func restart_game():
 
 	game.restart_current_game()
 
-	var t = game.spawn_token()
-	# wait until token spawns
-	yield(t.animation, "animation_finished")
+	game.spawn_token(null, 1, false)
 
 	game.transition.play("open")
 	yield(game.transition, "animation_finished")
 
-	game.input_handler.blocked = false
+	get_tree().get_root().set_disable_input(false)
 
 
 func reset_progress():
+	get_tree().get_root().set_disable_input(true)
+
 	var dir = Directory.new()
 	if dir.file_exists(cfg.SAVE_GAME_PATH):
 		dir.remove(cfg.SAVE_GAME_PATH)
-
-	game.input_handler.blocked = true
 
 	game.transition.play("close")
 	# wait until screen is black
 	yield(game.transition, 'animation_finished')
 
-	close_popups()
+	_close_popups()
 	game.reset_progress()
 
-	var t = game.spawn_token()
-	# wait until token spawns
-	yield(t.animation, "animation_finished")
+	game.spawn_token(null, 1, false)
 
 	game.transition.play("open")
 	yield(game.transition, "animation_finished")
 
-	game.input_handler.blocked = false
+	get_tree().get_root().set_disable_input(false)
+
+
+func _close_popups():
+	while !popup_stack.empty():
+		var popup = popup_stack.pop_back()
+		popup.queue_free()
+		yield(popup, 'tree_exited')
+	get_tree().set_pause(false)
 
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
-		play_audio("click")
+		game.sounds.play_audio("click")
 		if not popup_stack.empty():
 			close_popup()
 		elif current_event:

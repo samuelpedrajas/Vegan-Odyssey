@@ -168,8 +168,6 @@ group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
-
 [connection signal="pressed" from="clickable_space" to="." method="_on_clickable_space_pressed"]
 
 [connection signal="pressed" from="window/ok_button" to="." method="_on_ok_button_pressed"]

@@ -14,7 +14,6 @@ var matrix = {}
 
 # child nodes
 onready var board = $"board_layer/board"
-onready var input_handler = $"input_handler"
 onready var tween = $"tween"
 onready var transition = $"transition"
 onready var music = $"music"
@@ -42,8 +41,8 @@ func _ready():
 
 
 func new_game():
-	spawn_token()
-	input_handler.blocked = false
+	spawn_token(null, 1, false)
+	get_tree().get_root().set_disable_input(false)
 
 
 func _set_direction_pivots():
@@ -66,6 +65,7 @@ func _set_direction_pivots():
 
 
 func game_loop():
+	# user input is blocked here
 	# update score and update token state
 	for token in get_tree().get_nodes_in_group("token"):
 		if token.is_merging():
@@ -84,26 +84,14 @@ func game_loop():
 		win()
 	else:
 		var lvl = int(randi() % 3 == 1) + 1  # 1/3 -> 2, 2/3 -> 1
-		spawn_token(lvl)
+		var t = spawn_token(null, lvl, true)
+		yield(t.animation, "animation_finished")
+
 		if not _check_moves_available() and broccolis == 0:
 			game_over()
-		input_handler.blocked = false
 
-
-func _get_empty_position():
-	var available_positions = []
-
-	# for each cell used in the board
-	for cell in board.get_used_cells():
-		# if there is no token in it, add it to available positions
-		if !matrix.has(cell):
-			available_positions.append(cell)
-
-	if available_positions.empty():
-		return null
-
-	randomize()  # otherwise it generates the same numbers
-	return available_positions[randi() % available_positions.size()]
+	# get control back to user
+	get_tree().get_root().set_disable_input(false)
 
 
 func _check_moves_available():
@@ -123,34 +111,64 @@ func _check_moves_available():
 ### GAME FUNCTIONS ###
 
 
-func spawn_token(level=1):
-	var pos = _get_empty_position()
+func spawn_token(pos=null, level=1, animation=true):
+	pos = pos if pos else _get_empty_position()
 	if pos == null:
 		return
 
 	var t = token.instance()
-	board.add_child(t)  # t.setup() needs access to the board, so add it before
+	board.add_child(t)
 	t.setup(pos, tween, level)
 	matrix[pos] = t
+
+	if animation:
+		t.animation.play("spawn")
+	else:
+		t.set_scale(Vector2(1.0, 1.0))
 
 	return t
 
 
+func _get_empty_position():
+	var available_positions = []
+
+	# for each cell used in the board
+	for cell in board.get_used_cells():
+		# if there is no token in it, add it to available positions
+		if !matrix.has(cell):
+			available_positions.append(cell)
+
+	if available_positions.empty():
+		return null
+
+	randomize()  # otherwise it generates the same numbers
+	return available_positions[randi() % available_positions.size()]
+
+
 func use_broccoli(token):
+	# disable input for bug prevention
+	get_tree().get_root().set_disable_input(true)
+
+	# use broccoli
 	if broccolis > 0:
 		self.broccolis -= 1
 		sounds.play_audio("click")
 		matrix.erase(token.current_pos)
 		token.die()
+		yield(token, 'tree_exited')
 
-	if broccolis == 0 and g.current_event:
+	# no more broccoli -> exit
+	if broccolis == 0:
 		print("no more broccolis")
 		g.stop_event()
 
+	# if empty -> new token
 	if matrix.empty():
 		var t = spawn_token()
+		yield(t.animation, 'animation_finished')
 		t.set_selectable_state()
-		t.get_node("broccoli_spawn").set_active(true)
+
+	get_tree().get_root().set_disable_input(false)
 
 
 func restart_current_game():
@@ -197,14 +215,10 @@ func load_game(info):
 	# set tokens on their positions
 	var m = info["matrix"]
 	for key in m.keys():
-		var t = token.instance()
 		var token_info = m[key]
-		var current_pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
-		board.add_child(t)  # t.setup() needs access to the board, so add it before
-		t.setup(current_pos, tween, int(token_info["level"]))
-		matrix[current_pos] = t
-
-	input_handler.blocked = false
+		var pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
+		spawn_token(pos, int(token_info["level"]), false)
+	get_tree().get_root().set_disable_input(false)
 
 
 ### SETTERS ###
@@ -229,6 +243,9 @@ func _set_broccolis(v):
 
 
 func move_tokens(direction):
+	# prevent user input
+	get_tree().get_root().set_disable_input(true)
+
 	# information about the events in the board
 	var board_changed = {
 		"movement": false,  # did the tokens moved?
@@ -247,10 +264,12 @@ func move_tokens(direction):
 		sounds.play_audio("merge")
 
 	if board_changed.movement:
-		input_handler.blocked = true
 		tween.start()
 		# When the animation of all tokens is finished -> prepare next round
 		tween.interpolate_callback(self, tween.get_runtime(), "game_loop")
+	else:
+		# if there is no movement, get the control back to the user
+		get_tree().get_root().set_disable_input(false)
 
 
 func _move_line(position, direction):

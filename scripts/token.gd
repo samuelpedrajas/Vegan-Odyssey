@@ -8,7 +8,6 @@ var current_pos
 var tween
 
 var is_selectable = false
-var is_dying = false
 
 
 func setup(pos, t, lvl):
@@ -17,27 +16,25 @@ func setup(pos, t, lvl):
 	current_pos = pos
 	_set_content()
 	set_position(_get_world_position(pos))
-	animation.play("spawn")
 
 
 func die():
-	is_dying = true
-	get_node("broccoli_spawn").set_active(false)
 	animation.play_backwards("spawn")
+	yield(animation, "animation_finished")
+	queue_free()
 
 
 func set_selectable_state():
 	is_selectable = true
 	animation.play("broccoli_selection")
-	get_node("button").show()
+	$"button".show()
 
 
 func unset_selectable_state():
 	is_selectable = false
 	animation.stop()
-	get_node("broccoli_spawn").set_active(false)
-	get_node("glow").hide()
-	get_node("button").hide()
+	$"glow".hide()
+	$"button".hide()
 
 
 func is_merging():
@@ -90,11 +87,6 @@ func _set_content():
 func _get_world_position(pos):
 	var offset = Vector2(336 / 2, 334 / 2)
 	return get_parent().map_to_world(current_pos) + offset
-
-
-func _on_animation_finished(anim_name):
-	if is_dying:
-		queue_free()
 
 
 func _on_button_pressed():

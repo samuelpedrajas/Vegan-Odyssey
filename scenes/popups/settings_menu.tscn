@@ -309,8 +309,6 @@ group = null
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
-
 [connection signal="pressed" from="clickable_space" to="." method="_on_clickable_space_pressed"]
 
 [connection signal="toggled" from="window/music_control/switch" to="." method="_on_switch_music_toggled"]

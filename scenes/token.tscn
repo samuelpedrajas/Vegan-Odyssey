@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/token.gd" type="Script" id=1]
 [ext_resource path="res://images/token.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://images/selectable_token.png" type="Texture" id=4]
 [ext_resource path="res://animations/broccoli_aura.tres" type="Animation" id=5]
 [ext_resource path="res://animations/token.tres" type="Animation" id=6]
-[ext_resource path="res://animations/spawn.tres" type="Animation" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -26,7 +25,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="token" type="Node2D" groups=[
+[node name="token" type="Node2D" index="0" groups=[
 "token",
 ]]
 
@@ -105,42 +104,6 @@ anims/merge = SubResource( 1 )
 anims/spawn = ExtResource( 6 )
 blend_times = [  ]
 
-[node name="broccoli_spawn" type="AnimationTreePlayer" parent="." index="4"]
-
-playback_process_mode = 1
-master_player = NodePath("")
-base_path = NodePath("..")
-active = false
-data = {
-"active": false,
-"connections": [ "broccoli", "mix", 0, "spawn", "mix", 1, "mix", "out", 0 ],
-"master": NodePath(""),
-"nodes": [ {
-"id": "mix",
-"mix": 1.0,
-"position": Vector2( 0, 0 ),
-"type": "mix"
-}, {
-"id": "out",
-"position": Vector2( 0, 0 ),
-"type": "output"
-}, {
-"animation": ExtResource( 5 ),
-"filter": [  ],
-"id": "broccoli",
-"position": Vector2( 0, 0 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 7 ),
-"filter": [  ],
-"id": "spawn",
-"position": Vector2( 0, 0 ),
-"type": "animation"
-} ]
-}
-
 [connection signal="pressed" from="button" to="." method="_on_button_pressed"]
-
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
 
 

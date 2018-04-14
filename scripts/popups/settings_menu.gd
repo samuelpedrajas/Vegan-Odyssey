@@ -3,27 +3,21 @@ extends Node2D
 
 onready var animation = $"animation"
 
-var is_closing = false
-
 
 func close():
 	g.save_game()
 	animation.play("close")
-	is_closing = true
+	yield(animation, "animation_finished")
+	queue_free()
 
 
-func _ready():
+func open():
 	var music_switch = $"window/music_control/switch"
 	var sound_switch = $"window/sound_control/switch"
 	music_switch.set_pressed(not settings.music_on)
 	sound_switch.set_pressed(not settings.sound_on)
 	set_position(cfg.SETTINGS_WINDOW_POS)
 	animation.play("open")
-
-
-func _on_animation_finished(anim_name):
-	if is_closing:
-		queue_free()
 
 
 func _on_switch_sound_toggled(b):

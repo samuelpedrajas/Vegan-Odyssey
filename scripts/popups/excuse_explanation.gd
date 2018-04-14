@@ -3,15 +3,14 @@ extends Node2D
 
 onready var animation = get_node("animation")
 
-var is_closing = false
-
 
 func close():
 	animation.play("close")
-	is_closing = true
+	yield(animation, "animation_finished")
+	queue_free()
 
 
-func _ready():
+func open():
 	set_position(cfg.EXCUSE_WINDOW_POS)
 	animation.play("open")
 
@@ -20,11 +19,6 @@ func setup(excuse_index):
 	var image_node = get_node("window/excuse_image")
 	var excuse_sprite = cfg.EXCUSES[excuse_index - 1]["book_sprite"]
 	image_node.set_texture(excuse_sprite)
-
-
-func _on_animation_finished(anim_name):
-	if is_closing:
-		queue_free()
 
 
 func _on_ok_button_pressed():
