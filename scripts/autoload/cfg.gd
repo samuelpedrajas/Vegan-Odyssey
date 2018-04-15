@@ -11,7 +11,7 @@ const DIRECTIONS = [
 	Vector2(0, 1), Vector2(0, -1)  # Vertical: |
 ]
 
-const ANIMATION_TIME = 1.0  # time to travel to the destination, in seconds
+const ANIMATION_TIME = 0.12  # time to travel to the destination, in seconds
 const MOVEMENT_OPACITY = 0.8  # opacity when moving
 
 const MOTION_DISTANCE = 15  # Minimum distance with the mouse pressed to make a move

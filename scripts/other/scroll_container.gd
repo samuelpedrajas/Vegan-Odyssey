@@ -15,9 +15,9 @@ func _ready():
 		var excuse_entry = ExcuseEntry.instance()
 		excuse_entry.setup(i, excuse["text"])
 		v_box.add_child(excuse_entry)
-		if i > g.game.highest_max:
+		if i > game.highest_max:
 			excuse_entry.set_lock()
-		elif i == g.game.current_max:
+		elif i == game.current_max:
 			excuse_entry.set_actual()
 
 	# add vertical scroll bar
@@ -36,8 +36,8 @@ func _gui_input(event):
 		if clicked_excuse == null:
 			clicked_excuse = null
 			return
-		g.game.sounds.play_audio("click")
-		var excuse_popup = g.open_popup("excuse_explanation")
+		game.sounds.play_audio("click")
+		var excuse_popup = game.popup_layer.open("excuse_explanation")
 		excuse_popup.setup(clicked_excuse)
 		clicked_excuse = null
 

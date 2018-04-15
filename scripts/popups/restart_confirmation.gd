@@ -16,18 +16,18 @@ func open():
 
 
 func _on_ok_button_pressed():
-	g.game.sounds.play_audio("click")
-	g.close_popup()
-	g.restart_game()
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
+	game.restart_game()
 
 
 func _on_cancel_button_pressed():
 	if cfg.DEV_MODE:
-		g.game.broccolis += 1
-	g.game.sounds.play_audio("click")
-	g.close_popup()
+		game.broccolis += 1
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
 
 
 func _on_clickable_space_pressed():
-	g.close_popup()
+	game.popup_layer.close()
 

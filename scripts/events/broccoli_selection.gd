@@ -1,14 +1,12 @@
 extends Node2D
 
 
-onready var animation = get_node("animation")
-
-var is_closing = false
+onready var animation = $"animation"
 
 
 func start():
-	var n = g.game.get_node("event_layer").get_layer()
-	g.game.get_node("board_layer").set_layer(n + 1)
+	var n = game.event_layer.get_layer()
+	game.board_layer.set_layer(n + 1)
 
 	animation.play("open")
 	yield(animation, "animation_finished")
@@ -19,7 +17,7 @@ func start():
 
 
 func stop():
-	g.game.get_node("board_layer").set_layer(0)
+	game.board_layer.set_layer(0)
 	animation.play_backwards("open")
 	yield(animation, "animation_finished")
 
@@ -30,4 +28,4 @@ func stop():
 
 
 func _on_clickabe_area_pressed():
-	g.stop_event()
+	game.event_layer.stop()

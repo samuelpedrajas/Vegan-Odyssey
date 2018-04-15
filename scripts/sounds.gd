@@ -8,7 +8,7 @@ var library = {
 
 
 func _ready():
-	settings.connect("sound_settings_changed", self, "update_settings")
+	game.settings.connect("sound_settings_changed", self, "update_settings")
 	update_settings()
 
 
@@ -18,7 +18,7 @@ func play_audio(name):
 
 
 func update_settings():
-	if not settings.sound_on:
+	if not game.settings.sound_on:
 		self.bus = "Silence"
 	else:
 		self.bus = "Master"

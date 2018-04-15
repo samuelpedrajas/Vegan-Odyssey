@@ -17,10 +17,10 @@ func open():
 
 
 func _on_close_button_pressed():
-	g.game.sounds.play_audio("click")
-	g.close_popup()
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
 
 
 func _on_clickable_space_pressed():
-	g.close_popup()
+	game.popup_layer.close()
 

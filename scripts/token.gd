@@ -1,21 +1,24 @@
 extends Node2D
 
 
-onready var animation = get_node("animation")
+# for broccolis (send the matrix position)
+var matrix_pos
+
+onready var animation = $"animation"
+
 var level
 var token_to_merge_with = null
-var current_pos
 var tween
 
 var is_selectable = false
 
 
-func setup(pos, t, lvl):
+func setup(world_pos, pos, t, lvl):
+	matrix_pos = pos
 	level = lvl
 	tween = t
-	current_pos = pos
 	set_content()
-	set_position(_get_world_position(pos))
+	set_position(world_pos)
 
 
 func die(animate=true):
@@ -43,10 +46,7 @@ func is_merging():
 	return token_to_merge_with
 
 
-func define_tweening():
-	# get the real world position since destination is a position in the matrix
-	var world_pos = _get_world_position(current_pos)
-
+func define_tweening(world_pos):
 	# interpolate the position
 	tween.interpolate_method(
 		self, "set_position", get_position(), world_pos,
@@ -56,9 +56,9 @@ func define_tweening():
 	modulate.a = cfg.MOVEMENT_OPACITY
 
 
-func update_state():
+func update_state(world_pos):
 	# set pos just in case the tweening failed
-	set_position(_get_world_position(current_pos))
+	set_position(world_pos)
 	modulate.a = 1
 
 	# if it's flagged as merge -> merge it
@@ -71,25 +71,12 @@ func update_state():
 func set_content():
 	var token_sprite = get_node("token_sprite")
 	var level_label = get_node("token_sprite/level")
-	var texture = get_parent().get_token_content(level)
+	var texture = cfg.EXCUSES[level - 1]["token_sprite"]
 	token_sprite.set_texture(texture)
 	level_label.set_text(str(level))
 
 
-func _get_world_position(pos):
-	var offset = Vector2(336 / 2, 334 / 2)
-	return get_parent().map_to_world(current_pos) + offset
-
-
 func _on_button_pressed():
 	print("TOCA")
-	if is_selectable and g.game.broccolis > 0:
-		g.game.use_broccoli(self)
-
-
-func save():
-	return {
-		"pos.x": current_pos.x,
-		"pos.y": current_pos.y,
-		"level": level
-	}
+	if is_selectable and game.broccolis > 0:
+		game.use_broccoli(self)
