@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://audio/merge.wav" type="AudioStream" id=2]
@@ -10,12 +10,12 @@
 [ext_resource path="res://scripts/board_layer.gd" type="Script" id=8]
 [ext_resource path="res://images/board_bg.png" type="Texture" id=9]
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=10]
-[ext_resource path="res://images/top_panel.png" type="Texture" id=11]
-[ext_resource path="res://images/time_container.png" type="Texture" id=12]
-[ext_resource path="res://fonts/token_label.font" type="BitmapFont" id=13]
-[ext_resource path="res://images/score_post.png" type="Texture" id=14]
-[ext_resource path="res://images/max_score_post.png" type="Texture" id=15]
-[ext_resource path="res://scripts/lower_buttons.gd" type="Script" id=16]
+[ext_resource path="res://scripts/hud_layer.gd" type="Script" id=11]
+[ext_resource path="res://images/top_panel.png" type="Texture" id=12]
+[ext_resource path="res://images/time_container.png" type="Texture" id=13]
+[ext_resource path="res://fonts/token_label.font" type="BitmapFont" id=14]
+[ext_resource path="res://images/score_post.png" type="Texture" id=15]
+[ext_resource path="res://images/max_score_post.png" type="Texture" id=16]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=17]
 [ext_resource path="res://images/menu_button.png" type="Texture" id=18]
 [ext_resource path="res://images/menu_button_pressed.png" type="Texture" id=19]
@@ -42,30 +42,6 @@ func _ready():
 	else:
 		game.load_game()
 	$\"/root\".set_disable_input(false)
-"
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Label
-
-func _ready():
-	game.connect(\"current_score_changed\", self, \"set_score\")
-	set_score(game.current_score)
-
-func set_score(s):
-	set_text(str(s))
-"
-
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Label
-
-func _ready():
-	game.connect(\"highest_score_changed\", self, \"set_highest_score\")
-	set_highest_score(game.highest_score)
-
-func set_highest_score(s):
-	set_text(str(s))
 "
 
 [sub_resource type="Animation" id=3]
@@ -134,7 +110,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 script = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
@@ -243,6 +219,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 11 )
 
 [node name="hud" type="Node2D" parent="hud_layer" index="0"]
 
@@ -264,7 +241,7 @@ size_flags_vertical = 1
 [node name="top_border" type="Sprite" parent="hud_layer/hud/header" index="0"]
 
 position = Vector2( 540, 125 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="current_score" type="Container" parent="hud_layer/hud/header" index="1"]
 
@@ -286,7 +263,7 @@ size_flags_vertical = 1
 [node name="container_sprite" type="Sprite" parent="hud_layer/hud/header/current_score" index="0"]
 
 position = Vector2( 12, -2 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="current_score" type="Label" parent="hud_layer/hud/header/current_score/container_sprite" index="0"]
 
@@ -304,18 +281,17 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
 text = "0"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 1 )
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/current_score" index="1"]
 
 position = Vector2( -174.325, -4.09686 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="max_score" type="Container" parent="hud_layer/hud/header" index="2"]
 
@@ -337,7 +313,7 @@ size_flags_vertical = 1
 [node name="container_sprite" type="Sprite" parent="hud_layer/hud/header/max_score" index="0"]
 
 position = Vector2( 12, -2 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="max_score" type="Label" parent="hud_layer/hud/header/max_score/container_sprite" index="0"]
 
@@ -355,18 +331,17 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
 text = "0"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 2 )
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/max_score" index="1"]
 
 position = Vector2( -147.325, -4.09686 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="lower_buttons" type="Container" parent="hud_layer/hud" index="1"]
 
@@ -383,7 +358,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 16 )
 
 [node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
 
@@ -572,12 +546,12 @@ blend_times = [  ]
 
 [connection signal="user_input" from="input_handler" to="board_layer" method="move_tokens"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer/hud/lower_buttons" method="_on_menu_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer" method="_on_menu_pressed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer/hud/lower_buttons" method="_on_reset_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer" method="_on_reset_pressed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer/hud/lower_buttons" method="_on_excuses_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer" method="_on_excuses_pressed"]
 
-[connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer/hud/lower_buttons" method="_on_broccoli_pressed"]
+[connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
 
 

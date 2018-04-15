@@ -17,14 +17,10 @@ onready var transition = $"/root/stage/transition"
 onready var music = $"/root/stage/music"
 onready var sounds = $"/root/stage/sounds"
 onready var board_layer = $"/root/stage/board_layer"
+onready var hud_layer = $"/root/stage/hud_layer"
 onready var event_layer = $"/root/stage/event_layer"
 onready var popup_layer = $"/root/stage/popup_layer"
 onready var settings = $"/root/stage/settings"
-
-# signals
-signal highest_score_changed
-signal current_score_changed
-signal broccoli_number_changed
 
 
 func _ready():
@@ -143,17 +139,17 @@ func load_game():
 
 func _set_current_score(v):
 	current_score = v
-	emit_signal("current_score_changed", current_score)
+	hud_layer.set_current_score(v)
 
 
 func _set_highest_score(v):
 	highest_score = v
-	emit_signal("highest_score_changed", highest_score)
+	hud_layer.set_highest_score(v)
 
 
 func _set_broccolis(v):
 	broccolis = v
-	emit_signal("broccoli_number_changed", broccolis)
+	hud_layer.set_broccoli_amount(v)
 
 
 ### WIN / LOSE ###
