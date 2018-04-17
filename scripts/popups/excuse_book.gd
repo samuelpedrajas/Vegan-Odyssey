@@ -1,19 +1,12 @@
-extends Node2D
+extends "popup.gd"
 
 
-onready var animation = get_node("animation")
 onready var scroll_container = get_node("window/scroll_container")
-
-
-func close():
-	animation.play("close")
-	yield(animation, "animation_finished")
-	queue_free()
 
 
 func open():
 	set_position(cfg.BOOK_WINDOW_POS)
-	animation.play("open")
+	.open()
 
 
 func _on_close_button_pressed():

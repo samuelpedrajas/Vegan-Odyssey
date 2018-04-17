@@ -4,12 +4,12 @@ extends CanvasLayer
 # POPUP MANAGMENT
 var popup_stack = []
 onready var popup_scene_dict = {
-	"settings_menu": preload("res://scenes/popups/settings_menu.tscn"),
+	"settings": preload("res://scenes/popups/settings.tscn"),
 	"exit_confirmation": preload("res://scenes/popups/exit_confirmation.tscn"),
-	"reset_confirmation": preload("res://scenes/popups/reset_confirmation.tscn"),
+	"reset_confirmation": preload("res://scenes/popups/reset_board_confirmation.tscn"),
 	"reset_progress_confirmation": preload("res://scenes/popups/reset_progress_confirmation.tscn"),
-	"book": preload("res://scenes/popups/book.tscn"),
-	"excuse_explanation": preload("res://scenes/popups/excuse_explanation.tscn")
+	"book": preload("res://scenes/popups/excuse_book.tscn"),
+	"excuse_explanation": preload("res://scenes/popups/excuse_drawing.tscn")
 }
 
 

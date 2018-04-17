@@ -1,22 +1,13 @@
-extends Node2D
-
-
-onready var animation = get_node("animation")
-
-
-func close():
-	animation.play("close")
-	yield(animation, "animation_finished")
-	queue_free()
+extends "popup.gd"
 
 
 func open():
 	set_position(cfg.EXCUSE_WINDOW_POS)
-	animation.play("open")
+	.open()
 
 
 func setup(excuse_index):
-	var image_node = get_node("window/excuse_image")
+	var image_node = $"window/excuse_image"
 	var excuse_sprite = cfg.EXCUSES[excuse_index - 1]["book_sprite"]
 	image_node.set_texture(excuse_sprite)
 

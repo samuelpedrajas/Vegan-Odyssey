@@ -1,18 +1,9 @@
-extends Node2D
-
-
-onready var animation = get_node("animation")
-
-
-func close():
-	animation.play("close")
-	yield(animation, "animation_finished")
-	queue_free()
+extends "popup.gd"
 
 
 func open():
 	set_position(cfg.RESET_WINDOW_POS)
-	animation.play("open")
+	.open()
 
 
 func _on_ok_button_pressed():

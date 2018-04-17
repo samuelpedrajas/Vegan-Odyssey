@@ -32,7 +32,7 @@
 [ext_resource path="res://scripts/popup_layer.gd" type="Script" id=30]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=31]
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Node2D
 
@@ -44,7 +44,7 @@ func _ready():
 	$\"/root\".set_disable_input(false)
 "
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 length = 0.2
 loop = false
@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 0.5
 loop = false
@@ -92,7 +92,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 0.3
 loop = false
@@ -112,7 +112,7 @@ tracks/0/keys = {
 
 [node name="stage" type="Node2D" index="0"]
 
-script = SubResource( 6 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="settings" type="Node" parent="." index="0"]
@@ -494,7 +494,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/used = SubResource( 3 )
+anims/used = SubResource( 2 )
 blend_times = [  ]
 
 [node name="event_layer" type="CanvasLayer" parent="." index="7"]
@@ -540,8 +540,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 4 )
-anims/open = SubResource( 5 )
+anims/close = SubResource( 3 )
+anims/open = SubResource( 4 )
 blend_times = [  ]
 
 [connection signal="user_input" from="input_handler" to="board_layer" method="move_tokens"]

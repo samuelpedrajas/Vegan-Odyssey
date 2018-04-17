@@ -1,14 +1,9 @@
-extends Node2D
-
-
-onready var animation = $"animation"
+extends "popup.gd"
 
 
 func close():
 	game.save_game()
-	animation.play("close")
-	yield(animation, "animation_finished")
-	queue_free()
+	.close()
 
 
 func open():
@@ -17,7 +12,7 @@ func open():
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
 	set_position(cfg.SETTINGS_WINDOW_POS)
-	animation.play("open")
+	.open()
 
 
 func _on_switch_sound_toggled(b):
