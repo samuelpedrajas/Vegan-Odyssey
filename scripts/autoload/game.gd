@@ -72,18 +72,25 @@ func use_broccoli(token):
 	get_tree().get_root().set_disable_input(false)
 
 
-func restart_game():
+func restart_game(delete_progress=false):
 	get_tree().get_root().set_disable_input(true)
 
 	transition.play("close")
 	# wait until screen is black
 	yield(transition, 'animation_finished')
 
-	# here the screen is already black
+	# update amounts
 	self.current_score = 0
 	self.current_max = 1
+	if delete_progress:
+		popup_layer.close_all()
+		self.highest_max = cfg.MIN_HIGHEST_MAX
+		self.highest_score = 0
+		self.broccolis = 0
 
 	board_layer.reset()
+
+	save_game()
 
 	transition.play("open")
 	yield(transition, "animation_finished")
@@ -92,12 +99,7 @@ func restart_game():
 
 
 func reset_progress():
-	# update amounts
-	self.highest_max = cfg.MIN_HIGHEST_MAX
-	self.highest_score = 0
-	self.broccolis = 0
-
-	restart_game()
+	restart_game(true)
 
 
 ### SAVE / LOAD FUNCTIONS ###
