@@ -6,10 +6,10 @@ var popup_stack = []
 onready var popup_scene_dict = {
 	"settings": preload("res://scenes/popups/settings.tscn"),
 	"exit_confirmation": preload("res://scenes/popups/exit_confirmation.tscn"),
-	"reset_confirmation": preload("res://scenes/popups/reset_board_confirmation.tscn"),
+	"reset_board_confirmation": preload("res://scenes/popups/reset_board_confirmation.tscn"),
 	"reset_progress_confirmation": preload("res://scenes/popups/reset_progress_confirmation.tscn"),
-	"book": preload("res://scenes/popups/excuse_book.tscn"),
-	"excuse_explanation": preload("res://scenes/popups/excuse_drawing.tscn")
+	"excuse_book": preload("res://scenes/popups/excuse_book.tscn"),
+	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn")
 }
 
 
@@ -40,13 +40,11 @@ func open(name):
 func close():
 	# disallow input until the window is closed
 	get_tree().get_root().set_disable_input(true)
-
 	if not popup_stack.empty():
 		var popup = popup_stack.back()
 		popup_stack.pop_back()
 		popup.close()
 		yield(popup, "tree_exited")
-
 	if popup_stack.empty():
 		get_tree().set_pause(false)
 	else:

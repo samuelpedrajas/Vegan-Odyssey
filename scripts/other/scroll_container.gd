@@ -37,7 +37,7 @@ func _gui_input(event):
 			clicked_excuse = null
 			return
 		game.sounds.play_audio("click")
-		var excuse_popup = game.popup_layer.open("excuse_explanation")
+		var excuse_popup = game.popup_layer.open("excuse_drawing")
 		excuse_popup.setup(clicked_excuse)
 		clicked_excuse = null
 

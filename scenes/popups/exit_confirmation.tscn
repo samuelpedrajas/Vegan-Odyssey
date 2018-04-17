@@ -1,10 +1,106 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/exit_confirmation.gd" type="Script" id=2]
+[ext_resource path="res://images/popup.png" type="Texture" id=3]
+[ext_resource path="res://fonts/message.font" type="BitmapFont" id=4]
+[ext_resource path="res://images/cancel_button.png" type="Texture" id=5]
+[ext_resource path="res://images/cancel_button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/ok_button.png" type="Texture" id=7]
+[ext_resource path="res://images/ok_button_pressed.png" type="Texture" id=8]
 
-[node name="exit_confirmation" index="0" instance=ExtResource( 1 )]
+[node name="exit_confirmation" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+
+[node name="non_clickable_space" parent="window" index="0"]
+
+margin_left = -443.0
+margin_top = -389.0
+margin_right = 442.0
+margin_bottom = 389.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="background" parent="window" index="1"]
+
+scale = Vector2( 0.88, 0.74 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="message" type="Label" parent="window" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -351.0
+margin_top = -262.0
+margin_right = 279.0
+margin_bottom = 208.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 4 )
+text = "Are you sure you wanna quit the game?"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="cancel_button" type="TextureButton" parent="window" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -278.0
+margin_top = 288.0
+margin_right = -78.0
+margin_bottom = 488.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="ok_button" type="TextureButton" parent="window" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 55.0
+margin_top = 288.0
+margin_right = 255.0
+margin_bottom = 488.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[connection signal="pressed" from="window/cancel_button" to="." method="_on_cancel_button_pressed"]
+
+[connection signal="pressed" from="window/ok_button" to="." method="_on_ok_button_pressed"]
 
 

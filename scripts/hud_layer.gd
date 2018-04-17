@@ -19,17 +19,17 @@ func set_highest_score(s):
 
 func _on_menu_pressed():
 	game.sounds.play_audio("click")
-	game.popup_layer.open("settings_menu")
+	game.popup_layer.open("settings")
 
 
 func _on_reset_pressed():
 	game.sounds.play_audio("click")
-	game.popup_layer.open("reset_confirmation")
+	game.popup_layer.open("reset_board_confirmation")
 
 
 func _on_excuses_pressed():
 	game.sounds.play_audio("click")
-	game.popup_layer.open("book")
+	game.popup_layer.open("excuse_book")
 
 
 func _on_broccoli_pressed():
