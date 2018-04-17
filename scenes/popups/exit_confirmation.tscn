@@ -2,12 +2,12 @@
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/exit_confirmation.gd" type="Script" id=2]
-[ext_resource path="res://images/popup.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/popup.png" type="Texture" id=3]
 [ext_resource path="res://fonts/message.font" type="BitmapFont" id=4]
-[ext_resource path="res://images/cancel_button.png" type="Texture" id=5]
-[ext_resource path="res://images/cancel_button_pressed.png" type="Texture" id=6]
-[ext_resource path="res://images/ok_button.png" type="Texture" id=7]
-[ext_resource path="res://images/ok_button_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=8]
 
 [node name="exit_confirmation" instance=ExtResource( 1 )]
 
@@ -74,6 +74,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="ok_button" type="TextureButton" parent="window" index="4"]
 
@@ -98,6 +99,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Textures" ]
 
 [connection signal="pressed" from="window/cancel_button" to="." method="_on_cancel_button_pressed"]
 

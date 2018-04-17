@@ -26,9 +26,12 @@ func open(name):
 
 		var popup = popup_scene_dict[name].instance()
 		popup.set_z_index(popup_stack.size())
+
+		# add popup
 		add_child(popup)
-		popup.open()
 		popup_stack.append(popup)
+		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
+		popup.open()
 		yield(popup.animation, "animation_finished")
 		get_tree().get_root().set_disable_input(false)
 		# TODO:  fix this, used in scroll_container.gd

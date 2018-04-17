@@ -15,7 +15,6 @@ func _on_clickable_space_pressed():
 
 [node name="popup" type="Node2D"]
 
-pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 

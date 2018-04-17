@@ -2,17 +2,17 @@
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/settings.gd" type="Script" id=2]
-[ext_resource path="res://images/popup.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/popup.png" type="Texture" id=3]
 [ext_resource path="res://fonts/polypty.font" type="BitmapFont" id=4]
-[ext_resource path="res://images/switch_on.png" type="Texture" id=5]
-[ext_resource path="res://images/switch_off.png" type="Texture" id=6]
-[ext_resource path="res://images/close_window.png" type="Texture" id=7]
-[ext_resource path="res://images/close_window_pressed.png" type="Texture" id=8]
-[ext_resource path="res://images/reset_progress_button.png" type="Texture" id=9]
-[ext_resource path="res://images/reset_progress_button_pressed.png" type="Texture" id=10]
-[ext_resource path="res://images/exit_button.png" type="Texture" id=11]
-[ext_resource path="res://images/exit_button_pressed.png" type="Texture" id=12]
-[ext_resource path="res://images/window_header.png" type="Texture" id=13]
+[ext_resource path="res://images/popups/switch_on.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/switch_off.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/close_window.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/reset_progress_button.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/reset_progress_button_pressed.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/exit_button.png" type="Texture" id=11]
+[ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://images/popups/window_header.png" type="Texture" id=13]
 [ext_resource path="res://fonts/window_title.font" type="BitmapFont" id=14]
 
 [node name="settings" instance=ExtResource( 1 )]
@@ -93,6 +93,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="sound_control" type="Control" parent="window" index="3"]
 
@@ -154,6 +155,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="close_button" type="TextureButton" parent="window" index="4"]
 
@@ -178,6 +180,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="reset_progress" type="TextureButton" parent="window" index="5"]
 
@@ -227,11 +230,10 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 12 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="header" type="Sprite" parent="window" index="7"]
 
-editor/display_folded = true
 position = Vector2( 0, -600 )
 scale = Vector2( 1.11111, 1.11111 )
 texture = ExtResource( 13 )

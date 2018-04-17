@@ -12,21 +12,21 @@
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=10]
 [ext_resource path="res://scripts/hud_layer.gd" type="Script" id=11]
 [ext_resource path="res://images/top_panel.png" type="Texture" id=12]
-[ext_resource path="res://images/time_container.png" type="Texture" id=13]
+[ext_resource path="res://images/score_container.png" type="Texture" id=13]
 [ext_resource path="res://fonts/token_label.font" type="BitmapFont" id=14]
 [ext_resource path="res://images/score_post.png" type="Texture" id=15]
 [ext_resource path="res://images/max_score_post.png" type="Texture" id=16]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=17]
-[ext_resource path="res://images/menu_button.png" type="Texture" id=18]
-[ext_resource path="res://images/menu_button_pressed.png" type="Texture" id=19]
-[ext_resource path="res://images/restart_button.png" type="Texture" id=20]
-[ext_resource path="res://images/restart_button_pressed.png" type="Texture" id=21]
-[ext_resource path="res://images/book.png" type="Texture" id=22]
-[ext_resource path="res://images/book_pressed.png" type="Texture" id=23]
-[ext_resource path="res://images/broccoli.png" type="Texture" id=24]
-[ext_resource path="res://images/broccoli_pressed.png" type="Texture" id=25]
-[ext_resource path="res://images/broccoli_disabled.png" type="Texture" id=26]
-[ext_resource path="res://images/n_broccolis.png" type="Texture" id=27]
+[ext_resource path="res://images/lower_buttons/menu_button.png" type="Texture" id=18]
+[ext_resource path="res://images/lower_buttons/menu_button_pressed.png" type="Texture" id=19]
+[ext_resource path="res://images/lower_buttons/restart_button.png" type="Texture" id=20]
+[ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=21]
+[ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=22]
+[ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=23]
+[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=24]
+[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=25]
+[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=26]
+[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=27]
 [ext_resource path="res://fonts/small.font" type="BitmapFont" id=28]
 [ext_resource path="res://scripts/event_layer.gd" type="Script" id=29]
 [ext_resource path="res://scripts/popup_layer.gd" type="Script" id=30]
@@ -386,6 +386,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 19 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
 
@@ -409,6 +410,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
 
@@ -432,6 +434,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
 
@@ -456,6 +459,7 @@ group = null
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 texture_disabled = ExtResource( 26 )
+_sections_unfolded = [ "Textures" ]
 
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
 

@@ -4,7 +4,7 @@ onready var grandparent = get_parent().get_parent()
 onready var lock = get_node("lock")
 onready var actual = get_node("actual")
 onready var button = get_node("excuse")
-onready var actual_sprite = preload("res://images/actual_excuse.png")
+onready var actual_sprite = preload("res://images/popups/actual_excuse.png")
 var index = 0
 
 
