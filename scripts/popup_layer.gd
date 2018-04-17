@@ -13,7 +13,7 @@ onready var popup_scene_dict = {
 }
 
 
-func open(name):
+func open(name, params=null):
 	# disallow input until the window is opened
 	get_tree().get_root().set_disable_input(true)
 
@@ -31,7 +31,10 @@ func open(name):
 		add_child(popup)
 		popup_stack.append(popup)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-		popup.open()
+		if params:
+			popup.open(params)
+		else:
+			popup.open()
 		yield(popup.animation, "animation_finished")
 		get_tree().get_root().set_disable_input(false)
 		# TODO:  fix this, used in scroll_container.gd
