@@ -36,9 +36,7 @@ func update_scores(token_level):
 	self.highest_max = current_max if current_max > highest_max else highest_max
 
 
-func checkpoint():
-	save_game()
-
+func check_game():
 	# has the user won or lost?
 	if check_win():
 		win()
@@ -112,8 +110,8 @@ func save_game():
 		'broccolis': broccolis,
 		'highest_max': highest_max,
 		'highest_score': highest_score,
-		'current_score': current_score,
 		'current_max': current_max,
+		'current_score': current_score,
 		'matrix': board_layer.save_info(),
 		'settings': settings.save_info()
 	}

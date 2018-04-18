@@ -1,7 +1,6 @@
 extends Node2D
 
 
-# for broccolis (send the matrix position)
 var matrix_pos
 var world_pos
 
@@ -77,6 +76,14 @@ func merge():
 	update()
 	animation.play("merge")
 	game.sounds.play_audio("merge")
+
+
+func save_info():
+	return {
+		"pos.x": matrix_pos.x,
+		"pos.y": matrix_pos.y,
+		"level": level
+	}
 
 
 func _on_button_pressed():

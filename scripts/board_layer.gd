@@ -47,7 +47,7 @@ func move_tokens(direction):
 
 	if movement_in_board:
 		tween.start()
-		tween.interpolate_callback(game, tween.get_runtime(), "checkpoint")
+		tween.interpolate_callback(game, tween.get_runtime(), "check_game")
 
 		if game.check_win() or game.check_game_over():
 			get_tree().get_root().set_disable_input(true)
@@ -56,7 +56,7 @@ func move_tokens(direction):
 			var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
 			# plays spawn animation a bit before the tween is finished
 			tween.interpolate_callback(t.animation, tween.get_runtime() * 0.7, "play", "spawn")
-
+	game.save_game()
 	# debug purposes
 	_print_matrix()
 
@@ -143,7 +143,7 @@ func check_moves_available():
 
 
 func spawn_token(pos=null, level=1, animate=true):
-	pos = pos if pos else _get_empty_position()
+	pos = pos if pos != null else _get_empty_position()
 	if pos == null:
 		return
 
@@ -161,11 +161,7 @@ func spawn_token(pos=null, level=1, animate=true):
 func save_info():
 	var info = {}
 	for key in matrix.keys():
-		info[key] = {
-			"pos.x": key.x,
-			"pos.y": key.y,
-			"level": matrix[key].level
-		}
+		info[key] = matrix[key].save_info()
 	return info
 
 
