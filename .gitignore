@@ -1,3 +1,4 @@
 *.tmp
 .import/
 addons/
+*.import
