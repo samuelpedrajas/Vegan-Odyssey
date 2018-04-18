@@ -66,6 +66,7 @@ func use_broccoli(token):
 	# if empty -> new token
 	if board_layer.matrix.empty():
 		var t = board_layer.spawn_token()
+		t.animation.play("spawn")
 		yield(t.animation, 'animation_finished')
 		t.set_selectable_state()
 

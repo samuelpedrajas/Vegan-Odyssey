@@ -7,11 +7,10 @@ var matrix_pos
 onready var animation = $"animation"
 
 var level
-var token_to_merge_with = null
 var tween
 
 var is_selectable = false
-
+var is_dying = false
 
 func setup(world_pos, pos, t, lvl):
 	matrix_pos = pos
@@ -26,6 +25,7 @@ func die(animate=true):
 	if animate:
 		animation.play_backwards("spawn")
 		yield(animation, "animation_finished")
+	print("Token " + str(get_instance_id()) + " is dying...")
 	queue_free()
 
 
@@ -42,30 +42,35 @@ func unset_selectable_state():
 	$"button".hide()
 
 
-func is_merging():
-	return token_to_merge_with
-
-
-func define_tweening(world_pos):
+func move_to(world_pos):
 	# interpolate the position
+	var animation_time = (world_pos - get_position()).length() / cfg.ANIMATION_SPEED
 	tween.interpolate_method(
 		self, "set_position", get_position(), world_pos,
-		cfg.ANIMATION_TIME, tween.TRANS_LINEAR, tween.EASE_IN
+		animation_time, tween.TRANS_QUAD, tween.EASE_OUT
 	)
 	# decrease opacity for a smoother animation
 	modulate.a = cfg.MOVEMENT_OPACITY
+	tween.interpolate_callback(self, animation_time, "update_state", world_pos)
+
+	return animation_time
 
 
 func update_state(world_pos):
+	print("[" + str(get_instance_id()) + "]: Updating state...")
 	# set pos just in case the tweening failed
 	set_position(world_pos)
 	modulate.a = 1
 
-	# if it's flagged as merge -> merge it
-	if token_to_merge_with:
-		token_to_merge_with.set_content()
-		token_to_merge_with.animation.play("merge")
+	# if it was marked as dying -> kill it
+	if is_dying:
 		die(false)
+
+
+func merge():
+	set_content()
+	animation.play("merge")
+	game.sounds.play_audio("merge")
 
 
 func set_content():

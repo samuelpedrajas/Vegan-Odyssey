@@ -52,23 +52,25 @@ func move_tokens(direction):
 
 	if board_changed.merge:
 		# play merge sound if there was at least one merge in the board and update scores
-		game.sounds.play_audio("merge")
+		# game.sounds.play_audio("merge")
+		pass
 
 	if board_changed.movement:
 		# spawn token of level 1 or 2
 		# 1/3 -> 2, 2/3 -> 1
-		spawn_token(null, int(randi() % 3 == 1) + 1, true)
+		var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
 
 		if game.check_win() or game.check_game_over():
 			get_tree().get_root().set_disable_input(true)
 
+		print(
+			str(len(get_tree().get_nodes_in_group("token"))) + " " +
+			"tokens will be updated"
+		)
 		tween.start()
-		# update score and update token state
-		for token in get_tree().get_nodes_in_group("token"):
-			tween.interpolate_callback(token, tween.get_runtime(),
-				"update_state", $"tilemap".map_to_world(token.matrix_pos))
-
 		tween.interpolate_callback(game, tween.get_runtime(), "checkpoint")
+		# plays spawn animation a bit before the tween is finished
+		tween.interpolate_callback(t.animation, tween.get_runtime() * 0.7, "play", "spawn")
 
 	# debug purposes
 	print('=========')
@@ -89,44 +91,45 @@ func _move_line(pos, direction):
 		var current_token = matrix[pos]
 		var changes = _move_line(pos + direction, direction)
 		var last_token = changes.last_token
-		var token_destination = changes.last_valid_position
+		var dest = changes.last_valid_position
 
 		# conditions for positioning and merging
-		if last_token and (last_token.token_to_merge_with or last_token.level != current_token.level):
-			token_destination -= direction
-		elif last_token and !last_token.token_to_merge_with and last_token.level == current_token.level:
+		if last_token and (last_token.is_dying or last_token.level != current_token.level):
+			dest -= direction
+		elif last_token and !last_token.is_dying and last_token.level == current_token.level:
+			# logging
+			print(
+				"Merging " + str(current_token.get_instance_id()) +
+				" with " + str(last_token.get_instance_id())
+			)
 			line_changes.merge = true
-			current_token.token_to_merge_with = last_token
+			current_token.is_dying = true
 
 			# increase level and update scores
 			last_token.level += 1
 			game.update_scores(last_token.level)
 
-		# move current token after moving the ones after it
-		_move_token(current_token, pos, token_destination)
+
+		if pos != dest:
+			matrix.erase(pos)
+			var animation_time = current_token.move_to($"tilemap".map_to_world(dest))
+			if current_token.is_dying:
+				tween.interpolate_callback(last_token, animation_time, "merge")
+			else:
+				matrix[dest] = current_token
+				current_token.matrix_pos = dest
 
 		# update line_changes information for the previous position in the recursion
-		line_changes.movement = pos != token_destination
+		line_changes.movement = pos != dest
 		line_changes.merge = line_changes.merge or changes.merge
 		line_changes.last_token = current_token
-		line_changes.last_valid_position = token_destination
+		line_changes.last_valid_position = dest
 	elif not pos in $"tilemap".get_used_cells():
 		line_changes.last_valid_position = pos - direction
 	else:
 		return _move_line(pos + direction, direction)
 
 	return line_changes
-
-
-func _move_token(token, current_pos, destination):
-	matrix.erase(current_pos)
-
-	if !token.token_to_merge_with:
-		matrix[destination] = token
-		token.matrix_pos = destination
-
-	if current_pos != destination:
-		token.define_tweening($"tilemap".map_to_world(destination))
 
 
 func _get_empty_position():
@@ -169,13 +172,8 @@ func spawn_token(pos=null, level=1, animate=true):
 	t.setup($"tilemap".map_to_world(pos), pos, tween, level)
 	matrix[pos] = t
 
-	if animate:
-		t.animation.play("spawn")
-	else:
+	if not animate:
 		t.set_scale(Vector2(1.0, 1.0))
-
-	# debug purposes
-	_print_matrix()
 
 	return t
 
@@ -233,8 +231,9 @@ func _print_matrix():
 		for j in range(3):
 			var pos = Vector2(j, i)
 			if matrix.has(pos):
-				line += str(pow(2, matrix[pos].level)) + '\t'
+				line += str(pow(2, matrix[pos].level)) + " "
+				line += "(" + str(matrix[pos].get_instance_id()) + ")\t"
 			else:
-				line += '-\t'
+				line += '-       \t'
 
 		print(line)
