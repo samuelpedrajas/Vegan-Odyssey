@@ -36,9 +36,6 @@ func open(name, params=null):
 		else:
 			popup.open()
 		yield(popup.animation, "animation_finished")
-		get_tree().get_root().set_disable_input(false)
-		# TODO:  fix this, used in scroll_container.gd
-		return popup
 
 	get_tree().get_root().set_disable_input(false)
 
@@ -62,5 +59,4 @@ func close_all():
 	while !popup_stack.empty():
 		var popup = popup_stack.pop_back()
 		popup.queue_free()
-		yield(popup, 'tree_exited')
 	get_tree().set_pause(false)

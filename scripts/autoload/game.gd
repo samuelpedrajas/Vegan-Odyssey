@@ -85,7 +85,7 @@ func restart_game(delete_progress=false):
 		self.highest_max = cfg.MIN_HIGHEST_MAX
 		self.highest_score = 0
 		self.broccolis = 0
-		popup_layer.close_all()
+	popup_layer.close_all()
 
 	board_layer.reset()
 
