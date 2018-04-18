@@ -8,16 +8,16 @@ signal music_settings_changed
 signal sound_settings_changed
 
 
-func save():
+func save_info():
 	return {
 		'music_on': music_on,
 		'sound_on': sound_on
 	}
 
 
-func load(info):
-	self.sound_on = info['sound_on']
-	self.music_on = info['music_on']
+func load_info(settings_info):
+	self.sound_on = settings_info['sound_on']
+	self.music_on = settings_info['music_on']
 
 
 func _set_music(v):

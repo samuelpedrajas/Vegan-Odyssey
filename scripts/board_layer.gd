@@ -95,7 +95,7 @@ func _move_line(pos, direction):
 			var animation_time = current_token.move_to(world_pos)
 			if current_token.is_dying:
 				tween.interpolate_callback(last_token, animation_time, "merge")
-				game.update_scores()
+				game.update_scores(last_token.level)
 			else:
 				matrix[dest] = current_token
 				current_token.matrix_pos = dest
@@ -158,7 +158,7 @@ func spawn_token(pos=null, level=1, animate=true):
 	return t
 
 
-func save():
+func save_info():
 	var info = {}
 	for key in matrix.keys():
 		info[key] = {
@@ -169,11 +169,10 @@ func save():
 	return info
 
 
-func load(info):
+func load_info(matrix_info):
 	# set tokens on their positions
-	var m = info["matrix"]
-	for key in m.keys():
-		var token_info = m[key]
+	for key in matrix_info.keys():
+		var token_info = matrix_info[key]
 		var pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
 		spawn_token(pos, int(token_info["level"]), false)
 

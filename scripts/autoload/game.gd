@@ -114,9 +114,8 @@ func save_game():
 		'highest_score': highest_score,
 		'current_score': current_score,
 		'current_max': current_max,
-		'matrix': board_layer.save(),
-		'sound_on': settings.sound_on,
-		'music_on': settings.music_on
+		'matrix': board_layer.save_info(),
+		'settings': settings.save_info()
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -131,8 +130,8 @@ func load_game():
 	self.current_score = info['current_score']
 	self.current_max = info['current_max']
 	self.broccolis = info['broccolis']
-	settings.load(info)
-	board_layer.load(info)
+	settings.load_info(info['settings'])
+	board_layer.load_info(info['matrix'])
 
 	savegame.close()
 
