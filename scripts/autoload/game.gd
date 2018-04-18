@@ -140,14 +140,14 @@ func load_game():
 ### SETTERS ###
 
 
-func _set_current_score(v):
-	current_score = v
-	hud_layer.set_current_score(v)
-
-
 func _set_highest_score(v):
 	highest_score = v
 	hud_layer.set_highest_score(v)
+
+
+func _set_current_score(v):
+	current_score = v
+	hud_layer.set_current_score(v)
 
 
 func _set_broccolis(v):

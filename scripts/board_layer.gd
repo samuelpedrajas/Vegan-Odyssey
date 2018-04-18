@@ -38,49 +38,32 @@ func _set_direction_pivots():
 
 
 func move_tokens(direction):
-	var board_changed = {
-		"movement": false,  # did the tokens moved?
-		"merge": false  # did any token merged with another one?
-	}
+	var movement_in_board = false
 
 	# for each pivot in this direction
 	for pivot in direction_pivots[direction]:
-		var line_changes = _move_line(pivot, direction)
-		# update board information
-		board_changed.movement = board_changed.movement or line_changes.movement
-		board_changed.merge = board_changed.merge or line_changes.merge
+		var movement_in_line = _move_line(pivot, direction).movement
+		movement_in_board = movement_in_board or movement_in_line
 
-	if board_changed.merge:
-		# play merge sound if there was at least one merge in the board and update scores
-		# game.sounds.play_audio("merge")
-		pass
-
-	if board_changed.movement:
-		# spawn token of level 1 or 2
-		# 1/3 -> 2, 2/3 -> 1
-		var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
+	if movement_in_board:
+		tween.start()
+		tween.interpolate_callback(game, tween.get_runtime(), "checkpoint")
 
 		if game.check_win() or game.check_game_over():
 			get_tree().get_root().set_disable_input(true)
-
-		print(
-			str(len(get_tree().get_nodes_in_group("token"))) + " " +
-			"tokens will be updated"
-		)
-		tween.start()
-		tween.interpolate_callback(game, tween.get_runtime(), "checkpoint")
-		# plays spawn animation a bit before the tween is finished
-		tween.interpolate_callback(t.animation, tween.get_runtime() * 0.7, "play", "spawn")
+		else:
+			# 1/3 -> 2, 2/3 -> 1
+			var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
+			# plays spawn animation a bit before the tween is finished
+			tween.interpolate_callback(t.animation, tween.get_runtime() * 0.7, "play", "spawn")
 
 	# debug purposes
-	print('=========')
 	_print_matrix()
 
 
 func _move_line(pos, direction):
 	var line_changes = {
 		"movement": false,
-		"merge": false,
 		"last_token": null,
 		"last_valid_position": null
 	}
@@ -98,30 +81,27 @@ func _move_line(pos, direction):
 			dest -= direction
 		elif last_token and !last_token.is_dying and last_token.level == current_token.level:
 			# logging
-			print(
-				"Merging " + str(current_token.get_instance_id()) +
-				" with " + str(last_token.get_instance_id())
-			)
-			line_changes.merge = true
+			var id1 = str(current_token.get_instance_id())
+			var id2 = str(last_token.get_instance_id())
+			print("Merging " + id1 +" with " + id2)
+
+			# update both tokens
 			current_token.is_dying = true
-
-			# increase level and update scores
 			last_token.level += 1
-			game.update_scores(last_token.level)
-
 
 		if pos != dest:
 			matrix.erase(pos)
-			var animation_time = current_token.move_to($"tilemap".map_to_world(dest))
+			var world_pos = $"tilemap".map_to_world(dest)
+			var animation_time = current_token.move_to(world_pos)
 			if current_token.is_dying:
 				tween.interpolate_callback(last_token, animation_time, "merge")
+				game.update_scores()
 			else:
 				matrix[dest] = current_token
 				current_token.matrix_pos = dest
 
 		# update line_changes information for the previous position in the recursion
 		line_changes.movement = pos != dest
-		line_changes.merge = line_changes.merge or changes.merge
 		line_changes.last_token = current_token
 		line_changes.last_valid_position = dest
 	elif not pos in $"tilemap".get_used_cells():
@@ -225,6 +205,7 @@ func _debug_func():
 
 
 func _print_matrix():
+	print('===========================')
 	var i; var j;
 	for i in range(3):
 		var line = ""
@@ -237,3 +218,4 @@ func _print_matrix():
 				line += '-       \t'
 
 		print(line)
+	print('===========================')
