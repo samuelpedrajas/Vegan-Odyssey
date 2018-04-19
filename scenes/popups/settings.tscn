@@ -30,7 +30,7 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="settings" index="0" instance=ExtResource( 1 )]
+[node name="settings" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 

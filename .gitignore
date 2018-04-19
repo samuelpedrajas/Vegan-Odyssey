@@ -2,3 +2,5 @@
 .import/
 addons/
 *.import
+fonts/*.png
+fonts/*.font
