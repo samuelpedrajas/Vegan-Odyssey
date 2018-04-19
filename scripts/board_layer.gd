@@ -68,8 +68,10 @@ func _move_line(pos, direction):
 		"last_valid_position": null
 	}
 
-	# 3 cases: current position has a token, current position is not valid and current position is
-	# valid but it doesn't have a token
+	# 3 cases:
+	# - current position has a token
+	# - current position is not valid
+	# - current position is valid but it doesn't have a token
 	if matrix.has(pos):
 		var current_token = matrix[pos]
 		var changes = _move_line(pos + direction, direction)

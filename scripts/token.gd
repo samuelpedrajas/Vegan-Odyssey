@@ -65,11 +65,11 @@ func update(scale=true):
 
 
 func die(animate=true):
+	print("Token " + str(get_instance_id()) + " is dying...")
 	tween.remove(self, 'position')
 	if animate:
 		animation.play_backwards("spawn")
 		yield(animation, "animation_finished")
-	print("Token " + str(get_instance_id()) + " is dying...")
 	queue_free()
 
 
