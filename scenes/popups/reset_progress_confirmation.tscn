@@ -56,8 +56,8 @@ bbcode_text = "[center]All the game
 data including
 the current
 board will be
-deleted
-[color=red]permanently[/color].
+[color=red]permanently[/color]
+deleted.
 Continue?[/center]"
 visible_characters = -1
 percent_visible = 1.0
@@ -67,8 +67,8 @@ text = "All the game
 data including
 the current
 board will be
-deleted
-permanently.
+permanently
+deleted.
 Continue?"
 scroll_active = true
 scroll_following = false

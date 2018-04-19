@@ -2,9 +2,11 @@ extends Node2D
 
 
 onready var animation = $"animation"
+var board_original_layer = 1
 
 
 func start():
+	board_original_layer = game.board_layer.get_layer()
 	var n = game.event_layer.get_layer()
 	game.board_layer.set_layer(n + 1)
 
@@ -19,7 +21,7 @@ func start():
 func stop():
 	animation.play_backwards("open")
 	yield(animation, "animation_finished")
-	game.board_layer.set_layer(0)
+	game.board_layer.set_layer(board_original_layer)
 
 	# unset selectable state for all tokens
 	for token in get_tree().get_nodes_in_group("token"):
