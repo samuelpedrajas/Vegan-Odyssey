@@ -88,6 +88,7 @@ func restart_game(delete_progress=false):
 	popup_layer.close_all()
 
 	board_layer.reset()
+	board_layer.spawn_token(null, 1, false)
 
 	save_game()
 

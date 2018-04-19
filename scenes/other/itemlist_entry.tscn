@@ -1,11 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/other/itemlist_entry.gd" type="Script" id=1]
 [ext_resource path="res://images/popups/excuse_entry.png" type="Texture" id=2]
-[ext_resource path="res://fonts/message.font" type="BitmapFont" id=3]
-[ext_resource path="res://fonts/BLACKJAR.font" type="BitmapFont" id=4]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/excuse_entry.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://images/popups/blocked_entry.png" type="Texture" id=5]
 [ext_resource path="res://images/popups/lock.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 90
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="excuse" type="Control" index="0"]
 
@@ -37,7 +53,6 @@ visibility_mode = 0
 
 [node name="actual" type="Label" parent="." index="1"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -52,12 +67,16 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.753906, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.27451 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
 text = "A"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="text" type="Label" parent="." index="2"]
 
@@ -75,12 +94,17 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.189697, 0.289062, 0.195908, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.27451 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
 text = "Some text here"
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="lock" type="Sprite" parent="." index="3"]
 

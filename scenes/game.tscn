@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://audio/merge.wav" type="AudioStream" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://scripts/hud_layer.gd" type="Script" id=11]
 [ext_resource path="res://images/top_panel.png" type="Texture" id=12]
 [ext_resource path="res://images/score_container.png" type="Texture" id=13]
-[ext_resource path="res://fonts/token_label.font" type="BitmapFont" id=14]
+[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://images/score_post.png" type="Texture" id=15]
 [ext_resource path="res://images/max_score_post.png" type="Texture" id=16]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=17]
@@ -27,10 +27,9 @@
 [ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=25]
 [ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=26]
 [ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=27]
-[ext_resource path="res://fonts/small.font" type="BitmapFont" id=28]
-[ext_resource path="res://scripts/event_layer.gd" type="Script" id=29]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=30]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=31]
+[ext_resource path="res://scripts/event_layer.gd" type="Script" id=28]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=29]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=30]
 
 [sub_resource type="GDScript" id=1]
 
@@ -43,6 +42,22 @@ func _ready():
 		game.load_game()
 	$\"/root\".set_disable_input(false)
 "
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 55
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 14 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 45
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 14 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="Animation" id=2]
 
@@ -110,7 +125,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -281,12 +296,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/current_score" index="1"]
 
@@ -331,12 +347,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/max_score" index="1"]
 
@@ -482,14 +499,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 28 )
+custom_fonts/font = SubResource( 6 )
 text = "3"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
 
 [node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
 
@@ -508,7 +525,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 29 )
+script = ExtResource( 28 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="popup_layer" type="CanvasLayer" parent="." index="8"]
@@ -518,7 +535,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 30 )
+script = ExtResource( 29 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="transition_layer" type="CanvasLayer" parent="." index="9"]
@@ -533,7 +550,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="black_screen" type="Sprite" parent="transition_layer" index="0"]
 
 modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 31 )
+texture = ExtResource( 30 )
 centered = false
 
 [node name="transition" type="AnimationPlayer" parent="." index="10"]

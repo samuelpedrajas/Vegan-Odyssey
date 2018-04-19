@@ -148,12 +148,15 @@ func spawn_token(pos=null, level=1, animate=true):
 		return
 
 	var t = token.instance()
-	$"tokens".add_child(t)
-	t.setup($"tilemap".map_to_world(pos), pos, tween, level)
 	matrix[pos] = t
 
 	if not animate:
 		t.set_scale(Vector2(1.0, 1.0))
+	else:
+		t.set_scale(Vector2(0.0, 0.0))
+
+	t.setup($"tilemap".map_to_world(pos), pos, tween, level)
+	$"tokens".add_child(t)
 
 	return t
 
@@ -184,7 +187,6 @@ func reset():
 		token.hide()
 		token.queue_free()
 
-	spawn_token(null, 1, false)
 
 ########## DEBUG FUNCTIONS ##########
 

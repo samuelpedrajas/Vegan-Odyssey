@@ -12,6 +12,7 @@ var tween
 var is_selectable = false
 var is_dying = false
 
+
 func setup(wp, pos, t, lvl):
 	matrix_pos = pos
 	level = lvl

@@ -1,15 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/exit_confirmation.gd" type="Script" id=2]
 [ext_resource path="res://images/popups/popup.png" type="Texture" id=3]
-[ext_resource path="res://fonts/message.font" type="BitmapFont" id=4]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=5]
 [ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=6]
 [ext_resource path="res://images/popups/ok_button.png" type="Texture" id=7]
 [ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=8]
 
-[node name="exit_confirmation" instance=ExtResource( 1 )]
+[sub_resource type="DynamicFont" id=1]
+
+size = 110
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="exit_confirmation" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
@@ -33,23 +41,27 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -351.0
-margin_top = -262.0
-margin_right = 279.0
-margin_bottom = 208.0
+margin_left = -335.0
+margin_top = -268.0
+margin_right = 332.0
+margin_bottom = 268.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.27451 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 10
 text = "Are you sure you wanna quit the game?"
 align = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="cancel_button" type="TextureButton" parent="window" index="3"]
 
@@ -57,9 +69,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -278.0
+margin_left = -270.0
 margin_top = 288.0
-margin_right = -78.0
+margin_right = -70.0
 margin_bottom = 488.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -74,7 +86,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ok_button" type="TextureButton" parent="window" index="4"]
 
@@ -82,9 +94,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 55.0
+margin_left = 70.0
 margin_top = 288.0
-margin_right = 255.0
+margin_right = 270.0
 margin_bottom = 488.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -99,7 +111,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="window/cancel_button" to="." method="_on_cancel_button_pressed"]
 
