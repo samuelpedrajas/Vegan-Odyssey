@@ -4,11 +4,11 @@
 [ext_resource path="res://images/black_screen.png" type="Texture" id=2]
 [ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 
-size = 40
-use_mipmaps = true
-use_filter = true
+size = 50
+use_mipmaps = false
+use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
@@ -55,12 +55,10 @@ tracks/2/keys = {
 }
 
 [node name="broccoli_selection" type="Node2D" index="0"]
-
 z_index = -1
 script = ExtResource( 1 )
 
 [node name="clickabe_area" type="Button" parent="." index="0"]
-
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -83,14 +81,12 @@ flat = false
 align = 1
 
 [node name="black" type="Sprite" parent="." index="1"]
-
 modulate = Color( 1, 1, 1, 0 )
 z_index = -1
 texture = ExtResource( 2 )
 centered = false
 
 [node name="instructions" type="Label" parent="." index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -105,7 +101,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.27451 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -119,7 +115,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="3"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -129,5 +124,3 @@ anims/open = SubResource( 2 )
 blend_times = [  ]
 
 [connection signal="pressed" from="clickabe_area" to="." method="_on_clickabe_area_pressed"]
-
-

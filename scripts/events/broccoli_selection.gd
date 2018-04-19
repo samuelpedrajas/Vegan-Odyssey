@@ -17,9 +17,9 @@ func start():
 
 
 func stop():
-	game.board_layer.set_layer(0)
 	animation.play_backwards("open")
 	yield(animation, "animation_finished")
+	game.board_layer.set_layer(0)
 
 	# unset selectable state for all tokens
 	for token in get_tree().get_nodes_in_group("token"):
