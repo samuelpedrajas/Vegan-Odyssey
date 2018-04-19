@@ -125,32 +125,35 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
+
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="settings" type="Node" parent="." index="0"]
+
 script = ExtResource( 1 )
 
 [node name="sounds" type="AudioStreamPlayer" parent="." index="1"]
+
 stream = ExtResource( 2 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 script = ExtResource( 3 )
 
 [node name="music" type="AudioStreamPlayer" parent="." index="2"]
+
 stream = ExtResource( 4 )
 volume_db = -7.0
-pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
 script = ExtResource( 5 )
 
 [node name="background_layer" type="CanvasLayer" parent="." index="3"]
+
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -158,11 +161,13 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="background" type="Sprite" parent="background_layer" index="0"]
+
 position = Vector2( 540, 960 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="board_layer" type="CanvasLayer" parent="." index="4"]
+
 layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -171,6 +176,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 7 )
 
 [node name="tween" type="Tween" parent="board_layer" index="0"]
+
 repeat = false
 playback_process_mode = 1
 playback_speed = 1.0
@@ -179,6 +185,7 @@ playback/repeat = false
 playback/speed = 1.0
 
 [node name="background" type="Sprite" parent="board_layer" index="1"]
+
 position = Vector2( 30, 460 )
 scale = Vector2( 1, 0.9 )
 texture = ExtResource( 8 )
@@ -187,6 +194,7 @@ offset = Vector2( -30, -30 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="tilemap" type="TileMap" parent="board_layer" index="2"]
+
 position = Vector2( 30, 460 )
 mode = 0
 tile_set = ExtResource( 9 )
@@ -208,10 +216,12 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65536, 0, 0, 65537, 0, 0, 6
 _sections_unfolded = [ "Z Index" ]
 
 [node name="tokens" type="Node2D" parent="board_layer" index="3"]
+
 position = Vector2( 198, 627 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="hud_layer" type="CanvasLayer" parent="." index="5"]
+
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -222,6 +232,7 @@ script = ExtResource( 10 )
 [node name="hud" type="Node2D" parent="hud_layer" index="0"]
 
 [node name="header" type="Container" parent="hud_layer/hud" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -236,10 +247,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="top_border" type="Sprite" parent="hud_layer/hud/header" index="0"]
+
 position = Vector2( 540, 125 )
 texture = ExtResource( 11 )
 
 [node name="current_score" type="Container" parent="hud_layer/hud/header" index="1"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -256,10 +269,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="container_sprite" type="Sprite" parent="hud_layer/hud/header/current_score" index="0"]
+
 position = Vector2( 12, -2 )
 texture = ExtResource( 12 )
 
 [node name="current_score" type="Label" parent="hud_layer/hud/header/current_score/container_sprite" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -283,10 +298,12 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/current_score" index="1"]
+
 position = Vector2( -174.325, -4.09686 )
 texture = ExtResource( 14 )
 
 [node name="max_score" type="Container" parent="hud_layer/hud/header" index="2"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -303,10 +320,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="container_sprite" type="Sprite" parent="hud_layer/hud/header/max_score" index="0"]
+
 position = Vector2( 12, -2 )
 texture = ExtResource( 12 )
 
 [node name="max_score" type="Label" parent="hud_layer/hud/header/max_score/container_sprite" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -330,10 +349,12 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="post_sprite" type="Sprite" parent="hud_layer/hud/header/max_score" index="1"]
+
 position = Vector2( -147.325, -4.09686 )
 texture = ExtResource( 15 )
 
 [node name="lower_buttons" type="Container" parent="hud_layer/hud" index="1"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -349,10 +370,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
+
 position = Vector2( 540, 210 )
 texture = ExtResource( 16 )
 
 [node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -376,6 +399,7 @@ texture_pressed = ExtResource( 18 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -399,6 +423,7 @@ texture_pressed = ExtResource( 20 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -422,6 +447,7 @@ texture_pressed = ExtResource( 22 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -446,10 +472,12 @@ texture_disabled = ExtResource( 25 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
+
 position = Vector2( 141.724, 24.5668 )
 texture = ExtResource( 26 )
 
 [node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -474,6 +502,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_fonts" ]
 
 [node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
+
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -483,6 +512,7 @@ anims/used = SubResource( 4 )
 blend_times = [  ]
 
 [node name="event_layer" type="CanvasLayer" parent="." index="6"]
+
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -492,6 +522,7 @@ script = ExtResource( 27 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="popup_layer" type="CanvasLayer" parent="." index="7"]
+
 layer = 3
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -501,6 +532,7 @@ script = ExtResource( 28 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="transition_layer" type="CanvasLayer" parent="." index="8"]
+
 layer = 4
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -509,11 +541,13 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="black_screen" type="Sprite" parent="transition_layer" index="0"]
+
 modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 29 )
 centered = false
 
 [node name="transition" type="AnimationPlayer" parent="." index="9"]
+
 pause_mode = 2
 root_node = NodePath("..")
 autoplay = ""
@@ -525,6 +559,7 @@ anims/open = SubResource( 6 )
 blend_times = [  ]
 
 [node name="input_handler" type="Control" parent="." index="10"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -541,7 +576,13 @@ size_flags_vertical = 1
 script = ExtResource( 30 )
 
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer" method="_on_menu_pressed"]
+
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer" method="_on_reset_pressed"]
+
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer" method="_on_excuses_pressed"]
+
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
+
 [connection signal="user_input" from="input_handler" to="board_layer" method="move_tokens"]
+
+

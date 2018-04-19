@@ -50,7 +50,7 @@ func move_tokens(direction):
 		tween.interpolate_callback(game, tween.get_runtime(), "check_game")
 
 		if game.check_win() or game.check_game_over():
-			get_tree().get_root().set_disable_input(true)
+			$"/root".set_disable_input(true)
 		else:
 			# 1/3 -> 2, 2/3 -> 1
 			var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)

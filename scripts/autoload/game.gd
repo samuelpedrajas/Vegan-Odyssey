@@ -26,7 +26,7 @@ onready var settings = $"/root/stage/settings"
 func _ready():
 	# prevent quitting using back button
 	get_tree().set_quit_on_go_back(false)
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 
 
 func update_scores(token_level):
@@ -46,7 +46,7 @@ func check_game():
 
 func use_broccoli(token):
 	# disable input for bug prevention
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 
 	# use broccoli
 	if broccolis > 0:
@@ -68,11 +68,11 @@ func use_broccoli(token):
 		yield(t.animation, 'animation_finished')
 		t.set_selectable_state()
 
-	get_tree().get_root().set_disable_input(false)
+	$"/root".set_disable_input(false)
 
 
 func restart_game(delete_progress=false):
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 
 	transition.play("close")
 	# wait until screen is black
@@ -95,7 +95,7 @@ func restart_game(delete_progress=false):
 	transition.play("open")
 	yield(transition, "animation_finished")
 
-	get_tree().get_root().set_disable_input(false)
+	$"/root".set_disable_input(false)
 
 
 func reset_progress():

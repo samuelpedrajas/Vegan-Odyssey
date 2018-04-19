@@ -9,7 +9,7 @@ var clicked_excuse = null
 
 func _ready():
 	# add excuse entries
-	var v_box = get_node("vbox_container")
+	var v_box = $"vbox_container"
 	for i in range(1, cfg.EXCUSES.size() + 1):
 		var excuse = cfg.EXCUSES[i - 1]
 		var excuse_entry = ExcuseEntry.instance()

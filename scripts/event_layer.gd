@@ -10,7 +10,7 @@ onready var event_scene_dict = {
 func start(name):
 	if not current_event:
 		# disallow input until event is started
-		get_tree().get_root().set_disable_input(true)
+		$"/root".set_disable_input(true)
 
 		current_event = event_scene_dict[name].instance()
 		add_child(current_event)
@@ -19,12 +19,12 @@ func start(name):
 		yield(current_event.animation, "animation_finished")
 
 		# animation is finished
-		get_tree().get_root().set_disable_input(false)
+		$"/root".set_disable_input(false)
 
 
 func stop():
 	# disallow input until event is started
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 
 	current_event.stop()
 
@@ -32,4 +32,4 @@ func stop():
 	current_event = null
 
 	# animation is finished
-	get_tree().get_root().set_disable_input(false)
+	$"/root".set_disable_input(false)

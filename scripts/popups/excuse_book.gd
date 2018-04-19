@@ -1,7 +1,7 @@
 extends "popup.gd"
 
 
-onready var scroll_container = get_node("window/scroll_container")
+onready var scroll_container = $"window/scroll_container"
 
 
 func open():

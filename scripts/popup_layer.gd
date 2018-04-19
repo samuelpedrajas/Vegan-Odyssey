@@ -15,7 +15,7 @@ onready var popup_scene_dict = {
 
 func open(name, params=null):
 	# disallow input until the window is opened
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 
 	if not name in popup_stack:
 		# pause everything
@@ -37,12 +37,12 @@ func open(name, params=null):
 			popup.open()
 		yield(popup.animation, "animation_finished")
 
-	get_tree().get_root().set_disable_input(false)
+	$"/root".set_disable_input(false)
 
 
 func close():
 	# disallow input until the window is closed
-	get_tree().get_root().set_disable_input(true)
+	$"/root".set_disable_input(true)
 	if not popup_stack.empty():
 		var popup = popup_stack.back()
 		popup_stack.pop_back()
@@ -52,7 +52,7 @@ func close():
 		get_tree().set_pause(false)
 	else:
 		popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-	get_tree().get_root().set_disable_input(false)
+	$"/root".set_disable_input(false)
 
 
 func close_all():
