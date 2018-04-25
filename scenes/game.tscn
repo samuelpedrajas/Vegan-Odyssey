@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://audio/merge.wav" type="AudioStream" id=2]
@@ -89,7 +89,26 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Shader" id=5]
+
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+
+void fragment() {
+
+	COLOR.rgb = textureLod(SCREEN_TEXTURE,SCREEN_UV,amount).rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=6]
+
+render_priority = 0
+shader = SubResource( 5 )
+shader_param/amount = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Animation" id=7]
 
 length = 0.4
 loop = false
@@ -107,7 +126,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
 length = 0.4
 loop = false
@@ -485,6 +504,14 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 28 )
 _sections_unfolded = [ "Pause" ]
 
+[node name="blur" type="Sprite" parent="popup_layer" index="0"]
+visible = false
+modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
+material = SubResource( 6 )
+texture = ExtResource( 29 )
+centered = false
+_sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
+
 [node name="transition_layer" type="CanvasLayer" parent="." index="8"]
 layer = 5
 offset = Vector2( 0, 0 )
@@ -505,8 +532,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 5 )
-anims/open = SubResource( 6 )
+anims/close = SubResource( 7 )
+anims/open = SubResource( 8 )
 blend_times = [  ]
 
 [node name="input_handler" type="Control" parent="." index="10"]

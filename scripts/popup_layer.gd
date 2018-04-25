@@ -25,7 +25,11 @@ func open(name, params=null):
 			get_tree().set_pause(true)
 
 		var popup = popup_scene_dict[name].instance()
-		popup.set_z_index(popup_stack.size())
+		popup.set_z_index(popup_stack.size() * 2)  # trick to keep blur between
+
+		# show blur
+		$blur.set_z_index(popup.get_z_index() - 1)
+		$blur.show()
 
 		# add popup
 		add_child(popup)
@@ -49,13 +53,17 @@ func close():
 		popup.close()
 		yield(popup, "tree_exited")
 	if popup_stack.empty():
+		$blur.hide()
 		get_tree().set_pause(false)
 	else:
-		popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
+		var popup = popup_stack.back()
+		$blur.set_z_index(popup.get_z_index() - 1)
+		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 	$"/root".set_disable_input(false)
 
 
 func close_all():
+	$blur.hide()
 	while !popup_stack.empty():
 		var popup = popup_stack.pop_back()
 		popup.queue_free()
