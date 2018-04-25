@@ -56,7 +56,7 @@ func move_tokens(direction):
 			$"/root".set_disable_input(true)
 		else:
 			# 1/3 -> 2, 2/3 -> 1
-			spawn_token(null, int(randi() % 3 == 1) + 1, false, true).delayed_spawn()
+			spawn_token(null, int(randi() % 3 == 1) + 1, true)
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
@@ -149,12 +149,12 @@ func check_moves_available():
 	return false
 
 
-func spawn_token(pos=null, level=1, animate=false, scaled=false):
+func spawn_token(pos=null, level=1, animate=false):
 	pos = pos if pos != null else _get_empty_position()
 	if pos == null:
 		return
 
-	var sc = Vector2(0, 0) if scaled else Vector2(1, 1)
+	var sc = Vector2(0, 0) if animate else Vector2(1, 1)
 	var t = token.instance()
 	t.set_process(false)
 
@@ -180,7 +180,7 @@ func load_info(matrix_info):
 	for key in matrix_info.keys():
 		var token_info = matrix_info[key]
 		var pos = Vector2(int(token_info["pos.x"]), int(token_info["pos.y"]))
-		spawn_token(pos, int(token_info["level"]), false, false)
+		spawn_token(pos, int(token_info["level"]), false)
 
 
 func reset():

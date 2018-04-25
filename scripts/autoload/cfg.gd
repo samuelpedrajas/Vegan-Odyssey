@@ -12,7 +12,6 @@ const DIRECTIONS = [
 ]
 
 const ANIMATION_TIME = 0.12  # token's animation time in seconds
-const SPAWN_ANIMATION_TIME = 0.02
 const MOVEMENT_OPACITY = 0.8  # opacity when moving
 
 const MOTION_DISTANCE = 15  # Minimum distance with the mouse pressed to make a move

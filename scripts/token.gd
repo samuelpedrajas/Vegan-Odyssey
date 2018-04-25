@@ -21,10 +21,6 @@ var starting_position = null
 signal movement_finished
 
 
-func _ready():
-	$timer.set_wait_time(cfg.SPAWN_ANIMATION_TIME)
-
-
 func setup(wp, pos, lvl, sc):
 	matrix_pos = pos
 	level = lvl
@@ -107,12 +103,6 @@ func die():
 	animation.play("die")
 	yield(animation, "animation_finished")
 	queue_free()
-
-
-func delayed_spawn():
-	$timer.start()
-	yield($timer, "timeout")
-	animation.play("spawn")
 
 
 func set_selectable_state():
