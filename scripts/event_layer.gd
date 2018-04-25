@@ -16,11 +16,6 @@ func start(name):
 		add_child(current_event)
 		current_event.start()
 
-		yield(current_event.animation, "animation_finished")
-
-		# animation is finished
-		$"/root".set_disable_input(false)
-
 
 func stop():
 	# disallow input until event is started

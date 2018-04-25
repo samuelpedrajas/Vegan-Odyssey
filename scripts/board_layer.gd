@@ -98,12 +98,14 @@ func _move_line(pos, direction):
 
 			matrix.erase(pos)
 			game.update_scores(last_token.level)
-		elif pos != dest:
+		else:
 			if last_token != null:
 				dest -= direction
-			matrix.erase(pos)
-			matrix[dest] = current_token
-			current_token.move_to(dest)
+
+			if pos != dest:
+				matrix.erase(pos)
+				matrix[dest] = current_token
+				current_token.move_to(dest)
 
 		# update line_changes information for the previous position in the recursion
 		line_changes.movement = pos != dest
@@ -154,13 +156,14 @@ func spawn_token(pos=null, level=1, animate=false, scaled=false):
 
 	var sc = Vector2(0, 0) if scaled else Vector2(1, 1)
 	var t = token.instance()
+	t.set_process(false)
 
 	matrix[pos] = t
 	t.setup($"tilemap".map_to_world(pos), pos, level, sc)
 	$"tokens".add_child(t)
 
 	if animate:
-		t.spawn()
+		t.animation.play("spawn")
 
 	return t
 

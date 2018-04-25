@@ -18,8 +18,10 @@ var accumulated_time = 0
 var starting_position = null
 
 
+signal movement_finished
+
+
 func _ready():
-	set_process(false)
 	$timer.set_wait_time(cfg.SPAWN_ANIMATION_TIME)
 
 
@@ -44,6 +46,8 @@ func _process(delta):
 			position = destination
 			if followed != null:
 				_merge_and_free()
+			elif is_stopped():
+				emit_signal("movement_finished")
 
 
 func _move(delta):
@@ -58,10 +62,15 @@ func _move(delta):
 func _merge_and_free():
 	hide()
 	followed.followers.erase(self)
+	# transfer all followers to the actual followed
 	for follower in followers:
 		follower.takeover(followed)
+
 	followed.animation.play("merge")
-	yield(followed.animation, "animation_finished")
+
+	if followed.is_stopped():
+		followed.emit_signal("movement_finished")
+
 	print("I'm " + str(get_instance_id()) + " - bye bye!")
 	queue_free()
 
@@ -70,6 +79,10 @@ func takeover(new_followed):
 	followed = new_followed
 	followed.followers.append(self)
 	destination = followed.destination
+
+
+func is_stopped():
+	return not is_moving and followers.empty()
 
 
 func follow(token):
@@ -91,12 +104,6 @@ func move_to(dest):
 
 
 func die():
-	print("Token " + str(get_instance_id()) + " is dying...")
-	# wait until all other animations are done
-	if is_moving:
-		yield(self, "token_animation_finished")
-
-	# finish it
 	animation.play("die")
 	yield(animation, "animation_finished")
 	queue_free()

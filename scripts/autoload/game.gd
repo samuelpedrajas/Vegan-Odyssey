@@ -36,14 +36,6 @@ func update_scores(token_level):
 	self.highest_max = current_max if current_max > highest_max else highest_max
 
 
-func check_game():
-	# has the user won or lost?
-	if check_win():
-		win()
-	elif check_game_over():
-		game_over()
-
-
 func use_broccoli(token):
 	# disable input for bug prevention
 	$"/root".set_disable_input(true)
@@ -63,8 +55,7 @@ func use_broccoli(token):
 
 	# if empty -> new token
 	if board_layer.matrix.empty():
-		var t = board_layer.spawn_token()
-		t.animation.play("spawn")
+		var t = board_layer.spawn_token(null, 1, true, true)
 		yield(t.animation, 'animation_finished')
 		t.set_selectable_state()
 
@@ -88,7 +79,7 @@ func restart_game(delete_progress=false):
 	popup_layer.close_all()
 
 	board_layer.reset()
-	board_layer.spawn_token(null, 1, false)
+	board_layer.spawn_token(null, 1, false, false)
 
 	save_game()
 
@@ -176,6 +167,9 @@ func game_over():
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+		if $"/root".is_input_disabled():
+			return
+
 		sounds.play_audio("click")
 		if not popup_layer.popup_stack.empty():
 			popup_layer.close()
