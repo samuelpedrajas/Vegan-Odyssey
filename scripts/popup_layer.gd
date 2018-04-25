@@ -21,6 +21,7 @@ func open(name, params=null):
 		# pause everything
 		if not popup_stack.empty():
 			popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_STOP)
+			popup_stack.back().hide()
 		else:
 			get_tree().set_pause(true)
 
@@ -47,11 +48,13 @@ func open(name, params=null):
 func close():
 	# disallow input until the window is closed
 	$"/root".set_disable_input(true)
+
+	# get popup to close at the end
+	var popup_to_close = null
 	if not popup_stack.empty():
-		var popup = popup_stack.back()
+		popup_to_close = popup_stack.back()
 		popup_stack.pop_back()
-		popup.close()
-		yield(popup, "tree_exited")
+
 	if popup_stack.empty():
 		$blur.hide()
 		get_tree().set_pause(false)
@@ -59,6 +62,13 @@ func close():
 		var popup = popup_stack.back()
 		$blur.set_z_index(popup.get_z_index() - 1)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
+		popup.show()
+
+	# this is done in the end for smoother animation
+	if popup_to_close != null:
+		popup_to_close.close()
+		yield(popup_to_close, "tree_exited")
+
 	$"/root".set_disable_input(false)
 
 
