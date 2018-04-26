@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/token.gd" type="Script" id=1]
 [ext_resource path="res://images/token.png" type="Texture" id=2]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://images/selectable_token.png" type="Texture" id=4]
-[ext_resource path="res://animations/broccoli_aura.tres" type="Animation" id=5]
-[ext_resource path="res://animations/token.tres" type="Animation" id=6]
+[ext_resource path="res://images/excuses/circle.png" type="Texture" id=4]
+[ext_resource path="res://images/selectable_token.png" type="Texture" id=5]
+[ext_resource path="res://animations/broccoli_aura.tres" type="Animation" id=6]
+[ext_resource path="res://animations/token.tres" type="Animation" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -119,10 +120,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -132.0
-margin_top = 82.0
-margin_right = -80.0
-margin_bottom = 160.0
+margin_left = -124.0
+margin_top = 78.0
+margin_right = -72.0
+margin_bottom = 159.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -138,9 +139,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="circle" type="Sprite" parent="token_sprite/level" index="0"]
+show_behind_parent = true
+position = Vector2( -9.99998, 3.00005 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
 [node name="glow" type="Sprite" parent="." index="2"]
 modulate = Color( 0.175781, 0.883942, 0.9375, 0 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="animation" type="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("..")
@@ -148,10 +156,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/broccoli_selection = ExtResource( 5 )
+anims/broccoli_selection = ExtResource( 6 )
 anims/die = SubResource( 2 )
 anims/merge = SubResource( 3 )
-anims/spawn = ExtResource( 6 )
+anims/spawn = ExtResource( 7 )
 blend_times = [  ]
 
 [connection signal="pressed" from="button" to="." method="_on_button_pressed"]
