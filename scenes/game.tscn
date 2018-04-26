@@ -35,6 +35,11 @@
 
 script/source = "extends Node2D
 
+
+func _enter_tree():
+	game.setup()
+
+
 func _ready():
 	if !game.savegame.file_exists(cfg.SAVE_GAME_PATH):
 		game.board_layer.spawn_token(null, 1, false)
@@ -170,9 +175,9 @@ bus = "Master"
 script = ExtResource( 5 )
 
 [node name="background" type="Sprite" parent="." index="3"]
-position = Vector2( 540, 960 )
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+centered = false
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility", "Z Index" ]
 
 [node name="board_layer" type="CanvasLayer" parent="." index="4"]
 layer = 1

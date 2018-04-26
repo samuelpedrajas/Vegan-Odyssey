@@ -15,7 +15,9 @@ modules="org/godotengine/godot/GodotAdMob"
 [application]
 
 config/name="Vegan Game"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/loading_screen.tscn"
+boot_splash/image="res://images/splash.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -23,6 +25,7 @@ config/icon="res://icon.png"
 admob="*res://scripts/autoload/admob.gd"
 cfg="*res://scripts/autoload/cfg.gd"
 game="*res://scripts/autoload/game.gd"
+game_loader="*res://scripts/autoload/game_loader.gd"
 
 [display]
 
