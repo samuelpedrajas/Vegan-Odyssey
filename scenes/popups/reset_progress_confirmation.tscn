@@ -12,6 +12,9 @@
 script = ExtResource( 2 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
+[node name="window" parent="." index="2"]
+scale = Vector2( 1, 1 )
+
 [node name="non_clickable_space" parent="window" index="0"]
 margin_left = -419.0
 margin_top = -362.0
