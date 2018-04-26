@@ -30,48 +30,48 @@ const SAVE_GAME_PATH = "user://savegame.save"
 # excuse info
 var EXCUSES = [
 	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/lions.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/lions.png"),
-		"text": "Lions eat meat"
-	},
-	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/plantshavefeeling.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/plantshavefeeling.png"),
-		"text": "Plants have feelings"
-	},
-	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/desertedisland.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/desertedisland.png"),
-		"text": "Lost in a deserted island"
-	},
-	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/ancestors.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/caveman.png"),
-		"text": "We are like cavemen"
-	},
-	{
 		"token_sprite": ResourceLoader.load("res://images/excuses/bacon.png"),
 		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/bacon.png"),
 		"text": "Mmhh... Bacon"
 	},
 	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/canineteeth.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/canineteeth.png"),
-		"text": "Look at my canine teeth!"
+		"token_sprite": ResourceLoader.load("res://images/excuses/proteins.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/proteins.png"),
+		"text": "What about proteins?"
 	},
 	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/onepersonmakesnodifference.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/legal.png"),
-		"text": "It's legal to eat meat"
+		"token_sprite": ResourceLoader.load("res://images/excuses/caveman.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/caveman.png"),
+		"text": "Caveman ate meat"
 	},
 	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/b12.png"),
+		"token_sprite": ResourceLoader.load("res://images/excuses/moral.png"),
 		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/moral.png"),
 		"text": "Morality is subjective"
 	},
 	{
-		"token_sprite": ResourceLoader.load("res://images/excuses/proteins.png"),
-		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/proteins.png"),
-		"text": "What about proteins?"
+		"token_sprite": ResourceLoader.load("res://images/excuses/plantshavefeelings.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/plantshavefeelings.png"),
+		"text": "Plants have feelings"
+	},
+	{
+		"token_sprite": ResourceLoader.load("res://images/excuses/desertedisland.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/desertedisland.png"),
+		"text": "Deserted island"
+	},
+	{
+		"token_sprite": ResourceLoader.load("res://images/excuses/lions.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/lions.png"),
+		"text": "Lios eat meat"
+	},
+	{
+		"token_sprite": ResourceLoader.load("res://images/excuses/legal.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/legal.png"),
+		"text": "It's legal"
+	},
+	{
+		"token_sprite": ResourceLoader.load("res://images/excuses/canine.png"),
+		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/canine.png"),
+		"text": "Canine teeth"
 	}
 ]
