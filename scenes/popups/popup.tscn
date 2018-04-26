@@ -55,7 +55,6 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="window" type="Node2D" parent="." index="2"]
 pause_mode = 2
-scale = Vector2( 0.9, 0.9 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
