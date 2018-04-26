@@ -110,10 +110,11 @@ shortcut = null
 group = null
 flat = false
 align = 1
+_sections_unfolded = [ "Rect" ]
 
 [node name="token_sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
-offset = Vector2( 5, 5 )
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="level" type="Label" parent="token_sprite" index="0"]
 anchor_left = 0.0

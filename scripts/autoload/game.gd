@@ -13,20 +13,31 @@ var broccolis = 3 setget _set_broccolis
 
 
 # child nodes
-onready var transition = $"/root/stage/transition"
-onready var music = $"/root/stage/music"
-onready var sounds = $"/root/stage/sounds"
-onready var board_layer = $"/root/stage/board_layer"
-onready var hud_layer = $"/root/stage/hud_layer"
-onready var event_layer = $"/root/stage/event_layer"
-onready var popup_layer = $"/root/stage/popup_layer"
-onready var settings = $"/root/stage/settings"
+var transition
+var music
+var sounds
+var board_layer
+var hud_layer
+var event_layer
+var popup_layer
+var settings
 
 
 func _ready():
 	# prevent quitting using back button
 	get_tree().set_quit_on_go_back(false)
 	$"/root".set_disable_input(true)
+
+
+func setup():
+	transition = $"/root/stage/transition"
+	music = $"/root/stage/music"
+	sounds = $"/root/stage/sounds"
+	board_layer = $"/root/stage/board_layer"
+	hud_layer = $"/root/stage/hud_layer"
+	event_layer = $"/root/stage/event_layer"
+	popup_layer = $"/root/stage/popup_layer"
+	settings = $"/root/stage/settings"
 
 
 func update_scores(token_level):

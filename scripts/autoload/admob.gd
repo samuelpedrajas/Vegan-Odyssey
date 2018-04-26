@@ -5,6 +5,9 @@ var isReal = false
 var isTop = false
 var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your Ad Unit ID and delete this message.]
 
+var admob_ad_loaded = false
+
+
 func _ready():
 	if(Engine.has_singleton("AdMob")):
 		admob = Engine.get_singleton("AdMob")
@@ -17,6 +20,7 @@ func _on_admob_network_error():
 	print("Network Error")
 
 func _on_admob_ad_loaded():
+	admob_ad_loaded = true
 	print("Ad loaded success")
 
 # resize
