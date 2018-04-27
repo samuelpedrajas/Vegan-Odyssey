@@ -62,7 +62,7 @@ var EXCUSES = [
 	{
 		"token_sprite": ResourceLoader.load("res://images/excuses/lions.png"),
 		"book_sprite": ResourceLoader.load("res://images/excuse_pictures/lions.png"),
-		"text": "Lios eat meat"
+		"text": "Lions eat meat"
 	},
 	{
 		"token_sprite": ResourceLoader.load("res://images/excuses/legal.png"),

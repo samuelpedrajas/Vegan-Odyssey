@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_book.gd" type="Script" id=2]
@@ -6,20 +6,20 @@
 [ext_resource path="res://scripts/other/scroll_container.gd" type="Script" id=4]
 [ext_resource path="res://images/popups/close_window.png" type="Texture" id=5]
 [ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/current.png" type="Texture" id=7]
 
 [node name="excuse_book" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="non_clickable_space" parent="window" index="0"]
-margin_left = -474.0
-margin_top = -672.0
-margin_right = 487.0
-margin_bottom = 690.0
+margin_left = -523.0
+margin_top = -718.0
+margin_right = 537.0
+margin_bottom = 737.0
 _sections_unfolded = [ "Rect" ]
 
 [node name="background" parent="window" index="1"]
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="scroll_container" type="ScrollContainer" parent="window" index="2"]
 anchor_left = 0.0
@@ -27,7 +27,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -428.0
-margin_top = -314.0
+margin_top = -389.0
 margin_right = 443.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -64,10 +64,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 359.0
-margin_top = -618.0
-margin_right = 496.0
-margin_bottom = -431.0
+margin_left = 407.0
+margin_top = -642.0
+margin_right = 544.0
+margin_bottom = -455.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -82,5 +82,9 @@ group = null
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 _sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="legend" type="Sprite" parent="window" index="4"]
+position = Vector2( -318, -436 )
+texture = ExtResource( 7 )
 
 [connection signal="pressed" from="window/close_button" to="." method="_on_close_button_pressed"]

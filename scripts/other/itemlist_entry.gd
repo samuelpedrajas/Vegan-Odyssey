@@ -19,7 +19,12 @@ func set_lock():
 	$text.visible = false
 	$unlock.visible = false
 	$lock.visible = true
+	$excuse.hide()
+	$debate.hide()
+	$excuse_disabled.show()
+	$debate_disabled.show()
+
 
 
 func set_actual():
-	$current.visible = true
+	$text.modulate = Color(220.0 / 255, 200.0 / 255, 12.0 / 255, 1)
