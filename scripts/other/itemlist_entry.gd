@@ -7,6 +7,8 @@ var index = 0
 func setup(i, excuse_text):
 	index = i
 	$text.set_text(excuse_text)
+	if i == cfg.EXCUSES.size():
+		$bar.hide()
 
 
 func _on_excuse_pressed():

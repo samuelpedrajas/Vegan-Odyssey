@@ -5,7 +5,7 @@ var isReal = false
 var isTop = false
 var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your Ad Unit ID and delete this message.]
 
-var admob_ad_loaded = true
+var admob_ad_loaded = false
 
 
 func _ready():
