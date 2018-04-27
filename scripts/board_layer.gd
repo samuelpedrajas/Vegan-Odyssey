@@ -49,11 +49,11 @@ func move_tokens(direction):
 		# - game over
 		# - new token (since there was movement)
 		if game.check_win():
-			# tween.interpolate_callback(game, tween.get_runtime(), "win")
 			$"/root".set_disable_input(true)
+			pass
 		elif game.check_game_over():
-			# tween.interpolate_callback(game, tween.get_runtime(), "game_over")
 			$"/root".set_disable_input(true)
+			pass
 		else:
 			# 1/3 -> 2, 2/3 -> 1
 			spawn_token(null, int(randi() % 3 == 1) + 1, true)

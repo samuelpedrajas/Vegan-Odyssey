@@ -15,7 +15,7 @@ func _on_clickable_space_pressed():
 
 [node name="popup" type="Node2D" index="0"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="0"]
 root_node = NodePath("..")
@@ -72,5 +72,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="background" type="Sprite" parent="window" index="1"]
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="pressed" from="clickable_space" to="clickable_space" method="_on_clickable_space_pressed"]
