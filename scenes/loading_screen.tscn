@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/loading_screen.gd" type="Script" id=1]
-[ext_resource path="res://images/background.png" type="Texture" id=2]
+[ext_resource path="res://images/loading_screen/splash.png" type="Texture" id=2]
+[ext_resource path="res://images/loading_screen/progress_bar_bg.png" type="Texture" id=3]
+[ext_resource path="res://images/loading_screen/progress.png" type="Texture" id=4]
+[ext_resource path="res://images/loading_screen/snail1.png" type="Texture" id=5]
+[ext_resource path="res://images/loading_screen/snail2.png" type="Texture" id=6]
+[ext_resource path="res://images/loading_screen/snail3.png" type="Texture" id=7]
+[ext_resource path="res://images/loading_screen/snail4.png" type="Texture" id=8]
+[ext_resource path="res://images/loading_screen/snail5.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="loading_screen" type="Node2D" index="0"]
 
@@ -13,22 +29,22 @@ texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Animation", "Offset" ]
 
-[node name="progress_bar" type="ProgressBar" parent="." index="1"]
+[node name="progress_bar" type="TextureProgress" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 165.0
-margin_top = 960.0
-margin_right = 915.0
-margin_bottom = 1030.0
+margin_left = 237.0
+margin_top = 1426.0
+margin_right = 843.0
+margin_bottom = 1564.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 0
+size_flags_vertical = 1
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -36,7 +52,20 @@ page = 0.0
 value = 0.0
 exp_edit = false
 rounded = false
-percent_visible = true
-_sections_unfolded = [ "Percent", "Rect" ]
+texture_under = ExtResource( 3 )
+texture_over = null
+texture_progress = ExtResource( 4 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Radial Fill", "Rect", "Textures", "Tint" ]
+
+[node name="snail" type="AnimatedSprite" parent="progress_bar" index="0"]
+
+position = Vector2( 100, 81 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 1
+_sections_unfolded = [ "Transform" ]
 
 
