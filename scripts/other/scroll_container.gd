@@ -10,8 +10,8 @@ var clicked_excuse = null
 func _ready():
 	# add excuse entries
 	var v_box = $"vbox_container"
-	for i in range(1, cfg.EXCUSES.size() + 1):
-		var excuse = cfg.EXCUSES[i - 1]
+	for i in range(1, game.cfg.EXCUSES.size() + 1):
+		var excuse = game.cfg.EXCUSES[i - 1]
 		var excuse_entry = ExcuseEntry.instance()
 		excuse_entry.setup(i, excuse["text"])
 		v_box.add_child(excuse_entry)
@@ -47,7 +47,7 @@ func _can_click():
 		return false
 
 	var input_vector = tap_actual_position - tap_start_position
-	if input_vector.length() > cfg.SCROLL_THRESHOLD:
+	if input_vector.length() > game.cfg.SCROLL_THRESHOLD:
 		return false
 
 	return true

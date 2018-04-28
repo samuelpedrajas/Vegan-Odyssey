@@ -28,7 +28,7 @@ func setup(wp, pos, lvl, sc):
 	destination = wp
 	set_scale(sc)
 
-	var texture = cfg.EXCUSES[level - 1]["token_sprite"]
+	var texture = game.cfg.EXCUSES[level - 1]["token_sprite"]
 	$"token_sprite".set_texture(texture)
 	$"token_sprite/level".set_text(str(level))
 
@@ -48,10 +48,10 @@ func _process(delta):
 
 func _move(delta):
 	accumulated_time += delta
-	if accumulated_time >= cfg.ANIMATION_TIME:
+	if accumulated_time >= game.cfg.ANIMATION_TIME:
 		position = destination
 		return false
-	position = starting_position.linear_interpolate(destination, accumulated_time / cfg.ANIMATION_TIME)
+	position = starting_position.linear_interpolate(destination, accumulated_time / game.cfg.ANIMATION_TIME)
 	return true
 
 
@@ -120,7 +120,7 @@ func unset_selectable_state():
 
 
 func sync_merge():
-	var texture = cfg.EXCUSES[level - 1]["token_sprite"]
+	var texture = game.cfg.EXCUSES[level - 1]["token_sprite"]
 	$"token_sprite".set_texture(texture)
 	$"token_sprite/level".set_text(str(level))
 	game.sounds.play_audio("merge")

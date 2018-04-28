@@ -11,7 +11,7 @@ func open():
 	var sound_switch = $"window/sound_control/switch"
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
-	set_position(cfg.SETTINGS_WINDOW_POS)
+	set_position(game.cfg.SETTINGS_WINDOW_POS)
 	.open()
 
 

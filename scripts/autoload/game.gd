@@ -3,7 +3,7 @@ extends Node
 var savegame = File.new()
 
 # game scores
-var highest_max = cfg.MIN_HIGHEST_MAX
+var highest_max = 4
 var current_max = 1
 var highest_score = 0 setget _set_highest_score
 var current_score = 0 setget _set_current_score
@@ -21,6 +21,7 @@ var hud_layer
 var event_layer
 var popup_layer
 var settings
+var cfg
 
 
 func _ready():
@@ -38,6 +39,7 @@ func setup():
 	event_layer = $"/root/stage/event_layer"
 	popup_layer = $"/root/stage/popup_layer"
 	settings = $"/root/stage/settings"
+	cfg = $"/root/stage/cfg"
 
 
 func update_scores(token_level):

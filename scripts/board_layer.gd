@@ -12,7 +12,7 @@ onready var token = preload("res://scenes/token.tscn")
 
 
 func _ready():
-	if cfg.DEBUG_MODE:
+	if game.cfg.DEBUG_MODE:
 		_debug_func()
 
 	# only needed once
@@ -26,7 +26,7 @@ func _set_direction_pivots():
 	# for each used cell, if it has no previous cell but it has a next one
 	# for a given direction, then it is a pivot for that direction
 	for cell_pos in used_cells:
-		for direction in cfg.DIRECTIONS:
+		for direction in game.cfg.DIRECTIONS:
 			var next_pos = (cell_pos + direction)
 			var prev_pos = (cell_pos - direction)
 			if next_pos in used_cells and !(prev_pos in used_cells):
@@ -142,7 +142,7 @@ func check_moves_available():
 		return true
 
 	for current_cell in used_cells:
-		for d in cfg.DIRECTIONS:
+		for d in game.cfg.DIRECTIONS:
 			var v = current_cell - d
 			if matrix.has(v) and matrix[v].level == matrix[current_cell].level:
 				return true

@@ -3,9 +3,9 @@ extends "popup.gd"
 
 func open(excuse_index):
 	var image_node = $"window/excuse_image"
-	var excuse_sprite = cfg.EXCUSES[excuse_index - 1]["book_sprite"]
+	var excuse_sprite = game.cfg.EXCUSES[excuse_index - 1]["book_sprite"]
 	image_node.set_texture(excuse_sprite)
-	set_position(cfg.EXCUSE_WINDOW_POS)
+	set_position(game.cfg.EXCUSE_WINDOW_POS)
 	.open()
 
 

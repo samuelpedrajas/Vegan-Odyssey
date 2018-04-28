@@ -2,7 +2,7 @@ extends "popup.gd"
 
 
 func open():
-	set_position(cfg.EXIT_WINDOW_POS)
+	set_position(game.cfg.EXIT_WINDOW_POS)
 	.open()
 
 

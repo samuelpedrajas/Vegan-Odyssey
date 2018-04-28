@@ -59,7 +59,7 @@ func _process(time):
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
 	snail.position = Vector2((530 - 100) * progress + 100, 81)
-	progress_bar.value = progress
+	progress_bar.value = progress * 100
 
 	print(progress)
 

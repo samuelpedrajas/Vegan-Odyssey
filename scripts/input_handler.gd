@@ -6,13 +6,13 @@ signal user_input
 
 
 func _check_move(input_vector):
-	if input_vector.length() > cfg.MOTION_DISTANCE:
+	if input_vector.length() > game.cfg.MOTION_DISTANCE:
 		# Don't needed, but could improve performance?
 		input_vector = input_vector.normalized()
 
-		for direction in cfg.DIRECTIONS:
+		for direction in game.cfg.DIRECTIONS:
 			# if the distance is smaller than the threshold, try to make a move
-			if (direction.normalized() - input_vector).length() < cfg.MINIMUM_DISTANCE_TO_MOVE:
+			if (direction.normalized() - input_vector).length() < game.cfg.MINIMUM_DISTANCE_TO_MOVE:
 				emit_signal("user_input", direction)
 				break
 

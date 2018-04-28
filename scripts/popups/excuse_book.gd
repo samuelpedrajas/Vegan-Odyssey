@@ -5,7 +5,7 @@ onready var scroll_container = $"window/scroll_container"
 
 
 func open():
-	set_position(cfg.BOOK_WINDOW_POS)
+	set_position(game.cfg.BOOK_WINDOW_POS)
 	.open()
 
 

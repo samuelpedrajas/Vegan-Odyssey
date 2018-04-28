@@ -2,7 +2,7 @@ extends "popup.gd"
 
 
 func open():
-	set_position(cfg.RESET_PROGRESS_WINDOW_POS)
+	set_position(game.cfg.RESET_PROGRESS_WINDOW_POS)
 	.open()
 
 
