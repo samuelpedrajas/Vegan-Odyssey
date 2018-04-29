@@ -1,17 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_book.gd" type="Script" id=2]
 [ext_resource path="res://images/popups/excuse_bg.png" type="Texture" id=3]
 [ext_resource path="res://scripts/other/scroll_container.gd" type="Script" id=4]
-[ext_resource path="res://images/popups/close_window.png" type="Texture" id=5]
-[ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=6]
-[ext_resource path="res://images/popups/current.png" type="Texture" id=7]
+[ext_resource path="res://scenes/other/itemlist_entry.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/popups/close_window.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/current.png" type="Texture" id=8]
 
 [node name="excuse_book" index="0" instance=ExtResource( 1 )]
+
 script = ExtResource( 2 )
 
 [node name="non_clickable_space" parent="window" index="0"]
+
 margin_left = -523.0
 margin_top = -718.0
 margin_right = 537.0
@@ -19,9 +22,11 @@ margin_bottom = 737.0
 _sections_unfolded = [ "Rect" ]
 
 [node name="background" parent="window" index="1"]
+
 texture = ExtResource( 3 )
 
 [node name="scroll_container" type="ScrollContainer" parent="window" index="2"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -40,15 +45,16 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
-scroll_deadzone = 0
 script = ExtResource( 4 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Scroll" ]
 
 [node name="vbox_container" type="VBoxContainer" parent="window/scroll_container" index="0"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_bottom = 2400.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -59,7 +65,70 @@ custom_constants/separation = 300
 alignment = 1
 _sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
 
+[node name="1" parent="window/scroll_container/vbox_container" index="0" instance=ExtResource( 5 )]
+
+margin_right = 0.0
+margin_bottom = 0.0
+token_index = 1
+
+[node name="2" parent="window/scroll_container/vbox_container" index="1" instance=ExtResource( 5 )]
+
+margin_top = 300.0
+margin_right = 0.0
+margin_bottom = 300.0
+token_index = 2
+
+[node name="3" parent="window/scroll_container/vbox_container" index="2" instance=ExtResource( 5 )]
+
+margin_top = 600.0
+margin_right = 0.0
+margin_bottom = 600.0
+token_index = 3
+
+[node name="4" parent="window/scroll_container/vbox_container" index="3" instance=ExtResource( 5 )]
+
+margin_top = 900.0
+margin_right = 0.0
+margin_bottom = 900.0
+token_index = 4
+
+[node name="5" parent="window/scroll_container/vbox_container" index="4" instance=ExtResource( 5 )]
+
+margin_top = 1200.0
+margin_right = 0.0
+margin_bottom = 1200.0
+token_index = 5
+
+[node name="6" parent="window/scroll_container/vbox_container" index="5" instance=ExtResource( 5 )]
+
+margin_top = 1500.0
+margin_right = 0.0
+margin_bottom = 1500.0
+token_index = 6
+
+[node name="7" parent="window/scroll_container/vbox_container" index="6" instance=ExtResource( 5 )]
+
+margin_top = 1800.0
+margin_right = 0.0
+margin_bottom = 1800.0
+token_index = 7
+
+[node name="8" parent="window/scroll_container/vbox_container" index="7" instance=ExtResource( 5 )]
+
+margin_top = 2100.0
+margin_right = 0.0
+margin_bottom = 2100.0
+token_index = 8
+
+[node name="9" parent="window/scroll_container/vbox_container" index="8" instance=ExtResource( 5 )]
+
+margin_top = 2400.0
+margin_right = 0.0
+margin_bottom = 2400.0
+token_index = 9
+
 [node name="close_button" type="TextureButton" parent="window" index="3"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -79,12 +148,15 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="legend" type="Sprite" parent="window" index="4"]
+
 position = Vector2( -318, -436 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [connection signal="pressed" from="window/close_button" to="." method="_on_close_button_pressed"]
+
+

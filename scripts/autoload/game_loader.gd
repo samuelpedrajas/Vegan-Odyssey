@@ -34,7 +34,8 @@ func _process(time):
 		wait_frames -= 1
 		return
 
-	if not load_finished:
+	var t = OS.get_ticks_msec()
+	while not load_finished and OS.get_ticks_msec() < t + time_max:
 
 		# poll your loader
 		var err = loader.poll()
@@ -42,23 +43,25 @@ func _process(time):
 		if err == ERR_FILE_EOF: # load finished
 			load_finished = true
 			admob.start_ads()
+			break
 		elif err == OK:
 			update_progress()
 		else:
 			loader = null
 			print("Error in game loader")
+			break
 
 	# is everything loaded?
 	if admob.admob_ad_loaded and load_finished:
 		var resource = loader.get_resource()
-		snail.position = Vector2(530, snail.position.y)
+		snail.position = Vector2(550, snail.position.y)
 		loader = null
 		set_new_scene(resource)
 
 
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
-	snail.position = Vector2((530 - 100) * progress + 100, 81)
+	snail.position = Vector2((550 - 100) * progress + 100, 81)
 	progress_bar.value = progress * 100
 
 	print(progress)

@@ -11,10 +11,7 @@ func _ready():
 	# add excuse entries
 	var v_box = $"vbox_container"
 	for i in range(1, game.cfg.EXCUSES.size() + 1):
-		var excuse = game.cfg.EXCUSES[i - 1]
-		var excuse_entry = ExcuseEntry.instance()
-		excuse_entry.setup(i, excuse["text"])
-		v_box.add_child(excuse_entry)
+		var excuse_entry = v_box.get_node(str(i))
 		if i > game.highest_max:
 			excuse_entry.set_lock()
 		elif i == game.current_max:

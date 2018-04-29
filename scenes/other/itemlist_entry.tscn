@@ -19,7 +19,8 @@ use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="excuse" type="Control" index="0"]
+[node name="excuse" type="Control"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -33,13 +34,16 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="unlock" type="Sprite" parent="." index="0"]
+
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
 [node name="debate" type="TouchScreenButton" parent="." index="1"]
+
 position = Vector2( 601, 34 )
 normal = ExtResource( 3 )
 pressed = null
@@ -53,6 +57,7 @@ visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
 [node name="excuse" type="TouchScreenButton" parent="." index="2"]
+
 position = Vector2( 723, 34 )
 normal = ExtResource( 4 )
 pressed = null
@@ -66,6 +71,7 @@ visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
 [node name="debate_disabled" type="Sprite" parent="." index="3"]
+
 visible = false
 position = Vector2( 601, 34 )
 texture = ExtResource( 5 )
@@ -73,6 +79,7 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="excuse_disabled" type="Sprite" parent="." index="4"]
+
 visible = false
 position = Vector2( 723, 34 )
 texture = ExtResource( 6 )
@@ -80,6 +87,7 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="text" type="Label" parent="." index="5"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -98,7 +106,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.27451 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
-text = "Some text here"
+text = "Mmhh... Bacon"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -107,19 +115,25 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="lock" type="Sprite" parent="." index="6"]
+
 visible = false
 texture = ExtResource( 8 )
 centered = false
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="lock_sprite" type="Sprite" parent="lock" index="0"]
+
 position = Vector2( 300, 105 )
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="bar" type="Sprite" parent="." index="7"]
+
 position = Vector2( 415.319, 244.66 )
 texture = ExtResource( 10 )
 
 [connection signal="pressed" from="debate" to="." method="_on_excuse_pressed"]
+
 [connection signal="pressed" from="excuse" to="." method="_on_excuse_pressed"]
+
+

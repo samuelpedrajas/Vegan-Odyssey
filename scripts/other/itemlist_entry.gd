@@ -1,18 +1,29 @@
+tool
 extends Control
 
 
-var index = 0
+export(int) var token_index setget set_token_index
 
 
-func setup(i, excuse_text):
-	index = i
-	$text.set_text(excuse_text)
-	if i == game.cfg.EXCUSES.size():
+func set_token_index(i):
+	token_index = i
+	var cfg = _get_cfg()
+	# update excuse text
+	var excuse = cfg.EXCUSES[i - 1]
+	$text.set_text(excuse.text)
+	if i == cfg.EXCUSES.size():
 		$bar.hide()
 
 
+func _get_cfg():
+	if Engine.is_editor_hint():
+		return load("res://scripts/cfg.gd").new()
+	else:
+		return game.cfg
+
+
 func _on_excuse_pressed():
-	get_parent().get_parent().clicked_excuse = index
+	get_parent().get_parent().clicked_excuse = token_index
 
 
 func set_lock():
@@ -23,7 +34,6 @@ func set_lock():
 	$debate.hide()
 	$excuse_disabled.show()
 	$debate_disabled.show()
-
 
 
 func set_actual():
