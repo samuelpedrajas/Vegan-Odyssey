@@ -3,8 +3,9 @@ extends Node2D
 
 var loader
 var wait_frames
-var time_max = 100 # msec
+var n_frame = 0
 
+var progress = 0
 var load_finished = false
 
 var progress_bar
@@ -14,7 +15,6 @@ var snail
 func goto_scene(path, _progress_bar):
 	progress_bar = _progress_bar
 	snail = progress_bar.get_node("snail")
-	snail.play()
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null:
 		print("Error in game loader")
@@ -25,6 +25,7 @@ func goto_scene(path, _progress_bar):
 
 
 func _process(time):
+	move_snail()
 	if loader == null:
 		# no need to process anymore
 		set_process(false)
@@ -34,22 +35,19 @@ func _process(time):
 		wait_frames -= 1
 		return
 
-	var t = OS.get_ticks_msec()
-	while not load_finished and OS.get_ticks_msec() < t + time_max:
-
+	if not load_finished:
 		# poll your loader
 		var err = loader.poll()
 
 		if err == ERR_FILE_EOF: # load finished
 			load_finished = true
 			admob.start_ads()
-			break
 		elif err == OK:
 			update_progress()
 		else:
 			loader = null
 			print("Error in game loader")
-			break
+
 
 	# is everything loaded?
 	if admob.admob_ad_loaded and load_finished:
@@ -60,8 +58,7 @@ func _process(time):
 
 
 func update_progress():
-	var progress = float(loader.get_stage()) / loader.get_stage_count()
-	snail.position = Vector2((550 - 100) * progress + 100, 81)
+	progress = float(loader.get_stage()) / loader.get_stage_count()
 	progress_bar.value = progress * 100
 
 	print(progress)
@@ -77,3 +74,10 @@ func set_new_scene(scene_resource):
 	var new_scene = scene_resource.instance()
 	get_node("/root").add_child(new_scene)
 	set_process(false)
+
+
+func move_snail():
+	snail.position = Vector2((550 - 100) * progress + 100, 81)
+	n_frame = (n_frame + 1) % 10
+	if n_frame == 4:
+		snail.frame = (snail.frame + 1) % 5
