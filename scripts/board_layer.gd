@@ -49,10 +49,13 @@ func move_tokens(direction):
 		# - game over
 		# - new token (since there was movement)
 		if game.check_win():
-			$"/root".set_disable_input(true)
-			pass
+			# $"/root".set_disable_input(true)
+			game.restart_game()
 		elif game.check_game_over():
-			$"/root".set_disable_input(true)
+			# $"/root".set_disable_input(true)
+			game.restart_game()
+		elif false:
+			# debate here
 			pass
 		else:
 			# 1/3 -> 2, 2/3 -> 1
