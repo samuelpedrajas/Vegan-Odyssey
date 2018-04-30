@@ -14,7 +14,7 @@ modules="org/godotengine/godot/GodotAdMob"
 
 [application]
 
-config/name="Vegan Game"
+config/name="Vegan Odyssey"
 run/main_scene="res://scenes/loading_screen.tscn"
 boot_splash/image="res://images/loading_screen/splash.png"
 boot_splash/fullsize=false
