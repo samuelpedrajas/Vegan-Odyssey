@@ -35,3 +35,17 @@ func stop(event_name):
 
 	# animation is finished
 	$"/root".set_disable_input(false)
+
+
+func stop_closeables():
+	for event_name in current_events.keys():
+		var event = current_events[event_name]
+		if event.closeable:
+			stop(event_name)
+
+
+func closeable_event():
+	for event in current_events.values():
+		if event.closeable:
+			return true
+	return false

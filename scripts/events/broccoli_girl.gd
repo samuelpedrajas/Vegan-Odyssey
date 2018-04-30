@@ -1,15 +1,25 @@
 extends Node2D
 
 
+onready var broccoli_girl = $broccoli_girl
+
+
 var priority = 5
+var closeable = false
 var step = 0
 
 
 func start():
-	play_animation("hidden", 4)
+	# move girl to board layer
+	remove_child(broccoli_girl)
+	game.board_layer.add_child(broccoli_girl)
+
+	# start first animation
+	play_animation("hidden", 3)
 
 
 func stop():
+	broccoli_girl.queue_free()
 	queue_free()
 
 
@@ -31,6 +41,6 @@ func _on_timer_timeout():
 
 func play_animation(anim, secs):
 	step += 1
-	$"broccoli_girl".play(anim)
+	broccoli_girl.play(anim)
 	$timer.set_wait_time(secs)
 	$timer.start()

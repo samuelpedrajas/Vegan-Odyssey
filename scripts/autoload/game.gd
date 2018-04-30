@@ -185,7 +185,7 @@ func _notification(what):
 		sounds.play_audio("click")
 		if not popup_layer.popup_stack.empty():
 			popup_layer.close()
-		elif event_layer.current_event:
-			event_layer.stop()
+		elif event_layer.closeable_event():
+			event_layer.stop_closeables()
 		else:
 			popup_layer.open("exit_confirmation")

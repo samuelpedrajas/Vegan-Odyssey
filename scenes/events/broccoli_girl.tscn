@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_girl.gd" type="Script" id=1]
-[ext_resource path="res://images/events/hidden1.png" type="Texture" id=2]
-[ext_resource path="res://images/events/hidden2.png" type="Texture" id=3]
+[ext_resource path="res://images/events/hidden2.png" type="Texture" id=2]
+[ext_resource path="res://images/events/hidden1.png" type="Texture" id=3]
 [ext_resource path="res://images/events/angry1.png" type="Texture" id=4]
 [ext_resource path="res://images/events/angry2.png" type="Texture" id=5]
 [ext_resource path="res://images/events/hello1.png" type="Texture" id=6]
@@ -29,7 +29,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[node name="broccoli_girl" type="Node2D" index="0"]
+[node name="broccoli_girl" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
