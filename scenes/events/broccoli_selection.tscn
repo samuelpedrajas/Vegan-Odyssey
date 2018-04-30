@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 540, -250 ), Vector2( 540, 350 ) ]
+"values": [ Vector2( 540, -250 ), Vector2( 540, 280 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("black:visible")
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[node name="broccoli_selection" type="Node2D"]
+[node name="broccoli_selection" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -79,7 +79,7 @@ centered = false
 
 [node name="instructions" type="Sprite" parent="." index="2"]
 
-position = Vector2( 540, 350 )
+position = Vector2( 540, 280 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "custom_colors", "custom_constants", "custom_fonts" ]
 

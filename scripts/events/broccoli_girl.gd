@@ -3,10 +3,49 @@ extends Node2D
 
 onready var broccoli_girl = $broccoli_girl
 
+enum SCENARIO {
+	no_events,
+	broccoli_selection_event
+}
+
+
+var sequence = {
+	1: {
+		"anim": {
+			SCENARIO.no_events: "hidden",
+			SCENARIO.broccoli_selection_event: "hidden"
+		},
+		"time": 3
+	},
+	2: {
+		"anim": {
+			SCENARIO.no_events: "hello",
+			SCENARIO.broccoli_selection_event: "hidden"
+		},
+		"time": 4
+	},
+	3: {
+		"anim": {
+			SCENARIO.no_events: "angry",
+			SCENARIO.broccoli_selection_event: "hidden"
+		},
+		"time": 4
+	},
+	4: {
+		"anim": {
+			SCENARIO.no_events: "hidden",
+			SCENARIO.broccoli_selection_event: "hidden"
+		},
+		"time": 0.5
+	},
+}
+
 
 var priority = 5
 var closeable = false
+
 var step = 0
+var broccoli_selection = false setget on_broccoli_selection
 
 
 func start():
@@ -14,8 +53,10 @@ func start():
 	remove_child(broccoli_girl)
 	game.board_layer.add_child(broccoli_girl)
 
+	broccoli_selection = "broccoli" in game.event_layer.current_events.keys()
+
 	# start first animation
-	play_animation("hidden", 3)
+	next_step()
 
 
 func stop():
@@ -29,18 +70,32 @@ func _on_click_area_gui_input(event):
 
 
 func _on_timer_timeout():
-	if step == 1:
-		play_animation("hello", 4)
-	elif step == 2:
-		play_animation("angry", 4)
-	elif step == 3:
-		play_animation("hidden", 0.5)
+	if step < sequence.size():
+		next_step()
 	else:
 		game.event_layer.stop("broccoli_girl")
 
 
-func play_animation(anim, secs):
+func next_step():
 	step += 1
-	broccoli_girl.play(anim)
-	$timer.set_wait_time(secs)
+	play_animation()
+
+	# get info from the structure
+	var t = sequence[step].time
+
+	$timer.set_wait_time(t)
 	$timer.start()
+
+
+func play_animation():
+	# select animation
+	var step_info = sequence[step]
+	var anim = step_info.anim[SCENARIO.no_events]
+	if broccoli_selection:
+		anim = step_info.anim[SCENARIO.broccoli_selection_event]
+	broccoli_girl.play(anim)
+
+
+func on_broccoli_selection(v):
+	broccoli_selection = v
+	play_animation()

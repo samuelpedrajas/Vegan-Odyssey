@@ -15,6 +15,11 @@ func start():
 	# disable input so the user cannot move tokens
 	$"/root".set_disable_input(true)
 
+	# hide the girl
+	if game.event_layer.current_events.has("broccoli_girl"):
+		var event = game.event_layer.current_events["broccoli_girl"]
+		event.broccoli_selection = true
+
 	# put board above
 	board_original_layer = game.board_layer.get_layer()
 	var n = game.event_layer.get_layer()
@@ -39,6 +44,11 @@ func start():
 
 
 func stop():
+	# stand up the girl
+	if game.event_layer.current_events.has("broccoli_girl"):
+		var event = game.event_layer.current_events["broccoli_girl"]
+		event.broccoli_selection = false
+
 	animation.play_backwards("open")
 	yield(animation, "animation_finished")
 	game.board_layer.set_layer(board_original_layer)
