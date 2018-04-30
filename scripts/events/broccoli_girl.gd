@@ -66,7 +66,7 @@ func stop():
 
 func _on_click_area_gui_input(event):
 	if event.is_action_pressed("click"):
-		game.popup_layer.open("reset_board_confirmation")
+		game.popup_layer.open("rewarded_video_confirmation")
 
 
 func _on_timer_timeout():

@@ -9,7 +9,8 @@ onready var popup_scene_dict = {
 	"reset_board_confirmation": preload("res://scenes/popups/reset_board_confirmation.tscn"),
 	"reset_progress_confirmation": preload("res://scenes/popups/reset_progress_confirmation.tscn"),
 	"excuse_book": preload("res://scenes/popups/excuse_book.tscn"),
-	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn")
+	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn"),
+	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn")
 }
 
 

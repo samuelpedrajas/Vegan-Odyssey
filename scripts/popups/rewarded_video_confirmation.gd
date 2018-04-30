@@ -2,15 +2,13 @@ extends "popup.gd"
 
 
 func open():
-	set_position(game.cfg.EXIT_WINDOW_POS)
+	set_position(game.cfg.REWARDED_VIDEO_WINDOW_POS)
 	.open()
 
 
 func _on_ok_button_pressed():
-	game.popup_layer.close()
-	game.save_game()
 	game.sounds.play_audio("click")
-	get_tree().quit()
+	game.popup_layer.close()
 
 
 func _on_cancel_button_pressed():

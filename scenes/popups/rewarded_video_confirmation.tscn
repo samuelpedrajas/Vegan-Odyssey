@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/popups/rewarded_video_confirmation.gd" type="Script" id=2]
+[ext_resource path="res://images/popups/rewarded_video_bg.png" type="Texture" id=3]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 80
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="rewarded_video_confirmation" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="non_clickable_space" parent="window" index="0"]
+
+margin_left = -420.0
+margin_top = -357.0
+margin_right = 419.0
+margin_bottom = 357.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="background" parent="window" index="1"]
+
+position = Vector2( 0, 0.119781 )
+scale = Vector2( 0.812521, 0.760444 )
+texture = ExtResource( 3 )
+
+[node name="message" type="Label" parent="window" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -280.0
+margin_top = -223.0
+margin_right = 280.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Get broccolis with the power of marketing!"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="buttons" type="Container" parent="window" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 146.0
+margin_right = 40.0
+margin_bottom = 186.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="cancel_button" type="TextureButton" parent="window/buttons" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -190.0
+margin_right = -40.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="ok_button" type="TextureButton" parent="window/buttons" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 190.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[connection signal="pressed" from="window/buttons/cancel_button" to="." method="_on_cancel_button_pressed"]
+
+[connection signal="pressed" from="window/buttons/ok_button" to="." method="_on_ok_button_pressed"]
+
+
