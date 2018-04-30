@@ -5,6 +5,7 @@ var priority = 5
 
 
 func start():
+	$broccoli_girl.play()
 	$timer.set_wait_time(5)
 	$timer.start()
 	yield($timer, "timeout")
