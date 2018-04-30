@@ -1,6 +1,9 @@
 extends Node2D
 
 
+var priority = 1
+
+
 onready var animation = $"animation"
 
 var board_original_layer = 1
@@ -43,5 +46,6 @@ func stop():
 	queue_free()
 
 
-func _on_clickable_area_pressed():
-	game.event_layer.stop()
+func _on_clickable_area_gui_input(event):
+	if event.is_action_pressed("click"):
+		game.event_layer.stop("broccoli")

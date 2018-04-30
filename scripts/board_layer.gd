@@ -61,6 +61,9 @@ func move_tokens(direction):
 			# 1/3 -> 2, 2/3 -> 1
 			spawn_token(null, int(randi() % 3 == 1) + 1, true)
 
+		if game.current_score > 50:
+			game.event_layer.start("broccoli_girl")
+
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
 			if t.is_moving and not is_processing():
