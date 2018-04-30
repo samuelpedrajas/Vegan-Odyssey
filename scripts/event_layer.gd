@@ -8,6 +8,14 @@ onready var event_scene_dict = {
 }
 
 
+onready var programmmed_events = [
+	{
+		"event_name": "broccoli_girl",
+		"time": game.cfg.BROCCOLI_GIRL_FREQUENCY
+	}
+]
+
+
 func start(event_name):
 	if not event_name in current_events:
 		var event = event_scene_dict[event_name].instance()

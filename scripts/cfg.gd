@@ -10,6 +10,8 @@ const DIRECTIONS = [
 	Vector2(0, 1), Vector2(0, -1)  # Vertical: |
 ]
 
+const BROCCOLI_GIRL_FREQUENCY = 120  # in seconds
+
 const ANIMATION_TIME = 0.12  # token's animation time in seconds
 const MOVEMENT_OPACITY = 0.8  # opacity when moving
 
