@@ -44,6 +44,7 @@ func start():
 
 
 func stop():
+	$"/root".set_disable_input(true)
 	# stand up the girl
 	if game.event_layer.current_events.has("broccoli_girl"):
 		var event = game.event_layer.current_events["broccoli_girl"]
@@ -57,6 +58,7 @@ func stop():
 	# unset selectable state for all tokens
 	for token in game.board_layer.matrix.values():
 		token.unset_selectable_state()
+	$"/root".set_disable_input(false)
 	queue_free()
 
 

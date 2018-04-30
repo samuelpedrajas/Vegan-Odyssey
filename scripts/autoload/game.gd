@@ -64,7 +64,7 @@ func use_broccoli(token):
 	# no more broccoli -> exit
 	if broccolis == 0:
 		print("no more broccolis")
-		event_layer.stop()
+		event_layer.stop("broccoli")
 
 	# if empty -> new token
 	if board_layer.matrix.empty():
