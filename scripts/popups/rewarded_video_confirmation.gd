@@ -8,6 +8,7 @@ func open():
 
 func _on_ok_button_pressed():
 	game.sounds.play_audio("click")
+	admob.showRewardedVideo()
 	game.popup_layer.close()
 
 

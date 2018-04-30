@@ -50,7 +50,8 @@ func start_programmed_event(info):
 
 		# run the event if it's not already running
 		# the run_programmed_events property could have changed as well
-		if not info.event_name in current_events.keys() and run_programmed_events:
+		if (not info.event_name in current_events.keys() and
+			run_programmed_events and admob.admob_rewarded_ad_loaded):
 			var event = start(info.event_name)
 			if event != null:
 				yield(event, "tree_exited")

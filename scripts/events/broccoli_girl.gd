@@ -49,6 +49,7 @@ var broccoli_selection = false setget on_broccoli_selection
 
 
 func start():
+	admob.connect("reward_action_finished", self, "on_reward_action_finished")
 	# move girl to board layer
 	remove_child(broccoli_girl)
 	game.board_layer.add_child(broccoli_girl)
@@ -64,8 +65,13 @@ func stop():
 	queue_free()
 
 
+func on_reward_action_finished():
+	hide()
+	broccoli_girl.hide()
+
+
 func _on_click_area_gui_input(event):
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and admob.admob_rewarded_ad_loaded:
 		game.popup_layer.open("rewarded_video_confirmation")
 
 

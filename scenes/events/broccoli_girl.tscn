@@ -3,14 +3,14 @@
 [ext_resource path="res://scripts/events/broccoli_girl.gd" type="Script" id=1]
 [ext_resource path="res://images/events/hidden2.png" type="Texture" id=2]
 [ext_resource path="res://images/events/hidden1.png" type="Texture" id=3]
-[ext_resource path="res://images/events/angry1.png" type="Texture" id=4]
-[ext_resource path="res://images/events/angry2.png" type="Texture" id=5]
-[ext_resource path="res://images/events/hello1.png" type="Texture" id=6]
-[ext_resource path="res://images/events/hello2.png" type="Texture" id=7]
-[ext_resource path="res://images/events/hello3.png" type="Texture" id=8]
-[ext_resource path="res://images/events/hello4.png" type="Texture" id=9]
+[ext_resource path="res://images/events/hello1.png" type="Texture" id=4]
+[ext_resource path="res://images/events/hello2.png" type="Texture" id=5]
+[ext_resource path="res://images/events/hello3.png" type="Texture" id=6]
+[ext_resource path="res://images/events/hello4.png" type="Texture" id=7]
+[ext_resource path="res://images/events/angry1.png" type="Texture" id=8]
+[ext_resource path="res://images/events/angry2.png" type="Texture" id=9]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
@@ -18,15 +18,15 @@ animations = [ {
 "name": "hidden",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "angry",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "hello",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "angry",
+"speed": 7.0
 } ]
 
 [node name="broccoli_girl" type="Node2D" index="0"]
@@ -41,16 +41,24 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="click_area" type="Control" parent="." index="1"]
+[node name="broccoli_girl" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 540, 329 )
+frames = SubResource( 1 )
+animation = "hidden"
+_sections_unfolded = [ "Transform" ]
+
+[node name="click_area" type="Control" parent="broccoli_girl" index="0"]
 
 modulate = Color( 1, 0, 0, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 235.0
-margin_right = 1080.0
-margin_bottom = 430.0
+margin_left = -540.0
+margin_top = -94.0
+margin_right = 540.0
+margin_bottom = 121.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -60,15 +68,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_styles" ]
 
-[node name="broccoli_girl" type="AnimatedSprite" parent="." index="2"]
-
-position = Vector2( 540, 329 )
-frames = SubResource( 4 )
-animation = "hidden"
-_sections_unfolded = [ "Transform" ]
-
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 
-[connection signal="gui_input" from="click_area" to="." method="_on_click_area_gui_input"]
+[connection signal="gui_input" from="broccoli_girl/click_area" to="." method="_on_click_area_gui_input"]
 
 
