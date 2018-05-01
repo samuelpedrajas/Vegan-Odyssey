@@ -495,7 +495,7 @@ scale = Vector2( 1, 0.9 )
 texture = ExtResource( 26 )
 centered = false
 offset = Vector2( -30, -30 )
-_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="tilemap" type="TileMap" parent="board_layer" index="1"]
 

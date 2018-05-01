@@ -20,14 +20,14 @@ var sequence = {
 	2: {
 		"anim": {
 			SCENARIO.no_events: "hello",
-			SCENARIO.broccoli_selection_event: "hidden"
+			SCENARIO.broccoli_selection_event: "hidden_happy"
 		},
 		"time": 4
 	},
 	3: {
 		"anim": {
 			SCENARIO.no_events: "angry",
-			SCENARIO.broccoli_selection_event: "hidden"
+			SCENARIO.broccoli_selection_event: "hidden_angry"
 		},
 		"time": 4
 	},
@@ -36,7 +36,7 @@ var sequence = {
 			SCENARIO.no_events: "hidden",
 			SCENARIO.broccoli_selection_event: "hidden"
 		},
-		"time": 0.5
+		"time": 1
 	},
 }
 
@@ -104,4 +104,6 @@ func play_animation():
 
 func on_broccoli_selection(v):
 	broccoli_selection = v
-	play_animation()
+	var threshold = 0.05
+	if $timer.get_wait_time() > threshold:
+		play_animation()
