@@ -39,6 +39,7 @@ func start_programmed_events():
 
 
 func start_programmed_event(info):
+	# TODO: refactor this
 	# start a new timer for this programmed event
 	var timer = Timer.new()
 	add_child(timer)
@@ -48,10 +49,13 @@ func start_programmed_event(info):
 		timer.start()
 		yield(timer, "timeout")
 
+		admob.loadRewardedVideo()
+		yield(admob, "rewarded_ad_loaded")
+
 		# run the event if it's not already running
 		# the run_programmed_events property could have changed as well
 		if (not info.event_name in current_events.keys() and
-			run_programmed_events and admob.admob_rewarded_ad_loaded):
+			run_programmed_events and admob.admob_rewarded_ad_loaded):  # todo: check this
 			var event = start(info.event_name)
 			if event != null:
 				yield(event, "tree_exited")
