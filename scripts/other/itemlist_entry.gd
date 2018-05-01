@@ -1,8 +1,11 @@
-tool
+# tool
 extends Control
 
 
-export(int) var token_index setget set_token_index
+export(int) var token_index = 1 setget set_token_index
+
+
+# onready var game = get_node("/root/game")
 
 
 func set_token_index(i):
