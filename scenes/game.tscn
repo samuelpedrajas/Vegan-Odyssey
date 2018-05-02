@@ -150,7 +150,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -534,6 +534,14 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 28 )
 _sections_unfolded = [ "Pause" ]
 
+[node name="broccoli_girl_timer" type="Timer" parent="event_layer" index="0"]
+
+process_mode = 1
+wait_time = 12.0
+one_shot = false
+autostart = true
+_sections_unfolded = [ "Pause" ]
+
 [node name="popup_layer" type="CanvasLayer" parent="." index="8"]
 
 layer = 4
@@ -604,6 +612,8 @@ script = ExtResource( 31 )
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer" method="_on_excuses_pressed"]
 
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
+
+[connection signal="timeout" from="event_layer/broccoli_girl_timer" to="event_layer" method="_on_broccoli_girl_timer_timeout"]
 
 [connection signal="user_input" from="input_handler" to="board_layer" method="move_tokens"]
 

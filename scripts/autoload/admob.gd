@@ -16,13 +16,11 @@ var adRewarded3 = {
 	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 3
 }
-var loadedReward = adRewarded1
-var admob_ad_loaded = false
-var admob_rewarded_ad_loaded = false
+var loadedReward = null
+var admob_loaded = false
 
 
-signal reward_action_finished
-signal rewarded_ad_loaded
+signal banner_network_error
 
 
 func start_ads():
@@ -51,12 +49,11 @@ func loadBanner():
 		admob.loadBanner(adBannerId, isTop)
 
 
-func loadRewardedVideo():
+func loadRewardedVideo(ad_to_show):
 	if admob != null:
-		var rewarded_ad = get_rewarded_ad_info()
-		admob.loadRewardedVideo(rewarded_ad.id)
-		loadedReward = rewarded_ad
-		print("Reward " + str(rewarded_ad.amount) + " broccolis")
+		admob.loadRewardedVideo(ad_to_show.id)
+		loadedReward = ad_to_show
+		print("Reward " + str(ad_to_show.amount) + " broccolis")
 
 
 # players
@@ -66,45 +63,71 @@ func showRewardedVideo():
 		admob.showRewardedVideo()
 
 
-func _on_admob_network_error():
-	print("Network Error")
 
-
-# banner callbacks
+# banner loaded callback
 
 func _on_admob_ad_loaded():
 	print("Ad loaded success")
-	admob_ad_loaded = true
+	admob_loaded = true  # used in game_loader.gd
 
 
-# rewarded callbacks
+# banner load error callback
+
+func _on_admob_network_error():
+	print("Network Error")
+	admob_loaded = false
+	emit_signal("banner_network_error")
+
+
+# rewarded loaded callback
 
 func _on_rewarded_video_ad_loaded():
 	print("Rewarded loaded success")
-	admob_rewarded_ad_loaded = true
-	emit_signal("rewarded_ad_loaded")
+	admob.showRewardedVideo()
 
+
+# rewarded load error callback
 
 func _on_rewarded_video_ad_failed_to_load(errorCode):
 	print("Rewarded failed to load: " + str(errorCode))
-	admob_rewarded_ad_loaded = false
-	emit_signal("reward_action_finished")
-	loadRewardedVideo()
 
+	if errorCode == 0:
+		print("ad server internal error")
+	elif errorCode == 1:
+		print("invalid request (ad unit id)")
+	elif errorCode == 2:
+		print("network error")
+	elif errorCode == 3:
+		print("no more ads")
+	else:
+		print("weird")
+
+	loadedReward = null
+	if game.event_layer != null:
+		game.event_layer.stop("broccoli_girl")
+
+
+# rewarded video closed -- also called on rewarded
 
 func _on_rewarded_video_ad_closed():
 	print("Rewarded closed by user")
-	admob_rewarded_ad_loaded = false
-	emit_signal("reward_action_finished")
 
+	loadedReward = null
+	game.event_layer.stop("broccoli_girl")
+
+
+# rewarded video on reward
 
 func _on_rewarded(currency, amount):
-	admob_rewarded_ad_loaded = false
 	print("Reward: " + currency + ", " + str(amount))
 	print("Reward: " + str(loadedReward.amount))
-	game.broccolis += amount
+	print("FIX THIS IN PRODUCTION:")
+	# game.broccolis += amount
+	game.broccolis += loadedReward.amount
 	game.save_game()
-	emit_signal("reward_action_finished")
+
+	loadedReward = null
+	game.event_layer.stop("broccoli_girl")
 
 
 # resize

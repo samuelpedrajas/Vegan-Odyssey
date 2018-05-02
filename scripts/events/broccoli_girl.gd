@@ -47,9 +47,13 @@ var closeable = false
 var step = 0
 var broccoli_selection = false setget on_broccoli_selection
 
+var ad_to_show = null
+
 
 func start():
-	admob.connect("reward_action_finished", self, "on_reward_action_finished")
+	# set how much broccoli this girl will offer
+	ad_to_show = admob.get_rewarded_ad_info()
+
 	# move girl to board layer
 	remove_child(broccoli_girl)
 	game.board_layer.add_child(broccoli_girl)
@@ -63,23 +67,6 @@ func start():
 func stop():
 	broccoli_girl.queue_free()
 	queue_free()
-
-
-func on_reward_action_finished():
-	hide()
-	broccoli_girl.hide()
-
-
-func _on_click_area_gui_input(event):
-	if event.is_action_pressed("click") and admob.admob_rewarded_ad_loaded:
-		game.popup_layer.open("rewarded_video_confirmation")
-
-
-func _on_timer_timeout():
-	if step < sequence.size():
-		next_step()
-	else:
-		game.event_layer.stop("broccoli_girl")
 
 
 func next_step():
@@ -107,3 +94,15 @@ func on_broccoli_selection(v):
 	var threshold = 0.05
 	if $timer.get_wait_time() > threshold:
 		play_animation()
+
+
+func _on_click_area_gui_input(event):
+	if event.is_action_pressed("click"):
+		game.popup_layer.open("rewarded_video_confirmation", ad_to_show)
+
+
+func _on_timer_timeout():
+	if step < sequence.size():
+		next_step()
+	else:
+		game.event_layer.stop("broccoli_girl")

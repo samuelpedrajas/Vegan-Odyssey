@@ -7,12 +7,14 @@ var n_frame = 0
 
 var progress = 0
 var load_finished = false
+var admob_error = false
 
 var progress_bar
 var snail
 
 
 func goto_scene(path, _progress_bar):
+	admob.connect("banner_network_error", self, "on_network_error")
 	progress_bar = _progress_bar
 	snail = progress_bar.get_node("snail")
 	loader = ResourceLoader.load_interactive(path)
@@ -50,7 +52,7 @@ func _process(time):
 
 
 	# is everything loaded?
-	if admob.admob_ad_loaded and load_finished:
+	if (admob.admob_loaded or admob_error) and load_finished:
 		var resource = loader.get_resource()
 		snail.position = Vector2(550, snail.position.y)
 		loader = null
@@ -81,3 +83,7 @@ func move_snail():
 	n_frame = (n_frame + 1) % 10
 	if n_frame == 4:
 		snail.frame = (snail.frame + 1) % 5
+
+
+func on_network_error():
+	admob_error = true
