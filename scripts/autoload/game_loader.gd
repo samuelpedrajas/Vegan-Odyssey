@@ -47,6 +47,7 @@ func _process(time):
 		if err == ERR_FILE_EOF: # load finished
 			load_finished = true
 			admob.start_ads()
+			$"/root/loading_screen/loading_ads_animation".play("loading")
 		elif err == OK:
 			update_progress()
 		else:
