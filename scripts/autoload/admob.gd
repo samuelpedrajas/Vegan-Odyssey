@@ -107,10 +107,10 @@ func _on_rewarded_video_ad_failed_to_load(errorCode):
 	elif errorCode == 1:
 		print("invalid request (ad unit id)")
 		emit_signal("bad_request_error")
-	elif errorCode == 3:
+	elif errorCode == 2:
 		print("network error")
 		emit_signal("rewarded_network_error")
-	elif errorCode == 2:
+	elif errorCode == 3:
 		print("no more ads")
 		emit_signal("no_more_ads_error")
 	else:

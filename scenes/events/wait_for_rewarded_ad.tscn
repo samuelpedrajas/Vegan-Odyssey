@@ -51,7 +51,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="loading_rewarded_ad" type="Node2D" index="0" groups=[
+[node name="loading_rewarded_ad" type="Node2D" groups=[
 "event",
 ]]
 

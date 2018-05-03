@@ -1,21 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/no_more_ads.gd" type="Script" id=2]
-[ext_resource path="res://images/board_bg.png" type="Texture" id=3]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=5]
-[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/no_more_ads_bg.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=1]
-
-size = 80
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 4 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="no_more_ads" index="0" instance=ExtResource( 1 )]
+[node name="no_more_ads" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
@@ -25,52 +16,27 @@ modulate = Color( 1, 1, 1, 1 )
 
 [node name="non_clickable_space" parent="window" index="0"]
 
-margin_left = -271.0
-margin_top = -173.0
-margin_right = 270.0
-margin_bottom = 183.0
+margin_left = -458.0
+margin_top = -391.0
+margin_right = 456.0
+margin_bottom = 402.0
 _sections_unfolded = [ "Rect" ]
 
 [node name="background" parent="window" index="1"]
 
-position = Vector2( 0, 0.358856 )
-scale = Vector2( 0.494981, 0.282278 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="message" type="Label" parent="window" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -209.0
-margin_top = -48.0
-margin_right = 209.0
-margin_bottom = 48.0
-rect_pivot_offset = Vector2( 209, 48 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-text = "No more ads"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
-
-[node name="ok" type="TextureButton" parent="window" index="3"]
+[node name="ok" type="TextureButton" parent="window" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -75.0
-margin_top = 100.0
+margin_top = 135.0
 margin_right = 75.0
-margin_bottom = 250.0
+margin_bottom = 285.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -82,8 +48,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]

@@ -94,7 +94,8 @@ func _on_click_area_gui_input(event):
 		if ad_to_show == null:
 			# set how much broccoli this girl will offer
 			ad_to_show = admob.get_rewarded_ad_info()
-		game.popup_layer.open("rewarded_video_confirmation", ad_to_show)
+		game.popup_layer.open("rewarded_video_confirmation", self)
+		hide()
 
 
 func _on_timer_timeout():

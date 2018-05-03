@@ -58,6 +58,10 @@ tracks/1/keys = {
 
 script = ExtResource( 2 )
 
+[node name="window" parent="." index="2"]
+
+modulate = Color( 1, 1, 1, 1 )
+
 [node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -391.0
@@ -68,7 +72,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="broccoli_girl" type="AnimatedSprite" parent="window" index="1"]
 
-position = Vector2( 0, -385 )
+position = Vector2( 0, -401 )
 frames = SubResource( 1 )
 animation = "default"
 frame = 1
@@ -84,9 +88,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 92.0
+margin_top = 104.0
 margin_right = 40.0
-margin_bottom = 132.0
+margin_bottom = 144.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -145,10 +149,11 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="glow" type="Sprite" parent="window/buttons/ok_button" index="0"]
 
+show_behind_parent = true
 position = Vector2( 74, 68 )
 rotation = 3.14159
 texture = ExtResource( 10 )
-_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
 
 [node name="animation" type="AnimationPlayer" parent="window/buttons/ok_button" index="1"]
 
