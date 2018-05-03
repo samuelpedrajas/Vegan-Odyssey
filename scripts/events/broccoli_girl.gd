@@ -51,13 +51,6 @@ var ad_to_show = null
 
 
 func start():
-	# set how much broccoli this girl will offer
-	ad_to_show = admob.get_rewarded_ad_info()
-
-	# move girl to board layer
-	remove_child(broccoli_girl)
-	game.board_layer.add_child(broccoli_girl)
-
 	broccoli_selection = "broccoli" in game.event_layer.current_events.keys()
 
 	# start first animation
@@ -98,6 +91,9 @@ func on_broccoli_selection(v):
 
 func _on_click_area_gui_input(event):
 	if event.is_action_pressed("click"):
+		if ad_to_show == null:
+			# set how much broccoli this girl will offer
+			ad_to_show = admob.get_rewarded_ad_info()
 		game.popup_layer.open("rewarded_video_confirmation", ad_to_show)
 
 

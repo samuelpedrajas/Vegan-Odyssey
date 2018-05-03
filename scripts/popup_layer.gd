@@ -10,7 +10,9 @@ onready var popup_scene_dict = {
 	"reset_progress_confirmation": preload("res://scenes/popups/reset_progress_confirmation.tscn"),
 	"excuse_book": preload("res://scenes/popups/excuse_book.tscn"),
 	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn"),
-	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn")
+	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn"),
+	"no_more_ads": preload("res://scenes/popups/no_more_ads.tscn"),
+	"offline": preload("res://scenes/popups/offline.tscn")
 }
 
 
@@ -46,7 +48,7 @@ func open(name, params=null):
 	$"/root".set_disable_input(false)
 
 
-func close():
+func close(keep_input_disabled=false, keep_tree_paused=false):
 	# disallow input until the window is closed
 	$"/root".set_disable_input(true)
 
@@ -58,7 +60,8 @@ func close():
 
 	if popup_stack.empty():
 		$blur.hide()
-		get_tree().set_pause(false)
+		if not keep_tree_paused:
+			get_tree().set_pause(false)
 	else:
 		var popup = popup_stack.back()
 		$blur.set_z_index(popup.get_z_index() - 1)
@@ -70,7 +73,8 @@ func close():
 		popup_to_close.close()
 		yield(popup_to_close, "tree_exited")
 
-	$"/root".set_disable_input(false)
+	if not keep_input_disabled:
+		$"/root".set_disable_input(false)
 
 
 func close_all():

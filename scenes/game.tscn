@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scripts/cfg.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -95,7 +95,15 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Node2D
+
+onready var tilemap = $tilemap
+onready var tokens = $tokens
+"
+
+[sub_resource type="Shader" id=6]
 
 code = "shader_type canvas_item;
 
@@ -107,14 +115,13 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 
 render_priority = 0
-shader = SubResource( 5 )
+shader = SubResource( 6 )
 shader_param/amount = 1.0
-_sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.4
 loop = false
@@ -132,7 +139,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.4
 loop = false
@@ -488,7 +495,11 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 25 )
 
-[node name="background" type="Sprite" parent="board_layer" index="0"]
+[node name="board" type="Node2D" parent="board_layer" index="0"]
+
+script = SubResource( 5 )
+
+[node name="background" type="Sprite" parent="board_layer/board" index="0"]
 
 position = Vector2( 30, 460 )
 scale = Vector2( 1, 0.9 )
@@ -497,7 +508,7 @@ centered = false
 offset = Vector2( -30, -30 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
-[node name="tilemap" type="TileMap" parent="board_layer" index="1"]
+[node name="tilemap" type="TileMap" parent="board_layer/board" index="1"]
 
 position = Vector2( 30, 460 )
 mode = 0
@@ -519,7 +530,7 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="tokens" type="Node2D" parent="board_layer" index="2"]
+[node name="tokens" type="Node2D" parent="board_layer/board" index="2"]
 
 position = Vector2( 198, 627 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -537,7 +548,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="broccoli_girl_timer" type="Timer" parent="event_layer" index="0"]
 
 process_mode = 1
-wait_time = 12.0
+wait_time = 24.0
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
@@ -556,7 +567,7 @@ _sections_unfolded = [ "Pause" ]
 
 visible = false
 modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
-material = SubResource( 6 )
+material = SubResource( 7 )
 texture = ExtResource( 30 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
@@ -584,8 +595,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 7 )
-anims/open = SubResource( 8 )
+anims/close = SubResource( 8 )
+anims/open = SubResource( 9 )
 blend_times = [  ]
 
 [node name="input_handler" type="Control" parent="." index="11"]

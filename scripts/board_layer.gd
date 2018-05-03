@@ -9,6 +9,7 @@ var direction_pivots = {}
 
 # for instancing tokens
 onready var token = preload("res://scenes/token.tscn")
+onready var board = $board
 
 
 func _ready():
@@ -21,7 +22,7 @@ func _ready():
 
 func _set_direction_pivots():
 	# get all used cells in the current board
-	var used_cells = $"tilemap".get_used_cells()
+	var used_cells = board.tilemap.get_used_cells()
 
 	# for each used cell, if it has no previous cell but it has a next one
 	# for a given direction, then it is a pivot for that direction
@@ -68,7 +69,7 @@ func move_tokens(direction):
 
 	game.save_game()
 	# debug purposes
-	_print_matrix()
+	# _print_matrix()
 
 
 func _move_line(pos, direction):
@@ -114,7 +115,7 @@ func _move_line(pos, direction):
 		line_changes.movement = pos != dest
 		line_changes.last_token = current_token
 		line_changes.last_valid_position = dest
-	elif not pos in $"tilemap".get_used_cells():
+	elif not pos in board.tilemap.get_used_cells():
 		line_changes.last_valid_position = pos - direction
 	else:
 		return _move_line(pos + direction, direction)
@@ -126,7 +127,7 @@ func _get_empty_position():
 	var available_positions = []
 
 	# for each cell used in the board
-	for cell in $"tilemap".get_used_cells():
+	for cell in board.tilemap.get_used_cells():
 		# if there is no token in it, add it to available positions
 		if !matrix.has(cell):
 			available_positions.append(cell)
@@ -139,7 +140,7 @@ func _get_empty_position():
 
 
 func check_moves_available():
-	var used_cells = $"tilemap".get_used_cells()
+	var used_cells = board.tilemap.get_used_cells()
 
 	if matrix.keys().size() < used_cells.size():
 		return true
@@ -162,8 +163,8 @@ func spawn_token(pos=null, level=1, animate=false):
 	t.set_process(false)
 
 	matrix[pos] = t
-	t.setup($"tilemap".map_to_world(pos), pos, level, sc)
-	$"tokens".add_child(t)
+	t.setup(board.tilemap.map_to_world(pos), pos, level, sc)
+	board.tokens.add_child(t)
 
 	if animate:
 		t.animation.play("spawn")
@@ -205,7 +206,7 @@ func _debug_func():
 		for j in range(0, 3):
 			var t = token.instance()
 			add_child(t)
-			t.setup($"tilemap".map_to_world(Vector2(j, i)), Vector2(j, i), lvl)
+			t.setup(board.tilemap.map_to_world(Vector2(j, i)), Vector2(j, i), lvl)
 			lvl += 1
 
 

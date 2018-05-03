@@ -46,7 +46,9 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[node name="broccoli_selection" type="Node2D"]
+[node name="broccoli_selection" type="Node2D" groups=[
+"event",
+]]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]

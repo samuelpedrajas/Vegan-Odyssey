@@ -7,9 +7,6 @@ var closeable = true
 
 onready var animation = $"animation"
 
-var board_original_layer = 2
-var popup_original_layer = 4
-
 
 func start():
 	# disable input so the user cannot move tokens
@@ -21,10 +18,8 @@ func start():
 		event.broccoli_selection = true
 
 	# put board above
-	board_original_layer = game.board_layer.get_layer()
-	var n = game.event_layer.get_layer()
-	game.board_layer.set_layer(n + 1)
-	game.popup_layer.set_layer(n + 2)
+	game.board_layer.remove_child(game.board_layer.board)
+	add_child(game.board_layer.board)
 
 	animation.play("open")
 	yield(animation, "animation_finished")
@@ -52,8 +47,9 @@ func stop():
 
 	animation.play_backwards("open")
 	yield(animation, "animation_finished")
-	game.board_layer.set_layer(board_original_layer)
-	game.popup_layer.set_layer(popup_original_layer)
+
+	remove_child(game.board_layer.board)
+	game.board_layer.add_child(game.board_layer.board)
 
 	# unset selectable state for all tokens
 	for token in game.board_layer.matrix.values():

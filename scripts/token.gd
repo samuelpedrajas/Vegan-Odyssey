@@ -95,7 +95,7 @@ func move_to(dest):
 	accumulated_time = 0
 	matrix_pos = dest
 	is_moving = true
-	destination = $"../../tilemap".map_to_world(dest)
+	destination = get_parent().get_parent().tilemap.map_to_world(dest)
 	starting_position = position
 
 

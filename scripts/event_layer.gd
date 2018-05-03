@@ -4,18 +4,21 @@ extends CanvasLayer
 var current_events = {}
 onready var event_scene_dict = {
 	"broccoli": preload("res://scenes/events/broccoli_selection.tscn"),
-	"broccoli_girl": preload("res://scenes/events/broccoli_girl.tscn")
+	"broccoli_girl": preload("res://scenes/events/broccoli_girl.tscn"),
+	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn")
 }
 
 
-func start(event_name):
+func start(event_name, params=null):
 	if not event_name in current_events:
 		var event = event_scene_dict[event_name].instance()
-		event.set_z_index(event.priority)
 		current_events[event_name] = event
 		add_child(event)
-		move_child(event, 0)
-		event.start()
+		set_event_priority(event)
+		if params == null:
+			event.start()
+		else:
+			event.start(params)
 		return event
 	return null
 
@@ -37,6 +40,15 @@ func stop_closeables():
 		var event = current_events[event_name]
 		if event.closeable:
 			stop(event_name)
+
+
+func set_event_priority(event):
+	var i = 0
+	for child in get_children():
+		if child.is_in_group("event") and child.priority > event.priority:
+			break
+		i += 1
+	move_child(event, i)
 
 
 func closeable_event():

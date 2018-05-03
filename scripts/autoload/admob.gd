@@ -16,20 +16,31 @@ var adRewarded3 = {
 	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 3
 }
-var loadedReward = null
-var admob_loaded = false
+
+var loadedReward = null  # needed for debugging
 
 
+signal banner_loaded
 signal banner_network_error
+
+signal rewarded_loaded
+signal ad_server_error
+signal bad_request_error
+signal rewarded_network_error
+signal no_more_ads_error
+signal rewarded_ad_closed
+signal rewarded
 
 
 func start_ads():
 	if(Engine.has_singleton("AdMob")):
+		print("Starting AdMob")
 		admob = Engine.get_singleton("AdMob")
 		admob.init(isReal, get_instance_id())
 		loadBanner()
-	
-	get_tree().connect("screen_resized", self, "on_resize")
+
+	if not get_tree().is_connected("screen_resized", self, "on_resize"):
+		get_tree().connect("screen_resized", self, "on_resize")
 
 
 func get_rewarded_ad_info():
@@ -63,19 +74,17 @@ func showRewardedVideo():
 		admob.showRewardedVideo()
 
 
-
 # banner loaded callback
 
 func _on_admob_ad_loaded():
 	print("Ad loaded success")
-	admob_loaded = true  # used in game_loader.gd
+	emit_signal("banner_loaded")
 
 
 # banner load error callback
 
 func _on_admob_network_error():
 	print("Network Error")
-	admob_loaded = false
 	emit_signal("banner_network_error")
 
 
@@ -83,6 +92,7 @@ func _on_admob_network_error():
 
 func _on_rewarded_video_ad_loaded():
 	print("Rewarded loaded success")
+	emit_signal("rewarded_loaded")
 	admob.showRewardedVideo()
 
 
@@ -93,27 +103,26 @@ func _on_rewarded_video_ad_failed_to_load(errorCode):
 
 	if errorCode == 0:
 		print("ad server internal error")
+		emit_signal("ad_server_error")
 	elif errorCode == 1:
 		print("invalid request (ad unit id)")
-	elif errorCode == 2:
-		print("network error")
+		emit_signal("bad_request_error")
 	elif errorCode == 3:
+		print("network error")
+		emit_signal("rewarded_network_error")
+	elif errorCode == 2:
 		print("no more ads")
+		emit_signal("no_more_ads_error")
 	else:
 		print("weird")
-
-	loadedReward = null
-	if game.event_layer != null:
-		game.event_layer.stop("broccoli_girl")
 
 
 # rewarded video closed -- also called on rewarded
 
 func _on_rewarded_video_ad_closed():
 	print("Rewarded closed by user")
-
+	emit_signal("rewarded_ad_closed")
 	loadedReward = null
-	game.event_layer.stop("broccoli_girl")
 
 
 # rewarded video on reward
@@ -122,12 +131,9 @@ func _on_rewarded(currency, amount):
 	print("Reward: " + currency + ", " + str(amount))
 	print("Reward: " + str(loadedReward.amount))
 	print("FIX THIS IN PRODUCTION:")
-	# game.broccolis += amount
-	game.broccolis += loadedReward.amount
-	game.save_game()
-
+	# emit_signal("rewarded", amount)
+	emit_signal("rewarded", loadedReward.amount)
 	loadedReward = null
-	game.event_layer.stop("broccoli_girl")
 
 
 # resize

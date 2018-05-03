@@ -54,7 +54,9 @@ animations = [ {
 "speed": 7.0
 } ]
 
-[node name="broccoli_girl" type="Node2D"]
+[node name="broccoli_girl" type="Node2D" groups=[
+"event",
+]]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
