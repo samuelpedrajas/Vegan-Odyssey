@@ -556,7 +556,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="broccoli_girl_timer" type="Timer" parent="event_layer" index="0"]
 
 process_mode = 1
-wait_time = 24.0
+wait_time = 30.0
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]

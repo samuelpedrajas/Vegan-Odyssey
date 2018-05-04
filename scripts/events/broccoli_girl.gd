@@ -22,7 +22,7 @@ var sequence = {
 			SCENARIO.no_events: "hello",
 			SCENARIO.broccoli_selection_event: "hidden_happy"
 		},
-		"time": 4
+		"time": 12
 	},
 	3: {
 		"anim": {
