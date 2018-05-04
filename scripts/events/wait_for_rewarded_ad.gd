@@ -64,9 +64,10 @@ func on_rewarded_ad_closed():
 	
 
 func on_rewarded(amount):
-	game.broccolis += amount
+	game.secretly_set_broccolis(game.broccolis + amount)
 	game.save_game()
 	game.event_layer.stop("broccoli_girl")
+	game.effects_layer.play_rewarded_effect(amount)
 
 
 func on_banner_network_error():

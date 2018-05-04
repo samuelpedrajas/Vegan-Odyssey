@@ -20,6 +20,7 @@ var board_layer
 var hud_layer
 var event_layer
 var popup_layer
+var effects_layer
 var settings
 var cfg
 
@@ -39,6 +40,7 @@ func setup():
 	event_layer = $"/root/stage/event_layer"
 	popup_layer = $"/root/stage/popup_layer"
 	settings = $"/root/stage/settings"
+	effects_layer = $"/root/stage/effects_layer"
 	cfg = $"/root/stage/cfg"
 
 
@@ -154,6 +156,10 @@ func _set_current_score(v):
 func _set_broccolis(v):
 	broccolis = v
 	hud_layer.set_broccoli_amount(v)
+
+
+func secretly_set_broccolis(amount):
+	broccolis = amount
 
 
 ### WIN / LOSE ###
