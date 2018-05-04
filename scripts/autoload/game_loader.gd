@@ -76,10 +76,13 @@ func set_new_scene(scene_resource):
 	var current_scene = root.get_child(root.get_child_count() -1)
 	current_scene.queue_free()
 
+
+	set_process(false)
+
 	# set new scene
 	var new_scene = scene_resource.instance()
+	new_scene.open_offline_popup = admob_error
 	get_node("/root").add_child(new_scene)
-	set_process(false)
 
 
 func move_snail():

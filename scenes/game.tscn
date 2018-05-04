@@ -37,6 +37,9 @@
 script/source = "extends Node2D
 
 
+var open_offline_popup = false
+
+
 func _enter_tree():
 	game.setup()
 
@@ -46,7 +49,12 @@ func _ready():
 		game.board_layer.spawn_token(null, 1, false)
 	else:
 		game.load_game()
-	$\"/root\".set_disable_input(false)
+
+	# this flag is set in game_loader.gd
+	if open_offline_popup:
+		game.popup_layer.open(\"offline\")
+	else:
+		$\"/root\".set_disable_input(false)
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -157,7 +165,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
