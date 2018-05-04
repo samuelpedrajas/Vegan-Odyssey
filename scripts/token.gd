@@ -102,6 +102,10 @@ func move_to(dest):
 func die():
 	animation.play("die")
 	yield(animation, "animation_finished")
+	game.sounds.play_audio("boom")
+	$explosion.show()
+	$explosion.play()
+	yield($explosion, "animation_finished")
 	queue_free()
 
 

@@ -4,7 +4,8 @@ extends AudioStreamPlayer
 var library = {
 	"click": preload("res://audio/click.wav"),
 	"merge": preload("res://audio/merge.wav"),
-	"bubble": preload("res://audio/bubble.wav")
+	"bubble": preload("res://audio/bubble.wav"),
+	"boom": preload("res://audio/boom.wav")
 }
 
 

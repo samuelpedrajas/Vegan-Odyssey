@@ -63,16 +63,16 @@ func use_broccoli(token):
 		token.die()
 		yield(token, 'tree_exited')
 
-	# no more broccoli -> exit
-	if broccolis == 0:
-		print("no more broccolis")
-		event_layer.stop("broccoli")
-
 	# if empty -> new token
 	if board_layer.matrix.empty():
 		var t = board_layer.spawn_token(null, 1, true)
 		yield(t.animation, 'animation_finished')
 		t.set_selectable_state()
+
+	# no more broccoli -> exit
+	if broccolis == 0:
+		print("no more broccolis")
+		event_layer.stop("broccoli")
 
 	$"/root".set_disable_input(false)
 
