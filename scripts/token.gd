@@ -109,14 +109,14 @@ func set_selectable_state():
 	# I assume the token is stopped here
 	is_selectable = true
 	animation.play("broccoli_selection")
-	$"button".show()
+	$"token_sprite/button".show()
 
 
 func unset_selectable_state():
 	is_selectable = false
 	animation.stop()
-	$"glow".hide()
-	$"button".hide()
+	$"token_sprite/glow".hide()
+	$"token_sprite/button".hide()
 
 
 func sync_merge():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/token.gd" type="Script" id=1]
 [ext_resource path="res://images/token.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://images/selectable_token.png" type="Texture" id=5]
 [ext_resource path="res://animations/broccoli_aura.tres" type="Animation" id=6]
 [ext_resource path="res://animations/token.tres" type="Animation" id=7]
+[ext_resource path="res://images/events/explosion/1.png" type="Texture" id=8]
+[ext_resource path="res://images/events/explosion/2.png" type="Texture" id=9]
+[ext_resource path="res://images/events/explosion/3.png" type="Texture" id=10]
+[ext_resource path="res://images/events/explosion/4.png" type="Texture" id=11]
+[ext_resource path="res://images/events/explosion/5.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -23,7 +28,7 @@ length = 0.3
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/path = NodePath("token_sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,7 +40,7 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("token_sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -79,14 +84,30 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
 [node name="token" type="Node2D" index="0" groups=[
 "token",
 ]]
-rotation = 6.28319
+
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
-[node name="button" type="Button" parent="." index="0"]
+[node name="token_sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="button" type="Button" parent="token_sprite" index="0"]
+
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -112,11 +133,9 @@ flat = false
 align = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="token_sprite" type="Sprite" parent="." index="1"]
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform" ]
+[node name="level" type="Label" parent="token_sprite" index="1"]
 
-[node name="level" type="Label" parent="token_sprite" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -141,17 +160,20 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="circle" type="Sprite" parent="token_sprite/level" index="0"]
+
 show_behind_parent = true
 position = Vector2( -9.99998, 3.00005 )
 texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="glow" type="Sprite" parent="." index="2"]
+[node name="glow" type="Sprite" parent="token_sprite" index="2"]
+
 modulate = Color( 0.175781, 0.883942, 0.9375, 0 )
 texture = ExtResource( 5 )
 
-[node name="animation" type="AnimationPlayer" parent="." index="3"]
+[node name="animation" type="AnimationPlayer" parent="." index="1"]
+
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -163,4 +185,14 @@ anims/merge = SubResource( 3 )
 anims/spawn = ExtResource( 7 )
 blend_times = [  ]
 
-[connection signal="pressed" from="button" to="." method="_on_button_pressed"]
+[node name="explosion" type="AnimatedSprite" parent="." index="2"]
+
+visible = false
+frames = SubResource( 4 )
+animation = "default"
+frame = 4
+playing = true
+
+[connection signal="pressed" from="token_sprite/button" to="." method="_on_button_pressed"]
+
+
