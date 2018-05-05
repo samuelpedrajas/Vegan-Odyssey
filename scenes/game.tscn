@@ -332,7 +332,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -730,11 +730,24 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 198, 627 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="effects_layer" type="CanvasLayer" parent="." index="8"]
+[node name="dying_tokens" type="CanvasLayer" parent="." index="8"]
+
+layer = 5
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="tokens" type="Node2D" parent="dying_tokens" index="0"]
+
+position = Vector2( 198, 627 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="effects_layer" type="CanvasLayer" parent="." index="9"]
 
 pause_mode = 2
 editor/display_folded = true
-layer = 4
+layer = 6
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -808,9 +821,9 @@ wait_time = 0.3
 one_shot = true
 autostart = false
 
-[node name="popup_layer" type="CanvasLayer" parent="." index="9"]
+[node name="popup_layer" type="CanvasLayer" parent="." index="10"]
 
-layer = 6
+layer = 7
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -827,9 +840,9 @@ texture = ExtResource( 32 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
 
-[node name="transition_layer" type="CanvasLayer" parent="." index="10"]
+[node name="transition_layer" type="CanvasLayer" parent="." index="11"]
 
-layer = 7
+layer = 8
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -842,7 +855,7 @@ modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 32 )
 centered = false
 
-[node name="transition" type="AnimationPlayer" parent="." index="11"]
+[node name="transition" type="AnimationPlayer" parent="." index="12"]
 
 pause_mode = 2
 root_node = NodePath("..")
@@ -854,7 +867,7 @@ anims/close = SubResource( 8 )
 anims/open = SubResource( 9 )
 blend_times = [  ]
 
-[node name="input_handler" type="Control" parent="." index="12"]
+[node name="input_handler" type="Control" parent="." index="13"]
 
 anchor_left = 0.0
 anchor_top = 0.0

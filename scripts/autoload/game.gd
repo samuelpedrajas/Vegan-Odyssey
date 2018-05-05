@@ -22,6 +22,7 @@ var event_layer
 var popup_layer
 var effects_layer
 var settings
+var dying_tokens
 var cfg
 
 
@@ -42,6 +43,7 @@ func setup():
 	settings = $"/root/stage/settings"
 	effects_layer = $"/root/stage/effects_layer"
 	cfg = $"/root/stage/cfg"
+	dying_tokens = $"/root/stage/dying_tokens"
 
 
 func update_scores(token_level):

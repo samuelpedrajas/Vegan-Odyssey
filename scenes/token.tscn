@@ -79,7 +79,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="token" type="Node2D" index="0" groups=[
+[node name="token" type="Node2D" groups=[
 "token",
 ]]
 

@@ -128,6 +128,8 @@ func _get_angular_speed(direction):
 
 
 func die(direction):
+	get_parent().remove_child(self)
+	game.dying_tokens.get_node("tokens").add_child(self)
 	angular_speed = _get_angular_speed(direction)
 	set_z_index(10)
 	is_dying = true
