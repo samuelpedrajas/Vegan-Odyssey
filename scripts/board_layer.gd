@@ -60,7 +60,8 @@ func move_tokens(direction):
 			pass
 		else:
 			# 1/3 -> 2, 2/3 -> 1
-			var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
+			var lvl = min(game.current_max, int(randi() % 3 == 1) + 1)
+			var t = spawn_token(null, lvl, true)
 			t.animation.play("spawn")
 
 		# start movement
