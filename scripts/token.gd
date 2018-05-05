@@ -52,9 +52,7 @@ func _process(delta):
 				emit_signal("movement_finished")
 	elif is_dying:
 		var gravity = Vector2(0, 5000)  # px / s^2
-		var angular_acceleration = 1  # degrees / s^2
 		speed += gravity * delta
-		angular_speed += angular_acceleration * delta
 		position += speed * delta
 		rotation = rotation + (angular_speed * delta)
 		if modulate.a > 0:
