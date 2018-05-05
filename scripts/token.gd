@@ -19,6 +19,7 @@ var starting_position = null
 
 
 signal movement_finished
+signal token_selected
 
 
 func setup(wp, pos, lvl, sc):
@@ -102,14 +103,11 @@ func move_to(dest):
 func die():
 	animation.play("die")
 	yield(animation, "animation_finished")
-	game.sounds.play_audio("boom")
-	$explosion.show()
-	$explosion.play()
-	yield($explosion, "animation_finished")
 	queue_free()
 
 
 func set_selectable_state():
+	print("SET " + str(get_instance_id()))
 	# I assume the token is stopped here
 	is_selectable = true
 	animation.play("broccoli_selection")
@@ -117,10 +115,12 @@ func set_selectable_state():
 
 
 func unset_selectable_state():
-	is_selectable = false
-	animation.stop()
-	$"token_sprite/glow".hide()
-	$"token_sprite/button".hide()
+	print("UNSET " + str(get_instance_id()))
+	if is_selectable:
+		is_selectable = false
+		animation.stop()
+		$"token_sprite/glow".hide()
+		$"token_sprite/button".hide()
 
 
 func sync_merge():
@@ -140,4 +140,5 @@ func save_info():
 
 func _on_button_pressed():
 	if is_selectable and game.broccolis > 0:
-		game.use_broccoli(self)
+		unset_selectable_state()
+		emit_signal("token_selected", self)

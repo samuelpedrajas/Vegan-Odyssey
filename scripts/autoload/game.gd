@@ -51,32 +51,6 @@ func update_scores(token_level):
 	self.highest_max = current_max if current_max > highest_max else highest_max
 
 
-func use_broccoli(token):
-	# disable input for bug prevention
-	$"/root".set_disable_input(true)
-
-	# use broccoli
-	if broccolis > 0:
-		self.broccolis -= 1
-		sounds.play_audio("click")
-		board_layer.matrix.erase(token.matrix_pos)
-		token.die()
-		yield(token, 'tree_exited')
-
-	# if empty -> new token
-	if board_layer.matrix.empty():
-		var t = board_layer.spawn_token(null, 1, true)
-		yield(t.animation, 'animation_finished')
-		t.set_selectable_state()
-
-	# no more broccoli -> exit
-	if broccolis == 0:
-		print("no more broccolis")
-		event_layer.stop("broccoli")
-
-	$"/root".set_disable_input(false)
-
-
 func restart_game(delete_progress=false):
 	$"/root".set_disable_input(true)
 

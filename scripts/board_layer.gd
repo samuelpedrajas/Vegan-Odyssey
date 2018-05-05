@@ -60,7 +60,8 @@ func move_tokens(direction):
 			pass
 		else:
 			# 1/3 -> 2, 2/3 -> 1
-			spawn_token(null, int(randi() % 3 == 1) + 1, true)
+			var t = spawn_token(null, int(randi() % 3 == 1) + 1, true)
+			t.animation.play("spawn")
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
@@ -165,9 +166,6 @@ func spawn_token(pos=null, level=1, animate=false):
 	matrix[pos] = t
 	t.setup(board.tilemap.map_to_world(pos), pos, level, sc)
 	board.tokens.add_child(t)
-
-	if animate:
-		t.animation.play("spawn")
 
 	return t
 

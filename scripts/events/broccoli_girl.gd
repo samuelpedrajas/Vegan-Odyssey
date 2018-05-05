@@ -41,7 +41,7 @@ var sequence = {
 }
 
 
-var priority = 5
+var priority = 4
 var closeable = false
 
 var step = 0

@@ -1,6 +1,6 @@
 extends Node2D
 
-var priority = 10
+var priority = 5
 var closeable = false
 
 var ad_to_show

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 
 var current_events = {}
@@ -12,9 +12,13 @@ onready var event_scene_dict = {
 func start(event_name, params=null):
 	if not event_name in current_events:
 		var event = event_scene_dict[event_name].instance()
+		var canvas_layer = CanvasLayer.new()
+		canvas_layer.set_layer(event.priority)
+		canvas_layer.add_child(event)
 		current_events[event_name] = event
-		add_child(event)
-		set_event_priority(event)
+
+		$"/root/stage".add_child(canvas_layer)
+
 		if params == null:
 			event.start()
 		else:
@@ -28,8 +32,10 @@ func stop(event_name):
 		var event = current_events[event_name]
 		current_events.erase(event_name)
 
+		var canvas_layer = event.get_parent()
 		event.stop()
 		yield(event, "tree_exited")
+		canvas_layer.queue_free()
 
 		# animation is finished
 		$"/root".set_disable_input(false)
@@ -40,15 +46,6 @@ func stop_closeables():
 		var event = current_events[event_name]
 		if event.closeable:
 			stop(event_name)
-
-
-func set_event_priority(event):
-	var i = 0
-	for child in get_children():
-		if child.is_in_group("event") and child.priority > event.priority:
-			break
-		i += 1
-	move_child(event, i)
 
 
 func closeable_event():
