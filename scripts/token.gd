@@ -10,6 +10,11 @@ var level
 
 var is_selectable = false
 var is_moving = false
+var is_dying = false
+
+var speed = Vector2(5, 10)
+var angular_speed = 5
+
 var followed = null
 var followers = []
 
@@ -45,6 +50,17 @@ func _process(delta):
 				_merge_and_free()
 			elif is_stopped():
 				emit_signal("movement_finished")
+	elif is_dying:
+		var gravity = Vector2(0, 5000)  # px / s^2
+		var angular_acceleration = 1  # degrees / s^2
+		speed += gravity * delta
+		angular_speed += angular_acceleration * delta
+		position += speed * delta
+		rotation = rotation + (angular_speed * delta)
+
+		if position.y > 1920:
+			set_process(false)
+			queue_free()
 
 
 func _move(delta):
@@ -100,10 +116,12 @@ func move_to(dest):
 	starting_position = position
 
 
-func die():
-	animation.play("die")
-	yield(animation, "animation_finished")
-	queue_free()
+func die(direction):
+	set_z_index(10)
+	is_dying = true
+	speed *= direction
+	game.sounds.play_audio("boom")
+	set_process(true)
 
 
 func set_selectable_state():
@@ -138,7 +156,13 @@ func save_info():
 	}
 
 
-func _on_button_pressed():
+func _on_button_gui_input(ev):
+	if not ev.is_action_pressed("click") or ev.position == null:
+		return
+
 	if is_selectable and game.broccolis > 0:
+		var total_area = $"token_sprite/button".get_size()
+		var direction = (ev.position - total_area / 2) * -1
+		print(direction)
 		unset_selectable_state()
-		emit_signal("token_selected", self)
+		emit_signal("token_selected", self, direction)

@@ -91,7 +91,7 @@ _sections_unfolded = [ "Pause", "Transform" ]
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="button" type="Button" parent="token_sprite" index="0"]
+[node name="button" type="Control" parent="token_sprite" index="0"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -99,10 +99,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -152.0
-margin_top = -154.0
-margin_right = 162.0
-margin_bottom = 166.0
+margin_left = -157.0
+margin_top = -159.0
+margin_right = 159.0
+margin_bottom = 163.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -110,12 +110,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-flat = false
-align = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="level" type="Label" parent="token_sprite" index="1"]
@@ -171,6 +165,6 @@ anims/merge = SubResource( 3 )
 anims/spawn = ExtResource( 7 )
 blend_times = [  ]
 
-[connection signal="pressed" from="token_sprite/button" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="token_sprite/button" to="." method="_on_button_gui_input"]
 
 

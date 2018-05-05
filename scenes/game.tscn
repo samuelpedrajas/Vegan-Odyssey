@@ -682,7 +682,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="board_layer" type="CanvasLayer" parent="." index="7"]
 
-editor/display_folded = true
 layer = 3
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -693,6 +692,7 @@ script = ExtResource( 26 )
 [node name="board" type="Node2D" parent="board_layer" index="0"]
 
 script = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="background" type="Sprite" parent="board_layer/board" index="0"]
 

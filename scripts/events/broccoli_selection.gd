@@ -55,7 +55,7 @@ func stop():
 	queue_free()
 
 
-func token_selected(token):
+func token_selected(token, direction):
 	if closing:
 		return
 
@@ -71,8 +71,7 @@ func token_selected(token):
 		new_token = game.board_layer.spawn_token(null, 1, true)
 
 
-	game.sounds.play_audio("click")
-	token.die()
+	token.die(direction)
 	yield(token, 'tree_exited')
 
 	# if empty -> new token
