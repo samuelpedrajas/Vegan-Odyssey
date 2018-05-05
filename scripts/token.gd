@@ -57,8 +57,9 @@ func _process(delta):
 		angular_speed += angular_acceleration * delta
 		position += speed * delta
 		rotation = rotation + (angular_speed * delta)
-
-		if position.y > 1920:
+		if modulate.a > 0:
+			modulate.a = max(0, modulate.a - delta / modulate.a)
+		else:
 			set_process(false)
 			queue_free()
 
