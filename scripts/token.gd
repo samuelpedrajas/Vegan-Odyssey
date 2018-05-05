@@ -101,6 +101,7 @@ func follow(token):
 	followed = token
 	followed.followers.append(self)
 
+	set_z_index(followed.get_z_index() + 1)
 	accumulated_time = 0
 	is_moving = true
 	destination = followed.destination
