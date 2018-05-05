@@ -83,6 +83,7 @@ tracks/1/keys = {
 "token",
 ]]
 
+pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
