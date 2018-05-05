@@ -115,10 +115,23 @@ func move_to(dest):
 	starting_position = position
 
 
+func _get_angular_speed(direction):
+	var x = direction.x
+	var y = direction.y
+	var ang_speed = 0
+	if (x > y) != ((x + y) > 0):
+		ang_speed = x * pow(-1, int(y > 0))
+	else:
+		ang_speed = y * pow(-1, int(x < 0))
+	ang_speed = ang_speed / ($"token_sprite/button".get_size().x / 2.0)
+	return pow(ang_speed, 3) * 10
+
+
 func die(direction):
+	angular_speed = _get_angular_speed(direction)
 	set_z_index(10)
 	is_dying = true
-	speed *= direction
+	speed *= (direction * -1)
 	game.sounds.play_audio("boom")
 	set_process(true)
 
@@ -161,7 +174,7 @@ func _on_button_gui_input(ev):
 
 	if is_selectable and game.broccolis > 0:
 		var total_area = $"token_sprite/button".get_size()
-		var direction = (ev.position - total_area / 2) * -1
+		var direction = (ev.position - total_area / 2)
 		print(direction)
 		unset_selectable_state()
 		emit_signal("token_selected", self, direction)
