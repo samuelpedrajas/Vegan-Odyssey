@@ -42,9 +42,18 @@ func _on_broccoli_pressed():
 func set_broccoli_amount(n):
 	var broccoli_button = $"hud/lower_buttons/broccoli"
 	var label = broccoli_button.get_node("circle/n_broccolis")
+	var font = label.get("custom_fonts/font")
+	var s = str(n)
+
+	if n > 99:
+		s = "99+"
+		if font.get_size() > 30:
+			font.set_size(30)
+	elif font.get_size() < 45:
+		font.set_size(45)
 
 
-	label.set_text(str(n))
+	label.set_text(s)
 	broccoli_button.get_node("circle_animation").play("used")
 
 	# set opacity

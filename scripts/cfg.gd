@@ -27,6 +27,7 @@ const EXCUSE_WINDOW_POS = Vector2(540, 800)
 const REWARDED_VIDEO_WINDOW_POS = Vector2(540, 850)
 const NO_MORE_ADS_WINDOW_POS = Vector2(540, 850)
 const OFFLINE_WINDOW_POS = Vector2(540, 850)
+
 const SCROLL_THRESHOLD = 10
 
 const SAVE_GAME_PATH = "user://savegame.save"

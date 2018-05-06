@@ -2,9 +2,6 @@ extends ScrollContainer
 
 
 onready var ExcuseEntry = preload("res://scenes/other/itemlist_entry.tscn")
-var tap_start_position
-var tap_actual_position
-var clicked_excuse = null
 
 
 func _ready():
@@ -23,29 +20,27 @@ func _ready():
 	v_box.add_child(v_scroll)
 
 
+var tap_start_position
+var tap_end_position
+var token_clicked = null
+
 func _gui_input(event):
-	tap_actual_position = event.position
 	if event.is_action_pressed("click"):
-		# if clicked, save the position
+		if tap_end_position != null:
+			tap_end_position = null
 		tap_start_position = event.position
-	elif event.is_action_released("click") and _can_click():
-		tap_start_position = null
-		if clicked_excuse == null:
-			clicked_excuse = null
-			return
-		game.sounds.play_audio("click")
-		var excuse_popup = game.popup_layer.open("excuse_drawing", clicked_excuse)
-		clicked_excuse = null
+	elif event.is_action_released("click"):
+		if tap_start_position != null:
+			tap_end_position = event.position
 
 
-func _can_click():
-	var got_the_info = tap_start_position != null and tap_actual_position != null
+func can_click():
+	var got_the_info = tap_start_position != null and tap_end_position != null
 	if not got_the_info:
 		return false
 
-	var input_vector = tap_actual_position - tap_start_position
+	var input_vector = tap_end_position - tap_start_position
 	if input_vector.length() > game.cfg.SCROLL_THRESHOLD:
 		return false
 
 	return true
-
