@@ -10,6 +10,10 @@
 
 script = ExtResource( 2 )
 
+[node name="window" parent="." index="2"]
+
+modulate = Color( 1, 1, 1, 1 )
+
 [node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -535.0
