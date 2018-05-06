@@ -3,6 +3,7 @@ extends Node2D
 
 var priority = 2
 var closeable = true
+var back_button = true
 
 var pending_tokens = 0
 var closing = false
@@ -38,6 +39,7 @@ func start():
 
 
 func stop():
+	closing = true
 	$"/root".set_disable_input(true)
 
 	# stand up the girl
@@ -60,6 +62,7 @@ func token_selected(token, direction):
 		return
 
 	pending_tokens += 1
+	closeable = false
 	var inst_id = str(token.get_instance_id())
 
 	# use broccoli
@@ -88,10 +91,14 @@ func token_selected(token, direction):
 	if game.broccolis == 0 and pending_tokens == 0:
 		closing = true
 		print("no more broccolis")
+		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		game.event_layer.stop("broccoli")
+	elif pending_tokens == 0:
+		closeable = true
 
 
 func _on_clickable_area_gui_input(event):
 	if event.is_action_pressed("click") and pending_tokens == 0 and not closing:
 		closing = true
+		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		game.event_layer.stop("broccoli")

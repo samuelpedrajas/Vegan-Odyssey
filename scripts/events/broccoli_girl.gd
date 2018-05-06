@@ -43,6 +43,7 @@ var sequence = {
 
 var priority = 4
 var closeable = false
+var back_button = false
 
 var step = 0
 var broccoli_selection = false setget on_broccoli_selection
@@ -52,7 +53,6 @@ var ad_to_show = null
 
 func start():
 	broccoli_selection = "broccoli" in game.event_layer.current_events.keys()
-
 	# start first animation
 	next_step()
 

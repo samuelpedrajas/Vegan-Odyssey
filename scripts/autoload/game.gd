@@ -87,7 +87,9 @@ func reset_progress():
 
 
 func save_game():
-	savegame.open(cfg.SAVE_GAME_PATH, File.WRITE)
+	savegame.open_encrypted_with_pass(
+		cfg.SAVE_GAME_PATH, File.WRITE, OS.get_unique_id()
+	)
 	var game_status = {
 		'broccolis': broccolis,
 		'highest_max': highest_max,
@@ -102,7 +104,9 @@ func save_game():
 
 
 func load_game():
-	savegame.open("user://savegame.save", File.READ)
+	savegame.open_encrypted_with_pass(
+		cfg.SAVE_GAME_PATH, File.READ, OS.get_unique_id()
+	)
 	var info = parse_json(savegame.get_line())
 
 	self.highest_score = info['highest_score']

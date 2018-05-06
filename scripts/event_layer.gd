@@ -50,7 +50,7 @@ func stop_closeables():
 
 func closeable_event():
 	for event in current_events.values():
-		if event.closeable:
+		if event.back_button:
 			return true
 	return false
 

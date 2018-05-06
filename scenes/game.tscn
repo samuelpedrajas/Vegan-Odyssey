@@ -732,11 +732,13 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="dying_tokens" type="CanvasLayer" parent="." index="8"]
 
+pause_mode = 2
 layer = 5
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="tokens" type="Node2D" parent="dying_tokens" index="0"]
 
