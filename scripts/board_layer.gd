@@ -45,10 +45,17 @@ func move_tokens(direction):
 		movement_in_board = movement_in_board or movement_in_line
 
 	if movement_in_board:
+		# spawn new token
+		# 1/3 -> 2, 2/3 -> 1
+		var lvl = min(game.current_max, int(randi() % 3 == 1) + 1)
+		var t = spawn_token(null, lvl, true)
+		if t != null:
+			t.animation.play("spawn")
+
 		# 3 cases:
 		# - win
 		# - game over
-		# - new token (since there was movement)
+		# - new excuse
 		if game.check_win():
 			# $"/root".set_disable_input(true)
 			game.restart_game()
@@ -58,11 +65,6 @@ func move_tokens(direction):
 		elif false:
 			# debate here
 			pass
-		else:
-			# 1/3 -> 2, 2/3 -> 1
-			var lvl = min(game.current_max, int(randi() % 3 == 1) + 1)
-			var t = spawn_token(null, lvl, true)
-			t.animation.play("spawn")
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
