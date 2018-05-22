@@ -22,6 +22,7 @@ func _gui_input(event):
 		# if clicked, save the position
 		tap_start_position = event.position
 	elif event.is_action_released("click"):
+		print("RELEASED WHAT")
 		# if released, erase de position and check if we can make a move
 		var got_the_info = tap_start_position != null and event.position != null
 		if got_the_info:

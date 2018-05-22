@@ -88,7 +88,7 @@ func reset_progress():
 
 func save_game():
 	savegame.open_encrypted_with_pass(
-		cfg.SAVE_GAME_PATH, File.WRITE, OS.get_unique_id()
+		cfg.SAVE_GAME_PATH, File.WRITE, "OS.get_unique_id()"
 	)
 	var game_status = {
 		'broccolis': broccolis,
@@ -105,7 +105,7 @@ func save_game():
 
 func load_game():
 	savegame.open_encrypted_with_pass(
-		cfg.SAVE_GAME_PATH, File.READ, OS.get_unique_id()
+		cfg.SAVE_GAME_PATH, File.READ, "OS.get_unique_id()"
 	)
 	var info = parse_json(savegame.get_line())
 
