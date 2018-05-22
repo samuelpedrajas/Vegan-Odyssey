@@ -4,7 +4,7 @@ extends Node2D
 var current_events = {}
 onready var event_scene_dict = {
 	"broccoli": preload("res://scenes/events/broccoli_selection.tscn"),
-	"broccoli_girl": preload("res://scenes/events/broccoli_girl.tscn"),
+	"broccoli_duck": preload("res://scenes/events/broccoli_duck.tscn"),
 	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn")
 }
 
@@ -55,5 +55,5 @@ func closeable_event():
 	return false
 
 
-func _on_broccoli_girl_timer_timeout():
-	start("broccoli_girl")
+func _on_broccoli_duck_timer_timeout():
+	start("broccoli_duck")

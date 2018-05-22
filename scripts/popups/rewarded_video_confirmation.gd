@@ -1,11 +1,11 @@
 extends "popup.gd"
 
-var broccoli_girl
+var broccoli_duck
 
 
-func open(_broccoli_girl):
-	broccoli_girl = _broccoli_girl
-	var ad_to_show = broccoli_girl.ad_to_show
+func open(_broccoli_duck):
+	broccoli_duck = _broccoli_duck
+	var ad_to_show = broccoli_duck.ad_to_show
 	var plus = get_node("window/amount/" + str(ad_to_show.amount))
 	plus.show()
 	set_position(game.cfg.REWARDED_VIDEO_WINDOW_POS)
@@ -13,12 +13,12 @@ func open(_broccoli_girl):
 
 
 func close():
-	broccoli_girl.show()
+	broccoli_duck.show()
 	.close()
 
 
 func _on_ok_button_pressed():
-	game.event_layer.start("wait_for_rewarded_ad", broccoli_girl.ad_to_show)
+	game.event_layer.start("wait_for_rewarded_ad", broccoli_duck.ad_to_show)
 
 	game.sounds.play_audio("click")
 	game.popup_layer.close(true, true)

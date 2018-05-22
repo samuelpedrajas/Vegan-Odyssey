@@ -1,19 +1,5 @@
 extends CanvasLayer
 
-func _ready():
-	set_current_score(game.current_score)
-	set_highest_score(game.highest_score)
-
-
-### SETTERS ###
-
-func set_current_score(s):
-	$"hud/header/current_score/container_sprite/current_score".set_text(str(s))
-
-
-func set_highest_score(s):
-	$"hud/header/max_score/container_sprite/max_score".set_text(str(s))
-
 
 ### ON PRESSED ACTIONS ###
 

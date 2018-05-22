@@ -5,8 +5,6 @@ var savegame = File.new()
 # game scores
 var highest_max = 4  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1
-var highest_score = 0 setget _set_highest_score
-var current_score = 0 setget _set_current_score
 
 # items
 var broccolis = 3 setget _set_broccolis
@@ -47,8 +45,6 @@ func setup():
 
 
 func update_scores(token_level):
-	self.current_score += pow(2, token_level)
-	self.highest_score = highest_score if highest_score > current_score else current_score
 	self.current_max = token_level if token_level > current_max else current_max
 	self.highest_max = current_max if current_max > highest_max else highest_max
 
@@ -61,11 +57,9 @@ func restart_game(delete_progress=false):
 	yield(transition, 'animation_finished')
 
 	# update amounts
-	self.current_score = 0
 	self.current_max = 1
 	if delete_progress:
 		self.highest_max = cfg.MIN_HIGHEST_MAX
-		self.highest_score = 0
 	popup_layer.close_all()
 
 	board_layer.reset()
@@ -87,15 +81,13 @@ func reset_progress():
 
 
 func save_game():
-	savegame.open_encrypted_with_pass(
-		cfg.SAVE_GAME_PATH, File.WRITE, OS.get_unique_id()
+	savegame.open(
+		cfg.SAVE_GAME_PATH, File.WRITE
 	)
 	var game_status = {
 		'broccolis': broccolis,
 		'highest_max': highest_max,
-		'highest_score': highest_score,
 		'current_max': current_max,
-		'current_score': current_score,
 		'matrix': board_layer.save_info(),
 		'settings': settings.save_info()
 	}
@@ -104,14 +96,12 @@ func save_game():
 
 
 func load_game():
-	savegame.open_encrypted_with_pass(
-		cfg.SAVE_GAME_PATH, File.READ, OS.get_unique_id()
+	savegame.open(
+		cfg.SAVE_GAME_PATH, File.READ
 	)
 	var info = parse_json(savegame.get_line())
 
-	self.highest_score = info['highest_score']
 	self.highest_max = info['highest_max']
-	self.current_score = info['current_score']
 	self.current_max = info['current_max']
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
@@ -121,16 +111,6 @@ func load_game():
 
 
 ### SETTERS ###
-
-
-func _set_highest_score(v):
-	highest_score = v
-	hud_layer.set_highest_score(v)
-
-
-func _set_current_score(v):
-	current_score = v
-	hud_layer.set_current_score(v)
 
 
 func _set_broccolis(v):
