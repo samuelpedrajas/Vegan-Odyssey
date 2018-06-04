@@ -8,6 +8,14 @@ var step = 0
 
 var ad_to_show = null
 
+var rect_start = Vector2(150, 140)
+var rect_end = Vector2(830, 140)
+var dest = rect_end
+
+
+func _process(delta):
+	pass
+
 
 func start():
 	$timer.set_wait_time(game.cfg.DUCK_TIME)

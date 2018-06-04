@@ -28,7 +28,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="broccoli_duck" type="Node2D" groups=[
+[node name="broccoli_duck" type="Node2D" index="0" groups=[
 "event",
 ]]
 
@@ -44,7 +44,6 @@ autostart = false
 
 [node name="board" type="Sprite" parent="." index="1"]
 
-visible = false
 position = Vector2( 30, 460 )
 scale = Vector2( 1, 0.9 )
 texture = ExtResource( 2 )
@@ -54,11 +53,11 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="broccoli_duck" type="AnimatedSprite" parent="." index="2"]
 
-position = Vector2( 592, 343 )
+position = Vector2( 150, 140 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 10
+frame = 2
 playing = true
 flip_h = true
 _sections_unfolded = [ "Transform", "Z Index" ]
