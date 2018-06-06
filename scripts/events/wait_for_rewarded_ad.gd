@@ -1,7 +1,6 @@
 extends Node2D
 
 var priority = 6
-var closeable = false
 var back_button = false
 
 

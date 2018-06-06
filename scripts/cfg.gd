@@ -37,10 +37,10 @@ const SAVE_GAME_PATH = "user://savegame.save"
 # excuse info
 var EXCUSES = [
 	{
-		"token_sprite": preload("res://images/excuses/bacon.png"),
-		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
-		"path": "res://share/bacon.share",
-		"text": "Mmhh... Bacon"
+		"token_sprite": preload("res://images/excuses/lions.png"),
+		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
+		"path": "res://share/lions.share",
+		"text": "Lions eat meat"
 	},
 	{
 		"token_sprite": preload("res://images/excuses/proteins.png"),
@@ -49,22 +49,16 @@ var EXCUSES = [
 		"text": "Proteins"
 	},
 	{
-		"token_sprite": preload("res://images/excuses/caveman.png"),
-		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
-		"path": "res://share/caveman.share",
-		"text": "Caveman ate meat"
-	},
-	{
-		"token_sprite": preload("res://images/excuses/moral.png"),
-		"book_sprite": preload("res://images/excuse_pictures/moral.png"),
-		"path": "res://share/moral.share",
-		"text": "Morality is subjective"
-	},
-	{
 		"token_sprite": preload("res://images/excuses/plantshavefeelings.png"),
 		"book_sprite": preload("res://images/excuse_pictures/plantshavefeelings.png"),
 		"path": "res://share/plantshavefeelings.share",
 		"text": "Plants have feelings"
+	},
+	{
+		"token_sprite": preload("res://images/excuses/bacon.png"),
+		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
+		"path": "res://share/bacon.share",
+		"text": "Mmhh... Bacon"
 	},
 	{
 		"token_sprite": preload("res://images/excuses/desertedisland.png"),
@@ -73,16 +67,22 @@ var EXCUSES = [
 		"text": "Deserted island"
 	},
 	{
-		"token_sprite": preload("res://images/excuses/lions.png"),
-		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
-		"path": "res://share/lions.share",
-		"text": "Lions eat meat"
-	},
-	{
 		"token_sprite": preload("res://images/excuses/legal.png"),
 		"book_sprite": preload("res://images/excuse_pictures/legal.png"),
 		"path": "res://share/legal.share",
 		"text": "It's legal"
+	},
+	{
+		"token_sprite": preload("res://images/excuses/moral.png"),
+		"book_sprite": preload("res://images/excuse_pictures/moral.png"),
+		"path": "res://share/moral.share",
+		"text": "Morality is subjective"
+	},
+	{
+		"token_sprite": preload("res://images/excuses/caveman.png"),
+		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
+		"path": "res://share/caveman.share",
+		"text": "Caveman ate meat"
 	},
 	{
 		"token_sprite": preload("res://images/excuses/canine.png"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_duck.gd" type="Script" id=1]
 [ext_resource path="res://images/board_bg.png" type="Texture" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://images/events/duck/duck-12.png" type="Texture" id=15]
 [ext_resource path="res://images/events/duck/duck-13.png" type="Texture" id=16]
 [ext_resource path="res://images/events/duck/duck-14.png" type="Texture" id=17]
-[ext_resource path="res://images/events/duck/tap.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -28,10 +27,11 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="broccoli_duck" type="Node2D" index="0" groups=[
+[node name="broccoli_duck" type="Node2D" groups=[
 "event",
 ]]
 
+visible = false
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 
@@ -57,7 +57,6 @@ position = Vector2( 150, 140 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
 playing = true
 flip_h = true
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -81,11 +80,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_styles" ]
-
-[node name="tap_on_me" type="Sprite" parent="broccoli_duck" index="1"]
-
-position = Vector2( 388, 0 )
-texture = ExtResource( 18 )
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 

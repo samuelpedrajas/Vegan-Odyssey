@@ -2,7 +2,6 @@ extends Node2D
 
 
 var priority = 2
-var closeable = true
 var back_button = true
 
 var pending_tokens = 0
@@ -52,7 +51,7 @@ func token_selected(token, direction):
 		return
 
 	pending_tokens += 1
-	closeable = false
+	back_button = false
 	var inst_id = str(token.get_instance_id())
 
 	# use broccoli
@@ -84,7 +83,7 @@ func token_selected(token, direction):
 		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		game.event_layer.stop("broccoli")
 	elif pending_tokens == 0:
-		closeable = true
+		back_button = true
 
 
 func _on_clickable_area_gui_input(event):

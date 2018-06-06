@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scripts/cfg.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -21,14 +21,18 @@
 [ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=19]
 [ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=20]
 [ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=21]
-[ext_resource path="res://scripts/board_layer.gd" type="Script" id=22]
-[ext_resource path="res://images/board_bg.png" type="Texture" id=23]
-[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=24]
-[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=25]
-[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=26]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=27]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=28]
-[ext_resource path="res://scripts/input_handler.gd" type="Script" id=29]
+[ext_resource path="res://images/events/debate/dialog_empty.png" type="Texture" id=22]
+[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=24]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=25]
+[ext_resource path="res://scripts/board_layer.gd" type="Script" id=26]
+[ext_resource path="res://images/board_bg.png" type="Texture" id=27]
+[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=28]
+[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=29]
+[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=30]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=31]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=32]
+[ext_resource path="res://scripts/input_handler.gd" type="Script" id=33]
 
 [sub_resource type="GDScript" id=1]
 
@@ -55,7 +59,7 @@ func _ready():
 		$\"/root\".set_disable_input(false)
 "
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 size = 45
 use_mipmaps = true
@@ -63,7 +67,7 @@ use_filter = true
 font_data = ExtResource( 21 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 0.2
 loop = false
@@ -92,6 +96,14 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -20.0, 0.0 ]
 }
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 42
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 23 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="GDScript" id=5]
 
@@ -320,7 +332,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -360,6 +372,7 @@ _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility", "Z Index
 
 [node name="event_layer" type="Node2D" parent="." index="5"]
 
+editor/display_folded = true
 script = ExtResource( 8 )
 _sections_unfolded = [ "Pause" ]
 
@@ -384,6 +397,7 @@ script = ExtResource( 9 )
 
 [node name="lower_buttons" type="Container" parent="hud_layer/hud" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -523,7 +537,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -543,18 +557,139 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/used = SubResource( 4 )
+anims/used = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
-[node name="board_layer" type="CanvasLayer" parent="." index="7"]
+[node name="debate_layer" type="CanvasLayer" parent="." index="7"]
+
+layer = 4
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="debate" type="Container" parent="debate_layer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 540.0
+margin_top = 211.0
+margin_right = 540.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="dialog" type="Sprite" parent="debate_layer/debate" index="0"]
+
+position = Vector2( -73.3141, 7.00388 )
+scale = Vector2( 0.97677, 1.12355 )
+texture = ExtResource( 22 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="message2" type="Label" parent="debate_layer/debate/dialog" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -268.0
+margin_top = -94.0
+margin_right = 411.0
+margin_bottom = 179.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 0
+custom_constants/shadow_offset_y = 2
+text = "“Ciclo de la vida” es sólo un término que inventamos para referirnos al equilibrio que podemos ver en la naturaleza. No es ninguna ley escrita en piedra."
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="message1" type="Label" parent="debate_layer/debate/dialog" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -438.0
+margin_top = -180.0
+margin_right = 413.0
+margin_bottom = -118.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "¿Pero no es simplemente el ciclo de la vida?"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="girls" type="Container" parent="debate_layer/debate" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 81.0
+margin_right = 40.0
+margin_bottom = 121.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="laura" type="Sprite" parent="debate_layer/debate/girls" index="0"]
+
+position = Vector2( -411, 46 )
+texture = ExtResource( 24 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="lucy" type="Sprite" parent="debate_layer/debate/girls" index="1"]
+
+position = Vector2( 420, 41 )
+texture = ExtResource( 25 )
+
+[node name="board_layer" type="CanvasLayer" parent="." index="8"]
 
 layer = 3
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 22 )
+script = ExtResource( 26 )
 
 [node name="board" type="Node2D" parent="board_layer" index="0"]
 
@@ -563,9 +698,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="background" type="Sprite" parent="board_layer/board" index="0"]
 
-position = Vector2( 30, 460 )
-scale = Vector2( 1, 0.9 )
-texture = ExtResource( 23 )
+position = Vector2( 30, 459.756 )
+scale = Vector2( 1, 0.891882 )
+texture = ExtResource( 27 )
 centered = false
 offset = Vector2( -30, -30 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
@@ -574,7 +709,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 position = Vector2( 30, 460 )
 mode = 0
-tile_set = ExtResource( 24 )
+tile_set = ExtResource( 28 )
 cell_size = Vector2( 340, 340 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -597,7 +732,7 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 198, 627 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="dying_tokens" type="CanvasLayer" parent="." index="8"]
+[node name="dying_tokens" type="CanvasLayer" parent="." index="9"]
 
 pause_mode = 2
 layer = 5
@@ -612,7 +747,7 @@ _sections_unfolded = [ "Pause" ]
 position = Vector2( 198, 627 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="effects_layer" type="CanvasLayer" parent="." index="9"]
+[node name="effects_layer" type="CanvasLayer" parent="." index="10"]
 
 pause_mode = 2
 editor/display_folded = true
@@ -621,7 +756,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 25 )
+script = ExtResource( 29 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="rewarded_animation" type="Node2D" parent="effects_layer" index="0"]
@@ -642,7 +777,7 @@ blend_times = [  ]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 26 )
+texture = ExtResource( 30 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation" index="1"]
@@ -661,7 +796,7 @@ blend_times = [  ]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 26 )
+texture = ExtResource( 30 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus3" type="Node2D" parent="effects_layer/rewarded_animation" index="2"]
@@ -680,7 +815,7 @@ blend_times = [  ]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 26 )
+texture = ExtResource( 30 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="timer" type="Timer" parent="effects_layer/rewarded_animation" index="3"]
@@ -690,14 +825,14 @@ wait_time = 0.3
 one_shot = true
 autostart = false
 
-[node name="popup_layer" type="CanvasLayer" parent="." index="10"]
+[node name="popup_layer" type="CanvasLayer" parent="." index="11"]
 
 layer = 7
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 27 )
+script = ExtResource( 31 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="blur" type="Sprite" parent="popup_layer" index="0"]
@@ -705,11 +840,11 @@ _sections_unfolded = [ "Pause" ]
 visible = false
 modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
 material = SubResource( 10 )
-texture = ExtResource( 28 )
+texture = ExtResource( 32 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
 
-[node name="transition_layer" type="CanvasLayer" parent="." index="11"]
+[node name="transition_layer" type="CanvasLayer" parent="." index="12"]
 
 layer = 8
 offset = Vector2( 0, 0 )
@@ -721,10 +856,10 @@ _sections_unfolded = [ "Pause" ]
 [node name="black_screen" type="Sprite" parent="transition_layer" index="0"]
 
 modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 28 )
+texture = ExtResource( 32 )
 centered = false
 
-[node name="transition" type="AnimationPlayer" parent="." index="12"]
+[node name="transition" type="AnimationPlayer" parent="." index="13"]
 
 pause_mode = 2
 root_node = NodePath("..")
@@ -736,7 +871,7 @@ anims/close = SubResource( 11 )
 anims/open = SubResource( 12 )
 blend_times = [  ]
 
-[node name="input_handler" type="Control" parent="." index="13"]
+[node name="input_handler" type="Control" parent="." index="14"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -751,7 +886,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 29 )
+script = ExtResource( 33 )
 
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 

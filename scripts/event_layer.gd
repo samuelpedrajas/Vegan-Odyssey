@@ -44,7 +44,7 @@ func stop(event_name):
 func stop_closeables():
 	for event_name in current_events.keys():
 		var event = current_events[event_name]
-		if event.closeable:
+		if event.back_button:
 			stop(event_name)
 
 
