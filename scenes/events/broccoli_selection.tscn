@@ -54,7 +54,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="broccoli_selection" type="Node2D" index="0" groups=[
+[node name="broccoli_selection" type="Node2D" groups=[
 "event",
 ]]
 
