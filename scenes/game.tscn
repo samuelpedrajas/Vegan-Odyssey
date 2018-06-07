@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://scripts/cfg.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -24,12 +24,22 @@
 [ext_resource path="res://scripts/board_layer.gd" type="Script" id=22]
 [ext_resource path="res://images/board_bg.png" type="Texture" id=23]
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=24]
-[ext_resource path="res://scenes/events/debate.tscn" type="PackedScene" id=25]
-[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=26]
-[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=27]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=28]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=29]
-[ext_resource path="res://scripts/input_handler.gd" type="Script" id=30]
+[ext_resource path="res://images/events/debate/dialog.png" type="Texture" id=25]
+[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://scripts/debate_layer.gd" type="Script" id=27]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=28]
+[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=29]
+[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=30]
+[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=31]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=32]
+[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=33]
+[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=34]
+[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=35]
+[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=36]
+[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=37]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=38]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=39]
+[ext_resource path="res://scripts/input_handler.gd" type="Script" id=40]
 
 [sub_resource type="GDScript" id=1]
 
@@ -48,6 +58,8 @@ func _ready():
 		game.board_layer.spawn_token(null, 1, false)
 	else:
 		game.load_game()
+
+	$debate_layer.init(game.current_max)
 
 	# this flag is set in game_loader.gd
 	if open_offline_popup:
@@ -102,9 +114,123 @@ onready var tilemap = $tilemap
 onready var tokens = $tokens
 "
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="DynamicFont" id=5]
 
-resource_name = "plus1"
+size = 42
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 26 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "talking",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "talking",
+"speed": 3.0
+} ]
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "debate"
+length = 6.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../dialog_layer/message1:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("girls/laura:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "talking", "default" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("girls/laura:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("girls/lucy:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "default", "talking", "default" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("girls/lucy:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../dialog_layer/message2:percent_visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+
 length = 0.6
 loop = false
 step = 0.1
@@ -157,9 +283,8 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=10]
 
-resource_name = "plus1"
 length = 0.6
 loop = false
 step = 0.1
@@ -212,9 +337,8 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=11]
 
-resource_name = "plus1"
 length = 0.6
 loop = false
 step = 0.1
@@ -267,7 +391,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=12]
 
 code = "shader_type canvas_item;
 
@@ -279,13 +403,13 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=13]
 
 render_priority = 0
-shader = SubResource( 8 )
+shader = SubResource( 12 )
 shader_param/amount = 1.0
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=14]
 
 length = 0.4
 loop = false
@@ -303,7 +427,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=15]
 
 length = 0.4
 loop = false
@@ -608,6 +732,72 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
+[node name="dialog" type="Sprite" parent="dialog_layer" index="0"]
+
+position = Vector2( 460, 195 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="message1" type="Label" parent="dialog_layer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 870.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "But don’t lions eat meat?"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="message2" type="Label" parent="dialog_layer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 201.0
+margin_top = 104.0
+margin_right = 864.0
+margin_bottom = 372.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Well… yes. But in nature lions also commit atrocities like infanticide. What would you think if I picked any of these behaviors and said: “it’s fine, lions do it”?"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
 [node name="debate_layer" type="CanvasLayer" parent="." index="9"]
 
 layer = 3
@@ -615,8 +805,52 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 27 )
 
-[node name="debate" parent="debate_layer" index="0" instance=ExtResource( 25 )]
+[node name="girls" type="Container" parent="debate_layer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 332.0
+margin_right = 40.0
+margin_bottom = 372.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="laura" type="AnimatedSprite" parent="debate_layer/girls" index="0"]
+
+position = Vector2( 129, 5 )
+frames = SubResource( 6 )
+animation = "default"
+frame = 10
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="lucy" type="AnimatedSprite" parent="debate_layer/girls" index="1"]
+
+position = Vector2( 960, 0 )
+frames = SubResource( 7 )
+animation = "default"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="animation" type="AnimationPlayer" parent="debate_layer" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/debate = SubResource( 8 )
+blend_times = [  ]
 
 [node name="dying_tokens" type="CanvasLayer" parent="." index="10"]
 
@@ -642,7 +876,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 26 )
+script = ExtResource( 36 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="rewarded_animation" type="Node2D" parent="effects_layer" index="0"]
@@ -656,14 +890,14 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 5 )
+anims/plus1 = SubResource( 9 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/plus1" index="1"]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 27 )
+texture = ExtResource( 37 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation" index="1"]
@@ -675,14 +909,14 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 6 )
+anims/plus1 = SubResource( 10 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/plus2" index="1"]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 27 )
+texture = ExtResource( 37 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus3" type="Node2D" parent="effects_layer/rewarded_animation" index="2"]
@@ -694,14 +928,14 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 7 )
+anims/plus1 = SubResource( 11 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/plus3" index="1"]
 
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 27 )
+texture = ExtResource( 37 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="timer" type="Timer" parent="effects_layer/rewarded_animation" index="3"]
@@ -718,15 +952,15 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 28 )
+script = ExtResource( 38 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="blur" type="Sprite" parent="popup_layer" index="0"]
 
 visible = false
 modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
-material = SubResource( 9 )
-texture = ExtResource( 29 )
+material = SubResource( 13 )
+texture = ExtResource( 39 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
 
@@ -742,7 +976,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="black_screen" type="Sprite" parent="transition_layer" index="0"]
 
 modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 29 )
+texture = ExtResource( 39 )
 centered = false
 
 [node name="transition" type="AnimationPlayer" parent="." index="14"]
@@ -753,8 +987,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 10 )
-anims/open = SubResource( 11 )
+anims/close = SubResource( 14 )
+anims/open = SubResource( 15 )
 blend_times = [  ]
 
 [node name="input_handler" type="Control" parent="." index="15"]
@@ -772,7 +1006,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 30 )
+script = ExtResource( 40 )
 
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 

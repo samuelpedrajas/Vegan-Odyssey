@@ -43,7 +43,7 @@ func setup():
 	effects_layer = $"/root/stage/effects_layer"
 	cfg = $"/root/stage/cfg"
 	dying_tokens = $"/root/stage/dying_tokens"
-	debate_layer = $"/root/stage/debate_layer/debate"
+	debate_layer = $"/root/stage/debate_layer"
 
 
 func update_scores(token_level):
@@ -103,8 +103,9 @@ func load_game():
 	)
 	var info = parse_json(savegame.get_line())
 
+
 	self.highest_max = info['highest_max']
-	self.current_max = info['current_max']
+	current_max = info['current_max']
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
 	board_layer.load_info(info['matrix'])
@@ -121,8 +122,9 @@ func _set_broccolis(v):
 
 
 func _set_current_max(v):
+	if current_max != v:
+		debate_layer.update_text(v)
 	current_max = v
-	debate_layer.update_text(current_max)
 
 
 func secretly_set_broccolis(amount):
