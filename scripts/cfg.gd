@@ -4,7 +4,7 @@ const DEBUG_MODE = false
 const DEV_MODE = true
 const GOAL = 9
 
-const MIN_HIGHEST_MAX = 4
+const MIN_HIGHEST_MAX = 1
 
 # Directions available for input
 const DIRECTIONS = [
@@ -115,7 +115,7 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/canine.png"),
+		"token_sprite": preload("res://images/excuses/circleoflife.png"),
 		"book_sprite": preload("res://images/excuse_pictures/canine.png"),
 		"path": "res://share/canine.share",
 		"text": "Canine teeth",

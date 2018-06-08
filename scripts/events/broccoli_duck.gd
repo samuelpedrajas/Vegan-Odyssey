@@ -30,8 +30,3 @@ func _on_click_area_gui_input(event):
 
 func _on_animation_animation_finished(anim_name):
 	game.event_layer.stop("broccoli_duck")
-
-
-func _on_broccoli_duck_frame_changed():
-	if $broccoli_duck.get_animation() == "default" and ($broccoli_duck.get_frame() + 2) % 8 == 0:
-		game.sounds.play_audio("wing_flap")

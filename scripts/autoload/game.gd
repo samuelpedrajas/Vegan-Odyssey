@@ -3,7 +3,7 @@ extends Node
 var savegame = File.new()
 
 # game scores
-var highest_max = 4  # TODO: use cfg.MIN_HIGHEST_MAX
+var highest_max = 1  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1 setget _set_current_max
 
 # items

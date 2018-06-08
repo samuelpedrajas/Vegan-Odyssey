@@ -7,7 +7,7 @@ onready var message2 = dialog.get_node("message2")
 onready var laura = $"girls/laura"
 onready var lucy = $"girls/lucy"
 
-var current = 1
+var current = 0
 
 
 func init(i):
@@ -18,12 +18,8 @@ func init(i):
 	lucy.play("default")
 
 	current = i
-	if i <= 1:
-		message1.set_text("")
-		message2.set_text("")
-		return
 
-	var debate = game.cfg.EXCUSES[i - 2].debate
+	var debate = game.cfg.EXCUSES[i - 1].debate
 	message1.set_text(debate.question)
 	message2.set_text(debate.answer)
 	message1.set_percent_visible(1)
@@ -31,11 +27,12 @@ func init(i):
 
 
 func update_text(i):
-	if current == i or i <= 1:
+	if current == i:
 		init(i)
 		return
+
 	current = i
-	var debate = game.cfg.EXCUSES[i - 2].debate
+	var debate = game.cfg.EXCUSES[i - 1].debate
 
 	message1.set_percent_visible(0)
 	message2.set_percent_visible(0)
