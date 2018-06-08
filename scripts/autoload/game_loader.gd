@@ -8,7 +8,7 @@ var n_frame = 0
 var progress = 0
 var load_finished = false
 
-var admob_loaded = true
+var admob_loaded = false
 var admob_error = false
 
 var progress_bar

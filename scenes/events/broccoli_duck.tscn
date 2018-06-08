@@ -90,7 +90,7 @@ animations = [ {
 [sub_resource type="Animation" id=2]
 
 resource_name = "flying"
-length = 16.0
+length = 18.0
 loop = false
 step = 0.5
 tracks/0/type = "value"
@@ -124,10 +124,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 2, 14, 14.5, 16 ),
+"times": PoolRealArray( 0, 2.5, 3, 16, 16.5, 18 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1225, 1530 ), Vector2( 570, 1530 ), Vector2( 510, 1576 ), Vector2( 510, 1576 ), Vector2( 490, 1530 ), Vector2( -145, 1530 ) ]
+"values": [ Vector2( 1196, 1530 ), Vector2( 570, 1530 ), Vector2( 510, 1582 ), Vector2( 510, 1582 ), Vector2( 490, 1530 ), Vector2( -116, 1530 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("broccoli_duck:flip_h")
@@ -159,7 +159,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5, 2, 14, 14.5 ),
+"times": PoolRealArray( 0, 2.5, 3, 16, 16.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "default", "fly_to_stand", "stand", "stand_to_fly", "default" ]
@@ -184,12 +184,9 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="broccoli_duck" type="AnimatedSprite" parent="." index="1"]
 
-position = Vector2( 490, 1530 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 1196, 1530 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 14
-playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="click_area" type="Control" parent="broccoli_duck" index="0"]
