@@ -8,22 +8,17 @@ var step = 0
 
 var ad_to_show = null
 
-var rect_start = Vector2(150, 140)
-var rect_end = Vector2(830, 140)
-var dest = rect_end
-
-
-func _process(delta):
-	pass
-
 
 func start():
-	$timer.set_wait_time(game.cfg.DUCK_TIME)
-	$timer.start()
+	$animation.play("flying")
 
 
 func stop():
 	queue_free()
+
+
+func quack():
+	game.sounds.play_audio("quack")
 
 
 func _on_click_area_gui_input(event):
@@ -32,8 +27,11 @@ func _on_click_area_gui_input(event):
 			# set how much broccoli this girl will offer
 			ad_to_show = admob.get_rewarded_ad_info()
 		game.popup_layer.open("rewarded_video_confirmation", self)
-		hide()
 
-
-func _on_timer_timeout():
+func _on_animation_animation_finished(anim_name):
 	game.event_layer.stop("broccoli_duck")
+
+
+func _on_broccoli_duck_frame_changed():
+	if ($broccoli_duck.get_frame() + 2) % 8 == 0:
+		game.sounds.play_audio("wing_flap")

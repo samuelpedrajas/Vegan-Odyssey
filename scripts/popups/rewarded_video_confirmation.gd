@@ -13,7 +13,6 @@ func open(_broccoli_duck):
 
 
 func close():
-	broccoli_duck.show()
 	.close()
 
 

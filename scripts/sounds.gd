@@ -1,13 +1,7 @@
-extends AudioStreamPlayer
+extends Node2D
 
 
-var library = {
-	"click": preload("res://audio/click.wav"),
-	"merge": preload("res://audio/merge.wav"),
-	"bubble": preload("res://audio/bubble.wav"),
-	"boom": preload("res://audio/boom.wav")
-}
-
+var silenced = false
 
 func _ready():
 	game.settings.connect("sound_settings_changed", self, "update_settings")
@@ -15,12 +9,25 @@ func _ready():
 
 
 func play_audio(name):
-	set_stream(library[name])
-	play()
+	if silenced:
+		return
+
+	if name == "click":
+		$click.play()
+	elif name == "merge":
+		$merge.play()
+	elif name == "bubble":
+		$bubble.play()
+	elif name == "boom":
+		$boom.play()
+	elif name == "quack":
+		$quack.play()
+	elif name == "wing_flap":
+		$wing_flap.play()
 
 
 func update_settings():
 	if not game.settings.sound_on:
-		self.bus = "Silence"
+		silenced = true
 	else:
-		self.bus = "Master"
+		silenced = false
