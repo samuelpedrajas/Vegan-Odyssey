@@ -723,7 +723,7 @@ script = ExtResource( 26 )
 
 [node name="board" type="Node2D" parent="board_layer" index="0"]
 
-position = Vector2( 0, -29 )
+position = Vector2( 0, 2 )
 script = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
@@ -850,9 +850,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 303.0
+margin_top = 335.0
 margin_right = 40.0
-margin_bottom = 343.0
+margin_bottom = 375.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
