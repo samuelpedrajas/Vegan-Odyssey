@@ -449,7 +449,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
