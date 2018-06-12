@@ -21,11 +21,6 @@ func open(_excuse_index):
 	.open()
 
 
-func _on_ok_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
-
-
 func _on_cancel_button_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
@@ -48,3 +43,8 @@ func _on_share_pressed():
 			"Play Vegan Oddysey for iOS and Android.",
 			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
 		)
+
+
+func _on_exit_button_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
