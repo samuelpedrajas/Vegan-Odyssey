@@ -2,18 +2,18 @@
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_drawing.gd" type="Script" id=2]
-[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=4]
-[ext_resource path="res://images/popups/excuse_drawing_bg.png" type="Texture" id=5]
-[ext_resource path="res://images/excuse_pictures/bacon.png" type="Texture" id=6]
-[ext_resource path="res://images/popups/share.png" type="Texture" id=7]
-[ext_resource path="res://images/popups/share_pressed.png" type="Texture" id=8]
-[ext_resource path="res://images/popups/left.png" type="Texture" id=9]
-[ext_resource path="res://images/popups/left_pressed.png" type="Texture" id=10]
-[ext_resource path="res://images/popups/left_blocked.png" type="Texture" id=11]
-[ext_resource path="res://images/popups/right.png" type="Texture" id=12]
-[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=13]
-[ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=14]
+[ext_resource path="res://images/popups/excuse_drawing_bg.png" type="Texture" id=3]
+[ext_resource path="res://images/excuse_pictures/bacon.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/share.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/share_pressed.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/left.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/left_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/left_blocked.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/right.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=11]
+[ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=12]
+[ext_resource path="res://images/popups/close_window.png" type="Texture" id=13]
+[ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=14]
 
 [node name="excuse_drawing" index="0" instance=ExtResource( 1 )]
 
@@ -23,32 +23,7 @@ script = ExtResource( 2 )
 
 modulate = Color( 1, 1, 1, 1 )
 
-[node name="exit_button" type="TextureButton" parent="window" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -75.0
-margin_top = 367.0
-margin_right = 75.0
-margin_bottom = 517.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures" ]
-
-[node name="non_clickable_space" parent="window" index="1"]
+[node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -535.0
 margin_top = -544.0
@@ -56,17 +31,17 @@ margin_right = 535.0
 margin_bottom = 544.0
 _sections_unfolded = [ "Rect" ]
 
-[node name="background" parent="window" index="2"]
+[node name="background" parent="window" index="1"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="excuse_image" type="Sprite" parent="window" index="3"]
+[node name="excuse_image" type="Sprite" parent="window" index="2"]
 
 position = Vector2( 0, -102.556 )
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 
-[node name="share" type="TextureButton" parent="window" index="4"]
+[node name="share" type="TextureButton" parent="window" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -87,11 +62,11 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="left" type="TextureButton" parent="window" index="5"]
+[node name="left" type="TextureButton" parent="window" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -112,20 +87,20 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_disabled = ExtResource( 11 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="right" type="TextureButton" parent="window" index="6"]
+[node name="right" type="TextureButton" parent="window" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 105.0
+margin_left = 115.0
 margin_top = 408.0
-margin_right = 247.0
+margin_right = 257.0
 margin_bottom = 550.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -138,13 +113,38 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_disabled = ExtResource( 14 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_disabled = ExtResource( 12 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
+[node name="exit_button" type="TextureButton" parent="window" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 377.0
+margin_top = -711.0
+margin_right = 527.0
+margin_bottom = -524.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="window/share" to="." method="_on_share_pressed"]
+
+[connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
 
 
