@@ -4,11 +4,11 @@ extends Node2D
 onready var animation = $"animation"
 
 
-func close():
+func close(anim="close_window"):
 	animation.play("close_window")
 	yield(animation, "animation_finished")
 	queue_free()
 
 
-func open():
-	animation.play("open_window")
+func open(anim="open_window"):
+	animation.play(anim)

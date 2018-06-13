@@ -29,4 +29,8 @@ func setup(excuse_index):
 
 func open(excuse_index):
 	setup(excuse_index)
-	.open()
+	.open("open_subpopup")
+
+
+func close():
+	.close("close_subpopup")

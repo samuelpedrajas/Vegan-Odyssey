@@ -34,3 +34,7 @@ func _on_share_pressed():
 func _on_exit_button_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
+
+
+func _on_input_area_gui_input(ev):
+	pass # replace with function body
