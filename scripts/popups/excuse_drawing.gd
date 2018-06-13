@@ -2,7 +2,7 @@ extends "popup.gd"
 
 
 var share = null
-var excuse_index
+var subpopup = preload("res://scenes/popups/excuse_subpopup.tscn")
 
 
 func _ready():
@@ -11,40 +11,22 @@ func _ready():
 		share = Engine.get_singleton("GodotShare")
 
 
-func open(_excuse_index):
-	excuse_index = _excuse_index
-	var image_node = $"window/excuse_image"
-	var excuse_sprite = game.cfg.EXCUSES[excuse_index - 1]["book_sprite"]
-	image_node.set_texture(excuse_sprite)
-	set_position(game.cfg.EXCUSE_WINDOW_POS)
+func setup(excuse_index):
+	$"window/actual".setup(excuse_index, game.cfg.EXCUSE_WINDOW_POS)
 
+	if excuse_index > 1:
+		$"window/prev".setup(excuse_index - 1, game.cfg.EXCUSE_WINDOW_POS + Vector2(-1080, 0))
+		$"window/next".show()
+	else:
+		$"window/prev".hide()
+
+	if excuse_index < 9:
+		$"window/next".setup(excuse_index + 1, game.cfg.EXCUSE_WINDOW_POS + Vector2(1080, 0))
+		$"window/next".show()
+	else:
+		$"window/next".hide()
+
+
+func open(excuse_index):
+	setup(excuse_index)
 	.open()
-
-
-func _on_cancel_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
-
-
-func _on_share_pressed():
-	# if share was found, use it
-	if share != null:
-		var from_file = game.cfg.EXCUSES[excuse_index - 1]["path"]
-		var to_file = "user://excuse.png"
-
-		# copy file
-		var dir = Directory.new()
-		dir.copy(from_file, to_file)
-
-		yield(get_tree(), "idle_frame")
-		share.sharePic(
-			OS.get_user_data_dir() + "/excuse.png",
-			"Vegan Oddysey",
-			"Play Vegan Oddysey for iOS and Android.",
-			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
-		)
-
-
-func _on_exit_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
