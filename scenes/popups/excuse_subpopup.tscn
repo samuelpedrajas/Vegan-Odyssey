@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/popups/excuse_subpopup.gd" type="Script" id=1]
 [ext_resource path="res://images/popups/excuse_drawing_bg.png" type="Texture" id=2]
@@ -9,12 +9,10 @@
 [ext_resource path="res://images/popups/share_pressed.png" type="Texture" id=7]
 [ext_resource path="res://images/popups/left.png" type="Texture" id=8]
 [ext_resource path="res://images/popups/left_pressed.png" type="Texture" id=9]
-[ext_resource path="res://images/popups/left_blocked.png" type="Texture" id=10]
-[ext_resource path="res://images/popups/right.png" type="Texture" id=11]
-[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=12]
-[ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=13]
+[ext_resource path="res://images/popups/right.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=11]
 
-[node name="excuse_subpopup" type="Node2D"]
+[node name="excuse_subpopup" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -28,9 +26,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -535.0
+margin_left = -610.0
 margin_top = -650.0
-margin_right = 535.0
+margin_right = 610.0
 margin_bottom = 650.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -70,82 +68,47 @@ _sections_unfolded = [ "Rect", "Textures" ]
 position = Vector2( 0, -102.556 )
 texture = ExtResource( 5 )
 
-[node name="share" type="TextureButton" parent="." index="4"]
+[node name="share" type="TouchScreenButton" parent="." index="4"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -82.0
-margin_top = 398.0
-margin_right = 83.0
-margin_bottom = 562.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-_sections_unfolded = [ "Rect", "Textures" ]
+position = Vector2( -82, 402 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Rect", "Textures", "Transform" ]
 
-[node name="left" type="TextureButton" parent="." index="5"]
+[node name="left" type="TouchScreenButton" parent="." index="5"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -247.0
-margin_top = 408.0
-margin_right = -104.0
-margin_bottom = 550.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_disabled = ExtResource( 10 )
-_sections_unfolded = [ "Rect", "Textures" ]
+position = Vector2( -247, 408 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Rect", "Textures", "Transform" ]
 
-[node name="right" type="TextureButton" parent="." index="6"]
+[node name="right" type="TouchScreenButton" parent="." index="6"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 115.0
-margin_top = 408.0
-margin_right = 257.0
-margin_bottom = 550.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_disabled = ExtResource( 13 )
-_sections_unfolded = [ "Rect", "Textures" ]
+position = Vector2( 115, 408 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 11 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Rect", "Textures", "Transform" ]
 
 [node name="input_area" type="Control" parent="." index="7"]
 
@@ -163,10 +126,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
 
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
 
 [connection signal="pressed" from="share" to="." method="_on_share_pressed"]
+
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 
 [connection signal="gui_input" from="input_area" to="." method="_on_input_area_gui_input"]
 

@@ -33,7 +33,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[node name="broccoli_selection" type="Node2D" index="0" groups=[
+[node name="broccoli_selection" type="Node2D" groups=[
 "event",
 ]]
 
