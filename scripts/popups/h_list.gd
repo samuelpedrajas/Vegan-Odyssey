@@ -38,7 +38,7 @@ func show_all():
 		popup.show()
 
 
-func goto(n):
+func goto(n, sound=false):
 	if not blocked or n > game.highest_max:
 		return
 
@@ -49,6 +49,9 @@ func goto(n):
 	var direction = (n - actual_excuse)
 	if actual_excuse + direction < 1 or actual_excuse + direction > 9:
 		return
+
+	if sound:
+		game.sounds.play_audio("click")
 
 	var from_idx = fposmod(actual_excuse - direction - 1, 9) + 1
 	var to_idx = fposmod(n + direction - 1, 9) + 1
@@ -61,12 +64,12 @@ func goto(n):
 	popup.setup(to_idx, (to_idx - init_excuse) * Vector2(1080, 0))
 
 
-func goto_next():
-	goto(actual_excuse + 1)
+func goto_next(sound=false):
+	goto(actual_excuse + 1, sound)
 
 
-func goto_prev():
-	goto(actual_excuse - 1)
+func goto_prev(sound=false):
+	goto(actual_excuse - 1, sound)
 
 
 func swift(first, second):

@@ -73,8 +73,8 @@ func _on_input_area_gui_input(event):
 
 
 func _on_left_pressed():
-	get_parent().goto_prev()
+	get_parent().goto_prev(true)
 
 
 func _on_right_pressed():
-	get_parent().goto_next()
+	get_parent().goto_next(true)
