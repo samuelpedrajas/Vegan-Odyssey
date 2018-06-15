@@ -39,7 +39,7 @@ func show_all():
 
 
 func goto(n):
-	if not blocked:
+	if not blocked or n > game.highest_max:
 		return
 
 	starting_position = position

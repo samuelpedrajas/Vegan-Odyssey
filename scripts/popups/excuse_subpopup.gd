@@ -13,6 +13,25 @@ func setup(_excuse_index, pos):
 	$excuse_image.set_texture(excuse_sprite)
 	set_position(pos)
 
+	# hide it by placing it under the viewport
+	if game.highest_max < excuse_index:
+		position.y = 1920
+	else:
+		position.y = 0
+
+	# hide or show blocked and unblocked buttons
+	$"left/left".modulate.a = 1
+	$"left/left_blocked".hide()
+	$"right/right".modulate.a = 1
+	$"right/right_blocked".hide()
+	if excuse_index == 1:
+		$"left/left".modulate.a = 0
+		$"left/left_blocked".show()
+	if excuse_index == 9 or excuse_index == game.highest_max:
+		$"right/right".modulate.a = 0
+		$"right/right_blocked".show()
+
+
 
 func _on_share_pressed():
 	if not get_parent().blocked:
