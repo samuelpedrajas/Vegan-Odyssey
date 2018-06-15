@@ -178,11 +178,11 @@ _sections_unfolded = [ "Rect" ]
 
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
 
-[connection signal="pressed" from="share" to="." method="_on_share_pressed"]
+[connection signal="released" from="share" to="." method="_on_share_released"]
 
-[connection signal="pressed" from="left/left" to="." method="_on_left_pressed"]
+[connection signal="released" from="left/left" to="." method="_on_left_released"]
 
-[connection signal="pressed" from="right/right" to="." method="_on_right_pressed"]
+[connection signal="released" from="right/right" to="." method="_on_right_released"]
 
 [connection signal="gui_input" from="input_area" to="." method="_on_input_area_gui_input"]
 

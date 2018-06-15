@@ -33,9 +33,11 @@ func setup(_excuse_index, pos):
 
 
 
-func _on_share_pressed():
-	if not get_parent().blocked:
+func _on_share_released():
+	if not get_parent().blocked or not check_pressed($share):
 		return
+
+	game.sounds.play_audio("click")
 
 	var share = get_parent().get_parent().get_parent().share
 	if share != null:
@@ -72,9 +74,21 @@ func _on_input_area_gui_input(event):
 		get_parent().swift(first_pos, event.position)
 
 
-func _on_left_pressed():
-	get_parent().goto_prev(true)
+func check_pressed(btn):
+	var mouse_pos = get_viewport().get_mouse_position()
+	var upper_left = btn.get_global_position()
+	var lower_right = upper_left + btn.get_texture().get_size()
+	return (
+		mouse_pos.x > upper_left.x and mouse_pos.x < lower_right.x and
+		mouse_pos.y > upper_left.y and mouse_pos.y < lower_right.y
+	)
 
 
-func _on_right_pressed():
-	get_parent().goto_next(true)
+func _on_left_released():
+	if check_pressed($"left/left"):
+		get_parent().goto_prev(true)
+
+
+func _on_right_released():
+	if check_pressed($"right/right"):
+		get_parent().goto_next(true)
