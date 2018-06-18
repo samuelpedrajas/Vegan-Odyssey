@@ -24,6 +24,8 @@ var settings
 var dying_tokens
 var cfg
 
+var duck_counter = 0
+
 
 func _ready():
 	# prevent quitting using back button
