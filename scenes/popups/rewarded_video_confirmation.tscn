@@ -230,6 +230,23 @@ playback_speed = 1.0
 anims/duck = SubResource( 3 )
 blend_times = [  ]
 
+[node name="non_clickable" type="Control" parent="window/broccoli_duck" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -65.0
+margin_top = -78.0
+margin_right = 106.0
+margin_bottom = 118.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
 [node name="buttons" type="Container" parent="window" index="3"]
 
 anchor_left = 0.0
