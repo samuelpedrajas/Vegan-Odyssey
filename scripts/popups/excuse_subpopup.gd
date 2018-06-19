@@ -11,6 +11,7 @@ func setup(_excuse_index, pos):
 	excuse_index = _excuse_index
 	var excuse_sprite = game.cfg.EXCUSES[excuse_index - 1]["book_sprite"]
 	$excuse_image.set_texture(excuse_sprite)
+	$"excuse_image/number".set_text(str(excuse_index))
 	set_position(pos)
 
 	# hide it by placing it under the viewport
@@ -55,11 +56,6 @@ func _on_share_released():
 			"Play Vegan Oddysey for iOS and Android.",
 			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
 		)
-
-
-func _on_exit_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
 
 
 func _on_input_area_gui_input(event):
