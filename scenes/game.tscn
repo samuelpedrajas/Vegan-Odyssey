@@ -58,7 +58,9 @@ func _enter_tree():
 
 
 func _ready():
-	if !game.savegame.file_exists($cfg.SAVE_GAME_PATH):
+	if game.cfg.DEBUG_MODE:
+		game.board_layer.debug_func()
+	elif !game.savegame.file_exists($cfg.SAVE_GAME_PATH):
 		game.board_layer.spawn_token(null, 1, false)
 	else:
 		game.load_game()

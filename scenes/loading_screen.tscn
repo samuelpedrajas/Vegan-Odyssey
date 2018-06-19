@@ -47,7 +47,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="loading_screen" type="Node2D"]
+[node name="loading_screen" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

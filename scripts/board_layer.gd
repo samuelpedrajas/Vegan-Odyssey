@@ -13,9 +13,6 @@ onready var board = $board
 
 
 func _ready():
-	if game.cfg.DEBUG_MODE:
-		_debug_func()
-
 	# only needed once
 	_set_direction_pivots()
 
@@ -201,13 +198,11 @@ func reset():
 ########## DEBUG FUNCTIONS ##########
 
 
-func _debug_func():
+func debug_func():
 	var lvl = 1
 	for i in range(0, 3):
 		for j in range(0, 3):
-			var t = token.instance()
-			add_child(t)
-			t.setup(board.tilemap.map_to_world(Vector2(j, i)), Vector2(j, i), lvl)
+			spawn_token(Vector2(i, j), lvl, false)
 			lvl += 1
 
 

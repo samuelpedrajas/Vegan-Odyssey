@@ -1,7 +1,7 @@
 extends Node
 
 const DEBUG_MODE = false
-const DEV_MODE = true
+const DEV_MODE = false
 const GOAL = 9
 
 const MIN_HIGHEST_MAX = 1
@@ -35,23 +35,13 @@ const SAVE_GAME_PATH = "user://savegame.save"
 # excuse info
 var EXCUSES = [
 	{
-		"token_sprite": preload("res://images/excuses/lions.png"),
-		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
-		"path": "res://share/lions.share",
-		"text": "Lions eat meat",
+		"token_sprite": preload("res://images/excuses/desertedisland.png"),
+		"book_sprite": preload("res://images/excuse_pictures/desertedisland.png"),
+		"path": "res://share/desertedisland.share",
+		"text": "Deserted island",
 		"debate": {
-			"question": "But don’t lions eat meat?",
-			"answer": "Well… yes. But in nature lions also commit atrocities like infanticide. What would you think if I picked any of these behaviors and said: “it’s fine, lions do it”?",
-		}
-	},
-	{
-		"token_sprite": preload("res://images/excuses/proteins.png"),
-		"book_sprite": preload("res://images/excuse_pictures/proteins.png"),
-		"path": "res://share/proteins.share",
-		"text": "Proteins",
-		"debate": {
-			"question": "But don’t we need animal proteins?",
-			"answer": "Whole grains, vegetables, and beans provide more than enough protein to be healthy. It’s very difficult to be protein-deficient if you get all calories you need.",
+			"question": "What if you were in a deserted island?",
+			"answer": "And what if you were in a civilization full of cruelty free options? You can’t justify your everyday actions on “what would you do” in some extreme situation.",
 		}
 	},
 	{
@@ -65,6 +55,26 @@ var EXCUSES = [
 		}
 	},
 	{
+		"token_sprite": preload("res://images/excuses/proteins.png"),
+		"book_sprite": preload("res://images/excuse_pictures/proteins.png"),
+		"path": "res://share/proteins.share",
+		"text": "Proteins",
+		"debate": {
+			"question": "But don’t we need animal proteins?",
+			"answer": "Whole grains, vegetables, and beans provide more than enough protein to be healthy. It’s very difficult to be protein-deficient if you get all calories you need.",
+		}
+	},
+	{
+		"token_sprite": preload("res://images/excuses/circleoflife.png"),
+		"book_sprite": preload("res://images/excuse_pictures/canine.png"),
+		"path": "res://share/canine.share",
+		"text": "Canine teeth",
+		"debate": {
+			"question": "But isn’t it how the circle of life works?",
+			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",
+		}
+	},
+	{
 		"token_sprite": preload("res://images/excuses/bacon.png"),
 		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
 		"path": "res://share/bacon.share",
@@ -75,13 +85,23 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/desertedisland.png"),
-		"book_sprite": preload("res://images/excuse_pictures/desertedisland.png"),
-		"path": "res://share/desertedisland.share",
-		"text": "Deserted island",
+		"token_sprite": preload("res://images/excuses/lions.png"),
+		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
+		"path": "res://share/lions.share",
+		"text": "Lions eat meat",
 		"debate": {
-			"question": "What if you were in a deserted island?",
-			"answer": "And what if you were in a civilization full of cruelty free options? You can’t justify your everyday actions on “what would you do” in some extreme situation.",
+			"question": "But don’t lions eat meat?",
+			"answer": "Well… yes. But in nature lions also commit atrocities like infanticide. What would you think if I picked any of these behaviors and said: “it’s fine, lions do it”?",
+		}
+	},
+	{
+		"token_sprite": preload("res://images/excuses/caveman.png"),
+		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
+		"path": "res://share/caveman.share",
+		"text": "Caveman ate meat",
+		"debate": {
+			"question": "I eat meat because cavemen ate meat.",
+			"answer": "Ha! Are you really going to justify your actions on “what would cavemen do”? Are you doing this in the rest of your life decisions? Why use this for nutrition?",
 		}
 	},
 	{
@@ -102,26 +122,6 @@ var EXCUSES = [
 		"debate": {
 			"question": "Morality is subjective. I’ve got my truth.",
 			"answer": "That sounds kind of dangerous, doesn’t it? You could literally justify any behavior by saying that. Animals want to live, their perspective also matters.",
-		}
-	},
-	{
-		"token_sprite": preload("res://images/excuses/caveman.png"),
-		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
-		"path": "res://share/caveman.share",
-		"text": "Caveman ate meat",
-		"debate": {
-			"question": "I eat meat because cavemen ate meat.",
-			"answer": "Ha! Are you really going to justify your actions on “what would cavemen do”? Are you doing this in the rest of your life decisions? Why use this for nutrition?",
-		}
-	},
-	{
-		"token_sprite": preload("res://images/excuses/circleoflife.png"),
-		"book_sprite": preload("res://images/excuse_pictures/canine.png"),
-		"path": "res://share/canine.share",
-		"text": "Canine teeth",
-		"debate": {
-			"question": "But isn’t it how the circle of life works?",
-			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",
 		}
 	}
 ]
