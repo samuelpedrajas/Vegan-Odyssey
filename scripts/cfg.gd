@@ -66,9 +66,9 @@ var EXCUSES = [
 	},
 	{
 		"token_sprite": preload("res://images/excuses/circleoflife.png"),
-		"book_sprite": preload("res://images/excuse_pictures/canine.png"),
-		"path": "res://share/canine.share",
-		"text": "Canine teeth",
+		"book_sprite": preload("res://images/excuse_pictures/circleoflife.png"),
+		"path": "res://share/circleoflife.share",
+		"text": "Circle Of Life",
 		"debate": {
 			"question": "But isn’t it how the circle of life works?",
 			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",

@@ -204,6 +204,7 @@ func debug_func():
 		for j in range(0, 3):
 			spawn_token(Vector2(i, j), lvl, false)
 			lvl += 1
+	game.highest_max = 9
 
 
 func _print_matrix():
