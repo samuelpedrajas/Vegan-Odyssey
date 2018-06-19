@@ -85,9 +85,16 @@ func reset_progress():
 
 
 func save_game():
-	savegame.open(
-		cfg.SAVE_GAME_PATH, File.WRITE
-	)
+	if OS.get_name() == "X11":
+		savegame.open(
+			cfg.SAVE_GAME_PATH, File.WRITE
+		)
+	else:
+		print("Saving encrypted")
+		savegame.open_encrypted_with_pass(
+			cfg.SAVE_GAME_PATH, File.WRITE, OS.get_unique_id()
+		)
+
 	var game_status = {
 		'broccolis': broccolis,
 		'highest_max': highest_max,
@@ -100,11 +107,17 @@ func save_game():
 
 
 func load_game():
-	savegame.open(
-		cfg.SAVE_GAME_PATH, File.READ
-	)
-	var info = parse_json(savegame.get_line())
+	if OS.get_name() == "X11":
+		savegame.open(
+			cfg.SAVE_GAME_PATH, File.READ
+		)
+	else:
+		print("Loading encrypted")
+		savegame.open_encrypted_with_pass(
+			cfg.SAVE_GAME_PATH, File.READ, OS.get_unique_id()
+		)
 
+	var info = parse_json(savegame.get_line())
 
 	self.highest_max = info['highest_max']
 	current_max = info['current_max']

@@ -16,6 +16,7 @@ var snail
 
 
 func goto_scene(path, _progress_bar):
+	admob_loaded = OS.get_name() == "X11"
 	admob.connect("banner_loaded", self, "on_ad_loaded")
 	admob.connect("banner_network_error", self, "on_network_error")
 	progress_bar = _progress_bar
