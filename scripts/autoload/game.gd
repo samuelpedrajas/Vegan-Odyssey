@@ -26,6 +26,17 @@ var cfg
 
 var duck_counter = 0
 var revived = false
+var seen_excuses = [
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false},
+	{"picture_seen": false, "debate_seen": false}
+]
 
 
 func _ready():
@@ -103,7 +114,8 @@ func save_game():
 		'current_max': current_max,
 		'matrix': board_layer.save_info(),
 		'settings': settings.save_info(),
-		'revived': revived
+		'revived': revived,
+		'seen_excuses': to_json(seen_excuses)
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -128,6 +140,7 @@ func load_game():
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
 	board_layer.load_info(info['matrix'])
+	seen_excuses = parse_json(info['seen_excuses'])
 
 	savegame.close()
 
