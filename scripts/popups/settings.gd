@@ -1,6 +1,9 @@
 extends "popup.gd"
 
 
+var back_button = true
+
+
 func close():
 	game.save_game()
 	.close()

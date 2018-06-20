@@ -1,5 +1,7 @@
 extends "popup.gd"
 
+
+var back_button = true
 var broccoli_duck
 
 

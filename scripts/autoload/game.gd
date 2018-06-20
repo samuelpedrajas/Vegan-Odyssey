@@ -25,6 +25,7 @@ var dying_tokens
 var cfg
 
 var duck_counter = 0
+var revived = false
 
 
 func _ready():
@@ -61,6 +62,7 @@ func restart_game(delete_progress=false):
 	yield(transition, 'animation_finished')
 
 	# update amounts
+	revived = false
 	self.current_max = 1
 	if delete_progress:
 		self.highest_max = cfg.MIN_HIGHEST_MAX
@@ -100,7 +102,8 @@ func save_game():
 		'highest_max': highest_max,
 		'current_max': current_max,
 		'matrix': board_layer.save_info(),
-		'settings': settings.save_info()
+		'settings': settings.save_info(),
+		'revived': revived
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -121,6 +124,7 @@ func load_game():
 
 	self.highest_max = info['highest_max']
 	current_max = info['current_max']
+	revived = info['revived']
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
 	board_layer.load_info(info['matrix'])
@@ -162,20 +166,15 @@ func win():
 	restart_game()
 
 
-func game_over():
-	print("Game over")
-	restart_game()
-
-
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
 		if $"/root".is_input_disabled():
 			return
 
 		sounds.play_audio("click")
-		if not popup_layer.popup_stack.empty():
+		if popup_layer.closeable():
 			popup_layer.close()
 		elif event_layer.closeable_event():
 			event_layer.stop_closeables()
-		else:
+		elif popup_layer.popup_stack.empty():
 			popup_layer.open("exit_confirmation")

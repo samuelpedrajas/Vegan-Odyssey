@@ -1,6 +1,9 @@
 extends "popup.gd"
 
 
+var back_button = true
+
+
 func open():
 	set_position(game.cfg.RESET_WINDOW_POS)
 	.open()

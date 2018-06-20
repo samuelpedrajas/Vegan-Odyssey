@@ -21,7 +21,10 @@ func start(ad_to_show):
 
 
 func stop():
-	get_tree().set_pause(false)
+	if game.popup_layer.popup_exists("game_over"):
+		game.popup_layer.popup_stack.back().show()
+	elif game.popup_layer.popup_stack.empty():
+		get_tree().set_pause(false)
 	queue_free()
 
 
@@ -67,7 +70,11 @@ func on_rewarded_ad_closed():
 func on_rewarded(amount):
 	game.secretly_set_broccolis(game.broccolis + amount)
 	game.save_game()
-	game.event_layer.stop("broccoli_duck")
+	if game.popup_layer.popup_exists("game_over"):
+		game.popup_layer.close(true, true)
+		game.revived = true
+	else:
+		game.event_layer.stop("broccoli_duck")
 	game.effects_layer.play_rewarded_effect(amount)
 
 

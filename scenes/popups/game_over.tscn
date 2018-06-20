@@ -1,0 +1,262 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/popups/game_over.gd" type="Script" id=2]
+[ext_resource path="res://images/popups/game_over.png" type="Texture" id=3]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://images/popups/broccoli_square_disabled.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/broccoli_square.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/video.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/video_pressed.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/video_disabled.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/used.png" type="Texture" id=11]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=12]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=13]
+[ext_resource path="res://images/popups/pig.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 110
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="game_over" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="clickable_space" parent="." index="1"]
+
+visible = false
+
+[node name="window" parent="." index="2"]
+
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="non_clickable_space" parent="window" index="0"]
+
+margin_left = -438.0
+margin_top = -446.0
+margin_right = 435.0
+margin_bottom = 453.0
+
+[node name="background" parent="window" index="1"]
+
+texture = ExtResource( 3 )
+
+[node name="title" type="Label" parent="window" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -374.0
+margin_top = -341.0
+margin_right = 374.0
+margin_bottom = -216.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.8125, 0.126953, 0.126953, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 0
+text = "GAME OVER"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="subtitle" type="Label" parent="window" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -316.0
+margin_top = -240.0
+margin_right = 316.0
+margin_bottom = -140.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "No more moves available"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="video_button" type="Container" parent="window" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -29.0
+margin_right = 40.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="bg_disabled" type="Sprite" parent="window/video_button" index="0"]
+
+visible = false
+texture = ExtResource( 6 )
+
+[node name="bg" type="Sprite" parent="window/video_button" index="1"]
+
+texture = ExtResource( 7 )
+
+[node name="n" type="Label" parent="window/video_button" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "+3"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="video_btn" type="TextureButton" parent="window/video_button" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -124.0
+margin_top = -18.0
+margin_right = 136.0
+margin_bottom = 159.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="used" type="Sprite" parent="window/video_button" index="4"]
+
+visible = false
+rotation = -0.587862
+texture = ExtResource( 11 )
+
+[node name="or" type="Label" parent="window" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -50.0
+margin_top = 118.0
+margin_right = 50.0
+margin_bottom = 218.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "OR"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="go_back_btn" type="TextureButton" parent="window" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -129.0
+margin_top = 237.0
+margin_right = 131.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="pig" type="Sprite" parent="window" index="7"]
+
+position = Vector2( 17.0746, -510.121 )
+texture = ExtResource( 14 )
+
+[connection signal="pressed" from="window/video_button/video_btn" to="." method="_on_video_btn_pressed"]
+
+[connection signal="pressed" from="window/go_back_btn" to="." method="_on_go_back_btn_pressed"]
+
+

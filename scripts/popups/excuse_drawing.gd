@@ -1,6 +1,9 @@
 extends "popup.gd"
 
 
+var back_button = true
+
+
 var share = null
 
 

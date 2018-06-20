@@ -12,7 +12,8 @@ onready var popup_scene_dict = {
 	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn"),
 	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn"),
 	"no_more_ads": preload("res://scenes/popups/no_more_ads.tscn"),
-	"offline": preload("res://scenes/popups/offline.tscn")
+	"offline": preload("res://scenes/popups/offline.tscn"),
+	"game_over": preload("res://scenes/popups/game_over.tscn")
 }
 
 
@@ -20,7 +21,7 @@ func open(name, params=null):
 	# disallow input until the window is opened
 	$"/root".set_disable_input(true)
 
-	if not name in popup_stack:
+	if not popup_exists(name):
 		# pause everything
 		if not popup_stack.empty():
 			popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_STOP)
@@ -46,6 +47,13 @@ func open(name, params=null):
 		yield(popup.animation, "animation_finished")
 
 	$"/root".set_disable_input(false)
+
+
+func popup_exists(name):
+	for popup in popup_stack:
+		if popup.get_name() == name:
+			return true
+	return false
 
 
 func close(keep_input_disabled=false, keep_tree_paused=false):
@@ -83,3 +91,7 @@ func close_all():
 		var popup = popup_stack.pop_back()
 		popup.queue_free()
 	get_tree().set_pause(false)
+
+
+func closeable():
+	return not popup_stack.empty() and popup_stack.back().back_button

@@ -57,11 +57,7 @@ func move_tokens(direction):
 			# $"/root".set_disable_input(true)
 			game.restart_game()
 		elif game.check_game_over():
-			# $"/root".set_disable_input(true)
-			game.restart_game()
-		elif false:
-			# debate here
-			pass
+			game.popup_layer.open("game_over")
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
@@ -69,8 +65,6 @@ func move_tokens(direction):
 				t.set_process(true)
 
 	game.save_game()
-	# debug purposes
-	# _print_matrix()
 
 
 func _move_line(pos, direction):
