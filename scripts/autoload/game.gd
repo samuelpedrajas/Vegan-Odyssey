@@ -166,6 +166,16 @@ func win():
 	restart_game()
 
 
+func game_over():
+	$"/root".set_disable_input(true)
+	var t = $"/root/stage/timer"
+	t.set_wait_time(0.4)
+	t.start()
+	yield(t, "timeout")
+	sounds.play_audio("game_over")
+	popup_layer.open("game_over")
+
+
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
 		if $"/root".is_input_disabled():

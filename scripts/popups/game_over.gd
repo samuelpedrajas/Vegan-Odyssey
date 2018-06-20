@@ -16,7 +16,7 @@ func open():
 		$"window/video_button/bg_disabled".hide()
 		$"window/video_button/bg".show()
 		$"window/video_button/video_btn".set_disabled(false)
-	.open()
+	.open("game_over")
 
 
 func _on_go_back_btn_pressed():
@@ -29,3 +29,4 @@ func _on_video_btn_pressed():
 	game.event_layer.start("wait_for_rewarded_ad", admob.adRewarded3)
 	game.sounds.play_audio("click")
 	hide()
+	game.popup_layer.get_node("blur").hide()

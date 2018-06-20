@@ -22,8 +22,8 @@ func play_audio(name):
 		$boom.play()
 	elif name == "quack":
 		$quack.play()
-	elif name == "wing_flap":
-		$wing_flap.play()
+	elif name == "game_over":
+		$game_over.play()
 
 
 func update_settings():

@@ -23,6 +23,7 @@ func start(ad_to_show):
 func stop():
 	if game.popup_layer.popup_exists("game_over"):
 		game.popup_layer.popup_stack.back().show()
+		game.popup_layer.get_node("blur").show()
 	elif game.popup_layer.popup_stack.empty():
 		get_tree().set_pause(false)
 	queue_free()

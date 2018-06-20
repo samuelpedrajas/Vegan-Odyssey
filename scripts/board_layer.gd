@@ -54,10 +54,9 @@ func move_tokens(direction):
 		# - game over
 		# - new excuse
 		if game.check_win():
-			# $"/root".set_disable_input(true)
-			game.restart_game()
+			game.win()
 		elif game.check_game_over():
-			game.popup_layer.open("game_over")
+			game.game_over()
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):
