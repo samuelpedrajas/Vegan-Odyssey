@@ -1,6 +1,7 @@
 extends Node2D
 
 var subpopup = preload("res://scenes/popups/excuse_subpopup.tscn")
+var vbox
 
 var init_excuse
 var actual_excuse
@@ -16,21 +17,32 @@ var dest
 var blocked = true
 
 
-func setup(excuse_number):
-	init_excuse = excuse_number
-	actual_excuse = excuse_number
+func setup(list_entry):
+	vbox = list_entry.get_parent()
+	init_excuse = list_entry.token_index
+	actual_excuse = list_entry.token_index
 	dest = Vector2(0, 0)
 	starting_position = position
 
 	for i in range(-1, 2):
 		var popup = subpopup.instance()
-		var n = fposmod(excuse_number + i - 1, 9) + 1
+		var n = fposmod(actual_excuse + i - 1, 9) + 1
 		popup.setup(n, (n - init_excuse) * Vector2(1080, 0))
 		popups[n] = popup
 
-		if n != excuse_number:
+		if n != actual_excuse:
 			popup.hide()
 		add_child(popup)
+
+	update_entry(actual_excuse)
+
+
+func update_entry(n):
+	if not game.seen_excuses[n - 1].picture_seen:
+		var entry = vbox.get_node(str(n))
+		game.seen_excuses[n - 1].picture_seen = true
+		entry.update_new_labels()
+		game.save_game()
 
 
 func show_all():
@@ -57,6 +69,7 @@ func goto(n, sound=false):
 	var to_idx = fposmod(n + direction - 1, 9) + 1
 	dest = (fposmod(n - 1, 9) - init_excuse + 1) * Vector2(-1080, 0)
 	actual_excuse = fposmod(n - 1, 9) + 1
+	update_entry(actual_excuse)
 
 	var popup = popups[from_idx]
 	popups.erase(from_idx)

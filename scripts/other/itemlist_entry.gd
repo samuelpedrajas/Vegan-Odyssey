@@ -16,10 +16,10 @@ func _ready():
 		$bar.hide()
 
 	if game.highest_max >= token_index:
-		_update_new_labels()
+		update_new_labels()
 
 
-func _update_new_labels():
+func update_new_labels():
 	var some_new = false
 	if not game.seen_excuses[token_index - 1].picture_seen:
 		$"new/new1".show()
@@ -66,11 +66,7 @@ func _on_excuse_released():
 
 	# the length is ok and last clicked token is this
 	if grandpa.can_click() and grandpa.token_clicked == self:
-		if not game.seen_excuses[token_index - 1].picture_seen:
-			game.seen_excuses[token_index - 1].picture_seen = true
-			_update_new_labels()
-			game.save_game()
 		grandpa.tap_start_position = null
 		grandpa.tap_end_position = null
 		game.sounds.play_audio("click")
-		game.popup_layer.open("excuse_drawing", token_index)
+		game.popup_layer.open("excuse_drawing", self)

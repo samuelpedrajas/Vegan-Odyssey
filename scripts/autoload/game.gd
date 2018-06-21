@@ -77,6 +77,9 @@ func restart_game(delete_progress=false):
 	self.current_max = 1
 	if delete_progress:
 		self.highest_max = cfg.MIN_HIGHEST_MAX
+		for excuse in seen_excuses:
+			excuse.picture_seen = false
+			excuse.debate_seen = false
 	popup_layer.close_all()
 
 	board_layer.reset()

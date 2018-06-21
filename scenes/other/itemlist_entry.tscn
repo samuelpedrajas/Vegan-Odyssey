@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.705882 ) ]
+"values": [ Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.588235 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -101,7 +101,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="new" type="Container" parent="." index="3"]
 
-modulate = Color( 1, 1, 1, 0.705882 )
+modulate = Color( 1, 1, 1, 0.588235 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
