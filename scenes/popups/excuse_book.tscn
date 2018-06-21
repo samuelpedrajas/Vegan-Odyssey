@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_book.gd" type="Script" id=2]
@@ -8,8 +8,17 @@
 [ext_resource path="res://images/popups/close_window.png" type="Texture" id=6]
 [ext_resource path="res://images/popups/close_window_pressed.png" type="Texture" id=7]
 [ext_resource path="res://images/popups/current.png" type="Texture" id=8]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=9]
 
-[node name="excuse_book" instance=ExtResource( 1 )]
+[sub_resource type="DynamicFont" id=1]
+
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="excuse_book" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
@@ -49,6 +58,7 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+scroll_deadzone = 0
 script = ExtResource( 4 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Scroll" ]
 
@@ -158,8 +168,34 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="legend" type="Sprite" parent="window" index="4"]
 
-position = Vector2( -318, -436 )
+position = Vector2( -393, -436 )
 texture = ExtResource( 8 )
+
+[node name="current" type="Label" parent="window/legend" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 29.0
+margin_top = -18.0
+margin_right = 335.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = " = Current Highest"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [connection signal="pressed" from="window/close_button" to="." method="_on_close_button_pressed"]
 

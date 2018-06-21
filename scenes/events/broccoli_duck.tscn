@@ -191,7 +191,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -219,6 +219,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 position = Vector2( 1196, 1515 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -232,7 +233,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
-rect_rotation = 1.11486
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
