@@ -548,10 +548,17 @@ _sections_unfolded = [ "Pause" ]
 [node name="broccoli_duck_timer" type="Timer" parent="event_layer" index="0"]
 
 process_mode = 1
-wait_time = 3.0
+wait_time = 5.0
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
+
+[node name="duck_ready" type="Timer" parent="event_layer" index="1"]
+
+process_mode = 1
+wait_time = 78.0
+one_shot = false
+autostart = true
 
 [node name="hud_layer" type="CanvasLayer" parent="." index="6"]
 
@@ -566,7 +573,6 @@ script = ExtResource( 14 )
 
 [node name="lower_buttons" type="Container" parent="hud_layer/hud" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -710,7 +716,7 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "3"
+text = "2"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -1068,6 +1074,8 @@ one_shot = true
 autostart = false
 
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
+
+[connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
 
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer" method="_on_menu_pressed"]
 

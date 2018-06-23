@@ -1,6 +1,8 @@
 extends Node2D
 
 
+var duck_ready = true
+
 var current_events = {}
 onready var event_scene_dict = {
 	"broccoli": preload("res://scenes/events/broccoli_selection.tscn"),
@@ -56,4 +58,11 @@ func closeable_event():
 
 
 func _on_broccoli_duck_timer_timeout():
-	start("broccoli_duck")
+	if game.board_layer.movements >= 60 and duck_ready:
+		start("broccoli_duck")
+		duck_ready = false
+		game.board_layer.movements = 0
+
+
+func _on_duck_ready_timeout():
+	duck_ready = true

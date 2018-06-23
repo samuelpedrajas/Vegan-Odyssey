@@ -7,7 +7,7 @@ var highest_max = 1  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1 setget _set_current_max
 
 # items
-var broccolis = 3 setget _set_broccolis
+var broccolis = 2 setget _set_broccolis
 
 
 # child nodes
@@ -89,7 +89,7 @@ func restart_game(delete_progress=false):
 
 	transition.play("open")
 	yield(transition, "animation_finished")
-
+	event_layer.get_node("duck_ready").set_paused(false)
 	$"/root".set_disable_input(false)
 
 
@@ -184,10 +184,12 @@ func win():
 
 func game_over():
 	$"/root".set_disable_input(true)
+
 	var t = $"/root/stage/timer"
 	t.set_wait_time(0.4)
 	t.start()
 	yield(t, "timeout")
+
 	sounds.play_audio("game_over")
 	popup_layer.open("game_over")
 

@@ -44,8 +44,12 @@ func start_ads():
 
 
 func get_rewarded_ad_info():
-	var tmp = max(1, 4 - game.broccolis)
-	var amount = min(3, tmp)
+	var tmp = max(1, 3 - game.broccolis)
+	var amount = min(2, tmp)
+
+	if game.current_max < 8:
+		amount = 1
+
 	if amount == 1:
 		return adRewarded1
 	elif amount == 2:

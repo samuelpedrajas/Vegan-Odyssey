@@ -11,6 +11,8 @@ var direction_pivots = {}
 onready var token = preload("res://scenes/token.tscn")
 onready var board = $board
 
+var movements = 0
+
 
 func _ready():
 	# only needed once
@@ -48,6 +50,8 @@ func move_tokens(direction):
 		var t = spawn_token(null, lvl, true)
 		if t != null:
 			t.animation.play("spawn")
+
+		movements += 1
 
 		# 3 cases:
 		# - win
