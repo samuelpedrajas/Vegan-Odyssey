@@ -52,7 +52,6 @@ func token_selected(token, direction):
 
 	pending_tokens += 1
 	back_button = false
-	var inst_id = str(token.get_instance_id())
 
 	# use broccoli
 	game.broccolis -= 1
@@ -61,6 +60,8 @@ func token_selected(token, direction):
 	var new_token = null
 	if game.board_layer.matrix.empty():
 		new_token = game.board_layer.spawn_token(null, 1, true)
+
+	game.recalculate_max()
 
 
 	token.die(direction)

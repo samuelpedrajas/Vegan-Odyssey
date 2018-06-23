@@ -60,6 +60,14 @@ func setup():
 	debate_layer = $"/root/stage/debate_layer"
 
 
+func recalculate_max():
+	var tmp_max = 1
+	for t in board_layer.matrix.values():
+		if t.level > tmp_max:
+			tmp_max = t.level
+	self.current_max = tmp_max
+
+
 func update_scores(token_level):
 	self.current_max = token_level if token_level > current_max else current_max
 	self.highest_max = current_max if current_max > highest_max else highest_max
