@@ -49,14 +49,14 @@ func _process(time):
 			load_finished = true
 			admob.start_ads()
 			$"/root/loading_screen/loading_ads_animation".play("loading")
+			$"/root/loading_screen/timeout".start()
 		elif err == OK:
 			update_progress()
 		else:
 			loader = null
 			print("Error in game loader")
 
-
-	# is everything loaded?
+	# is the bar loaded?
 	if (admob_loaded or admob_error) and load_finished:
 		var resource = loader.get_resource()
 		snail.position = Vector2(550, snail.position.y)
