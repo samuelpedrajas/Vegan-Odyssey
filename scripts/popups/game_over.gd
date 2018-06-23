@@ -23,12 +23,15 @@ func open():
 		$"window/video_button/bg_disabled".show()
 		$"window/video_button/bg".hide()
 		$"window/video_button/video_btn".set_disabled(true)
+		$"window/video_button/n".set_modulate(Color(0.7, 0.7, 0.7, 1))
 	else:
-		game.board_layer.movements = 0
+		# duck will take longer
+		game.board_layer.movements = max(0, game.board_layer.movements - 15)
 		$"window/video_button/used".hide()
 		$"window/video_button/bg_disabled".hide()
 		$"window/video_button/bg".show()
 		$"window/video_button/video_btn".set_disabled(false)
+		$"window/video_button/n".set_modulate(Color(0, 0.66, 0, 1))
 	.open("game_over")
 
 
