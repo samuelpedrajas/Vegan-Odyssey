@@ -1,7 +1,7 @@
 extends Node
 
 const DEBUG_MODE = false
-const DEV_MODE = true
+const DEV_MODE = false
 const GOAL = 9
 
 const MIN_HIGHEST_MAX = 1
