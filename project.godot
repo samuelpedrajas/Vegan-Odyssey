@@ -55,4 +55,5 @@ click=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_n
 
 [rendering]
 
+quality/reflections/texture_array_reflections=false
 environment/default_clear_color=Color( 0.65098, 0.65098, 0.65098, 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://scripts/cfg.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -397,24 +397,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-
-[sub_resource type="Shader" id=12]
-
-code = "shader_type canvas_item;
-
-uniform float amount : hint_range(0,5);
-
-void fragment() {
-
-	COLOR.rgb = textureLod(SCREEN_TEXTURE,SCREEN_UV,amount).rgb;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=13]
-
-render_priority = 0
-shader = SubResource( 12 )
-shader_param/amount = 1.0
 
 [sub_resource type="Animation" id=14]
 
@@ -1015,8 +997,7 @@ _sections_unfolded = [ "Pause" ]
 [node name="blur" type="Sprite" parent="popup_layer" index="0"]
 
 visible = false
-modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
-material = SubResource( 13 )
+modulate = Color( 0.588235, 0.588235, 0.588235, 0.627451 )
 texture = ExtResource( 44 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
