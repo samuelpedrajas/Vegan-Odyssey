@@ -17,5 +17,7 @@ func _on_ok_button_pressed():
 func _on_cancel_button_pressed():
 	if game.cfg.DEV_MODE:
 		game.broccolis += 10
+		if not game.event_layer.current_events.has("broccoli_duck"):
+			game.event_layer.start("broccoli_duck")
 	game.sounds.play_audio("click")
 	game.popup_layer.close()

@@ -398,7 +398,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 
 length = 0.4
 loop = false
@@ -416,7 +416,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 
 length = 0.4
 loop = false
@@ -731,7 +731,7 @@ script = ExtResource( 27 )
 
 position = Vector2( 0, 2 )
 script = SubResource( 4 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="background" type="Sprite" parent="board_layer/board" index="0"]
 
@@ -910,7 +910,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 pause_mode = 2
 editor/display_folded = true
-layer = 6
+layer = 7
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -986,7 +986,7 @@ autostart = false
 
 [node name="popup_layer" type="CanvasLayer" parent="." index="12"]
 
-layer = 7
+layer = 8
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -1004,7 +1004,7 @@ _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
 
 [node name="transition_layer" type="CanvasLayer" parent="." index="13"]
 
-layer = 8
+layer = 9
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -1026,8 +1026,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 14 )
-anims/open = SubResource( 15 )
+anims/close = SubResource( 12 )
+anims/open = SubResource( 13 )
 blend_times = [  ]
 
 [node name="input_handler" type="Control" parent="." index="15"]

@@ -1,11 +1,14 @@
 extends Node2D
 
 
-var priority = 2
+var priority = 6
 var back_button = true
 
 var pending_tokens = 0
 var closing = false
+
+var black_bg
+var black_anim
 
 onready var animation = $"animation"
 
@@ -14,8 +17,19 @@ func start():
 	# disable input so the user cannot move tokens
 	$"/root".set_disable_input(true)
 
+	# set duck gray
+	if game.event_layer.current_events.has("broccoli_duck"):
+		var duck = game.event_layer.current_events["broccoli_duck"]
+		duck.set_gray()
+
+	black_anim = $"black4broccoli/black_anim"
+	black_bg = $black4broccoli
+	remove_child(black_bg)
+	$"/root/stage".add_child(black_bg)
+
 	animation.play("open")
-	yield(animation, "animation_finished")
+	black_anim.play("open")
+	yield(black_anim, "animation_finished")
 
 	# wait until all tokens are stopped
 	for t in game.board_layer.matrix.values():
@@ -36,8 +50,15 @@ func stop():
 	closing = true
 	$"/root".set_disable_input(true)
 
+	# unset duck gray
+	if game.event_layer.current_events.has("broccoli_duck"):
+		var duck = game.event_layer.current_events["broccoli_duck"]
+		duck.unset_gray()
+
 	animation.play_backwards("open")
-	yield(animation, "animation_finished")
+	black_anim.play_backwards("open")
+	yield(black_anim, "animation_finished")
+	$"/root/stage".remove_child(black_bg)
 
 	# unset selectable state for all tokens
 	for token in game.board_layer.matrix.values():
@@ -87,16 +108,19 @@ func token_selected(token, direction):
 		back_button = true
 
 
+func do_close():
+	closing = true
+	set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
+	game.event_layer.stop("broccoli")
+
+
 func _on_clickable_area_gui_input(event):
 	if event.is_action_pressed("click") and pending_tokens == 0 and not closing:
-		closing = true
-		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-		game.event_layer.stop("broccoli")
+		do_close()
 
 
 func _on_go_back_pressed():
 	if pending_tokens == 0 and not closing:
-		closing = true
-		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		game.sounds.play_audio("click")
-		game.event_layer.stop("broccoli")
+		do_close()
+
