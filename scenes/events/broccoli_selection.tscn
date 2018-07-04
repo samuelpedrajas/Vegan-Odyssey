@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_selection.gd" type="Script" id=1]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=2]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -32,8 +34,32 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("go_back:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 411, 1900 ), Vector2( 411, 1600 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("go_back:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
-[node name="broccoli_selection" type="Node2D" groups=[
+[node name="broccoli_selection" type="Node2D" index="0" groups=[
 "event",
 ]]
 
@@ -76,6 +102,34 @@ playback_speed = 1.0
 anims/open = SubResource( 1 )
 blend_times = [  ]
 
+[node name="go_back" type="TextureButton" parent="." index="3"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 411.0
+margin_top = 1900.0
+margin_right = 670.0
+margin_bottom = 2023.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+
 [connection signal="gui_input" from="clickable_area" to="." method="_on_clickable_area_gui_input"]
+
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
 
 

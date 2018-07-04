@@ -6,7 +6,7 @@ var back_button = true
 
 func close():
 	game.save_game()
-	.close()
+	.close("close_settings")
 
 
 func open():
@@ -15,7 +15,7 @@ func open():
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
 	set_position(game.cfg.SETTINGS_WINDOW_POS)
-	.open()
+	.open("open_settings")
 
 
 func _on_switch_sound_toggled(b):

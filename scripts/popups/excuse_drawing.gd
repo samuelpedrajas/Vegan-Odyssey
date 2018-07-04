@@ -21,3 +21,8 @@ func open(list_entry):
 
 func close():
 	.close()
+
+
+func _on_exit_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.close()

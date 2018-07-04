@@ -92,3 +92,11 @@ func _on_clickable_area_gui_input(event):
 		closing = true
 		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		game.event_layer.stop("broccoli")
+
+
+func _on_go_back_pressed():
+	if pending_tokens == 0 and not closing:
+		closing = true
+		set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
+		game.sounds.play_audio("click")
+		game.event_layer.stop("broccoli")

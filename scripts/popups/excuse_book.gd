@@ -8,7 +8,11 @@ onready var scroll_container = $"window/scroll_container"
 
 func open():
 	set_position(game.cfg.BOOK_WINDOW_POS)
-	.open()
+	.open("open_book")
+
+
+func close():
+	.close("close_book")
 
 
 func _on_close_button_pressed():
