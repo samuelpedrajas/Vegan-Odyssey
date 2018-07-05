@@ -247,4 +247,8 @@ texture = ExtResource( 11 )
 
 [connection signal="released" from="excuse" to="." method="_on_excuse_released"]
 
+[connection signal="pressed" from="debate" to="." method="_on_excuse_pressed"]
+
+[connection signal="released" from="debate" to="." method="_on_debate_released"]
+
 

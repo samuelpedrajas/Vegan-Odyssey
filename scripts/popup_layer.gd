@@ -13,7 +13,8 @@ onready var popup_scene_dict = {
 	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn"),
 	"no_more_ads": preload("res://scenes/popups/no_more_ads.tscn"),
 	"offline": preload("res://scenes/popups/offline.tscn"),
-	"game_over": preload("res://scenes/popups/game_over.tscn")
+	"game_over": preload("res://scenes/popups/game_over.tscn"),
+	"debate_screen": preload("res://scenes/popups/debate_screen.tscn")
 }
 
 

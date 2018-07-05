@@ -70,3 +70,14 @@ func _on_excuse_released():
 		grandpa.tap_end_position = null
 		game.sounds.play_audio("click")
 		game.popup_layer.open("excuse_drawing", self)
+
+
+func _on_debate_released():
+	yield(get_tree(), "idle_frame")
+
+	# the length is ok and last clicked token is this
+	if grandpa.can_click() and grandpa.token_clicked == self:
+		grandpa.tap_start_position = null
+		grandpa.tap_end_position = null
+		game.sounds.play_audio("click")
+		game.popup_layer.open("debate_screen", self.token_index)

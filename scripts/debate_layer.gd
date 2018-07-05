@@ -40,3 +40,9 @@ func update_text(i):
 	message2.set_text(debate.answer)
 
 	$animation.play("debate")
+
+
+func _on_debate_btn_pressed():
+	if current > 0:
+		game.sounds.play_audio("click")
+		game.popup_layer.open("debate_screen", current)
