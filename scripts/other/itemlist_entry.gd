@@ -80,4 +80,4 @@ func _on_debate_released():
 		grandpa.tap_start_position = null
 		grandpa.tap_end_position = null
 		game.sounds.play_audio("click")
-		game.popup_layer.open("debate_screen", self.token_index)
+		game.popup_layer.open("debate_screen", self)
