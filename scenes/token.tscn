@@ -84,6 +84,7 @@ tracks/1/keys = {
 ]]
 
 pause_mode = 2
+scale = Vector2( 1e-05, 1e-05 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 

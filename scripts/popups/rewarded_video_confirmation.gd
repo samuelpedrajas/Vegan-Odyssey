@@ -10,8 +10,7 @@ func open(_broccoli_duck):
 	broccoli_duck = _broccoli_duck
 	broccoli_duck.hide()
 	var ad_to_show = broccoli_duck.ad_to_show
-	var plus = get_node("window/amount/" + str(ad_to_show.amount))
-	plus.show()
+	$"window/amount".set_text("+" + str(ad_to_show.amount))
 	set_position(game.cfg.REWARDED_VIDEO_WINDOW_POS)
 	.open()
 
