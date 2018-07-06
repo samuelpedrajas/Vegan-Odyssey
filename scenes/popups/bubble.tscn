@@ -30,7 +30,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 1, 0.710938, 0.710938, 1 )
+custom_colors/font_color_shadow = Color( 0.667969, 0.667969, 0.667969, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Test"
@@ -40,7 +40,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="ul" type="Sprite" parent="." index="0"]
 
