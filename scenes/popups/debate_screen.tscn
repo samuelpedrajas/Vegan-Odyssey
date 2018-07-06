@@ -105,7 +105,6 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="container" type="Container" parent="window" index="2"]
 
-modulate = Color( 1, 1, 1, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -205,8 +204,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 46.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 86.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -244,9 +244,9 @@ size_flags_vertical = 1
 [node name="bubble" parent="window/container/msgs" index="0" instance=ExtResource( 11 )]
 
 margin_left = 88.0
-margin_top = 931.0
+margin_top = 1039.0
 margin_right = 676.0
-margin_bottom = 1015.0
+margin_bottom = 1123.0
 text = "But what if you were in a deserted island?"
 
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
