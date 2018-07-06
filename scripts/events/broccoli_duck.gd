@@ -3,6 +3,7 @@ extends Node2D
 
 var priority = 4
 var back_button = false
+var keep_previous = false
 
 var step = 0
 

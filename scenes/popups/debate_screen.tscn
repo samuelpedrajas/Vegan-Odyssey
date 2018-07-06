@@ -9,7 +9,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "close_debate"
-length = 0.12
+length = 0.4
 loop = false
 step = 0.02
 tracks/0/type = "value"
@@ -19,40 +19,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("go_back:modulate")
+tracks/1/path = NodePath("window/go_back:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("go_back:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 391, 1600 ), Vector2( 391, 1900 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 
 resource_name = "open_debate"
-length = 0.12
+length = 0.4
 loop = false
 step = 0.02
 tracks/0/type = "value"
@@ -62,34 +50,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("go_back:rect_position")
+tracks/1/path = NodePath("window/go_back:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 391, 1900 ), Vector2( 391, 1600 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("go_back:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="debate_screen" index="0" instance=ExtResource( 1 )]
@@ -107,6 +83,7 @@ visible = false
 
 [node name="window" parent="." index="2"]
 
+modulate = Color( 1, 1, 1, 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="non_clickable_space" parent="window" index="0"]
@@ -119,17 +96,16 @@ texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="go_back" type="TextureButton" parent="." index="3"]
+[node name="go_back" type="TextureButton" parent="window" index="2"]
 
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 391.0
-margin_top = 1900.0
-margin_right = 650.0
-margin_bottom = 2023.0
+margin_left = 411.0
+margin_top = 1600.0
+margin_right = 670.0
+margin_bottom = 1723.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -145,6 +121,6 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
-[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="window/go_back" to="." method="_on_go_back_pressed"]
 
 

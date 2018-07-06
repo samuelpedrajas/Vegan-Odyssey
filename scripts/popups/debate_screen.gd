@@ -2,15 +2,19 @@ extends "popup.gd"
 
 
 var back_button = true
+var keep_previous = true
 var token_index
-var entry
 
 
-func open(_entry):
-	entry = _entry
-	token_index = entry.token_index
-	game.seen_excuses[token_index - 1].debate_seen = true
-	entry.update_new_labels()
+func open(entry):
+	if typeof(entry) == TYPE_OBJECT:
+		token_index = entry.token_index
+		game.seen_excuses[token_index - 1].debate_seen = true
+		entry.update_new_labels()
+	else:
+		token_index = entry
+		game.seen_excuses[token_index - 1].debate_seen = true
+
 	game.save_game()
 
 	print("EXCUSA: ", token_index)

@@ -1,6 +1,7 @@
 extends "popup.gd"
 
 var back_button = true
+var keep_previous = false
 
 
 onready var scroll_container = $"window/scroll_container"

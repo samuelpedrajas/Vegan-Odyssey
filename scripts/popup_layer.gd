@@ -23,14 +23,15 @@ func open(name, params=null):
 	$"/root".set_disable_input(true)
 
 	if not popup_exists(name):
+		var popup = popup_scene_dict[name].instance()
 		# pause everything
 		if not popup_stack.empty():
 			popup_stack.back().set_pause_mode(Node2D.PAUSE_MODE_STOP)
-			popup_stack.back().hide()
+			if not popup.keep_previous:
+				popup_stack.back().hide()
 		else:
 			get_tree().set_pause(true)
 
-		var popup = popup_scene_dict[name].instance()
 		popup.set_z_index(popup_stack.size() * 2)  # trick to keep blur between
 
 		# show blur
@@ -75,7 +76,8 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 		var popup = popup_stack.back()
 		$blur.set_z_index(popup.get_z_index() - 1)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-		popup.show()
+		if not popup.is_visible():
+			popup.show()
 
 	# this is done in the end for smoother animation
 	if popup_to_close != null:
