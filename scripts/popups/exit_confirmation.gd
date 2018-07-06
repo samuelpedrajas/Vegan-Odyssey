@@ -11,7 +11,6 @@ func open():
 
 
 func _on_ok_button_pressed():
-	game.popup_layer.close()
 	game.save_game()
 	game.sounds.play_audio("click")
 	get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/debate_screen.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://images/popups/girls/18.png" type="Texture" id=9]
 [ext_resource path="res://images/popups/girls/06.png" type="Texture" id=10]
 [ext_resource path="res://scenes/popups/bubble.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://images/excuses/circle.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 
@@ -97,6 +99,14 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 70
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 12 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="debate_screen" index="0" instance=ExtResource( 1 )]
 
@@ -241,13 +251,13 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="laura" type="Sprite" parent="window/container/girls" index="0"]
 
-position = Vector2( 250, 1320 )
+position = Vector2( 265, 1320 )
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="laura2" type="Sprite" parent="window/container/girls" index="1"]
+[node name="lucy" type="Sprite" parent="window/container/girls" index="1"]
 
-position = Vector2( 830, 1320 )
+position = Vector2( 815, 1320 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
@@ -274,6 +284,39 @@ margin_top = 1039.0
 margin_right = 676.0
 margin_bottom = 1123.0
 text = "But what if you were in a deserted island?"
+
+[node name="n" type="Label" parent="window/container" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 1455.0
+margin_right = 131.0
+margin_bottom = 1557.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
+
+[node name="n" type="Sprite" parent="window/container/n" index="0"]
+
+show_behind_parent = true
+position = Vector2( 50.5617, 50.9368 )
+scale = Vector2( 1.48457, 1.48457 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
 

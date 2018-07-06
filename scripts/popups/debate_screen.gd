@@ -17,7 +17,7 @@ func open(entry):
 
 	game.save_game()
 
-	print("EXCUSA: ", token_index)
+	$"window/container/n".set_text(str(token_index))
 	.open("open_debate")
 
 
