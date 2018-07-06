@@ -77,6 +77,10 @@ anims/game_over = SubResource( 1 )
 
 visible = false
 
+[node name="window" parent="." index="2"]
+
+modulate = Color( 1, 1, 1, 1 )
+
 [node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -438.0

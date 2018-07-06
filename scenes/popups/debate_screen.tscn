@@ -83,7 +83,8 @@ visible = false
 
 [node name="window" parent="." index="2"]
 
-modulate = Color( 1, 1, 1, 1 )
+modulate = Color( 1, 1, 1, 0.9728 )
+scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="non_clickable_space" parent="window" index="0"]
