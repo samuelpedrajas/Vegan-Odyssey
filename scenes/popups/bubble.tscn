@@ -1,46 +1,39 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/popups/bubble.gd" type="Script" id=1]
 [ext_resource path="res://images/popups/bubble/circle.png" type="Texture" id=2]
 [ext_resource path="res://images/popups/bubble/lateral.png" type="Texture" id=3]
 [ext_resource path="res://images/popups/bubble/content.png" type="Texture" id=4]
 [ext_resource path="res://images/popups/bubble/tail_left.png" type="Texture" id=5]
 [ext_resource path="res://images/popups/bubble/tail_right.png" type="Texture" id=6]
+[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 30
+size = 40
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="bubble" type="Label" index="0"]
+[node name="bubble" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 144.0
-margin_bottom = 144.0
+margin_right = 768.0
+margin_bottom = 72.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0.667969, 0.667969, 0.667969, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "Test"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+text = ""
+tail = null
 
 [node name="ul" type="Control" parent="." index="0"]
 
@@ -250,6 +243,7 @@ _sections_unfolded = [ "Margin", "Visibility" ]
 
 [node name="tail_left" type="TextureRect" parent="." index="9"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -286,5 +280,31 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 4
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="label" type="Label" parent="." index="11"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -366.0
+margin_top = 5.0
+margin_right = 365.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
 

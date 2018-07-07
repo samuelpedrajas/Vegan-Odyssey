@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/debate_screen.gd" type="Script" id=2]
@@ -10,9 +10,8 @@
 [ext_resource path="res://images/popups/right.png" type="Texture" id=8]
 [ext_resource path="res://images/popups/girls/18.png" type="Texture" id=9]
 [ext_resource path="res://images/popups/girls/06.png" type="Texture" id=10]
-[ext_resource path="res://scenes/popups/bubble.tscn" type="PackedScene" id=11]
-[ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://images/excuses/circle.png" type="Texture" id=13]
+[ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://images/excuses/circle.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -105,7 +104,7 @@ tracks/2/keys = {
 size = 70
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 12 )
+font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="debate_screen" index="0" instance=ExtResource( 1 )]
@@ -277,14 +276,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="bubble" parent="window/container/girls/msgs" index="0" instance=ExtResource( 11 )]
-
-margin_left = 88.0
-margin_top = 1039.0
-margin_right = 676.0
-margin_bottom = 1123.0
-text = "But what if you were in a deserted island?"
-
 [node name="n" type="Label" parent="window/container" index="5"]
 
 anchor_left = 0.0
@@ -315,7 +306,7 @@ _sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 show_behind_parent = true
 position = Vector2( 50.5617, 50.9368 )
 scale = Vector2( 1.48457, 1.48457 )
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Visibility" ]
 
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
