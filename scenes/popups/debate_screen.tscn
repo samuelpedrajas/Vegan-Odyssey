@@ -430,6 +430,8 @@ scale = Vector2( 1.48457, 1.48457 )
 texture = ExtResource( 33 )
 _sections_unfolded = [ "Visibility" ]
 
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
 
 
