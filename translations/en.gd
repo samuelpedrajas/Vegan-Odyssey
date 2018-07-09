@@ -3,9 +3,9 @@ extends Node
 
 var dialog_list = [
 	[
-		["B", "(lau_talking)(lucy_listening)What if you were in a deserted island?"],
-		["A", "(lau_listening)(lucy_talking)Well, honestly I don't know. I hope I'm never in that situation. But what if you were in a civilization full of cruelty free options?"],
-		["A", "You cannot justify your everyday actions on 'what would you do' in some extreme situation. That would be extreme, indeed.(lucy_smiling)"]
+		["A", "(lau_talking)(lucy_listening)What if you were in a deserted island?"],
+		["B", "(lau_listening)(lucy_talking)Well, honestly I don't know. I hope I'm never in that situation. But what if you were in a civilization full of cruelty free options?"],
+		["B", "You cannot justify your everyday actions on 'what would you do' in some extreme situation. That would be extreme, indeed.(lucy_smiling)"]
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
 		["B", "(lau_listening)(lucy_talking)Well, when talking about plants a lot of analogies with humans are made, but in reality they're just totally different than us."],

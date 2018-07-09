@@ -1,10 +1,5 @@
 extends "popup.gd"
 
-var height = 1120
-var center = {
-	"B": 75,
-	"A": 237
-}
 
 var stops_dicts = {
 	".": 10,
@@ -20,6 +15,10 @@ var token_index
 
 var bubbles = []
 var current_bubble
+var current_text = 0
+var dirty_texts
+
+var bubble_in_progress
 
 onready var bubble_scene = preload("res://scenes/popups/bubble.tscn")
 
@@ -37,13 +36,12 @@ func open(entry):
 
 	$"window/container/n".set_text(str(token_index))
 
-	var dirty_texts = game.conversations[token_index - 1]
-	current_bubble = build_dialog(dirty_texts[0])
+	dirty_texts = game.conversations[token_index - 1]
+	current_bubble = build_dialog(false)
 
 	.open("open_debate")
 	yield($animation, "animation_finished")
 	current_bubble.get_node("animation").play("open")
-
 
 
 func close():
@@ -55,13 +53,29 @@ func _on_go_back_pressed():
 	game.popup_layer.close()
 
 
-func build_dialog(line):
+func build_dialog(animate=true):
+	bubble_in_progress = true
+
+	var line = dirty_texts[current_text]
 	var bubble = bubble_scene.instance()
-	bubble.setup(line)
 	bubbles.append(bubble)
+
+	bubble.setup(self, current_bubble, line, animate)
+
 	$"window/msgs".add_child(bubble)
+
+	current_text += 1
+
 	return bubble
+
+func bubble_finished():
+	bubble_in_progress = false
 
 
 func _on_timer_timeout():
 	pass # replace with function body
+
+
+func _on_next_pressed():
+	if not bubble_in_progress and current_text < dirty_texts.size():
+		current_bubble = build_dialog()
