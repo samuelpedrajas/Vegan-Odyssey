@@ -37,6 +37,7 @@ var seen_excuses = [
 	{"picture_seen": false, "debate_seen": false},
 	{"picture_seen": false, "debate_seen": false}
 ]
+var conversations = preload("res://translations/en.gd").new().dialog_list
 
 
 func _ready():

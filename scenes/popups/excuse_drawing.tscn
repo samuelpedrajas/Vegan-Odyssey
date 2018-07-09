@@ -12,37 +12,13 @@ resource_name = "open_subpopup"
 length = 0.12
 loop = false
 step = 0.02
-tracks/0/type = "value"
-tracks/0/path = NodePath("window:modulate:a")
-tracks/0/interp = 2
+tracks/0/type = "method"
+tracks/0/path = NodePath("window/h_list")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("window:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("window/h_list")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.12 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -50,17 +26,17 @@ tracks/2/keys = {
 "method": "show_all"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("exit:rect_position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("window:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -129, 1030 ), Vector2( -129, 700 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="excuse_drawing" index="0" instance=ExtResource( 1 )]

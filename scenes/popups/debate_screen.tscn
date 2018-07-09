@@ -21,8 +21,8 @@
 [ext_resource path="res://images/popups/girls/lau_talking_open_eyes.png" type="Texture" id=19]
 [ext_resource path="res://images/popups/girls/lau_serious_talking.png" type="Texture" id=20]
 [ext_resource path="res://images/popups/girls/lau_finger.png" type="Texture" id=21]
-[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=22]
-[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=23]
+[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=22]
+[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=23]
 [ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=24]
 [ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=25]
 [ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=26]
@@ -179,12 +179,12 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
-"name": "lucy_serious",
+"name": "lucy_happy",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
 "loop": true,
-"name": "lucy_happy",
+"name": "lucy_serious",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 24 ) ],
@@ -228,6 +228,8 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="debate_screen" index="0" instance=ExtResource( 1 )]
 
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="animation" parent="." index="0"]
@@ -242,8 +244,8 @@ visible = false
 [node name="window" parent="." index="2"]
 
 modulate = Color( 1, 1, 1, 1 )
-scale = Vector2( 1, 1 )
-_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="non_clickable_space" parent="window" index="0"]
 
@@ -381,22 +383,6 @@ frames = SubResource( 4 )
 animation = "lucy_talking"
 _sections_unfolded = [ "Transform" ]
 
-[node name="msgs" type="Container" parent="window/container/girls" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -46.0
-margin_right = 40.0
-margin_bottom = -6.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
 [node name="n" type="Label" parent="window/container" index="5"]
 
 anchor_left = 0.0
@@ -430,8 +416,31 @@ scale = Vector2( 1.48457, 1.48457 )
 texture = ExtResource( 33 )
 _sections_unfolded = [ "Visibility" ]
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[node name="msgs" type="Control" parent="window" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 160.0
+margin_bottom = 2080.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 0.08
+one_shot = false
+autostart = false
 
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 
 

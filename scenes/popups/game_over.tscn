@@ -21,8 +21,8 @@ length = 0.5
 loop = false
 step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("window:modulate:a")
-tracks/0/interp = 2
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -76,10 +76,6 @@ anims/game_over = SubResource( 1 )
 [node name="clickable_space" parent="." index="1"]
 
 visible = false
-
-[node name="window" parent="." index="2"]
-
-modulate = Color( 1, 1, 1, 1 )
 
 [node name="non_clickable_space" parent="window" index="0"]
 

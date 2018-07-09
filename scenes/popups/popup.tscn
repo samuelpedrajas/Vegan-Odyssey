@@ -1,22 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/popups/popup.gd" type="Script" id=1]
 [ext_resource path="res://animations/close_window.tres" type="Animation" id=2]
 [ext_resource path="res://animations/open_window.tres" type="Animation" id=3]
-
-[sub_resource type="Animation" id=1]
-
-resource_name = "close_subpopup"
-length = 0.12
-loop = false
-step = 0.12
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "open_subpopup"
-length = 0.12
-loop = false
-step = 0.02
 
 [sub_resource type="GDScript" id=3]
 
@@ -27,8 +13,18 @@ func _on_clickable_space_pressed():
 	game.popup_layer.close()
 "
 
-[node name="popup" type="Node2D" index="0"]
+[node name="popup" type="Control" index="0"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
@@ -39,9 +35,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close_subpopup = SubResource( 1 )
 anims/close_window = ExtResource( 2 )
-anims/open_subpopup = SubResource( 2 )
 anims/open_window = ExtResource( 3 )
 blend_times = [  ]
 
@@ -72,12 +66,21 @@ align = 1
 script = SubResource( 3 )
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="window" type="Node2D" parent="." index="2"]
+[node name="window" type="Control" parent="." index="2"]
 
 pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1e-05, 1e-05 )
-_sections_unfolded = [ "Pause", "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="non_clickable_space" type="Control" parent="window" index="0"]
 

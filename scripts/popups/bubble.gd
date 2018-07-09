@@ -1,24 +1,27 @@
-tool
 extends Control
 
-export(String) var text setget set_text
-enum TAIL { LEFT, RIGHT, NONE }
-export(TAIL) var tail = tail.none setget set_tail
+onready var label = $label
 
+var text setget set_text
+enum TAIL { LEFT, RIGHT, NONE }
+var tail = TAIL.NONE setget set_tail
+
+func _ready():
+	label.set_text(str(text))
+	if label.get_line_count() < 2:
+		label.set_align(Label.ALIGN_CENTER)
+	else:
+		label.set_align(Label.ALIGN_FILL)
+	set_size(
+		Vector2(get_size().x,
+		label.get_line_count() * label.get_line_height() + 30)
+	)
 
 
 func set_text(v):
 	if v == null:
 		return
 	text = v
-	$label.set_text(v)
-	if $label.get_line_count() < 2:
-		$label.set_align(Label.ALIGN_CENTER)
-	else:
-		$label.set_align(Label.ALIGN_FILL)
-	set_size(
-		Vector2(get_size().x, $label.get_size().y + 10)
-	)
 
 
 func set_tail(v):

@@ -32,10 +32,6 @@ func open(name, params=null):
 		else:
 			get_tree().set_pause(true)
 
-		popup.set_z_index(popup_stack.size() * 2)  # trick to keep blur between
-
-		# show blur
-		$blur.set_z_index(popup.get_z_index() - 1)
 		$blur.show()
 
 		# add popup
@@ -74,7 +70,6 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 			get_tree().set_pause(false)
 	else:
 		var popup = popup_stack.back()
-		$blur.set_z_index(popup.get_z_index() - 1)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		if not popup.is_visible():
 			popup.show()
