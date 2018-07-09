@@ -18,10 +18,6 @@ var back_button = true
 var keep_previous = true
 var token_index
 
-var current_actions
-var current_text
-var current_girl
-
 var bubbles = []
 var current_bubble
 
@@ -60,27 +56,8 @@ func _on_go_back_pressed():
 
 
 func build_dialog(line):
-	current_actions = {}
-	current_text = ""
-	current_girl = line[0]
-
-	var dt = line[1]
-	var i = 0
-	var j = 0
-	while i < dt.length():
-		var c = dt[i]
-		if c == '(':
-			var end = dt.find(")", i)
-			var action_name = dt.substr(i + 1, end - (i + 1))
-			current_actions[j] = action_name
-			i += action_name.length() + 2
-		else:
-			current_text += c
-			i += 1
-			j += 1
-
 	var bubble = bubble_scene.instance()
-	bubble.text = current_text
+	bubble.setup(line)
 	bubbles.append(bubble)
 	$"window/msgs".add_child(bubble)
 	return bubble
