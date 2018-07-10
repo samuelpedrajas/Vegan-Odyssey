@@ -36,6 +36,9 @@ var container_anim_time = 0.1
 var container_dest
 var container_start
 
+var first_actions = []
+var last_actions = []
+
 
 func _process(delta):
 	if container_dest == null:
@@ -53,6 +56,47 @@ func _process(delta):
 
 
 func play():
+	set_process(true)
+
+
+func _build_dict(line):
+	actions = {}
+	text = ""
+	girl = line[0]
+
+	var first_action_found = false
+	var dt = line[1]
+	var i = 0
+	var j = 0
+	while i < dt.length():
+		var c = dt[i]
+		if c == '(':
+			var end = dt.find(")", i)
+			var action_name = dt.substr(i + 1, end - (i + 1))
+			if actions.has(j):
+				actions[j].append(action_name)
+			else:
+				actions[j] = [action_name]
+			i += action_name.length() + 2
+			last_actions = actions[j]
+			if not first_action_found:
+				first_actions = last_actions
+				first_action_found = true
+		else:
+			text += c
+			i += 1
+			if c != " ":
+				j += 1
+
+
+func setup(screen, _prev_bubble, line):
+	set_process(false)
+	prev_bubble = _prev_bubble
+
+	connect("finished", screen, "bubble_finished")
+	connect("start_action", screen, "start_action")
+	_build_dict(line)
+
 	label.set_text(text)
 	_next_char()
 
@@ -94,37 +138,6 @@ func play():
 		set_position(
 			get_position() + Vector2(75, 0)
 		)
-	set_process(true)
-
-
-func setup(screen, _prev_bubble, line):
-	set_process(false)
-	prev_bubble = _prev_bubble
-
-	connect("finished", screen, "bubble_finished")
-	connect("start_action", screen, "start_action")
-	actions = {}
-	text = ""
-	girl = line[0]
-
-	var dt = line[1]
-	var i = 0
-	var j = 0
-	while i < dt.length():
-		var c = dt[i]
-		if c == '(':
-			var end = dt.find(")", i)
-			var action_name = dt.substr(i + 1, end - (i + 1))
-			if actions.has(j):
-				actions[j].append(action_name)
-			else:
-				actions[j] = [action_name]
-			i += action_name.length() + 2
-		else:
-			text += c
-			i += 1
-			if c != " ":
-				j += 1
 
 
 func set_tail(v):
@@ -146,8 +159,7 @@ func _next_char():
 
 func _on_timer_timeout():
 	if current_c >= text.length():
-		$timer.stop()
-		emit_signal("finished")
+		finish_it()
 	elif skip_timers > 0:
 		skip_timers -= 1
 	elif stops_dict.has(text[current_c]):
@@ -155,6 +167,13 @@ func _on_timer_timeout():
 		_next_char()
 	else:
 		_next_char()
+
+
+func finish_it():
+	$timer.stop()
+	set_process(false)
+	$label.set_visible_characters(-1)
+	emit_signal("finished")
 
 
 func _on_animation_animation_finished(anim_name):

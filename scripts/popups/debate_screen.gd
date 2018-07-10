@@ -31,6 +31,8 @@ func open(entry):
 
 	dirty_texts = game.conversations[token_index - 1]
 	current_bubble = build_dialog()
+	for action in current_bubble.first_actions:
+		start_action(action)
 
 	.open("open_debate")
 	yield($animation, "animation_finished")
@@ -48,19 +50,20 @@ func _on_go_back_pressed():
 
 
 func build_dialog():
+	$"/root".set_disable_input(true)
 	bubble_in_progress = true
 
 	var line = dirty_texts[current_text]
 	var bubble = bubble_scene.instance()
 	bubbles.append(bubble)
+	$"window/msgs".add_child(bubble)
 
 	bubble.setup(self, current_bubble, line)
-
-	$"window/msgs".add_child(bubble)
 
 	current_text += 1
 
 	return bubble
+
 
 func bubble_finished():
 	bubble_in_progress = false
@@ -84,11 +87,25 @@ func _next_bubble():
 	current_bubble.play()
 
 
+func _finish_bubble():
+	for action in current_bubble.last_actions:
+		start_action(action)
+	current_bubble.finish_it()
+
+
 func _on_next_pressed():
-	if not bubble_in_progress and current_text < dirty_texts.size():
+	if bubble_in_progress:
+		_finish_bubble()
+	elif current_text < dirty_texts.size():
 		_next_bubble()
+	else:
+		pass
 
 
 func _on_clickable_bg_pressed():
-	if not bubble_in_progress and current_text < dirty_texts.size():
+	if bubble_in_progress:
+		_finish_bubble()
+	elif current_text < dirty_texts.size():
 		_next_bubble()
+	else:
+		pass
