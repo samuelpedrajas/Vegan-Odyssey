@@ -43,8 +43,10 @@ func open(name, params=null):
 		else:
 			popup.open()
 		yield(popup.animation, "animation_finished")
-
-	$"/root".set_disable_input(false)
+		if not popup.keep_input_disabled:
+			$"/root".set_disable_input(false)
+	else:
+		$"/root".set_disable_input(false)
 
 
 func popup_exists(name):

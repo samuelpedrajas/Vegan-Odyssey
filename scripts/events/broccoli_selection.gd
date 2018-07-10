@@ -3,6 +3,7 @@ extends Node2D
 
 var priority = 6
 var back_button = true
+var keep_input_disabled = false
 var keep_previous = false
 
 var pending_tokens = 0

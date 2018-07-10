@@ -2,6 +2,7 @@ extends "popup.gd"
 
 
 var back_button = true
+var keep_input_disabled = true
 var keep_previous = true
 var token_index
 
@@ -29,11 +30,11 @@ func open(entry):
 	$"window/container/n".set_text(str(token_index))
 
 	dirty_texts = game.conversations[token_index - 1]
-	current_bubble = build_dialog(false)
+	current_bubble = build_dialog()
 
 	.open("open_debate")
 	yield($animation, "animation_finished")
-	current_bubble.get_node("animation").play("open")
+	current_bubble.play()
 
 
 func close():
@@ -45,14 +46,14 @@ func _on_go_back_pressed():
 	game.popup_layer.close()
 
 
-func build_dialog(animate=true):
+func build_dialog():
 	bubble_in_progress = true
 
 	var line = dirty_texts[current_text]
 	var bubble = bubble_scene.instance()
 	bubbles.append(bubble)
 
-	bubble.setup(self, current_bubble, line, animate)
+	bubble.setup(self, current_bubble, line)
 
 	$"window/msgs".add_child(bubble)
 
@@ -62,6 +63,7 @@ func build_dialog(animate=true):
 
 func bubble_finished():
 	bubble_in_progress = false
+	$"/root".set_disable_input(false)
 
 
 func start_action(action):
@@ -74,3 +76,4 @@ func start_action(action):
 func _on_next_pressed():
 	if not bubble_in_progress and current_text < dirty_texts.size():
 		current_bubble = build_dialog()
+		current_bubble.play()

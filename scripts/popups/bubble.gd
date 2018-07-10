@@ -17,7 +17,6 @@ var stops_dict = {
 	"!": 10
 }
 
-var animate
 var threshold = 20
 
 var prev_bubble
@@ -30,7 +29,30 @@ var skip_timers = 0
 signal finished
 signal start_action
 
-func _ready():
+
+var acc_time = 0.00
+var container_anim_time = 0.1
+
+var container_dest
+var container_start
+
+
+func _process(delta):
+	if container_dest == null:
+		return
+	acc_time += delta
+	var next_pos = container_start.linear_interpolate(
+		container_dest, acc_time / container_anim_time
+	)
+	if next_pos.y < container_dest.y:
+		get_parent().set_position(container_dest)
+		set_process(false)
+		$animation.play("open")
+	else:
+		get_parent().set_position(next_pos)
+
+
+func play():
 	label.set_text(text)
 	_next_char()
 
@@ -47,9 +69,8 @@ func _ready():
 	set_size(Vector2(get_size().x, height))
 
 	# move msgs up
-	get_parent().set_position(
-		get_parent().get_position() - Vector2(0, height + threshold)
-	)
+	container_start = get_parent().get_position()
+	container_dest = get_parent().get_position() - Vector2(0, height + threshold)
 
 	# if it's not the first one, set the proper "y" position
 	if prev_bubble != null:
@@ -73,14 +94,11 @@ func _ready():
 		set_position(
 			get_position() + Vector2(75, 0)
 		)
-
-	if animate:
-		$animation.play("open")
-		yield($animation, "animation_finished")
+	set_process(true)
 
 
-func setup(screen, _prev_bubble, line, _animate):
-	animate = _animate
+func setup(screen, _prev_bubble, line):
+	set_process(false)
 	prev_bubble = _prev_bubble
 
 	connect("finished", screen, "bubble_finished")
