@@ -64,6 +64,8 @@ func build_dialog():
 
 func bubble_finished():
 	bubble_in_progress = false
+	if current_text < dirty_texts.size():
+		$"window/container/animation".play("finished")
 
 
 func start_action(action):
@@ -73,15 +75,20 @@ func start_action(action):
 		$"window/container/girls/laura".play(action)
 
 
+func _next_bubble():
+	$"window/container/animation".stop()
+	$"window/container/next/circle".hide()
+
+	game.sounds.play_audio("click")
+	current_bubble = build_dialog()
+	current_bubble.play()
+
+
 func _on_next_pressed():
 	if not bubble_in_progress and current_text < dirty_texts.size():
-		game.sounds.play_audio("click")
-		current_bubble = build_dialog()
-		current_bubble.play()
+		_next_bubble()
 
 
 func _on_clickable_bg_pressed():
 	if not bubble_in_progress and current_text < dirty_texts.size():
-		game.sounds.play_audio("click")
-		current_bubble = build_dialog()
-		current_bubble.play()
+		_next_bubble()
