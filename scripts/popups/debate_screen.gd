@@ -1,14 +1,6 @@
 extends "popup.gd"
 
 
-var stops_dicts = {
-	".": 10,
-	",": 5,
-	":": 10,
-	"?": 5,
-	"!": 5
-}
-
 var back_button = true
 var keep_previous = true
 var token_index
@@ -72,8 +64,11 @@ func bubble_finished():
 	bubble_in_progress = false
 
 
-func _on_timer_timeout():
-	pass # replace with function body
+func start_action(action):
+	if action.begins_with("lucy"):
+		$"window/container/girls/lucy".play(action)
+	else:
+		$"window/container/girls/laura".play(action)
 
 
 func _on_next_pressed():

@@ -14,8 +14,8 @@
 [ext_resource path="res://images/popups/girls/lau_serious.png" type="Texture" id=12]
 [ext_resource path="res://images/popups/girls/lau_salutes/1.png" type="Texture" id=13]
 [ext_resource path="res://images/popups/girls/lau_salutes/2.png" type="Texture" id=14]
-[ext_resource path="res://images/popups/girls/lau_listening/1.png" type="Texture" id=15]
-[ext_resource path="res://images/popups/girls/lau_listening/2.png" type="Texture" id=16]
+[ext_resource path="res://images/popups/girls/lau_listening/2.png" type="Texture" id=15]
+[ext_resource path="res://images/popups/girls/lau_listening/1.png" type="Texture" id=16]
 [ext_resource path="res://images/popups/girls/lau_happy_listening.png" type="Texture" id=17]
 [ext_resource path="res://images/popups/girls/lau_happy_talking.png" type="Texture" id=18]
 [ext_resource path="res://images/popups/girls/lau_talking/1.png" type="Texture" id=19]
@@ -23,16 +23,16 @@
 [ext_resource path="res://images/popups/girls/lau_talking_open_eyes.png" type="Texture" id=21]
 [ext_resource path="res://images/popups/girls/lau_serious_talking.png" type="Texture" id=22]
 [ext_resource path="res://images/popups/girls/lau_finger.png" type="Texture" id=23]
-[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=24]
+[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=24]
 [ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=25]
-[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=26]
-[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=27]
-[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=28]
+[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=26]
+[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=27]
+[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=28]
 [ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=29]
 [ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=30]
-[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=31]
-[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=32]
-[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=33]
+[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=31]
+[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=32]
+[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=33]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=34]
 [ext_resource path="res://images/excuses/circle.png" type="Texture" id=35]
 
@@ -140,7 +140,7 @@ animations = [ {
 "name": "lau_salutes",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "lau_listening",
 "speed": 2.0
@@ -181,7 +181,7 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 24 ) ],
 "loop": true,
-"name": "lucy_happy",
+"name": "lucy_smiling",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ) ],
@@ -191,17 +191,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "lucy_smiles",
+"name": "lucy_listening",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ) ],
 "loop": true,
-"name": "lucy_talking_arm",
+"name": "lucy_stand_talking",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
-"name": "lucy_listening",
+"name": "lucy_talking_arm",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
@@ -209,16 +209,17 @@ animations = [ {
 "name": "lucy_salutes",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 31 ) ],
-"loop": true,
-"name": "lucy_stand_talking",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 32 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "lucy_talking",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "lucy_happy",
+"speed": 5.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="DynamicFont" id=5]
 
@@ -274,6 +275,15 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
+
+[node name="tween" type="Tween" parent="window/msgs" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="container" type="Container" parent="window" index="3"]
 
@@ -393,14 +403,14 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 265, 1320 )
 frames = SubResource( 3 )
-animation = "lau_listening"
+animation = "lau_talking"
 _sections_unfolded = [ "Transform" ]
 
 [node name="lucy" type="AnimatedSprite" parent="window/container/girls" index="1"]
 
 position = Vector2( 815, 1326 )
 frames = SubResource( 4 )
-animation = "lucy_talking"
+animation = "lucy_smiling"
 _sections_unfolded = [ "Transform" ]
 
 [node name="n" type="Label" parent="window/container" index="5"]
@@ -436,17 +446,8 @@ scale = Vector2( 1.48457, 1.48457 )
 texture = ExtResource( 35 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="timer" type="Timer" parent="." index="3"]
-
-process_mode = 1
-wait_time = 0.08
-one_shot = false
-autostart = false
-
 [connection signal="pressed" from="window/container/go_back" to="." method="_on_go_back_pressed"]
 
 [connection signal="pressed" from="window/container/next" to="." method="_on_next_pressed"]
-
-[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 
 
