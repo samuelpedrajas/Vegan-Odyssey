@@ -42,6 +42,7 @@ func close():
 
 
 func _on_go_back_pressed():
+	$"/root".set_disable_input(true)
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
 
@@ -63,7 +64,6 @@ func build_dialog():
 
 func bubble_finished():
 	bubble_in_progress = false
-	$"/root".set_disable_input(false)
 
 
 func start_action(action):
@@ -75,5 +75,13 @@ func start_action(action):
 
 func _on_next_pressed():
 	if not bubble_in_progress and current_text < dirty_texts.size():
+		game.sounds.play_audio("click")
+		current_bubble = build_dialog()
+		current_bubble.play()
+
+
+func _on_clickable_bg_pressed():
+	if not bubble_in_progress and current_text < dirty_texts.size():
+		game.sounds.play_audio("click")
 		current_bubble = build_dialog()
 		current_bubble.play()

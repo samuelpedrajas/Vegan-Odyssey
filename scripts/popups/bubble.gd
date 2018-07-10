@@ -158,4 +158,5 @@ func _on_timer_timeout():
 
 
 func _on_animation_animation_finished(anim_name):
+	$"/root".set_disable_input(false)
 	$timer.start()
