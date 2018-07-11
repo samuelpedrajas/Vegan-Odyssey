@@ -4,7 +4,9 @@ extends "popup.gd"
 var back_button = true
 var keep_input_disabled = true
 var keep_previous = true
+
 var token_index
+var v_box = null
 
 var bubbles = []
 var current_bubble
@@ -13,30 +15,45 @@ var dirty_texts
 
 var bubble_in_progress
 
+var current_entry = null
+
 onready var bubble_scene = preload("res://scenes/popups/bubble.tscn")
 
 
 func open(entry):
 	if typeof(entry) == TYPE_OBJECT:
-		token_index = entry.token_index
-		game.seen_excuses[token_index - 1].debate_seen = true
-		entry.update_new_labels()
+		current_entry = entry
+		v_box = current_entry.get_parent()
+		token_index = current_entry.token_index
 	else:
 		token_index = entry
-		game.seen_excuses[token_index - 1].debate_seen = true
+	start_conversation()
+	.open("open_debate")
+	yield($animation, "animation_finished")
+	current_bubble.play()
+
+
+func start_conversation():
+	game.seen_excuses[token_index - 1].debate_seen = true
+
+	if current_entry != null:
+		current_entry.update_new_labels()
 
 	game.save_game()
 
+
+	if token_index == 1:
+		$"window/container/prev".set_disabled(true)
+	else:
+		$"window/container/prev".set_disabled(false)
+
+	$"window/container/next".set_disabled(false)
 	$"window/container/n".set_text(str(token_index))
 
 	dirty_texts = game.conversations[token_index - 1]
 	current_bubble = build_dialog()
 	for action in current_bubble.first_actions:
 		start_action(action)
-
-	.open("open_debate")
-	yield($animation, "animation_finished")
-	current_bubble.play()
 
 
 func close():
@@ -69,6 +86,10 @@ func bubble_finished():
 	bubble_in_progress = false
 	if current_text < dirty_texts.size():
 		$"window/container/animation".play("finished")
+	elif token_index == game.highest_max:
+		$"window/container/next".set_disabled(true)
+	else:
+		$"window/container/next".set_disabled(false)
 
 
 func start_action(action):
@@ -82,7 +103,6 @@ func _next_bubble():
 	$"window/container/animation".stop()
 	$"window/container/next/circle".hide()
 
-	game.sounds.play_audio("click")
 	current_bubble = build_dialog()
 	current_bubble.play()
 
@@ -93,19 +113,47 @@ func _finish_bubble():
 	current_bubble.finish_it()
 
 
+func _next_conversation():
+	$"/root".set_disable_input(true)
+	$"window/container/animation".play("close_container")
+	yield($"window/container/animation", "animation_finished")
+	for child in bubbles:
+		child.remove_me()
+	bubbles = []
+	current_bubble
+	current_text = 0
+	dirty_texts = null
+	bubble_in_progress = false
+	$"window/msgs".set_modulate(Color(1, 1, 1, 1))
+
+	if v_box != null:
+		current_entry = v_box.get_node(str(token_index))
+	start_conversation()
+	current_bubble.play()
+
+
 func _on_next_pressed():
 	if bubble_in_progress:
 		_finish_bubble()
 	elif current_text < dirty_texts.size():
+		game.sounds.play_audio("click")
 		_next_bubble()
-	else:
-		pass
+	elif token_index < game.highest_max:
+		game.sounds.play_audio("click")
+		token_index += 1
+		_next_conversation()
 
 
 func _on_clickable_bg_pressed():
 	if bubble_in_progress:
 		_finish_bubble()
 	elif current_text < dirty_texts.size():
+		game.sounds.play_audio("click")
 		_next_bubble()
-	else:
-		pass
+
+
+func _on_prev_pressed():
+	if 1 < token_index:
+		game.sounds.play_audio("click")
+		token_index -= 1
+		_next_conversation()

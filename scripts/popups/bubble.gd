@@ -89,6 +89,11 @@ func _build_dict(line):
 				j += 1
 
 
+func remove_me():
+	hide()
+	queue_free()
+
+
 func setup(screen, _prev_bubble, line):
 	set_process(false)
 	prev_bubble = _prev_bubble
