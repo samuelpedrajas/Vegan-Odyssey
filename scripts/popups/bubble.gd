@@ -38,6 +38,7 @@ var container_start
 
 var first_actions = []
 var last_actions = []
+var space_positions = []
 
 
 func _process(delta):
@@ -94,6 +95,15 @@ func remove_me():
 	queue_free()
 
 
+func build_space_positions():
+	var counter = 1
+	for i in range(text.length()):
+		var c = text[i]
+		if c == " ":
+			space_positions.append(i - counter)
+			counter += 1
+
+
 func setup(screen, _prev_bubble, line):
 	set_process(false)
 	prev_bubble = _prev_bubble
@@ -105,6 +115,7 @@ func setup(screen, _prev_bubble, line):
 	label.set_text(text)
 	_next_char()
 
+	build_space_positions()
 	text = text.replace(" ", "")
 
 	# if just 1 line, center the text
@@ -167,7 +178,7 @@ func _on_timer_timeout():
 		finish_it()
 	elif skip_timers > 0:
 		skip_timers -= 1
-	elif stops_dict.has(text[current_c]):
+	elif stops_dict.has(text[current_c]) and current_c in space_positions:
 		skip_timers = stops_dict[text[current_c]]
 		_next_char()
 	else:
