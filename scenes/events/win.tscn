@@ -1,0 +1,244 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/events/win.gd" type="Script" id=1]
+[ext_resource path="res://images/events/win/confetti.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 6.9825e-34 )
+colors = PoolColorArray( 1, 0.371094, 0.371094, 1, 0, 1, 0.0859375, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+
+flags = 4
+gradient = SubResource( 1 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 540, 10, 0 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 1.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.3
+scale_random = 0.8
+color_ramp = SubResource( 2 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+anim_speed = 8.0
+anim_speed_random = 0.0
+anim_offset = 0.5
+anim_offset_random = 1.0
+anim_loop = true
+_sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="AtlasTexture" id=4]
+
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 900, 300 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = true
+
+[sub_resource type="ParticlesMaterial" id=5]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 3.0
+flatness = 0.0
+gravity = Vector3( 0, 196, 0 )
+initial_velocity = 650.0
+initial_velocity_random = 0.2
+angular_velocity = 50.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 1.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 0.3
+scale_random = 0.8
+color_ramp = SubResource( 2 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+anim_speed = 8.0
+anim_speed_random = 0.0
+anim_offset = 0.5
+anim_offset_random = 1.0
+anim_loop = true
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "win"
+length = 3.5
+loop = false
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("confetti_cannon1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_win_sound"
+}, {
+"args": [  ],
+"method": "play_fireworks_sound"
+}, {
+"args": [  ],
+"method": "play_fireworks_sound"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("confetti_cannon2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="win" type="Node2D" index="0" groups=[
+"event",
+]]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
+
+[node name="confetti_rain" type="Particles2D" parent="." index="0"]
+
+position = Vector2( 540, 0 )
+emitting = true
+amount = 256
+lifetime = 6.5
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+texture = SubResource( 4 )
+normal_map = null
+h_frames = 5
+v_frames = 2
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="confetti_cannon1" type="Particles2D" parent="." index="1"]
+
+position = Vector2( 480, 1700 )
+rotation = -1.65806
+emitting = false
+amount = 256
+lifetime = 10.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 5.0
+explosiveness = 0.8
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 5 )
+texture = SubResource( 4 )
+normal_map = null
+h_frames = 5
+v_frames = 2
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="confetti_cannon2" type="Particles2D" parent="." index="2"]
+
+position = Vector2( 600, 1700 )
+rotation = -1.48353
+emitting = false
+amount = 256
+lifetime = 10.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 5.0
+explosiveness = 0.8
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 5 )
+texture = SubResource( 4 )
+normal_map = null
+h_frames = 5
+v_frames = 2
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="animation" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/win = SubResource( 6 )
+blend_times = [  ]
+
+

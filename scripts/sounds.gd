@@ -24,6 +24,10 @@ func play_audio(name):
 		$quack.play()
 	elif name == "game_over":
 		$game_over.play()
+	elif name == "win":
+		$win.play()
+	elif name == "fireworks":
+		$fireworks.play()
 
 
 func update_settings():

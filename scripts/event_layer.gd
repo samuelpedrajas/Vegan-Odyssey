@@ -7,7 +7,8 @@ var current_events = {}
 onready var event_scene_dict = {
 	"broccoli": preload("res://scenes/events/broccoli_selection.tscn"),
 	"broccoli_duck": preload("res://scenes/events/broccoli_duck.tscn"),
-	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn")
+	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn"),
+	"win": preload("res://scenes/events/win.tscn")
 }
 
 
