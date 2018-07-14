@@ -1,0 +1,209 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://images/tutorial_post.png" type="Texture" id=1]
+[ext_resource path="res://images/left_rope.png" type="Texture" id=2]
+[ext_resource path="res://images/right_rope.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 8.02579 )
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends RigidBody2D
+
+
+func _ready():
+	set_linear_velocity(Vector2(-50, 0))
+"
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Sprite
+
+
+func _physics_process(delta):
+	set_global_position($\"../post\".get_global_position())"
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends Node2D
+
+
+func _physics_process(delta):
+	var hole_pos = $\"../post/sprite/left_hole\".get_global_position()
+	var axis_pos = $left_axis.get_global_position()
+	var angle = axis_pos.angle_to_point(hole_pos)
+	set_global_rotation(angle + PI / 2)
+"
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "extends Node2D
+
+
+func _physics_process(delta):
+	var hole_pos = $\"../post/sprite/right_hole\".get_global_position()
+	var axis_pos = $right_axis.get_global_position()
+	var angle = axis_pos.angle_to_point(hole_pos)
+	set_global_rotation(angle + PI / 2)
+"
+
+[node name="axis" type="StaticBody2D" index="0"]
+
+position = Vector2( 540, 134 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Rect", "Transform" ]
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="shape" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="axis2rope" type="PinJoint2D" parent="." index="1"]
+
+position = Vector2( 0, -46 )
+node_a = NodePath("..")
+node_b = NodePath("../rope")
+bias = 0.5
+disable_collision = true
+softness = 0.0
+
+[node name="rope" type="RigidBody2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 0, 1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 200.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Angular", "Linear", "Transform" ]
+
+[node name="shape" type="CollisionShape2D" parent="rope" index="0"]
+
+shape = SubResource( 2 )
+disabled = true
+
+[node name="rope2post" type="PinJoint2D" parent="." index="3"]
+
+node_a = NodePath("../rope")
+node_b = NodePath("../post/post")
+bias = 0.5
+disable_collision = true
+softness = 0.1
+
+[node name="post" type="Node2D" parent="." index="4"]
+
+position = Vector2( 0, 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="post" type="RigidBody2D" parent="post" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 300.0
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = SubResource( 3 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform" ]
+
+[node name="shape" type="CollisionShape2D" parent="post/post" index="0"]
+
+shape = SubResource( 4 )
+disabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite" type="Sprite" parent="post" index="1"]
+
+texture = ExtResource( 1 )
+script = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="left_hole" type="Position2D" parent="post/sprite" index="0"]
+
+position = Vector2( -369.068, -56.1977 )
+
+[node name="right_hole" type="Position2D" parent="post/sprite" index="1"]
+
+position = Vector2( 382.068, -56.1977 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="left_rope" type="Node2D" parent="." index="5"]
+
+position = Vector2( -370.383, -123.21 )
+script = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="left_axis" type="Position2D" parent="left_rope" index="0"]
+
+position = Vector2( 0, -5 )
+
+[node name="sprite" type="Sprite" parent="left_rope" index="1"]
+
+position = Vector2( 0, 37 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+
+[node name="right_rope" type="Node2D" parent="." index="6"]
+
+position = Vector2( 379.466, -124.167 )
+script = SubResource( 7 )
+
+[node name="right_axis" type="Position2D" parent="right_rope" index="0"]
+
+position = Vector2( 0, -3 )
+
+[node name="sprite" type="Sprite" parent="right_rope" index="1"]
+
+position = Vector2( 0, 37 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+

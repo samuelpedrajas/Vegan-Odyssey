@@ -31,6 +31,8 @@ func goto_scene(path, _progress_bar):
 
 
 func _process(time):
+	if not snail:
+		return
 	move_snail()
 	if loader == null:
 		# no need to process anymore
