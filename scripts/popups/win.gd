@@ -8,7 +8,7 @@ var show_blur = false
 
 func open():
 	set_position(game.cfg.WIN_WINDOW_POS)
-	game.popup_layer.open("debate_screen", 9)
+	game.popup_layer.open("debate_screen", -1)
 	var popup = game.popup_layer.popup_stack.back()
 	popup.connect("conversation_finished", self, "win")
 
