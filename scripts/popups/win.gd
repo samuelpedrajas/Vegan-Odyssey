@@ -14,9 +14,15 @@ func open():
 
 
 func win():
+	$window.show()
+	$clickable_space.show()
 	game.event_layer.start("win")
-	print("here we are")
 
 
 func close():
-	.close("close_window")
+	.close("close_win")
+
+
+func _on_go_back_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
