@@ -52,3 +52,11 @@ var dialog_list = [
 		["B", "We're killing more than 60 billion land animals every year and this is having a catastrophic impact to our environment. Is there really any good justification to keep doing this(lucy_smiling)?"]
 	]
 ]
+
+var ending = [
+	["A", "(lau_talking)(lucy_smiling)Well… Honestly, I never thought about it in that way. I suppose I never seriously thought about it."],
+	["B", "(lucy_talking)(lau_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
+	["A", "(lucy_smiling)That makes sense. (lau_happy_talking)Thanks Lucy! I’m feeling I’ve got the responsibility to decide."],
+	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! As Sartre said: humans are “condemned to be free”. Our precious freedom also forces us to make our own decisions. We’re responsible to choose wisely!"],
+	["A", "(lucy_smiling)(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
+]

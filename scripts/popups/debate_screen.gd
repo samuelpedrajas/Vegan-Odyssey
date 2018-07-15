@@ -4,6 +4,7 @@ extends "popup.gd"
 var back_button = true
 var keep_input_disabled = true
 var keep_previous = true
+var show_blur = true
 
 var token_index
 var v_box = null
@@ -18,6 +19,9 @@ var bubble_in_progress
 var current_entry = null
 
 onready var bubble_scene = preload("res://scenes/popups/bubble.tscn")
+
+
+signal conversation_finished
 
 
 func open(entry):
@@ -58,6 +62,7 @@ func start_conversation():
 
 func close():
 	.close("close_debate")
+	emit_signal("conversation_finished")
 
 
 func _on_go_back_pressed():

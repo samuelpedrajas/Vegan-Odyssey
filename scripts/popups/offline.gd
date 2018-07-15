@@ -4,6 +4,7 @@ extends "popup.gd"
 var back_button = true
 var keep_input_disabled = false
 var keep_previous = false
+var show_blur = true
 
 
 func open():

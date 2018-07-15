@@ -28,6 +28,8 @@ func play_audio(name):
 		$win.play()
 	elif name == "fireworks":
 		$fireworks.play()
+	elif name == "prewin":
+		$prewin.play()
 
 
 func update_settings():

@@ -4,6 +4,7 @@ extends "res://scripts/popups/popup.gd"
 var back_button = false
 var keep_input_disabled = false
 var keep_previous = false
+var show_blur = true
 var add_to_show
 
 

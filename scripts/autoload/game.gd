@@ -187,8 +187,14 @@ func check_game_over():
 
 
 func win():
-	print("Win")
-	restart_game()
+	$"/root".set_disable_input(true)
+	sounds.play_audio("prewin")
+
+	var t = $"/root/stage/timer"
+	t.set_wait_time(2.0)
+	t.start()
+	yield(t, "timeout")
+	popup_layer.open("win")
 
 
 func game_over():

@@ -151,6 +151,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("confetti_rain:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="win" type="Node2D" index="0" groups=[
 "event",
@@ -163,7 +175,7 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 [node name="confetti_rain" type="Particles2D" parent="." index="0"]
 
 position = Vector2( 540, 0 )
-emitting = true
+emitting = false
 amount = 256
 lifetime = 6.5
 one_shot = false
