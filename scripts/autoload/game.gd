@@ -42,6 +42,9 @@ var conversations = en.dialog_list
 var ending = en.ending
 
 
+var win = false
+
+
 func _ready():
 	# prevent quitting using back button
 	get_tree().set_quit_on_go_back(false)
@@ -85,6 +88,7 @@ func restart_game(delete_progress=false):
 
 	# update amounts
 	revived = false
+	win = false
 	self.current_max = 1
 	if delete_progress:
 		self.highest_max = cfg.MIN_HIGHEST_MAX
@@ -129,6 +133,7 @@ func save_game():
 		'matrix': board_layer.save_info(),
 		'settings': settings.save_info(),
 		'revived': revived,
+		'win': win,
 		'seen_excuses': to_json(seen_excuses)
 	}
 	savegame.store_line(to_json(game_status))
@@ -154,6 +159,7 @@ func load_game():
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
 	board_layer.load_info(info['matrix'])
+	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
 
 	savegame.close()
@@ -189,14 +195,16 @@ func check_game_over():
 
 
 func win():
-	$"/root".set_disable_input(true)
-	sounds.play_audio("prewin")
+	if not win:
+		$"/root".set_disable_input(true)
+		win = true
+		sounds.play_audio("prewin")
 
-	var t = $"/root/stage/timer"
-	t.set_wait_time(2.0)
-	t.start()
-	yield(t, "timeout")
-	popup_layer.open("win")
+		var t = $"/root/stage/timer"
+		t.set_wait_time(2.0)
+		t.start()
+		yield(t, "timeout")
+		popup_layer.open("win")
 
 
 func game_over():
