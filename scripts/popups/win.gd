@@ -17,6 +17,7 @@ func win():
 	$window.show()
 	$clickable_space.show()
 	game.event_layer.start("win")
+	$"window/broccoli_duck/anim".play("duck")
 
 
 func close():
@@ -26,3 +27,7 @@ func close():
 func _on_go_back_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
+
+
+func quack():
+	game.sounds.play_audio("quack")
