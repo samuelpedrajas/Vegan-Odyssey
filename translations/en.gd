@@ -24,7 +24,7 @@ var dialog_list = [
 		["B", "Keeping animals in cages with no chance to survive can't be part of any “circle of life”, neither can be genetically modifying them or having pieces of them in fridges."],
 		["B", "It's entirely up to you to go vegan, no law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
 	], [
-		["A", "(lau_serious_talking)Bacon, tho(lau_proud)(lucy_serious)."],
+		["A", "(lucy_smiling)(lau_serious_talking)Bacon, tho(lau_proud)(lucy_serious)."],
 		["B", "Uhm... (lucy_stand_talking)I don't think you even deserve an answer but I'll ask you something:(lucy_talking_arm) do you support bull-fighting?(lucy_listening)"],
 		["A", "(lau_finger)Absolutely not! That's animal abuse(lau_proud)."],
 		["B", "(lucy_stand_talking)Well, bull-fighters say it's art. (lucy_talking)(lau_listening)They say they get pleasure for their eyes rather than their taste."],

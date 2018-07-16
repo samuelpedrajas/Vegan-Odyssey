@@ -37,7 +37,8 @@ var container_dest
 var container_start
 
 var first_actions = []
-var last_actions = []
+var lucy_last_action = null
+var lau_last_action = null
 var space_positions = []
 
 
@@ -65,7 +66,7 @@ func _build_dict(line):
 	text = ""
 	girl = line[0]
 
-	var first_action_found = false
+	var first_action_counter = 2
 	var dt = line[1]
 	var i = 0
 	var j = 0
@@ -79,10 +80,15 @@ func _build_dict(line):
 			else:
 				actions[j] = [action_name]
 			i += action_name.length() + 2
-			last_actions = actions[j]
-			if not first_action_found:
-				first_actions = last_actions
-				first_action_found = true
+
+			if action_name.substr(0, 3) == "lau":
+				lau_last_action = action_name
+			else:
+				lucy_last_action = action_name
+
+			if prev_bubble == null and first_action_counter > 0:
+				first_actions = actions[j]
+				first_action_counter -= 1
 		else:
 			text += c
 			i += 1

@@ -121,8 +121,10 @@ func _next_bubble():
 
 
 func _finish_bubble():
-	for action in current_bubble.last_actions:
-		start_action(action)
+	var last_actions = [current_bubble.lau_last_action, current_bubble.lucy_last_action]
+	for action in last_actions:
+		if action != null:
+			start_action(action)
 	current_bubble.finish_it()
 
 
@@ -132,8 +134,9 @@ func _next_conversation():
 	yield($"window/container/animation", "animation_finished")
 	for child in bubbles:
 		child.remove_me()
+	$"window/msgs".set_position(Vector2(0, 1146))
 	bubbles = []
-	current_bubble
+	current_bubble = null
 	current_text = 0
 	dirty_texts = null
 	bubble_in_progress = false
