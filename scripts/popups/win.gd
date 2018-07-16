@@ -38,10 +38,6 @@ func _on_go_back_pressed():
 	game.popup_layer.close()
 
 
-func quack():
-	game.sounds.play_audio("quack")
-
-
 func _on_share_pressed():
 	game.sounds.play_audio("click")
 
