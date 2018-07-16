@@ -5,6 +5,14 @@ var keep_input_disabled = true
 var keep_previous = false
 var show_blur = false
 
+var share = null
+
+
+func _ready():
+	# initialize the share singleton if it exists
+	if Engine.has_singleton("GodotShare"):
+		share = Engine.get_singleton("GodotShare")
+
 
 func open():
 	set_position(game.cfg.WIN_WINDOW_POS)
@@ -18,7 +26,7 @@ func win():
 	$window.show()
 	$clickable_space.show()
 	game.event_layer.start("win")
-	$"window/broccoli_duck/anim".play("duck")
+	$"window/duck/broccoli_duck/anim".play("duck")
 
 
 func close():
@@ -32,3 +40,14 @@ func _on_go_back_pressed():
 
 func quack():
 	game.sounds.play_audio("quack")
+
+
+func _on_share_pressed():
+	game.sounds.play_audio("click")
+
+	if share != null:
+		share.shareText(
+			"Vegan Oddysey",
+			"Play Vegan Oddysey for iOS and Android.",
+			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
+		)
