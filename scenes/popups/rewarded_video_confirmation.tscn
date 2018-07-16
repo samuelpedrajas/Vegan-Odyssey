@@ -202,10 +202,6 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 script = ExtResource( 2 )
 
-[node name="window" parent="." index="2"]
-
-modulate = Color( 1, 1, 1, 1 )
-
 [node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -391.0
