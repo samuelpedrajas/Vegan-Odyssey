@@ -208,15 +208,15 @@ func win():
 
 
 func game_over():
-	$"/root".set_disable_input(true)
+	if not win:
+		$"/root".set_disable_input(true)
+		var t = $"/root/stage/timer"
+		t.set_wait_time(0.4)
+		t.start()
+		yield(t, "timeout")
 
-	var t = $"/root/stage/timer"
-	t.set_wait_time(0.4)
-	t.start()
-	yield(t, "timeout")
-
-	sounds.play_audio("game_over")
-	popup_layer.open("game_over")
+		sounds.play_audio("game_over")
+		popup_layer.open("game_over")
 
 
 func _notification(what):
