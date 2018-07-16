@@ -14,6 +14,7 @@ func open():
 
 
 func win():
+	back_button = true
 	$window.show()
 	$clickable_space.show()
 	game.event_layer.start("win")
