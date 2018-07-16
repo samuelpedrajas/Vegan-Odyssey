@@ -41,9 +41,6 @@ func open(entry):
 
 
 func start_conversation():
-	if current_entry != null:
-		current_entry.update_new_labels()
-
 	$"window/container/next".set_disabled(false)
 
 	if token_index == -1:
@@ -59,6 +56,9 @@ func start_conversation():
 		dirty_texts = game.conversations[token_index - 1]
 		game.seen_excuses[token_index - 1].debate_seen = true
 		game.save_game()
+
+		if current_entry != null:
+			current_entry.update_new_labels()
 
 	current_bubble = build_dialog()
 	for action in current_bubble.first_actions:
