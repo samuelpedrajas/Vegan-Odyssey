@@ -96,6 +96,7 @@ func restart_game(delete_progress=false):
 			excuse.picture_seen = false
 			excuse.debate_seen = false
 	popup_layer.close_all()
+	game.event_layer.stop("win")
 
 	board_layer.reset()
 	board_layer.spawn_token(null, 1, false)

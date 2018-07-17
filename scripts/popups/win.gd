@@ -43,7 +43,7 @@ func _on_share_pressed():
 
 	if share != null:
 		share.shareText(
-			"Vegan Oddysey",
-			"Play Vegan Oddysey for iOS and Android.",
-			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
+			game.cfg.TITLE,
+			game.cfg.SUBJECT,
+			game.cfg.MSG
 		)

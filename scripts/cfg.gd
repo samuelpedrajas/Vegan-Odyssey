@@ -34,6 +34,13 @@ const SCROLL_THRESHOLD = 10
 
 const SAVE_GAME_PATH = "user://savegame.save"
 
+
+# share
+const TITLE = "Vegan Oddysey"
+const SUBJECT = "Play Vegan Oddysey for iOS and Android."
+const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at https://www.veganodysseythegame.com."
+
+
 # excuse info
 var EXCUSES = [
 	{
