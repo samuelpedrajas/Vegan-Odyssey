@@ -54,9 +54,6 @@
 script/source = "extends Control
 
 
-var open_offline_popup = false
-
-
 func _enter_tree():
 	game.setup()
 
@@ -69,13 +66,24 @@ func _ready():
 	else:
 		game.load_game()
 
+	# show banner or try again
+	if admob.is_banner_loaded:
+		admob.showBanner()
+	else:
+		$admob.start()
+
 	$debate_layer.init(game.current_max)
 
-	# this flag is set in game_loader.gd
-	if open_offline_popup:
-		game.popup_layer.open(\"offline\")
+	$\"/root\".set_disable_input(false)
+
+
+func _on_admob_timeout():
+	print(\"BANNER TIMEOUT: \", admob.is_banner_loaded)
+	if admob.is_banner_loaded:
+		admob.showBanner()
+		$admob.stop()
 	else:
-		$\"/root\".set_disable_input(false)
+		admob.loadBanner()
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -1161,6 +1169,13 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="admob" type="Timer" parent="." index="17"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 
 [connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
@@ -1178,5 +1193,7 @@ autostart = false
 [connection signal="pressed" from="dialog_layer/message2/debate_btn" to="debate_layer" method="_on_debate_btn_pressed"]
 
 [connection signal="user_input" from="input_handler" to="board_layer" method="move_tokens"]
+
+[connection signal="timeout" from="admob" to="." method="_on_admob_timeout"]
 
 
