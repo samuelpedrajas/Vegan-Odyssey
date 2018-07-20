@@ -59,7 +59,7 @@ func closeable_event():
 
 
 func _on_broccoli_duck_timer_timeout():
-	if game.board_layer.movements >= 60 and duck_ready:
+	if game.board_layer.movements >= 60 and duck_ready and not game.win:
 		start("broccoli_duck")
 		duck_ready = false
 		game.board_layer.movements = 0

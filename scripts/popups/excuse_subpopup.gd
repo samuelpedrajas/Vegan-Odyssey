@@ -52,9 +52,9 @@ func _on_share_released():
 		yield(get_tree(), "idle_frame")
 		share.sharePic(
 			OS.get_user_data_dir() + "/excuse.png",
-			"Vegan Oddysey",
-			"Play Vegan Oddysey for iOS and Android.",
-			"Play Vegan Oddysey for iOS and Android. Download it for free at http://www.veganodysseythegame.com."
+			game.cfg.TITLE,
+			game.cfg.SUBJECT,
+			game.cfg.MSG
 		)
 
 

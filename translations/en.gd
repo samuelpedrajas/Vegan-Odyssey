@@ -24,7 +24,7 @@ var dialog_list = [
 		["B", "Keeping animals in cages with no chance to survive can't be part of any “circle of life”, neither can be genetically modifying them or having pieces of them in fridges."],
 		["B", "It's entirely up to you to go vegan, no law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
 	], [
-		["A", "(lau_serious_talking)Bacon, tho(lau_proud)(lucy_serious)."],
+		["A", "(lucy_smiling)(lau_serious_talking)Bacon, tho(lau_proud)(lucy_serious)."],
 		["B", "Uhm... (lucy_stand_talking)I don't think you even deserve an answer but I'll ask you something:(lucy_talking_arm) do you support bull-fighting?(lucy_listening)"],
 		["A", "(lau_finger)Absolutely not! That's animal abuse(lau_proud)."],
 		["B", "(lucy_stand_talking)Well, bull-fighters say it's art. (lucy_talking)(lau_listening)They say they get pleasure for their eyes rather than their taste."],
@@ -51,4 +51,12 @@ var dialog_list = [
 		["B", "You need to come up with good arguments because when an animal is killed, is not only your subjectivity that matters. Animals want to live, their perspective also matters."],
 		["B", "We're killing more than 60 billion land animals every year and this is having a catastrophic impact to our environment. Is there really any good justification to keep doing this(lucy_smiling)?"]
 	]
+]
+
+var ending = [
+	["A", "(lau_talking)(lucy_smiling)Well… Honestly, I never thought about it in that way. I suppose I never seriously thought about it."],
+	["B", "(lucy_talking)(lau_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
+	["A", "(lucy_smiling)That makes sense. (lau_happy_talking)Thanks Lucy! I’m feeling I’ve got the responsibility to decide."],
+	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! As Sartre said: humans are “condemned to be free”. Our precious freedom also forces us to make our own decisions. We’re responsible to choose wisely!"],
+	["A", "(lucy_smiling)(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
 ]

@@ -106,10 +106,6 @@ script = ExtResource( 2 )
 anims/close_settings = SubResource( 1 )
 anims/open_settings = SubResource( 2 )
 
-[node name="window" parent="." index="2"]
-
-modulate = Color( 1, 1, 1, 1 )
-
 [node name="non_clickable_space" parent="window" index="0"]
 
 margin_left = -555.0
@@ -252,14 +248,15 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="close_button" type="TextureButton" parent="." index="3"]
 
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -129.0
-margin_top = 740.0
+margin_top = 1040.0
 margin_right = 130.0
-margin_bottom = 863.0
+margin_bottom = 1163.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

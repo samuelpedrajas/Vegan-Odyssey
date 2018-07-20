@@ -14,7 +14,8 @@ onready var popup_scene_dict = {
 	"no_more_ads": preload("res://scenes/popups/no_more_ads.tscn"),
 	"offline": preload("res://scenes/popups/offline.tscn"),
 	"game_over": preload("res://scenes/popups/game_over.tscn"),
-	"debate_screen": preload("res://scenes/popups/debate_screen.tscn")
+	"debate_screen": preload("res://scenes/popups/debate_screen.tscn"),
+	"win": preload("res://scenes/popups/win.tscn")
 }
 
 
@@ -32,7 +33,8 @@ func open(name, params=null):
 		else:
 			get_tree().set_pause(true)
 
-		$blur.show()
+		if popup.show_blur:
+			$blur.show()
 
 		# add popup
 		add_child(popup)

@@ -88,7 +88,7 @@ func _move_line(pos, direction):
 		var dest = changes.last_valid_position
 
 		# conditions for positioning and merging
-		if last_token and last_token.followed == null and last_token.level == current_token.level:
+		if last_token and last_token.followed == null and last_token.level != 9 and last_token.level == current_token.level:
 			# logging
 			var id1 = str(current_token.get_instance_id())
 			var id2 = str(last_token.get_instance_id())

@@ -28,10 +28,18 @@ const REWARDED_VIDEO_WINDOW_POS = Vector2(540, 850)
 const NO_MORE_ADS_WINDOW_POS = Vector2(540, 850)
 const OFFLINE_WINDOW_POS = Vector2(540, 850)
 const GAME_OVER_WINDOW_POS = Vector2(540, 860)
+const WIN_WINDOW_POS = Vector2(540, 980)
 
 const SCROLL_THRESHOLD = 10
 
 const SAVE_GAME_PATH = "user://savegame.save"
+
+
+# share
+const TITLE = "Vegan Oddysey"
+const SUBJECT = "Play Vegan Oddysey for iOS and Android."
+const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at https://www.veganodysseythegame.com."
+
 
 # excuse info
 var EXCUSES = [

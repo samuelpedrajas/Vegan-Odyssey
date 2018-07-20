@@ -37,7 +37,12 @@ var seen_excuses = [
 	{"picture_seen": false, "debate_seen": false},
 	{"picture_seen": false, "debate_seen": false}
 ]
-var conversations = preload("res://translations/en.gd").new().dialog_list
+var en = preload("res://translations/en.gd").new()
+var conversations = en.dialog_list
+var ending = en.ending
+
+
+var win = false
 
 
 func _ready():
@@ -83,6 +88,7 @@ func restart_game(delete_progress=false):
 
 	# update amounts
 	revived = false
+	win = false
 	self.current_max = 1
 	if delete_progress:
 		self.highest_max = cfg.MIN_HIGHEST_MAX
@@ -90,6 +96,7 @@ func restart_game(delete_progress=false):
 			excuse.picture_seen = false
 			excuse.debate_seen = false
 	popup_layer.close_all()
+	game.event_layer.stop("win")
 
 	board_layer.reset()
 	board_layer.spawn_token(null, 1, false)
@@ -127,6 +134,7 @@ func save_game():
 		'matrix': board_layer.save_info(),
 		'settings': settings.save_info(),
 		'revived': revived,
+		'win': win,
 		'seen_excuses': to_json(seen_excuses)
 	}
 	savegame.store_line(to_json(game_status))
@@ -152,6 +160,7 @@ func load_game():
 	self.broccolis = info['broccolis']
 	settings.load_info(info['settings'])
 	board_layer.load_info(info['matrix'])
+	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
 
 	savegame.close()
@@ -187,20 +196,28 @@ func check_game_over():
 
 
 func win():
-	print("Win")
-	restart_game()
+	if not win:
+		$"/root".set_disable_input(true)
+		win = true
+		sounds.play_audio("prewin")
+
+		var t = $"/root/stage/timer"
+		t.set_wait_time(2.0)
+		t.start()
+		yield(t, "timeout")
+		popup_layer.open("win")
 
 
 func game_over():
-	$"/root".set_disable_input(true)
+	if not win:
+		$"/root".set_disable_input(true)
+		var t = $"/root/stage/timer"
+		t.set_wait_time(0.4)
+		t.start()
+		yield(t, "timeout")
 
-	var t = $"/root/stage/timer"
-	t.set_wait_time(0.4)
-	t.start()
-	yield(t, "timeout")
-
-	sounds.play_audio("game_over")
-	popup_layer.open("game_over")
+		sounds.play_audio("game_over")
+		popup_layer.open("game_over")
 
 
 func _notification(what):

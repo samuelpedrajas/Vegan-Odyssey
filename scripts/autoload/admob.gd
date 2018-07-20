@@ -1,5 +1,7 @@
 extends Node2D
 
+var is_banner_loaded = false
+
 var admob = null
 var isReal = false
 var isTop = false
@@ -43,6 +45,11 @@ func start_ads():
 		get_tree().connect("screen_resized", self, "on_resize")
 
 
+func showBanner():
+	if admob:
+		admob.showBanner()
+
+
 func get_rewarded_ad_info():
 	var tmp = max(1, 3 - game.broccolis)
 	var amount = min(2, tmp)
@@ -62,6 +69,7 @@ func get_rewarded_ad_info():
 func loadBanner():
 	if admob != null:
 		admob.loadBanner(adBannerId, isTop)
+		admob.hideBanner()
 
 
 func loadRewardedVideo(ad_to_show):
@@ -82,6 +90,7 @@ func showRewardedVideo():
 
 func _on_admob_ad_loaded():
 	print("Ad loaded success")
+	is_banner_loaded = true
 	emit_signal("banner_loaded")
 
 

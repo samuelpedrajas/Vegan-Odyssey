@@ -3,6 +3,7 @@ extends "popup.gd"
 var back_button = true
 var keep_input_disabled = false
 var keep_previous = false
+var show_blur = true
 
 
 onready var scroll_container = $"window/scroll_container"
