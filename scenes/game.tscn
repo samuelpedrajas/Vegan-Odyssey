@@ -62,6 +62,7 @@ func _ready():
 	if game.cfg.DEBUG_MODE:
 		game.board_layer.debug_func()
 	elif !game.savegame.file_exists($cfg.SAVE_GAME_PATH):
+		game.popup_layer.open(\"debate_screen\", -2)
 		game.board_layer.spawn_token(null, 1, false)
 	else:
 		game.load_game()
@@ -73,11 +74,6 @@ func _ready():
 		$admob.start()
 
 	$debate_layer.init(game.current_max)
-
-	# tutorial
-	if not game.seen_tutorial[\"1\"]:
-		game.event_layer.get_or_start(\"tutorial\").post(\"1\")
-
 	$\"/root\".set_disable_input(false)
 
 

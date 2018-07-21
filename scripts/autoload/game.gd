@@ -46,6 +46,7 @@ var seen_tutorial = {
 
 var en = preload("res://translations/en.gd").new()
 var conversations = en.dialog_list
+var opening = en.opening
 var ending = en.ending
 
 

@@ -1,6 +1,16 @@
 extends Node
 
 
+var opening = [
+	["B", "(lucy_salutes)(lau_salutes)Laura! Wow! It is a long-time no see! It is great to see you again."],
+	["A", "Lucy! What’s new? (lau_talking_open_eyes)(lucy_smiling)I’ve heard you’ve gone Vegan! Is that true?"],
+	["B", "(lau_serious)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
+	["A", "(lau_serious_talking)What? That doesn’t make any sense."],
+	["B", "(lau_proud)(lucy_stand_talking)Why?"],
+	["A", "(lau_finger)Because... WHAT IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
+]
+
+
 var dialog_list = [
 	[
 		["A", "(lau_talking)(lucy_listening)What if you were in a deserted island?"],

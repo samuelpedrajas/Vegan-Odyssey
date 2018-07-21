@@ -25,6 +25,7 @@ signal conversation_finished
 
 
 # token_index = -1 means it's the ending
+# token_index = -2 means it's the opening
 
 
 func open(entry):
@@ -43,10 +44,14 @@ func open(entry):
 func start_conversation():
 	$"window/container/next".set_disabled(false)
 
-	if token_index == -1:
+	if token_index < 0:
 		$"window/container/prev".hide()
 		$"window/container/n".hide()
-		dirty_texts = game.ending
+		if token_index == -1:
+			dirty_texts = game.ending
+		elif token_index == -2:
+			$"window/container/go_back".hide()
+			dirty_texts = game.opening
 	else:
 		if token_index == 1:
 			$"window/container/prev".set_disabled(true)
@@ -99,6 +104,9 @@ func bubble_finished():
 	elif token_index == -1:
 		$"window/container/next".set_disabled(true)
 		$"window/container/animation".play("go_back")
+	elif token_index == -2:
+		$"window/container/next".set_disabled(false)
+		$"window/container/animation".play("finished")
 	elif token_index == game.highest_max:
 		$"window/container/next".set_disabled(true)
 	else:
@@ -154,7 +162,12 @@ func _on_next_pressed():
 	elif current_text < dirty_texts.size():
 		game.sounds.play_audio("click")
 		_next_bubble()
-	elif token_index < game.highest_max and not token_index == -1:
+	elif token_index == -2:
+		$"/root".set_disable_input(true)
+		game.event_layer.get_or_start("tutorial").post("1")
+		game.sounds.play_audio("click")
+		game.popup_layer.close()
+	elif token_index < game.highest_max and not token_index < 0:
 		game.sounds.play_audio("click")
 		token_index += 1
 		_next_conversation()
