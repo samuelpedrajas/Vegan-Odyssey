@@ -57,10 +57,15 @@ func move_tokens(direction):
 		# - win
 		# - game over
 		# - new excuse
-		if game.check_win():
-			game.win()
-		elif game.check_game_over():
-			game.game_over()
+		if not game.win:
+			var moves_available = check_moves_available()
+			# win, game over, tutorial
+			if game.current_max == game.cfg.GOAL:
+				game.victory()
+			elif not moves_available and game.broccolis == 0:
+				game.game_over()
+			elif not moves_available and not game.seen_tutorial["3"]:
+				game.event_layer.get_or_start("tutorial").post("3")
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):

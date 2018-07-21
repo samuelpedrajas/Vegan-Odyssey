@@ -3,7 +3,7 @@ extends Node
 var savegame = File.new()
 
 # game scores
-var highest_max = 1  # TODO: use cfg.MIN_HIGHEST_MAX
+var highest_max = 1 setget _set_highest_max  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1 setget _set_current_max
 
 # items
@@ -37,6 +37,13 @@ var seen_excuses = [
 	{"picture_seen": false, "debate_seen": false},
 	{"picture_seen": false, "debate_seen": false}
 ]
+var seen_tutorial = {
+	"1": false,
+	"2": false,
+	"3": false
+}
+
+
 var en = preload("res://translations/en.gd").new()
 var conversations = en.dialog_list
 var ending = en.ending
@@ -128,6 +135,7 @@ func save_game():
 		)
 
 	var game_status = {
+		'tutorial': to_json(seen_tutorial),
 		'broccolis': broccolis,
 		'highest_max': highest_max,
 		'current_max': current_max,
@@ -154,7 +162,7 @@ func load_game():
 
 	var info = parse_json(savegame.get_line())
 
-	self.highest_max = info['highest_max']
+	highest_max = info['highest_max']
 	current_max = info['current_max']
 	revived = info['revived']
 	self.broccolis = info['broccolis']
@@ -162,6 +170,7 @@ func load_game():
 	board_layer.load_info(info['matrix'])
 	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
+	seen_tutorial = parse_json(info['tutorial'])
 
 	savegame.close()
 
@@ -172,6 +181,12 @@ func load_game():
 func _set_broccolis(v):
 	broccolis = v
 	hud_layer.set_broccoli_amount(v)
+
+
+func _set_highest_max(v):
+	if v == 2 and not seen_tutorial["2"]:
+		event_layer.get_or_start("tutorial").post("2")
+	highest_max = v
 
 
 func _set_current_max(v):
@@ -187,37 +202,27 @@ func secretly_set_broccolis(amount):
 ### WIN / LOSE ###
 
 
-func check_win():
-	return current_max == cfg.GOAL
+func victory():
+	$"/root".set_disable_input(true)
+	win = true
+	sounds.play_audio("prewin")
 
-
-func check_game_over():
-	return not board_layer.check_moves_available() and broccolis == 0
-
-
-func win():
-	if not win:
-		$"/root".set_disable_input(true)
-		win = true
-		sounds.play_audio("prewin")
-
-		var t = $"/root/stage/timer"
-		t.set_wait_time(2.0)
-		t.start()
-		yield(t, "timeout")
-		popup_layer.open("win")
+	var t = $"/root/stage/timer"
+	t.set_wait_time(2.0)
+	t.start()
+	yield(t, "timeout")
+	popup_layer.open("win")
 
 
 func game_over():
-	if not win:
-		$"/root".set_disable_input(true)
-		var t = $"/root/stage/timer"
-		t.set_wait_time(0.4)
-		t.start()
-		yield(t, "timeout")
+	$"/root".set_disable_input(true)
+	var t = $"/root/stage/timer"
+	t.set_wait_time(0.4)
+	t.start()
+	yield(t, "timeout")
 
-		sounds.play_audio("game_over")
-		popup_layer.open("game_over")
+	sounds.play_audio("game_over")
+	popup_layer.open("game_over")
 
 
 func _notification(what):

@@ -49,14 +49,17 @@ func _on_click_area_gui_input(event):
 	if event.is_action_pressed("click"):
 		# can't click if removing tokens
 		if not grayed_out:
+			if game.event_layer.current_events.has("tutorial"):
+				game.event_layer.get_or_start("tutorial").unpost()
 			unclicked = false
 			game.duck_counter = 0
 			if ad_to_show == null:
 				# set how much broccoli this girl will offer
 				ad_to_show = admob.get_rewarded_ad_info()
 			game.popup_layer.open("rewarded_video_confirmation", self)
-		else:
-			game.event_layer.stop("broccoli")
+		elif game.event_layer.current_events.has("broccoli"):
+			game.event_layer.current_events["broccoli"].do_close()
+
 
 func _on_animation_animation_finished(anim_name):
 	if unclicked:

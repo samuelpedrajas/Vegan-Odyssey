@@ -109,6 +109,8 @@ func token_selected(token, direction):
 
 
 func do_close():
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
 	closing = true
 	set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 	game.event_layer.stop("broccoli")

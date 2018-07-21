@@ -4,21 +4,31 @@ extends CanvasLayer
 ### ON PRESSED ACTIONS ###
 
 func _on_menu_pressed():
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
 	game.sounds.play_audio("click")
 	game.popup_layer.open("settings")
 
 
 func _on_reset_pressed():
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
 	game.sounds.play_audio("click")
 	game.popup_layer.open("reset_board_confirmation")
 
 
 func _on_excuses_pressed():
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
 	game.sounds.play_audio("click")
 	game.popup_layer.open("excuse_book")
 
 
 func _on_broccoli_pressed():
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
+	if not game.seen_tutorial["3"]:
+		game.event_layer.get_or_start("tutorial").post("4")
 	game.sounds.play_audio("click")
 	game.event_layer.start("broccoli")
 

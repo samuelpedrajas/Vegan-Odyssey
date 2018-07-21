@@ -13,6 +13,9 @@ func _check_move(input_vector):
 		for direction in game.cfg.DIRECTIONS:
 			# if the distance is smaller than the threshold, try to make a move
 			if (direction.normalized() - input_vector).length() < game.cfg.MINIMUM_DISTANCE_TO_MOVE:
+				# close post
+				if game.event_layer.current_events.has("tutorial"):
+					game.event_layer.get_or_start("tutorial").unpost()
 				emit_signal("user_input", direction)
 				break
 

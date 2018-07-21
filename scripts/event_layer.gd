@@ -8,7 +8,8 @@ onready var event_scene_dict = {
 	"broccoli": preload("res://scenes/events/broccoli_selection.tscn"),
 	"broccoli_duck": preload("res://scenes/events/broccoli_duck.tscn"),
 	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn"),
-	"win": preload("res://scenes/events/win.tscn")
+	"win": preload("res://scenes/events/win.tscn"),
+	"tutorial": preload("res://scenes/events/tutorial.tscn")
 }
 
 
@@ -63,6 +64,13 @@ func _on_broccoli_duck_timer_timeout():
 		start("broccoli_duck")
 		duck_ready = false
 		game.board_layer.movements = 0
+
+
+func get_or_start(event_name):
+	if current_events.has(event_name):
+		return current_events[event_name]
+	else:
+		return start(event_name)
 
 
 func _on_duck_ready_timeout():
