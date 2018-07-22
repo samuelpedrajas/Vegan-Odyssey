@@ -7,7 +7,7 @@ var opening = [
 	["B", "(lau_serious)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
 	["A", "(lau_serious_talking)What? That doesn’t make any sense."],
 	["B", "(lau_proud)(lucy_stand_talking)Why?"],
-	["A", "(lau_finger)Because... WHAT IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
+	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
 ]
 
 

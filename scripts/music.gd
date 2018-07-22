@@ -3,7 +3,6 @@ extends AudioStreamPlayer
 
 func _ready():
 	game.settings.connect("music_settings_changed", self, "update_settings")
-	update_settings()
 
 
 func update_settings():

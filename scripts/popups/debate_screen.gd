@@ -105,6 +105,8 @@ func bubble_finished():
 		$"window/container/next".set_disabled(true)
 		$"window/container/animation".play("go_back")
 	elif token_index == -2:
+		if not game.music.is_playing():
+			game.music.update_settings()
 		$"window/container/next".set_disabled(false)
 		$"window/container/animation".play("finished")
 	elif token_index == game.highest_max:
@@ -116,8 +118,10 @@ func bubble_finished():
 func start_action(action):
 	if action.begins_with("lucy"):
 		$"window/container/girls/lucy".play(action)
-	else:
+	elif action.begins_with("lau"):
 		$"window/container/girls/laura".play(action)
+	elif action == "music":
+		game.music.update_settings()
 
 
 func _next_bubble():
