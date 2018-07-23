@@ -35,9 +35,12 @@ func open(entry):
 		token_index = current_entry.token_index
 	else:
 		token_index = entry
+		if token_index == -2:
+			back_button = false
 	start_conversation()
 	.open("open_debate")
 	yield($animation, "animation_finished")
+	$"/root/stage/popup_layer/black".hide()
 	current_bubble.play()
 
 
@@ -168,6 +171,9 @@ func _on_next_pressed():
 		_next_bubble()
 	elif token_index == -2:
 		$"/root".set_disable_input(true)
+		if admob.is_banner_loaded:
+			admob.showBanner()
+		game.save_game()
 		game.event_layer.get_or_start("tutorial").post("1")
 		game.sounds.play_audio("click")
 		game.popup_layer.close()

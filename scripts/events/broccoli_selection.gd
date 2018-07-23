@@ -16,6 +16,7 @@ onready var animation = $"animation"
 func start():
 	# disable input so the user cannot move tokens
 	$"/root".set_disable_input(true)
+	game.board_layer.get_node("input_handler").hide()
 
 	# set duck gray
 	if game.event_layer.current_events.has("broccoli_duck"):
@@ -49,6 +50,7 @@ func start():
 func stop():
 	closing = true
 	$"/root".set_disable_input(true)
+	game.board_layer.get_node("input_handler").show()
 
 	# unset duck gray
 	if game.event_layer.current_events.has("broccoli_duck"):
@@ -84,6 +86,8 @@ func token_selected(token, direction):
 
 	game.recalculate_max()
 
+	if game.event_layer.current_events.has("tutorial"):
+		game.event_layer.get_or_start("tutorial").unpost()
 
 	token.die(direction)
 	yield(token, 'tree_exited')

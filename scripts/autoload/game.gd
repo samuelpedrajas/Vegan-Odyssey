@@ -98,23 +98,35 @@ func restart_game(delete_progress=false):
 	revived = false
 	win = false
 	self.current_max = 1
-	if delete_progress:
-		self.highest_max = cfg.MIN_HIGHEST_MAX
-		for excuse in seen_excuses:
-			excuse.picture_seen = false
-			excuse.debate_seen = false
+
 	popup_layer.close_all()
 	game.event_layer.stop("win")
 
 	board_layer.reset()
 	board_layer.spawn_token(null, 1, false)
 
-	save_game()
+	if delete_progress:
+		remove_game()
+		music.stop()
+		seen_tutorial = {
+			"1": false,
+			"2": false,
+			"3": false
+		}
+		self.highest_max = cfg.MIN_HIGHEST_MAX
+		for excuse in seen_excuses:
+			excuse.picture_seen = false
+			excuse.debate_seen = false
+		game.popup_layer.open("debate_screen", -2)
+		debate_layer.init(1)
+	else:
+		save_game()
 
 	transition.play("open")
 	yield(transition, "animation_finished")
 	event_layer.get_node("duck_ready").set_paused(false)
-	$"/root".set_disable_input(false)
+	if not delete_progress:
+		$"/root".set_disable_input(false)
 
 
 func reset_progress():
@@ -176,6 +188,12 @@ func load_game():
 	savegame.close()
 
 
+func remove_game():
+	if game.savegame.file_exists(cfg.SAVE_GAME_PATH):
+		var dir = Directory.new()
+		dir.remove(cfg.SAVE_GAME_PATH)
+
+
 ### SETTERS ###
 
 
@@ -230,11 +248,12 @@ func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
 		if $"/root".is_input_disabled():
 			return
-
-		sounds.play_audio("click")
-		if popup_layer.closeable():
+		elif popup_layer.closeable():
+			sounds.play_audio("click")
 			popup_layer.close()
 		elif event_layer.closeable_event():
+			sounds.play_audio("click")
 			event_layer.stop_closeables()
 		elif popup_layer.popup_stack.empty():
+			sounds.play_audio("click")
 			popup_layer.open("exit_confirmation")

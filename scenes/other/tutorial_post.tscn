@@ -12,10 +12,18 @@ script/source = "extends StaticBody2D
 
 onready var animation = $animation
 
+var n_string = null
+
 
 func set_post(n):
+	n_string = n
 	get_node(\"post/sprite/msg\" + n).show()
 
+
+func close():
+	animation.play_backwards(\"appear\")
+	yield(animation, \"animation_finished\")
+	queue_free()
 "
 
 [sub_resource type="CircleShape2D" id=2]
@@ -94,6 +102,7 @@ tracks/0/keys = {
 
 [node name="axis" type="StaticBody2D" index="0"]
 
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 540, 130 )
 input_pickable = false
 collision_layer = 1

@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.666667 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -81,7 +81,6 @@ margin_right = 1080.0
 margin_bottom = 1920.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -90,8 +89,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="black" type="Sprite" parent="black4broccoli" index="1"]
 
-modulate = Color( 1, 1, 1, 0.666667 )
-z_index = -1
+modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Visibility" ]
