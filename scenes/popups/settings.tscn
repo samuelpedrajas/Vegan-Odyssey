@@ -97,17 +97,14 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="settings" index="0" instance=ExtResource( 1 )]
-
+[node name="settings" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="animation" parent="." index="0"]
-
 anims/close_settings = SubResource( 1 )
 anims/open_settings = SubResource( 2 )
 
 [node name="non_clickable_space" parent="window" index="0"]
-
 margin_left = -555.0
 margin_top = -529.0
 margin_right = 556.0
@@ -115,11 +112,9 @@ margin_bottom = 581.0
 _sections_unfolded = [ "Rect" ]
 
 [node name="background" parent="window" index="1"]
-
 texture = ExtResource( 3 )
 
 [node name="music_control" type="Control" parent="window" index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -134,7 +129,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="switch" type="TextureButton" parent="window/music_control" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -158,7 +152,6 @@ texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="sound_control" type="Control" parent="window" index="3"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -173,7 +166,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="switch" type="TextureButton" parent="window/sound_control" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -197,7 +189,6 @@ texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="reset_progress" type="TextureButton" parent="window" index="4"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -222,7 +213,6 @@ texture_pressed = ExtResource( 7 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="exit_button" type="TextureButton" parent="window" index="5"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -247,7 +237,6 @@ texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="close_button" type="TextureButton" parent="." index="3"]
-
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -273,13 +262,7 @@ texture_pressed = ExtResource( 11 )
 _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
 [connection signal="toggled" from="window/music_control/switch" to="." method="_on_switch_music_toggled"]
-
 [connection signal="toggled" from="window/sound_control/switch" to="." method="_on_switch_sound_toggled"]
-
 [connection signal="pressed" from="window/reset_progress" to="." method="_on_reset_progress_pressed"]
-
 [connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
-
 [connection signal="pressed" from="close_button" to="." method="_on_close_button_pressed"]
-
-

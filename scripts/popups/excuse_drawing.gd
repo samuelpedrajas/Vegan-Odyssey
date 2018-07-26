@@ -16,13 +16,18 @@ func _ready():
 		share = Engine.get_singleton("GodotShare")
 
 
-func open(list_entry):
+func setup(list_entry):
 	set_position(game.cfg.EXCUSE_WINDOW_POS)
 	$"window/h_list".setup(list_entry)
-	.open("open_subpopup")
+
+
+func open():
+	open_anim = "open_subpopup"
+	.open()
 
 
 func close():
+	close_anim = "close_window"
 	.close()
 
 

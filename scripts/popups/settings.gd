@@ -9,7 +9,9 @@ var show_blur = true
 
 func close():
 	game.save_game()
-	.close("close_settings")
+
+	close_anim = "close_settings"
+	.close()
 
 
 func open():
@@ -18,7 +20,9 @@ func open():
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
 	set_position(game.cfg.SETTINGS_WINDOW_POS)
-	.open("open_settings")
+
+	open_anim = "open_settings"
+	.open()
 
 
 func _on_switch_sound_toggled(b):

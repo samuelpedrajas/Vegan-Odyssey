@@ -1,5 +1,6 @@
 extends "popup.gd"
 
+
 var back_button = true
 var keep_input_disabled = false
 var keep_previous = false
@@ -11,11 +12,9 @@ onready var scroll_container = $"window/scroll_container"
 
 func open():
 	set_position(game.cfg.BOOK_WINDOW_POS)
-	.open("open_book")
 
-
-func close():
-	.close("close_book")
+	open_anim = "open_book"
+	.open()
 
 
 func _on_close_button_pressed():

@@ -2,7 +2,7 @@ extends Node2D
 
 var is_banner_loaded = false
 
-var admob = null
+var admob_module = null
 var isReal = false
 var isTop = false
 var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your Ad Unit ID and delete this message.]
@@ -37,8 +37,8 @@ signal rewarded
 func start_ads():
 	if(Engine.has_singleton("AdMob")):
 		print("Starting AdMob")
-		admob = Engine.get_singleton("AdMob")
-		admob.init(isReal, get_instance_id())
+		admob_module = Engine.get_singleton("AdMob")
+		admob_module.init(isReal, get_instance_id())
 		loadBanner()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
@@ -46,8 +46,8 @@ func start_ads():
 
 
 func showBanner():
-	if admob:
-		admob.showBanner()
+	if admob_module:
+		admob_module.showBanner()
 
 
 func get_rewarded_ad_info():
@@ -67,14 +67,14 @@ func get_rewarded_ad_info():
 
 # loaders
 func loadBanner():
-	if admob != null:
-		admob.loadBanner(adBannerId, isTop)
-		admob.hideBanner()
+	if admob_module != null:
+		admob_module.loadBanner(adBannerId, isTop)
+		admob_module.hideBanner()
 
 
 func loadRewardedVideo(ad_to_show):
-	if admob != null:
-		admob.loadRewardedVideo(ad_to_show.id)
+	if admob_module != null:
+		admob_module.loadRewardedVideo(ad_to_show.id)
 		loadedReward = ad_to_show
 		print("Reward " + str(ad_to_show.amount) + " broccolis")
 
@@ -82,8 +82,8 @@ func loadRewardedVideo(ad_to_show):
 # players
 
 func showRewardedVideo():
-	if admob != null:
-		admob.showRewardedVideo()
+	if admob_module != null:
+		admob_module.showRewardedVideo()
 
 
 # banner loaded callback
@@ -106,7 +106,7 @@ func _on_admob_network_error():
 func _on_rewarded_video_ad_loaded():
 	print("Rewarded loaded success")
 	emit_signal("rewarded_loaded")
-	admob.showRewardedVideo()
+	admob_module.showRewardedVideo()
 
 
 # rewarded load error callback
@@ -151,5 +151,5 @@ func _on_rewarded(currency, amount):
 
 # resize
 func on_resize():
-	if admob != null:
-		admob.resize()
+	if admob_module != null:
+		admob_module.resize()

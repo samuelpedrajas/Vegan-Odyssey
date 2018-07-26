@@ -16,7 +16,7 @@ onready var animation = $"animation"
 func start():
 	# disable input so the user cannot move tokens
 	$"/root".set_disable_input(true)
-	game.board_layer.get_node("input_handler").hide()
+	game.board_layer.get_node("board/input_handler").hide()
 
 	# set duck gray
 	if game.event_layer.current_events.has("broccoli_duck"):
@@ -50,7 +50,7 @@ func start():
 func stop():
 	closing = true
 	$"/root".set_disable_input(true)
-	game.board_layer.get_node("input_handler").show()
+	game.board_layer.get_node("board/input_handler").show()
 
 	# unset duck gray
 	if game.event_layer.current_events.has("broccoli_duck"):

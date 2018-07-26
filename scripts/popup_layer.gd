@@ -34,16 +34,16 @@ func open(name, params=null):
 			get_tree().set_pause(true)
 
 		if popup.show_blur:
-			$blur.show()
+			$"effects/blur".show()
 
 		# add popup
 		add_child(popup)
 		popup_stack.append(popup)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		if params:
-			popup.open(params)
-		else:
-			popup.open()
+			popup.setup(params)
+		popup.open()
+
 		yield(popup.animation, "animation_finished")
 		if not popup.keep_input_disabled:
 			$"/root".set_disable_input(false)
@@ -69,7 +69,7 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 		popup_stack.pop_back()
 
 	if popup_stack.empty():
-		$blur.hide()
+		$"effects/blur".hide()
 		if not keep_tree_paused:
 			get_tree().set_pause(false)
 	else:
@@ -88,7 +88,7 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 
 
 func close_all():
-	$blur.hide()
+	$"effects/blur".hide()
 	while !popup_stack.empty():
 		var popup = popup_stack.pop_back()
 		popup.queue_free()

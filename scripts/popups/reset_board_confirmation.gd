@@ -9,6 +9,7 @@ var show_blur = true
 
 func open():
 	set_position(game.cfg.RESET_WINDOW_POS)
+	open_anim = "open_window"
 	.open()
 
 

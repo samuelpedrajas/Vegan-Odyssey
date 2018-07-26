@@ -8,17 +8,24 @@ var show_blur = true
 var broccoli_duck
 
 
-func open(_broccoli_duck):
+func setup(_broccoli_duck):
 	broccoli_duck = _broccoli_duck
 	broccoli_duck.hide()
+
+
+func open():
 	var ad_to_show = broccoli_duck.ad_to_show
 	$"window/amount".set_text("+" + str(ad_to_show.amount))
 	set_position(game.cfg.REWARDED_VIDEO_WINDOW_POS)
+
+	open_anim = "open_window"
 	.open()
 
 
 func close():
 	broccoli_duck.show()
+
+	close_anim = "close_window"
 	.close()
 
 

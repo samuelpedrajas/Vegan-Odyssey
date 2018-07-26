@@ -1,5 +1,6 @@
 extends "popup.gd"
 
+
 var back_button = false
 var keep_input_disabled = true
 var keep_previous = false
@@ -30,7 +31,8 @@ func win():
 
 
 func close():
-	.close("close_win")
+	close_anim = "close_win"
+	.close()
 
 
 func _on_go_back_pressed():

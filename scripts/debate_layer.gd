@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 onready var dialog = $"../dialog_layer"
-onready var message1 = dialog.get_node("message1")
-onready var message2 = dialog.get_node("message2")
+onready var message1 = dialog.get_node("text/dialog/message1")
+onready var message2 = dialog.get_node("text/dialog/message2")
 
 onready var laura = $"girls/laura"
 onready var lucy = $"girls/lucy"

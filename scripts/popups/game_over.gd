@@ -35,7 +35,9 @@ func open():
 		$"window/video_button/bg".show()
 		$"window/video_button/video_btn".set_disabled(false)
 		$"window/video_button/n".set_modulate(Color(0, 0.66, 0, 1))
-	.open("game_over")
+
+	open_anim = "game_over"
+	.open()
 
 
 func _on_go_back_btn_pressed():

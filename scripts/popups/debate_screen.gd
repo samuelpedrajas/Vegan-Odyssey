@@ -28,7 +28,7 @@ signal conversation_finished
 # token_index = -2 means it's the opening
 
 
-func open(entry):
+func setup(entry):
 	if typeof(entry) == TYPE_OBJECT:
 		current_entry = entry
 		v_box = current_entry.get_parent()
@@ -37,10 +37,16 @@ func open(entry):
 		token_index = entry
 		if token_index == -2:
 			back_button = false
+
+
+func open():
 	start_conversation()
-	.open("open_debate")
+
+	open_anim = "open_debate"
+	.open()
+
 	yield($animation, "animation_finished")
-	$"/root/stage/popup_layer/black".hide()
+	$"/root/stage/popup_layer/effects/black".hide()
 	current_bubble.play()
 
 
@@ -74,7 +80,8 @@ func start_conversation():
 
 
 func close():
-	.close("close_debate")
+	close_anim = "close_debate"
+	.close()
 	emit_signal("conversation_finished")
 
 

@@ -33,7 +33,4 @@ func play_audio(name):
 
 
 func update_settings():
-	if not game.settings.sound_on:
-		silenced = true
-	else:
-		silenced = false
+	silenced = not game.settings.sound_on
