@@ -19,7 +19,7 @@ modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/GodotShare"
 config/name="Vegan Odyssey"
 run/main_scene="res://scenes/loading_screen.tscn"
 boot_splash/image="res://images/loading_screen/splash.png"
-boot_splash/fullsize="cover"
+boot_splash/scale="cover"
 boot_splash/bg_color=Color( 0, 0, 0, 0 )
 config/icon="res://icon.png"
 
