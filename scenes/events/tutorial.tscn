@@ -48,15 +48,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="tutorial" type="Control" index="0"]
-
+[node name="tutorial" type="Control"]
 pause_mode = 2
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -64,10 +61,22 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Rect" ]
 
-[node name="black_bg" type="CanvasLayer" parent="." index="0"]
+[node name="post" type="Control" parent="." index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
 
+[node name="black_bg" type="CanvasLayer" parent="." index="1"]
 pause_mode = 2
 layer = 2
 offset = Vector2( -420, 0 )
@@ -78,7 +87,6 @@ script = SubResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="black_anim" type="AnimationPlayer" parent="black_bg" index="0"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -88,12 +96,10 @@ anims/open = SubResource( 2 )
 blend_times = [  ]
 
 [node name="backgrounds" type="Node2D" parent="black_bg" index="1"]
-
 modulate = Color( 1, 1, 1, 0 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="black1" type="Sprite" parent="black_bg/backgrounds" index="0"]
-
 visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 texture = ExtResource( 2 )
@@ -101,7 +107,6 @@ centered = false
 _sections_unfolded = [ "Visibility" ]
 
 [node name="clickable_area" type="Control" parent="black_bg/backgrounds/black1" index="0"]
-
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.0
@@ -119,7 +124,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="blocker" type="Control" parent="black_bg/backgrounds/black1/clickable_area" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -137,7 +141,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="black2" type="Sprite" parent="black_bg/backgrounds" index="1"]
-
 visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 texture = ExtResource( 3 )
@@ -145,7 +148,6 @@ centered = false
 _sections_unfolded = [ "Visibility" ]
 
 [node name="clickable_area" type="Control" parent="black_bg/backgrounds/black2" index="0"]
-
 editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
@@ -164,7 +166,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="blocker" type="Control" parent="black_bg/backgrounds/black2/clickable_area" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -182,7 +183,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="book" type="Button" parent="black_bg/backgrounds/black2" index="1"]
-
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -209,7 +209,6 @@ align = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="black3" type="Sprite" parent="black_bg/backgrounds" index="2"]
-
 visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 texture = ExtResource( 4 )
@@ -217,7 +216,6 @@ centered = false
 _sections_unfolded = [ "Visibility" ]
 
 [node name="clickable_area" type="Control" parent="black_bg/backgrounds/black3" index="0"]
-
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.0
@@ -235,7 +233,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="blocker" type="Control" parent="black_bg/backgrounds/black3/clickable_area" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -253,7 +250,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="broccoli" type="Button" parent="black_bg/backgrounds/black3" index="1"]
-
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -279,21 +275,14 @@ flat = false
 align = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="timer" type="Timer" parent="." index="1"]
-
+[node name="timer" type="Timer" parent="." index="2"]
 process_mode = 1
 wait_time = 0.2
 one_shot = true
 autostart = false
 
 [connection signal="gui_input" from="black_bg/backgrounds/black1/clickable_area" to="." method="_on_clickable_area_gui_input"]
-
 [connection signal="gui_input" from="black_bg/backgrounds/black2/clickable_area" to="." method="_on_clickable_area_gui_input"]
-
 [connection signal="pressed" from="black_bg/backgrounds/black2/book" to="black_bg" method="_on_book_pressed"]
-
 [connection signal="gui_input" from="black_bg/backgrounds/black3/clickable_area" to="." method="_on_clickable_area_gui_input"]
-
 [connection signal="pressed" from="black_bg/backgrounds/black3/broccoli" to="black_bg" method="_on_broccoli_pressed"]
-
-

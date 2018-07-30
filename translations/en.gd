@@ -2,11 +2,11 @@ extends Node
 
 
 var opening = [
-	["B", "(lucy_salutes)(lau_salutes)Laura! Wow! It is a long-time no see! It is great to see you again."],
-	["A", "Lucy! What’s new? (lau_talking_open_eyes)(lucy_smiling)I’ve heard you’ve gone Vegan! Is that true?"],
-	["B", "(lau_serious)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
-	["A", "(lau_serious_talking)What? That doesn’t make any sense."],
-	["B", "(lau_proud)(lucy_stand_talking)Why?"],
+	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
+	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true?"],
+	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
+	["A", "(lau_happy_talking)What? That doesn’t make any sense.(lucy_listening)(lau_proud)"],
+	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
 	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
 ]
 
@@ -24,7 +24,7 @@ var dialog_list = [
 		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you're still interested in saving plants you've got to go vegan!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)What you vegans don't understand is that (lau_finger)we need animal proteins to survive(lau_proud)."],
-		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry A, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],
+		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],
 		["B", "Whole grains, vegetables, and beans provide more than enough protein to stay healthy. It's very difficult to be protein-deficient when you get all calories you need."],
 		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population."],
 		["B", "Furthermore, all proteins ultimately come from plants. When you eat meat, (lucy_happy)you're getting proteins thanks to animals eating plants in the first place(lucy_smiling)."]
@@ -47,14 +47,13 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Cavemen ate meat, that's why I eat meat(lau_proud)."],
 		["B", "(lucy_talking)Ha! Are you really going to justify your actions on 'what would cavemen do'?(lau_listening) Are you doing this in the rest of your life decisions? Why use this for nutrition?"],
-		["B", "Cavemen ate whatever they could find in their environment, that's why we're omnivores. Also, they were not 7.6 billion on the planet, so our circumstances as species have changed."],
+		["B", "Cavemen ate whatever they could find in their environment. Also, they were not 7.6 billion on the planet, so our circumstances as species have changed."],
 		["B", "If it's health what concerns you, a vegan diet is perfectly suitable for your body even if you're a professional athlete. It's easy to find information about this(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Eating meat is legal, so what's the problem?(lau_listening) "],
 		["B", "(lucy_talking)Well, there's one thing you should learn then: legal doesn't mean moral. Slavery in the form of people ownership was legal for almost all history of civilizations."],
 		["B", "Also, not so long ago, women were not even persons in the eyes of legality. They were property of their husbands. This was legal, sure, but obviously not right."],
-		["B", "Laws are written by humans and therefore are often wrong. This is why our ambition and will to improve must go beyond any law."],
-		["B", "Justice is a continuous improvement process because our reality is complex and we are not perfect. If we think otherwise, things will remain the same forever(lucy_smiling)."]
+		["B", "Laws are written by humans and therefore are often wrong. This is why our ambition and will to improve must go beyond any law.(lucy_smiling)"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Morality is subjective. You've got your truth, I've got my truth(lau_proud)."],
 		["B", "(lucy_talking)That sounds kind of dangerous, doesn't it? (lau_listening)You could literally justify any behavior by saying that."],
@@ -64,9 +63,9 @@ var dialog_list = [
 ]
 
 var ending = [
-	["A", "(lau_talking)(lucy_smiling)Well… Honestly, I never thought about it in that way. I suppose I never seriously thought about it."],
-	["B", "(lucy_talking)(lau_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
-	["A", "(lucy_smiling)That makes sense. (lau_happy_talking)Thanks Lucy! I’m feeling I’ve got the responsibility to decide."],
-	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! As Sartre said: humans are “condemned to be free”. Our precious freedom also forces us to make our own decisions. We’re responsible to choose wisely!"],
-	["A", "(lucy_smiling)(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
+	["A", "(lau_talking_open_eyes)(lucy_smiling)Well… Honestly, I never thought about it in that way."],
+	["B", "(lucy_talking)(lau_happy_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
+	["A", "(lucy_smiling)(lau_talking_open_eyes)That makes sense. (lau_happy_talking)Thanks Lucy! You really make me think. (lau_talking_open_eyes)Veganism is much more important than I thought."],
+	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! And the truth is that the sacrifice that you have to do to go vegan is very small in comparison with the good that you will be doing for the world."],
+	["A", "(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
 ]

@@ -27,7 +27,7 @@ func post(n):
 		game.seen_tutorial[n] = true
 	post = post_scene.instance()
 	post.set_post(n)
-	add_child(post)
+	$post.add_child(post)
 	post.animation.play("appear")
 
 
