@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://images/tutorial_post.png" type="Texture" id=1]
 [ext_resource path="res://fonts/dadhand.ttf" type="DynamicFontData" id=2]
@@ -17,7 +17,7 @@ var n_string = null
 
 func set_post(n):
 	n_string = n
-	get_node(\"axis/post/sprite/msg\" + n).show()
+	get_node(\"path/path_follow/sprite/msg\" + n).show()
 
 
 func close():
@@ -26,47 +26,57 @@ func close():
 	queue_free()
 "
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="Curve2D" id=2]
 
-bounce = 0.0
-bounce_combine_mode = 0
-friction = 1.0
-friction_combine_mode = 2
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( -30.0768, -31.8138, 30.0768, 31.8138, -34.9942, -130.103, 0, 0, 0, 0, 27.21, -129.941 )
+}
+_sections_unfolded = [ "Resource" ]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="GDScript" id=3]
 
-custom_solver_bias = 0.0
-radius = 10.0
-
-[sub_resource type="PhysicsMaterial" id=4]
-
-bounce = 0.0
-bounce_combine_mode = 0
-friction = 1.0
-friction_combine_mode = 2
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 8.02579 )
-
-[sub_resource type="PhysicsMaterial" id=6]
-
-bounce = 0.2
-bounce_combine_mode = 0
-friction = 0.5
-friction_combine_mode = 2
-
-[sub_resource type="GDScript" id=7]
-
-script/source = "extends Sprite
+script/source = "extends PathFollow2D
 
 
-func _physics_process(delta):
-	set_global_position($\"../post\".get_global_position())
+var friction = 0.99
+var equilibrium_threshold = 0.02
+var speed_threshold = 0.02
+
+
+var gravity = 10.0
+var equilibrium = 0.5
+
+var current_speed = 0.0
+var current_pos = 0.0
+
+
+func _process(delta):
+	var mod = 1
+
+	var upper_bound = equilibrium + equilibrium_threshold
+	var lower_bound = equilibrium - equilibrium_threshold
+
+	var near_center = current_pos > lower_bound and current_pos < upper_bound
+	var low_speed = abs(current_speed) < speed_threshold
+	if near_center and low_speed:
+		set_unit_offset(equilibrium)
+		set_process(false)
+		return
+	elif current_pos > equilibrium:
+		mod = -1
+
+	# compute current position
+	current_speed += (gravity * delta * mod * friction)
+	current_pos += (current_speed * delta)
+	current_pos = friction * current_pos + (1 - friction) * equilibrium
+	current_pos = max(0.0, current_pos)
+	current_pos = min(1.0, current_pos)
+
+	set_unit_offset(current_pos)
 "
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 
 size = 40
 outline_size = 0
@@ -76,36 +86,35 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=9]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=5]
 
 script/source = "extends Node2D
 
 
-func _physics_process(delta):
-	var hole_pos = $\"../post/sprite/left_hole\".get_global_position()
+func _process(delta):
+	var hole_pos = $\"../path/path_follow/sprite/left_hole\".get_global_position()
 	var axis_pos = $left_axis.get_global_position()
 	var angle = axis_pos.angle_to_point(hole_pos)
 	set_global_rotation(angle + PI / 2)
+	if not $\"../path/path_follow\".is_processing():
+		set_process(false)
 "
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=6]
 
 script/source = "extends Node2D
 
 
-func _physics_process(delta):
-	var hole_pos = $\"../post/sprite/right_hole\".get_global_position()
+func _process(delta):
+	var hole_pos = $\"../path/path_follow/sprite/right_hole\".get_global_position()
 	var axis_pos = $right_axis.get_global_position()
 	var angle = axis_pos.angle_to_point(hole_pos)
 	set_global_rotation(angle + PI / 2)
+	if not $\"../path/path_follow\".is_processing():
+		set_process(false)
 "
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 
 length = 0.2
 loop = false
@@ -120,136 +129,79 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="post" type="Node2D" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 540, 130 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Rect", "Transform", "Visibility", "physics_material_override" ]
 
-[node name="axis" type="StaticBody2D" parent="." index="0"]
-position = Vector2( 540, 130 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-physics_material_override = SubResource( 2 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "physics_material_override" ]
+[node name="path" type="Path2D" parent="." index="0"]
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( -32, -11 )
+curve = SubResource( 2 )
+_sections_unfolded = [ "Transform", "curve" ]
 
-[node name="shape" type="CollisionShape2D" parent="axis" index="0"]
-shape = SubResource( 3 )
+[node name="path_follow" type="PathFollow2D" parent="path" index="0"]
+position = Vector2( -4.13854, -115.943 )
+rotation = 0.796458
+offset = 35.0269
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+script = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="axis2rope" type="PinJoint2D" parent="axis" index="1"]
-position = Vector2( -540, -176 )
-node_a = NodePath("../axis")
-node_b = NodePath("../rope")
-bias = 0.5
-disable_collision = true
-softness = 0.0
-
-[node name="rope" type="RigidBody2D" parent="axis" index="2"]
-position = Vector2( -540, -129 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 50.0
-physics_material_override = SubResource( 4 )
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = 3.0
-angular_velocity = 0.0
-angular_damp = -1.0
-_sections_unfolded = [ "Collision", "Linear", "Transform", "physics_material_override" ]
-
-[node name="shape" type="CollisionShape2D" parent="axis/rope" index="0"]
-shape = SubResource( 5 )
-disabled = true
-
-[node name="rope2post" type="PinJoint2D" parent="axis" index="3"]
-position = Vector2( -540, -130 )
-node_a = NodePath("../rope")
-node_b = NodePath("../post/post")
-bias = 0.5
-disable_collision = true
-softness = 0.0
-
-[node name="post" type="RigidBody2D" parent="axis" index="4"]
-position = Vector2( -540, -128 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 0
-mass = 0.1
-physics_material_override = SubResource( 6 )
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = 1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform" ]
-
-[node name="sprite" type="Sprite" parent="axis/post" index="0"]
+[node name="sprite" type="Sprite" parent="path/path_follow" index="0"]
+position = Vector2( 118.115, 66.5802 )
+rotation = -0.796458
 texture = ExtResource( 1 )
 offset = Vector2( 1, 25 )
-script = SubResource( 7 )
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
-[node name="left_hole" type="Position2D" parent="axis/post/sprite" index="0"]
+[node name="left_hole" type="Position2D" parent="path/path_follow/sprite" index="0"]
 position = Vector2( -369.068, -56.1977 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="right_hole" type="Position2D" parent="axis/post/sprite" index="1"]
+[node name="right_hole" type="Position2D" parent="path/path_follow/sprite" index="1"]
 position = Vector2( 382.068, -56.1977 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="msg1" type="Control" parent="axis/post/sprite" index="2"]
+[node name="msg1" type="Control" parent="path/path_follow/sprite" index="2"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -439.0
-margin_top = -46.0
+margin_top = -42.0
 margin_right = 439.0
-margin_bottom = 84.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
-[node name="text" type="Label" parent="axis/post/sprite/msg1" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msg1" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 84.0
-margin_right = 85.0
-margin_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "GOAL: JOIN ALL THE EXCUSES AND GET TO THE NINTH ONE!"
 align = 1
 valign = 1
@@ -260,16 +212,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg2" type="Control" parent="axis/post/sprite" index="3"]
+[node name="msg2" type="Control" parent="path/path_follow/sprite" index="3"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -439.0
-margin_top = -46.0
+margin_top = -42.0
 margin_right = 439.0
-margin_bottom = 84.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -278,7 +230,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="axis/post/sprite/msg2" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msg2" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -291,7 +243,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "TAP ON THE EXCUSE BOOK TO SEE DETAILS ABOUT YOUR UNLOCKED EXCUSES. C'MON, TAKE A LOOK!"
 align = 1
 valign = 1
@@ -302,16 +254,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg3" type="Control" parent="axis/post/sprite" index="4"]
+[node name="msg3" type="Control" parent="path/path_follow/sprite" index="4"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -435.0
-margin_top = -46.0
+margin_top = -42.0
 margin_right = 443.0
-margin_bottom = 84.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -320,21 +272,18 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="axis/post/sprite/msg3" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msg3" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 126.0
-margin_right = 127.0
-margin_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "WE ALL GET STUCK AT THE BEGINNING, LUCKY FOR YOU BROCCOLI EXISTS!"
 align = 1
 valign = 1
@@ -345,16 +294,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg4" type="Control" parent="axis/post/sprite" index="5"]
+[node name="msg4" type="Control" parent="path/path_follow/sprite" index="5"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -439.0
-margin_top = -46.0
+margin_top = -42.0
 margin_right = 439.0
-margin_bottom = 84.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -363,21 +312,18 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="axis/post/sprite/msg4" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msg4" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 76.0
-margin_right = 77.0
-margin_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "USE MAGIC BROCCOLI TO REMOVE TOKENS. YOU JUST HAVE TO TAP ON THEM!"
 align = 1
 valign = 1
@@ -388,46 +334,37 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="shape" type="CollisionShape2D" parent="axis/post" index="1"]
-shape = SubResource( 9 )
-disabled = true
+[node name="left_rope" type="Node2D" parent="." index="1"]
+position = Vector2( -370.383, -123.21 )
+script = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="post3" type="Node2D" parent="axis" index="5"]
-position = Vector2( -540, -128 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="left_rope" type="Node2D" parent="axis" index="6"]
-position = Vector2( -910.383, -253.21 )
-script = SubResource( 10 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="left_axis" type="Position2D" parent="axis/left_rope" index="0"]
+[node name="left_axis" type="Position2D" parent="left_rope" index="0"]
 position = Vector2( 0, -5 )
 
-[node name="sprite" type="Sprite" parent="axis/left_rope" index="1"]
+[node name="sprite" type="Sprite" parent="left_rope" index="1"]
 position = Vector2( 0, 37 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
-[node name="right_rope" type="Node2D" parent="axis" index="7"]
-position = Vector2( -160.534, -254.167 )
-script = SubResource( 11 )
+[node name="right_rope" type="Node2D" parent="." index="2"]
+position = Vector2( 379.466, -124.167 )
+script = SubResource( 6 )
 
-[node name="right_axis" type="Position2D" parent="axis/right_rope" index="0"]
+[node name="right_axis" type="Position2D" parent="right_rope" index="0"]
 position = Vector2( 0, -3 )
 
-[node name="sprite" type="Sprite" parent="axis/right_rope" index="1"]
+[node name="sprite" type="Sprite" parent="right_rope" index="1"]
 position = Vector2( 0, 37 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="animation" type="AnimationPlayer" parent="." index="1"]
+[node name="animation" type="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/appear = SubResource( 12 )
+anims/appear = SubResource( 7 )
 blend_times = [  ]
 
