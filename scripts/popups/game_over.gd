@@ -50,4 +50,4 @@ func _on_video_btn_pressed():
 	game.event_layer.start("wait_for_rewarded_ad", add_to_show)
 	game.sounds.play_audio("click")
 	hide()
-	game.popup_layer.get_node("blur").hide()
+	game.popup_layer.get_node("effects/blur").hide()

@@ -142,7 +142,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[node name="win" type="Node2D" index="0" groups=[
+[node name="win" type="Node2D" groups=[
 "event",
 ]]
 pause_mode = 2

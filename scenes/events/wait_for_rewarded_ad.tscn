@@ -26,7 +26,9 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=2]
 
-size = 80
+size = 60
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
@@ -35,27 +37,23 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 [node name="loading_rewarded_ad" type="Node2D" index="0" groups=[
 "event",
 ]]
-
 pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="bg" type="Sprite" parent="." index="0"]
-
 visible = false
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Pause" ]
 
 [node name="blur" type="Sprite" parent="." index="1"]
-
 modulate = Color( 0.392157, 0.392157, 0.392157, 0.705882 )
 texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="2"]
-
 root_node = NodePath("..")
 autoplay = "loading"
 playback_process_mode = 1
@@ -66,7 +64,6 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="message" type="Label" parent="." index="3"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -89,15 +86,12 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Custom Fonts", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="timer" type="Timer" parent="." index="4"]
-
 process_mode = 1
 wait_time = 20.0
 one_shot = true
 autostart = true
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
-
-
