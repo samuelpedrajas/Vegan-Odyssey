@@ -12,9 +12,8 @@ var black_bg = null
 
 
 func start():
-	black_bg = $black_bg
-	remove_child(black_bg)
-	$"/root/stage".add_child(black_bg)
+	black_bg = $"/root/stage/hud_layer/hud/lower_buttons/black_bg"
+	black_bg.connect("unpost_tutorial", self, "unpost")
 
 
 func post(n):
@@ -53,10 +52,5 @@ func unpost():
 
 
 func stop():
-	black_bg.queue_free()
+	black_bg.hide()
 	queue_free()
-
-
-func _on_clickable_area_gui_input(ev):
-	if ev.is_action_pressed("click"):
-		unpost()
