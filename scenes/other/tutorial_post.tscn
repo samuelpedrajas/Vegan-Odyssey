@@ -39,19 +39,19 @@ _sections_unfolded = [ "Resource" ]
 script/source = "extends PathFollow2D
 
 
-var friction = 0.99
+var friction = 0.975
 var equilibrium_threshold = 0.02
 var speed_threshold = 0.02
 
 
-var gravity = 10.0
+var gravity = 9.0
 var equilibrium = 0.5
 
 var current_speed = 0.0
 var current_pos = 0.0
 
 
-func _process(delta):
+func _physics_process(delta):
 	var mod = 1
 
 	var upper_bound = equilibrium + equilibrium_threshold
@@ -61,7 +61,7 @@ func _process(delta):
 	var low_speed = abs(current_speed) < speed_threshold
 	if near_center and low_speed:
 		set_unit_offset(equilibrium)
-		set_process(false)
+		set_physics_process(false)
 		return
 	elif current_pos > equilibrium:
 		mod = -1
@@ -91,13 +91,13 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Node2D
 
 
-func _process(delta):
+func _physics_process(delta):
 	var hole_pos = $\"../path/path_follow/sprite/left_hole\".get_global_position()
 	var axis_pos = $left_axis.get_global_position()
 	var angle = axis_pos.angle_to_point(hole_pos)
 	set_global_rotation(angle + PI / 2)
-	if not $\"../path/path_follow\".is_processing():
-		set_process(false)
+	if not $\"../path/path_follow\".is_physics_processing():
+		set_physics_process(false)
 "
 
 [sub_resource type="GDScript" id=6]
@@ -105,13 +105,13 @@ func _process(delta):
 script/source = "extends Node2D
 
 
-func _process(delta):
+func _physics_process(delta):
 	var hole_pos = $\"../path/path_follow/sprite/right_hole\".get_global_position()
 	var axis_pos = $right_axis.get_global_position()
 	var angle = axis_pos.angle_to_point(hole_pos)
 	set_global_rotation(angle + PI / 2)
-	if not $\"../path/path_follow\".is_processing():
-		set_process(false)
+	if not $\"../path/path_follow\".is_physics_processing():
+		set_physics_process(false)
 "
 
 [sub_resource type="Animation" id=7]
