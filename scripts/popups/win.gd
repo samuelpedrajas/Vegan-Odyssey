@@ -23,6 +23,7 @@ func open():
 
 
 func win():
+	game.debate_layer.init(game.cfg.GOAL)
 	back_button = true
 	$window.show()
 	$clickable_space.show()
