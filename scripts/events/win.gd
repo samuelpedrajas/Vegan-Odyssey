@@ -24,9 +24,11 @@ func play_win_sound():
 	game.sounds.play_audio("win")
 
 
-func play_fireworks_sound():
+func play_fireworks():
 	game.sounds.play_audio("fireworks")
 	if not first_bang:
 		first_bang = true
+		$confetti_cannon1.set_emitting(true)
 	else:
+		$confetti_cannon2.set_emitting(true)
 		game.music.set_volume_db(volume_db)
