@@ -16,7 +16,6 @@ func _ready():
 
 
 func open():
-	set_position(game.cfg.WIN_WINDOW_POS)
 	game.popup_layer.open("debate_screen", -1)
 	var popup = game.popup_layer.popup_stack.back()
 	popup.connect("conversation_finished", self, "win")
@@ -28,7 +27,7 @@ func win():
 	$window.show()
 	$clickable_space.show()
 	game.event_layer.start("win")
-	$"window/duck/broccoli_duck/anim".play("duck")
+	$"window/content/duck/broccoli_duck/anim".play("duck")
 
 
 func close():

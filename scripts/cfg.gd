@@ -18,18 +18,6 @@ const MOVEMENT_OPACITY = 0.8  # opacity when moving
 const MOTION_DISTANCE = 15  # Minimum distance with the mouse pressed to make a move
 const MINIMUM_DISTANCE_TO_MOVE = 0.6 # Minimum distance from the direction vectors to make a move
 
-const SETTINGS_WINDOW_POS = Vector2(540, 860)
-const BOOK_WINDOW_POS = Vector2(540, 860)
-const EXIT_WINDOW_POS = Vector2(540, 850)
-const RESET_WINDOW_POS = Vector2(540, 850)
-const RESET_PROGRESS_WINDOW_POS = Vector2(540, 850)
-const EXCUSE_WINDOW_POS = Vector2(540, 900)
-const REWARDED_VIDEO_WINDOW_POS = Vector2(540, 850)
-const NO_MORE_ADS_WINDOW_POS = Vector2(540, 850)
-const OFFLINE_WINDOW_POS = Vector2(540, 850)
-const GAME_OVER_WINDOW_POS = Vector2(540, 860)
-const WIN_WINDOW_POS = Vector2(540, 980)
-
 const SCROLL_THRESHOLD = 10
 
 const SAVE_GAME_PATH = "user://savegame.save"

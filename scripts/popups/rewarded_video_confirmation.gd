@@ -16,7 +16,6 @@ func setup(_broccoli_duck):
 func open():
 	var ad_to_show = broccoli_duck.ad_to_show
 	$"window/amount".set_text("+" + str(ad_to_show.amount))
-	set_position(game.cfg.REWARDED_VIDEO_WINDOW_POS)
 
 	open_anim = "open_window"
 	.open()

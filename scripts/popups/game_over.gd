@@ -17,7 +17,6 @@ func open():
 		add_to_show = admob.adRewarded3
 		$"window/video_button/n".set_text("+3")
 
-	set_position(game.cfg.GAME_OVER_WINDOW_POS)
 	if game.revived:
 		# avoid the duck to appear until restarted
 		game.event_layer.get_node("duck_ready").set_paused(true)

@@ -15,11 +15,10 @@ func close():
 
 
 func open():
-	var music_switch = $"window/music_control/switch"
-	var sound_switch = $"window/sound_control/switch"
+	var music_switch = $"window/audio/music_control/switch"
+	var sound_switch = $"window/audio/sound_control/switch"
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
-	set_position(game.cfg.SETTINGS_WINDOW_POS)
 
 	open_anim = "open_settings"
 	.open()

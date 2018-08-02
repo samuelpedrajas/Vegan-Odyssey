@@ -19,7 +19,7 @@ length = 0.12
 loop = false
 step = 0.12
 tracks/0/type = "value"
-tracks/0/path = NodePath("close_button:rect_position")
+tracks/0/path = NodePath("close_button:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -28,11 +28,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -129, 740 ), Vector2( -129, 1040 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("close_button:modulate")
-tracks/1/interp = 2
+tracks/1/path = NodePath("window:modulate")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -43,7 +43,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("window:modulate")
+tracks/2/path = NodePath("close_button:margin_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -52,7 +52,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 625.0, 1140.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("close_button:margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 748.0, 1263.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -61,7 +73,7 @@ length = 0.12
 loop = false
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath("close_button:rect_position")
+tracks/0/path = NodePath("close_button:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -70,11 +82,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -129, 1040 ), Vector2( -129, 740 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("close_button:modulate")
-tracks/1/interp = 2
+tracks/1/path = NodePath("window:modulate")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -85,7 +97,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("window:modulate")
+tracks/2/path = NodePath("close_button:margin_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -94,7 +106,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ 1140.0, 625.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("close_button:margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1263.0, 748.0 ]
 }
 
 [node name="settings" instance=ExtResource( 1 )]
@@ -104,17 +128,51 @@ script = ExtResource( 2 )
 anims/close_settings = SubResource( 1 )
 anims/open_settings = SubResource( 2 )
 
-[node name="non_clickable_space" parent="window" index="0"]
-margin_left = -555.0
-margin_top = -529.0
-margin_right = 556.0
-margin_bottom = 581.0
-_sections_unfolded = [ "Rect" ]
-
-[node name="background" parent="window" index="1"]
+[node name="window" parent="." index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -486.0
+margin_top = -687.0
+margin_right = 487.0
+margin_bottom = 473.0
+mouse_filter = 2
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility" ]
 
-[node name="music_control" type="Control" parent="window" index="2"]
+[node name="blocker" type="Control" parent="window" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 155.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse" ]
+
+[node name="audio" type="Control" parent="window" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 496.0
+margin_top = 577.0
+margin_right = 536.0
+margin_bottom = 617.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="music_control" type="Control" parent="window/audio" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -128,7 +186,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="switch" type="TextureButton" parent="window/music_control" index="0"]
+[node name="switch" type="TextureButton" parent="window/audio/music_control" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -151,7 +209,8 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="sound_control" type="Control" parent="window" index="3"]
+[node name="sound_control" type="Control" parent="window/audio" index="1"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -165,7 +224,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="switch" type="TextureButton" parent="window/sound_control" index="0"]
+[node name="switch" type="TextureButton" parent="window/audio/sound_control" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -188,15 +247,15 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="reset_progress" type="TextureButton" parent="window" index="4"]
+[node name="reset_progress" type="TextureButton" parent="window" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -275.0
-margin_top = 150.0
-margin_right = 275.0
-margin_bottom = 294.0
+margin_left = 212.0
+margin_top = 735.0
+margin_right = 762.0
+margin_bottom = 879.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -212,15 +271,15 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="exit_button" type="TextureButton" parent="window" index="5"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="exit_button" type="TextureButton" parent="window" index="3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -194.0
-margin_top = 320.0
+margin_top = 327.0
 margin_right = 194.0
-margin_bottom = 454.0
+margin_bottom = 461.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -238,14 +297,14 @@ _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="close_button" type="TextureButton" parent="." index="3"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -129.0
-margin_top = 1040.0
+margin_top = 1140.0
 margin_right = 130.0
-margin_bottom = 1163.0
+margin_bottom = 1263.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -259,10 +318,10 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
 
-[connection signal="toggled" from="window/music_control/switch" to="." method="_on_switch_music_toggled"]
-[connection signal="toggled" from="window/sound_control/switch" to="." method="_on_switch_sound_toggled"]
+[connection signal="toggled" from="window/audio/music_control/switch" to="." method="_on_switch_music_toggled"]
+[connection signal="toggled" from="window/audio/sound_control/switch" to="." method="_on_switch_sound_toggled"]
 [connection signal="pressed" from="window/reset_progress" to="." method="_on_reset_progress_pressed"]
 [connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="close_button" to="." method="_on_close_button_pressed"]

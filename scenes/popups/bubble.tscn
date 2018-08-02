@@ -11,6 +11,8 @@
 [sub_resource type="DynamicFont" id=1]
 
 size = 40
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 7 )
@@ -36,7 +38,6 @@ tracks/0/keys = {
 }
 
 [node name="bubble" type="Control" index="0"]
-
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -54,7 +55,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Pause", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="ul" type="Control" parent="." index="0"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -71,7 +71,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Visibility" ]
 
 [node name="sprite" type="Sprite" parent="ul" index="0"]
-
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -79,7 +78,6 @@ region_rect = Rect2( 0, 0, 36, 36 )
 _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="ur" type="Control" parent="." index="1"]
-
 show_behind_parent = true
 anchor_left = 1.0
 anchor_top = 0.0
@@ -96,7 +94,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
 [node name="sprite" type="Sprite" parent="ur" index="0"]
-
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -104,7 +101,6 @@ region_rect = Rect2( 36, 0, 36, 36 )
 _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="ll" type="Control" parent="." index="2"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 1.0
@@ -121,7 +117,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
 [node name="sprite" type="Sprite" parent="ll" index="0"]
-
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -129,7 +124,6 @@ region_rect = Rect2( 0, 36, 36, 36 )
 _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="lr" type="Control" parent="." index="3"]
-
 show_behind_parent = true
 anchor_left = 1.0
 anchor_top = 1.0
@@ -146,7 +140,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
 [node name="sprite" type="Sprite" parent="lr" index="0"]
-
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
@@ -154,7 +147,6 @@ region_rect = Rect2( 36, 36, 36, 36 )
 _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="left" type="TextureRect" parent="." index="4"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -175,7 +167,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="right" type="TextureRect" parent="." index="5"]
-
 show_behind_parent = true
 anchor_left = 1.0
 anchor_top = 0.0
@@ -196,7 +187,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="upper" type="TextureRect" parent="." index="6"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -217,7 +207,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="lower" type="TextureRect" parent="." index="7"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 1.0
@@ -238,7 +227,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="content" type="TextureRect" parent="." index="8"]
-
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -260,7 +248,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Margin", "Visibility" ]
 
 [node name="tail_left" type="TextureRect" parent="." index="9"]
-
 visible = false
 anchor_left = 0.0
 anchor_top = 1.0
@@ -280,7 +267,6 @@ stretch_mode = 4
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="tail_right" type="TextureRect" parent="." index="10"]
-
 visible = false
 anchor_left = 0.0
 anchor_top = 1.0
@@ -300,7 +286,6 @@ stretch_mode = 4
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="label" type="Label" parent="." index="11"]
-
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
@@ -326,7 +311,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="12"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -336,14 +320,10 @@ anims/open = SubResource( 2 )
 blend_times = [  ]
 
 [node name="timer" type="Timer" parent="." index="13"]
-
 process_mode = 1
 wait_time = 0.04
 one_shot = false
 autostart = false
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
-
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
-
-

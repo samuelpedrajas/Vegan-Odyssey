@@ -17,7 +17,6 @@ func _ready():
 
 
 func setup(list_entry):
-	set_position(game.cfg.EXCUSE_WINDOW_POS)
 	$"window/h_list".setup(list_entry)
 
 

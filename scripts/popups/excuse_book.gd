@@ -11,8 +11,6 @@ onready var scroll_container = $"window/scroll_container"
 
 
 func open():
-	set_position(game.cfg.BOOK_WINDOW_POS)
-
 	open_anim = "open_book"
 	.open()
 

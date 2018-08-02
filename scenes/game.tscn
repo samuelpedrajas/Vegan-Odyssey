@@ -16,26 +16,26 @@
 [ext_resource path="res://scripts/music.gd" type="Script" id=14]
 [ext_resource path="res://images/background.png" type="Texture" id=15]
 [ext_resource path="res://scripts/event_layer.gd" type="Script" id=16]
-[ext_resource path="res://scripts/hud_layer.gd" type="Script" id=17]
-[ext_resource path="res://images/bottom_border.png" type="Texture" id=18]
-[ext_resource path="res://images/lower_buttons/menu_button.png" type="Texture" id=19]
-[ext_resource path="res://images/lower_buttons/menu_button_pressed.png" type="Texture" id=20]
-[ext_resource path="res://images/lower_buttons/restart_button.png" type="Texture" id=21]
-[ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=22]
-[ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=23]
-[ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=24]
-[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=25]
-[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=26]
-[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=27]
-[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=28]
-[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=29]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=30]
-[ext_resource path="res://scripts/board_layer.gd" type="Script" id=31]
-[ext_resource path="res://images/board_bg.png" type="Texture" id=32]
-[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=33]
-[ext_resource path="res://scripts/input_handler.gd" type="Script" id=34]
-[ext_resource path="res://images/events/debate/dialog.png" type="Texture" id=35]
-[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=36]
+[ext_resource path="res://images/events/debate/dialog.png" type="Texture" id=17]
+[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://scripts/hud_layer.gd" type="Script" id=19]
+[ext_resource path="res://images/bottom_border.png" type="Texture" id=20]
+[ext_resource path="res://images/lower_buttons/menu_button.png" type="Texture" id=21]
+[ext_resource path="res://images/lower_buttons/menu_button_pressed.png" type="Texture" id=22]
+[ext_resource path="res://images/lower_buttons/restart_button.png" type="Texture" id=23]
+[ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=24]
+[ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=25]
+[ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=26]
+[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=27]
+[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=28]
+[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=29]
+[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=30]
+[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=31]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=32]
+[ext_resource path="res://scripts/board_layer.gd" type="Script" id=33]
+[ext_resource path="res://images/board_bg.png" type="Texture" id=34]
+[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=35]
+[ext_resource path="res://scripts/input_handler.gd" type="Script" id=36]
 [ext_resource path="res://scripts/debate_layer.gd" type="Script" id=37]
 [ext_resource path="res://images/events/debate/laura.png" type="Texture" id=38]
 [ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=39]
@@ -96,15 +96,25 @@ func _on_admob_timeout():
 
 [sub_resource type="DynamicFont" id=2]
 
+size = 42
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 18 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
 size = 45
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 29 )
+font_data = ExtResource( 31 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 0.2
 loop = false
@@ -134,7 +144,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=5]
 
 script/source = "extends TextureButton
 
@@ -178,9 +188,8 @@ func _on_black_bg_pressed():
 	emit_signal(\"unpost_tutorial\")
 "
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource_name = "open"
 length = 0.2
 loop = false
 step = 0.1
@@ -197,23 +206,13 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends Control
 
 onready var tilemap = $tilemap
 onready var tokens = $tokens
 "
-
-[sub_resource type="DynamicFont" id=7]
-
-size = 42
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 36 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="SpriteFrames" id=8]
 
@@ -543,7 +542,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="stage" type="Control" index="0"]
+[node name="stage" type="Control"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -697,301 +696,7 @@ wait_time = 78.0
 one_shot = false
 autostart = true
 
-[node name="hud_layer" type="CanvasLayer" parent="." index="6"]
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 17 )
-
-[node name="hud" type="Control" parent="hud_layer" index="0"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -540.0
-margin_right = 540.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect", "Transform" ]
-
-[node name="lower_buttons" type="Container" parent="hud_layer/hud" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -344.0
-margin_right = 1080.0
-margin_bottom = -174.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
-position = Vector2( 540, 210 )
-texture = ExtResource( 18 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 60.0
-margin_right = 230.0
-margin_bottom = 165.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 20 )
-_sections_unfolded = [ "Textures" ]
-
-[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 290.0
-margin_right = 460.0
-margin_bottom = 170.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-_sections_unfolded = [ "Textures" ]
-
-[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 620.0
-margin_right = 790.0
-margin_bottom = 170.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 23 )
-texture_pressed = ExtResource( 24 )
-_sections_unfolded = [ "Rect", "Textures" ]
-
-[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 850.0
-margin_right = 1020.0
-margin_bottom = 170.0
-rect_pivot_offset = Vector2( 85, 85 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 25 )
-texture_pressed = ExtResource( 26 )
-texture_disabled = ExtResource( 27 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
-
-[node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
-pause_mode = 2
-position = Vector2( 141.724, 24.5668 )
-texture = ExtResource( 28 )
-_sections_unfolded = [ "Pause" ]
-
-[node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -37.0
-margin_top = -30.0
-margin_right = 38.0
-margin_bottom = 29.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "2"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
-
-[node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
-pause_mode = 2
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/used = SubResource( 3 )
-blend_times = [  ]
-_sections_unfolded = [ "Pause" ]
-
-[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="5"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-self_modulate = Color( 1, 1, 1, 0.745098 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -420.0
-margin_top = -1576.0
-margin_right = 1500.0
-margin_bottom = 344.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 30 )
-script = SubResource( 4 )
-_sections_unfolded = [ "Material", "Offset", "Rect", "Textures", "Transform", "Visibility", "texture" ]
-
-[node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg" index="0"]
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/open = SubResource( 5 )
-blend_times = [  ]
-
-[node name="board_layer" type="CanvasLayer" parent="." index="7"]
-layer = 3
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 31 )
-
-[node name="board" type="Control" parent="board_layer" index="0"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -540.0
-margin_top = -960.0
-margin_right = -540.0
-margin_bottom = -960.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = SubResource( 6 )
-_sections_unfolded = [ "Rect", "Transform", "Visibility", "Z Index" ]
-
-[node name="background" type="Sprite" parent="board_layer/board" index="0"]
-position = Vector2( 30, 459.756 )
-scale = Vector2( 1, 0.891882 )
-texture = ExtResource( 32 )
-centered = false
-offset = Vector2( -30, -30 )
-_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
-
-[node name="tilemap" type="TileMap" parent="board_layer/board" index="1"]
-position = Vector2( 30, 460 )
-mode = 0
-tile_set = ExtResource( 33 )
-cell_size = Vector2( 340, 340 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
-format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
-_sections_unfolded = [ "Z Index" ]
-
-[node name="tokens" type="Node2D" parent="board_layer/board" index="2"]
-position = Vector2( 198, 627 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="input_handler" type="Control" parent="board_layer/board" index="3"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 16.0
-margin_top = 457.0
-margin_right = 1065.0
-margin_bottom = 1495.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 34 )
-
-[node name="dialog_layer" type="CanvasLayer" parent="." index="8"]
+[node name="dialog_layer" type="CanvasLayer" parent="." index="6"]
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1013,7 +718,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="dialog" type="Sprite" parent="dialog_layer/text" index="0"]
 position = Vector2( -83, -768 )
-texture = ExtResource( 35 )
+texture = ExtResource( 17 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="message1" type="Label" parent="dialog_layer/text/dialog" index="0"]
@@ -1031,7 +736,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -1084,7 +789,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -1122,6 +827,304 @@ flat = false
 align = 1
 _sections_unfolded = [ "Visibility" ]
 
+[node name="hud_layer" type="CanvasLayer" parent="." index="7"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 19 )
+
+[node name="hud" type="Control" parent="hud_layer" index="0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -540.0
+margin_right = 540.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect", "Transform" ]
+
+[node name="lower_buttons" type="Container" parent="hud_layer/hud" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -344.0
+margin_right = 1080.0
+margin_bottom = -174.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect" ]
+
+[node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
+position = Vector2( 540, 210 )
+texture = ExtResource( 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_right = 230.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 290.0
+margin_right = 460.0
+margin_bottom = 170.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 620.0
+margin_right = 790.0
+margin_bottom = 170.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 850.0
+margin_right = 1020.0
+margin_bottom = 170.0
+rect_pivot_offset = Vector2( 85, 85 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 28 )
+texture_disabled = ExtResource( 29 )
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+
+[node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
+pause_mode = 2
+position = Vector2( 141.724, 24.5668 )
+texture = ExtResource( 30 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -37.0
+margin_top = -30.0
+margin_right = 38.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "2"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
+pause_mode = 2
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/used = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Pause" ]
+
+[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="5"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.745098 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1576.0
+margin_bottom = 174.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+script = SubResource( 5 )
+_sections_unfolded = [ "Material", "Offset", "Rect", "Textures", "Transform", "Visibility", "texture" ]
+
+[node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg" index="0"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/open = SubResource( 6 )
+blend_times = [  ]
+
+[node name="board_layer" type="CanvasLayer" parent="." index="8"]
+layer = 3
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 33 )
+
+[node name="board" type="TextureRect" parent="board_layer" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -539.0
+margin_top = -526.0
+margin_right = 539.0
+margin_bottom = 581.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 34 )
+stretch_mode = 0
+script = SubResource( 7 )
+_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index" ]
+
+[node name="tilemap" type="TileMap" parent="board_layer/board" index="0"]
+position = Vector2( 30, 27 )
+mode = 0
+tile_set = ExtResource( 35 )
+cell_size = Vector2( 340, 340 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="tokens" type="Control" parent="board_layer/board" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 877.0
+margin_bottom = 895.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
+
+[node name="input_handler" type="Control" parent="board_layer/board" index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 36 )
+_sections_unfolded = [ "Mouse", "Rect" ]
+
 [node name="debate_layer" type="CanvasLayer" parent="." index="9"]
 layer = 4
 offset = Vector2( 0, 0 )
@@ -1140,11 +1143,11 @@ margin_top = -626.0
 margin_bottom = -626.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
 [node name="laura" type="AnimatedSprite" parent="debate_layer/girls" index="0"]
 position = Vector2( -420, 5 )
@@ -1176,9 +1179,22 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="tokens" type="Node2D" parent="dying_tokens" index="0"]
-position = Vector2( 198, 627 )
-_sections_unfolded = [ "Rect", "Transform", "Z Index" ]
+[node name="tokens" type="Control" parent="dying_tokens" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -339.0
+margin_top = -326.0
+margin_right = 338.0
+margin_bottom = 369.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
 [node name="effects_layer" type="CanvasLayer" parent="." index="11"]
 pause_mode = 2
@@ -1258,8 +1274,18 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 48 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="effects" type="Node2D" parent="popup_layer" index="0"]
-_sections_unfolded = [ "Rect" ]
+[node name="effects" type="Control" parent="popup_layer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="blur" type="TextureRect" parent="popup_layer/effects" index="0"]
 visible = false
@@ -1268,18 +1294,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -420.0
-margin_right = 1500.0
-margin_bottom = 1920.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 30 )
-stretch_mode = 0
-_sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
+texture = ExtResource( 32 )
+stretch_mode = 7
+_sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility" ]
 
 [node name="black" type="TextureRect" parent="popup_layer/effects" index="1"]
 visible = false
@@ -1287,17 +1310,28 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -420.0
-margin_right = 420.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 30 )
-stretch_mode = 0
-_sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility", "texture" ]
+texture = ExtResource( 32 )
+stretch_mode = 7
+_sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility", "texture" ]
+
+[node name="popups" type="Control" parent="popup_layer" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Transform" ]
 
 [node name="transition_layer" type="CanvasLayer" parent="." index="13"]
 layer = 9
@@ -1307,28 +1341,36 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="effects" type="Node2D" parent="transition_layer" index="0"]
-_sections_unfolded = [ "Rect" ]
+[node name="effects" type="Control" parent="transition_layer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags" ]
 
 [node name="black_screen" type="TextureRect" parent="transition_layer/effects" index="0"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -420.0
-margin_right = 1500.0
-margin_bottom = 1920.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 30 )
-stretch_mode = 0
-_sections_unfolded = [ "Rect", "Transform", "Visibility" ]
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 7
+_sections_unfolded = [ "Mouse", "Rect", "Transform", "Visibility" ]
 
 [node name="transition" type="AnimationPlayer" parent="." index="14"]
 pause_mode = 2
@@ -1355,12 +1397,12 @@ autostart = false
 
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 [connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
+[connection signal="pressed" from="dialog_layer/text/dialog/message1/debate_btn" to="debate_layer" method="_on_debate_btn_pressed"]
+[connection signal="pressed" from="dialog_layer/text/dialog/message2/debate_btn2" to="debate_layer" method="_on_debate_btn_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/menu" to="hud_layer" method="_on_menu_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/reset" to="hud_layer" method="_on_reset_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/excuses" to="hud_layer" method="_on_excuses_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/black_bg" to="hud_layer/hud/lower_buttons/black_bg" method="_on_black_bg_pressed"]
 [connection signal="user_input" from="board_layer/board/input_handler" to="board_layer" method="move_tokens"]
-[connection signal="pressed" from="dialog_layer/text/dialog/message1/debate_btn" to="debate_layer" method="_on_debate_btn_pressed"]
-[connection signal="pressed" from="dialog_layer/text/dialog/message2/debate_btn2" to="debate_layer" method="_on_debate_btn_pressed"]
 [connection signal="timeout" from="admob" to="." method="_on_admob_timeout"]

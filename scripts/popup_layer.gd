@@ -37,7 +37,7 @@ func open(name, params=null):
 			$"effects/blur".show()
 
 		# add popup
-		add_child(popup)
+		$popups.add_child(popup)
 		popup_stack.append(popup)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		if params:

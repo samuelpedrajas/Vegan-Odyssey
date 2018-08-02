@@ -98,7 +98,7 @@ func build_dialog():
 	var line = dirty_texts[current_text]
 	var bubble = bubble_scene.instance()
 	bubbles.append(bubble)
-	$"window/msgs".add_child(bubble)
+	$"window/container/msgs".add_child(bubble)
 
 	bubble.setup(self, current_bubble, line)
 
@@ -156,13 +156,16 @@ func _next_conversation():
 	yield($"window/container/animation", "animation_finished")
 	for child in bubbles:
 		child.remove_me()
-	$"window/msgs".set_position(Vector2(0, 1146))
+	var msgs = $"window/container/msgs"
+	msgs.set_position(
+		Vector2(msgs.get_position().x, 1146)
+	)
 	bubbles = []
 	current_bubble = null
 	current_text = 0
 	dirty_texts = null
 	bubble_in_progress = false
-	$"window/msgs".set_modulate(Color(1, 1, 1, 1))
+	msgs.set_modulate(Color(1, 1, 1, 1))
 
 	if v_box != null:
 		current_entry = v_box.get_node(str(token_index))
