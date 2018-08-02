@@ -850,7 +850,26 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Transform" ]
 
-[node name="lower_buttons" type="Container" parent="hud_layer/hud" index="0"]
+[node name="bottom_border" type="TextureRect" parent="hud_layer/hud" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -568.0
+margin_top = -300.0
+margin_right = 567.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 20 )
+stretch_mode = 0
+_sections_unfolded = [ "Offset", "Rect", "Transform" ]
+
+[node name="lower_buttons" type="Container" parent="hud_layer/hud" index="1"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -866,12 +885,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="bottom_border" type="Sprite" parent="hud_layer/hud/lower_buttons" index="0"]
-position = Vector2( 540, 210 )
-texture = ExtResource( 20 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
+[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -894,7 +908,7 @@ texture_normal = ExtResource( 21 )
 texture_pressed = ExtResource( 22 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
+[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -917,7 +931,7 @@ texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 24 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
+[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -940,7 +954,7 @@ texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 26 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
+[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1009,7 +1023,7 @@ anims/used = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
-[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="5"]
+[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0.745098 )
