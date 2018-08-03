@@ -30,7 +30,7 @@ length = 0.12
 loop = false
 step = 0.12
 tracks/0/type = "value"
-tracks/0/path = NodePath("go_back:rect_position")
+tracks/0/path = NodePath("go_back:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,10 +39,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 411, 1900 ), Vector2( 411, 1600 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("go_back:modulate")
+tracks/1/path = NodePath("go_back:margin_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -51,51 +51,67 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ 1263.0, 748.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("go_back:margin_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1140.0, 625.0 ]
 }
 
-[node name="broccoli_selection" type="Node2D" index="0" groups=[
+[node name="broccoli_selection" type="Control" index="0" groups=[
 "event",
 ]]
-
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Mouse", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="black4broccoli" type="CanvasLayer" parent="." index="0"]
-
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="clickable_area" type="Control" parent="black4broccoli" index="0"]
-
+[node name="black" type="TextureButton" parent="black4broccoli" index="0"]
 modulate = Color( 1, 1, 1, 0 )
-show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1080.0
-margin_bottom = 1920.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Visibility" ]
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Mouse", "Textures", "Visibility", "texture" ]
 
-[node name="black" type="Sprite" parent="black4broccoli" index="1"]
-
-modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 2 )
-centered = false
-_sections_unfolded = [ "Visibility" ]
-
-[node name="black_anim" type="AnimationPlayer" parent="black4broccoli" index="2"]
-
+[node name="black_anim" type="AnimationPlayer" parent="black4broccoli" index="1"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -105,7 +121,6 @@ anims/open = SubResource( 1 )
 blend_times = [  ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="1"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -115,16 +130,15 @@ anims/open = SubResource( 2 )
 blend_times = [  ]
 
 [node name="go_back" type="TextureButton" parent="." index="2"]
-
 modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 411.0
-margin_top = 1900.0
-margin_right = 670.0
-margin_bottom = 2023.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = 1140.0
+margin_right = 130.0
+margin_bottom = 1263.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -138,10 +152,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
 
-[connection signal="gui_input" from="black4broccoli/clickable_area" to="." method="_on_clickable_area_gui_input"]
-
+[connection signal="pressed" from="black4broccoli/black" to="." method="_on_black_pressed"]
 [connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
-
-

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 var priority = 6
@@ -120,13 +120,12 @@ func do_close():
 	game.event_layer.stop("broccoli")
 
 
-func _on_clickable_area_gui_input(event):
-	if event.is_action_pressed("click") and pending_tokens == 0 and not closing:
-		do_close()
-
-
 func _on_go_back_pressed():
 	if pending_tokens == 0 and not closing:
 		game.sounds.play_audio("click")
 		do_close()
 
+
+func _on_black_pressed():
+	if pending_tokens == 0 and not closing:
+		do_close()
