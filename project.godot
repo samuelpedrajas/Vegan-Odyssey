@@ -33,7 +33,7 @@ game_loader="*res://scripts/autoload/game_loader.gd"
 
 window/size/width=1080
 window/size/height=1920
-window/size/test_width=1080
+window/size/test_width=960
 window/size/test_height=960
 window/dpi/allow_hidpi=true
 window/vsync/use_vsync=false

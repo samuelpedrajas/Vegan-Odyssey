@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 var priority = 4
@@ -28,12 +28,12 @@ func unset_gray():
 func start():
 	if game.event_layer.current_events.has("broccoli"):
 		set_gray()
-	if game.duck_counter >= 2:
-		$"broccoli_duck/stuff/wing".show()
-		$"broccoli_duck/stuff/stick".show()
+	if game.duck_counter >= 1:
+		$"c/broccoli_duck/stuff/wing".show()
+		$"c/broccoli_duck/stuff/stick".show()
 	else:
-		$"broccoli_duck/stuff/wing".hide()
-		$"broccoli_duck/stuff/stick".hide()
+		$"c/broccoli_duck/stuff/wing".hide()
+		$"c/broccoli_duck/stuff/stick".hide()
 	$animation.play("flying")
 
 
@@ -45,8 +45,15 @@ func quack():
 	game.sounds.play_audio("quack")
 
 
-func _on_click_area_gui_input(event):
+func _is_clickable(event):
 	if event.is_action_pressed("click"):
+		var width = get_viewport().get_visible_rect().size.x
+		return width - $"c/broccoli_duck".get_global_position().x > 130
+	return false
+
+
+func _on_click_area_gui_input(event):
+	if _is_clickable(event):
 		# can't click if removing tokens
 		if not grayed_out:
 			if game.event_layer.current_events.has("tutorial"):

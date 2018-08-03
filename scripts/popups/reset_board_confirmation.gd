@@ -24,7 +24,7 @@ func _on_cancel_button_pressed():
 		for t in [t1, t2]:
 			if t != null:
 				t.animation.play("spawn")
-		#game.broccolis += 10
-		#game.event_layer.start("broccoli_duck")
+		game.broccolis += 10
+		game.event_layer.start("broccoli_duck")
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
