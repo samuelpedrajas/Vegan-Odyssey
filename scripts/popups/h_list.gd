@@ -15,19 +15,22 @@ var anim_time = 0.2
 var dest
 
 var blocked = true
+var rect_limit_y
 
 
 func setup(list_entry):
+	rect_limit_y = get_viewport().get_visible_rect().size.y
 	vbox = list_entry.get_parent()
 	init_excuse = list_entry.token_index
 	actual_excuse = list_entry.token_index
-	dest = Vector2(0, 0)
+	dest = Vector2(540, position.y)
 	starting_position = position
 
 	for i in range(-1, 2):
 		var popup = subpopup.instance()
 		var n = fposmod(actual_excuse + i - 1, 9) + 1
-		popup.setup(n, (n - init_excuse) * Vector2(1080, 0))
+		var w_width = get_viewport().get_visible_rect().size.x
+		popup.setup(n, (n - init_excuse) * Vector2(w_width, position.y), rect_limit_y)
 		popups[n] = popup
 
 		if n != actual_excuse:
@@ -67,14 +70,16 @@ func goto(n, sound=false):
 
 	var from_idx = fposmod(actual_excuse - direction - 1, 9) + 1
 	var to_idx = fposmod(n + direction - 1, 9) + 1
-	dest = (fposmod(n - 1, 9) - init_excuse + 1) * Vector2(-1080, 0)
+	var w_width = get_viewport().get_visible_rect().size.x
+
+	dest = Vector2((fposmod(n - 1, 9) - init_excuse + 1)  * -w_width + 540, position.y)
 	actual_excuse = fposmod(n - 1, 9) + 1
 	update_entry(actual_excuse)
 
 	var popup = popups[from_idx]
 	popups.erase(from_idx)
 	popups[to_idx] = popup
-	popup.setup(to_idx, (to_idx - init_excuse) * Vector2(1080, 0))
+	popup.setup(to_idx, (to_idx - init_excuse) * Vector2(w_width, position.y), rect_limit_y)
 
 
 func goto_next(sound=false):
@@ -92,10 +97,10 @@ func swift(first, second):
 
 
 func check_change():
-	var distance = starting_position.x - dest.x
-	if distance > 120:
+	var distance = position.x - dest.x
+	if distance > 60:
 		goto_prev()
-	elif distance < -120:
+	elif distance < -60:
 		goto_next()
 
 

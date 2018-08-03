@@ -7,7 +7,7 @@ var first_pos = null
 var actual_pos = null
 
 
-func setup(_excuse_index, pos):
+func setup(_excuse_index, pos, rect_limit_y):
 	excuse_index = _excuse_index
 	var excuse_sprite = game.cfg.EXCUSES[excuse_index - 1]["book_sprite"]
 	$excuse_image.set_texture(excuse_sprite)
@@ -16,7 +16,7 @@ func setup(_excuse_index, pos):
 
 	# hide it by placing it under the viewport
 	if game.highest_max < excuse_index:
-		position.y = 1920
+		position.y = rect_limit_y
 	else:
 		position.y = 0
 
