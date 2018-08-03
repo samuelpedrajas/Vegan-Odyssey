@@ -141,16 +141,39 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_extents"
+} ]
+}
 
-[node name="win" type="Node2D" groups=[
+[node name="win" type="Control" index="0" groups=[
 "event",
 ]]
 pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="confetti_rain" type="Particles2D" parent="." index="0"]
-position = Vector2( 540, 0 )
 emitting = false
 amount = 256
 lifetime = 6.5
@@ -172,7 +195,7 @@ v_frames = 2
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
 
 [node name="confetti_cannon1" type="Particles2D" parent="." index="1"]
-position = Vector2( 480, 1700 )
+position = Vector2( -60, 1700 )
 rotation = -1.65806
 emitting = false
 amount = 256
@@ -195,7 +218,7 @@ v_frames = 2
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
 
 [node name="confetti_cannon2" type="Particles2D" parent="." index="2"]
-position = Vector2( 600, 1700 )
+position = Vector2( 60, 1700 )
 rotation = -1.48353
 emitting = false
 amount = 256
