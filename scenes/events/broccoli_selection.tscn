@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_selection.gd" type="Script" id=1]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=2]
@@ -30,7 +30,7 @@ length = 0.12
 loop = false
 step = 0.12
 tracks/0/type = "value"
-tracks/0/path = NodePath("go_back:modulate")
+tracks/0/path = NodePath("c/go_back:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("go_back:margin_bottom")
+tracks/1/path = NodePath("c/go_back:margin_bottom")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -54,7 +54,7 @@ tracks/1/keys = {
 "values": [ 1263.0, 748.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("go_back:margin_top")
+tracks/2/path = NodePath("c/go_back:margin_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -66,7 +66,19 @@ tracks/2/keys = {
 "values": [ 1140.0, 625.0 ]
 }
 
-[node name="broccoli_selection" type="Control" index="0" groups=[
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Control
+
+
+func _ready():
+	var h = admob.getHeight()
+	set_position(
+		get_position() - Vector2(0, h)
+	)
+"
+
+[node name="broccoli_selection" type="Control" groups=[
 "event",
 ]]
 anchor_left = 0.0
@@ -83,6 +95,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Mouse", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="black4broccoli" type="CanvasLayer" parent="." index="0"]
+editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -129,15 +142,31 @@ playback_speed = 1.0
 anims/open = SubResource( 2 )
 blend_times = [  ]
 
-[node name="go_back" type="TextureButton" parent="." index="2"]
+[node name="c" type="Control" parent="." index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 156.0
+margin_bottom = 156.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 3 )
+_sections_unfolded = [ "Mouse", "Rect" ]
+
+[node name="go_back" type="TextureButton" parent="c" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -129.0
+margin_left = -129.5
 margin_top = 1140.0
-margin_right = 130.0
+margin_right = 129.5
 margin_bottom = 1263.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -155,4 +184,4 @@ texture_pressed = ExtResource( 4 )
 _sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
 
 [connection signal="pressed" from="black4broccoli/black" to="." method="_on_black_pressed"]
-[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="c/go_back" to="." method="_on_go_back_pressed"]

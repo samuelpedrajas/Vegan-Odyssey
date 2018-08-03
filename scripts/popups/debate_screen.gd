@@ -51,21 +51,21 @@ func open():
 
 
 func start_conversation():
-	$"window/container/next".set_disabled(false)
+	$"window/container/lower/next".set_disabled(false)
 
 	if token_index < 0:
-		$"window/container/prev".hide()
+		$"window/container/lower/prev".hide()
 		$"window/container/n".hide()
 		if token_index == -1:
 			dirty_texts = game.ending
 		elif token_index == -2:
-			$"window/container/go_back".hide()
+			$"window/container/lower/go_back".hide()
 			dirty_texts = game.opening
 	else:
 		if token_index == 1:
-			$"window/container/prev".set_disabled(true)
+			$"window/container/lower/prev".set_disabled(true)
 		else:
-			$"window/container/prev".set_disabled(false)
+			$"window/container/lower/prev".set_disabled(false)
 		$"window/container/n".set_text(str(token_index))
 		dirty_texts = game.conversations[token_index - 1]
 		game.seen_excuses[token_index - 1].debate_seen = true
@@ -112,17 +112,17 @@ func bubble_finished():
 	if current_text < dirty_texts.size():
 		$"window/container/animation".play("finished")
 	elif token_index == -1:
-		$"window/container/next".set_disabled(true)
+		$"window/container/lower/next".set_disabled(true)
 		$"window/container/animation".play("go_back")
 	elif token_index == -2:
 		if not game.music.is_playing():
 			game.music.update_settings()
-		$"window/container/next".set_disabled(false)
+		$"window/container/lower/next".set_disabled(false)
 		$"window/container/animation".play("finished")
 	elif token_index == game.highest_max:
-		$"window/container/next".set_disabled(true)
+		$"window/container/lower/next".set_disabled(true)
 	else:
-		$"window/container/next".set_disabled(false)
+		$"window/container/lower/next".set_disabled(false)
 
 
 func start_action(action):
@@ -136,7 +136,7 @@ func start_action(action):
 
 func _next_bubble():
 	$"window/container/animation".stop()
-	$"window/container/next/circle".hide()
+	$"window/container/lower/next/circle".hide()
 
 	current_bubble = build_dialog()
 	current_bubble.play()

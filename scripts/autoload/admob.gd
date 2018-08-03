@@ -21,6 +21,8 @@ var adRewarded3 = {
 
 var loadedReward = null  # needed for debugging
 
+var banner_height = -1
+
 
 signal banner_loaded
 signal banner_network_error
@@ -153,3 +155,15 @@ func _on_rewarded(currency, amount):
 func on_resize():
 	if admob_module != null:
 		admob_module.resize()
+
+
+func getHeight():
+	if banner_height <= 0:
+		if admob_module != null:
+			banner_height = admob_module.getBannerHeight()
+
+		# if still 0 or less
+		if banner_height <= 0:
+			banner_height = 120.0
+
+	return banner_height
