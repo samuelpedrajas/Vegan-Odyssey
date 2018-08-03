@@ -16,7 +16,7 @@ func play_rewarded_effect(n):
 		print("Playing rewarded effect")
 		if real_n == game.broccolis:
 			game.hud_layer.set_broccoli_amount(shadow_broccolis + i)
-		var node = "plus" + str(i)
+		var node = "c/plus" + str(i)
 		var anim = $rewarded_animation.get_node(node + "/animation")
 		game.sounds.play_audio("bubble")
 		anim.play("plus1")
