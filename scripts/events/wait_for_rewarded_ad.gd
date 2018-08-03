@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var priority = 7
 var back_button = false

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/events/wait_for_rewarded_ad.gd" type="Script" id=1]
-[ext_resource path="res://images/background.png" type="Texture" id=2]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=3]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=2]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -31,29 +30,44 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="loading_rewarded_ad" type="Node2D" index="0" groups=[
+[node name="loading_rewarded_ad" type="Control" index="0" groups=[
 "event",
 ]]
 pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="bg" type="Sprite" parent="." index="0"]
-visible = false
-texture = ExtResource( 2 )
-centered = false
-_sections_unfolded = [ "Offset", "Pause" ]
-
-[node name="blur" type="Sprite" parent="." index="1"]
+[node name="blur" type="TextureRect" parent="." index="0"]
 modulate = Color( 0.392157, 0.392157, 0.392157, 0.705882 )
-texture = ExtResource( 3 )
-centered = false
-_sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+_sections_unfolded = [ "Material", "Offset", "Rect", "Transform", "Visibility", "texture" ]
 
-[node name="animation" type="AnimationPlayer" parent="." index="2"]
+[node name="animation" type="AnimationPlayer" parent="." index="1"]
 root_node = NodePath("..")
 autoplay = "loading"
 playback_process_mode = 1
@@ -63,13 +77,15 @@ anims/loading = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="message" type="Label" parent="." index="3"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1080.0
-margin_bottom = 1920.0
+[node name="message" type="Label" parent="." index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -540.0
+margin_top = -960.0
+margin_right = 540.0
+margin_bottom = 960.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -88,7 +104,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Fonts", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="timer" type="Timer" parent="." index="4"]
+[node name="timer" type="Timer" parent="." index="3"]
 process_mode = 1
 wait_time = 20.0
 one_shot = true
