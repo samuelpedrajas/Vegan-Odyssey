@@ -80,6 +80,8 @@ func recalculate_max():
 		if t.level > tmp_max:
 			tmp_max = t.level
 	self.current_max = tmp_max
+	if win and current_max < 9:
+		win = false
 
 
 func update_scores(token_level):
