@@ -15,7 +15,7 @@ var dialog_list = [
 	[
 		["A", "(lau_talking)(lucy_listening)What if you were in a deserted island?"],
 		["B", "(lau_listening)(lucy_talking)Well, honestly I don't know. I hope I'm never in that situation. But what if you were in a civilization full of cruelty free options?"],
-		["B", "You cannot justify your everyday actions on 'what would you do' in some extreme situation. That would be extreme, indeed(lucy_smiling)."]
+		["B", "You cannot justify your everyday actions on “what would you do” in some extreme situation. That would be extreme, indeed(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
 		["B", "(lau_listening)(lucy_talking)Well, when talking about plants a lot of analogies with humans are made, but in reality they're just totally different than us."],
@@ -42,11 +42,11 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)I eat meat because lions eat meat. If they can do it, why can't I?(lau_proud)"],
 		["B", "(lucy_talking)Well, first of all, as far as we are aware you are not a lion... (lucy_happy)or are you? (lau_listening)"],
-		["B", "(lucy_talking)In nature, lions often commit infanticide and, from a human perspective, other atrocities. What would you think if I picked any of these behaviors and said: 'it's fine, lions do it'?"],
+		["B", "(lucy_talking)In nature, lions often commit infanticide and, from a human perspective, other atrocities. What would you think if I picked any of these behaviors and said: “it's fine, lions do it”?"],
 		["B", "They can't choose because of their nature, but we definitely can. We are very different than them, (lucy_happy)don't you think so?(lucy_smiling)"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Cavemen ate meat, that's why I eat meat(lau_proud)."],
-		["B", "(lucy_talking)Ha! Are you really going to justify your actions on 'what would cavemen do'?(lau_listening) Are you doing this in the rest of your life decisions? Why use this for nutrition?"],
+		["B", "(lucy_talking)Ha! Are you really going to justify your actions on “what would cavemen do”?(lau_listening) Are you doing this in the rest of your life decisions? Why use this for nutrition?"],
 		["B", "Cavemen ate whatever they could find in their environment. Also, they were not 7.6 billion on the planet, so our circumstances as species have changed."],
 		["B", "If it's health what concerns you, a vegan diet is perfectly suitable for your body even if you're a professional athlete. It's easy to find information about this(lucy_smiling)."]
 	], [
@@ -62,6 +62,7 @@ var dialog_list = [
 	]
 ]
 
+
 var ending = [
 	["A", "(lau_talking_open_eyes)(lucy_smiling)Well… Honestly, I never thought about it in that way."],
 	["B", "(lucy_talking)(lau_happy_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
@@ -69,7 +70,6 @@ var ending = [
 	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! And the truth is that the sacrifice that you have to do to go vegan is very small in comparison with the good that you will be doing for the world."],
 	["A", "(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
 ]
-
 
 
 # share
