@@ -69,7 +69,7 @@ var ending = [
 	["B", "(lucy_talking)(lau_happy_listening)Ya, es que es algo muy arraigado a nuestra cultura, pero eso no lo hace correcto."],
 	["A", "(lucy_smiling)(lau_talking_open_eyes)Tienes razón. (lau_happy_talking)¡Gracias Lucía! He aprendido mucho. (lau_talking_open_eyes)El Veganismo es mucho mas importante de lo que creía."],
 	["B", "(lucy_happy)(lau_happy_listening)¡Me alegro de oír eso! Y lo curioso es que al final el sacrificio que tienes que hacer por ser vegana es insignificante si lo comparas con todo el bien que haces al mundo."],
-	["A", "(lucy_smiling)Ya veo. (lau_happy_talking)Te aseguro que tendré todo esto en mente la próxima vez que vaya al supermercado. (lau_salutes)Gracias de nuevo Lucía, hasta pronto!(lucy_salutes)"]
+	["A", "(lucy_smiling)Ya veo. (lau_happy_talking)Te aseguro que tendré todo esto en mente la próxima vez que vaya al supermercado. (lau_salutes)Gracias de nuevo Lucía, ¡hasta pronto!(lucy_salutes)"]
 ]
 
 
@@ -82,8 +82,8 @@ const MSG = "Descárgalo ahora gratis en https://www.veganodysseythegame.com."
 # excuse info
 var EXCUSES = [
 	{
-		"token_sprite": preload("res://images/excuses/desertedisland.png"),
-		"book_sprite": preload("res://images/excuse_pictures/desertedisland.png"),
+		"token_sprite": load("res://images/excuses/es/desertedisland.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/desertedisland.png"),
 		"path": "res://share/desertedisland.share",
 		"text": "Isla desierta",
 		"debate": {
@@ -92,8 +92,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/plantshavefeelings.png"),
-		"book_sprite": preload("res://images/excuse_pictures/plantshavefeelings.png"),
+		"token_sprite": load("res://images/excuses/es/plantshavefeelings.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/plantshavefeelings.png"),
 		"path": "res://share/plantshavefeelings.share",
 		"text": "Las plantas sienten",
 		"debate": {
@@ -102,8 +102,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/proteins.png"),
-		"book_sprite": preload("res://images/excuse_pictures/proteins.png"),
+		"token_sprite": load("res://images/excuses/es/proteins.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/proteins.png"),
 		"path": "res://share/proteins.share",
 		"text": "Proteinas",
 		"debate": {
@@ -112,8 +112,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/circleoflife.png"),
-		"book_sprite": preload("res://images/excuse_pictures/circleoflife.png"),
+		"token_sprite": load("res://images/excuses/es/circleoflife.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/circleoflife.png"),
 		"path": "res://share/circleoflife.share",
 		"text": "Ciclo de la vida",
 		"debate": {
@@ -122,8 +122,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/bacon.png"),
-		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
+		"token_sprite": load("res://images/excuses/bacon.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/bacon.png"),
 		"path": "res://share/bacon.share",
 		"text": "Mmmmh... Bacon",
 		"debate": {
@@ -132,8 +132,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/lions.png"),
-		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
+		"token_sprite": load("res://images/excuses/es/lions.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/lions.png"),
 		"path": "res://share/lions.share",
 		"text": "Los leones comen carne",
 		"debate": {
@@ -141,8 +141,8 @@ var EXCUSES = [
 			"answer": "Lo hacen. Pero en la naturaleza los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
 		}
 	}, {
-		"token_sprite": preload("res://images/excuses/caveman.png"),
-		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
+		"token_sprite": load("res://images/excuses/es/caveman.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/caveman.png"),
 		"path": "res://share/caveman.share",
 		"text": "Los cavernícolas comían carne",
 		"debate": {
@@ -151,8 +151,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/legal.png"),
-		"book_sprite": preload("res://images/excuse_pictures/legal.png"),
+		"token_sprite": load("res://images/excuses/es/legal.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/legal.png"),
 		"path": "res://share/legal.share",
 		"text": "Es legal",
 		"debate": {
@@ -161,8 +161,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/moral.png"),
-		"book_sprite": preload("res://images/excuse_pictures/moral.png"),
+		"token_sprite": load("res://images/excuses/es/moral.png"),
+		"book_sprite": load("res://images/excuse_pictures/es/moral.png"),
 		"path": "res://share/moral.share",
 		"text": "La moralidad es subjetiva",
 		"debate": {

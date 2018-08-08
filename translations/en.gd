@@ -84,8 +84,8 @@ const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at htt
 # excuse info
 var EXCUSES = [
 	{
-		"token_sprite": preload("res://images/excuses/desertedisland.png"),
-		"book_sprite": preload("res://images/excuse_pictures/desertedisland.png"),
+		"token_sprite": load("res://images/excuses/en/desertedisland.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/desertedisland.png"),
 		"path": "res://share/desertedisland.share",
 		"text": "Deserted island",
 		"debate": {
@@ -94,8 +94,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/plantshavefeelings.png"),
-		"book_sprite": preload("res://images/excuse_pictures/plantshavefeelings.png"),
+		"token_sprite": load("res://images/excuses/en/plantshavefeelings.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/plantshavefeelings.png"),
 		"path": "res://share/plantshavefeelings.share",
 		"text": "Plants have feelings",
 		"debate": {
@@ -104,8 +104,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/proteins.png"),
-		"book_sprite": preload("res://images/excuse_pictures/proteins.png"),
+		"token_sprite": load("res://images/excuses/en/proteins.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/proteins.png"),
 		"path": "res://share/proteins.share",
 		"text": "Proteins",
 		"debate": {
@@ -114,8 +114,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/circleoflife.png"),
-		"book_sprite": preload("res://images/excuse_pictures/circleoflife.png"),
+		"token_sprite": load("res://images/excuses/en/circleoflife.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/circleoflife.png"),
 		"path": "res://share/circleoflife.share",
 		"text": "Circle Of Life",
 		"debate": {
@@ -124,8 +124,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/bacon.png"),
-		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
+		"token_sprite": load("res://images/excuses/bacon.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/bacon.png"),
 		"path": "res://share/bacon.share",
 		"text": "Mmhh... Bacon",
 		"debate": {
@@ -134,8 +134,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/lions.png"),
-		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
+		"token_sprite": load("res://images/excuses/en/lions.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/lions.png"),
 		"path": "res://share/lions.share",
 		"text": "Lions eat meat",
 		"debate": {
@@ -144,8 +144,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/caveman.png"),
-		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
+		"token_sprite": load("res://images/excuses/en/caveman.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/caveman.png"),
 		"path": "res://share/caveman.share",
 		"text": "Caveman ate meat",
 		"debate": {
@@ -154,8 +154,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/legal.png"),
-		"book_sprite": preload("res://images/excuse_pictures/legal.png"),
+		"token_sprite": load("res://images/excuses/en/legal.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/legal.png"),
 		"path": "res://share/legal.share",
 		"text": "It's legal",
 		"debate": {
@@ -164,8 +164,8 @@ var EXCUSES = [
 		}
 	},
 	{
-		"token_sprite": preload("res://images/excuses/moral.png"),
-		"book_sprite": preload("res://images/excuse_pictures/moral.png"),
+		"token_sprite": load("res://images/excuses/en/moral.png"),
+		"book_sprite": load("res://images/excuse_pictures/en/moral.png"),
 		"path": "res://share/moral.share",
 		"text": "Morality is subjective",
 		"debate": {

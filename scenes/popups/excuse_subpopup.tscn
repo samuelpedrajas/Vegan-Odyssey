@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/popups/excuse_subpopup.gd" type="Script" id=1]
 [ext_resource path="res://images/popups/excuse_drawing_bg.png" type="Texture" id=2]
-[ext_resource path="res://images/excuse_pictures/bacon.png" type="Texture" id=3]
+[ext_resource path="res://images/excuse_pictures/en/bacon.png" type="Texture" id=3]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://images/excuses/circle.png" type="Texture" id=5]
 [ext_resource path="res://images/popups/share.png" type="Texture" id=6]
@@ -24,7 +24,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="excuse_subpopup" type="Node2D"]
+[node name="excuse_subpopup" type="Node2D" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
