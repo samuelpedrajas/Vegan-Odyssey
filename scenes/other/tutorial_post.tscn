@@ -12,19 +12,28 @@ script/source = "extends Node2D
 
 onready var animation = $animation
 
-var n_string = null
+var n_string = \"1\"
 
 
 func set_post(n):
+	var lang_label = game.lang.language
 	n_string = n
-	get_node(\"path/path_follow/sprite/msg\" + n).show()
+	if lang_label == \"es\":
+		get_node(\"path/path_follow/sprite/msgs/es_\" + n).show()
+		get_node(\"path/path_follow/sprite/msgs/en_\" + n).hide()
+	else:
+		get_node(\"path/path_follow/sprite/msgs/es_\" + n).hide()
+		get_node(\"path/path_follow/sprite/msgs/en_\" + n).show()
 
 
 func close():
 	animation.play_backwards(\"appear\")
 	yield(animation, \"animation_finished\")
 	queue_free()
-"
+
+
+func update_language():
+	set_post(n_string)"
 
 [sub_resource type="Curve2D" id=2]
 
@@ -132,7 +141,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="post" type="Node2D" index="0"]
+[node name="post" type="Node2D" groups=[
+"translatable",
+]]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 540, 130 )
 script = SubResource( 1 )
@@ -172,7 +183,10 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 382.068, -56.1977 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="msg1" type="Control" parent="path/path_follow/sprite" index="2"]
+[node name="msgs" type="Node2D" parent="path/path_follow/sprite" index="2"]
+
+[node name="en_1" type="Control" parent="path/path_follow/sprite/msgs" index="0"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -190,7 +204,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
 
-[node name="text" type="Label" parent="path/path_follow/sprite/msg1" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/en_1" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -202,7 +216,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "GOAL: JOIN ALL THE EXCUSES AND GET TO THE NINTH ONE!"
+text = "GOAL: JOIN THE SAME EXCUSES AND GET TO THE NINTH ONE!"
 align = 1
 valign = 1
 autowrap = true
@@ -212,7 +226,49 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg2" type="Control" parent="path/path_follow/sprite" index="3"]
+[node name="es_1" type="Control" parent="path/path_follow/sprite/msgs" index="1"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -439.0
+margin_top = -42.0
+margin_right = 439.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/es_1" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "OBJETIVO: JUNTA LAS EXCUSAS IGUALES HASTA LLEGAR A LA NOVENA"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+
+[node name="en_2" type="Control" parent="path/path_follow/sprite/msgs" index="2"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -230,7 +286,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="path/path_follow/sprite/msg2" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/en_2" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -254,7 +310,51 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg3" type="Control" parent="path/path_follow/sprite" index="4"]
+[node name="es_2" type="Control" parent="path/path_follow/sprite/msgs" index="3"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -439.0
+margin_top = -42.0
+margin_right = 439.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/es_2" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "LAS EXCUSAS DESBLOQUEADAS SE GUARDAN EN EL LIBRO DE EXCUSAS. VAMOS, ¡ECHA UN VISTAZO!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+
+[node name="en_3" type="Control" parent="path/path_follow/sprite/msgs" index="4"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -272,7 +372,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="path/path_follow/sprite/msg3" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/en_3" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -294,7 +394,8 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "BBCode", "custom_fonts" ]
 
-[node name="msg4" type="Control" parent="path/path_follow/sprite" index="5"]
+[node name="es_3" type="Control" parent="path/path_follow/sprite/msgs" index="5"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -312,7 +413,51 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="text" type="Label" parent="path/path_follow/sprite/msg4" index="0"]
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/es_3" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "A TODOS NOS CUESTA UN POCO AL PRINCIPIO,
+¡USA BRÓCOLIS PARA ELIMINAR FICHAS Y CONTINUAR!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+
+[node name="en_4" type="Control" parent="path/path_follow/sprite/msgs" index="6"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -439.0
+margin_top = -42.0
+margin_right = 439.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/en_4" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -325,6 +470,48 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
 text = "USE MAGIC BROCCOLI TO REMOVE TOKENS. YOU JUST HAVE TO TAP ON THEM!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "BBCode", "custom_fonts" ]
+
+[node name="es_4" type="Control" parent="path/path_follow/sprite/msgs" index="7"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -439.0
+margin_top = -42.0
+margin_right = 439.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="text" type="Label" parent="path/path_follow/sprite/msgs/es_4" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "USA BRÓCOLI MÁGICO PARA ELIMINAR FICHAS,
+¡SÓLO TIENES QUE PULSAR SOBRE ELLAS!"
 align = 1
 valign = 1
 autowrap = true
