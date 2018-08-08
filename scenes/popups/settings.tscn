@@ -487,6 +487,7 @@ texture_normal = ExtResource( 12 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="tick" type="TextureRect" parent="window/lang/flags/en" index="0"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

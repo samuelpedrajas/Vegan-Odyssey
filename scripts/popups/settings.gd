@@ -23,6 +23,11 @@ func open():
 	music_switch.set_pressed(not game.settings.music_on)
 	sound_switch.set_pressed(not game.settings.sound_on)
 
+	if game.lang.language == "es":
+		$"window/lang/flags/es/tick".show()
+	else:
+		$"window/lang/flags/en/tick".show()
+
 	open_anim = "open_settings"
 	.open()
 
