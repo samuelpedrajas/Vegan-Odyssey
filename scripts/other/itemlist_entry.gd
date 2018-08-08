@@ -8,11 +8,11 @@ onready var grandpa = get_parent().get_parent()
 
 
 func _ready():
-	var cfg = _get_cfg()
+	var lang = game.lang
 	# update excuse text
-	var excuse = cfg.EXCUSES[token_index - 1]
+	var excuse = lang.EXCUSES[token_index - 1]
 	$text.set_text(excuse.text)
-	if token_index == cfg.EXCUSES.size():
+	if token_index == lang.EXCUSES.size():
 		$bar.hide()
 
 	if game.highest_max >= token_index:
@@ -37,10 +37,6 @@ func update_new_labels():
 		$"new/anim".play("blink")
 	else:
 		$"new/anim".stop()
-
-
-func _get_cfg():
-	return game.cfg
 
 
 func set_lock():

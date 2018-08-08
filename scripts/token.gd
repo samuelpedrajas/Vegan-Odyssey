@@ -34,7 +34,7 @@ func setup(wp, pos, lvl, sc):
 	destination = wp
 	set_scale(sc)
 
-	var texture = game.cfg.EXCUSES[level - 1]["token_sprite"]
+	var texture = game.lang.EXCUSES[level - 1]["token_sprite"]
 	$"token_sprite".set_texture(texture)
 	$"token_sprite/level".set_text(str(level))
 
@@ -156,7 +156,7 @@ func unset_selectable_state():
 
 
 func sync_merge():
-	var texture = game.cfg.EXCUSES[level - 1]["token_sprite"]
+	var texture = game.lang.EXCUSES[level - 1]["token_sprite"]
 	$"token_sprite".set_texture(texture)
 	$"token_sprite/level".set_text(str(level))
 	game.sounds.play_audio("merge")

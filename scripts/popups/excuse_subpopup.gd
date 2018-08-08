@@ -9,7 +9,7 @@ var actual_pos = null
 
 func setup(_excuse_index, pos, rect_limit_y):
 	excuse_index = _excuse_index
-	var excuse_sprite = game.cfg.EXCUSES[excuse_index - 1]["book_sprite"]
+	var excuse_sprite = game.lang.EXCUSES[excuse_index - 1]["book_sprite"]
 	$excuse_image.set_texture(excuse_sprite)
 	$"excuse_image/number".set_text(str(excuse_index))
 	set_position(pos)
@@ -42,7 +42,7 @@ func _on_share_released():
 
 	var share = get_parent().get_parent().get_parent().share
 	if share != null:
-		var from_file = game.cfg.EXCUSES[excuse_index - 1]["path"]
+		var from_file = game.lang.EXCUSES[excuse_index - 1]["path"]
 		var to_file = "user://excuse.png"
 
 		# copy file
@@ -52,9 +52,9 @@ func _on_share_released():
 		yield(get_tree(), "idle_frame")
 		share.sharePic(
 			OS.get_user_data_dir() + "/excuse.png",
-			game.cfg.TITLE,
-			game.cfg.SUBJECT,
-			game.cfg.MSG
+			game.lang.TITLE,
+			game.lang.SUBJECT,
+			game.lang.MSG
 		)
 
 

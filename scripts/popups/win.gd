@@ -45,7 +45,7 @@ func _on_share_pressed():
 
 	if share != null:
 		share.shareText(
-			game.cfg.TITLE,
-			game.cfg.SUBJECT,
-			game.cfg.MSG
+			game.lang.TITLE,
+			game.lang.SUBJECT,
+			game.lang.MSG
 		)

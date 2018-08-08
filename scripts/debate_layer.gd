@@ -19,7 +19,7 @@ func init(i):
 
 	current = i
 
-	var debate = game.cfg.EXCUSES[i - 1].debate
+	var debate = game.lang.EXCUSES[i - 1].debate
 	message1.set_text(debate.question)
 	message2.set_text(debate.answer)
 	message1.set_percent_visible(1)
@@ -37,7 +37,7 @@ func update_text(i):
 		return
 
 	current = i
-	var debate = game.cfg.EXCUSES[i - 1].debate
+	var debate = game.lang.EXCUSES[i - 1].debate
 
 	message1.set_percent_visible(0)
 	message2.set_percent_visible(0)

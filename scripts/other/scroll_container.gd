@@ -7,7 +7,7 @@ onready var ExcuseEntry = preload("res://scenes/other/itemlist_entry.tscn")
 func _ready():
 	# add excuse entries
 	var v_box = $"vbox_container"
-	for i in range(1, game.cfg.EXCUSES.size() + 1):
+	for i in range(1, game.lang.EXCUSES.size() + 1):
 		var excuse_entry = v_box.get_node(str(i))
 		if i > game.highest_max:
 			excuse_entry.set_lock()

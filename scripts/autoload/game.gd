@@ -44,10 +44,10 @@ var seen_tutorial = {
 }
 
 
-var en = preload("res://translations/en.gd").new()
-var conversations = en.dialog_list
-var opening = en.opening
-var ending = en.ending
+var lang = preload("res://translations/en.gd").new()
+var conversations = lang.dialog_list
+var opening = lang.opening
+var ending = lang.ending
 
 
 var win = false
