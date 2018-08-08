@@ -177,6 +177,11 @@ func _on_button_gui_input(ev):
 	if is_selectable and game.broccolis > 0:
 		var total_area = $"token_sprite/button".get_size()
 		var direction = (ev.position - total_area / 2)
-		print(direction)
+
 		unset_selectable_state()
 		emit_signal("token_selected", self, direction)
+
+
+func update_language():
+	var texture = game.lang.EXCUSES[level - 1]["token_sprite"]
+	$"token_sprite".set_texture(texture)

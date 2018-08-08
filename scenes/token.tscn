@@ -11,6 +11,8 @@
 [sub_resource type="DynamicFont" id=1]
 
 size = 65
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
@@ -79,22 +81,20 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="token" type="Node2D" index="0" groups=[
+[node name="token" type="Node2D" groups=[
 "token",
+"translatable",
 ]]
-
 pause_mode = 2
 scale = Vector2( 1e-05, 1e-05 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="token_sprite" type="Sprite" parent="." index="0"]
-
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="button" type="Control" parent="token_sprite" index="0"]
-
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -115,7 +115,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="level" type="Label" parent="token_sprite" index="1"]
-
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -141,7 +140,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
 [node name="circle" type="Sprite" parent="token_sprite/level" index="0"]
-
 show_behind_parent = true
 position = Vector2( -9.99998, 3.00005 )
 texture = ExtResource( 4 )
@@ -149,13 +147,11 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="glow" type="Sprite" parent="token_sprite" index="2"]
-
 modulate = Color( 1, 0.955566, 0.289062, 0 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="1"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -168,5 +164,3 @@ anims/spawn = ExtResource( 7 )
 blend_times = [  ]
 
 [connection signal="gui_input" from="token_sprite/button" to="." method="_on_button_gui_input"]
-
-
