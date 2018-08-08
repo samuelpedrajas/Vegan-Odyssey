@@ -3,7 +3,7 @@ extends Node
 
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
-	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true?"],
+	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
 	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
 	["A", "(lau_happy_talking)What? That doesn’t make any sense.(lucy_listening)(lau_proud)"],
 	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
