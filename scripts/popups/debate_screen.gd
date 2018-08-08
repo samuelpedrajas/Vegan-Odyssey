@@ -57,17 +57,17 @@ func start_conversation():
 		$"window/container/lower/prev".hide()
 		$"window/container/n".hide()
 		if token_index == -1:
-			dirty_texts = game.ending
+			dirty_texts = game.lang.ending
 		elif token_index == -2:
 			$"window/container/lower/go_back".hide()
-			dirty_texts = game.opening
+			dirty_texts = game.lang.opening
 	else:
 		if token_index == 1:
 			$"window/container/lower/prev".set_disabled(true)
 		else:
 			$"window/container/lower/prev".set_disabled(false)
 		$"window/container/n".set_text(str(token_index))
-		dirty_texts = game.conversations[token_index - 1]
+		dirty_texts = game.lang.dialog_list[token_index - 1]
 		game.seen_excuses[token_index - 1].debate_seen = true
 		game.save_game()
 

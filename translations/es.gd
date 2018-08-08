@@ -1,6 +1,9 @@
 extends Node
 
 
+var language = "es"
+
+
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)¡Laura! (lau_salutes)¡Cuánto tiempo! Que alegría volver a verte."],
 	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? Me enteré de que te hiciste vegana, ¿es eso cierto?"],
@@ -29,7 +32,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Creo que las personas comemos carne porque es parte del ciclo de la vida."],
 		["B", "(lau_listening)(lucy_talking)En realidad \"ciclo de la vida\" es solo un termino creado para describir la tendencia al equilibrio que podemos ver en la naturaleza, pero no es una ley escrita en piedra."],
-		["B", "Encerrar a animales en jaulas sin posibilidad de sobrevivir no puede ser parte de ningún "ciclo de la vida", y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
+		["B", "Encerrar a animales en jaulas sin posibilidad de sobrevivir no puede ser parte de ningún “ciclo de la vida”, y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
 		["B", "La decisión de hacerte vegano es solamente tuya, nada ni nadie te está obligando a parar o seguir consumiendo productos animales.(lucy_smiling)."]
 	], [
 		["A", "(lucy_smiling)(lau_serious_talking)Mmmmh...Bacon(lau_proud)(lucy_serious)."],
@@ -71,9 +74,9 @@ var ending = [
 
 
 # share
-const TITLE = "Vegan Oddysey"
-const SUBJECT = "Play Vegan Oddysey for iOS and Android."
-const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at https://www.veganodysseythegame.com."
+const TITLE = "Vegan Odyssey"
+const SUBJECT = "Juega a Vegan Odyssey en iOS y Android"
+const MSG = "Descárgalo ahora gratis en https://www.veganodysseythegame.com."
 
 
 # excuse info
@@ -82,90 +85,97 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/desertedisland.png"),
 		"book_sprite": preload("res://images/excuse_pictures/desertedisland.png"),
 		"path": "res://share/desertedisland.share",
-		"text": "Deserted island",
+		"text": "Isla desierta",
 		"debate": {
-			"question": "What if you were in a deserted island?",
-			"answer": "And what if you were in a civilization full of cruelty free options? You can’t justify your everyday actions on “what would you do” in some extreme situation.",
+			"question": "¿Y si estuvieses en una isla desierta?",
+			"answer": "¿Y si estuvieses en una civilización llena de opciones libres de crueldad? No puedes justificar tus acciones diarias con lo que harías en alguna situación extrema.",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/plantshavefeelings.png"),
 		"book_sprite": preload("res://images/excuse_pictures/plantshavefeelings.png"),
 		"path": "res://share/plantshavefeelings.share",
-		"text": "Plants have feelings",
+		"text": "Las plantas sienten",
 		"debate": {
-			"question": "But don’t plants have feelings too?",
-			"answer": "They don’t! They lack of central nervous systems and pain receptors. Neuroscientists say that pain is something created by a brain so... no brain, no pain.",
+			"question": "Pero las plantas también sienten ¿no?",
+			"answer": "No. Las plantas no tienen sistema nervioso centralizado, el cual según la ciencia actual, es el único que puede proporcionar a un ser de sentido del dolor entre muchos otros.",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/proteins.png"),
 		"book_sprite": preload("res://images/excuse_pictures/proteins.png"),
 		"path": "res://share/proteins.share",
-		"text": "Proteins",
+		"text": "Proteinas",
 		"debate": {
-			"question": "But don’t we need animal proteins?",
-			"answer": "Whole grains, vegetables, and beans provide more than enough protein to be healthy. It’s very difficult to be protein-deficient if you get all calories you need.",
+			"question": "Necesitamos proteína animal para sobrevivir",
+			"answer": "Cereales, verduras y legumbres proporcionan toda la proteína que necesitas. Es difícil tener deficiencia de proteínas si consumes todas las calorías que necesitas. ",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/circleoflife.png"),
 		"book_sprite": preload("res://images/excuse_pictures/circleoflife.png"),
 		"path": "res://share/circleoflife.share",
-		"text": "Circle Of Life",
+		"text": "Ciclo de la vida",
 		"debate": {
-			"question": "But isn’t it how the circle of life works?",
-			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",
+			"question": "Es parte del ciclo de la vida",
+			"answer": "“Ciclo de la vida” es sólo un término que inventamos para referirnos al equilibrio que podemos ver en la naturaleza. No es ninguna ley escrita en piedra.",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/bacon.png"),
 		"book_sprite": preload("res://images/excuse_pictures/bacon.png"),
 		"path": "res://share/bacon.share",
-		"text": "Mmhh... Bacon",
+		"text": "Mmmmh... Bacon",
 		"debate": {
-			"question": "Bacon, tho.",
-			"answer": "Oh, c’mon. That’s not even an argument. A clear conscience tastes better than the best bacon in the world, don’t you think so?",
+			"question": "Mmmmh...Bacon.",
+			"answer": "Venga va. Eso no es ni siquiera un argumento. Una conciencia limpia sabe mejor que el mejor bacon del mundo, ¿no crees?",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/lions.png"),
 		"book_sprite": preload("res://images/excuse_pictures/lions.png"),
 		"path": "res://share/lions.share",
-		"text": "Lions eat meat",
+		"text": "Los leones comen carne",
 		"debate": {
-			"question": "But don’t lions eat meat?",
-			"answer": "Well… yes. But in nature lions also commit atrocities like infanticide. What would you think if I picked any of these behaviors and said: “it’s fine, lions do it”?",
+			"question": "Pero... los leones comen carne, ¿no?",
+			"answer": "Lo hacen. Pero en la naturaleza los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
 		}
-	},
-	{
+	}, {
 		"token_sprite": preload("res://images/excuses/caveman.png"),
 		"book_sprite": preload("res://images/excuse_pictures/caveman.png"),
 		"path": "res://share/caveman.share",
-		"text": "Caveman ate meat",
+		"text": "Los cavernícolas comían carne",
 		"debate": {
-			"question": "I eat meat because cavemen ate meat.",
-			"answer": "Ha! Are you really going to justify your actions on “what would cavemen do”? Are you doing this in the rest of your life decisions? Why use this for nutrition?",
+			"question": "Yo como carne como los cavernícolas.",
+			"answer": "¿De verdad basas tus acciones diarias en cómo vivían los cavernícolas? ¿Haces esto en el resto de tus decisiones? ¿O sólo cuando se trata de nutrición?",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/legal.png"),
 		"book_sprite": preload("res://images/excuse_pictures/legal.png"),
 		"path": "res://share/legal.share",
-		"text": "It's legal",
+		"text": "Es legal",
 		"debate": {
-			"question": "Eating meat is legal.",
-			"answer": "Legal doesn’t mean moral. Slavery in the form of people ownership was legal for almost all history of civilizations. Bringing up legality is not enough.",
+			"question": "Comer carne es legal.",
+			"answer": "Legal no significa moral. Poseer personas como si de propiedades se tratasen ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
 		}
 	},
 	{
 		"token_sprite": preload("res://images/excuses/moral.png"),
 		"book_sprite": preload("res://images/excuse_pictures/moral.png"),
 		"path": "res://share/moral.share",
-		"text": "Morality is subjective",
+		"text": "La moralidad es subjetiva",
 		"debate": {
-			"question": "Morality is subjective. I’ve got my truth.",
-			"answer": "That sounds kind of dangerous, doesn’t it? You could literally justify any behavior by saying that. Animals want to live, their perspective also matters.",
+			"question": "La moral es subjetiva. Yo tengo mi verdad.",
+			"answer": "Uy… Eso suena un poco peligroso, ¿no? Podrías justificar cualquier cosa diciendo eso. Los animales también quieren vivir y eso se tiene que tener en cuenta.",
 		}
 	}
 ]
+
+
+var tutorial_posts = {
+	"1": "OBJETIVO: JUNTA LAS EXCUSAS IGUALES HASTA LLEGAR A LA NOVENA",
+	"2": "LAS EXCUSAS DESBLOQUEADAS SE GUARDAN EN EL LIBRO DE EXCUSAS. VAMOS, ¡HECHA UN VISTAZO!",
+	"3": "A TODOS NOS CUESTA UN POCO AL PRINCIPIO, ¡QUE SUERTE QUE EL BROCOLI EXISTA!",
+	"4": "USA EL BROCOLI MÁGICO PARA QUITAR FICHAS. SÓLO TIENES QUE PULSAR SOBRE ELLAS"
+}

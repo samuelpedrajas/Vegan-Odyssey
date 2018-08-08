@@ -51,3 +51,7 @@ func _on_debate_btn_pressed():
 	if current > 0:
 		game.sounds.play_audio("click")
 		game.popup_layer.open("debate_screen", current)
+
+
+func update_language():
+	init(current)

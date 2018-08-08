@@ -1,6 +1,9 @@
 extends Node
 
 
+var language = "en"
+
+
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
 	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
@@ -171,3 +174,11 @@ var EXCUSES = [
 		}
 	}
 ]
+
+
+var tutorial_posts = {
+	"1": "GOAL: JOIN ALL THE EXCUSES AND GET TO THE NINTH ONE!",
+	"2": "TAP ON THE EXCUSE BOOK TO SEE DETAILS ABOUT YOUR UNLOCKED EXCUSES. C'MON, TAKE A LOOK!",
+	"3": "WE ALL GET STUCK AT THE BEGINNING, LUCKY FOR YOU BROCCOLI EXISTS!",
+	"4": "USE MAGIC BROCCOLI TO REMOVE TOKENS. YOU JUST HAVE TO TAP ON THEM!"
+}

@@ -6,6 +6,9 @@ var keep_input_disabled = false
 var keep_previous = false
 var show_blur = true
 
+onready var en_tick = $"window/lang/flags/en/tick"
+onready var es_tick = $"window/lang/flags/es/tick"
+
 
 func close():
 	game.save_game()
@@ -47,3 +50,15 @@ func _on_close_button_pressed():
 func _on_reset_progress_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.open("reset_progress_confirmation")
+
+
+func _on_en_pressed():
+	es_tick.hide()
+	en_tick.show()
+	game.change_language("en")
+
+
+func _on_es_pressed():
+	en_tick.hide()
+	es_tick.show()
+	game.change_language("es")

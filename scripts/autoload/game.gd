@@ -45,10 +45,6 @@ var seen_tutorial = {
 
 
 var lang = preload("res://translations/en.gd").new()
-var conversations = lang.dialog_list
-var opening = lang.opening
-var ending = lang.ending
-
 
 var win = false
 
@@ -259,3 +255,21 @@ func _notification(what):
 		elif popup_layer.popup_stack.empty():
 			sounds.play_audio("click")
 			popup_layer.open("exit_confirmation")
+
+
+var translations = {
+	"es": "res://translations/es.gd",
+	"en": "res://translations/en.gd"
+}
+
+
+func change_language(lang_label):
+	if lang != null and lang_label == lang.language:
+		return
+	elif lang != null:
+		lang.queue_free()
+
+	lang = load(translations[lang_label]).new()
+
+	for translatable in get_tree().get_nodes_in_group("translatable"):
+		translatable.update_language()
