@@ -86,7 +86,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/desertedisland.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/desertedisland.png"),
-		"path": "res://share/desertedisland.share",
+		"path": "res://share/en/desertedisland.share",
 		"text": "Deserted island",
 		"debate": {
 			"question": "What if you were in a deserted island?",
@@ -96,7 +96,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/plantshavefeelings.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/plantshavefeelings.png"),
-		"path": "res://share/plantshavefeelings.share",
+		"path": "res://share/en/plantshavefeelings.share",
 		"text": "Plants have feelings",
 		"debate": {
 			"question": "But don’t plants have feelings too?",
@@ -106,7 +106,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/proteins.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/proteins.png"),
-		"path": "res://share/proteins.share",
+		"path": "res://share/en/proteins.share",
 		"text": "Proteins",
 		"debate": {
 			"question": "But don’t we need animal proteins?",
@@ -116,7 +116,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/circleoflife.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/circleoflife.png"),
-		"path": "res://share/circleoflife.share",
+		"path": "res://share/en/circleoflife.share",
 		"text": "Circle Of Life",
 		"debate": {
 			"question": "But isn’t it how the circle of life works?",
@@ -126,7 +126,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/bacon.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/bacon.png"),
-		"path": "res://share/bacon.share",
+		"path": "res://share/en/bacon.share",
 		"text": "Mmhh... Bacon",
 		"debate": {
 			"question": "Bacon, tho.",
@@ -136,7 +136,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/lions.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/lions.png"),
-		"path": "res://share/lions.share",
+		"path": "res://share/en/lions.share",
 		"text": "Lions eat meat",
 		"debate": {
 			"question": "But don’t lions eat meat?",
@@ -146,7 +146,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/caveman.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/caveman.png"),
-		"path": "res://share/caveman.share",
+		"path": "res://share/en/caveman.share",
 		"text": "Caveman ate meat",
 		"debate": {
 			"question": "I eat meat because cavemen ate meat.",
@@ -156,7 +156,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/legal.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/legal.png"),
-		"path": "res://share/legal.share",
+		"path": "res://share/en/legal.share",
 		"text": "It's legal",
 		"debate": {
 			"question": "Eating meat is legal.",
@@ -166,7 +166,7 @@ var EXCUSES = [
 	{
 		"token_sprite": load("res://images/excuses/en/moral.png"),
 		"book_sprite": load("res://images/excuse_pictures/en/moral.png"),
-		"path": "res://share/moral.share",
+		"path": "res://share/en/moral.share",
 		"text": "Morality is subjective",
 		"debate": {
 			"question": "Morality is subjective. I’ve got my truth.",
