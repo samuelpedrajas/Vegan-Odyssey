@@ -63,11 +63,11 @@ func _ready():
 	if game.cfg.DEBUG_MODE:
 		game.board_layer.debug_func()
 	elif !game.savegame.file_exists($cfg.SAVE_GAME_PATH):
+		_update_language()
 		game.popup_layer.open(\"debate_screen\", -2)
 		game.board_layer.spawn_token(null, 1, false)
 	else:
 		game.load_game()
-		$music.update_settings()
 		$\"popup_layer/effects/black\".hide()
 
 		# show banner or try again
@@ -83,6 +83,14 @@ func _ready():
 		$\"/root\".set_disable_input(false)
 
 	$debate_layer.init(game.current_max)
+
+
+func _update_language():
+	var locale = OS.get_locale()
+	if locale.substr(0, 2) == 'es':
+		game.change_language('es')
+	else:
+		game.change_language('en')
 
 
 func _on_admob_timeout():
@@ -576,7 +584,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="stage" type="Control"]
+[node name="stage" type="Control" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

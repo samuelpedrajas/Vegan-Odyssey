@@ -154,7 +154,8 @@ func save_game():
 		'settings': settings.save_info(),
 		'revived': revived,
 		'win': win,
-		'seen_excuses': to_json(seen_excuses)
+		'seen_excuses': to_json(seen_excuses),
+		'lang': lang.language
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -182,6 +183,8 @@ func load_game():
 	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
 	seen_tutorial = parse_json(info['tutorial'])
+
+	change_language(info['lang'])
 
 	savegame.close()
 
