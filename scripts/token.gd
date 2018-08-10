@@ -64,10 +64,10 @@ func _process(delta):
 
 func _move(delta):
 	accumulated_time += delta
-	if accumulated_time >= game.cfg.ANIMATION_TIME:
+	if accumulated_time >= cfg.ANIMATION_TIME:
 		position = destination
 		return false
-	position = starting_position.linear_interpolate(destination, accumulated_time / game.cfg.ANIMATION_TIME)
+	position = starting_position.linear_interpolate(destination, accumulated_time / cfg.ANIMATION_TIME)
 	return true
 
 

@@ -40,7 +40,7 @@ func can_click():
 		return false
 
 	var input_vector = tap_end_position - tap_start_position
-	if input_vector.length() > game.cfg.SCROLL_THRESHOLD:
+	if input_vector.length() > cfg.SCROLL_THRESHOLD:
 		return false
 
 	return true

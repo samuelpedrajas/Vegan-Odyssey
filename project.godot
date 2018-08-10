@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 admob="*res://scripts/autoload/admob.gd"
 game="*res://scripts/autoload/game.gd"
 game_loader="*res://scripts/autoload/game_loader.gd"
+cfg="*res://scripts/autoload/cfg.gd"
 
 [display]
 

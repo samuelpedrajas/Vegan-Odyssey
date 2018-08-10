@@ -18,7 +18,7 @@ func _on_ok_button_pressed():
 
 
 func _on_cancel_button_pressed():
-	if game.cfg.DEV_MODE:
+	if cfg.DEV_MODE:
 		var t1 = game.board_layer.spawn_token(null, 8, true)
 		var t2 = game.board_layer.spawn_token(null, 8, true)
 		for t in [t1, t2]:

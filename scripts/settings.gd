@@ -15,9 +15,12 @@ func save_info():
 	}
 
 
-func load_info(settings_info):
+func load_info(settings_info, seen_intro):
 	self.sound_on = settings_info['sound_on']
-	self.music_on = settings_info['music_on']
+	if seen_intro:
+		self.music_on = settings_info['music_on']
+	else:
+		music_on = settings_info['music_on']
 
 
 func _set_music(v):

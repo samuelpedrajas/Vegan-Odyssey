@@ -6,13 +6,13 @@ signal user_input
 
 
 func _check_move(input_vector):
-	if input_vector.length() > game.cfg.MOTION_DISTANCE:
+	if input_vector.length() > cfg.MOTION_DISTANCE:
 		# Don't needed, but could improve performance?
 		input_vector = input_vector.normalized()
 
-		for direction in game.cfg.DIRECTIONS:
+		for direction in cfg.DIRECTIONS:
 			# if the distance is smaller than the threshold, try to make a move
-			if (direction.normalized() - input_vector).length() < game.cfg.MINIMUM_DISTANCE_TO_MOVE:
+			if (direction.normalized() - input_vector).length() < cfg.MINIMUM_DISTANCE_TO_MOVE:
 				# close post
 				if game.event_layer.current_events.has("tutorial"):
 					game.event_layer.get_or_start("tutorial").unpost()

@@ -183,6 +183,7 @@ func _on_next_pressed():
 		$"/root".set_disable_input(true)
 		if admob.is_banner_loaded:
 			admob.showBanner()
+		game.seen_intro = true
 		game.save_game()
 		game.event_layer.get_or_start("tutorial").post("1")
 		game.sounds.play_audio("click")

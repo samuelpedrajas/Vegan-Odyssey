@@ -30,7 +30,7 @@ func update_text(i):
 	if current == i:
 		init(i)
 		return
-	elif i == game.cfg.GOAL:
+	elif i == cfg.GOAL:
 		$animation.stop()
 		message1.set_text("")
 		message2.set_text("")

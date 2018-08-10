@@ -1,6 +1,5 @@
 extends Node
 
-const DEBUG_MODE = false
 const DEV_MODE = true
 const GOAL = 9
 
@@ -21,3 +20,8 @@ const MINIMUM_DISTANCE_TO_MOVE = 0.6 # Minimum distance from the direction vecto
 const SCROLL_THRESHOLD = 10
 
 const SAVE_GAME_PATH = "user://savegame.save"
+
+const TRANSLATIONS = {
+	"es": "res://translations/es.gd",
+	"en": "res://translations/en.gd"
+}
