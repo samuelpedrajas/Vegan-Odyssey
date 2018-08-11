@@ -137,7 +137,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=21]
 
 script/source = "extends Label
 
@@ -152,7 +152,7 @@ func update_language():
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=22]
 
 size = 75
 outline_size = 0
@@ -186,7 +186,7 @@ func update_language():
 	set_text(game.lang.SOUND_SETTINGS)
 "
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=23]
 
 size = 50
 outline_size = 0
@@ -234,7 +234,7 @@ func update_language():
 	set_text(game.lang.LANGUAGE_SETTINGS)
 "
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=24]
 
 script/source = "extends Control
 
@@ -246,7 +246,7 @@ func _ready():
 	)
 "
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=25]
 
 size = 55
 outline_size = 0
@@ -274,11 +274,14 @@ func update_language():
 script/source = "extends TextureRect
 
 func set_loading(lang_label):
+	$\"/root\".set_disable_input(true)
 	$text.update_language()
 	$anim.play(\"set_black\")
 	yield($anim, \"animation_finished\")
 	game.change_language(lang_label, null)
 	$anim.play(\"unset_black\")
+	yield($anim, \"animation_finished\")
+	$\"/root\".set_disable_input(false)
 "
 
 [sub_resource type="DynamicFont" id=15]
@@ -413,7 +416,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 4 )
+script = SubResource( 21 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="blocker" type="Control" parent="window" index="1"]
@@ -476,7 +479,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -540,7 +543,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -613,7 +616,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -665,7 +668,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -712,7 +715,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -839,7 +842,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 7 )
+script = SubResource( 24 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="close_button" type="TextureButton" parent="c" index="0"]
@@ -880,7 +883,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
