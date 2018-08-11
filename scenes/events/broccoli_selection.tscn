@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_selection.gd" type="Script" id=1]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=2]
 [ext_resource path="res://images/popups/go_back.png" type="Texture" id=3]
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=4]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=6]
 
 resource_name = "open"
 length = 0.2
@@ -24,7 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=7]
 
 length = 0.12
 loop = false
@@ -66,7 +67,7 @@ tracks/2/keys = {
 "values": [ 1140.0, 625.0 ]
 }
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=8]
 
 script/source = "extends Control
 
@@ -78,7 +79,26 @@ func _ready():
 	)
 "
 
-[node name="broccoli_selection" type="Control" groups=[
+[sub_resource type="DynamicFont" id=9]
+
+size = 55
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Label
+
+
+func _ready():
+	set_text(game.lang.GO_BACK)
+"
+
+[node name="broccoli_selection" type="Control" index="0" groups=[
 "event",
 ]]
 anchor_left = 0.0
@@ -130,7 +150,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 1 )
+anims/open = SubResource( 6 )
 blend_times = [  ]
 
 [node name="animation" type="AnimationPlayer" parent="." index="1"]
@@ -139,7 +159,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 2 )
+anims/open = SubResource( 7 )
 blend_times = [  ]
 
 [node name="c" type="Control" parent="." index="2"]
@@ -155,7 +175,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 3 )
+script = SubResource( 8 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="go_back" type="TextureButton" parent="c" index="0"]
@@ -182,6 +202,30 @@ group = null
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 _sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
+
+[node name="text" type="Label" parent="c/go_back" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Go Back"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 5 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
 [connection signal="pressed" from="black4broccoli/black" to="." method="_on_black_pressed"]
 [connection signal="pressed" from="c/go_back" to="." method="_on_go_back_pressed"]
