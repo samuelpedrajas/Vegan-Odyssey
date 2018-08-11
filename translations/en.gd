@@ -198,3 +198,4 @@ const LANGUAGE_SETTINGS = "Language:"
 const DELETE_PROGRESS_SETTINGS = "Delete progress"
 const EXIT_GAME_SETTINGS = "Exit game"
 const EXIT_GAME_SETTINGS_SCALE = 1.0
+const LOADING_LANGUAGE_SETTINGS = "Cargando idioma"

@@ -60,10 +60,12 @@ func _on_reset_progress_pressed():
 func _on_en_pressed():
 	es_tick.hide()
 	en_tick.show()
-	game.change_language("en", null)
+	if game.lang.language != "en":
+		$loading_language.set_loading("en")
 
 
 func _on_es_pressed():
 	en_tick.hide()
 	es_tick.show()
-	game.change_language("es", null)
+	if game.lang.language != "es":
+		$loading_language.set_loading("es")

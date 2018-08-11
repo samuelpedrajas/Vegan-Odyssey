@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/settings.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://images/popups/es_flag.png" type="Texture" id=14]
 [ext_resource path="res://images/popups/go_back.png" type="Texture" id=15]
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=16]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -268,6 +269,102 @@ func update_language():
 	set_text(game.lang.GO_BACK)
 "
 
+[sub_resource type="GDScript" id=18]
+
+script/source = "extends TextureRect
+
+func set_loading(lang_label):
+	$text.update_language()
+	$anim.play(\"set_black\")
+	yield($anim, \"animation_finished\")
+	game.change_language(lang_label, null)
+	$anim.play(\"unset_black\")
+"
+
+[sub_resource type="DynamicFont" id=15]
+
+size = 60
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=16]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.LOADING_LANGUAGE_SETTINGS)
+"
+
+[sub_resource type="Animation" id=19]
+
+resource_name = "set_black"
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+
+resource_name = "unset_black"
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -2.23517e-08, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="settings" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
@@ -276,6 +373,7 @@ anims/close_settings = SubResource( 1 )
 anims/open_settings = SubResource( 2 )
 
 [node name="window" parent="." index="2"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -726,6 +824,7 @@ stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
 [node name="c" type="Control" parent="." index="3"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -793,6 +892,59 @@ lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 9 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
+
+[node name="loading_language" type="TextureRect" parent="." index="4"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 7
+script = SubResource( 18 )
+_sections_unfolded = [ "Script", "Visibility" ]
+
+[node name="text" type="Label" parent="loading_language" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Loading language"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 16 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Visibility" ]
+
+[node name="anim" type="AnimationPlayer" parent="loading_language" index="1"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/set_black = SubResource( 19 )
+anims/unset_black = SubResource( 20 )
+blend_times = [  ]
 
 [connection signal="toggled" from="window/audio/music_control/switch" to="." method="_on_switch_music_toggled"]
 [connection signal="toggled" from="window/audio/sound_control/switch" to="." method="_on_switch_sound_toggled"]
