@@ -187,4 +187,4 @@ var tutorial_posts = {
 # OTHER CONTROLS
 
 const GO_BACK = "Go back"
-
+const NO_MORE_ADS = "Oops! It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."

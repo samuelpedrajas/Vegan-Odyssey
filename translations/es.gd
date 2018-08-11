@@ -184,4 +184,4 @@ var tutorial_posts = {
 # OTHER CONTROLS
 
 const GO_BACK = "Volver"
-
+const NO_MORE_ADS = "¡Vaya! Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
