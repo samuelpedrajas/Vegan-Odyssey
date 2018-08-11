@@ -189,3 +189,12 @@ var tutorial_posts = {
 const GO_BACK = "Go back"
 const NO_MORE_ADS = "Oops! It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
 const LOADING_AD = "Loading ad"
+
+const SETTINGS_HEADER = "SETTINGS"
+const SETTINGS_HEADER_SCALE = 1.0
+const MUSIC_SETTINGS = "Music:"
+const SOUND_SETTINGS = "Sound:"
+const LANGUAGE_SETTINGS = "Language:"
+const DELETE_PROGRESS_SETTINGS = "Delete progress"
+const EXIT_GAME_SETTINGS = "Exit game"
+const EXIT_GAME_SETTINGS_SCALE = 1.0

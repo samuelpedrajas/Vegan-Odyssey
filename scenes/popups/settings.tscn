@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/settings.gd" type="Script" id=2]
@@ -136,7 +136,22 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Label
+
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.SETTINGS_HEADER)
+	var s = game.lang.SETTINGS_HEADER_SCALE
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="DynamicFont" id=5]
 
 size = 75
 outline_size = 0
@@ -146,7 +161,31 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.MUSIC_SETTINGS)
+"
+
+[sub_resource type="GDScript" id=11]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.SOUND_SETTINGS)
+"
+
+[sub_resource type="DynamicFont" id=6]
 
 size = 50
 outline_size = 0
@@ -156,7 +195,45 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=12]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.DELETE_PROGRESS_SETTINGS)
+"
+
+[sub_resource type="GDScript" id=13]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.EXIT_GAME_SETTINGS)
+	var s = game.lang.EXIT_GAME_SETTINGS_SCALE
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="GDScript" id=14]
+
+script/source = "extends Label
+
+func _ready():
+	update_language()
+
+
+func update_language():
+	set_text(game.lang.LANGUAGE_SETTINGS)
+"
+
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends Control
 
@@ -168,7 +245,7 @@ func _ready():
 	)
 "
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 
 size = 55
 outline_size = 0
@@ -178,12 +255,16 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends Label
 
 
 func _ready():
+	update_language()
+
+
+func update_language():
 	set_text(game.lang.GO_BACK)
 "
 
@@ -207,16 +288,18 @@ mouse_filter = 2
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility" ]
 
-[node name="title" type="Label" parent="window" index="0"]
+[node name="title" type="Label" parent="window" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -174.0
-margin_top = 98.0
-margin_right = 247.0
-margin_bottom = 200.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_left = -464.0
+margin_top = 93.0
+margin_right = 546.0
+margin_bottom = 195.0
+rect_pivot_offset = Vector2( 487, 51 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -232,7 +315,8 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
+script = SubResource( 4 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="blocker" type="Control" parent="window" index="1"]
 anchor_left = 0.0
@@ -249,7 +333,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Mouse" ]
 
 [node name="audio" type="Control" parent="window" index="2"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -280,7 +363,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="label" type="Label" parent="window/audio/music_control" index="0"]
+[node name="label" type="Label" parent="window/audio/music_control" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -293,7 +378,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -302,6 +387,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 10 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="switch" type="TextureButton" parent="window/audio/music_control" index="1"]
@@ -341,7 +427,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="label" type="Label" parent="window/audio/sound_control" index="0"]
+[node name="label" type="Label" parent="window/audio/sound_control" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -354,7 +442,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -363,6 +451,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 11 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="switch" type="TextureButton" parent="window/audio/sound_control" index="1"]
@@ -412,7 +501,9 @@ texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="label" type="Label" parent="window/reset_progress" index="0"]
+[node name="label" type="Label" parent="window/reset_progress" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -424,7 +515,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -435,6 +526,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 12 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="exit_button" type="TextureButton" parent="window" index="4"]
@@ -461,31 +553,33 @@ texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="label" type="Label" parent="window/exit_button" index="0"]
+[node name="label" type="Label" parent="window/exit_button" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 45.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = -14.0
+rect_pivot_offset = Vector2( 157, 47 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "Exit Game
-"
+text = "Exit Game"
 align = 1
 valign = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
+script = SubResource( 13 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="lang" type="Control" parent="window" index="5"]
 anchor_left = 0.5
@@ -504,7 +598,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Hint", "Rect" ]
 
-[node name="label" type="Label" parent="window/lang" index="0"]
+[node name="label" type="Label" parent="window/lang" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -518,7 +614,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -527,6 +623,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 14 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="flags" type="Control" parent="window/lang" index="1"]
@@ -643,7 +740,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 6 )
+script = SubResource( 7 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="close_button" type="TextureButton" parent="c" index="0"]
@@ -671,7 +768,9 @@ texture_normal = ExtResource( 15 )
 texture_pressed = ExtResource( 16 )
 _sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
 
-[node name="text" type="Label" parent="c/close_button" index="0"]
+[node name="text" type="Label" parent="c/close_button" index="0" groups=[
+"translatable",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -682,7 +781,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -692,7 +791,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 8 )
+script = SubResource( 9 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
 [connection signal="toggled" from="window/audio/music_control/switch" to="." method="_on_switch_music_toggled"]

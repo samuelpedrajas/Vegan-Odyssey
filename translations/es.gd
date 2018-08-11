@@ -186,3 +186,12 @@ var tutorial_posts = {
 const GO_BACK = "Volver"
 const NO_MORE_ADS = "¡Vaya! Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const LOADING_AD = "Cargando anuncio"
+
+const SETTINGS_HEADER = "CONFIGURACIÓN"
+const SETTINGS_HEADER_SCALE = 0.65
+const MUSIC_SETTINGS = "Música:"
+const SOUND_SETTINGS = "Sonido:"
+const LANGUAGE_SETTINGS = "Idioma:"
+const DELETE_PROGRESS_SETTINGS = "Borrar progreso"
+const EXIT_GAME_SETTINGS = "Salir del juego"
+const EXIT_GAME_SETTINGS_SCALE = 0.9
