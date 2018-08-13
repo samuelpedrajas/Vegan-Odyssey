@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/game_over.gd" type="Script" id=2]
@@ -43,6 +43,16 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.GAME_OVER)
+	var s = game.lang.GAME_OVER_SCALE
+	set_scale(Vector2(s, s))
+"
+
 [sub_resource type="DynamicFont" id=3]
 
 size = 40
@@ -52,6 +62,14 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=9]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.GAME_OVER_MSG)
+"
 
 [sub_resource type="DynamicFont" id=4]
 
@@ -72,6 +90,14 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.GAME_OVER_OR)
+"
 
 [sub_resource type="DynamicFont" id=6]
 
@@ -118,11 +144,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -374.0
-margin_top = -337.0
-margin_right = 374.0
-margin_bottom = -212.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_left = -462.0
+margin_top = -367.0
+margin_right = 446.0
+margin_bottom = -242.0
+rect_pivot_offset = Vector2( 454, 62.5 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -137,20 +163,22 @@ custom_constants/shadow_as_outline = 0
 text = "GAME OVER"
 align = 1
 valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 8 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="subtitle" type="Label" parent="window/title" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 58.0
-margin_top = 101.0
-margin_right = 690.0
-margin_bottom = 201.0
+[node name="subtitle" type="Label" parent="window" index="1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -321.0
+margin_top = -694.0
+margin_right = 311.0
+margin_bottom = -594.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -168,9 +196,10 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 9 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="video_button" type="Container" parent="window" index="1"]
+[node name="video_button" type="Container" parent="window" index="2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -254,7 +283,7 @@ rotation = -0.587862
 texture = ExtResource( 11 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="or" type="Label" parent="window" index="2"]
+[node name="or" type="Label" parent="window" index="3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -279,9 +308,10 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 10 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="go_back_btn" type="TextureButton" parent="window" index="3"]
+[node name="go_back_btn" type="TextureButton" parent="window" index="4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

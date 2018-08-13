@@ -214,3 +214,8 @@ const EXCUSE_BOOK = "EXCUSAS"
 const EXCUSE_BOOK_LEGEND = "EXCUSA ACTUAL"
 const EXCUSE_BOOK_NEW = "NUEVO"
 const EXCUSE_BOOK_NEW_SCALE = 0.8
+
+const GAME_OVER = "HAS PERDIDO"
+const GAME_OVER_SCALE = 0.8
+const GAME_OVER_MSG = "No quedan movimientos disponibles"
+const GAME_OVER_OR = "O"
