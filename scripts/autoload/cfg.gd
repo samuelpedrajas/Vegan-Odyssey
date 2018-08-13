@@ -25,3 +25,5 @@ const TRANSLATIONS = {
 	"es": "res://translations/es.gd",
 	"en": "res://translations/en.gd"
 }
+
+const MUSIC_VOLUME = -7

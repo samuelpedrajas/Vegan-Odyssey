@@ -270,6 +270,7 @@ func victory():
 	$"/root".set_disable_input(true)
 	win = true
 	sounds.play_audio("prewin")
+	game.music.set_volume_db(-80)
 
 	var t = $"/root/stage/timer"
 	t.set_wait_time(2.0)
