@@ -11,7 +11,7 @@
 [ext_resource path="res://images/popups/go_back.png" type="Texture" id=9]
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=10]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 
 resource_name = "close_book"
 length = 0.12
@@ -66,7 +66,7 @@ tracks/3/keys = {
 "values": [ 748.0, 1263.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 
 resource_name = "open_book"
 length = 0.12
@@ -121,7 +121,7 @@ tracks/3/keys = {
 "values": [ 1140.0, 625.0 ]
 }
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=3]
 
 size = 70
 outline_size = 0
@@ -131,7 +131,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends Label
 
@@ -139,7 +139,7 @@ func _ready():
 	set_text(game.lang.EXCUSE_BOOK)
 "
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=5]
 
 size = 38
 outline_size = 0
@@ -149,7 +149,7 @@ use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=6]
 
 script/source = "extends Label
 
@@ -157,7 +157,7 @@ func _ready():
 	set_text(game.lang.EXCUSE_BOOK_LEGEND)
 "
 
-[sub_resource type="GDScript" id=14]
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends Control
 
@@ -169,7 +169,7 @@ func _ready():
 	)
 "
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=8]
 
 size = 55
 outline_size = 0
@@ -179,7 +179,7 @@ use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=16]
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends Label
 
@@ -193,8 +193,8 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform" ]
 
 [node name="animation" parent="." index="0"]
-anims/close_book = SubResource( 9 )
-anims/open_book = SubResource( 10 )
+anims/close_book = SubResource( 1 )
+anims/open_book = SubResource( 2 )
 
 [node name="window" parent="." index="2"]
 anchor_left = 0.5
@@ -230,7 +230,7 @@ anchor_right = 0.5
 anchor_bottom = 0.0
 margin_left = -264.0
 margin_top = 56.0
-margin_right = 298.0
+margin_right = 308.0
 margin_bottom = 210.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -238,7 +238,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
@@ -249,7 +249,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 11 )
+script = SubResource( 4 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts" ]
 
 [node name="scroll_container" type="ScrollContainer" parent="window" index="2"]
@@ -377,7 +377,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -387,7 +387,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 13 )
+script = SubResource( 6 )
 _sections_unfolded = [ "Custom Fonts", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="c" type="Control" parent="." index="3"]
@@ -403,7 +403,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 14 )
+script = SubResource( 7 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="close_button" type="TextureButton" parent="c" index="0"]
@@ -442,7 +442,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -452,7 +452,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 16 )
+script = SubResource( 9 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
 [connection signal="pressed" from="c/close_button" to="." method="_on_close_button_pressed"]
