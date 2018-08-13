@@ -48,7 +48,7 @@ func _ready():
 	set_text(game.lang.EXIT_GAME_MSG)
 "
 
-[node name="exit_confirmation" instance=ExtResource( 1 )]
+[node name="exit_confirmation" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform" ]
 
@@ -58,9 +58,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -348.0
-margin_top = -347.0
+margin_top = -345.0
 margin_right = 349.0
-margin_bottom = 376.0
+margin_bottom = 378.0
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Pause", "Rect", "Transform", "Visibility" ]
 
