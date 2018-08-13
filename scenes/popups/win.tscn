@@ -1,54 +1,54 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/win.gd" type="Script" id=2]
 [ext_resource path="res://images/popups/win_bg.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=4]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=5]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://images/events/duck/stand/stand-0.png" type="Texture" id=7]
-[ext_resource path="res://images/events/duck/stand/stand-1.png" type="Texture" id=8]
-[ext_resource path="res://images/events/duck/stand/stand-2.png" type="Texture" id=9]
-[ext_resource path="res://images/events/duck/stand/stand-3.png" type="Texture" id=10]
-[ext_resource path="res://images/events/duck/stand/stand-4.png" type="Texture" id=11]
-[ext_resource path="res://images/events/duck/stand/stand-5.png" type="Texture" id=12]
-[ext_resource path="res://images/events/duck/stand/stand-6.png" type="Texture" id=13]
-[ext_resource path="res://images/events/duck/stand/stand-7.png" type="Texture" id=14]
-[ext_resource path="res://images/events/duck/stand/stand-8.png" type="Texture" id=15]
-[ext_resource path="res://images/events/duck/stand/stand-9.png" type="Texture" id=16]
-[ext_resource path="res://images/events/duck/stand/stand-10.png" type="Texture" id=17]
-[ext_resource path="res://images/events/duck/stand/stand-11.png" type="Texture" id=18]
-[ext_resource path="res://images/events/duck/stand/stand-12.png" type="Texture" id=19]
-[ext_resource path="res://images/events/duck/stand/stand-13.png" type="Texture" id=20]
-[ext_resource path="res://images/events/duck/stand/stand-14.png" type="Texture" id=21]
-[ext_resource path="res://images/events/duck/stand/stand-15.png" type="Texture" id=22]
-[ext_resource path="res://images/events/duck/stand/stand-16.png" type="Texture" id=23]
-[ext_resource path="res://images/events/duck/stand/stand-17.png" type="Texture" id=24]
-[ext_resource path="res://images/events/duck/stand/stand-18.png" type="Texture" id=25]
-[ext_resource path="res://images/events/duck/stand/stand-19.png" type="Texture" id=26]
-[ext_resource path="res://images/events/duck/stand/stand-20.png" type="Texture" id=27]
-[ext_resource path="res://images/events/duck/stand/stand-21.png" type="Texture" id=28]
-[ext_resource path="res://images/events/duck/stand/stand-22.png" type="Texture" id=29]
-[ext_resource path="res://images/events/duck/stand/stand-23.png" type="Texture" id=30]
-[ext_resource path="res://images/events/duck/stand/stand-24.png" type="Texture" id=31]
-[ext_resource path="res://images/events/duck/walking/walking-0.png" type="Texture" id=32]
-[ext_resource path="res://images/events/duck/walking/walking-1.png" type="Texture" id=33]
-[ext_resource path="res://images/events/duck/walking/walking-2.png" type="Texture" id=34]
-[ext_resource path="res://images/events/duck/walking/walking-3.png" type="Texture" id=35]
-[ext_resource path="res://images/events/duck/walking/walking-4.png" type="Texture" id=36]
-[ext_resource path="res://images/events/duck/walking/walking-5.png" type="Texture" id=37]
-[ext_resource path="res://images/events/duck/walking/walking-6.png" type="Texture" id=38]
-[ext_resource path="res://images/events/duck/walking/walking-7.png" type="Texture" id=39]
-[ext_resource path="res://images/events/duck/walking/walking-8.png" type="Texture" id=40]
-[ext_resource path="res://images/events/duck/walking/walking-9.png" type="Texture" id=41]
-[ext_resource path="res://images/events/duck/walking/walking-10.png" type="Texture" id=42]
-[ext_resource path="res://images/events/duck/walking/walking-11.png" type="Texture" id=43]
-[ext_resource path="res://images/events/duck/walking/walking-12.png" type="Texture" id=44]
-[ext_resource path="res://images/events/duck/walking/walking-13.png" type="Texture" id=45]
-[ext_resource path="res://images/events/duck/walking/walking-14.png" type="Texture" id=46]
-[ext_resource path="res://images/popups/party_hat.png" type="Texture" id=47]
-[ext_resource path="res://images/popups/you_won.png" type="Texture" id=48]
-[ext_resource path="res://images/popups/ornament.png" type="Texture" id=49]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://images/popups/ornament.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=7]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://images/events/duck/stand/stand-0.png" type="Texture" id=9]
+[ext_resource path="res://images/events/duck/stand/stand-1.png" type="Texture" id=10]
+[ext_resource path="res://images/events/duck/stand/stand-2.png" type="Texture" id=11]
+[ext_resource path="res://images/events/duck/stand/stand-3.png" type="Texture" id=12]
+[ext_resource path="res://images/events/duck/stand/stand-4.png" type="Texture" id=13]
+[ext_resource path="res://images/events/duck/stand/stand-5.png" type="Texture" id=14]
+[ext_resource path="res://images/events/duck/stand/stand-6.png" type="Texture" id=15]
+[ext_resource path="res://images/events/duck/stand/stand-7.png" type="Texture" id=16]
+[ext_resource path="res://images/events/duck/stand/stand-8.png" type="Texture" id=17]
+[ext_resource path="res://images/events/duck/stand/stand-9.png" type="Texture" id=18]
+[ext_resource path="res://images/events/duck/stand/stand-10.png" type="Texture" id=19]
+[ext_resource path="res://images/events/duck/stand/stand-11.png" type="Texture" id=20]
+[ext_resource path="res://images/events/duck/stand/stand-12.png" type="Texture" id=21]
+[ext_resource path="res://images/events/duck/stand/stand-13.png" type="Texture" id=22]
+[ext_resource path="res://images/events/duck/stand/stand-14.png" type="Texture" id=23]
+[ext_resource path="res://images/events/duck/stand/stand-15.png" type="Texture" id=24]
+[ext_resource path="res://images/events/duck/stand/stand-16.png" type="Texture" id=25]
+[ext_resource path="res://images/events/duck/stand/stand-17.png" type="Texture" id=26]
+[ext_resource path="res://images/events/duck/stand/stand-18.png" type="Texture" id=27]
+[ext_resource path="res://images/events/duck/stand/stand-19.png" type="Texture" id=28]
+[ext_resource path="res://images/events/duck/stand/stand-20.png" type="Texture" id=29]
+[ext_resource path="res://images/events/duck/stand/stand-21.png" type="Texture" id=30]
+[ext_resource path="res://images/events/duck/stand/stand-22.png" type="Texture" id=31]
+[ext_resource path="res://images/events/duck/stand/stand-23.png" type="Texture" id=32]
+[ext_resource path="res://images/events/duck/stand/stand-24.png" type="Texture" id=33]
+[ext_resource path="res://images/events/duck/walking/walking-0.png" type="Texture" id=34]
+[ext_resource path="res://images/events/duck/walking/walking-1.png" type="Texture" id=35]
+[ext_resource path="res://images/events/duck/walking/walking-2.png" type="Texture" id=36]
+[ext_resource path="res://images/events/duck/walking/walking-3.png" type="Texture" id=37]
+[ext_resource path="res://images/events/duck/walking/walking-4.png" type="Texture" id=38]
+[ext_resource path="res://images/events/duck/walking/walking-5.png" type="Texture" id=39]
+[ext_resource path="res://images/events/duck/walking/walking-6.png" type="Texture" id=40]
+[ext_resource path="res://images/events/duck/walking/walking-7.png" type="Texture" id=41]
+[ext_resource path="res://images/events/duck/walking/walking-8.png" type="Texture" id=42]
+[ext_resource path="res://images/events/duck/walking/walking-9.png" type="Texture" id=43]
+[ext_resource path="res://images/events/duck/walking/walking-10.png" type="Texture" id=44]
+[ext_resource path="res://images/events/duck/walking/walking-11.png" type="Texture" id=45]
+[ext_resource path="res://images/events/duck/walking/walking-12.png" type="Texture" id=46]
+[ext_resource path="res://images/events/duck/walking/walking-13.png" type="Texture" id=47]
+[ext_resource path="res://images/events/duck/walking/walking-14.png" type="Texture" id=48]
+[ext_resource path="res://images/popups/party_hat.png" type="Texture" id=49]
 [ext_resource path="res://images/popups/star.png" type="Texture" id=50]
 [ext_resource path="res://images/popups/starempty.png" type="Texture" id=51]
 [ext_resource path="res://images/popups/share.png" type="Texture" id=52]
@@ -99,15 +99,51 @@ tracks/2/keys = {
 
 [sub_resource type="DynamicFont" id=2]
 
+size = 100
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=12]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.WIN1)
+"
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 140
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=13]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.WIN2)
+"
+
+[sub_resource type="DynamicFont" id=4]
+
 size = 55
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=5]
 
 script/source = "extends Label
 
@@ -116,21 +152,21 @@ func _ready():
 	set_text(game.lang.GO_BACK)
 "
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "standing",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
 "loop": true,
 "name": "walking",
 "speed": 20.0
 } ]
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=7]
 
 script/source = "tool
 extends AnimatedSprite
@@ -212,7 +248,7 @@ func _on_broccoli_duck_frame_changed():
 	else:
 		_set_walking_hat()"
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
 length = 19.5
 loop = true
@@ -324,17 +360,25 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 
 size = 50
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=11]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.WIN_MSG)
+"
+
+[sub_resource type="GDScript" id=10]
 
 script/source = "extends Control
 
@@ -431,7 +475,93 @@ margin_bottom = 530.0
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Pause", "Rect", "Transform", "Visibility", "texture" ]
 
-[node name="go_back" type="TextureButton" parent="window" index="0"]
+[node name="title" type="Control" parent="window" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 70.0
+margin_bottom = 314.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="title1" type="Label" parent="window/title" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 135.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.619608, 0.619608, 0, 1 )
+custom_constants/shadow_offset_x = 8
+text = "YOU"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 12 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Visibility", "custom_fonts/font" ]
+
+[node name="title2" type="Label" parent="window/title" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_top = 97.0
+margin_bottom = 264.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.621094, 0.621094, 0, 1 )
+custom_constants/shadow_offset_x = 8
+text = "WON!"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 13 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
+
+[node name="ornament" type="TextureRect" parent="window/title" index="2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -292.0
+margin_top = -63.0
+margin_right = 291.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+
+[node name="go_back" type="TextureButton" parent="window" index="1"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -451,8 +581,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
 _sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Textures", "Visibility" ]
 
 [node name="text" type="Label" parent="window/go_back" index="0"]
@@ -466,7 +596,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -477,10 +607,10 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 3 )
+script = SubResource( 5 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
-[node name="content" type="Control" parent="window" index="1"]
+[node name="content" type="Control" parent="window" index="2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -503,14 +633,14 @@ position = Vector2( 0, 40 )
 
 [node name="broccoli_duck" type="AnimatedSprite" parent="window/content/duck" index="0"]
 position = Vector2( -23, -650 )
-frames = SubResource( 4 )
+frames = SubResource( 6 )
 animation = "standing"
-script = SubResource( 5 )
+script = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="hat" type="Sprite" parent="window/content/duck/broccoli_duck" index="0"]
 position = Vector2( 0, -80 )
-texture = ExtResource( 47 )
+texture = ExtResource( 49 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="window/content/duck/broccoli_duck" index="1"]
@@ -519,7 +649,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/duck = SubResource( 6 )
+anims/duck = SubResource( 8 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
@@ -539,38 +669,26 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="title" type="Sprite" parent="window/content" index="1"]
-editor/display_folded = true
-position = Vector2( 13.9476, -298.894 )
-scale = Vector2( 0.842965, 0.842965 )
-texture = ExtResource( 48 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="ornament" type="Sprite" parent="window/content/title" index="0"]
-position = Vector2( 0, 175 )
-texture = ExtResource( 49 )
-
-[node name="msg" type="Label" parent="window/content" index="2"]
+[node name="msg" type="Label" parent="window/content" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -404.0
-margin_top = -145.0
-margin_right = 403.0
-margin_bottom = 102.0
+margin_left = -411.0
+margin_top = -182.0
+margin_right = 408.0
+margin_bottom = 89.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "Congratulations! You have won the game! You can support us by rating it in Play Store or sharing it with friends.
-"
+text = "Congratulations! You have won the game! You can support us by rating it in Play Store or sharing it with friends."
 align = 1
 valign = 1
 autowrap = true
@@ -578,9 +696,10 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 11 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="empty_stars" type="Control" parent="window/content" index="3"]
+[node name="empty_stars" type="Control" parent="window/content" index="2"]
 editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -596,7 +715,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 8 )
+script = SubResource( 10 )
 _sections_unfolded = [ "Rect", "Transform" ]
 
 [node name="star1" type="TouchScreenButton" parent="window/content/empty_stars" index="0"]
@@ -703,7 +822,7 @@ texture = ExtResource( 51 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="share" type="TextureButton" parent="window/content" index="4"]
+[node name="share" type="TextureButton" parent="window/content" index="3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

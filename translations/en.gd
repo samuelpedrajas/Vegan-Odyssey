@@ -222,3 +222,7 @@ const GAME_OVER = "GAME OVER"
 const GAME_OVER_SCALE = 1.0
 const GAME_OVER_MSG = "No more moves available"
 const GAME_OVER_OR = "OR"
+
+const WIN1 = "YOU"
+const WIN2 = "WON!"
+const WIN_MSG = "Congratulations! You have won the game! You can support us by rating it in Play Store or sharing it with friends."

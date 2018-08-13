@@ -219,3 +219,7 @@ const GAME_OVER = "HAS PERDIDO"
 const GAME_OVER_SCALE = 0.8
 const GAME_OVER_MSG = "No quedan movimientos disponibles"
 const GAME_OVER_OR = "O"
+
+const WIN1 = "¡HAS"
+const WIN2 = "GANADO!"
+const WIN_MSG = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en Play Store o compartiendo con tus amigos."
