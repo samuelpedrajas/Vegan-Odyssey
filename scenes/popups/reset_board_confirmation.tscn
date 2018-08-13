@@ -1,37 +1,160 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/reset_board_confirmation.gd" type="Script" id=2]
-[ext_resource path="res://images/popups/reset_board_bg.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=4]
-[ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=5]
-[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=6]
-[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/common_popup_small.png" type="Texture" id=3]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://images/popups/ornament.png" type="Texture" id=5]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=10]
 
-[node name="reset_board_confirmation" instance=ExtResource( 1 )]
+[sub_resource type="DynamicFont" id=1]
+
+size = 60
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Label
+
+
+func _ready():
+	set_text(game.lang.RESET_BOARD)
+"
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 50
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.RESET_BOARD_MSG)
+"
+
+[node name="reset_board_confirmation" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="clickable_space" parent="." index="1"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = -1.0
+margin_bottom = -1.0
 
 [node name="window" parent="." index="2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -417.0
-margin_top = -405.0
-margin_right = 418.0
-margin_bottom = 310.0
+margin_left = -348.5
+margin_top = -361.5
+margin_right = 348.5
+margin_bottom = 361.5
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility" ]
+_sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility", "texture" ]
 
-[node name="buttons" type="Control" parent="window" index="0"]
+[node name="title" type="Label" parent="window" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 153.0
+margin_top = 60.0
+margin_right = -153.0
+margin_bottom = 232.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "RESET BOARD?"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 3 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts" ]
+
+[node name="ornament" type="TextureRect" parent="window/title" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -291.0
+margin_top = 4.0
+margin_right = 292.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="msg" type="Label" parent="window" index="1"]
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 90.0
+margin_top = -161.0
+margin_right = -90.0
+margin_bottom = 148.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "The state of the board will be lost!"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 4 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts" ]
+
+[node name="buttons" type="Control" parent="window" index="2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -177.0
-margin_top = 156.0
+margin_top = 213.0
 margin_right = 175.0
-margin_bottom = 196.0
+margin_bottom = 253.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -59,8 +182,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ok_button" type="TextureButton" parent="window/buttons" index="1"]
@@ -82,8 +205,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="window/buttons/cancel_button" to="." method="_on_cancel_button_pressed"]

@@ -184,7 +184,8 @@ var tutorial_posts = {
 # OTHER CONTROLS
 
 const GO_BACK = "Volver"
-const NO_MORE_ADS = "¡Vaya! Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
+const NO_MORE_ADS_TITLE = "¡VAYA!"
+const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const LOADING_AD = "Cargando anuncio"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
@@ -196,3 +197,15 @@ const DELETE_PROGRESS_SETTINGS = "Borrar progreso"
 const EXIT_GAME_SETTINGS = "Salir del juego"
 const EXIT_GAME_SETTINGS_SCALE = 0.9
 const LOADING_LANGUAGE_SETTINGS = "Loading language"
+
+const RESET_BOARD = "¿REINICIAR TABLERO?"
+const RESET_BOARD_MSG = "¡El estado actual del tablero se perderá!"
+
+const EXIT_GAME = "SALIR DEL JUEGO"
+const EXIT_GAME_MSG = "¿Estás seguro de que quieres salir del juego?"
+
+const RESET_PROGRESS = "¿ESTÁS SEGURO?"
+const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será permanentemente borrado.\n\nNo perderás tus broccolis."
+
+const OFFLINE = "SIN CONEXIÓN"
+const OFFLINE_MSG = "Conéctate a Internet para conseguir brócoli y apoyarnos.\n\nActualmente los anuncios son nuestra única forma de poder hacer juegos como este."

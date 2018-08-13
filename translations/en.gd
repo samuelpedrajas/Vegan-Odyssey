@@ -187,7 +187,8 @@ var tutorial_posts = {
 # OTHER CONTROLS
 
 const GO_BACK = "Go back"
-const NO_MORE_ADS = "Oops! It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
+const NO_MORE_ADS_TITLE = "Oops..."
+const NO_MORE_ADS = "It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
 const LOADING_AD = "Loading ad"
 
 const SETTINGS_HEADER = "SETTINGS"
@@ -199,3 +200,15 @@ const DELETE_PROGRESS_SETTINGS = "Delete progress"
 const EXIT_GAME_SETTINGS = "Exit game"
 const EXIT_GAME_SETTINGS_SCALE = 1.0
 const LOADING_LANGUAGE_SETTINGS = "Cargando idioma"
+
+const RESET_BOARD = "RESET BOARD?"
+const RESET_BOARD_MSG = "The state of the board will be lost!"
+
+const EXIT_GAME = "EXIT GAME"
+const EXIT_GAME_MSG = "Are you sure you wanna quit the game?"
+
+const RESET_PROGRESS = "ARE YOU SURE?"
+const RESET_PROGRESS_MSG = "All the progress including the board will be permanently deleted.\n\nYou'll keep your broccolis."
+
+const OFFLINE = "YOU APPEAR OFFLINE"
+const OFFLINE_MSG = "Earn broccoli and support the developers by going online.\n\nAt this moment, ads are our only way to keep making awesome games like this one."
