@@ -147,5 +147,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/reflections/texture_array_reflections=false
 environment/default_clear_color=Color( 0.65098, 0.65098, 0.65098, 1 )
