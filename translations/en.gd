@@ -226,3 +226,5 @@ const GAME_OVER_OR = "OR"
 const WIN1 = "YOU"
 const WIN2 = "WON!"
 const WIN_MSG = "Congratulations! You have won the game! You can support us by rating it in Play Store or sharing it with friends."
+
+const REWARDED_MSG = "Get broccolis with the power of marketing!"
