@@ -105,7 +105,7 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/es/proteins.png"),
 		"book_sprite": preload("res://images/excuse_pictures/es/proteins.png"),
 		"path": "res://share/es/proteins.share",
-		"text": "Proteinas",
+		"text": "Proteínas",
 		"debate": {
 			"question": "Necesitamos proteína animal para sobrevivir",
 			"answer": "Cereales, verduras y legumbres proporcionan toda la proteína que necesitas. Es difícil tener deficiencia de proteínas si consumes todas las calorías que necesitas. ",
@@ -125,7 +125,7 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/bacon.png"),
 		"book_sprite": preload("res://images/excuse_pictures/es/bacon.png"),
 		"path": "res://share/es/bacon.share",
-		"text": "Mmmmh... Bacon",
+		"text": "Mmhh... Bacon",
 		"debate": {
 			"question": "Mmmmh...Bacon.",
 			"answer": "Venga va. Eso no es ni siquiera un argumento. Una conciencia limpia sabe mejor que el mejor bacon del mundo, ¿no crees?",
@@ -135,7 +135,7 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/es/lions.png"),
 		"book_sprite": preload("res://images/excuse_pictures/es/lions.png"),
 		"path": "res://share/es/lions.share",
-		"text": "Los leones comen carne",
+		"text": "Leones",
 		"debate": {
 			"question": "Pero... los leones comen carne, ¿no?",
 			"answer": "Lo hacen. Pero en la naturaleza los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
@@ -144,7 +144,7 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/es/caveman.png"),
 		"book_sprite": preload("res://images/excuse_pictures/es/caveman.png"),
 		"path": "res://share/es/caveman.share",
-		"text": "Los cavernícolas comían carne",
+		"text": "Cavernícolas",
 		"debate": {
 			"question": "Yo como carne como los cavernícolas.",
 			"answer": "¿De verdad basas tus acciones diarias en cómo vivían los cavernícolas? ¿Haces esto en el resto de tus decisiones? ¿O sólo cuando se trata de nutrición?",
@@ -164,7 +164,7 @@ var EXCUSES = [
 		"token_sprite": preload("res://images/excuses/es/moral.png"),
 		"book_sprite": preload("res://images/excuse_pictures/es/moral.png"),
 		"path": "res://share/es/moral.share",
-		"text": "La moralidad es subjetiva",
+		"text": "Subjetividad moral",
 		"debate": {
 			"question": "La moral es subjetiva. Yo tengo mi verdad.",
 			"answer": "Uy… Eso suena un poco peligroso, ¿no? Podrías justificar cualquier cosa diciendo eso. Los animales también quieren vivir y eso se tiene que tener en cuenta.",
@@ -209,3 +209,8 @@ const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será 
 
 const OFFLINE = "SIN CONEXIÓN"
 const OFFLINE_MSG = "Conéctate a Internet para conseguir brócoli y apoyarnos.\n\nActualmente los anuncios son nuestra única forma de poder hacer juegos como este."
+
+const EXCUSE_BOOK = "EXCUSAS"
+const EXCUSE_BOOK_LEGEND = "EXCUSA ACTUAL"
+const EXCUSE_BOOK_NEW = "NUEVO"
+const EXCUSE_BOOK_NEW_SCALE = 0.8

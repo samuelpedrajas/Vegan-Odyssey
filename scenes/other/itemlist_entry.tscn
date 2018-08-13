@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/other/itemlist_entry.gd" type="Script" id=1]
 [ext_resource path="res://images/popups/unlocked_container.png" type="Texture" id=2]
@@ -15,10 +15,22 @@
 [sub_resource type="DynamicFont" id=1]
 
 size = 30
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.EXCUSE_BOOK_NEW)
+	var s = game.lang.EXCUSE_BOOK_NEW_SCALE
+	set_scale(Vector2(s, s))
+"
 
 [sub_resource type="Animation" id=2]
 
@@ -42,13 +54,14 @@ tracks/0/keys = {
 [sub_resource type="DynamicFont" id=3]
 
 size = 58
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="excuse" type="Control" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -66,13 +79,11 @@ _sections_unfolded = [ "Pause" ]
 token_index = null
 
 [node name="unlock" type="Sprite" parent="." index="0"]
-
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
 [node name="excuse" type="TouchScreenButton" parent="." index="1"]
-
 position = Vector2( 601, 57 )
 normal = ExtResource( 3 )
 pressed = null
@@ -86,7 +97,6 @@ visibility_mode = 0
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="debate" type="TouchScreenButton" parent="." index="2"]
-
 position = Vector2( 723, 57 )
 normal = ExtResource( 4 )
 pressed = null
@@ -100,7 +110,6 @@ visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
 [node name="new" type="Container" parent="." index="3"]
-
 modulate = Color( 1, 1, 1, 0.588235 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -118,17 +127,16 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
 [node name="new1" type="Label" parent="new" index="0"]
-
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 622.0
+margin_left = 598.0
 margin_top = 4.0
-margin_right = 692.0
+margin_right = 716.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 59, 18 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -139,23 +147,24 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "NEW"
 align = 1
 valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
+script = SubResource( 4 )
+_sections_unfolded = [ "Rect", "Script", "custom_colors", "custom_fonts" ]
 
 [node name="new2" type="Label" parent="new" index="1"]
-
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 747.0
+margin_left = 723.0
 margin_top = 4.0
-margin_right = 817.0
+margin_right = 841.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 59, 18 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -166,13 +175,14 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "NEW"
 align = 1
 valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
+script = SubResource( 4 )
+_sections_unfolded = [ "Rect", "Script", "custom_colors", "custom_fonts" ]
 
 [node name="anim" type="AnimationPlayer" parent="new" index="2"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -182,7 +192,6 @@ anims/blink = SubResource( 2 )
 blend_times = [  ]
 
 [node name="debate_disabled" type="Sprite" parent="." index="4"]
-
 visible = false
 position = Vector2( 601, 57 )
 texture = ExtResource( 6 )
@@ -190,7 +199,6 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="excuse_disabled" type="Sprite" parent="." index="5"]
-
 visible = false
 position = Vector2( 723, 57 )
 texture = ExtResource( 7 )
@@ -198,7 +206,6 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="text" type="Label" parent="." index="6"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -226,29 +233,21 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="lock" type="Sprite" parent="." index="7"]
-
 visible = false
 texture = ExtResource( 9 )
 centered = false
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="lock_sprite" type="Sprite" parent="lock" index="0"]
-
 position = Vector2( 300, 105 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="bar" type="Sprite" parent="." index="8"]
-
 position = Vector2( 415.319, 244.66 )
 texture = ExtResource( 11 )
 
 [connection signal="pressed" from="excuse" to="." method="_on_excuse_pressed"]
-
 [connection signal="released" from="excuse" to="." method="_on_excuse_released"]
-
 [connection signal="pressed" from="debate" to="." method="_on_excuse_pressed"]
-
 [connection signal="released" from="debate" to="." method="_on_debate_released"]
-
-

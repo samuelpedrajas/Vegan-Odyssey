@@ -212,3 +212,8 @@ const RESET_PROGRESS_MSG = "All the progress including the board will be permane
 
 const OFFLINE = "YOU APPEAR OFFLINE"
 const OFFLINE_MSG = "Earn broccoli and support the developers by going online.\n\nAt this moment, ads are our only way to keep making awesome games like this one."
+
+const EXCUSE_BOOK = "EXCUSES"
+const EXCUSE_BOOK_LEGEND = "CURRENT EXCUSE"
+const EXCUSE_BOOK_NEW = "NEW"
+const EXCUSE_BOOK_NEW_SCALE = 1.0
