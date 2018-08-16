@@ -4,3 +4,8 @@ addons/
 *.import
 fonts/*.png
 fonts/*.font
+.DS_Store
+.gitignore.swp
+GoogleMobileAds.framework/
+results/
+
