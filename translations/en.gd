@@ -22,15 +22,15 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
 		["B", "(lau_listening)(lucy_talking)Well, when talking about plants a lot of analogies with humans are made, but in reality they're just totally different than us."],
-		["B", "They lack of central nervous systems and pain receptors. Neuroscientists say that pain is something created by a brain so... (lucy_happy)no brain, no pain."],
+		["B", "They lack of central nervous system and pain receptors. Neuroscientists say that pain is something created by a brain so... (lucy_happy)no brain, no pain."],
 		["B", "(lucy_talking)Moreover, from an evolutionary point of view it makes no sense for plants to develop any feeling of pain. They're rooted, they don't run away from predators."],
 		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you're still interested in saving plants you've got to go vegan!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)What you vegans don't understand is that (lau_finger)we need animal proteins to survive(lau_proud)."],
 		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],
 		["B", "Whole grains, vegetables, and beans provide more than enough protein to stay healthy. It's very difficult to be protein-deficient when you get all calories you need."],
-		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population."],
-		["B", "Furthermore, all proteins ultimately come from plants. When you eat meat, (lucy_happy)you're getting proteins thanks to animals eating plants in the first place(lucy_smiling)."]
+		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population."]
+		
 	], [
 		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how the circle of life works."],
 		["B", "(lau_listening)(lucy_talking)Well, “circle of life” is just a term created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law written on stone."],
@@ -78,7 +78,7 @@ var ending = [
 # share
 const TITLE = "Vegan Oddysey"
 const SUBJECT = "Play Vegan Oddysey for iOS and Android."
-const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at https://www.veganodysseythegame.com."
+const MSG = "Play Vegan Oddysey for iOS and Android. Download it for free at https://www.veganodysseythegame.com"
 
 
 # excuse info
@@ -201,19 +201,19 @@ const EXIT_GAME_SETTINGS = "Exit game"
 const LOADING_LANGUAGE_SETTINGS = "Cargando idioma"
 
 const RESET_BOARD = "RESET BOARD?"
-const RESET_BOARD_MSG = "The state of the board will be lost!"
+const RESET_BOARD_MSG = "The state of the board will be lost"
 
 const EXIT_GAME = "EXIT GAME"
-const EXIT_GAME_MSG = "Are you sure you wanna quit the game?"
+const EXIT_GAME_MSG = "Are you sure?"
 
-const RESET_PROGRESS = "ARE YOU SURE?"
+const RESET_PROGRESS = "DELETE PROGRESS?"
 const RESET_PROGRESS_MSG = "All the progress including the board will be permanently deleted.\n\nYou'll keep your broccolis."
 
 const OFFLINE = "YOU APPEAR OFFLINE"
 const OFFLINE_MSG = "Earn broccoli and support the developers by going online.\n\nAt this moment, ads are our only way to keep making awesome games like this one."
 
 const EXCUSE_BOOK = "EXCUSES"
-const EXCUSE_BOOK_LEGEND = "CURRENT EXCUSE"
+const EXCUSE_BOOK_LEGEND = "CURRENT MAXIMUM"
 const EXCUSE_BOOK_NEW = "NEW"
 const EXCUSE_BOOK_NEW_SCALE = 1.0
 
@@ -224,6 +224,6 @@ const GAME_OVER_OR = "OR"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"
-const WIN_MSG = "Congratulations! You have won the game! You can support us by rating it in Play Store or sharing it with friends."
+const WIN_MSG = "Congratulations! You have complete the game! You can support us by rating it in Play Store or sharing it with friends."
 
 const REWARDED_MSG = "Get broccolis with the power of marketing!"
