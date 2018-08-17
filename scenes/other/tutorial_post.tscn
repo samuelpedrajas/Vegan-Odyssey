@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://images/tutorial_post.png" type="Texture" id=1]
-[ext_resource path="res://fonts/fake receipt.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/fake_receipt.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://images/left_rope.png" type="Texture" id=3]
 [ext_resource path="res://images/right_rope.png" type="Texture" id=4]
 
@@ -93,7 +93,7 @@ outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings", "font_data" ]
+_sections_unfolded = [ "Font", "font_data" ]
 
 [sub_resource type="GDScript" id=5]
 
