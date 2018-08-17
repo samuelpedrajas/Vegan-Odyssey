@@ -8,7 +8,7 @@ var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)¡Laura! (lau_salutes)¡Cuánto tiempo! Que alegría volver a verte."],
 	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? Me enteré de que te hiciste vegana, ¿es eso cierto?"],
 	["B", "(lau_happy_listening)(lucy_happy)Así es. Me gustan mucho los animales, así que decidí dejar de comérmelos(lucy_smiling)."],
-	["A", "(lau_happy_talking)¿Cómo? Eso no tiene ningún sentido.(lucy_listening)(lau_proud)"],
+	["A", "(lau_happy_talking)¿Cómo? Eso no tiene ningún sentido(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)¿Por qué?(lucy_listening)"],
 	["A", "(lau_finger)Porque... ¿Y (music)SI ESTUVIESES EN UNA ISLA DESIERTA(lau_proud)(lucy_serious)?"]
 ]
@@ -18,7 +18,7 @@ var dialog_list = [
 	[
 		["A", "(lau_talking)(lucy_listening)¿Y si estuvieses en una isla desierta?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, la verdad es que no sé qué decirte, espero no estar nunca en esa situación. Pero... ¿Has pensado en qué harías tú si estuvieses en una civilización llena de opciones libres de crueldad animal?"],
-		["B", "No creo que sea muy sabio decidir qué hacer en tus acciones cotidianas basándote en lo que harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo.(lucy_smiling)"]
+		["B", "No creo que sea muy sabio decidir qué hacer en tus acciones cotidianas basándote en lo que harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten ¿no?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, lo cierto es que cuando se habla de plantas se suelen hacer muchas analogías con los humanos, pero la realidad es que somos totalmente diferentes."],
@@ -34,7 +34,7 @@ var dialog_list = [
 		["B", "Encerrar animales en jaulas sin posibilidad de sobrevivir no puede ser parte de ningún “ciclo de la vida”, y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
 		["B", "La decisión de hacerte vegano es solamente tuya, nada ni nadie te está obligando a parar o seguir consumiendo productos animales(lucy_smiling)."]
 	], [
-		["A", "(lucy_smiling)(lau_serious_talking)Mmmmh... Bacon(lau_proud)(lucy_serious)."],
+		["A", "(lucy_smiling)(lau_serious_talking)Mmhh... Bacon(lau_proud)(lucy_serious)."],
 		["B", "Emm... (lucy_stand_talking)No se si eso merece una respuesta, pero te voy a preguntar algo:(lucy_talking_arm) ¿Estás a favor de la tauromaquia?(lucy_listening)"],
 		["A", "(lau_finger)¡Claro que no! Eso es abuso animal(lau_proud)."],
 		["B", "(lucy_stand_talking)Pues lo cierto es que los amantes de la tauromaquia dicen que es arte(lucy_talking)(lau_listening) y que como tal, les proporciona placer a través de los ojos, en lugar de a través del gusto."],
@@ -42,24 +42,24 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Como carne por la misma razón que los leones comen carne. Si ellos lo hacen, ¿por qué yo no puedo?(lau_proud)"],
 		["B", "(lucy_talking)Bueno, antes que nada, tu no eres un león...¿no? (lucy_happy)(lau_listening)"],
-		["B", "(lucy_talking)En la naturaleza, los leones cometen infanticidio y desde una perspectiva humana muchas otras atrocidades. ¿Que pensarías si empezase a hacer cualquiera de estas cosas y dijese que no pasa nada porque los leones también lo hacen?"],
+		["B", "(lucy_talking)En la naturaleza, los leones cometen infanticidio y desde una perspectiva humana muchas otras atrocidades. ¿Qué pensarías si empezase a hacer cualquiera de estas cosas y dijese que no pasa nada porque los leones también lo hacen?"],
 		["B", "Ellos no pueden escoger por su naturaleza, pero nosotros si que podemos. Por lo que somos muy diferentes a ellos, (lucy_happy)¿no crees?(lucy_smiling)"]
 	], [
-		["A", "(lau_talking)(lucy_listening)Pero los cavernícolas ya comían carne.(lau_proud)"],
+		["A", "(lau_talking)(lucy_listening)Pero los cavernícolas ya comían carne(lau_proud)."],
 		["B", "(lucy_talking)¿Enserio vas a justificar tus acciones según lo que los cavernícolas hacían o dejaban de hacer?(lau_listening) ¿Haces eso con el resto de decisiones de tu vida? ¿Entonces por qué vas a hacerlo con tu nutrición?"],
 		["B", "Los cavernícolas comían todo lo que encontraban en su entorno. Además, que ellos no eran 7.6 mil millones de personas en el planeta, por lo que las circunstancias como especie han cambiado bastante."],
-		["B", "Pero si es la salud lo que te preocupa, que sepas que una dieta vegana es completamente recomendable incluso si eres un atleta profesional. Tienes mucha información al respecto si estas interesada.(lucy_smiling)"]
+		["B", "Pero si es la salud lo que te preocupa, que sepas que una dieta vegana es completamente recomendable incluso si eres un atleta profesional. Tienes mucha información al respecto si estás interesada(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero comer carne es legal. (lau_listening) "],
 		["B", "(lucy_talking)Hay una cosa que debes saber, y es que legal no quiere decir moral. La esclavitud como forma de propiedad humana ha sido legal durante casi toda la historia de la civilización."],
 		["B", "También, no hace mucho tiempo, las mujeres no éramos personas ante la ley, sino propiedad de nuestros maridos, lo cual era totalmente legal pero obviamente injusto e inmoral."],
-		["B", "Las leyes están escritas por personas, por lo que muchas veces están equivocadas. Y eso es por lo que nuestra ambición de querer mejorar tiene que estar por encima de cualquier ley.(lucy_smiling)"]
+		["B", "Las leyes están escritas por personas, por lo que muchas veces están equivocadas. Y eso es por lo que nuestra ambición de querer mejorar tiene que estar por encima de cualquier ley(lucy_smiling)."]
 		
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero la moralidad es subjetiva, tu tienes tu verdad y yo tengo la mía(lau_proud)."],
 		["B", "(lucy_talking)¿No te suena eso un poco peligroso? (lau_listening)Podrías justificar absolutamente cualquier cosa diciendo eso."],
 		["B", "Lo cierto es que necesitas muy buenos argumentos para justificar la matanza de un animal, ya que no es solo tu perspectiva la que importa, hay que tener en cuenta que los animales tienen sus propios intereses y quieren vivir, por lo que no cualquier argumento basta."],
-		["B", "Estamos matando mas de 60 mil millones de animales al año, lo cual esta teniendo un impacto catastrófico en nuestro medio ambiente. ¿De verdad crees que hay alguna justificación razonable para ello(lucy_smiling)?"]
+		["B", "Estamos matando mas de 60 mil millones animales al año, lo cual esta teniendo un impacto catastrófico en nuestro medio ambiente. ¿De verdad crees que hay alguna justificación razonable para ello(lucy_smiling)?"]
 	]
 ]
 
@@ -75,7 +75,7 @@ var ending = [
 # share
 const TITLE = "Vegan Odyssey"
 const SUBJECT = "Juega a Vegan Odyssey en iOS y Android"
-const MSG = "Juega a Vegan Odyssey en iOS y Android. Descárgalo ahora gratis en https://www.veganodysseythegame.com/es "
+const MSG = "Juega a Vegan Odyssey en iOS y Android. Descárgalo ahora gratis en https://www.veganodysseythegame.com/es"
 
 
 # excuse info
@@ -126,7 +126,7 @@ var EXCUSES = [
 		"path": "res://share/es/bacon.share",
 		"text": "Mmhh... Bacon",
 		"debate": {
-			"question": "Mmmmh... Bacon.",
+			"question": "Mmhh... Bacon.",
 			"answer": "Venga va. Eso no es ni siquiera un argumento. Una conciencia limpia sabe mejor que el mejor bacon del mundo, ¿no crees?",
 		}
 	},

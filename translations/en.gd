@@ -8,7 +8,7 @@ var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
 	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
 	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
-	["A", "(lau_happy_talking)What? That doesn’t make any sense.(lucy_listening)(lau_proud)"],
+	["A", "(lau_happy_talking)What? That doesn’t make any sense(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
 	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
 ]
@@ -30,7 +30,6 @@ var dialog_list = [
 		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],
 		["B", "Whole grains, vegetables, and beans provide more than enough protein to stay healthy. It's very difficult to be protein-deficient when you get all calories you need."],
 		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population."]
-		
 	], [
 		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how the circle of life works."],
 		["B", "(lau_listening)(lucy_talking)Well, “circle of life” is just a term created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law written on stone."],
@@ -56,7 +55,7 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)Eating meat is legal, so what's the problem?(lau_listening) "],
 		["B", "(lucy_talking)Well, there's one thing you should learn then: legal doesn't mean moral. Slavery in the form of people ownership was legal for almost all history of civilizations."],
 		["B", "Also, not so long ago, women were not even persons in the eyes of legality. They were property of their husbands. This was legal, sure, but obviously not right."],
-		["B", "Laws are written by humans and therefore are often wrong. This is why our ambition and will to improve must go beyond any law.(lucy_smiling)"]
+		["B", "Laws are written by humans and therefore are often wrong. This is why our ambition and will to improve must go beyond any law(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Morality is subjective. You've got your truth, I've got my truth(lau_proud)."],
 		["B", "(lucy_talking)That sounds kind of dangerous, doesn't it? (lau_listening)You could literally justify any behavior by saying that."],
@@ -224,6 +223,6 @@ const GAME_OVER_OR = "OR"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"
-const WIN_MSG = "Congratulations! You have complete the game! You can support us by rating it in Play Store or sharing it with friends."
+const WIN_MSG = "Congratulations! You have completed the game! You can support us by rating it in Play Store or sharing it with friends."
 
 const REWARDED_MSG = "Get broccolis with the power of marketing!"
