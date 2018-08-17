@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://images/tutorial_post.png" type="Texture" id=1]
-[ext_resource path="res://fonts/dadhand.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/fake_receipt.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://images/left_rope.png" type="Texture" id=3]
 [ext_resource path="res://images/right_rope.png" type="Texture" id=4]
 
@@ -87,13 +87,13 @@ func _physics_process(delta):
 
 [sub_resource type="DynamicFont" id=4]
 
-size = 40
+size = 32
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Font", "font_data" ]
 
 [sub_resource type="GDScript" id=5]
 
@@ -141,7 +141,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="post" type="Node2D" groups=[
+[node name="post" type="Node2D" index="0" groups=[
 "translatable",
 ]]
 modulate = Color( 1, 1, 1, 0 )
@@ -186,7 +186,6 @@ _sections_unfolded = [ "Transform" ]
 [node name="msgs" type="Node2D" parent="path/path_follow/sprite" index="2"]
 
 [node name="en_1" type="Control" parent="path/path_follow/sprite/msgs" index="0"]
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -224,7 +223,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "BBCode", "custom_fonts" ]
+_sections_unfolded = [ "BBCode", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
 [node name="es_1" type="Control" parent="path/path_follow/sprite/msgs" index="1"]
 editor/display_folded = true
