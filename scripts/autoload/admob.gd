@@ -162,8 +162,8 @@ func getHeight():
 		if admob_module != null:
 			banner_height = admob_module.getBannerHeight()
 
-		# if still 0 or less
+		# if still 0 or less (probably not needed)
 		if banner_height <= 0:
-			banner_height = 120.0
+			banner_height = 160.0
 
 	return banner_height
