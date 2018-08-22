@@ -160,7 +160,8 @@ func on_resize():
 func getHeight():
 	if banner_height <= 0:
 		if admob_module != null:
-			banner_height = admob_module.getBannerHeight()
+			var screen_height = ProjectSettings.get_setting("display/window/size/height")
+			banner_height = admob_module.getBannerHeight(screen_height)
 
 		# if still 0 or less (probably not needed)
 		if banner_height <= 0:

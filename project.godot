@@ -34,6 +34,7 @@ cfg="*res://scripts/autoload/cfg.gd"
 
 window/size/width=1080
 window/size/height=1920
+window/size/fullscreen=true
 window/size/test_width=960
 window/size/test_height=960
 window/dpi/allow_hidpi=true
@@ -147,5 +148,7 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 quality/reflections/texture_array_reflections=false
 environment/default_clear_color=Color( 0.65098, 0.65098, 0.65098, 1 )
