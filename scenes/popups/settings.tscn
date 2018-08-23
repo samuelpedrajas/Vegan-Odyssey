@@ -307,7 +307,7 @@ func update_language():
 [sub_resource type="Animation" id=18]
 
 resource_name = "set_black"
-length = 0.3
+length = 0.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -895,7 +895,6 @@ script = SubResource( 14 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
 [node name="loading_language" type="TextureRect" parent="." index="4"]
-editor/display_folded = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -912,7 +911,7 @@ texture = ExtResource( 17 )
 expand = true
 stretch_mode = 7
 script = SubResource( 15 )
-_sections_unfolded = [ "Script", "Visibility" ]
+_sections_unfolded = [ "Script", "Visibility", "texture" ]
 
 [node name="text" type="Label" parent="loading_language" index="0"]
 anchor_left = 0.0
