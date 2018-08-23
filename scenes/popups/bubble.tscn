@@ -164,7 +164,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 0
+stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="right" type="TextureRect" parent="."]
@@ -184,7 +184,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 0
+stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="upper" type="TextureRect" parent="."]
@@ -204,7 +204,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 0
+stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="lower" type="TextureRect" parent="."]
@@ -224,7 +224,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 0
+stretch_mode = 2
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
 [node name="content" type="TextureRect" parent="."]
@@ -245,7 +245,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 4 )
 expand = true
-stretch_mode = 0
+stretch_mode = 2
 _sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
 [node name="tail_left" type="TextureRect" parent="."]
