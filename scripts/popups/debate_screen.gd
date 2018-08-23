@@ -119,6 +119,7 @@ func bubble_finished():
 			game.music.update_settings()
 		$"window/container/lower/next".set_disabled(false)
 		$"window/container/animation".play("finished")
+		game.board_layer.spawn_token(null, 1, false)
 	elif token_index == game.highest_max:
 		$"window/container/lower/next".set_disabled(true)
 	else:

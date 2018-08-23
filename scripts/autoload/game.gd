@@ -103,7 +103,6 @@ func restart_game(delete_progress=false):
 	game.event_layer.stop("win")
 
 	board_layer.reset()
-	board_layer.spawn_token(null, 1, false)
 
 	if delete_progress:
 		music.stop()
@@ -119,6 +118,8 @@ func restart_game(delete_progress=false):
 			excuse.debate_seen = false
 		game.popup_layer.open("debate_screen", -2)
 		debate_layer.init(1)
+	else:
+		board_layer.spawn_token(null, 1, false)
 
 	save_game()
 
@@ -139,7 +140,6 @@ func start_game():
 	load_game()
 	if not seen_intro:
 		popup_layer.open("debate_screen", -2)
-		board_layer.spawn_token(null, 1, false)
 	else:
 		$"/root/stage/popup_layer/effects/black".hide()
 
