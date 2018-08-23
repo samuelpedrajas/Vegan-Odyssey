@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/no_more_ads.gd" type="Script" id=2]
@@ -36,15 +36,6 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=4]
-
-script/source = "extends Label
-
-
-func _ready():
-	set_text(game.lang.NO_MORE_ADS)
-"
 
 [node name="no_more_ads" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -161,7 +152,6 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 4 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]

@@ -19,7 +19,8 @@ func start(ad_to_show):
 		admob.connect("rewarded_error", self, "failed_to_load")
 		admob.loadRewardedVideo(ad_to_show)
 	else:
-		game.popup_layer.open("no_more_ads")
+		game.event_layer.stop("wait_for_rewarded_ad")
+		game.popup_layer.open("offline")
 
 
 func stop():
@@ -60,18 +61,18 @@ func on_rewarded(amount):
 func _on_timer_timeout():
 	if not loaded:
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads")
+		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func failed_to_load(errorCode):
 	if errorCode == 0:
 		print("ad server internal error")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads")
+		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 	elif errorCode == 1:
 		print("invalid request (ad unit id)")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads")
+		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 	elif errorCode == 2:
 		print("network error")
 		game.event_layer.stop("wait_for_rewarded_ad")
@@ -79,8 +80,8 @@ func failed_to_load(errorCode):
 	elif errorCode == 3:
 		print("no more ads")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads")
+		game.popup_layer.open("no_more_ads", game.lang.NO_MORE_ADS)
 	else:
 		print("weird")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads")
+		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)

@@ -12,6 +12,10 @@ func open():
 	.open()
 
 
+func setup(text):
+	$"window/text".set_text(text)
+
+
 func _on_ok_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()

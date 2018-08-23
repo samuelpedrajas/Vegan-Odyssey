@@ -188,6 +188,7 @@ var tutorial_posts = {
 const GO_BACK = "Go back"
 const NO_MORE_ADS_TITLE = "Oops..."
 const NO_MORE_ADS = "It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
+const CANNOT_REACH = "It looks like we can\'t reach the server.\n\nPlease, try again in a few minutes."
 const LOADING_AD = "Loading ad"
 
 const SETTINGS_HEADER = "SETTINGS"
