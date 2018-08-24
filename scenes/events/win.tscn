@@ -156,7 +156,7 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="win" type="Control" index="0" groups=[
+[node name="win" type="Control" groups=[
 "event",
 ]]
 pause_mode = 2
@@ -173,7 +173,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="confetti_rain" type="Particles2D" parent="." index="0"]
+[node name="confetti_rain" type="Particles2D" parent="."]
 emitting = false
 amount = 256
 lifetime = 6.5
@@ -194,7 +194,7 @@ h_frames = 5
 v_frames = 2
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
 
-[node name="confetti_cannon1" type="Particles2D" parent="." index="1"]
+[node name="confetti_cannon1" type="Particles2D" parent="."]
 position = Vector2( -60, 1700 )
 rotation = -1.65806
 emitting = false
@@ -217,7 +217,7 @@ h_frames = 5
 v_frames = 2
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
 
-[node name="confetti_cannon2" type="Particles2D" parent="." index="2"]
+[node name="confetti_cannon2" type="Particles2D" parent="."]
 position = Vector2( 60, 1700 )
 rotation = -1.48353
 emitting = false
@@ -240,7 +240,7 @@ h_frames = 5
 v_frames = 2
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
 
-[node name="animation" type="AnimationPlayer" parent="." index="3"]
+[node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1

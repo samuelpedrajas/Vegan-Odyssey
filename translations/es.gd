@@ -222,5 +222,6 @@ const GAME_OVER_OR = "O"
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
 const WIN_MSG = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en Play Store o compartiendo con tus amigos."
+const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡Consigue brócolis con el poder del marketing!"

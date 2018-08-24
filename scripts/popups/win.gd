@@ -49,3 +49,8 @@ func _on_share_pressed():
 			game.lang.SUBJECT,
 			game.lang.MSG
 		)
+
+
+func _on_rate_us_pressed():
+	# TODO: FIX THIS
+	OS.shell_open("https://itunes.apple.com/app/idAPP_ID")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/win.gd" type="Script" id=2]
@@ -51,8 +51,10 @@
 [ext_resource path="res://images/popups/party_hat.png" type="Texture" id=49]
 [ext_resource path="res://images/popups/star.png" type="Texture" id=50]
 [ext_resource path="res://images/popups/starempty.png" type="Texture" id=51]
-[ext_resource path="res://images/popups/share.png" type="Texture" id=52]
-[ext_resource path="res://images/popups/share_pressed.png" type="Texture" id=53]
+[ext_resource path="res://images/popups/exit_button.png" type="Texture" id=52]
+[ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=53]
+[ext_resource path="res://images/popups/share.png" type="Texture" id=54]
+[ext_resource path="res://images/popups/share_pressed.png" type="Texture" id=55]
 
 [sub_resource type="Animation" id=1]
 
@@ -383,6 +385,11 @@ func _ready():
 script/source = "extends Control
 
 
+func _ready():
+	if OS.get_name() == \"Android\":
+		show()
+
+
 func _update_buttons(i):
 	for child in get_children():
 		var n = int(child.get_name().substr(4, 5))
@@ -404,12 +411,7 @@ func _check_pressed(btn):
 
 func _to_play_store(btn):
 	if _check_pressed(btn):
-		if OS.get_name() == \"Android\":
-			OS.shell_open(\"https://play.google.com/store/apps/details?id=org.godotengine.veganodyssey\")
-		elif OS.get_name() == \"iOS\":
-			var mobile_tools = get_parent().get_parent().get_parent().mobile_tools
-			if mobile_tools != null:
-				mobile_tools.rateApp()
+		OS.shell_open(\"https://play.google.com/store/apps/details?id=org.godotengine.veganodyssey\")
 
 
 func _to_form(btn):
@@ -456,6 +458,27 @@ func _on_star5_pressed():
 func _on_star5_released():
 	_to_play_store($star5)
 "
+
+[sub_resource type="GDScript" id=15]
+
+script/source = "extends TextureButton
+
+
+func _ready():
+	if OS.get_name() == \"iOS\":
+		$text.set_text(game.lang.IOS_SCORE_US)
+		show()
+"
+
+[sub_resource type="DynamicFont" id=14]
+
+size = 50
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="win" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -706,6 +729,7 @@ _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_font
 
 [node name="empty_stars" type="Control" parent="window/content" index="2"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -827,7 +851,59 @@ texture = ExtResource( 51 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="share" type="TextureButton" parent="window/content" index="3"]
+[node name="rate_us" type="TextureButton" parent="window/content" index="3"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -201.0
+margin_top = 112.0
+margin_right = 201.0
+margin_bottom = 238.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 53 )
+script = SubResource( 15 )
+_sections_unfolded = [ "Rect", "Textures", "texture_normal" ]
+
+[node name="text" type="Label" parent="window/content/rate_us" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "RATE US"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts" ]
+
+[node name="share" type="TextureButton" parent="window/content" index="4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -848,8 +924,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 52 )
-texture_pressed = ExtResource( 53 )
+texture_normal = ExtResource( 54 )
+texture_pressed = ExtResource( 55 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="window/go_back" to="." method="_on_go_back_pressed"]
@@ -864,4 +940,5 @@ _sections_unfolded = [ "Rect", "Textures" ]
 [connection signal="released" from="window/content/empty_stars/star4" to="window/content/empty_stars" method="_on_star4_released"]
 [connection signal="pressed" from="window/content/empty_stars/star5" to="window/content/empty_stars" method="_on_star5_pressed"]
 [connection signal="released" from="window/content/empty_stars/star5" to="window/content/empty_stars" method="_on_star5_released"]
+[connection signal="pressed" from="window/content/rate_us" to="." method="_on_rate_us_pressed"]
 [connection signal="pressed" from="window/content/share" to="." method="_on_share_pressed"]
