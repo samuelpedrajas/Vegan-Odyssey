@@ -6,13 +6,13 @@ var keep_input_disabled = true
 var keep_previous = false
 var show_blur = false
 
-var share = null
+var mobile_tools = null
 
 
 func _ready():
-	# initialize the share singleton if it exists
+	# initialize the mobile_tools singleton if it exists
 	if Engine.has_singleton("MobileTools"):
-		share = Engine.get_singleton("MobileTools")
+		mobile_tools = Engine.get_singleton("MobileTools")
 
 
 func open():
@@ -43,8 +43,8 @@ func _on_go_back_pressed():
 func _on_share_pressed():
 	game.sounds.play_audio("click")
 
-	if share != null:
-		share.shareText(
+	if mobile_tools != null:
+		mobile_tools.shareText(
 			game.lang.TITLE,
 			game.lang.SUBJECT,
 			game.lang.MSG
