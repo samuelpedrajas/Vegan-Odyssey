@@ -11,8 +11,8 @@ var share = null
 
 func _ready():
 	# initialize the share singleton if it exists
-	if Engine.has_singleton("GodotShare"):
-		share = Engine.get_singleton("GodotShare")
+	if Engine.has_singleton("MobileTools"):
+		share = Engine.get_singleton("MobileTools")
 
 
 func open():

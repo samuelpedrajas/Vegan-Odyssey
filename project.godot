@@ -12,7 +12,7 @@ _global_script_classes=[  ]
 
 [android]
 
-modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/GodotShare"
+modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MobileTools"
 
 [application]
 
