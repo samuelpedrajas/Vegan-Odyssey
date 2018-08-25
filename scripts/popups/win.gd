@@ -31,6 +31,10 @@ func win():
 
 
 func close():
+	if OS.get_name() == "iOS" and Engine.has_singleton("MobileTools"):
+		var mobile_tools = Engine.get_singleton("MobileTools")
+		if mobile_tools.canShowRate():
+			mobile_tools.rateApp()
 	close_anim = "close_win"
 	.close()
 

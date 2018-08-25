@@ -26,9 +26,6 @@ func play_fireworks():
 	else:
 		$confetti_cannon2.set_emitting(true)
 		game.music.set_volume_db(cfg.MUSIC_VOLUME)
-		if OS.get_name() == "iOS" and Engine.has_singleton("MobileTools"):
-			var mobile_tools = Engine.get_singleton("MobileTools")
-			mobile_tools.rateApp()
 
 
 func set_extents():
