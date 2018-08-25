@@ -472,16 +472,16 @@ func _ready():
 			show()
 			return
 
-	# move to cover the hole
-	var msg = $\"../msg\"
-	msg.set_position(
-		msg.get_position() + Vector2(0, 50)
-	)
+		# move to cover the hole
+		var msg = $\"../msg\"
+		msg.set_position(
+			msg.get_position() + Vector2(0, 50)
+		)
 
-	var share = $\"../share\"
-	share.set_position(
-		share.get_position() - Vector2(0, 35)
-	)
+		var share = $\"../share\"
+		share.set_position(
+			share.get_position() - Vector2(0, 35)
+		)
 "
 
 [sub_resource type="DynamicFont" id=15]

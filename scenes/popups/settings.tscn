@@ -226,9 +226,19 @@ script/source = "extends TextureButton
 
 func _ready():
 	if OS.get_name() == \"iOS\":
+		var audio = $\"../audio\"
+		audio.set_position(
+			audio.get_position() + Vector2(0, 30)
+		)
+
+		var lang = $\"../lang\"
+		lang.set_position(
+			lang.get_position() + Vector2(0, 80)
+		)
+
 		var reset_progress = $\"../reset_progress\"
 		reset_progress.set_position(
-			reset_progress.get_position() + Vector2(0, 50)
+			reset_progress.get_position() + Vector2(0, 110)
 		)
 	else:
 		show()
