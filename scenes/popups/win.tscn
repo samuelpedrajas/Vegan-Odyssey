@@ -475,12 +475,12 @@ func _ready():
 	# move to cover the hole
 	var msg = $\"../msg\"
 	msg.set_position(
-		msg.get_position() + Vector2(0, 40)
+		msg.get_position() + Vector2(0, 50)
 	)
 
 	var share = $\"../share\"
 	share.set_position(
-		share.get_position() - Vector2(0, 60)
+		share.get_position() - Vector2(0, 35)
 	)
 "
 
@@ -922,9 +922,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -67.0
+margin_left = -59.0
 margin_top = 271.0
-margin_right = 98.0
+margin_right = 106.0
 margin_bottom = 435.0
 rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 0, 0 )
