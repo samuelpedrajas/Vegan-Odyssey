@@ -7,7 +7,7 @@ var back_button = false
 var ad_to_show
 var loaded = false
 
-var music_playback_pos = 0.0
+var music_playback_pos = -1
 var reward_amount = 0
 
 
@@ -34,15 +34,17 @@ func stop():
 
 func on_rewarded_loaded():
 	loaded = true
-	music_playback_pos = game.music.get_playback_position()
-	game.music.stop()
+	if game.settings.music_on:
+		music_playback_pos = game.music.get_playback_position()
+		game.music.stop()
 	$timer.stop()
 	hide()
 
 
 func on_rewarded_ad_closed():
 	game.event_layer.stop("wait_for_rewarded_ad")
-	game.music.play(music_playback_pos)
+	if music_playback_pos >= 0:
+		game.music.play(music_playback_pos)
 	if reward_amount > 0:
 		game.effects_layer.play_rewarded_effect(reward_amount)
 
