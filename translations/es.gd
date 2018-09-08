@@ -46,7 +46,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Como carne porque los leones comen carne. Si ellos lo hacen, ¿por qué yo no puedo?(lau_proud)"],
 		["B", "(lucy_talking)Bueno, antes que nada, tú no eres un león... ¿No? (lucy_happy)(lau_listening)"],
-		["B", "(lucy_talking)Los leones cometen infanticidio y otras atrocidades desde una perspectiva humana. ¿Qué pensarías si imitase alguna de estas cosas y dijese: “no pasa nada, los leones también lo hacen”?"],
+		["B", "(lucy_talking)Los leones cometen infanticidio y otras atrocidades desde una perspectiva humana. ¿Qué pensarías si imitase alguna de estas cosas y la justificase con “los leones también lo hacen”?"],
 		["B", "Su naturaleza limita sus opciones, pero no es nuestro caso. Somos muy diferentes a ellos, (lucy_happy)¿no crees?(lucy_smiling)"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero los cavernícolas comían carne(lau_proud)."],
