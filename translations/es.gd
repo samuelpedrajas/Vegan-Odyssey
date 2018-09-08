@@ -19,7 +19,7 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)¿Y si estuvieses en una isla desierta?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, la verdad es que no sé qué decirte, espero no estar nunca en esa situación. Pero..."],
 		["B", "¿Has pensado en qué harías tú si estuvieses en una civilización llena de opciones libres de crueldad animal?"],
-		["B", "No es muy sabio decidir tus acciones cotidianas basándote en qué harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo(lucy_smiling)."]
+		["B", "No me parece razonable decidir tus acciones cotidianas basándote en qué harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten, ¿no?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, cuando se habla de plantas se suelen hacer muchas analogías con los humanos. Pero la realidad es que somos totalmente diferentes."],
@@ -142,7 +142,7 @@ var EXCUSES = [
 		"text": "Leones",
 		"debate": {
 			"question": "Pero los leones comen carne, ¿no?",
-			"answer": "Sí, pero los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
+			"answer": "Sí, pero los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y lo justificase con “los leones también lo hacen”?",
 		}
 	}, {
 		"token_sprite": preload("res://images/excuses/es/caveman.png"),
@@ -226,7 +226,8 @@ const GAME_OVER_OR = "O"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
-const WIN_MSG = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en Google Play o compartiendo con tus amigos."
+const WIN_MSG_ANDROID = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en Google Play o compartiendo con tus amigos."
+const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en App Store o compartiendo con tus amigos."
 const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡Consigue brócolis con el poder del marketing!"

@@ -377,7 +377,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Label
 
 func _ready():
-	set_text(game.lang.WIN_MSG)
+	if OS.get_name() == \"iOS\":
+		set_text(game.lang.WIN_MSG_IOS)
+	else:
+		set_text(game.lang.WIN_MSG_ANDROID)
 "
 
 [sub_resource type="GDScript" id=13]
@@ -416,7 +419,10 @@ func _to_play_store(btn):
 
 func _to_form(btn):
 	if _check_pressed(btn):
-		OS.shell_open(\"https://veganodysseythegame.com/suggestion-form/\")
+		if game.lang.language == \"en\":
+			OS.shell_open(\"https://veganodysseythegame.com/suggestion-form/\")
+		else:
+			OS.shell_open(\"https://veganodysseythegame.com/es/suggestion-form/\")
 
 
 func _on_star1_pressed():
