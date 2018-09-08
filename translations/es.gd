@@ -35,7 +35,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Creo que las personas comemos carne porque es parte del “ciclo de la vida”."],
 		["B", "(lau_listening)(lucy_talking)“El ciclo de la vida” es sólo un término creado para referirnos a cierto equilibrio que vemos en la naturaleza, pero no es una ley escrita en piedra."],
-		["B", "Encerrar animales en jaulas sin posibilidad de sobrevivir no puede ser parte de ningún “ciclo de la vida”, y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
+		["B", "Encerrar animales en jaulas sin posibilidad de salir no puede ser parte de ningún “ciclo de la vida”, y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
 		["B", "La decisión de hacerte vegano es solamente tuya. Ninguna ley natural te está obligando a seguir consumiendo productos animales(lucy_smiling)."]
 	], [
 		["A", "(lucy_smiling)(lau_serious_talking)Mmhh... Bacon(lau_proud)(lucy_serious)."],

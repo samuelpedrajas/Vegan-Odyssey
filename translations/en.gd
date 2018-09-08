@@ -33,7 +33,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how “the circle of life” works."],
 		["B", "(lau_listening)(lucy_talking)Well, “circle of life” is just a term created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law written on stone."],
-		["B", "Keeping animals in cages with no chance to survive can't be part of any “circle of life”, neither can be genetically modifying them or having pieces of them in fridges."],
+		["B", "Keeping animals in cages with no chance to get free can't be part of any “circle of life”, neither can be genetically modifying them or having pieces of them in fridges."],
 		["B", "It's entirely up to you to go vegan, no law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
 	], [
 		["A", "(lucy_smiling)(lau_serious_talking)Bacon, tho(lau_proud)(lucy_serious)."],
