@@ -7,7 +7,7 @@ var language = "en"
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
 	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
-	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop eating them(lucy_smiling)."],
+	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop using them(lucy_smiling)."],
 	["A", "(lau_happy_talking)What? That doesn’t make any sense(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
 	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
@@ -40,7 +40,7 @@ var dialog_list = [
 		["B", "Uhm... (lucy_stand_talking)I don't think you even deserve an answer but I'll ask you something:(lucy_talking_arm) do you support bull-fighting?(lucy_listening)"],
 		["A", "(lau_finger)Absolutely not! That's animal abuse(lau_proud)."],
 		["B", "(lucy_stand_talking)Well, bull-fighters say it's art. (lucy_talking)(lau_listening)They say they get pleasure for their eyes rather than their taste."],
-		["B", "In both cases, personal pleasure is placed before animal welfare. I don't think that's a very honorable way of setting priorities(lucy_smiling)."]
+		["B", "In both cases, personal pleasure is placed before animal welfare. I don't think that's a very responsible way of setting priorities(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)I eat meat because lions eat meat. If they can do it, why can't I?(lau_proud)"],
 		["B", "(lucy_talking)Well, first of all, as far as we are aware you are not a lion... (lucy_happy)or are you? (lau_listening)"],
@@ -118,7 +118,7 @@ var EXCUSES = [
 		"path": "res://share/en/circleoflife.share",
 		"text": "Circle Of Life",
 		"debate": {
-			"question": "But isn’t it how the circle of life works?",
+			"question": "But isn’t it how “the circle of life works”?",
 			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",
 		}
 	},
@@ -129,7 +129,7 @@ var EXCUSES = [
 		"text": "Mmhh... Bacon",
 		"debate": {
 			"question": "Bacon, tho.",
-			"answer": "Oh, c’mon. That’s not even an argument. A clear conscience tastes better than the best bacon in the world, don’t you think so?",
+			"answer": "Oh, c’mon. That’s not even an argument. A clean conscience tastes better than the best bacon in the world, don’t you think so?",
 		}
 	},
 	{
@@ -176,7 +176,7 @@ var EXCUSES = [
 
 
 var tutorial_posts = {
-	"1": "GOAL: JOIN ALL THE EXCUSES AND GET TO THE NINTH ONE!",
+	"1": "GOAL: JOIN THE SAME EXCUSES AND GET TO THE NINTH ONE!",
 	"2": "TAP ON THE EXCUSE BOOK TO SEE DETAILS ABOUT YOUR UNLOCKED EXCUSES. C'MON, TAKE A LOOK!",
 	"3": "WE ALL GET STUCK AT THE BEGINNING, LUCKY FOR YOU BROCCOLI EXISTS!",
 	"4": "USE MAGIC BROCCOLI TO REMOVE TOKENS. YOU JUST HAVE TO TAP ON THEM!"
