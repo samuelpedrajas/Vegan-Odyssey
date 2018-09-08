@@ -29,9 +29,9 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)What you vegans don't understand is that (lau_finger)we need animal proteins to survive(lau_proud)."],
 		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],
 		["B", "Whole grains, vegetables, and beans provide more than enough protein to stay healthy. It's very difficult to be protein-deficient when you get all calories you need."],
-		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population."]
+		["B", "(lucy_happy)You also can find many professional athletes in any sports that are vegan. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population(lucy_happy)."]
 	], [
-		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how the circle of life works."],
+		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how “the circle of life” works."],
 		["B", "(lau_listening)(lucy_talking)Well, “circle of life” is just a term created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law written on stone."],
 		["B", "Keeping animals in cages with no chance to survive can't be part of any “circle of life”, neither can be genetically modifying them or having pieces of them in fridges."],
 		["B", "It's entirely up to you to go vegan, no law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
@@ -69,7 +69,7 @@ var ending = [
 	["A", "(lau_talking_open_eyes)(lucy_smiling)Well… Honestly, I never thought about it in that way."],
 	["B", "(lucy_talking)(lau_happy_listening)Yeah, it’s something very attached to our culture, but that doesn’t make it right."],
 	["A", "(lucy_smiling)(lau_talking_open_eyes)That makes sense. (lau_happy_talking)Thanks Lucy! You really make me think. (lau_talking_open_eyes)Veganism is much more important than I thought."],
-	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! And the truth is that the sacrifice that you have to do to go vegan is very small in comparison with the good that you will be doing for the world."],
+	["B", "(lucy_happy)(lau_happy_listening)I’m glad to listen that! And the truth is the sacrifice you have to do is very small compared to the good you will be doing to the world."],
 	["A", "(lucy_smiling)I see. (lau_happy_talking)I’ll keep all this in mind for the next time I go to the supermarket. (lau_salutes)Thanks again Lucy!(lucy_salutes)"]
 ]
 
@@ -118,7 +118,7 @@ var EXCUSES = [
 		"path": "res://share/en/circleoflife.share",
 		"text": "Circle Of Life",
 		"debate": {
-			"question": "But isn’t it how “the circle of life works”?",
+			"question": "But isn’t it how “the circle of life” works?",
 			"answer": "“Circle of life” is just a term we created to refer to the general tendency towards an equilibrium we can see in nature, but it’s not a law written on stone.",
 		}
 	},

@@ -7,7 +7,7 @@ var language = "es"
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)¡Laura! (lau_salutes)¡Cuánto tiempo! Qué alegría volver a verte."],
 	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? He escuchado que te has hecho vegana, ¿es eso cierto?"],
-	["B", "(lau_happy_listening)(lucy_happy)Así es. Me gustan mucho los animales, así que decidí dejar de usarlos(lucy_smiling)."],
+	["B", "(lau_happy_listening)(lucy_happy)Así es. Me gustan mucho los animales así que decidí dejar de usarlos(lucy_smiling)."],
 	["A", "(lau_happy_talking)¿Cómo? Eso no tiene ningún sentido(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)¿Por qué?(lucy_listening)"],
 	["A", "(lau_finger)Porque... ¿Y (music)SI ESTUVIESES EN UNA ISLA DESIERTA(lau_proud)(lucy_serious)?"]
@@ -19,20 +19,22 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)¿Y si estuvieses en una isla desierta?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, la verdad es que no sé qué decirte, espero no estar nunca en esa situación. Pero..."],
 		["B", "¿Has pensado en qué harías tú si estuvieses en una civilización llena de opciones libres de crueldad animal?"],
-		["B", "No creo que sea muy sabio decidir tus acciones cotidianas basándote en qué harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo(lucy_smiling)."]
+		["B", "No es muy sabio decidir tus acciones cotidianas basándote en qué harías si estuvieses en alguna situación extrema. Eso sería, precisamente, extremo(lucy_smiling)."]
 	], [
-		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten ¿no?"],
+		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten, ¿no?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, cuando se habla de plantas se suelen hacer muchas analogías con los humanos. Pero la realidad es que somos totalmente diferentes."],
-		["B", "Las plantas carecen de sistema nervioso centralizado que, según la ciencia actual, es lo único que nos proporciona la capacidad de sentir conscientemente. Simplemente reaccionan a estimulos de manera inconsciente."],
-		["B", "Y por cierto... ¿Sabias que necesitas 16kg de plantas para conseguir 1 kg de carne? (lucy_happy)Así que si sigues interesada en salvar plantas, ¡deberías hacerte vegana!"]
+		["B", "Las plantas carecen de sistema nervioso centralizado que, según la ciencia actual, es lo que nos proporciona la capacidad de sentir conscientemente."],
+		["B", "Además, desde un punto de vista evolucionista no tiene ningún sentido que desarrollen sentido del dolor. Están plantadas, no huyen de depredadores."],
+		["B", "Y por cierto... ¿Sabías que necesitas 16kg de plantas para conseguir 1 kg de carne? (lucy_happy)Así que si sigues interesada en salvar plantas, ¡deberías hacerte vegana!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Lo que los veganos no entendéis es que (lau_finger)necesitamos la proteína animal para sobrevivir(lau_proud)."],
 		["B", "(lau_listening)(lucy_happy)¿Te crees que soy un zombie o qué? Lo siento Laura, (lucy_talking)pero eso es falso. Los humanos no necesitamos proteína animal para sobrevivir."],
 		["B", "Cereales, vegetales y legumbres nos proporcionan una cantidad más que suficiente de proteínas para mantenernos completamente sanos."],
-		["B", "Es muy difícil tener déficit de proteínas si consumes las calorías que necesitas."]
+		["B", "Es muy difícil tener déficit de proteínas si consumes las calorías que necesitas."],
+		["B", "(lucy_happy)También puedes encontrar atletas profesionales veganos. (lucy_talking)Son una minoría, sí, pero también lo son en la población global(lucy_happy)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Creo que las personas comemos carne porque es parte del “ciclo de la vida”."],
-		["B", "(lau_listening)(lucy_talking)En realidad “el ciclo de la vida” es sólo un término creado para referirnos a cierto equilibrio que vemos en la naturaleza, pero no es una ley escrita en piedra."],
+		["B", "(lau_listening)(lucy_talking)“El ciclo de la vida” es sólo un término creado para referirnos a cierto equilibrio que vemos en la naturaleza, pero no es una ley escrita en piedra."],
 		["B", "Encerrar animales en jaulas sin posibilidad de sobrevivir no puede ser parte de ningún “ciclo de la vida”, y aún menos modificarlos genéticamente o tener trozos de ellos en nuestra nevera."],
 		["B", "La decisión de hacerte vegano es solamente tuya. Ninguna ley natural te está obligando a seguir consumiendo productos animales(lucy_smiling)."]
 	], [
@@ -49,7 +51,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero los cavernícolas comían carne(lau_proud)."],
 		["B", "(lucy_talking)¿De verdad vas a justificar tus acciones basándote en lo que hacían los cavernícolas?(lau_listening) ¿Haces eso con el resto de decisiones? ¿Por qué hacerlo con tu nutrición?"],
-		["B", "Los cavernícolas comían lo que encontraban en su entorno. Además, ellos no eran 7.6 mil millones en el planeta, por lo que nuestras circunstancias como especie han cambiado."],
+		["B", "Los cavernícolas comían lo que encontraban en su entorno. Además, ellos no eran 7.6 mil millones en el planeta. Nuestras circunstancias como especie han cambiado."],
 		["B", "Si es la salud lo que te preocupa, una dieta vegana es muy recomendable incluso si eres un atleta profesional. Hay mucha información al respecto(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Comer carne es legal. (lau_listening) "],
@@ -62,7 +64,7 @@ var dialog_list = [
 		["B", "(lucy_talking)Eso suena un poco peligroso, ¿no? (lau_listening)Podrías justificar cualquier cosa diciendo eso."],
 		["B", "Lo cierto es que necesitas muy buenos argumentos para matar intencionadamente a un animal ya que no es sólo tu perspectiva la que importa."],
 		["B", "Hay que tener en cuenta que los animales tienen sus propios intereses y quieren vivir, eso también hay que tenerlo en cuenta."],
-		["B", "Estamos matando más de 60 mil millones animales al año, lo cual está teniendo un impacto catastrófico en nuestro medio ambiente. ¿De verdad crees que hay alguna justificación razonable para esto(lucy_smiling)?"]
+		["B", "Matamos más de 60 mil millones animales al año, lo cual está impactando catastróficamente en nuestro medio ambiente. ¿De verdad hay alguna justificación razonable para esto(lucy_smiling)?"]
 	]
 ]
 
@@ -70,7 +72,7 @@ var ending = [
 	["A", "(lau_talking_open_eyes)(lucy_smiling)Pues... La verdad es que nunca lo había pensado así."],
 	["B", "(lucy_talking)(lau_happy_listening)Es que es algo muy arraigado a nuestra cultura, pero eso no lo convierte en correcto."],
 	["A", "(lucy_smiling)(lau_talking_open_eyes)Tienes razón. (lau_happy_talking)¡Gracias Lucía! He aprendido mucho. (lau_talking_open_eyes)El veganismo es mucho más importante de lo que creía."],
-	["B", "(lucy_happy)(lau_happy_listening)¡Me alegro de oír eso! Y lo curioso es que al final el sacrificio que tienes que hacer es insignificante comparado con el bien que haces al mundo."],
+	["B", "(lucy_happy)(lau_happy_listening)¡Me alegra oír eso! Y lo curioso es que al final el sacrificio que tienes que hacer es insignificante comparado con el bien que haces al mundo."],
 	["A", "(lucy_smiling)Ya veo. (lau_happy_talking)Tendré todo esto en mente la próxima vez que vaya al supermercado. (lau_salutes)Gracias de nuevo Lucía, ¡hasta pronto!(lucy_salutes)"]
 ]
 
@@ -100,7 +102,7 @@ var EXCUSES = [
 		"text": "Las plantas sienten",
 		"debate": {
 			"question": "Pero las plantas también sienten, ¿no?",
-			"answer": "No. Las plantas carecen de sistema nervioso centralizado que, según la ciencia actual, es lo único que nos proporciona la capacidad de sentir conscientemente.",
+			"answer": "No. Según la ciencia actual se requiere un sistema nervioso centralizado para sentir conscientemente, y las plantas carecen de él.",
 		}
 	},
 	{
@@ -120,7 +122,7 @@ var EXCUSES = [
 		"text": "Ciclo de la vida",
 		"debate": {
 			"question": "Es parte del “ciclo de la vida”.",
-			"answer": "“Ciclo de la vida” es sólo un término que inventamos para referirnos a cierto equilibrio que vemos en la naturaleza. No es ninguna ley escrita en piedra.",
+			"answer": "“Ciclo de la vida” es sólo un término que inventamos para referirnos a cierto equilibrio que vemos en la naturaleza pero no es una ley escrita en piedra.",
 		}
 	},
 	{
@@ -139,8 +141,8 @@ var EXCUSES = [
 		"path": "res://share/es/lions.share",
 		"text": "Leones",
 		"debate": {
-			"question": "Los leones comen carne, ¿no?",
-			"answer": "Sí, pero en la naturaleza los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
+			"question": "Pero los leones comen carne, ¿no?",
+			"answer": "Sí, pero los leones también cometen muchas atrocidades. ¿Qué pensarías si yo imitase alguna de ellas y dijese “los leones también lo hacen”?",
 		}
 	}, {
 		"token_sprite": preload("res://images/excuses/es/caveman.png"),
@@ -148,7 +150,7 @@ var EXCUSES = [
 		"path": "res://share/es/caveman.share",
 		"text": "Cavernícolas",
 		"debate": {
-			"question": "Yo como carne como los cavernícolas.",
+			"question": "Como carne como los cavernícolas.",
 			"answer": "¿De verdad basas tus acciones diarias en cómo vivían los cavernícolas? ¿Haces esto en el resto de tus decisiones? ¿O sólo cuando se trata de nutrición?",
 		}
 	},
@@ -159,7 +161,7 @@ var EXCUSES = [
 		"text": "Es legal",
 		"debate": {
 			"question": "Comer carne es legal.",
-			"answer": "Legal no significa moral. Poseer personas como si de propiedades se tratasen ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
+			"answer": "Legal no significa moral. Poseer personas como propiedades ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
 		}
 	},
 	{
