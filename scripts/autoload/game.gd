@@ -23,7 +23,7 @@ var debate_layer
 var settings
 var dying_tokens
 
-var duck_counter = 0
+var duck_counter = 1
 var revived = false
 var seen_excuses = [
 	{"picture_seen": false, "debate_seen": false},

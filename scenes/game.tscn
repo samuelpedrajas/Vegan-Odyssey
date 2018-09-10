@@ -568,16 +568,16 @@ size_flags_vertical = 1
 script = SubResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Transform" ]
 
-[node name="settings" type="Node" parent="." index="0"]
+[node name="settings" type="Node" parent="."]
 script = ExtResource( 1 )
 
-[node name="sounds" type="Node2D" parent="." index="1"]
+[node name="sounds" type="Node2D" parent="."]
 pause_mode = 2
 editor/display_folded = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="click" type="AudioStreamPlayer" parent="sounds" index="0"]
+[node name="click" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 3 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -586,7 +586,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="merge" type="AudioStreamPlayer" parent="sounds" index="1"]
+[node name="merge" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -595,7 +595,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="bubble" type="AudioStreamPlayer" parent="sounds" index="2"]
+[node name="bubble" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 5 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -604,7 +604,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="boom" type="AudioStreamPlayer" parent="sounds" index="3"]
+[node name="boom" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -613,7 +613,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="quack" type="AudioStreamPlayer" parent="sounds" index="4"]
+[node name="quack" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 7 )
 volume_db = -15.0
 pitch_scale = 1.0
@@ -622,7 +622,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="game_over" type="AudioStreamPlayer" parent="sounds" index="5"]
+[node name="game_over" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 8 )
 volume_db = -10.0
 pitch_scale = 1.0
@@ -631,7 +631,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="win" type="AudioStreamPlayer" parent="sounds" index="6"]
+[node name="win" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -640,7 +640,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="prewin" type="AudioStreamPlayer" parent="sounds" index="7"]
+[node name="prewin" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -649,7 +649,7 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="fireworks" type="AudioStreamPlayer" parent="sounds" index="8"]
+[node name="fireworks" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 11 )
 volume_db = 5.0
 pitch_scale = 1.0
@@ -659,7 +659,7 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Transform" ]
 
-[node name="music" type="AudioStreamPlayer" parent="." index="2"]
+[node name="music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 12 )
 volume_db = -7.0
@@ -671,14 +671,14 @@ bus = "Master"
 script = ExtResource( 13 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="bg_layer" type="CanvasLayer" parent="." index="3"]
+[node name="bg_layer" type="CanvasLayer" parent="."]
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="background" type="TextureRect" parent="bg_layer" index="0"]
+[node name="background" type="TextureRect" parent="bg_layer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -694,32 +694,31 @@ expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Offset", "Rect", "Transform", "Visibility", "Z Index" ]
 
-[node name="event_layer" type="Node2D" parent="." index="4"]
-editor/display_folded = true
+[node name="event_layer" type="Node2D" parent="."]
 script = ExtResource( 15 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="broccoli_duck_timer" type="Timer" parent="event_layer" index="0"]
+[node name="broccoli_duck_timer" type="Timer" parent="event_layer"]
 process_mode = 1
-wait_time = 5.0
+wait_time = 3.0
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="duck_ready" type="Timer" parent="event_layer" index="1"]
+[node name="duck_ready" type="Timer" parent="event_layer"]
 process_mode = 1
 wait_time = 78.0
 one_shot = false
-autostart = true
+autostart = false
 
-[node name="dialog_layer" type="CanvasLayer" parent="." index="5"]
+[node name="dialog_layer" type="CanvasLayer" parent="."]
 layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="text" type="Control" parent="dialog_layer" index="0"]
+[node name="text" type="Control" parent="dialog_layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -732,12 +731,12 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="dialog" type="Sprite" parent="dialog_layer/text" index="0"]
+[node name="dialog" type="Sprite" parent="dialog_layer/text"]
 position = Vector2( -83, -768 )
 texture = ExtResource( 16 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="message1" type="Label" parent="dialog_layer/text/dialog" index="0"]
+[node name="message1" type="Label" parent="dialog_layer/text/dialog"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -765,7 +764,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="debate_btn" type="Button" parent="dialog_layer/text/dialog/message1" index="0"]
+[node name="debate_btn" type="Button" parent="dialog_layer/text/dialog/message1"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -790,7 +789,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="message2" type="Label" parent="dialog_layer/text/dialog" index="1"]
+[node name="message2" type="Label" parent="dialog_layer/text/dialog"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -818,7 +817,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="debate_btn2" type="Button" parent="dialog_layer/text/dialog/message2" index="0"]
+[node name="debate_btn2" type="Button" parent="dialog_layer/text/dialog/message2"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -843,7 +842,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="hud_layer" type="CanvasLayer" parent="." index="6"]
+[node name="hud_layer" type="CanvasLayer" parent="."]
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -851,7 +850,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 18 )
 
-[node name="hud" type="Control" parent="hud_layer" index="0"]
+[node name="hud" type="Control" parent="hud_layer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -865,7 +864,7 @@ size_flags_vertical = 1
 script = SubResource( 3 )
 _sections_unfolded = [ "Mouse", "Rect", "Transform" ]
 
-[node name="bottom_border" type="TextureRect" parent="hud_layer/hud" index="0"]
+[node name="bottom_border" type="TextureRect" parent="hud_layer/hud"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -884,7 +883,7 @@ texture = ExtResource( 19 )
 stretch_mode = 0
 _sections_unfolded = [ "Mouse", "Offset", "Rect", "Transform" ]
 
-[node name="lower_buttons" type="Control" parent="hud_layer/hud" index="1"]
+[node name="lower_buttons" type="Control" parent="hud_layer/hud"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -897,7 +896,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="0"]
+[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -921,7 +920,7 @@ texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Textures" ]
 
-[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="1"]
+[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -945,7 +944,7 @@ texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="2"]
+[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -969,7 +968,7 @@ texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="3"]
+[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -994,13 +993,13 @@ texture_pressed = ExtResource( 27 )
 texture_disabled = ExtResource( 28 )
 _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 
-[node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli" index="0"]
+[node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 pause_mode = 2
 position = Vector2( 141.724, 24.5668 )
 texture = ExtResource( 29 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle" index="0"]
+[node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1027,7 +1026,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli" index="1"]
+[node name="circle_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli"]
 pause_mode = 2
 root_node = NodePath("..")
 autoplay = ""
@@ -1038,7 +1037,7 @@ anims/used = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
-[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons" index="4"]
+[node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 editor/display_folded = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -1064,7 +1063,7 @@ stretch_mode = 6
 script = SubResource( 6 )
 _sections_unfolded = [ "Material", "Offset", "Rect", "Textures", "Transform", "Visibility", "texture" ]
 
-[node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg" index="0"]
+[node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -1073,7 +1072,7 @@ playback_speed = 1.0
 anims/open = SubResource( 7 )
 blend_times = [  ]
 
-[node name="board_layer" type="CanvasLayer" parent="." index="7"]
+[node name="board_layer" type="CanvasLayer" parent="."]
 layer = 3
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1081,7 +1080,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 32 )
 
-[node name="board" type="TextureRect" parent="board_layer" index="0"]
+[node name="board" type="TextureRect" parent="board_layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1101,7 +1100,7 @@ stretch_mode = 0
 script = SubResource( 8 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index" ]
 
-[node name="tilemap" type="TileMap" parent="board_layer/board" index="0"]
+[node name="tilemap" type="TileMap" parent="board_layer/board"]
 position = Vector2( 30, 27 )
 mode = 0
 tile_set = ExtResource( 34 )
@@ -1122,7 +1121,7 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="tokens" type="Control" parent="board_layer/board" index="1"]
+[node name="tokens" type="Control" parent="board_layer/board"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1139,7 +1138,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
-[node name="input_handler" type="Control" parent="board_layer/board" index="2"]
+[node name="input_handler" type="Control" parent="board_layer/board"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1153,7 +1152,7 @@ size_flags_vertical = 1
 script = ExtResource( 35 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="debate_layer" type="CanvasLayer" parent="." index="8" groups=[
+[node name="debate_layer" type="CanvasLayer" parent="." groups=[
 "translatable",
 ]]
 layer = 4
@@ -1164,7 +1163,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 36 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="girls" type="Container" parent="debate_layer" index="0"]
+[node name="girls" type="Container" parent="debate_layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1179,19 +1178,19 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
-[node name="laura" type="AnimatedSprite" parent="debate_layer/girls" index="0"]
+[node name="laura" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( -420, 5 )
 frames = SubResource( 9 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
-[node name="lucy" type="AnimatedSprite" parent="debate_layer/girls" index="1"]
+[node name="lucy" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 420, 0 )
 frames = SubResource( 10 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
-[node name="animation" type="AnimationPlayer" parent="debate_layer" index="1"]
+[node name="animation" type="AnimationPlayer" parent="debate_layer"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -1200,7 +1199,7 @@ playback_speed = 1.0
 anims/debate = SubResource( 11 )
 blend_times = [  ]
 
-[node name="dying_tokens" type="CanvasLayer" parent="." index="9"]
+[node name="dying_tokens" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 5
 offset = Vector2( 0, 0 )
@@ -1209,7 +1208,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="tokens" type="Control" parent="dying_tokens" index="0"]
+[node name="tokens" type="Control" parent="dying_tokens"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1226,7 +1225,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
-[node name="effects_layer" type="CanvasLayer" parent="." index="10"]
+[node name="effects_layer" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 7
 offset = Vector2( 0, 0 )
@@ -1236,7 +1235,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 45 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="rewarded_animation" type="Control" parent="effects_layer" index="0"]
+[node name="rewarded_animation" type="Control" parent="effects_layer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1249,13 +1248,13 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="timer" type="Timer" parent="effects_layer/rewarded_animation" index="0"]
+[node name="timer" type="Timer" parent="effects_layer/rewarded_animation"]
 process_mode = 1
 wait_time = 0.3
 one_shot = true
 autostart = false
 
-[node name="c" type="Control" parent="effects_layer/rewarded_animation" index="1"]
+[node name="c" type="Control" parent="effects_layer/rewarded_animation"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1273,9 +1272,9 @@ size_flags_vertical = 1
 script = SubResource( 12 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="plus1" type="Node2D" parent="effects_layer/rewarded_animation/c" index="0"]
+[node name="plus1" type="Node2D" parent="effects_layer/rewarded_animation/c"]
 
-[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus1" index="0"]
+[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus1"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -1284,15 +1283,15 @@ playback_speed = 1.0
 anims/plus1 = SubResource( 13 )
 blend_times = [  ]
 
-[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1" index="1"]
+[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1"]
 visible = false
 position = Vector2( 930, 1544 )
 texture = ExtResource( 46 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation/c" index="1"]
+[node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation/c"]
 
-[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus2" index="0"]
+[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus2"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -1301,15 +1300,15 @@ playback_speed = 1.0
 anims/plus1 = SubResource( 14 )
 blend_times = [  ]
 
-[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2" index="1"]
+[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2"]
 visible = false
 position = Vector2( 930, 1544 )
 texture = ExtResource( 46 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="plus3" type="Node2D" parent="effects_layer/rewarded_animation/c" index="2"]
+[node name="plus3" type="Node2D" parent="effects_layer/rewarded_animation/c"]
 
-[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus3" index="0"]
+[node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus3"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -1318,13 +1317,13 @@ playback_speed = 1.0
 anims/plus1 = SubResource( 15 )
 blend_times = [  ]
 
-[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3" index="1"]
+[node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3"]
 visible = false
 position = Vector2( 930, 1544 )
 texture = ExtResource( 46 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="popup_layer" type="CanvasLayer" parent="." index="11"]
+[node name="popup_layer" type="CanvasLayer" parent="."]
 layer = 8
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1333,7 +1332,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 47 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="effects" type="Control" parent="popup_layer" index="0"]
+[node name="effects" type="Control" parent="popup_layer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1346,7 +1345,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="blur" type="TextureRect" parent="popup_layer/effects" index="0"]
+[node name="blur" type="TextureRect" parent="popup_layer/effects"]
 visible = false
 modulate = Color( 0.588235, 0.588235, 0.588235, 0.627451 )
 anchor_left = 0.0
@@ -1363,7 +1362,7 @@ texture = ExtResource( 31 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility" ]
 
-[node name="black" type="TextureRect" parent="popup_layer/effects" index="1"]
+[node name="black" type="TextureRect" parent="popup_layer/effects"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1379,7 +1378,7 @@ texture = ExtResource( 31 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility", "texture" ]
 
-[node name="popups" type="Control" parent="popup_layer" index="1"]
+[node name="popups" type="Control" parent="popup_layer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1392,7 +1391,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Transform" ]
 
-[node name="transition_layer" type="CanvasLayer" parent="." index="12"]
+[node name="transition_layer" type="CanvasLayer" parent="."]
 layer = 9
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1400,7 +1399,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="effects" type="Control" parent="transition_layer" index="0"]
+[node name="effects" type="Control" parent="transition_layer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1413,7 +1412,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Size Flags" ]
 
-[node name="black_screen" type="TextureRect" parent="transition_layer/effects" index="0"]
+[node name="black_screen" type="TextureRect" parent="transition_layer/effects"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -1431,7 +1430,7 @@ expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Visibility" ]
 
-[node name="transition" type="AnimationPlayer" parent="." index="13"]
+[node name="transition" type="AnimationPlayer" parent="."]
 pause_mode = 2
 root_node = NodePath("..")
 autoplay = ""
@@ -1442,13 +1441,13 @@ anims/close = SubResource( 16 )
 anims/open = SubResource( 17 )
 blend_times = [  ]
 
-[node name="admob" type="Timer" parent="." index="14"]
+[node name="admob" type="Timer" parent="."]
 process_mode = 1
 wait_time = 10.0
 one_shot = false
 autostart = false
 
-[node name="timer" type="Timer" parent="." index="15"]
+[node name="timer" type="Timer" parent="."]
 process_mode = 1
 wait_time = 1.0
 one_shot = true

@@ -5,7 +5,7 @@ var language = "en"
 
 
 var opening = [
-	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)It is a long-time no see! It is great to see you again."],
+	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)Long-time no see! It is great to see you again."],
 	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
 	["B", "(lau_happy_listening)(lucy_happy)Yeah, that’s true. I really love animals so I decided to stop using them(lucy_smiling)."],
 	["A", "(lau_happy_talking)What? That doesn’t make any sense(lucy_listening)(lau_proud)."],
