@@ -20,7 +20,8 @@ func post(n):
 	if post != null:
 		unpost()
 	if n == "4":
-		game.seen_tutorial[str(int(n) - 1)] = true
+		game.seen_tutorial["3"] = true
+		game.seen_tutorial["4"] = true
 	else:
 		black_bg.show_bg(n)
 		game.seen_tutorial[n] = true
@@ -34,7 +35,8 @@ func check_finished():
 	var msg1 = game.seen_tutorial["1"]
 	var msg2 = game.seen_tutorial["2"]
 	var msg3 = game.seen_tutorial["3"]
-	return msg1 and msg2 and msg3
+	var msg4 = game.seen_tutorial["4"]
+	return msg1 and msg2 and msg3 and msg4
 
 
 func unpost():

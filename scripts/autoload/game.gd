@@ -41,7 +41,8 @@ var seen_intro = false
 var seen_tutorial = {
 	"1": false,
 	"2": false,
-	"3": false
+	"3": false,
+	"4": false
 }
 
 
@@ -110,7 +111,8 @@ func restart_game(delete_progress=false):
 		seen_tutorial = {
 			"1": false,
 			"2": false,
-			"3": false
+			"3": false,
+			"4": false
 		}
 		self.highest_max = cfg.MIN_HIGHEST_MAX
 		for excuse in seen_excuses:
