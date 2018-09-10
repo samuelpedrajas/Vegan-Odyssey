@@ -131,6 +131,8 @@ func _on_rewarded(currency, amount):
 	print("FIX THIS IN PRODUCTION:")
 	# emit_signal("rewarded", amount)
 	emit_signal("rewarded", loadedReward.amount)
+	if not game.board_layer.check_moves_available():
+		game.hud_layer.glow_broccoli()
 	loadedReward = null
 
 

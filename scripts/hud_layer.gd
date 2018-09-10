@@ -27,20 +27,22 @@ func glow_stop():
 	_stop_glow(get_node("hud/lower_buttons/reset"))
 	_stop_glow(get_node("hud/lower_buttons/broccoli"))
 	_stop_glow(get_node("hud/lower_buttons/excuses"))
+	var anim = $"hud/lower_buttons/glow_animation"
+	anim.stop()
+	anim.seek(0, true)
 
 
 func _play_glow(btn):
 	btn.get_node("glow").show()
-	btn.get_node("glow_animation").play("glow")
+	var anim = $"hud/lower_buttons/glow_animation"
+	if not anim.is_playing():
+		anim.play("glow")
 
 
 func _stop_glow(btn):
 	var glow = btn.get_node("glow")
 	if glow.is_visible():
 		glow.hide()
-		var anim = btn.get_node("glow_animation")
-		anim.stop()
-		anim.seek(0, true)
 
 
 ### ON PRESSED ACTIONS ###
