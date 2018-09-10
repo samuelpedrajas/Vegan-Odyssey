@@ -20,7 +20,6 @@ func open():
 	if game.revived:
 		# avoid the duck to appear until restarted
 		game.event_layer.get_node("duck_ready").set_paused(true)
-		game.event_layer.duck_ready = false
 		$"window/video_button/used".show()
 		$"window/video_button/bg_disabled".show()
 		$"window/video_button/bg".hide()

@@ -105,7 +105,6 @@ func _on_admob_network_error():
 func _on_rewarded_video_ad_loaded():
 	print("Rewarded loaded success")
 	emit_signal("rewarded_loaded")
-	admob_module.showRewardedVideo()
 
 
 # rewarded load error callback
