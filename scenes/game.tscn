@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://scripts/sounds.gd" type="Script" id=2]
@@ -25,28 +25,29 @@
 [ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=23]
 [ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=24]
 [ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=25]
-[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=26]
-[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=27]
-[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=28]
-[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=29]
-[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=30]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=31]
-[ext_resource path="res://scripts/board_layer.gd" type="Script" id=32]
-[ext_resource path="res://images/board_bg.png" type="Texture" id=33]
-[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=34]
-[ext_resource path="res://scripts/input_handler.gd" type="Script" id=35]
-[ext_resource path="res://scripts/debate_layer.gd" type="Script" id=36]
-[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=37]
-[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=38]
-[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=39]
-[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=40]
-[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=41]
-[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=42]
-[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=43]
-[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=44]
-[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=45]
-[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=46]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=47]
+[ext_resource path="res://images/lower_buttons/button_glow.png" type="Texture" id=26]
+[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=27]
+[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=28]
+[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=29]
+[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=30]
+[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=31]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=32]
+[ext_resource path="res://scripts/board_layer.gd" type="Script" id=33]
+[ext_resource path="res://images/board_bg.png" type="Texture" id=34]
+[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=35]
+[ext_resource path="res://scripts/input_handler.gd" type="Script" id=36]
+[ext_resource path="res://scripts/debate_layer.gd" type="Script" id=37]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=38]
+[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=39]
+[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=40]
+[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=41]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=42]
+[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=43]
+[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=44]
+[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=45]
+[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=46]
+[ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=47]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=48]
 
 [sub_resource type="GDScript" id=1]
 
@@ -103,6 +104,44 @@ func _ready():
 		)
 "
 
+[sub_resource type="Animation" id=18]
+
+resource_name = "glow"
+length = 1.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("glow:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+
+resource_name = "glow"
+length = 1.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("glow:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="DynamicFont" id=4]
 
 size = 45
@@ -110,7 +149,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 30 )
+font_data = ExtResource( 31 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="Animation" id=5]
@@ -155,6 +194,10 @@ signal unpost_tutorial
 
 func unpost(n):
 	if n != \"4\":
+		# hide aura
+		if btn != null:
+			btn.get_node(\"glow\").hide()
+			btn.get_node(\"glow_animation\").stop()
 		$black_anim.play_backwards(\"open\")
 		yield($black_anim, \"animation_finished\")
 		var lower_buttons = get_parent()
@@ -169,6 +212,9 @@ func _move_btn():
 	var lower_buttons = get_parent()
 	var n = lower_buttons.get_child_count()
 	lower_buttons.move_child(btn, n)
+	# show aura
+	btn.get_node(\"glow\").show()
+	btn.get_node(\"glow_animation\").play(\"glow\")
 
 
 func show_bg(n):
@@ -216,12 +262,12 @@ onready var tokens = $tokens
 [sub_resource type="SpriteFrames" id=9]
 
 animations = [ {
-"frames": [ ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"frames": [ ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 39 ), ExtResource( 39 ), ExtResource( 39 ) ],
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ) ],
 "loop": true,
 "name": "talking",
 "speed": 3.0
@@ -230,12 +276,12 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=10]
 
 animations = [ {
-"frames": [ ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ) ],
+"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
 "loop": true,
 "name": "talking",
 "speed": 3.0
@@ -968,6 +1014,24 @@ texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
+[node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/excuses"]
+visible = false
+modulate = Color( 1, 0.772549, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 26 )
+centered = false
+offset = Vector2( -5, -8 )
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="glow_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/excuses"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/glow = SubResource( 18 )
+blend_times = [  ]
+
 [node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -988,15 +1052,33 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 27 )
-texture_disabled = ExtResource( 28 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 28 )
+texture_disabled = ExtResource( 29 )
 _sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+
+[node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
+visible = false
+modulate = Color( 1, 0.772549, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 26 )
+centered = false
+offset = Vector2( -5, -8 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="glow_animation" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/broccoli"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/glow = SubResource( 19 )
+blend_times = [  ]
 
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 pause_mode = 2
 position = Vector2( 141.724, 24.5668 )
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle"]
@@ -1057,7 +1139,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 31 )
+texture_normal = ExtResource( 32 )
 expand = true
 stretch_mode = 6
 script = SubResource( 6 )
@@ -1078,7 +1160,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 32 )
+script = ExtResource( 33 )
 
 [node name="board" type="TextureRect" parent="board_layer"]
 anchor_left = 0.5
@@ -1095,7 +1177,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 stretch_mode = 0
 script = SubResource( 8 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index" ]
@@ -1103,7 +1185,7 @@ _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibi
 [node name="tilemap" type="TileMap" parent="board_layer/board"]
 position = Vector2( 30, 27 )
 mode = 0
-tile_set = ExtResource( 34 )
+tile_set = ExtResource( 35 )
 cell_size = Vector2( 340, 340 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -1149,7 +1231,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 35 )
+script = ExtResource( 36 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="debate_layer" type="CanvasLayer" parent="." groups=[
@@ -1160,7 +1242,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 36 )
+script = ExtResource( 37 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="girls" type="Container" parent="debate_layer"]
@@ -1232,7 +1314,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 45 )
+script = ExtResource( 46 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="rewarded_animation" type="Control" parent="effects_layer"]
@@ -1286,7 +1368,7 @@ blend_times = [  ]
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1"]
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 46 )
+texture = ExtResource( 47 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation/c"]
@@ -1303,7 +1385,7 @@ blend_times = [  ]
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2"]
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 46 )
+texture = ExtResource( 47 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="plus3" type="Node2D" parent="effects_layer/rewarded_animation/c"]
@@ -1320,7 +1402,7 @@ blend_times = [  ]
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3"]
 visible = false
 position = Vector2( 930, 1544 )
-texture = ExtResource( 46 )
+texture = ExtResource( 47 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="popup_layer" type="CanvasLayer" parent="."]
@@ -1329,7 +1411,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 47 )
+script = ExtResource( 48 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="effects" type="Control" parent="popup_layer"]
@@ -1358,7 +1440,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility" ]
 
@@ -1374,7 +1456,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility", "texture" ]
 
@@ -1425,7 +1507,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Visibility" ]
