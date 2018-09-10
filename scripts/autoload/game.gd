@@ -7,7 +7,7 @@ var highest_max = 1 setget _set_highest_max  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1 setget _set_current_max
 
 # items
-var broccolis = 2 setget _set_broccolis
+var broccolis = 3 setget _set_broccolis
 
 
 # child nodes
