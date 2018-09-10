@@ -44,6 +44,8 @@ var seen_tutorial = {
 	"3": false,
 	"4": false
 }
+var seen_meme = false
+var seen_refutation = false
 
 
 var lang = null
@@ -116,6 +118,8 @@ func restart_game(delete_progress=false):
 			"3": false,
 			"4": false
 		}
+		seen_meme = false
+		seen_refutation = false
 		self.highest_max = cfg.MIN_HIGHEST_MAX
 		for excuse in seen_excuses:
 			excuse.picture_seen = false
@@ -196,7 +200,9 @@ func save_game():
 		'win': win,
 		'seen_excuses': to_json(seen_excuses),
 		'lang': lang.language,
-		'seen_intro': seen_intro
+		'seen_intro': seen_intro,
+		'seen_meme': seen_meme,
+		'seen_refutation': seen_refutation
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -218,6 +224,8 @@ func load_game():
 	board_layer.load_info(info['matrix'])
 	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
+	seen_meme = info['seen_meme']
+	seen_refutation = info['seen_refutation']
 
 	savegame.close()
 

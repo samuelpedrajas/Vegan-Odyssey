@@ -27,7 +27,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Mouse", "Pause", "Transform" ]
 
-[node name="animation" type="AnimationPlayer" parent="." index="0"]
+[node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -37,7 +37,7 @@ anims/close_window = ExtResource( 2 )
 anims/open_window = ExtResource( 3 )
 blend_times = [  ]
 
-[node name="clickable_space" type="Button" parent="." index="1"]
+[node name="clickable_space" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -59,7 +59,7 @@ align = 1
 script = SubResource( 1 )
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="window" type="TextureRect" parent="." index="2"]
+[node name="window" type="TextureRect" parent="."]
 pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0

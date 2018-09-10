@@ -60,7 +60,7 @@ use_filter = true
 font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="excuse" type="Control" index="0"]
+[node name="excuse" type="Control"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -77,12 +77,12 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 token_index = null
 
-[node name="unlock" type="Sprite" parent="." index="0"]
+[node name="unlock" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
-[node name="excuse" type="TouchScreenButton" parent="." index="1"]
+[node name="excuse" type="TouchScreenButton" parent="."]
 position = Vector2( 601, 57 )
 normal = ExtResource( 3 )
 pressed = null
@@ -95,7 +95,7 @@ action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="debate" type="TouchScreenButton" parent="." index="2"]
+[node name="debate" type="TouchScreenButton" parent="."]
 position = Vector2( 723, 57 )
 normal = ExtResource( 4 )
 pressed = null
@@ -108,7 +108,7 @@ action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Transform" ]
 
-[node name="new" type="Container" parent="." index="3"]
+[node name="new" type="Container" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -125,7 +125,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="new1" type="Label" parent="new" index="0"]
+[node name="new1" type="Label" parent="new"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -153,7 +153,7 @@ max_lines_visible = -1
 script = SubResource( 2 )
 _sections_unfolded = [ "Rect", "Script", "custom_colors", "custom_fonts" ]
 
-[node name="new2" type="Label" parent="new" index="1"]
+[node name="new2" type="Label" parent="new"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -181,7 +181,7 @@ max_lines_visible = -1
 script = SubResource( 2 )
 _sections_unfolded = [ "Rect", "Script", "custom_colors", "custom_fonts" ]
 
-[node name="anim" type="AnimationPlayer" parent="new" index="2"]
+[node name="anim" type="AnimationPlayer" parent="new"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -190,21 +190,21 @@ playback_speed = 1.0
 anims/blink = SubResource( 3 )
 blend_times = [  ]
 
-[node name="debate_disabled" type="Sprite" parent="." index="4"]
+[node name="debate_disabled" type="Sprite" parent="."]
 visible = false
 position = Vector2( 601, 57 )
 texture = ExtResource( 6 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="excuse_disabled" type="Sprite" parent="." index="5"]
+[node name="excuse_disabled" type="Sprite" parent="."]
 visible = false
 position = Vector2( 723, 57 )
 texture = ExtResource( 7 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
-[node name="text" type="Label" parent="." index="6"]
+[node name="text" type="Label" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -231,18 +231,18 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="lock" type="Sprite" parent="." index="7"]
+[node name="lock" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 9 )
 centered = false
 _sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lock_sprite" type="Sprite" parent="lock" index="0"]
+[node name="lock_sprite" type="Sprite" parent="lock"]
 position = Vector2( 300, 105 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
-[node name="bar" type="Sprite" parent="." index="8"]
+[node name="bar" type="Sprite" parent="."]
 position = Vector2( 415.319, 244.66 )
 texture = ExtResource( 11 )
 

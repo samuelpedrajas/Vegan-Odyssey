@@ -3,6 +3,9 @@ extends ScrollContainer
 
 onready var ExcuseEntry = preload("res://scenes/other/itemlist_entry.tscn")
 
+signal meme_clicked
+signal refutation_clicked
+
 
 func _ready():
 	# add excuse entries

@@ -64,6 +64,7 @@ func _on_excuse_released():
 	if grandpa.can_click() and grandpa.token_clicked == self:
 		grandpa.tap_start_position = null
 		grandpa.tap_end_position = null
+		grandpa.emit_signal("meme_clicked")
 		game.sounds.play_audio("click")
 		game.popup_layer.open("excuse_drawing", self)
 
@@ -75,5 +76,6 @@ func _on_debate_released():
 	if grandpa.can_click() and grandpa.token_clicked == self:
 		grandpa.tap_start_position = null
 		grandpa.tap_end_position = null
+		grandpa.emit_signal("refutation_clicked")
 		game.sounds.play_audio("click")
 		game.popup_layer.open("debate_screen", self)
