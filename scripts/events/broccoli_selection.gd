@@ -78,6 +78,7 @@ func token_selected(token, direction):
 
 	# use broccoli
 	game.broccolis -= 1
+	game.hud_layer.glow_stop()
 
 	game.board_layer.matrix.erase(token.matrix_pos)
 	var new_token = null

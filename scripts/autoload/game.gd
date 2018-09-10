@@ -91,6 +91,8 @@ func update_scores(token_level):
 func restart_game(delete_progress=false):
 	$"/root".set_disable_input(true)
 
+	hud_layer.glow_stop()
+
 	transition.play("close")
 	# wait until screen is black
 	yield(transition, 'animation_finished')
@@ -290,6 +292,7 @@ func game_over():
 
 	sounds.play_audio("game_over")
 	popup_layer.open("game_over")
+
 
 
 func _notification(what):

@@ -64,8 +64,11 @@ func move_tokens(direction):
 				game.victory()
 			elif not moves_available and game.broccolis == 0:
 				game.game_over()
-			elif not moves_available and not game.seen_tutorial["3"]:
-				game.event_layer.get_or_start("tutorial").post("3")
+			elif not moves_available:
+				if not game.seen_tutorial["3"]:
+					game.event_layer.get_or_start("tutorial").post("3")
+				game.hud_layer.glow_reset()
+				game.hud_layer.glow_broccoli()
 
 		# start movement
 		for t in get_tree().get_nodes_in_group("token"):

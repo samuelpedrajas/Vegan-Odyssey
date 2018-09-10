@@ -1,6 +1,48 @@
 extends CanvasLayer
 
 
+func _ready():
+	# wait until the tree is ready
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	if not game.board_layer.check_moves_available():
+		glow_reset()
+		if game.broccolis > 0:
+			glow_broccoli()
+
+
+func glow_reset():
+	_play_glow(get_node("hud/lower_buttons/reset"))
+
+
+func glow_broccoli():
+	_play_glow(get_node("hud/lower_buttons/broccoli"))
+
+
+func glow_excuses():
+	_play_glow(get_node("hud/lower_buttons/excuses"))
+
+
+func glow_stop():
+	_stop_glow(get_node("hud/lower_buttons/reset"))
+	_stop_glow(get_node("hud/lower_buttons/broccoli"))
+	_stop_glow(get_node("hud/lower_buttons/excuses"))
+
+
+func _play_glow(btn):
+	btn.get_node("glow").show()
+	btn.get_node("glow_animation").play("glow")
+
+
+func _stop_glow(btn):
+	var glow = btn.get_node("glow")
+	if glow.is_visible():
+		glow.hide()
+		var anim = btn.get_node("glow_animation")
+		anim.stop()
+		anim.seek(0, true)
+
+
 ### ON PRESSED ACTIONS ###
 
 func _on_menu_pressed():
