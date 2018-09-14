@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://scripts/sounds.gd" type="Script" id=2]
@@ -54,12 +54,27 @@
 script/source = "extends Control
 
 
+var s = 1.0
+
+
 func _enter_tree():
 	$\"popup_layer/effects/black\".show()
 	game.setup()
 
 
 func _ready():
+	if Engine.has_singleton(\"MobileTools\"):
+		var dpi = OS.get_screen_dpi()
+		var mobile_tools = Engine.get_singleton(\"MobileTools\")
+		var device_diagonal = float(mobile_tools.getDiagonal())
+		var screen_size = get_viewport().get_visible_rect().size
+		var screen_diagonal = sqrt(pow(screen_size.x, 2) + pow(screen_size.y, 2))
+		var f = (1.25 * screen_diagonal / device_diagonal)
+		s = (float(dpi) / 480.0) * f
+
+		for node in get_tree().get_nodes_in_group(\"resizable\"):
+			node.rescale(s)
+
 	game.start_game()
 
 
@@ -72,7 +87,20 @@ func _on_admob_timeout():
 		admob.loadBanner()
 "
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Control
+
+
+func rescale(s):
+	var current_pos = get_position()
+	var board_height = $\"/root/stage/board_layer/board\".get_size().y
+	current_pos.y += (1 - s) * (board_height / 2.0)
+	set_position(current_pos)
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="DynamicFont" id=3]
 
 size = 42
 outline_size = 0
@@ -82,7 +110,7 @@ use_filter = true
 font_data = ExtResource( 17 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends Control
 
@@ -104,9 +132,8 @@ func _ready():
 		)
 "
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "glow"
 length = 1.4
 loop = true
 step = 0.7
@@ -147,7 +174,16 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends TextureButton
+
+
+func rescale(s):
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="DynamicFont" id=7]
 
 size = 45
 outline_size = 0
@@ -157,7 +193,7 @@ use_filter = true
 font_data = ExtResource( 31 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
 length = 0.2
 loop = false
@@ -187,7 +223,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends TextureButton
 
@@ -239,7 +275,7 @@ func _on_black_bg_pressed():
 	emit_signal(\"unpost_tutorial\")
 "
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 
 length = 0.2
 loop = false
@@ -257,15 +293,36 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=11]
 
 script/source = "extends Control
 
 onready var tilemap = $tilemap
 onready var tokens = $tokens
+
+
+func rescale(s):
+	var current_pos = get_position()
+	var board_height = get_size().y
+	current_pos.y += (1 - s) * (board_height / 2.0)
+	set_position(current_pos)
+	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="GDScript" id=12]
+
+script/source = "extends Container
+
+
+func rescale(s):
+	var current_pos = get_position()
+	var board_height = $\"/root/stage/board_layer/board\".get_size().y
+	current_pos.y += (1 - s) * (board_height / 2.0)
+	set_position(current_pos)
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="SpriteFrames" id=13]
 
 animations = [ {
 "frames": [ ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 39 ) ],
@@ -279,7 +336,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=14]
 
 animations = [ {
 "frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
@@ -293,7 +350,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 
 length = 6.0
 loop = false
@@ -371,7 +428,20 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=16]
+
+script/source = "extends Control
+
+
+func rescale(s):
+	var current_pos = get_position()
+	var board_height = $\"/root/stage/board_layer/board\".get_size().y
+	current_pos.y += (1 - s) * (board_height / 2.0)
+	set_position(current_pos)
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="GDScript" id=17]
 
 script/source = "extends Control
 
@@ -383,7 +453,7 @@ func _ready():
 	)
 "
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=18]
 
 length = 0.6
 loop = false
@@ -437,7 +507,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=19]
 
 length = 0.6
 loop = false
@@ -491,7 +561,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=20]
 
 length = 0.6
 loop = false
@@ -545,7 +615,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=21]
 
 length = 0.4
 loop = false
@@ -575,7 +645,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=22]
 
 length = 0.4
 loop = false
@@ -770,7 +840,9 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="text" type="Control" parent="dialog_layer"]
+[node name="text" type="Control" parent="dialog_layer" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -785,6 +857,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = SubResource( 2 )
 _sections_unfolded = [ "Margin", "Rect" ]
 
 [node name="dialog" type="TextureRect" parent="dialog_layer/text"]
@@ -821,7 +894,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -874,7 +947,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -931,7 +1004,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 3 )
+script = SubResource( 4 )
 _sections_unfolded = [ "Mouse", "Rect", "Transform" ]
 
 [node name="bottom_border" type="TextureRect" parent="hud_layer/hud"]
@@ -972,10 +1045,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/glow = SubResource( 4 )
+anims/glow = SubResource( 5 )
 blend_times = [  ]
 
-[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
+[node name="menu" type="TextureButton" parent="hud_layer/hud/lower_buttons" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -984,7 +1059,7 @@ margin_left = -480.0
 margin_top = -176.0
 margin_right = -310.0
 margin_bottom = -11.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 85, 165 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -997,9 +1072,12 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Textures" ]
+script = SubResource( 6 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Script", "Textures" ]
 
-[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
+[node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1008,7 +1086,7 @@ margin_left = -250.0
 margin_top = -176.0
 margin_right = -80.0
 margin_bottom = -11.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 85, 165 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -1021,7 +1099,8 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 23 )
-_sections_unfolded = [ "Rect", "Textures" ]
+script = SubResource( 6 )
+_sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/reset"]
 visible = false
@@ -1032,7 +1111,9 @@ centered = false
 offset = Vector2( -5, -8 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
+[node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1041,7 +1122,7 @@ margin_left = 80.0
 margin_top = -176.0
 margin_right = 250.0
 margin_bottom = -11.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 85, 165 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -1054,7 +1135,8 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 25 )
 texture_pressed = ExtResource( 26 )
-_sections_unfolded = [ "Rect", "Textures" ]
+script = SubResource( 6 )
+_sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/excuses"]
 visible = false
@@ -1065,7 +1147,9 @@ centered = false
 offset = Vector2( -5, -8 )
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
+[node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1074,7 +1158,7 @@ margin_left = 310.0
 margin_top = -176.0
 margin_right = 480.0
 margin_bottom = -11.0
-rect_pivot_offset = Vector2( 85, 85 )
+rect_pivot_offset = Vector2( 85, 165 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -1088,7 +1172,8 @@ group = null
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 28 )
 texture_disabled = ExtResource( 29 )
-_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+script = SubResource( 6 )
+_sections_unfolded = [ "Rect", "Script", "Textures", "Visibility" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 visible = false
@@ -1120,7 +1205,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -1139,7 +1224,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/used = SubResource( 6 )
+anims/used = SubResource( 8 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
@@ -1166,7 +1251,7 @@ group = null
 texture_normal = ExtResource( 32 )
 expand = true
 stretch_mode = 6
-script = SubResource( 7 )
+script = SubResource( 9 )
 _sections_unfolded = [ "Material", "Offset", "Rect", "Textures", "Transform", "Visibility", "texture" ]
 
 [node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg"]
@@ -1175,7 +1260,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 8 )
+anims/open = SubResource( 10 )
 blend_times = [  ]
 
 [node name="board_layer" type="CanvasLayer" parent="."]
@@ -1186,7 +1271,9 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 33 )
 
-[node name="board" type="TextureRect" parent="board_layer"]
+[node name="board" type="TextureRect" parent="board_layer" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1203,7 +1290,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 34 )
 stretch_mode = 0
-script = SubResource( 9 )
+script = SubResource( 11 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index", "texture" ]
 
 [node name="tilemap" type="TileMap" parent="board_layer/board"]
@@ -1269,7 +1356,9 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 37 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="girls" type="Container" parent="debate_layer"]
+[node name="girls" type="Container" parent="debate_layer" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1284,17 +1373,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = SubResource( 12 )
 _sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
 [node name="laura" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 120, 339 )
-frames = SubResource( 10 )
+frames = SubResource( 13 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
 [node name="lucy" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 960, 334 )
-frames = SubResource( 11 )
+frames = SubResource( 14 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
@@ -1304,7 +1394,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/debate = SubResource( 12 )
+anims/debate = SubResource( 15 )
 blend_times = [  ]
 
 [node name="dying_tokens" type="CanvasLayer" parent="."]
@@ -1316,7 +1406,9 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="tokens" type="Control" parent="dying_tokens"]
+[node name="tokens" type="Control" parent="dying_tokens" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1331,6 +1423,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = SubResource( 16 )
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
 [node name="effects_layer" type="CanvasLayer" parent="."]
@@ -1377,7 +1470,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 13 )
+script = SubResource( 17 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="plus1" type="Node2D" parent="effects_layer/rewarded_animation/c"]
@@ -1388,7 +1481,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 14 )
+anims/plus1 = SubResource( 18 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1"]
@@ -1405,7 +1498,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 15 )
+anims/plus1 = SubResource( 19 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2"]
@@ -1422,7 +1515,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 16 )
+anims/plus1 = SubResource( 20 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3"]
@@ -1545,8 +1638,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 17 )
-anims/open = SubResource( 18 )
+anims/close = SubResource( 21 )
+anims/open = SubResource( 22 )
 blend_times = [  ]
 
 [node name="admob" type="Timer" parent="."]
