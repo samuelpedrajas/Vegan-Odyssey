@@ -772,31 +772,49 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="text" type="Control" parent="dialog_layer"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-rect_pivot_offset = Vector2( 0, 0 )
+anchor_bottom = 1.0
+margin_left = -540.0
+margin_top = -1920.0
+margin_right = 540.0
+margin_bottom = -1486.0
+rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="dialog" type="Sprite" parent="dialog_layer/text"]
-position = Vector2( -83, -768 )
+[node name="dialog" type="TextureRect" parent="dialog_layer/text"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -530.0
+margin_top = -195.0
+margin_right = 372.0
+margin_bottom = 175.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 texture = ExtResource( 16 )
-_sections_unfolded = [ "Offset", "Transform" ]
+stretch_mode = 0
+_sections_unfolded = [ "Offset", "Rect", "Transform" ]
 
 [node name="message1" type="Label" parent="dialog_layer/text/dialog"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -440.0
-margin_top = -175.0
-margin_right = 410.0
-margin_bottom = -122.0
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 861.0
+margin_bottom = 62.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -846,10 +864,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -259.0
-margin_top = -91.0
-margin_right = 404.0
-margin_bottom = 177.0
+margin_left = 192.0
+margin_top = 93.0
+margin_right = 855.0
+margin_bottom = 361.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1170,14 +1188,14 @@ script = ExtResource( 33 )
 
 [node name="board" type="TextureRect" parent="board_layer"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -539.0
-margin_top = -526.0
+margin_top = -1486.0
 margin_right = 539.0
-margin_bottom = 581.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = -379.0
+rect_pivot_offset = Vector2( 539, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1186,7 +1204,7 @@ size_flags_vertical = 1
 texture = ExtResource( 34 )
 stretch_mode = 0
 script = SubResource( 9 )
-_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index", "texture" ]
 
 [node name="tilemap" type="TileMap" parent="board_layer/board"]
 position = Vector2( 30, 27 )
@@ -1253,12 +1271,14 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="girls" type="Container" parent="debate_layer"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_top = -626.0
-margin_bottom = -626.0
-rect_pivot_offset = Vector2( 0, 0 )
+anchor_bottom = 1.0
+margin_left = -540.0
+margin_top = -1920.0
+margin_right = 540.0
+margin_bottom = -1486.0
+rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1267,13 +1287,13 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
 [node name="laura" type="AnimatedSprite" parent="debate_layer/girls"]
-position = Vector2( -420, 5 )
+position = Vector2( 120, 339 )
 frames = SubResource( 10 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
 [node name="lucy" type="AnimatedSprite" parent="debate_layer/girls"]
-position = Vector2( 420, 0 )
+position = Vector2( 960, 334 )
 frames = SubResource( 11 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
@@ -1298,14 +1318,14 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="tokens" type="Control" parent="dying_tokens"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -340.0
-margin_top = -331.0
+margin_top = -1291.0
 margin_right = 337.0
-margin_bottom = 364.0
-rect_pivot_offset = Vector2( 0, 0 )
+margin_bottom = -596.0
+rect_pivot_offset = Vector2( 338, -195 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
