@@ -208,3 +208,13 @@ func _on_prev_pressed():
 		game.sounds.play_audio("click")
 		token_index -= 1
 		_next_conversation()
+
+
+func rescale(s):
+	var s2 = Vector2(s, s)
+	$"window/container/msgs".set_scale(s2)
+	$"window/container/girls".set_scale(s2)
+	$"window/container/n".set_scale(s2)
+	$"window/container/lower/prev".set_scale(s2)
+	$"window/container/lower/go_back".set_scale(s2)
+	$"window/container/lower/next".set_scale(s2)

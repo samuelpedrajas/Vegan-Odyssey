@@ -44,6 +44,11 @@ func open(name, params=null):
 			popup.setup(params)
 		popup.open()
 
+		# multiscreen
+		var s = $"/root/stage".s
+		if s > 0.0:
+			popup.rescale(s)
+
 		yield(popup.animation, "animation_finished")
 		if not popup.keep_input_disabled:
 			$"/root".set_disable_input(false)

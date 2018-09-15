@@ -54,7 +54,7 @@
 script/source = "extends Control
 
 
-var s = 1.0
+var s = -1.0
 
 
 func _enter_tree():
