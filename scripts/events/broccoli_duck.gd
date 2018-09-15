@@ -72,3 +72,11 @@ func _on_animation_animation_finished(anim_name):
 	if unclicked:
 		game.duck_counter += 1
 	game.event_layer.stop("broccoli_duck")
+
+
+func rescale(s):
+	var duck_h = 217
+	$c/broccoli_duck.set_scale(Vector2(s, s))
+	$c/broccoli_duck.set_offset(
+		Vector2(0, (1 - s) * duck_h / 2.0)
+	)

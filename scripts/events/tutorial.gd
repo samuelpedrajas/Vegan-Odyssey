@@ -56,3 +56,7 @@ func unpost():
 func stop():
 	black_bg.hide()
 	queue_free()
+
+
+func rescale(s):
+	$post.set_scale(Vector2(s, s))

@@ -207,6 +207,7 @@ animations = [ {
 
 [node name="broccoli_duck" type="Control" groups=[
 "event",
+"resizable",
 ]]
 anchor_left = 0.5
 anchor_top = 1.0
