@@ -65,15 +65,22 @@ func _enter_tree():
 func _ready():
 	if Engine.has_singleton(\"MobileTools\"):
 		var mobile_tools = Engine.get_singleton(\"MobileTools\")
-		var dpi = mobile_tools.pixelsPerInch()
-		var device_diagonal = mobile_tools.getDiagonal()
-		var screen_size = get_viewport().get_visible_rect().size
-		var screen_diagonal = sqrt(pow(screen_size.x, 2) + pow(screen_size.y, 2))
-		var f = (1.20 * screen_diagonal / device_diagonal)
-		s = (float(dpi) / 480.0) * f
+		var diagonal_inches = mobile_tools.getDiagonalInches()
 
-		for node in get_tree().get_nodes_in_group(\"resizable\"):
-			node.rescale(s)
+		if int(round(diagonal_inches)) >= 7:
+			var device_diagonal = mobile_tools.getDiagonal()
+			var dpi = mobile_tools.pixelsPerInch()
+			var screen_size = get_viewport().get_visible_rect().size
+			var screen_diagonal = sqrt(pow(screen_size.x, 2) + pow(screen_size.y, 2))
+			var f = (1.20 * screen_diagonal / device_diagonal)
+			s = (float(dpi) / 480.0) * f
+
+			for node in get_tree().get_nodes_in_group(\"resizable\"):
+				node.rescale(s)
+
+			print(\"Device diagonal (px): \", device_diagonal)
+			print(\"DPI: \", dpi)
+		print(\"Diagonal (inches): \", diagonal_inches)
 
 	game.start_game()
 
