@@ -812,13 +812,13 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 "resizable",
 ]]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -540.0
-margin_top = -1920.0
+margin_top = -960.0
 margin_right = 540.0
-margin_bottom = -1486.0
+margin_bottom = -526.0
 rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 0
@@ -1243,13 +1243,13 @@ script = ExtResource( 33 )
 "resizable",
 ]]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -539.0
-margin_top = -1486.0
+margin_top = -526.0
 margin_right = 539.0
-margin_bottom = -379.0
+margin_bottom = 581.0
 rect_pivot_offset = Vector2( 539, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1328,13 +1328,13 @@ _sections_unfolded = [ "Pause" ]
 "resizable",
 ]]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -540.0
-margin_top = -1920.0
+margin_top = -960.0
 margin_right = 540.0
-margin_bottom = -1486.0
+margin_bottom = -526.0
 rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1378,13 +1378,13 @@ _sections_unfolded = [ "Pause" ]
 "resizable",
 ]]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -340.0
-margin_top = -1291.0
+margin_top = -331.0
 margin_right = 337.0
-margin_bottom = -596.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 338, -195 )
 rect_clip_content = false
 mouse_filter = 2
