@@ -15,3 +15,7 @@ func open():
 func _on_ok_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
+
+
+func rescale(s):
+	$window.set_scale(Vector2(s, s))

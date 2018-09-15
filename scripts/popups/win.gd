@@ -58,3 +58,8 @@ func _on_share_pressed():
 func _on_rate_us_pressed():
 	if mobile_tools != null:
 		mobile_tools.rateInAppStore()
+
+
+func rescale(s):
+	$window/go_back.set_scale(Vector2(s, s))
+	$window/content.set_scale(Vector2(s, s))

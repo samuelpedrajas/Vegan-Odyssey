@@ -28,3 +28,7 @@ func _on_cancel_button_pressed():
 		game.event_layer.start("broccoli_duck")
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
+
+
+func rescale(s):
+	$window.set_scale(Vector2(s, s))

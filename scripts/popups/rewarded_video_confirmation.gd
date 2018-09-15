@@ -42,3 +42,7 @@ func _on_cancel_button_pressed():
 
 func quack():
 	game.sounds.play_audio("quack")
+
+
+func rescale(s):
+	$window.set_scale(Vector2(s, s))

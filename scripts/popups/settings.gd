@@ -69,3 +69,10 @@ func _on_es_pressed():
 	es_tick.show()
 	if game.lang.language != "es":
 		$loading_language.set_loading("es")
+
+
+func rescale(s):
+	var s2 = Vector2(s, s)
+	$window.set_scale(s2)
+	$c/close_button.set_scale(s2)
+	$loading_language/text.set_scale(s2)
