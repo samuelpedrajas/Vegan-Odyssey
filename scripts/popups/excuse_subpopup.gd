@@ -16,7 +16,7 @@ func setup(_excuse_index, pos, rect_limit_y):
 
 	# hide it by placing it under the viewport
 	if game.highest_max < excuse_index:
-		position.y = rect_limit_y
+		position.y = rect_limit_y * 2
 	else:
 		position.y = 0
 

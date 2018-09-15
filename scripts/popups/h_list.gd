@@ -16,6 +16,7 @@ var dest
 
 var blocked = true
 var rect_limit_y
+var w_width
 
 
 func setup(list_entry):
@@ -25,11 +26,14 @@ func setup(list_entry):
 	actual_excuse = list_entry.token_index
 	dest = Vector2(540, position.y)
 	starting_position = position
+	w_width = get_viewport().get_visible_rect().size.x
+	if $"/root/stage".s > 0.0:
+		w_width += (1.0 - $"/root/stage".s) * w_width
 
 	for i in range(-1, 2):
 		var popup = subpopup.instance()
 		var n = fposmod(actual_excuse + i - 1, 9) + 1
-		var w_width = get_viewport().get_visible_rect().size.x
+
 		popup.setup(n, (n - init_excuse) * Vector2(w_width, position.y), rect_limit_y)
 		popups[n] = popup
 
@@ -70,7 +74,6 @@ func goto(n, sound=false):
 
 	var from_idx = fposmod(actual_excuse - direction - 1, 9) + 1
 	var to_idx = fposmod(n + direction - 1, 9) + 1
-	var w_width = get_viewport().get_visible_rect().size.x
 
 	dest = Vector2((fposmod(n - 1, 9) - init_excuse + 1)  * -w_width + 540, position.y)
 	actual_excuse = fposmod(n - 1, 9) + 1

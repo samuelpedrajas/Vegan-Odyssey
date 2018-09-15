@@ -451,6 +451,10 @@ func _ready():
 	set_position(
 		get_position() - Vector2(0, h)
 	)
+
+
+func rescale(s):
+	set_scale(Vector2(s, s))
 "
 
 [sub_resource type="Animation" id=18]
@@ -483,24 +487,12 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../../../hud_layer/hud/lower_buttons/broccoli:rect_scale")
-tracks/2/interp = 2
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("plus:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -537,24 +529,12 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../../../hud_layer/hud/lower_buttons/broccoli:rect_scale")
-tracks/2/interp = 2
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("plus:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -591,24 +571,12 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../../../hud_layer/hud/lower_buttons/broccoli:rect_scale")
-tracks/2/interp = 2
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("plus:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -1455,7 +1423,9 @@ wait_time = 0.3
 one_shot = true
 autostart = false
 
-[node name="c" type="Control" parent="effects_layer/rewarded_animation"]
+[node name="c" type="Control" parent="effects_layer/rewarded_animation" groups=[
+"resizable",
+]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1464,7 +1434,7 @@ margin_left = -540.0
 margin_top = -1764.0
 margin_right = -540.0
 margin_bottom = -1764.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 930, 1570 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1474,6 +1444,7 @@ script = SubResource( 17 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="plus1" type="Node2D" parent="effects_layer/rewarded_animation/c"]
+_sections_unfolded = [ "Transform" ]
 
 [node name="animation" type="AnimationPlayer" parent="effects_layer/rewarded_animation/c/plus1"]
 root_node = NodePath("..")
@@ -1488,7 +1459,7 @@ blend_times = [  ]
 visible = false
 position = Vector2( 930, 1544 )
 texture = ExtResource( 47 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "texture" ]
 
 [node name="plus2" type="Node2D" parent="effects_layer/rewarded_animation/c"]
 
