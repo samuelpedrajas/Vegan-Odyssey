@@ -25,6 +25,7 @@ func win():
 	game.debate_layer.init(cfg.GOAL)
 	back_button = true
 	$window.show()
+	$c.show()
 	$clickable_space.show()
 	game.event_layer.start("win")
 	$"window/content/duck/broccoli_duck/anim".play("duck")
@@ -61,5 +62,6 @@ func _on_rate_us_pressed():
 
 
 func rescale(s):
-	$window/go_back.set_scale(Vector2(s, s))
+	$c/go_back.set_scale(Vector2(s, s))
 	$window/content.set_scale(Vector2(s, s))
+	$window/bg.set_scale(Vector2(s, s))

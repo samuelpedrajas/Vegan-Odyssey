@@ -164,11 +164,13 @@ anims/open = SubResource( 2 )
 blend_times = [  ]
 
 [node name="c" type="Control" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = 156.0
+margin_left = -540.0
+margin_top = -1764.0
+margin_right = 540.0
 margin_bottom = 156.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false

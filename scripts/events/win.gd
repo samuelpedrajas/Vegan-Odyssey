@@ -38,3 +38,7 @@ func set_extents():
 			0
 		)
 	)
+
+
+func rescale(s):
+	pass
