@@ -96,3 +96,7 @@ func failed_to_load(errorCode):
 		print("weird")
 		game.event_layer.stop("wait_for_rewarded_ad")
 		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+
+
+func rescale(s):
+	$message.set_scale(Vector2(s, s))

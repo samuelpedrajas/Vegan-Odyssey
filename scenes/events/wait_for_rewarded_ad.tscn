@@ -44,6 +44,7 @@ func _ready():
 
 [node name="loading_rewarded_ad" type="Control" groups=[
 "event",
+"resizable",
 ]]
 pause_mode = 2
 anchor_left = 0.0
@@ -95,7 +96,7 @@ margin_left = -540.0
 margin_top = -960.0
 margin_right = 540.0
 margin_bottom = 960.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 540, 960 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0

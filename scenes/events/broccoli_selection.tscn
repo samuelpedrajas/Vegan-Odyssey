@@ -6,7 +6,7 @@
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=4]
 [ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 
 resource_name = "open"
 length = 0.2
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.784314 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 
 length = 0.12
 loop = false
@@ -67,7 +67,7 @@ tracks/2/keys = {
 "values": [ 1140.0, 625.0 ]
 }
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Control
 
@@ -79,7 +79,7 @@ func _ready():
 	)
 "
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 
 size = 55
 outline_size = 0
@@ -98,8 +98,9 @@ func _ready():
 	set_text(game.lang.GO_BACK)
 "
 
-[node name="broccoli_selection" type="Control" index="0" groups=[
+[node name="broccoli_selection" type="Control" groups=[
 "event",
+"resizable",
 ]]
 anchor_left = 0.0
 anchor_top = 0.0
@@ -114,7 +115,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Mouse", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="black4broccoli" type="CanvasLayer" parent="." index="0"]
+[node name="black4broccoli" type="CanvasLayer" parent="."]
 editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
@@ -122,7 +123,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="black" type="TextureButton" parent="black4broccoli" index="0"]
+[node name="black" type="TextureButton" parent="black4broccoli"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -144,25 +145,25 @@ expand = true
 stretch_mode = 6
 _sections_unfolded = [ "Mouse", "Textures", "Visibility", "texture" ]
 
-[node name="black_anim" type="AnimationPlayer" parent="black4broccoli" index="1"]
+[node name="black_anim" type="AnimationPlayer" parent="black4broccoli"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 6 )
+anims/open = SubResource( 1 )
 blend_times = [  ]
 
-[node name="animation" type="AnimationPlayer" parent="." index="1"]
+[node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 7 )
+anims/open = SubResource( 2 )
 blend_times = [  ]
 
-[node name="c" type="Control" parent="." index="2"]
+[node name="c" type="Control" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -175,10 +176,10 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 8 )
+script = SubResource( 3 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="go_back" type="TextureButton" parent="c" index="0"]
+[node name="go_back" type="TextureButton" parent="c"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -188,7 +189,7 @@ margin_left = -129.5
 margin_top = 1140.0
 margin_right = 129.5
 margin_bottom = 1263.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 129, 123 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -203,7 +204,7 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 _sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
 
-[node name="text" type="Label" parent="c/go_back" index="0"]
+[node name="text" type="Label" parent="c/go_back"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -214,7 +215,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2

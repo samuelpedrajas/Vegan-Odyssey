@@ -130,3 +130,7 @@ func _on_go_back_pressed():
 func _on_black_pressed():
 	if pending_tokens == 0 and not closing:
 		do_close()
+
+
+func rescale(s):
+	$c/go_back.set_scale(Vector2(s, s))
