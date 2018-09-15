@@ -64,12 +64,12 @@ func _enter_tree():
 
 func _ready():
 	if Engine.has_singleton(\"MobileTools\"):
-		var dpi = OS.get_screen_dpi()
 		var mobile_tools = Engine.get_singleton(\"MobileTools\")
-		var device_diagonal = float(mobile_tools.getDiagonal())
+		var dpi = mobile_tools.pixelsPerInch()
+		var device_diagonal = mobile_tools.getDiagonal()
 		var screen_size = get_viewport().get_visible_rect().size
 		var screen_diagonal = sqrt(pow(screen_size.x, 2) + pow(screen_size.y, 2))
-		var f = (1.25 * screen_diagonal / device_diagonal)
+		var f = (1.20 * screen_diagonal / device_diagonal)
 		s = (float(dpi) / 480.0) * f
 
 		for node in get_tree().get_nodes_in_group(\"resizable\"):
@@ -309,7 +309,7 @@ func rescale(s):
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=14]
 
 script/source = "extends Container
 
@@ -322,7 +322,7 @@ func rescale(s):
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=15]
 
 animations = [ {
 "frames": [ ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 39 ) ],
@@ -336,7 +336,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=16]
 
 animations = [ {
 "frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
@@ -350,7 +350,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 
 length = 6.0
 loop = false
@@ -428,7 +428,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
-[sub_resource type="GDScript" id=16]
+[sub_resource type="GDScript" id=18]
 
 script/source = "extends Control
 
@@ -441,7 +441,7 @@ func rescale(s):
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="GDScript" id=17]
+[sub_resource type="GDScript" id=19]
 
 script/source = "extends Control
 
@@ -456,90 +456,6 @@ func _ready():
 func rescale(s):
 	set_scale(Vector2(s, s))
 "
-
-[sub_resource type="Animation" id=18]
-
-length = 0.6
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("plus:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 930, 1544 ), Vector2( 930, 1300 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("plus:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("plus:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
-[sub_resource type="Animation" id=19]
-
-length = 0.6
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("plus:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 930, 1544 ), Vector2( 930, 1300 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("plus:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("plus:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=20]
 
@@ -585,6 +501,90 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=21]
 
+length = 0.6
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("plus:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 930, 1544 ), Vector2( 930, 1300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("plus:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=22]
+
+length = 0.6
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("plus:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 930, 1544 ), Vector2( 930, 1300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("plus:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=23]
+
 length = 0.4
 loop = false
 step = 0.4
@@ -613,7 +613,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=24]
 
 length = 0.4
 loop = false
@@ -1242,6 +1242,7 @@ script = ExtResource( 33 )
 [node name="board" type="TextureRect" parent="board_layer" groups=[
 "resizable",
 ]]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1341,18 +1342,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 12 )
+script = SubResource( 14 )
 _sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
 [node name="laura" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 120, 339 )
-frames = SubResource( 13 )
+frames = SubResource( 15 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
 [node name="lucy" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 960, 334 )
-frames = SubResource( 14 )
+frames = SubResource( 16 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
@@ -1362,7 +1363,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/debate = SubResource( 15 )
+anims/debate = SubResource( 17 )
 blend_times = [  ]
 
 [node name="dying_tokens" type="CanvasLayer" parent="."]
@@ -1391,7 +1392,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 16 )
+script = SubResource( 18 )
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
 [node name="effects_layer" type="CanvasLayer" parent="."]
@@ -1440,7 +1441,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 17 )
+script = SubResource( 19 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="plus1" type="Node2D" parent="effects_layer/rewarded_animation/c"]
@@ -1452,7 +1453,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 18 )
+anims/plus1 = SubResource( 20 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1"]
@@ -1469,7 +1470,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 19 )
+anims/plus1 = SubResource( 21 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2"]
@@ -1486,7 +1487,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 20 )
+anims/plus1 = SubResource( 22 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3"]
@@ -1609,8 +1610,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 21 )
-anims/open = SubResource( 22 )
+anims/close = SubResource( 23 )
+anims/open = SubResource( 24 )
 blend_times = [  ]
 
 [node name="admob" type="Timer" parent="."]
