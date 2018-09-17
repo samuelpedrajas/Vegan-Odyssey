@@ -27,6 +27,25 @@ signal conversation_finished
 # token_index = -1 means it's the ending
 # token_index = -2 means it's the opening
 
+var msgs_pos_y
+
+
+func _ready():
+	var h = admob.getHeight()
+	$"window/container/lower".set_position(
+		$"window/container/lower".get_position() - Vector2(0, h)
+	)
+	$"window/container/n".set_position(
+		$"window/container/n".get_position() - Vector2(0, h)
+	)
+	$"window/container/girls".set_position(
+		$"window/container/girls".get_position() - Vector2(0, h)
+	)
+	$"window/container/msgs".set_position(
+		$"window/container/msgs".get_position() - Vector2(0, h)
+	)
+	msgs_pos_y = $"window/container/msgs".get_position().y
+
 
 func setup(entry):
 	if typeof(entry) == TYPE_OBJECT:
@@ -159,7 +178,7 @@ func _next_conversation():
 		child.remove_me()
 	var msgs = $"window/container/msgs"
 	msgs.set_position(
-		Vector2(msgs.get_position().x, 1146)
+		Vector2(msgs.get_position().x, msgs_pos_y)
 	)
 	bubbles = []
 	current_bubble = null

@@ -18,6 +18,7 @@ var stops_dict = {
 }
 
 var threshold = 20
+var x_threshold = 75
 
 var prev_bubble
 
@@ -134,9 +135,18 @@ func setup(screen, _prev_bubble, line):
 	var height = label.get_line_count() * label.get_line_height() + 30
 	set_size(Vector2(get_size().x, height))
 
+	var _x_threshold = x_threshold
+	var dest_distance =  Vector2(0, get_size().y + threshold)
+	# adjust threshold
+	var f = $"/root/stage".s
+	if f > 0.0:
+		var f2 = (1.0 - f)
+		_x_threshold = x_threshold + x_threshold * f2
+		dest_distance *= f
+
 	# move msgs up
 	container_start = get_parent().get_position()
-	container_dest = get_parent().get_position() - Vector2(0, height + threshold)
+	container_dest = get_parent().get_position() - dest_distance
 
 	# if it's not the first one, set the proper "y" position
 	if prev_bubble != null:
@@ -151,14 +161,14 @@ func setup(screen, _prev_bubble, line):
 		self.tail = RIGHT
 		set_position(
 			get_position() + Vector2(
-				get_parent().get_size().x - get_size().x - 75,
+				get_parent().get_size().x - get_size().x - _x_threshold,
 				0
 			)
 		)
 	else:
 		self.tail = LEFT
 		set_position(
-			get_position() + Vector2(75, 0)
+			get_position() + Vector2(_x_threshold, 0)
 		)
 
 

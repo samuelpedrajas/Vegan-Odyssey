@@ -63,8 +63,8 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)La moralidad es subjetiva, tú tienes tu verdad y yo tengo la mía(lau_proud)."],
 		["B", "(lucy_talking)Eso suena un poco peligroso, ¿no? (lau_listening)Podrías justificar cualquier cosa diciendo eso."],
 		["B", "Lo cierto es que necesitas muy buenos argumentos para matar intencionadamente a un animal ya que no es sólo tu perspectiva la que importa."],
-		["B", "Hay que tener en cuenta que los animales tienen sus propios intereses y quieren vivir. No puedes ignorar eso si pretendes ser justa."],
-		["B", "Matamos más de 60 mil millones animales al año, lo cual está impactando catastróficamente en nuestro medio ambiente. ¿De verdad hay alguna justificación razonable para esto(lucy_smiling)?"]
+		["B", "Los animales también tienen sus propios intereses y quieren vivir. No puedes ignorar eso si pretendes ser justa."],
+		["B", "Matamos más de 60 mil millones de animales al año, lo cual impacta catastróficamente en nuestro medio ambiente. ¿De verdad hay alguna justificación razonable para esto(lucy_smiling)?"]
 	]
 ]
 

@@ -21,10 +21,10 @@ var dialog_list = [
 		["B", "You cannot justify your everyday actions on “what would you do” in some extreme situation. That would be extreme, indeed(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
-		["B", "(lau_listening)(lucy_talking)Well, when talking about plants a lot of analogies with humans are made, but in reality they're just totally different than us."],
+		["B", "(lau_listening)(lucy_talking)Well, when talking about plants a lot of analogies with humans are made, but in reality they're totally different than us."],
 		["B", "They lack of central nervous system and pain receptors. Neuroscientists say that pain is something created by a brain so... (lucy_happy)no brain, no pain."],
 		["B", "(lucy_talking)Moreover, from an evolutionary point of view it makes no sense for plants to develop any feeling of pain. They're rooted, they don't run away from predators."],
-		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you're still interested in saving plants you've got to go vegan!"]
+		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you wanna save plants you've got to go vegan!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)What you vegans don't understand is that (lau_finger)we need animal proteins to survive(lau_proud)."],
 		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal proteins to survive."],

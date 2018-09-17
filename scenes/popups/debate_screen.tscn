@@ -1,31 +1,31 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/debate_screen.gd" type="Script" id=2]
 [ext_resource path="res://images/black_screen.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/girls/lau_finger.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/girls/lau_serious_talking.png" type="Texture" id=4]
 [ext_resource path="res://images/popups/girls/lau_happy_talking.png" type="Texture" id=5]
-[ext_resource path="res://images/popups/girls/lau_serious_talking.png" type="Texture" id=6]
-[ext_resource path="res://images/popups/girls/lau_proud.png" type="Texture" id=7]
-[ext_resource path="res://images/popups/girls/lau_listening/2.png" type="Texture" id=8]
-[ext_resource path="res://images/popups/girls/lau_listening/1.png" type="Texture" id=9]
-[ext_resource path="res://images/popups/girls/lau_talking/1.png" type="Texture" id=10]
-[ext_resource path="res://images/popups/girls/lau_talking/2.png" type="Texture" id=11]
-[ext_resource path="res://images/popups/girls/lau_serious.png" type="Texture" id=12]
-[ext_resource path="res://images/popups/girls/lau_talking_open_eyes.png" type="Texture" id=13]
-[ext_resource path="res://images/popups/girls/lau_salutes/1.png" type="Texture" id=14]
-[ext_resource path="res://images/popups/girls/lau_salutes/2.png" type="Texture" id=15]
-[ext_resource path="res://images/popups/girls/lau_happy_listening.png" type="Texture" id=16]
-[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=17]
-[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=18]
-[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=19]
-[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=20]
-[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=21]
-[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=22]
-[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=23]
-[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=24]
-[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=25]
-[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=26]
+[ext_resource path="res://images/popups/girls/lau_listening/2.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/girls/lau_listening/1.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/girls/lau_proud.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/girls/lau_talking/1.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/girls/lau_talking/2.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/girls/lau_serious.png" type="Texture" id=11]
+[ext_resource path="res://images/popups/girls/lau_talking_open_eyes.png" type="Texture" id=12]
+[ext_resource path="res://images/popups/girls/lau_salutes/1.png" type="Texture" id=13]
+[ext_resource path="res://images/popups/girls/lau_salutes/2.png" type="Texture" id=14]
+[ext_resource path="res://images/popups/girls/lau_happy_listening.png" type="Texture" id=15]
+[ext_resource path="res://images/popups/girls/lau_finger.png" type="Texture" id=16]
+[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=17]
+[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=18]
+[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=19]
+[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=20]
+[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=21]
+[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=22]
+[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=23]
+[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=24]
+[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=25]
+[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=26]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://images/excuses/circle.png" type="Texture" id=28]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=29]
@@ -40,6 +40,7 @@
 [ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=38]
 [ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=39]
 [ext_resource path="res://images/popups/bright_next.png" type="Texture" id=40]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=41]
 
 [sub_resource type="Animation" id=1]
 
@@ -132,7 +133,7 @@ tracks/2/keys = {
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "lau_finger",
+"name": "lau_serious_talking",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -140,44 +141,44 @@ animations = [ {
 "name": "lau_happy_talking",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "lau_serious_talking",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "lau_proud",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "lau_listening",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "lau_proud",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "lau_talking",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "lau_serious",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "lau_talking_open_eyes",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "lau_salutes",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "lau_happy_listening",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "lau_finger",
 "speed": 5.0
 } ]
 
@@ -186,42 +187,42 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "lucy_stand_talking",
+"name": "lucy_listening",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "lucy_serious",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "lucy_smiling",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "lucy_talking",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "lucy_happy",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ) ],
-"loop": true,
-"name": "lucy_talking_arm",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "lucy_salutes",
 "speed": 2.0
 }, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "lucy_happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "lucy_serious",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "lucy_smiling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "lucy_talking",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "lucy_stand_talking",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "lucy_listening",
+"name": "lucy_talking_arm",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -235,18 +236,6 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 27 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=6]
-
-script/source = "extends TextureRect
-
-
-func _ready():
-	var h = admob.getHeight()
-	set_position(
-		get_position() - Vector2(0, h)
-	)
-"
 
 [sub_resource type="DynamicFont" id=7]
 
@@ -345,6 +334,16 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 0.0784314 ) ]
 }
 
+[sub_resource type="DynamicFont" id=12]
+
+size = 80
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 41 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
 [node name="debate_screen" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Pause", "Rect", "Transform" ]
@@ -387,10 +386,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -540.0
-margin_top = -774.0
+margin_top = -674.0
 margin_right = 540.0
-margin_bottom = 1146.0
-rect_pivot_offset = Vector2( 540, 234 )
+margin_bottom = 1246.0
+rect_pivot_offset = Vector2( 540, 646 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -415,10 +414,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -540.0
-margin_top = -805.0
+margin_top = -692.0
 margin_right = 540.0
-margin_bottom = -275.0
-rect_pivot_offset = Vector2( 540, 265 )
+margin_bottom = -162.0
+rect_pivot_offset = Vector2( 540, 664 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -441,15 +440,16 @@ _sections_unfolded = [ "Transform" ]
 [node name="n" type="Label" parent="window/container" index="2" groups=[
 "resizable",
 ]]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 30.0
-margin_top = 1455.0
-margin_right = 131.0
-margin_bottom = 1557.0
-rect_pivot_offset = Vector2( 50, 51 )
+margin_left = 39.0
+margin_top = 1604.0
+margin_right = 140.0
+margin_bottom = 1706.0
+rect_pivot_offset = Vector2( 50, 288 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -509,7 +509,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 29 )
 stretch_mode = 0
-script = SubResource( 6 )
 _sections_unfolded = [ "Rect", "Transform" ]
 
 [node name="prev" type="TextureButton" parent="window/container/lower" index="0" groups=[
@@ -550,7 +549,7 @@ margin_left = 439.0
 margin_top = -39.0
 margin_right = 698.0
 margin_bottom = 84.0
-rect_pivot_offset = Vector2( 129, 123 )
+rect_pivot_offset = Vector2( 129, 151 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -641,6 +640,26 @@ anims/close_container = SubResource( 9 )
 anims/finished = SubResource( 10 )
 anims/go_back = SubResource( 11 )
 blend_times = [  ]
+
+[node name="label" type="Label" parent="window/container" index="6"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 12 )
+align = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts", "custom_fonts/font" ]
 
 [connection signal="pressed" from="window/container/clickable_bg" to="." method="_on_clickable_bg_pressed"]
 [connection signal="pressed" from="window/container/lower/prev" to="." method="_on_prev_pressed"]
