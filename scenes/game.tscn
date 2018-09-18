@@ -84,6 +84,7 @@ func _ready():
 			print(\"DPI: \", dpi)
 		print(\"Diagonal (inches): \", diagonal_inches)
 
+	$hud_layer.move_up()
 	game.start_game()
 
 
@@ -124,7 +125,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Control
 
 
-func _ready():
+func move_up():
 	var h = admob.getHeight()
 
 	var controls = [
@@ -138,6 +139,12 @@ func _ready():
 	for c in controls:
 		c.set_position(
 			c.get_position() - Vector2(0, h)
+		)
+
+	var f = $\"/root/stage\".s
+	if f > 0.0:
+		controls[0].set_position(
+			controls[0].get_position() + Vector2(0, (1.0 - f) * controls[1].get_size().y / 2.0)
 		)
 "
 

@@ -16,16 +16,16 @@
 [ext_resource path="res://images/popups/girls/lau_salutes/2.png" type="Texture" id=14]
 [ext_resource path="res://images/popups/girls/lau_happy_listening.png" type="Texture" id=15]
 [ext_resource path="res://images/popups/girls/lau_finger.png" type="Texture" id=16]
-[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=17]
-[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=18]
-[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=19]
-[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=20]
-[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=21]
-[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=22]
-[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=23]
-[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=24]
-[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=25]
-[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=26]
+[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=17]
+[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=18]
+[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=19]
+[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=20]
+[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=21]
+[ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=22]
+[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=23]
+[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=24]
+[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=25]
+[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=26]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://images/excuses/circle.png" type="Texture" id=28]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=29]
@@ -185,44 +185,44 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "lucy_listening",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "lucy_salutes",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": true,
-"name": "lucy_happy",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "lucy_serious",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "lucy_smiling",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "lucy_talking",
 "speed": 2.0
 }, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "lucy_happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "lucy_serious",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "lucy_smiling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "lucy_talking_arm",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "lucy_salutes",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
-"name": "lucy_stand_talking",
+"name": "lucy_listening",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "lucy_talking_arm",
+"name": "lucy_stand_talking",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -237,7 +237,7 @@ use_filter = true
 font_data = ExtResource( 27 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 
 size = 55
 outline_size = 0
@@ -247,7 +247,7 @@ use_filter = true
 font_data = ExtResource( 35 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends Label
 
@@ -256,7 +256,7 @@ func _ready():
 	set_text(game.lang.GO_BACK)
 "
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 length = 0.1
 loop = false
@@ -274,7 +274,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 
 length = 1.0
 loop = true
@@ -304,7 +304,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 0.0784314 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 
 length = 1.0
 loop = true
@@ -334,7 +334,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.431373 ), Color( 1, 1, 1, 0.0784314 ) ]
 }
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=11]
 
 size = 80
 outline_size = 0
@@ -492,7 +492,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors" ]
 
-[node name="lower" type="TextureRect" parent="window/container" index="4"]
+[node name="lower" type="Control" parent="window/container" index="4"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -503,6 +503,23 @@ margin_right = 567.0
 margin_bottom = 185.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Transform" ]
+
+[node name="panel" type="TextureRect" parent="window/container/lower" index="0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -568.0
+margin_top = -325.0
+margin_right = 567.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -511,7 +528,7 @@ texture = ExtResource( 29 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect", "Transform" ]
 
-[node name="prev" type="TextureButton" parent="window/container/lower" index="0" groups=[
+[node name="prev" type="TextureButton" parent="window/container/lower" index="1" groups=[
 "resizable",
 ]]
 anchor_left = 0.0
@@ -519,9 +536,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 148.0
-margin_top = -30.0
+margin_top = -11.0
 margin_right = 291.0
-margin_bottom = 112.0
+margin_bottom = 131.0
 rect_pivot_offset = Vector2( 71, 142 )
 rect_clip_content = false
 focus_mode = 2
@@ -538,7 +555,7 @@ texture_pressed = ExtResource( 31 )
 texture_disabled = ExtResource( 32 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="go_back" type="TextureButton" parent="window/container/lower" index="1" groups=[
+[node name="go_back" type="TextureButton" parent="window/container/lower" index="2" groups=[
 "resizable",
 ]]
 anchor_left = 0.0
@@ -549,7 +566,7 @@ margin_left = 439.0
 margin_top = -39.0
 margin_right = 698.0
 margin_bottom = 84.0
-rect_pivot_offset = Vector2( 129, 151 )
+rect_pivot_offset = Vector2( 129, 123 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -575,7 +592,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -585,7 +602,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 8 )
+script = SubResource( 7 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="bright" type="Sprite" parent="window/container/lower/go_back" index="1"]
@@ -595,7 +612,7 @@ texture = ExtResource( 36 )
 centered = false
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="next" type="TextureButton" parent="window/container/lower" index="2" groups=[
+[node name="next" type="TextureButton" parent="window/container/lower" index="3" groups=[
 "resizable",
 ]]
 editor/display_folded = true
@@ -604,9 +621,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 846.0
-margin_top = -30.0
+margin_top = -11.0
 margin_right = 988.0
-margin_bottom = 112.0
+margin_bottom = 131.0
 rect_pivot_offset = Vector2( 71, 142 )
 rect_clip_content = false
 focus_mode = 2
@@ -636,9 +653,9 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close_container = SubResource( 9 )
-anims/finished = SubResource( 10 )
-anims/go_back = SubResource( 11 )
+anims/close_container = SubResource( 8 )
+anims/finished = SubResource( 9 )
+anims/go_back = SubResource( 10 )
 blend_times = [  ]
 
 [node name="label" type="Label" parent="window/container" index="6"]
@@ -652,7 +669,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 11 )
 align = 1
 autowrap = true
 clip_text = true
