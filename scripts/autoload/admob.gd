@@ -138,7 +138,9 @@ func _on_rewarded(currency, amount):
 # resize
 func on_resize():
 	if admob_module != null:
+		$"/root/stage/rotator".rescale4rotation()
 		admob_module.resize()
+		print("RESIZE")
 
 
 func getHeight():

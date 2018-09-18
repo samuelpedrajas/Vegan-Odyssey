@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="loading_screen" type="Control" index="0"]
+[node name="loading_screen" type="Control"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -33,7 +33,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="bg" type="TextureRect" parent="." index="0"]
+[node name="bg" type="TextureRect" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -49,7 +49,7 @@ expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Anchor", "Animation", "Offset", "Rect" ]
 
-[node name="progress_bar" type="TextureProgress" parent="." index="1"]
+[node name="progress_bar" type="TextureProgress" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -84,10 +84,11 @@ radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
 _sections_unfolded = [ "Radial Fill", "Rect", "Textures", "Tint" ]
 
-[node name="snail" type="AnimatedSprite" parent="progress_bar" index="0"]
+[node name="snail" type="AnimatedSprite" parent="progress_bar"]
 position = Vector2( 100, 81 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform" ]
 
