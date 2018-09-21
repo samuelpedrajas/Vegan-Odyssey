@@ -45,9 +45,7 @@ func open(name, params=null):
 		popup.open()
 
 		# multiscreen
-		var s = $"/root/stage".s
-		if s > 0.0:
-			popup.rescale(s)
+		popup.rescale(game.resizer.s)
 
 		yield(popup.animation, "animation_finished")
 		if not popup.keep_input_disabled:

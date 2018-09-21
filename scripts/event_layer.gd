@@ -16,8 +16,7 @@ onready var event_scene_dict = {
 func start(event_name, params=null):
 	if not event_name in current_events:
 		var event = event_scene_dict[event_name].instance()
-		if $"/root/stage".s > 0.0:
-			event.rescale($"/root/stage".s)
+		event.rescale(game.resizer.s)
 		var canvas_layer = CanvasLayer.new()
 		canvas_layer.set_layer(event.priority)
 		canvas_layer.add_child(event)

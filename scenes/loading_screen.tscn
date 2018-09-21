@@ -88,7 +88,7 @@ _sections_unfolded = [ "Radial Fill", "Rect", "Textures", "Tint" ]
 position = Vector2( 100, 81 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform" ]
 

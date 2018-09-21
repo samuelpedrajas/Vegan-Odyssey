@@ -27,8 +27,7 @@ func setup(list_entry):
 	dest = Vector2(540, position.y)
 	starting_position = position
 	w_width = get_viewport().get_visible_rect().size.x
-	if $"/root/stage".s > 0.0:
-		w_width += (1.0 - $"/root/stage".s) * w_width
+	w_width += (1.0 - game.resizer.s) * w_width
 
 	for i in range(-1, 2):
 		var popup = subpopup.instance()

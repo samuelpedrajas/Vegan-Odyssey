@@ -46,13 +46,11 @@ func _ready():
 	)
 	msgs_pos_y = $"window/container/msgs".get_position().y
 
-	var f = $"/root/stage".s
-	if f > 0.0:
-		var btn_size = $"/root/stage/hud_layer/hud/lower_buttons/menu".get_size()
-		var panel = $"window/container/lower/panel"
-		panel.set_position(
-			panel.get_position() + Vector2(0, (1.0 - f) * btn_size.y / 2.0)
-		)
+	var btn_size = $"/root/stage/hud_layer/hud/lower_buttons/menu".get_size()
+	var panel = $"window/container/lower/panel"
+	panel.set_position(
+		panel.get_position() + Vector2(0, (1.0 - game.resizer.s) * btn_size.y / 2.0)
+	)
 
 
 func setup(entry):

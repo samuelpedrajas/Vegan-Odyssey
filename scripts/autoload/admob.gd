@@ -21,8 +21,6 @@ var adRewarded3 = {
 
 var loadedReward = null  # needed for debugging
 
-var banner_height = -1
-
 
 signal banner_loaded
 signal banner_network_error
@@ -68,7 +66,10 @@ func get_rewarded_ad_info():
 func loadBanner():
 	if admob_module != null:
 		admob_module.loadBanner(adBannerId, isTop)
-		admob_module.hideBanner()
+		if game.seen_intro:
+			admob_module.showBanner()
+		else:
+			admob_module.hideBanner()
 
 
 func loadRewardedVideo(ad_to_show):
@@ -90,6 +91,10 @@ func showRewardedVideo():
 func _on_admob_ad_loaded():
 	print("Ad loaded success")
 	is_banner_loaded = true
+	if game.seen_intro:
+		admob_module.showBanner()
+	else:
+		admob_module.hideBanner()
 	emit_signal("banner_loaded")
 
 
@@ -138,20 +143,24 @@ func _on_rewarded(currency, amount):
 # resize
 func on_resize():
 	if admob_module != null:
-		$"/root/stage/rotator".rescale4rotation()
 		admob_module.resize()
+		if game.resizer != null:
+			game.resizer.rescale_all()
 		print("RESIZE")
 
 
 func getHeight():
-	if banner_height <= 0:
-		if admob_module != null:
-			var screen_height = get_viewport().get_visible_rect().size.y
-			banner_height = admob_module.getBannerHeight(int(screen_height))
+	var banner_height = 160.0
+	if admob_module != null:
+		var screen_size = get_viewport().get_visible_rect().size
+		var screen_diagonal = sqrt(pow(screen_size.x, 2) + pow(screen_size.y, 2))
 
-		# if still 0 or less (probably not needed)
-		if banner_height <= 0:
-			banner_height = 160.0
+		banner_height = admob_module.getBannerHeight()
+		banner_height = banner_height / game.resizer.device_diagonal * screen_diagonal
+
+	# if still 0 or less (probably not needed)
+	if banner_height <= 0:
+		banner_height = 160.0
 	print("Banner height ", str(banner_height))
 
 	return banner_height

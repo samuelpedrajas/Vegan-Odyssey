@@ -105,7 +105,3 @@ func set_broccoli_amount(n):
 	else:
 		broccoli_button.set_disabled(false)
 		label.modulate.a = 1.0
-
-
-func move_up():
-	$hud.move_up()

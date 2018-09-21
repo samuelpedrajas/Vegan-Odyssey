@@ -22,6 +22,7 @@ var effects_layer
 var debate_layer
 var settings
 var dying_tokens
+var resizer
 
 var duck_counter = 1
 var revived = false
@@ -73,6 +74,7 @@ func setup():
 	effects_layer = $"/root/stage/effects_layer"
 	dying_tokens = $"/root/stage/dying_tokens"
 	debate_layer = $"/root/stage/debate_layer"
+	resizer = $"/root/stage/resizer"
 
 
 func recalculate_max():
