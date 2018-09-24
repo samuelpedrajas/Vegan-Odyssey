@@ -28,5 +28,6 @@ const TRANSLATIONS = {
 
 const MUSIC_VOLUME = -7
 
-const LOW_BTN_MARGIN = 10
-const HIGH_BTN_MARGIN = 30
+const LOW_BTN_MARGIN = 15
+const HIGH_BTN_MARGIN = 15
+const BOARD_POSITION = 0.5

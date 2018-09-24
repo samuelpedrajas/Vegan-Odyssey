@@ -74,8 +74,9 @@ func _on_admob_timeout():
 
 func rescale(s):
 	var h = admob.getHeight()
-	var screen_h = get_viewport().get_visible_rect().size.y
+	var screen_size = get_viewport().get_visible_rect().size
 
+	# rescale buttons
 	var controls = [
 		$\"hud_layer/hud/lower_buttons/menu\",
 		$\"hud_layer/hud/lower_buttons/reset\",
@@ -84,23 +85,67 @@ func rescale(s):
 	]
 
 	for c in controls:
-		c.set_scale(Vector2(game.resizer.s, game.resizer.s))
+		c.set_scale(Vector2(s, s))
 		c.set_position(
 			Vector2(
 				c.get_position().x,
-				(screen_h - h) - (cfg.LOW_BTN_MARGIN + c.get_size().y)
+				(screen_size.y - h) - (cfg.LOW_BTN_MARGIN + c.get_size().y)
 			)
 		)
 
+	# reposition bottom_border
 	var bottom_border = $\"hud_layer/hud/bottom_border\"
 	var upper_part = 52.0
-	var half_btn_y = controls[0].get_size().y * game.resizer.s / 2.0
+	var half_btn_y = controls[0].get_size().y * s / 2.0
 	bottom_border.set_position(
 		Vector2(
 			bottom_border.get_position().x,
-			(screen_h - h) - cfg.LOW_BTN_MARGIN - upper_part - half_btn_y
+			(screen_size.y - h) - cfg.LOW_BTN_MARGIN - upper_part - half_btn_y
 		)
 	)
+
+	# reposition and rescale board parts
+	var board = $board_layer/board
+	var board_size = board.get_size()
+	var ideal_position = Vector2(
+		screen_size.x * 0.5,
+		screen_size.y * cfg.BOARD_POSITION
+	)
+	var real_position = ideal_position
+	var red_line = screen_size.y - h - cfg.LOW_BTN_MARGIN - controls[0].get_size().y * s - cfg.HIGH_BTN_MARGIN
+
+	# adjust
+	var over_buttons = ideal_position.y + board_size.y * s / 2.0 > red_line
+	var over_top = ideal_position.y - (board_size.y / 2.0 + $dialog_layer/text.get_size().y) * s < 0.0
+	if over_buttons or over_top:
+		real_position.y = red_line - board_size.y * s / 2.0
+
+	# move and scale board
+	var board_scaled_y = board_size.y * s
+	board.rescale(s)
+	board.set_position(real_position - Vector2(board_size.x / 2.0, board_scaled_y / 2.0))
+
+	# move and scale dying tokens
+	var dying_tokens = $dying_tokens/tokens
+	var dying_tokens_size = dying_tokens.get_size()
+	dying_tokens.rescale(s)
+	dying_tokens.set_position(real_position - Vector2(dying_tokens_size.x / 2.0, dying_tokens_size.y * s / 2.0))
+
+	# move and scale text and girls
+	var board_parts = [
+		$dialog_layer/text,
+		$debate_layer/girls
+	]
+
+	for c in board_parts:
+		c.rescale(s)
+		c.set_position(Vector2(
+			real_position.x - c.get_size().x / 2.0,
+			real_position.y - board_scaled_y / 2.0 - c.get_size().y
+		))
+
+	# move and scale effects
+	$effects_layer/rewarded_animation/c.rescale(s)
 "
 
 [sub_resource type="GDScript" id=2]
@@ -860,9 +905,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="text" type="Control" parent="dialog_layer" groups=[
-"resizable",
-]]
+[node name="text" type="Control" parent="dialog_layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -871,7 +914,7 @@ margin_left = -540.0
 margin_top = -960.0
 margin_right = 540.0
 margin_bottom = -526.0
-rect_pivot_offset = Vector2( 540, 770.5 )
+rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -1278,9 +1321,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 33 )
 
-[node name="board" type="TextureRect" parent="board_layer" groups=[
-"resizable",
-]]
+[node name="board" type="TextureRect" parent="board_layer"]
 editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1290,7 +1331,7 @@ margin_left = -539.0
 margin_top = -526.0
 margin_right = 539.0
 margin_bottom = 581.0
-rect_pivot_offset = Vector2( 539, 336.5 )
+rect_pivot_offset = Vector2( 539, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1364,9 +1405,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 37 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="girls" type="Container" parent="debate_layer" groups=[
-"resizable",
-]]
+[node name="girls" type="Container" parent="debate_layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1375,7 +1414,7 @@ margin_left = -540.0
 margin_top = -960.0
 margin_right = 540.0
 margin_bottom = -526.0
-rect_pivot_offset = Vector2( 540, 770.5 )
+rect_pivot_offset = Vector2( 540, 434 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1414,9 +1453,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="tokens" type="Control" parent="dying_tokens" groups=[
-"resizable",
-]]
+[node name="tokens" type="Control" parent="dying_tokens"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1425,7 +1462,7 @@ margin_left = -340.0
 margin_top = -331.0
 margin_right = 337.0
 margin_bottom = 364.0
-rect_pivot_offset = Vector2( 338, 141.5 )
+rect_pivot_offset = Vector2( 338, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -1463,9 +1500,7 @@ wait_time = 0.3
 one_shot = true
 autostart = false
 
-[node name="c" type="Control" parent="effects_layer/rewarded_animation" groups=[
-"resizable",
-]]
+[node name="c" type="Control" parent="effects_layer/rewarded_animation"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
