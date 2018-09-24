@@ -117,8 +117,10 @@ func rescale(s):
 	# adjust
 	var over_buttons = ideal_position.y + board_size.y * s / 2.0 > red_line
 	var over_top = ideal_position.y - (board_size.y / 2.0 + $dialog_layer/text.get_size().y) * s < 0.0
-	if over_buttons or over_top:
+	if over_buttons:
 		real_position.y = red_line - board_size.y * s / 2.0
+	elif over_top:
+		real_position.y = s * ($dialog_layer/text.get_size().y + board_size.y / 2.0)
 
 	# move and scale board
 	var board_scaled_y = board_size.y * s
