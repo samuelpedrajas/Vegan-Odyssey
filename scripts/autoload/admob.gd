@@ -149,6 +149,8 @@ func on_resize():
 		print("RESIZE")
 
 
+var last_height = 160
+
 func getHeight():
 	var banner_height = 160.0
 	if admob_module != null:
@@ -162,5 +164,7 @@ func getHeight():
 	if banner_height <= 0:
 		banner_height = 160.0
 	print("Banner height ", str(banner_height))
+
+	last_height = banner_height
 
 	return banner_height

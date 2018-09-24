@@ -148,6 +148,12 @@ func rescale(s):
 
 	# move and scale effects
 	$effects_layer/rewarded_animation/c.rescale(s)
+
+
+func _on_check_rescale_timeout():
+	var last_height = admob.last_height
+	if admob.getHeight() != last_height:
+		game.resizer.rescale_all()
 "
 
 [sub_resource type="GDScript" id=2]
@@ -1700,6 +1706,12 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="check_rescale" type="Timer" parent="."]
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 [connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
 [connection signal="pressed" from="dialog_layer/text/dialog/message1/debate_btn" to="debate_layer" method="_on_debate_btn_pressed"]
@@ -1711,3 +1723,4 @@ autostart = false
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/black_bg" to="hud_layer/hud/lower_buttons/black_bg" method="_on_black_bg_pressed"]
 [connection signal="user_input" from="board_layer/board/input_handler" to="board_layer" method="move_tokens"]
 [connection signal="timeout" from="admob" to="." method="_on_admob_timeout"]
+[connection signal="timeout" from="check_rescale" to="." method="_on_check_rescale_timeout"]

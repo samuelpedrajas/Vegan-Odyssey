@@ -36,9 +36,9 @@ onready var broccoli_btn = $"/root/stage/hud_layer/hud/lower_buttons/broccoli"
 
 func _process(delta):
 	if acc_time == 0.0:
-		init_s = broccoli_btn.get_scale()
+		init_s = Vector2(game.resizer.s, game.resizer.s)
 	elif acc_time >= anim_time:
-		broccoli_btn.set_scale(init_s)
+		broccoli_btn.set_scale(Vector2(game.resizer.s, game.resizer.s))
 		acc_time = 0.0
 		set_process(false)
 	elif acc_time < anim_time / 2.0:
