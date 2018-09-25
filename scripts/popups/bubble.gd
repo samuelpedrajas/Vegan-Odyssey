@@ -136,12 +136,7 @@ func setup(screen, _prev_bubble, line):
 	set_size(Vector2(get_size().x, height))
 
 	var _x_threshold = x_threshold
-	var dest_distance =  Vector2(0, get_size().y + threshold)
-	# adjust threshold
-	var f = game.resizer.s
-	var f2 = (1.0 - f)
-	_x_threshold = x_threshold + x_threshold * f2
-	dest_distance *= f
+	var dest_distance =  Vector2(0, get_size().y + threshold) * game.resizer.s
 
 	# move msgs up
 	container_start = get_parent().get_position()

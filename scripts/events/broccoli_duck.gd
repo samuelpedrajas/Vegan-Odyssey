@@ -75,8 +75,7 @@ func _on_animation_animation_finished(anim_name):
 
 
 func rescale(s):
-	var duck_h = 217
-	$c/broccoli_duck.set_scale(Vector2(s, s))
-	$c/broccoli_duck.set_offset(
-		Vector2(0, (1 - s) * duck_h / 2.0)
+	set_scale(Vector2(s, s))
+	set_position(
+		Vector2(get_position().x, $"/root/stage/hud_layer/hud/bottom_border".get_position().y + 52.0)
 	)

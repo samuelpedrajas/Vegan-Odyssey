@@ -31,24 +31,36 @@ var msgs_pos_y
 
 
 func _ready():
-	reposition()
 	msgs_pos_y = $"window/container/msgs".get_position().y
+	reposition(game.resizer.s)
 
 
-func reposition():
+var girls_h = 550
+var n_h = 176
+var msgs_h = 534
+
+
+func reposition(s):
 	var main_lower_pos = $"/root/stage/hud_layer/hud/bottom_border".get_position()
-	var h = $"window/container/lower".get_position().y - main_lower_pos.y
 	$"window/container/lower".set_position(
 		 main_lower_pos
 	)
-	$"window/container/n".set_position(
-		$"window/container/n".get_position() - Vector2(0, h)
+	var n = $"window/container/n"
+	n.set_position(
+		Vector2(n.get_position().x, main_lower_pos.y - n_h)
 	)
-	$"window/container/girls".set_position(
-		$"window/container/girls".get_position() - Vector2(0, h)
+	var girls = $"window/container/girls"
+	girls.set_position(
+		Vector2(girls.get_position().x, main_lower_pos.y - girls_h)
 	)
-	$"window/container/msgs".set_position(
-		$"window/container/msgs".get_position() - Vector2(0, h)
+	var msgs = $"window/container/msgs"
+	msgs_pos_y = main_lower_pos.y - msgs_h * s
+	var y_movement = 0
+	if current_bubble != null:
+		y_movement = s * (current_bubble.get_position().y + current_bubble.get_size().y + current_bubble.threshold)
+
+	msgs.set_position(
+		Vector2(msgs.get_position().x, msgs_pos_y - y_movement)
 	)
 	$"window/container/lower/go_back".set_right_pos()
 
@@ -243,4 +255,4 @@ func rescale(s):
 	$"window/container/lower/prev".set_scale(s2)
 	$"window/container/lower/go_back".set_scale(s2)
 	$"window/container/lower/next".set_scale(s2)
-	reposition()
+	reposition(s)

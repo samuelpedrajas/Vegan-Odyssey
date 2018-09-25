@@ -31,22 +31,21 @@ func play_rewarded_effect(n):
 
 var anim_time = 0.2
 var acc_time = 0.0
-var init_s = 1.0
 onready var broccoli_btn = $"/root/stage/hud_layer/hud/lower_buttons/broccoli"
 
 func _process(delta):
-	if acc_time == 0.0:
-		init_s = Vector2(game.resizer.s, game.resizer.s)
-	elif acc_time >= anim_time:
+	if acc_time >= anim_time:
 		broccoli_btn.set_scale(Vector2(game.resizer.s, game.resizer.s))
 		acc_time = 0.0
 		set_process(false)
 	elif acc_time < anim_time / 2.0:
+		var s2 = Vector2(game.resizer.s, game.resizer.s)
 		broccoli_btn.set_scale(
-			init_s + init_s * 0.1 * (acc_time / (anim_time / 2.0))
+			s2 + s2 * 0.1 * (acc_time / (anim_time / 2.0))
 		)
 	else:
+		var s2 = Vector2(game.resizer.s, game.resizer.s)
 		broccoli_btn.set_scale(
-			init_s * 1.1 - init_s * 0.1 * ((acc_time - anim_time / 2.0) / (anim_time / 2.0))
+			s2 * 1.1 - s2 * 0.1 * ((acc_time - anim_time / 2.0) / (anim_time / 2.0))
 		)
 	acc_time += delta

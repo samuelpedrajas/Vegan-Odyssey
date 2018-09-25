@@ -163,7 +163,6 @@ func getHeight():
 	# if still 0 or less (probably not needed)
 	if banner_height <= 0:
 		banner_height = 160.0
-	print("Banner height ", str(banner_height))
 
 	last_height = banner_height
 
