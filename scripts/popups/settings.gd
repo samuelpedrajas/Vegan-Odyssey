@@ -47,11 +47,6 @@ func _on_exit_button_pressed():
 	game.popup_layer.open("exit_confirmation")
 
 
-func _on_close_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
-
-
 func _on_reset_progress_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.open("reset_progress_confirmation")
@@ -74,5 +69,11 @@ func _on_es_pressed():
 func rescale(s):
 	var s2 = Vector2(s, s)
 	$window.set_scale(s2)
-	$c/close_button.set_scale(s2)
+	$go_back.set_scale(s2)
+	$go_back.set_right_pos()
 	$loading_language/text.set_scale(s2)
+
+
+func _on_go_back_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.close()

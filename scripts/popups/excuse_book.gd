@@ -20,11 +20,12 @@ func close():
 	.close()
 
 
-func _on_close_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.close()
-
-
 func rescale(s):
 	$window.set_scale(Vector2(s, s))
-	$c/close_button.set_scale(Vector2(s, s))
+	$go_back.set_scale(Vector2(s, s))
+	$go_back.set_right_pos()
+
+
+func _on_go_back_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.close()

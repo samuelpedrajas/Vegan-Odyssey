@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/settings.gd" type="Script" id=2]
@@ -14,9 +14,8 @@
 [ext_resource path="res://images/popups/reset_progress_button_pressed.png" type="Texture" id=12]
 [ext_resource path="res://images/popups/exit_button.png" type="Texture" id=13]
 [ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=14]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=15]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=16]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=17]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=15]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 
@@ -25,8 +24,8 @@ length = 0.12
 loop = false
 step = 0.12
 tracks/0/type = "value"
-tracks/0/path = NodePath("c/close_button:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,41 +35,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("window:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("go_back")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("c/close_button:margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 625.0, 1140.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("c/close_button:margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 748.0, 1263.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disappear"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -79,8 +56,8 @@ length = 0.12
 loop = false
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath("c/close_button:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,41 +67,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("window:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("go_back")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("c/close_button:margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1140.0, 625.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("c/close_button:margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1263.0, 748.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "appear"
+} ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -256,41 +211,6 @@ func update_language():
 	set_text(game.lang.EXIT_GAME_SETTINGS)
 "
 
-[sub_resource type="GDScript" id=13]
-
-script/source = "extends Control
-
-
-func _ready():
-	var h = admob.getHeight()
-	set_position(
-		get_position() - Vector2(0, h)
-	)
-"
-
-[sub_resource type="DynamicFont" id=14]
-
-size = 55
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 5 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=15]
-
-script/source = "extends Label
-
-
-func _ready():
-	update_language()
-
-
-func update_language():
-	set_text(game.lang.GO_BACK)
-"
-
 [sub_resource type="GDScript" id=16]
 
 script/source = "extends TextureRect
@@ -388,7 +308,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="settings" index="0" groups=[
+[node name="settings" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -851,74 +771,12 @@ max_lines_visible = -1
 script = SubResource( 12 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
-[node name="c" type="Control" parent="." index="3"]
+[node name="go_back" parent="." index="3" instance=ExtResource( 15 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -540.0
-margin_top = -1764.0
-margin_right = 540.0
-margin_bottom = 156.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = SubResource( 13 )
-_sections_unfolded = [ "Mouse", "Rect" ]
-
-[node name="close_button" type="TextureButton" parent="c" index="0"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -129.0
-margin_top = 1140.0
-margin_right = 130.0
-margin_bottom = 1263.0
-rect_pivot_offset = Vector2( 129, 123 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-_sections_unfolded = [ "Margin", "Rect", "Textures", "Visibility" ]
-
-[node name="text" type="Label" parent="c/close_button" index="0" groups=[
-"translatable",
-]]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "Go Back"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 15 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="loading_language" type="TextureRect" parent="." index="4"]
 visible = false
@@ -933,7 +791,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 7
 script = SubResource( 16 )
@@ -985,4 +843,4 @@ blend_times = [  ]
 [connection signal="pressed" from="window/lang/flags/es" to="." method="_on_es_pressed"]
 [connection signal="pressed" from="window/reset_progress" to="." method="_on_reset_progress_pressed"]
 [connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="c/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]

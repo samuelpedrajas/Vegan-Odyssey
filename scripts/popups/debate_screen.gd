@@ -31,9 +31,15 @@ var msgs_pos_y
 
 
 func _ready():
-	var h = admob.getHeight()
+	reposition()
+	msgs_pos_y = $"window/container/msgs".get_position().y
+
+
+func reposition():
+	var main_lower_pos = $"/root/stage/hud_layer/hud/bottom_border".get_position()
+	var h = $"window/container/lower".get_position().y - main_lower_pos.y
 	$"window/container/lower".set_position(
-		$"window/container/lower".get_position() - Vector2(0, h)
+		 main_lower_pos
 	)
 	$"window/container/n".set_position(
 		$"window/container/n".get_position() - Vector2(0, h)
@@ -44,13 +50,7 @@ func _ready():
 	$"window/container/msgs".set_position(
 		$"window/container/msgs".get_position() - Vector2(0, h)
 	)
-	msgs_pos_y = $"window/container/msgs".get_position().y
-
-	var btn_size = $"/root/stage/hud_layer/hud/lower_buttons/menu".get_size()
-	var panel = $"window/container/lower/panel"
-	panel.set_position(
-		panel.get_position() + Vector2(0, (1.0 - game.resizer.s) * btn_size.y / 2.0)
-	)
+	$"window/container/lower/go_back".set_right_pos()
 
 
 func setup(entry):
@@ -243,3 +243,4 @@ func rescale(s):
 	$"window/container/lower/prev".set_scale(s2)
 	$"window/container/lower/go_back".set_scale(s2)
 	$"window/container/lower/next".set_scale(s2)
+	reposition()

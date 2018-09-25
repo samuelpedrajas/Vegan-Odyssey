@@ -33,6 +33,14 @@ game="*res://scripts/autoload/game.gd"
 game_loader="*res://scripts/autoload/game_loader.gd"
 cfg="*res://scripts/autoload/cfg.gd"
 
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unreachable_code=false
+gdscript/warnings/standalone_expression=false
+
 [display]
 
 window/size/width=1080

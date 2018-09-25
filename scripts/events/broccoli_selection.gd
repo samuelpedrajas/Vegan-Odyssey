@@ -57,7 +57,7 @@ func stop():
 		var duck = game.event_layer.current_events["broccoli_duck"]
 		duck.unset_gray()
 
-	animation.play_backwards("open")
+	animation.play("close")
 	black_anim.play_backwards("open")
 	yield(black_anim, "animation_finished")
 	$"/root/stage".remove_child(black_bg)
@@ -133,4 +133,5 @@ func _on_black_pressed():
 
 
 func rescale(s):
-	$c/go_back.set_scale(Vector2(s, s))
+	$go_back.set_scale(Vector2(s, s))
+	$go_back.set_right_pos()

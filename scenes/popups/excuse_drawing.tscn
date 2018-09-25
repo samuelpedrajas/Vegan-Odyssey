@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_drawing.gd" type="Script" id=2]
 [ext_resource path="res://scripts/popups/h_list.gd" type="Script" id=3]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=4]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=5]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -40,38 +38,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends TextureButton
-
-
-func _ready():
-	var h = admob.getHeight()
-	set_position(
-		get_position() - Vector2(0, h)
-	)
-"
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 55
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 6 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=4]
-
-script/source = "extends Label
-
-
-func _ready():
-	set_text(game.lang.GO_BACK)
-"
-
-[node name="excuse_drawing" index="0" groups=[
+[node name="excuse_drawing" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -97,53 +64,12 @@ position = Vector2( 540, 187 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="exit" type="TextureButton" parent="." index="3"]
+[node name="go_back" parent="." index="3" instance=ExtResource( 4 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -129.0
-margin_top = -179.0
-margin_right = 130.0
-margin_bottom = -56.0
-rect_pivot_offset = Vector2( 129, 123 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-script = SubResource( 2 )
-_sections_unfolded = [ "Rect", "Textures" ]
+margin_right = 0.0
+margin_bottom = 0.0
+initially_visible = true
 
-[node name="text" type="Label" parent="exit" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "Go Back"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 4 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
-
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]

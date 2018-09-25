@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/excuse_book.gd" type="Script" id=2]
@@ -11,8 +11,7 @@
 [ext_resource path="res://images/popups/short_arrow.png" type="Texture" id=9]
 [ext_resource path="res://fonts/chawp.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://images/popups/long_arrow.png" type="Texture" id=11]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=12]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=13]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -21,8 +20,8 @@ length = 0.12
 loop = false
 step = 0.12
 tracks/0/type = "value"
-tracks/0/path = NodePath("c/close_button:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,41 +31,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("window:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("go_back")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("c/close_button:margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 625.0, 1140.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("c/close_button:margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 748.0, 1263.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disappear"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -76,8 +53,8 @@ length = 0.12
 loop = false
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath("c/close_button:modulate")
-tracks/0/interp = 2
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -87,41 +64,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("window:modulate")
+tracks/1/type = "method"
+tracks/1/path = NodePath("go_back")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("c/close_button:margin_bottom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1263.0, -55.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("c/close_button:margin_top")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1140.0, 625.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "appear"
+} ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -226,38 +181,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=10]
-
-script/source = "extends Control
-
-
-func _ready():
-	var h = admob.getHeight()
-	set_position(
-		get_position() - Vector2(0, h)
-	)
-"
-
-[sub_resource type="DynamicFont" id=11]
-
-size = 55
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 8 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=12]
-
-script/source = "extends Label
-
-
-func _ready():
-	set_text(game.lang.GO_BACK)
-"
-
-[node name="excuse_book" index="0" groups=[
+[node name="excuse_book" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -579,73 +503,13 @@ playback_speed = 1.0
 anims/glow = SubResource( 9 )
 blend_times = [  ]
 
-[node name="c" type="Control" parent="." index="3"]
+[node name="go_back" parent="." index="3" instance=ExtResource( 12 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -540.0
-margin_top = -1764.0
-margin_right = 540.0
-margin_bottom = 156.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = SubResource( 10 )
-_sections_unfolded = [ "Mouse", "Rect" ]
-
-[node name="close_button" type="TextureButton" parent="c" index="0"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -129.5
-margin_top = 1140.0
-margin_right = 129.5
-margin_bottom = 1263.0
-rect_pivot_offset = Vector2( 129, 123 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Textures", "Visibility" ]
-
-[node name="text" type="Label" parent="c/close_button" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "Go Back"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 12 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
+margin_right = 0.0
+margin_bottom = 0.0
 
 [connection signal="meme_clicked" from="window/scroll_container" to="window/tutorial" method="_on_scroll_container_meme_clicked"]
 [connection signal="refutation_clicked" from="window/scroll_container" to="window/tutorial" method="_on_scroll_container_refutation_clicked"]
-[connection signal="pressed" from="c/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
