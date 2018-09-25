@@ -19,13 +19,9 @@ func _on_ok_button_pressed():
 
 func _on_cancel_button_pressed():
 	if cfg.DEV_MODE:
-		var t1 = game.board_layer.spawn_token(null, 8, true)
-		var t2 = game.board_layer.spawn_token(null, 8, true)
-		for t in [t1, t2]:
-			if t != null:
-				t.animation.play("spawn")
-		game.broccolis += 10
-		game.event_layer.start("broccoli_duck")
+		var amount = 3
+		game.secretly_set_broccolis(game.broccolis + amount)
+		game.effects_layer.play_rewarded_effect(amount)
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
 
