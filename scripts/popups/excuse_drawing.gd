@@ -17,7 +17,7 @@ func _ready():
 
 
 func setup(list_entry):
-	$"window/h_list".setup(list_entry)
+	_list_entry = list_entry
 
 
 func open():
@@ -30,10 +30,20 @@ func close():
 	.close()
 
 
+var _list_entry = null
+
+
 func rescale(s):
 	$window.set_scale(Vector2(s, s))
 	$go_back.set_scale(Vector2(s, s))
 	$go_back.set_right_pos()
+	var h_list = $window/h_list
+	if h_list.actual_excuse == null:
+		h_list.setup(_list_entry)
+	else:
+		var current_entry = h_list.get_current_entry()
+		game.popup_layer.close()
+		game.popup_layer.open("excuse_drawing", current_entry)
 
 
 func _on_go_back_pressed():

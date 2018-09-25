@@ -51,6 +51,10 @@ func update_entry(n):
 		game.save_game()
 
 
+func get_current_entry():
+	return vbox.get_node(str(actual_excuse))
+
+
 func show_all():
 	for popup in popups.values():
 		popup.show()
