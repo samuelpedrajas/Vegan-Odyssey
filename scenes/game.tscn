@@ -219,7 +219,7 @@ func _ready():
 
 	if Engine.has_singleton(\"MobileTools\"):
 		mobile_tools = Engine.get_singleton(\"MobileTools\")
-		if OS.get_name() == \"iOS\" or cfg.DEV_MODE:
+		if OS.get_name() == \"iOS\":
 			var diagonal_inches = mobile_tools.getDiagonalInches()
 			var rounded_inches = int(round(diagonal_inches))
 			if rounded_inches >= 9:
