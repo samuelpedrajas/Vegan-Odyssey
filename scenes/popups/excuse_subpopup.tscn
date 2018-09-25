@@ -24,21 +24,21 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="excuse_subpopup" type="Node2D" index="0"]
+[node name="excuse_subpopup" type="Node2D"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="background" type="Sprite" parent="." index="0"]
+[node name="background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="non_clickable_space" type="Control" parent="." index="1"]
+[node name="non_clickable_space" type="Control" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -610.0
+margin_left = -532.0
 margin_top = -650.0
-margin_right = 610.0
+margin_right = 532.0
 margin_bottom = 650.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -48,11 +48,11 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="excuse_image" type="Sprite" parent="." index="2"]
+[node name="excuse_image" type="Sprite" parent="."]
 position = Vector2( 0, -102.556 )
 texture = ExtResource( 3 )
 
-[node name="number" type="Label" parent="excuse_image" index="0"]
+[node name="number" type="Label" parent="excuse_image"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -79,14 +79,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="circle" type="Sprite" parent="excuse_image/number" index="0"]
+[node name="circle" type="Sprite" parent="excuse_image/number"]
 show_behind_parent = true
 position = Vector2( 8, 7.556 )
 texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="share" type="TouchScreenButton" parent="." index="3"]
+[node name="share" type="TouchScreenButton" parent="."]
 position = Vector2( -76, 399 )
 normal = ExtResource( 6 )
 pressed = ExtResource( 7 )
@@ -99,7 +99,7 @@ action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Rect", "Textures", "Transform" ]
 
-[node name="left" type="Container" parent="." index="4"]
+[node name="left" type="Container" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -113,7 +113,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="left" type="TouchScreenButton" parent="left" index="0"]
+[node name="left" type="TouchScreenButton" parent="left"]
 position = Vector2( -247, 408 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 9 )
@@ -126,14 +126,14 @@ action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Rect", "Textures", "Transform" ]
 
-[node name="left_blocked" type="Sprite" parent="left" index="1"]
+[node name="left_blocked" type="Sprite" parent="left"]
 visible = false
 position = Vector2( -247, 408 )
 texture = ExtResource( 10 )
 centered = false
 _sections_unfolded = [ "Offset", "Rect", "Textures", "Transform" ]
 
-[node name="right" type="Container" parent="." index="5"]
+[node name="right" type="Container" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -147,7 +147,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="right" type="TouchScreenButton" parent="right" index="0"]
+[node name="right" type="TouchScreenButton" parent="right"]
 position = Vector2( 115, 408 )
 normal = ExtResource( 11 )
 pressed = ExtResource( 12 )
@@ -160,21 +160,21 @@ action = ""
 visibility_mode = 0
 _sections_unfolded = [ "Rect", "Textures", "Transform", "Visibility" ]
 
-[node name="right_blocked" type="Sprite" parent="right" index="1"]
+[node name="right_blocked" type="Sprite" parent="right"]
 visible = false
 position = Vector2( 115, 408 )
 texture = ExtResource( 13 )
 centered = false
 _sections_unfolded = [ "Offset", "Rect", "Textures", "Transform" ]
 
-[node name="input_area" type="Control" parent="." index="6"]
+[node name="input_area" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
+margin_left = -490.0
 margin_top = -580.0
-margin_right = 960.0
+margin_right = 490.0
 margin_bottom = 380.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
