@@ -219,18 +219,21 @@ func _ready():
 
 	if Engine.has_singleton(\"MobileTools\"):
 		mobile_tools = Engine.get_singleton(\"MobileTools\")
-		var diagonal_inches = mobile_tools.getDiagonalInches()
-		var rounded_inches = int(round(diagonal_inches))
-		if rounded_inches >= 9:
-			_f = 1.40
-		elif rounded_inches >= 7:
-			_f = 1.20
+		if OS.get_name() == \"iOS\" or cfg.DEV_MODE:
+			var diagonal_inches = mobile_tools.getDiagonalInches()
+			var rounded_inches = int(round(diagonal_inches))
+			if rounded_inches >= 9:
+				_f = 1.40
+			elif rounded_inches >= 7:
+				_f = 1.20
+			else:
+				_f = 1.00
+			print(\"Diagonal (inches): \", diagonal_inches)
 
 		device_diagonal = mobile_tools.getDiagonal()
 		dpi = mobile_tools.pixelsPerInch()
 
 		rescale_all()
-		print(\"Diagonal (inches): \", diagonal_inches)
 "
 
 [sub_resource type="GDScript" id=3]
