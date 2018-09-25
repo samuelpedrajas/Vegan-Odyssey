@@ -169,14 +169,6 @@ func start_game():
 
 
 func set_new_scene(scene_resource, translation_resource):
-	if OS.get_name() == "iOS" and OS.get_screen_orientation() == OS.SCREEN_ORIENTATION_USER:
-		var mobile_tools = Engine.get_singleton("MobileTools")
-		if mobile_tools.isIphone():
-			OS.set_screen_orientation(OS.SCREEN_ORIENTATION_PORTRAIT)
-		else:
-			OS.set_screen_orientation(OS.SCREEN_ORIENTATION_SENSOR)
-			mobile_tools.attemptRotationToDeviceOrientation()
-
 	change_language('', translation_resource)
 	# remove old scene
 	var root = get_tree().get_root()

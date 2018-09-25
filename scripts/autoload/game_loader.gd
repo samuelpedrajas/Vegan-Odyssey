@@ -68,6 +68,8 @@ func _process(time):
 		print("Error in game loader")
 
 
+var do_rotate = true
+
 func update_progress(low, high):
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
 	progress *= (high - low) + low
@@ -75,3 +77,15 @@ func update_progress(low, high):
 
 	snail.position = Vector2((550 - 100) * progress + 100, 81)
 	print(progress)
+
+	if do_rotate and progress >= 0.5:
+		if OS.get_name() == "iOS" and OS.get_screen_orientation() == OS.SCREEN_ORIENTATION_USER:
+			var mobile_tools = Engine.get_singleton("MobileTools")
+			if mobile_tools.isIphone():
+				print("It's an iPhone")
+				OS.set_screen_orientation(OS.SCREEN_ORIENTATION_PORTRAIT)
+			else:
+				print("It's an iPad")
+				OS.set_screen_orientation(OS.SCREEN_ORIENTATION_SENSOR)
+				mobile_tools.attemptRotationToDeviceOrientation()
+		do_rotate = false
