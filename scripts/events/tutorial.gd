@@ -25,6 +25,8 @@ func post(n):
 	else:
 		black_bg.show_bg(n)
 		game.seen_tutorial[n] = true
+		if n == "1":
+			$arrows.show()
 	post = post_scene.instance()
 	post.set_post(n)
 	$post.add_child(post)
@@ -46,6 +48,7 @@ func unpost():
 		post = null
 
 		black_bg.unpost(n)
+		$arrows.hide()
 
 		if check_finished():
 			$timer.start()
@@ -60,3 +63,11 @@ func stop():
 
 func rescale(s):
 	$post.set_scale(Vector2(s, s))
+	$arrows.set_scale(Vector2(s, s))
+	var board = $"/root/stage/board_layer/board"
+	$arrows.set_position(
+		Vector2(
+			get_viewport().get_visible_rect().size.x / 2.0 - $arrows.get_size().x / 2.0,
+			board.get_position().y + board.get_size().y * s / 2.0 - $arrows.get_size().y / 2.0
+		)
+	)

@@ -1,6 +1,46 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/events/tutorial.gd" type="Script" id=1]
+[ext_resource path="res://images/arrows.png" type="Texture" id=2]
+[ext_resource path="res://images/hand.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "down"
+length = 1.2
+loop = false
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 305, 24 ), Vector2( 305, 580 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "right"
+length = 1.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 299 ), Vector2( 580, 299 ) ]
+}
 
 [node name="tutorial" type="Control" groups=[
 "event",
@@ -10,7 +50,7 @@ pause_mode = 2
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -22,9 +62,9 @@ _sections_unfolded = [ "Mouse", "Pause", "Rect" ]
 
 [node name="post" type="Control" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.0
 margin_left = -540.0
 margin_right = 540.0
 rect_pivot_offset = Vector2( 540, 0 )
@@ -40,4 +80,93 @@ process_mode = 1
 wait_time = 0.2
 one_shot = true
 autostart = false
+
+[node name="arrows" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.843137 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -327.0
+margin_top = -324.5
+margin_right = 327.0
+margin_bottom = 324.5
+rect_pivot_offset = Vector2( 327, 324 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
+_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
+
+[node name="hand" type="TextureRect" parent="arrows"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = 21.0
+margin_right = 264.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
+
+[node name="anim_tree" type="AnimationTreePlayer" parent="arrows"]
+playback_process_mode = 1
+master_player = NodePath("")
+base_path = NodePath("..")
+active = true
+data = {
+"active": true,
+"connections": [ "anim", "transition", 0, "anim 2", "transition", 1, "transition", "out", 0 ],
+"master": NodePath(""),
+"nodes": [ {
+"id": "transition",
+"position": Vector2( 585, 5 ),
+"transitions": [ {
+"auto_advance": true
+}, {
+"auto_advance": true
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"animation": SubResource( 1 ),
+"filter": [  ],
+"id": "anim",
+"position": Vector2( 30, 29 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 883, 5 ),
+"type": "output"
+}, {
+"animation": SubResource( 2 ),
+"filter": [  ],
+"id": "anim 2",
+"position": Vector2( 200, 137 ),
+"type": "animation"
+} ]
+}
+_sections_unfolded = [ "Playback" ]
+
+[node name="anim" type="AnimationPlayer" parent="arrows"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/down = SubResource( 1 )
+anims/right = SubResource( 2 )
+blend_times = [  ]
 

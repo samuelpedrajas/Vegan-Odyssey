@@ -164,7 +164,7 @@ func _on_check_rescale_timeout():
 script/source = "extends Node
 
 
-var _f = 1.00
+var _f = 1.20
 var s
 var mobile_tools
 
