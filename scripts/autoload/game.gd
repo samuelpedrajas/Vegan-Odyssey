@@ -249,7 +249,7 @@ func get_translation_file_path():
 		return cfg.TRANSLATIONS[savegame_data['lang']]
 	else:
 		var locale = OS.get_locale()
-		if locale.substr(0, 2) == 'es':
+		if locale.substr(0, 2) in ['es', 'eu', 'ca', 'gl']:
 			return cfg.TRANSLATIONS['es']
 		else:
 			return cfg.TRANSLATIONS['en']
