@@ -308,7 +308,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="settings" index="0" groups=[
+[node name="settings" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
