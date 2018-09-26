@@ -160,6 +160,13 @@ func getHeight():
 		banner_height = admob_module.getBannerHeight()
 		banner_height = banner_height / game.resizer.device_diagonal * screen_diagonal
 
+		if OS.get_name() == "iOS":
+			var mobile_tools = Engine.get_singleton("MobileTools")
+			if mobile_tools.theresSafeArea():
+				var safe_margin_px = mobile_tools.getSafeMarginBottom()
+				safe_margin_px = safe_margin_px / game.resizer.device_diagonal * screen_diagonal
+				banner_height += safe_margin_px
+
 	# if still 0 or less (probably not needed)
 	if banner_height <= 0:
 		banner_height = 160.0
