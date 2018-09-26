@@ -23,6 +23,7 @@ var debate_layer
 var settings
 var dying_tokens
 var resizer
+var save_game_timer
 
 var duck_counter = 1
 var revived = false
@@ -75,6 +76,7 @@ func setup():
 	dying_tokens = $"/root/stage/dying_tokens"
 	debate_layer = $"/root/stage/debate_layer"
 	resizer = $"/root/stage/resizer"
+	save_game_timer = $"/root/stage/save_game"
 
 
 func recalculate_max():

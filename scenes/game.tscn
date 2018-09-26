@@ -60,6 +60,7 @@ func _enter_tree():
 
 
 func _ready():
+	$save_game.set_wait_time(cfg.ANIMATION_TIME + 0.2)
 	game.resizer.rescale_all()
 	game.start_game()
 
@@ -157,6 +158,27 @@ func _on_check_rescale_timeout():
 	var last_height = admob.last_height
 	if admob.getHeight() != last_height:
 		game.resizer.rescale_all()
+
+
+var max_attempts = 5
+var current_attempts = 0
+
+
+func is_moving():
+	# wait until all tokens are stopped
+	for t in game.board_layer.matrix.values():
+		if not t.is_stopped() or t.animation.is_playing():
+			return true
+	return false
+
+
+func _on_save_game_timeout():
+	current_attempts += 1
+	if current_attempts == max_attempts or not is_moving():
+		game.save_game()
+		current_attempts = 0
+	elif $save_game.is_stopped():
+		$save_game.start()
 "
 
 [sub_resource type="GDScript" id=2]
@@ -164,7 +186,7 @@ func _on_check_rescale_timeout():
 script/source = "extends Node
 
 
-var _f = 1.20
+var _f = 1.00
 var s
 var mobile_tools
 
@@ -1697,17 +1719,17 @@ wait_time = 10.0
 one_shot = false
 autostart = true
 
-[node name="timer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 1.0
-one_shot = true
-autostart = false
-
 [node name="check_rescale" type="Timer" parent="."]
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
+
+[node name="save_game" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.12
+one_shot = true
+autostart = false
 
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 [connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
@@ -1721,3 +1743,4 @@ autostart = true
 [connection signal="user_input" from="board_layer/board/input_handler" to="board_layer" method="move_tokens"]
 [connection signal="timeout" from="admob" to="." method="_on_admob_timeout"]
 [connection signal="timeout" from="check_rescale" to="." method="_on_check_rescale_timeout"]
+[connection signal="timeout" from="save_game" to="." method="_on_save_game_timeout"]

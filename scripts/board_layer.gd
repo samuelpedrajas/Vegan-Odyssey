@@ -75,7 +75,9 @@ func move_tokens(direction):
 			if t.is_moving and not is_processing():
 				t.set_process(true)
 
-	game.save_game()
+		# try to save in cfg.ANIMATION_TIME + 0.2 seconds
+		if game.save_game_timer.is_stopped():
+			game.save_game_timer.start()
 
 
 func _move_line(pos, direction):

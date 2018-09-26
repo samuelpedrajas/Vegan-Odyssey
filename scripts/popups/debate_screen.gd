@@ -105,8 +105,10 @@ func start_conversation():
 			$"window/container/lower/prev".set_disabled(false)
 		$"window/container/n".set_text(str(token_index))
 		dirty_texts = game.lang.dialog_list[token_index - 1]
-		game.seen_excuses[token_index - 1].debate_seen = true
-		game.save_game()
+
+		if not game.seen_excuses[token_index - 1].debate_seen:
+			game.seen_excuses[token_index - 1].debate_seen = true
+			game.save_game()
 
 		if current_entry != null:
 			current_entry.update_new_labels()
