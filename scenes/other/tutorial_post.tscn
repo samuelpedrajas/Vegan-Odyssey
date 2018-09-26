@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://images/tutorial_post.png" type="Texture" id=1]
 [ext_resource path="res://fonts/chawp.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://images/left_rope.png" type="Texture" id=3]
-[ext_resource path="res://images/right_rope.png" type="Texture" id=4]
+[ext_resource path="res://images/left_rope_long.png" type="Texture" id=4]
+[ext_resource path="res://images/right_rope.png" type="Texture" id=5]
+[ext_resource path="res://images/right_rope_long.png" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=1]
 
@@ -24,6 +26,10 @@ func set_post(n):
 	else:
 		get_node(\"path/path_follow/sprite/msgs/es_\" + n).hide()
 		get_node(\"path/path_follow/sprite/msgs/en_\" + n).show()
+	if OS.get_name() == \"iOS\" and Engine.has_singleton(\"MobileTools\"):
+		var mobile_tools = Engine.get_singleton(\"MobileTools\")
+		if mobile_tools.theresSafeArea():
+			set_iphone_x()
 
 
 func close():
@@ -33,7 +39,26 @@ func close():
 
 
 func update_language():
-	set_post(n_string)"
+	set_post(n_string)
+
+
+func set_iphone_x():
+	$left_rope/sprite.hide()
+	$right_rope/sprite.hide()
+	$left_rope/sprite_iphonex.show()
+	$right_rope/sprite_iphonex.show()
+	var axis_x_threshold = 4
+	var extra_y = 67
+	$path.set_position(
+		$path.get_position() + Vector2(0, extra_y)
+	)
+	$left_rope/left_axis.set_position(
+		$left_rope/left_axis.get_position() - Vector2(axis_x_threshold, extra_y)
+	)
+	$right_rope/right_axis.set_position(
+		$right_rope/right_axis.get_position() - Vector2(-axis_x_threshold, extra_y)
+	)
+"
 
 [sub_resource type="Curve2D" id=2]
 
@@ -159,6 +184,7 @@ curve = SubResource( 2 )
 _sections_unfolded = [ "Transform", "curve" ]
 
 [node name="path_follow" type="PathFollow2D" parent="path"]
+editor/display_folded = true
 position = Vector2( -4.13854, -115.943 )
 rotation = 0.796458
 offset = 35.0269
@@ -535,17 +561,30 @@ position = Vector2( 0, 37 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
+[node name="sprite_iphonex" type="Sprite" parent="left_rope"]
+visible = false
+position = Vector2( 0, 55 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+
 [node name="right_rope" type="Node2D" parent="."]
 position = Vector2( 379.466, -124.167 )
 script = SubResource( 6 )
 
 [node name="right_axis" type="Position2D" parent="right_rope"]
 position = Vector2( 0, -3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="sprite" type="Sprite" parent="right_rope"]
 position = Vector2( 0, 37 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="sprite_iphonex" type="Sprite" parent="right_rope"]
+visible = false
+position = Vector2( 0, 55 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "texture" ]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
