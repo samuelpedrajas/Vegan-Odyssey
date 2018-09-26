@@ -885,7 +885,7 @@ _sections_unfolded = [ "Pause" ]
 process_mode = 1
 wait_time = 3.0
 one_shot = false
-autostart = true
+autostart = false
 _sections_unfolded = [ "Pause" ]
 
 [node name="duck_ready" type="Timer" parent="event_layer"]

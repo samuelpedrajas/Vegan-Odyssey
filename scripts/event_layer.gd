@@ -13,6 +13,10 @@ onready var event_scene_dict = {
 }
 
 
+func _ready():
+	$broccoli_duck_timer.start()
+
+
 func start(event_name, params=null):
 	if not event_name in current_events:
 		var event = event_scene_dict[event_name].instance()
