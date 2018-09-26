@@ -230,6 +230,10 @@ func _ready():
 				_f = 1.00
 			print(\"Diagonal (inches): \", diagonal_inches)
 
+			# iphone x adjustment
+			if mobile_tools.theresSafeArea():
+				cfg.BOARD_POSITION = 0.51
+
 		device_diagonal = mobile_tools.getDiagonal()
 		dpi = mobile_tools.pixelsPerInch()
 
