@@ -1731,6 +1731,12 @@ wait_time = 0.12
 one_shot = true
 autostart = false
 
+[node name="timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="event_layer/broccoli_duck_timer" to="event_layer" method="_on_broccoli_duck_timer_timeout"]
 [connection signal="timeout" from="event_layer/duck_ready" to="event_layer" method="_on_duck_ready_timeout"]
 [connection signal="pressed" from="dialog_layer/text/dialog/message1/debate_btn" to="debate_layer" method="_on_debate_btn_pressed"]
