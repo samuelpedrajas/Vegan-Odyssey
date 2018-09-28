@@ -22,7 +22,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
 		["B", "(lau_listening)(lucy_talking)Well, we usually make analogies between humans and plants to grasp complex concepts intuitively. But, in reality, plants are totally different than us."],
-		["B", "They lack a central nervous system and pain receptors. According to Neuroscientists, pain is caused by signals from the brain. So... (lucy_happy)no brain, no pain."],
+		["B", "They lack a central nervous system and pain receptors. According to neuroscientists, pain is caused by signals from the brain. So... (lucy_happy)no brain, no pain."],
 		
 		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you’re still interested in saving plants you’ve got to go vegan!"]
 	], [
@@ -99,7 +99,7 @@ var EXCUSES = [
 		"text": "Plants have feelings",
 		"debate": {
 			"question": "But don’t plants have feelings too?",
-			"answer": "They don’t! They lack a central nervous systems and pain receptors. According to Neuroscientists, pain is caused by the brain. So... no brain, no pain.",
+			"answer": "They don’t! They lack a central nervous system and pain receptors. According to neuroscientists, pain is caused by the brain. So... no brain, no pain.",
 		}
 	},
 	{
