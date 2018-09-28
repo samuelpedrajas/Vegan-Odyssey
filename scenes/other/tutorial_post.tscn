@@ -112,7 +112,7 @@ func _physics_process(delta):
 
 [sub_resource type="DynamicFont" id=4]
 
-size = 32
+size = 34
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -121,7 +121,7 @@ extra_spacing_top = 6
 extra_spacing_bottom = 6
 extra_spacing_space = 6
 font_data = ExtResource( 2 )
-_sections_unfolded = [ "Extra Spacing", "Font" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="GDScript" id=5]
 
@@ -184,7 +184,6 @@ curve = SubResource( 2 )
 _sections_unfolded = [ "Transform", "curve" ]
 
 [node name="path_follow" type="PathFollow2D" parent="path"]
-editor/display_folded = true
 position = Vector2( -4.13854, -115.943 )
 rotation = 0.796458
 offset = 35.0269
@@ -317,8 +316,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1.0
-margin_bottom = 1.0
+margin_left = 65.0
+margin_top = -12.0
+margin_right = -65.0
+margin_bottom = 12.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -359,8 +360,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1.0
-margin_bottom = 1.0
+margin_left = 100.0
+margin_top = -31.0
+margin_right = -96.0
+margin_bottom = 31.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -401,7 +404,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -10.0
+margin_top = -7.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -418,7 +422,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "BBCode", "custom_fonts" ]
+_sections_unfolded = [ "BBCode", "custom_fonts", "custom_fonts/font" ]
 
 [node name="es_3" type="Control" parent="path/path_follow/sprite/msgs"]
 visible = false
@@ -487,6 +491,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -19.0
+margin_top = -1.0
+margin_right = 19.0
+margin_bottom = 4.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -528,8 +536,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -19.0
-margin_right = 19.0
+margin_left = -4.0
+margin_top = 6.0
+margin_right = 5.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -537,8 +546,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "EL BRÓCOLI MÁGICO TE PERMITE ELIMINAR FICHAS,
-¡SÓLO TIENES QUE PULSAR SOBRE ELLAS!"
+text = "EL BRÓCOLI MÁGICO TE PERMITE ELIMINAR FICHAS, ¡SÓLO TIENES QUE PULSAR SOBRE ELLAS!"
 align = 1
 valign = 1
 autowrap = true
