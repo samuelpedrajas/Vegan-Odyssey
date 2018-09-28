@@ -6,8 +6,8 @@ var language = "en"
 
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)Long-time no see! It's so great to see you again."],
-	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone Vegan! Is that true(lau_happy_listening)?"],
-	["B", "(lau_happy_listening)(lucy_happy)You’ve heard correct. My respect for animals has taught me to stop using them(lucy_smiling)."],
+	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone vegan! Is that true(lau_happy_listening)?"],
+	["B", "(lau_happy_listening)(lucy_happy)You’ve heard correct. I researched about it and I realised we can live perfectly fine without using animals for our own benefit.(lucy_smiling)."],
 	["A", "(lau_happy_talking)What? That doesn’t make any sense(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
 	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]

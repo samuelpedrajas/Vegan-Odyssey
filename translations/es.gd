@@ -7,7 +7,7 @@ var language = "es"
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)¡Laura! (lau_salutes)¡Cuánto tiempo! Qué alegría volver a verte."],
 	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? He escuchado que te has hecho vegana, ¿es eso cierto?"],
-	["B", "(lau_happy_listening)(lucy_happy)Así es. Me gustan mucho los animales así que decidí dejar de usarlos(lucy_smiling)."],
+	["B", "(lau_happy_listening)(lucy_happy)Así es. Investigué sobre el tema y descubrí que se puede vivir perfectamente sin usar animales para nuestro beneficio.(lucy_smiling)."],
 	["A", "(lau_happy_talking)¿Cómo? Eso no tiene ningún sentido(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)¿Por qué?(lucy_listening)"],
 	["A", "(lau_finger)Porque... ¿Y (music)SI ESTUVIESES EN UNA ISLA DESIERTA(lau_proud)(lucy_serious)?"]
