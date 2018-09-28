@@ -23,8 +23,7 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten, ¿no?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, cuando se habla de plantas se suelen hacer muchas analogías con los humanos. Pero la realidad es que somos totalmente diferentes."],
-		["B", "Las plantas carecen de sistema nervioso centralizado que, según la ciencia actual, es lo que nos proporciona la capacidad de sentir conscientemente."],
-		["B", "Además, desde un punto de vista evolucionista no tiene ningún sentido que desarrollen sentido del dolor. Están plantadas, no huyen de depredadores."],
+		["B", "Las plantas carecen de sistema nervioso centralizado que, según la neurociencia actual, es lo que nos proporciona la capacidad de sentir conscientemente."],
 		["B", "Y por cierto... ¿Sabías que necesitas 16kg de plantas para conseguir 1 kg de carne? (lucy_happy)Así que si sigues interesada en salvar plantas, ¡deberías hacerte vegana!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Lo que los veganos no entendéis es que (lau_finger)necesitamos la proteína animal para sobrevivir(lau_proud)."],
