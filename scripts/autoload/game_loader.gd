@@ -78,7 +78,7 @@ func update_progress(low, high):
 	snail.position = Vector2((550 - 100) * progress + 100, 81)
 	print(progress)
 
-	if do_rotate and progress >= 0.5:
+	if do_rotate and progress >= 0.2:
 		if OS.get_name() == "iOS" and OS.get_screen_orientation() == OS.SCREEN_ORIENTATION_USER:
 			var mobile_tools = Engine.get_singleton("MobileTools")
 			if mobile_tools.isIphone():
