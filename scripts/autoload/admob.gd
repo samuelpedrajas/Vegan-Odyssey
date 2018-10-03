@@ -7,15 +7,15 @@ var isReal = false
 var isTop = false
 var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your Ad Unit ID and delete this message.]
 var adRewarded1 = {
-	"id": "ca-app-pub-3940256099942544/5224354917",
+	"id": "ca-app-pub-1160358939410189/4323604305",
 	"amount": 1
 }
 var adRewarded2 = {
-	"id": "ca-app-pub-3940256099942544/5224354917",
+	"id": "ca-app-pub-1160358939410189/7595553335",
 	"amount": 2
 }
 var adRewarded3 = {
-	"id": "ca-app-pub-3940256099942544/5224354917",
+	"id": "ca-app-pub-1160358939410189/4394674925",
 	"amount": 3
 }
 
@@ -72,8 +72,19 @@ func loadBanner():
 			admob_module.hideBanner()
 
 
+var max_attempts = 3
+var current_attempts = 0
+
+
 func loadRewardedVideo(ad_to_show):
-	if admob_module != null:
+	# still pending request
+	if loadedReward != null:
+		current_attempts += 1
+		if current_attempts == max_attempts or loadedReward != ad_to_show:
+			loadedReward = null
+			current_attempts = 0
+
+	if admob_module != null and loadedReward == null:
 		admob_module.loadRewardedVideo(ad_to_show.id)
 		loadedReward = ad_to_show
 		print("Reward " + str(ad_to_show.amount) + " broccolis")
@@ -117,6 +128,7 @@ func _on_rewarded_video_ad_loaded():
 func _on_rewarded_video_ad_failed_to_load(errorCode):
 	print("Rewarded failed to load: " + str(errorCode))
 	emit_signal("rewarded_error", errorCode)
+	loadedReward = null
 
 
 # rewarded video closed -- also called on rewarded
@@ -131,10 +143,7 @@ func _on_rewarded_video_ad_closed():
 
 func _on_rewarded(currency, amount):
 	print("Reward: " + currency + ", " + str(amount))
-	print("Reward: " + str(loadedReward.amount))
-	print("FIX THIS IN PRODUCTION:")
-	# emit_signal("rewarded", amount)
-	emit_signal("rewarded", loadedReward.amount)
+	emit_signal("rewarded", amount)
 	if not game.board_layer.check_moves_available():
 		game.hud_layer.glow_broccoli()
 	loadedReward = null
