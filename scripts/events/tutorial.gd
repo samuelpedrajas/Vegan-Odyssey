@@ -71,3 +71,10 @@ func rescale(s):
 			board.get_position().y + board.get_size().y * s / 2.0 - $arrows.get_size().y / 2.0
 		)
 	)
+
+
+func _on_anim_animation_finished(anim_name):
+	if anim_name == "down":
+		$"arrows/anim".play("right")
+	else:
+		$"arrows/anim".play("down")
