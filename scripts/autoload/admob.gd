@@ -6,16 +6,12 @@ var admob_module = null
 var isReal = false
 var isTop = false
 var adBannerId = "ca-app-pub-3940256099942544/6300978111" # [Replace with your Ad Unit ID and delete this message.]
-var adRewarded1 = {
-	"id": "ca-app-pub-1160358939410189/4323604305",
-	"amount": 1
-}
 var adRewarded2 = {
-	"id": "ca-app-pub-1160358939410189/7595553335",
+	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 2
 }
 var adRewarded3 = {
-	"id": "ca-app-pub-1160358939410189/4394674925",
+	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 3
 }
 
@@ -48,18 +44,7 @@ func showBanner():
 
 
 func get_rewarded_ad_info():
-	var tmp = max(1, 3 - game.broccolis)
-	var amount = min(2, tmp)
-
-	if game.current_max < 8:
-		amount = 1
-
-	if amount == 1:
-		return adRewarded1
-	elif amount == 2:
-		return adRewarded2
-	else:
-		return adRewarded3
+	return adRewarded2
 
 
 # loaders

@@ -10,12 +10,8 @@ var add_to_show
 
 func open():
 	# determine add_to_show
-	if game.current_max < 8:
-		add_to_show = admob.adRewarded1
-		$"window/video_button/n".set_text("+1")
-	else:
-		add_to_show = admob.adRewarded3
-		$"window/video_button/n".set_text("+3")
+	add_to_show = admob.adRewarded3
+	$"window/video_button/n".set_text("+3")
 
 	if game.revived:
 		# avoid the duck to appear until restarted
