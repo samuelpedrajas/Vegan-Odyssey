@@ -26,7 +26,7 @@ const TRANSLATIONS = {
 	"en": "res://translations/en.gd"
 }
 
-const MUSIC_VOLUME = -7
+const MUSIC_VOLUME = -12
 
 const LOW_BTN_MARGIN = 15
 const HIGH_BTN_MARGIN = 40
