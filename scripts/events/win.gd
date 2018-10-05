@@ -31,7 +31,6 @@ func _process(delta):
 		var y_offset = -randi() % int(region)
 		unit.set_offset(Vector2(x_offset, y_offset))
 		$confetti.add_child(unit)
-		
 
 
 func start():
@@ -50,11 +49,15 @@ func play_fireworks():
 	game.sounds.play_audio("fireworks")
 	if not first_bang:
 		first_bang = true
+		$left_cannon.set_process(true)
 	else:
 		game.music.set_volume_db(cfg.MUSIC_VOLUME)
+		$right_cannon.set_process(true)
 
 
 func rescale(s):
 	for c in get_tree().get_nodes_in_group("confetti_unit"):
 		c.queue_free()
 		c.hide()
+	$left_cannon.set_right_pos()
+	$right_cannon.set_right_pos()

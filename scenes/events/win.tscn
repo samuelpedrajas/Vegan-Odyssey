@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/events/win.gd" type="Script" id=1]
 
@@ -28,6 +28,47 @@ tracks/0/keys = {
 "method": "play_fireworks"
 } ]
 }
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Control
+
+
+enum side {
+	LEFT, RIGHT
+}
+export(side) var orientation = LEFT
+var confetti_canon = preload(\"res://scenes/other/confetti_canon.tscn\")
+
+
+func _ready():
+	set_process(false)
+
+
+var remaining_rounds = 15
+var freq = 0.02
+var acc_time = 0.0
+var n_units = 8
+var variability = 2
+
+func _process(delta):
+	acc_time += delta
+	if acc_time > freq and remaining_rounds > 0:
+		remaining_rounds -= 1
+		acc_time = 0
+		var v = randi() % (variability * 2) - variability
+		for i in range(n_units + v):
+			var c = confetti_canon.instance()
+			c.orientation = orientation
+			add_child(c)
+
+
+func set_right_pos():
+	set_global_position(Vector2(
+		get_global_position().x,
+		$\"/root/stage/hud_layer/hud/bottom_border\".get_position().y + 52
+	))
+"
 
 [node name="win" type="Control" groups=[
 "event",
@@ -68,4 +109,34 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse" ]
+
+[node name="left_cannon" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 2 )
+_sections_unfolded = [ "Rect" ]
+orientation = 0
+
+[node name="right_cannon" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 2 )
+_sections_unfolded = [ "Rect" ]
+orientation = 1
 
