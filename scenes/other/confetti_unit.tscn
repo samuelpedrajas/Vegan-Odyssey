@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://images/events/win/1.png" type="Texture" id=1]
+[ext_resource path="res://images/events/win/2.png" type="Texture" id=2]
+[ext_resource path="res://images/events/win/3.png" type="Texture" id=3]
+[ext_resource path="res://images/events/win/4.png" type="Texture" id=4]
+[ext_resource path="res://images/events/win/5.png" type="Texture" id=5]
+[ext_resource path="res://images/events/win/6.png" type="Texture" id=6]
+[ext_resource path="res://images/events/win/7.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends AnimatedSprite
+
+var speed = 250
+
+
+const colors = [
+	Color(0.0, 1.0, 1.0, 0.8),
+	Color(1.0, 0.4, 0.4, 0.8),
+	Color(1.0, 1.0, 0.0, 0.8)
+]
+
+
+func _ready():
+	var i_c = randi() % 3
+	set_modulate(colors[i_c])
+
+	var i_f = randi() % get_sprite_frames().get_frame_count(\"default\")
+	set_frame(i_f)
+
+
+func _process(delta):
+	if get_position().y + get_offset().y > get_viewport().get_visible_rect().size.y:
+		set_process(false)
+		queue_free()
+	else:
+		position.y += (speed * delta)
+"
+
+[node name="confetti_unit" type="AnimatedSprite" groups=[
+"confetti_unit",
+]]
+frames = SubResource( 1 )
+animation = "default"
+frame = 6
+playing = true
+script = SubResource( 2 )
+_sections_unfolded = [ "frames" ]
+

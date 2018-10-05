@@ -1,109 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/events/win.gd" type="Script" id=1]
-[ext_resource path="res://images/events/win/confetti.png" type="Texture" id=2]
 
-[sub_resource type="Gradient" id=1]
-
-offsets = PoolRealArray( 0.1, 0.5, 0.9 )
-colors = PoolColorArray( 0.976562, 0.976562, 0.94986, 1, 0.965388, 0.704712, 0.980469, 1, 0.988281, 0.89566, 0.845444, 1 )
-_sections_unfolded = [ "colors", "offsets" ]
-
-[sub_resource type="GradientTexture" id=2]
-
-flags = 4
-gradient = SubResource( 1 )
-width = 512
-_sections_unfolded = [ "gradient" ]
-
-[sub_resource type="ParticlesMaterial" id=3]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 2
-emission_box_extents = Vector3( 540, 10, 0 )
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = true
-spread = 45.0
-flatness = 0.0
-gravity = Vector3( 0, 98, 0 )
-initial_velocity = 2.0
-initial_velocity_random = 1.0
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 1.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 0.3
-scale_random = 0.8
-color_ramp = SubResource( 2 )
-hue_variation = 0.5
-hue_variation_random = 1.0
-anim_speed = 8.0
-anim_speed_random = 0.0
-anim_offset = 0.5
-anim_offset_random = 1.0
-anim_loop = true
-_sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail", "color_ramp" ]
-
-[sub_resource type="AtlasTexture" id=4]
-
-flags = 5
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 900, 300 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = true
-
-[sub_resource type="ParticlesMaterial" id=5]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = true
-spread = 3.0
-flatness = 0.0
-gravity = Vector3( 0, 196, 0 )
-initial_velocity = 650.0
-initial_velocity_random = 0.2
-angular_velocity = 50.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 1.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 0.3
-scale_random = 0.8
-color_ramp = SubResource( 2 )
-hue_variation = 1.0
-hue_variation_random = 1.0
-anim_speed = 8.0
-anim_speed_random = 0.0
-anim_offset = 0.5
-anim_offset_random = 1.0
-anim_loop = true
-_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail", "color_ramp" ]
-
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 
 resource_name = "win"
 length = 3.5
@@ -129,116 +28,24 @@ tracks/0/keys = {
 "method": "play_fireworks"
 } ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("confetti_rain:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "set_extents"
-} ]
-}
 
 [node name="win" type="Control" groups=[
 "event",
+"resizable",
 ]]
 pause_mode = 2
-anchor_left = 0.5
+anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.5
-anchor_bottom = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
-
-[node name="confetti_rain" type="Particles2D" parent="."]
-emitting = false
-amount = 256
-lifetime = 6.5
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 45
-fract_delta = true
-visibility_rect = Rect2( -540, 0, 1080, 1920 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 3 )
-texture = SubResource( 4 )
-normal_map = null
-h_frames = 5
-v_frames = 2
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
-
-[node name="confetti_cannon1" type="Particles2D" parent="."]
-position = Vector2( -60, 1700 )
-rotation = -1.65806
-emitting = false
-amount = 256
-lifetime = 10.0
-one_shot = true
-preprocess = 0.0
-speed_scale = 5.0
-explosiveness = 0.8
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 5 )
-texture = SubResource( 4 )
-normal_map = null
-h_frames = 5
-v_frames = 2
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
-
-[node name="confetti_cannon2" type="Particles2D" parent="."]
-position = Vector2( 60, 1700 )
-rotation = -1.48353
-emitting = false
-amount = 256
-lifetime = 10.0
-one_shot = true
-preprocess = 0.0
-speed_scale = 5.0
-explosiveness = 0.8
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 5 )
-texture = SubResource( 4 )
-normal_map = null
-h_frames = 5
-v_frames = 2
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "process_material" ]
+_sections_unfolded = [ "Mouse", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -246,6 +53,19 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/win = SubResource( 6 )
+anims/win = SubResource( 1 )
 blend_times = [  ]
+
+[node name="confetti" type="Control" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse" ]
 
