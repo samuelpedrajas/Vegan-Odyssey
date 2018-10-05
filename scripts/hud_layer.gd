@@ -28,9 +28,8 @@ func glow_stop():
 	_stop_glow(get_node("hud/lower_buttons/broccoli"))
 	_stop_glow(get_node("hud/lower_buttons/excuses"))
 	var anim = $"hud/lower_buttons/glow_animation"
-	anim.seek(0)
 	if anim.is_playing():
-		anim.stop()
+		anim.stop(true)
 
 
 func _play_glow(btn):
