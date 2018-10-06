@@ -183,10 +183,9 @@ func _finish_bubble():
 
 func _next_conversation():
 	$"/root".set_disable_input(true)
-	$"window/container/animation".play("close_container")
-	yield($"window/container/animation", "animation_finished")
 	for child in bubbles:
 		child.remove_me()
+	yield(get_tree().create_timer(0.2), "timeout" )
 	var msgs = $"window/container/lower/msgs"
 	msgs.set_position(
 		Vector2(msgs.get_position().x, msgs_pos_y)

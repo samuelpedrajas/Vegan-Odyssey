@@ -43,6 +43,10 @@ var lau_last_action = null
 var space_positions = []
 
 
+func _ready():
+	set_process(false)
+
+
 func _process(delta):
 	if container_dest == null:
 		return
@@ -59,7 +63,11 @@ func _process(delta):
 
 
 func play():
-	set_process(true)
+	if prev_bubble != null:
+		set_process(true)
+	else:
+		get_parent().reposition_msgs(game.resizer.s)
+		$animation.play("open")
 
 
 func _build_dict(line):
@@ -98,7 +106,8 @@ func _build_dict(line):
 
 
 func remove_me():
-	hide()
+	$animation.play("close")
+	yield($animation, "animation_finished")
 	queue_free()
 
 
@@ -112,7 +121,6 @@ func build_space_positions():
 
 
 func setup(screen, _prev_bubble, line):
-	set_process(false)
 	prev_bubble = _prev_bubble
 
 	connect("finished", screen, "bubble_finished")
@@ -132,7 +140,7 @@ func setup(screen, _prev_bubble, line):
 		label.set_align(Label.ALIGN_LEFT)
 
 	# set proper height
-	var height = label.get_line_count() * label.get_line_height() + 30
+	var height = label.get_line_count() * label.get_line_height() + 36
 	set_size(Vector2(get_size().x, height))
 
 	var _x_threshold = x_threshold
@@ -203,5 +211,7 @@ func finish_it():
 
 
 func _on_animation_animation_finished(anim_name):
+	if anim_name == "close":
+		return
 	$"/root".set_disable_input(false)
 	$timer.start()
