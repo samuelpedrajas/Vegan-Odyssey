@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/debate_screen.gd" type="Script" id=2]
@@ -17,15 +17,15 @@
 [ext_resource path="res://images/popups/girls/lau_talking/2.png" type="Texture" id=15]
 [ext_resource path="res://images/popups/girls/lau_serious.png" type="Texture" id=16]
 [ext_resource path="res://images/popups/girls/lucy_talking_arm.png" type="Texture" id=17]
-[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=18]
-[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=19]
-[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=20]
-[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=21]
-[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=22]
-[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=23]
-[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=24]
-[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=25]
-[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=26]
+[ext_resource path="res://images/popups/girls/lucy_talking/1.png" type="Texture" id=18]
+[ext_resource path="res://images/popups/girls/lucy_talking/2.png" type="Texture" id=19]
+[ext_resource path="res://images/popups/girls/lucy_smiles.png" type="Texture" id=20]
+[ext_resource path="res://images/popups/girls/lucy_stand_talking.png" type="Texture" id=21]
+[ext_resource path="res://images/popups/girls/lucy_salutes/1.png" type="Texture" id=22]
+[ext_resource path="res://images/popups/girls/lucy_salutes/2.png" type="Texture" id=23]
+[ext_resource path="res://images/popups/girls/lucy_happy.png" type="Texture" id=24]
+[ext_resource path="res://images/popups/girls/lucy_serious.png" type="Texture" id=25]
+[ext_resource path="res://images/popups/girls/lucy_listening.png" type="Texture" id=26]
 [ext_resource path="res://fonts/token.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://images/excuses/circle.png" type="Texture" id=28]
 [ext_resource path="res://images/bottom_border.png" type="Texture" id=29]
@@ -188,39 +188,39 @@ animations = [ {
 "name": "lucy_talking_arm",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "lucy_listening",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "lucy_salutes",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "lucy_smiling",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "lucy_serious",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "lucy_talking",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 25 ) ],
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "lucy_smiling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "lucy_stand_talking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "lucy_salutes",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "lucy_happy",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "lucy_serious",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "lucy_stand_talking",
+"name": "lucy_listening",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -235,13 +235,34 @@ use_filter = true
 font_data = ExtResource( 27 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends Control
+
+
+var msgs_h = -543
+
+func reposition_msgs(s):
+	var msgs_pos_y = msgs_h * s
+	var y_movement = 0
+	var threshold = 20  # same as bubble.gd
+	for c in get_children():
+		y_movement += s * (c.get_size().y + threshold)
+	if y_movement > 0:
+		y_movement -= threshold
+
+	set_position(
+		Vector2(get_position().x, msgs_pos_y - y_movement)
+	)
+"
+
 [sub_resource type="Animation" id=6]
 
 length = 0.1
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("msgs:modulate")
+tracks/0/path = NodePath("lower/msgs:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -323,7 +344,7 @@ use_filter = true
 font_data = ExtResource( 39 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[node name="debate_screen" groups=[
+[node name="debate_screen" index="0" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -356,32 +377,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="msgs" type="Control" parent="window/container" index="0"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -540.0
-margin_top = -674.0
-margin_right = 540.0
-margin_bottom = 1246.0
-rect_pivot_offset = Vector2( 540, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
-
-[node name="tween" type="Tween" parent="window/container/msgs" index="0"]
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
-
-[node name="girls" type="Control" parent="window/container" index="1"]
+[node name="girls" type="Control" parent="window/container" index="0"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
@@ -411,7 +407,7 @@ frames = SubResource( 4 )
 animation = "lucy_smiling"
 _sections_unfolded = [ "Transform" ]
 
-[node name="n" type="Label" parent="window/container" index="2"]
+[node name="n" type="Label" parent="window/container" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -442,7 +438,7 @@ scale = Vector2( 1.48457, 1.48457 )
 texture = ExtResource( 28 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="clickable_bg" type="TextureButton" parent="window/container" index="3"]
+[node name="clickable_bg" type="TextureButton" parent="window/container" index="2"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -462,7 +458,7 @@ group = null
 stretch_mode = 6
 _sections_unfolded = [ "Rect", "Visibility", "custom_colors" ]
 
-[node name="lower" type="Control" parent="window/container" index="4"]
+[node name="lower" type="Control" parent="window/container" index="3"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -479,7 +475,25 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect", "Transform" ]
 
-[node name="panel" type="TextureRect" parent="window/container/lower" index="0"]
+[node name="msgs" type="Control" parent="window/container/lower" index="0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -540.0
+margin_top = -859.0
+margin_right = 540.0
+margin_bottom = 1061.0
+rect_pivot_offset = Vector2( 540, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 10 )
+_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
+
+[node name="panel" type="TextureRect" parent="window/container/lower" index="1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -498,7 +512,7 @@ texture = ExtResource( 29 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect", "Transform" ]
 
-[node name="prev" type="TextureButton" parent="window/container/lower" index="1"]
+[node name="prev" type="TextureButton" parent="window/container/lower" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -523,7 +537,7 @@ texture_pressed = ExtResource( 31 )
 texture_disabled = ExtResource( 32 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="go_back" parent="window/container/lower" index="2" instance=ExtResource( 33 )]
+[node name="go_back" parent="window/container/lower" index="3" instance=ExtResource( 33 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -538,7 +552,7 @@ self_modulate = Color( 1, 1, 1, 0.0784314 )
 texture = ExtResource( 34 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
-[node name="next" type="TextureButton" parent="window/container/lower" index="3"]
+[node name="next" type="TextureButton" parent="window/container/lower" index="4"]
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -571,7 +585,7 @@ texture = ExtResource( 38 )
 centered = false
 _sections_unfolded = [ "Offset", "Visibility" ]
 
-[node name="animation" type="AnimationPlayer" parent="window/container" index="5"]
+[node name="animation" type="AnimationPlayer" parent="window/container" index="4"]
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -582,7 +596,7 @@ anims/finished = SubResource( 7 )
 anims/go_back = SubResource( 8 )
 blend_times = [  ]
 
-[node name="label" type="Label" parent="window/container" index="6"]
+[node name="label" type="Label" parent="window/container" index="5"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

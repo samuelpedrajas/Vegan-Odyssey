@@ -29,15 +29,14 @@ signal conversation_finished
 
 var msgs_pos_y
 
+var msgs_h = -534
 
 func _ready():
-	msgs_pos_y = $"window/container/msgs".get_position().y
-	reposition(game.resizer.s)
+	msgs_pos_y = msgs_h * game.resizer.s
 
 
 var girls_h = 550
 var n_h = 176
-var msgs_h = 534
 
 
 func reposition(s):
@@ -53,15 +52,7 @@ func reposition(s):
 	girls.set_position(
 		Vector2(girls.get_position().x, main_lower_pos.y - girls_h)
 	)
-	var msgs = $"window/container/msgs"
-	msgs_pos_y = main_lower_pos.y - msgs_h * s
-	var y_movement = 0
-	if current_bubble != null:
-		y_movement = s * (current_bubble.get_position().y + current_bubble.get_size().y + current_bubble.threshold)
-
-	msgs.set_position(
-		Vector2(msgs.get_position().x, msgs_pos_y - y_movement)
-	)
+	$"window/container/lower/msgs".reposition_msgs(s)
 	$"window/container/lower/go_back".set_right_pos()
 
 
@@ -137,7 +128,7 @@ func build_dialog():
 	var line = dirty_texts[current_text]
 	var bubble = bubble_scene.instance()
 	bubbles.append(bubble)
-	$"window/container/msgs".add_child(bubble)
+	$"window/container/lower/msgs".add_child(bubble)
 
 	bubble.setup(self, current_bubble, line)
 
@@ -196,7 +187,7 @@ func _next_conversation():
 	yield($"window/container/animation", "animation_finished")
 	for child in bubbles:
 		child.remove_me()
-	var msgs = $"window/container/msgs"
+	var msgs = $"window/container/lower/msgs"
 	msgs.set_position(
 		Vector2(msgs.get_position().x, msgs_pos_y)
 	)
@@ -251,7 +242,7 @@ func _on_prev_pressed():
 
 func rescale(s):
 	var s2 = Vector2(s, s)
-	$"window/container/msgs".set_scale(s2)
+	$"window/container/lower/msgs".set_scale(s2)
 	$"window/container/girls".set_scale(s2)
 	$"window/container/n".set_scale(s2)
 	$"window/container/lower/prev".set_scale(s2)

@@ -51,7 +51,7 @@ func _process(delta):
 		container_dest, acc_time / container_anim_time
 	)
 	if next_pos.y < container_dest.y:
-		get_parent().set_position(container_dest)
+		get_parent().reposition_msgs(game.resizer.s)
 		set_process(false)
 		$animation.play("open")
 	else:

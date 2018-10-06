@@ -42,10 +42,10 @@ func open(name, params=null):
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
 		if params:
 			popup.setup(params)
-		popup.open()
 
 		# multiscreen
 		popup.rescale(game.resizer.s)
+		popup.open()
 
 		yield(popup.animation, "animation_finished")
 		if not popup.keep_input_disabled:
