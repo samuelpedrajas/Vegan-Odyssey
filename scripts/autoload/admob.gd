@@ -5,13 +5,13 @@ var is_banner_loaded = false
 var admob_module = null
 var isReal = false
 var isTop = false
-var adBannerId = "ca-app-pub-3940256099942544/6300978111" # REMOVE ALSO TODO!!
+var adBannerId = "ca-app-pub-1160358939410189/4417511253" # REMOVE ALSO TODO!!
 var adRewarded2 = {
-	"id": "ca-app-pub-3940256099942544/5224354917",
+	"id": "ca-app-pub-1160358939410189/3797669930",
 	"amount": 2
 }
 var adRewarded3 = {
-	"id": "ca-app-pub-3940256099942544/5224354917",
+	"id": "ca-app-pub-1160358939410189/9596791523",
 	"amount": 3
 }
 
@@ -129,8 +129,8 @@ func _on_rewarded_video_ad_closed():
 func _on_rewarded(currency, amount):
 	print("Reward: " + currency + ", " + str(amount))
 	# TODO: COMMENT THIS OUT!!!!!!!!!!!!!!!!
-	# emit_signal("rewarded", amount)
-	emit_signal("rewarded", loadedReward.amount)
+	emit_signal("rewarded", amount)
+	# emit_signal("rewarded", loadedReward.amount)
 	if not game.board_layer.check_moves_available():
 		game.hud_layer.glow_broccoli()
 	loadedReward = null

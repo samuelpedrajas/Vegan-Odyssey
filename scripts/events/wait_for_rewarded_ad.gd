@@ -44,7 +44,7 @@ func on_rewarded_loaded():
 		game.music.stop()
 	$timer.stop()
 	hide()
-	admob.admob_module.showRewardedVideo()
+	admob.showRewardedVideo()
 
 
 func on_rewarded_ad_closed():

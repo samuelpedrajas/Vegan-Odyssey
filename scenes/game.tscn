@@ -37,14 +37,14 @@
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=35]
 [ext_resource path="res://scripts/input_handler.gd" type="Script" id=36]
 [ext_resource path="res://scripts/debate_layer.gd" type="Script" id=37]
-[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=38]
-[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=39]
-[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=40]
-[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=41]
-[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=42]
-[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=43]
-[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=44]
-[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=45]
+[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=38]
+[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=39]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=40]
+[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=41]
+[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=42]
+[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=43]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=44]
+[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=45]
 [ext_resource path="res://scripts/effects_layer.gd" type="Script" id=46]
 [ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=47]
 [ext_resource path="res://scripts/popup_layer.gd" type="Script" id=48]
@@ -186,7 +186,7 @@ func _on_save_game_timeout():
 script/source = "extends Node
 
 
-var _f = 1.40
+var _f = 1.00
 var s
 var mobile_tools
 
@@ -457,28 +457,28 @@ func rescale(s):
 [sub_resource type="SpriteFrames" id=12]
 
 animations = [ {
-"frames": [ ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ) ],
+"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "talking",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "default",
 "speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=13]
 
 animations = [ {
-"frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "talking",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "default",
 "speed": 3.0
 } ]
 

@@ -55,7 +55,7 @@ outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Font", "Settings", "font_data" ]
 
 [sub_resource type="GDScript" id=3]
 
@@ -167,7 +167,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 3 )
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
