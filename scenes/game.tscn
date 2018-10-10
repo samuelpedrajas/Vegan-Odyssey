@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://scripts/settings.gd" type="Script" id=1]
 [ext_resource path="res://scripts/sounds.gd" type="Script" id=2]
@@ -37,14 +37,14 @@
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=35]
 [ext_resource path="res://scripts/input_handler.gd" type="Script" id=36]
 [ext_resource path="res://scripts/debate_layer.gd" type="Script" id=37]
-[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=38]
-[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=39]
-[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=40]
-[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=41]
-[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=42]
-[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=43]
-[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=44]
-[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=45]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=38]
+[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=39]
+[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=40]
+[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=41]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=42]
+[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=43]
+[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=44]
+[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=45]
 [ext_resource path="res://scripts/effects_layer.gd" type="Script" id=46]
 [ext_resource path="res://images/popups/rewarded_ads/plus1.png" type="Texture" id=47]
 [ext_resource path="res://scripts/popup_layer.gd" type="Script" id=48]
@@ -323,7 +323,13 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="CanvasItemMaterial" id=6]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+
+[sub_resource type="DynamicFont" id=7]
 
 size = 45
 outline_size = 0
@@ -333,7 +339,7 @@ use_filter = true
 font_data = ExtResource( 31 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.2
 loop = false
@@ -363,7 +369,7 @@ tracks/1/keys = {
 "values": [ 0.0, -20.0, 0.0 ]
 }
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends TextureButton
 
@@ -415,7 +421,7 @@ func _on_black_bg_pressed():
 	emit_signal(\"unpost_tutorial\")
 "
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.2
 loop = false
@@ -433,7 +439,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=11]
 
 script/source = "extends Control
 
@@ -445,7 +451,7 @@ func rescale(s):
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=12]
 
 script/source = "extends Container
 
@@ -454,35 +460,35 @@ func rescale(s):
 	set_scale(Vector2(s, s))
 "
 
-[sub_resource type="SpriteFrames" id=12]
-
-animations = [ {
-"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "talking",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-} ]
-
 [sub_resource type="SpriteFrames" id=13]
 
 animations = [ {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
-"loop": true,
-"name": "talking",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "talking",
+"speed": 3.0
 } ]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="SpriteFrames" id=14]
+
+animations = [ {
+"frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "talking",
+"speed": 3.0
+} ]
+
+[sub_resource type="Animation" id=15]
 
 length = 6.0
 loop = false
@@ -560,7 +566,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
-[sub_resource type="GDScript" id=15]
+[sub_resource type="GDScript" id=16]
 
 script/source = "extends Control
 
@@ -568,48 +574,6 @@ script/source = "extends Control
 func rescale(s):
 	set_scale(Vector2(s, s))
 "
-
-[sub_resource type="Animation" id=16]
-
-length = 0.6
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("plus:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -244 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("plus:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("plus:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=17]
 
@@ -697,6 +661,48 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=19]
 
+length = 0.6
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("plus:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -244 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("plus:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("plus:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=20]
+
 length = 0.4
 loop = false
 step = 0.4
@@ -725,7 +731,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 
 length = 0.4
 loop = false
@@ -1181,12 +1187,12 @@ _sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/reset"]
 visible = false
-modulate = Color( 1, 0.772549, 0, 1 )
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.193203 )
+material = SubResource( 6 )
 texture = ExtResource( 24 )
 centered = false
 offset = Vector2( -5, -8 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility", "material" ]
 
 [node name="excuses" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
@@ -1214,12 +1220,12 @@ _sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/excuses"]
 visible = false
-modulate = Color( 1, 0.772549, 0, 1 )
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.193203 )
+material = SubResource( 6 )
 texture = ExtResource( 24 )
 centered = false
 offset = Vector2( -5, -8 )
-_sections_unfolded = [ "Offset", "Visibility" ]
+_sections_unfolded = [ "Material", "Offset", "Pause", "Visibility" ]
 
 [node name="broccoli" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
 anchor_left = 0.5
@@ -1248,12 +1254,12 @@ _sections_unfolded = [ "Rect", "Script", "Textures", "Visibility" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 visible = false
-modulate = Color( 1, 0.772549, 0, 1 )
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.193203 )
+material = SubResource( 6 )
 texture = ExtResource( 24 )
 centered = false
 offset = Vector2( -5, -8 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+_sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 pause_mode = 2
@@ -1276,7 +1282,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -1295,7 +1301,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/used = SubResource( 7 )
+anims/used = SubResource( 8 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
@@ -1322,7 +1328,7 @@ group = null
 texture_normal = ExtResource( 32 )
 expand = true
 stretch_mode = 6
-script = SubResource( 8 )
+script = SubResource( 9 )
 _sections_unfolded = [ "Material", "Offset", "Rect", "Textures", "Transform", "Visibility", "texture" ]
 
 [node name="black_anim" type="AnimationPlayer" parent="hud_layer/hud/lower_buttons/black_bg"]
@@ -1331,7 +1337,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/open = SubResource( 9 )
+anims/open = SubResource( 10 )
 blend_times = [  ]
 
 [node name="board_layer" type="CanvasLayer" parent="."]
@@ -1360,7 +1366,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 34 )
 stretch_mode = 0
-script = SubResource( 10 )
+script = SubResource( 11 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index", "texture" ]
 
 [node name="tilemap" type="TileMap" parent="board_layer/board"]
@@ -1441,18 +1447,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 11 )
+script = SubResource( 12 )
 _sections_unfolded = [ "Mouse", "Rect", "Theme" ]
 
 [node name="laura" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 120, 339 )
-frames = SubResource( 12 )
+frames = SubResource( 13 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
 [node name="lucy" type="AnimatedSprite" parent="debate_layer/girls"]
 position = Vector2( 960, 334 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
@@ -1462,7 +1468,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/debate = SubResource( 14 )
+anims/debate = SubResource( 15 )
 blend_times = [  ]
 
 [node name="dying_tokens" type="CanvasLayer" parent="."]
@@ -1489,7 +1495,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 15 )
+script = SubResource( 16 )
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Z Index" ]
 
 [node name="effects_layer" type="CanvasLayer" parent="."]
@@ -1547,7 +1553,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 16 )
+anims/plus1 = SubResource( 17 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus1"]
@@ -1565,7 +1571,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 17 )
+anims/plus1 = SubResource( 18 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus2"]
@@ -1584,7 +1590,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/plus1 = SubResource( 18 )
+anims/plus1 = SubResource( 19 )
 blend_times = [  ]
 
 [node name="plus" type="Sprite" parent="effects_layer/rewarded_animation/c/plus3"]
@@ -1708,8 +1714,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 19 )
-anims/open = SubResource( 20 )
+anims/close = SubResource( 20 )
+anims/open = SubResource( 21 )
 blend_times = [  ]
 
 [node name="admob" type="Timer" parent="."]

@@ -5,13 +5,13 @@ var is_banner_loaded = false
 var admob_module = null
 var isReal = false
 var isTop = false
-var adBannerId = "ca-app-pub-1160358939410189/4417511253" # REMOVE ALSO TODO!!
+var adBannerId = "ca-app-pub-3940256099942544/6300978111" # REMOVE ALSO TODO!!
 var adRewarded2 = {
-	"id": "ca-app-pub-1160358939410189/3797669930",
+	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 2
 }
 var adRewarded3 = {
-	"id": "ca-app-pub-1160358939410189/9596791523",
+	"id": "ca-app-pub-3940256099942544/5224354917",
 	"amount": 3
 }
 
