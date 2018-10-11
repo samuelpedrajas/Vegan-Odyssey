@@ -147,7 +147,7 @@ func on_resize():
 		game.resizer.rescale_all()
 
 
-var last_height = 160
+# var last_height = 160
 
 
 func getHeight():

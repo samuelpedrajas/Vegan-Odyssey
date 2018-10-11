@@ -52,7 +52,7 @@ func _process(delta):
 ]]
 frames = SubResource( 1 )
 animation = "default"
-frame = 6
+frame = 5
 playing = true
 script = SubResource( 2 )
 _sections_unfolded = [ "frames" ]

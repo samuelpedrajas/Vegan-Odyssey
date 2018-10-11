@@ -154,12 +154,6 @@ func rescale(s):
 	c.set_position(Vector2(c.get_position().x, red_line - distance_to_button))
 
 
-func _on_check_rescale_timeout():
-	var last_height = admob.last_height
-	if admob.getHeight() != last_height:
-		game.resizer.rescale_all()
-
-
 var max_attempts = 5
 var current_attempts = 0
 
@@ -1718,18 +1712,6 @@ anims/close = SubResource( 20 )
 anims/open = SubResource( 21 )
 blend_times = [  ]
 
-[node name="admob" type="Timer" parent="."]
-process_mode = 1
-wait_time = 10.0
-one_shot = false
-autostart = false
-
-[node name="check_rescale" type="Timer" parent="."]
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-
 [node name="save_game" type="Timer" parent="."]
 process_mode = 1
 wait_time = 0.12
@@ -1752,5 +1734,4 @@ autostart = false
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/black_bg" to="hud_layer/hud/lower_buttons/black_bg" method="_on_black_bg_pressed"]
 [connection signal="user_input" from="board_layer/board/input_handler" to="board_layer" method="move_tokens"]
-[connection signal="timeout" from="check_rescale" to="." method="_on_check_rescale_timeout"]
 [connection signal="timeout" from="save_game" to="." method="_on_save_game_timeout"]
