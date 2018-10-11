@@ -22,14 +22,13 @@ var dialog_list = [
 	], [
 		["A", "(lau_talking)(lucy_listening)But don't plants have feelings too?"],
 		["B", "(lau_listening)(lucy_talking)Well, we usually make analogies between humans and plants to grasp complex concepts intuitively. But, in reality, plants are totally different than us."],
-		["B", "They lack a central nervous system and pain receptors. According to neuroscientists, pain is caused by signals from the brain. So... (lucy_happy)no brain, no pain."],
-		
-		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you’re still interested in saving plants you’ve got to go vegan!"]
+		["B", "They lack a central nervous system and pain receptors. According to neuroscientists, pain is caused by signals from the brain. So... (lucy_happy)no brain, no pain."],		
+		["B", "And... Did you know that you need 16 kg of plants to feed 1 kg of beef? (lucy_happy)So, if you’re still interested in saving plants you’ve got to go vegan(lucy_smiling)!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)What you vegans don't understand is that (lau_finger)we need animal protein to survive(lau_proud)."],
 		["B", "(lau_listening)(lucy_happy)Well, do I look like a zombie to you? I'm sorry Laura, (lucy_talking)but that's a false statement. Humans don't need animal protein to survive."],
 		["B", "Whole grains, vegetables, and beans provide more than enough protein to stay healthy. It's very difficult for someone to become protein-deficient if they are still consuming all the calories that they need."],
-		["B", "(lucy_happy)There are many professional athletes that are living a vegan lifestyle. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population(lucy_happy)."]
+		["B", "(lucy_happy)There are many professional athletes that are living a vegan lifestyle. They're a minority, yes, (lucy_talking)but vegans are also a minority in the global population(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how “the circle of life” works."],
 		["B", "(lau_listening)(lucy_talking)Well, the term “circle of life” was created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law that has been written in stone."],

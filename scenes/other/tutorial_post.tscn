@@ -457,7 +457,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 4 )
-text = "OOPS... ¡NO QUEDAN MOVIMIENTOS!
+text = "UPS... ¡NO QUEDAN MOVIMIENTOS!
 USA BRÓCOLIS MÁGICOS PARA ELIMINAR FICHAS O REINICIA EL TABLERO"
 align = 1
 valign = 1

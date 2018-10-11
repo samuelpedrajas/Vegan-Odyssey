@@ -6,8 +6,8 @@ var language = "es"
 
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)¡Laura! (lau_salutes)¡Cuánto tiempo! Qué alegría volver a verte."],
-	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? He escuchado que te has hecho vegana, ¿es eso cierto?"],
-	["B", "(lau_happy_listening)(lucy_happy)Así es. Investigué sobre el tema y descubrí que se puede vivir perfectamente sin usar animales para nuestro beneficio.(lucy_smiling)"],
+	["A", "(lucy_smiling)¡Lucía! (lau_happy_talking)¿Cómo te va todo? He oído que te has hecho vegana, ¿es eso cierto?"],
+	["B", "(lau_happy_listening)(lucy_happy)Así es. Investigué sobre el tema y descubrí que se puede vivir perfectamente sin comer ni usar animales.(lucy_smiling)"],
 	["A", "(lau_happy_talking)¿Cómo? Eso no tiene ningún sentido(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)¿Por qué?(lucy_listening)"],
 	["A", "(lau_finger)Porque... ¿Y (music)SI ESTUVIESES EN UNA ISLA DESIERTA(lau_proud)(lucy_serious)?"]
@@ -24,13 +24,13 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)Pero las plantas también sienten, ¿no?"],
 		["B", "(lau_listening)(lucy_talking)Bueno, cuando se habla de plantas se suelen hacer muchas analogías con los humanos. Pero la realidad es que somos totalmente diferentes."],
 		["B", "Las plantas carecen de sistema nervioso centralizado que, según la neurociencia actual, es lo que nos proporciona la capacidad de sentir conscientemente."],
-		["B", "Y por cierto... ¿Sabías que necesitas 16kg de plantas para conseguir 1 kg de carne? (lucy_happy)Así que si sigues interesada en salvar plantas, ¡deberías hacerte vegana!"]
+		["B", "Y por cierto... ¿Sabías que necesitas 16 kg de plantas para conseguir 1 kg de carne? (lucy_happy)Así que si sigues interesada en salvar plantas, ¡deberías hacerte vegana(lucy_smiling)!"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Lo que los veganos no entendéis es que (lau_finger)necesitamos la proteína animal para sobrevivir(lau_proud)."],
-		["B", "(lau_listening)(lucy_happy)¿Te crees que soy un zombie o qué? Lo siento Laura, (lucy_talking)pero eso es falso. Los humanos no necesitamos proteína animal para sobrevivir."],
+		["B", "(lau_listening)(lucy_happy)¿Te crees que soy un zombie o qué? Lo siento Laura, (lucy_talking)pero eso no es verdad. Los humanos no necesitamos proteína animal para sobrevivir."],
 		["B", "Cereales, vegetales y legumbres nos proporcionan una cantidad más que suficiente de proteínas para mantenernos completamente sanos."],
 		["B", "Es muy difícil tener déficit de proteínas si consumes las calorías que necesitas."],
-		["B", "(lucy_happy)También puedes encontrar atletas profesionales veganos. (lucy_talking)Son una minoría, sí, pero también lo son en la población global(lucy_happy)."]
+		["B", "(lucy_happy)También puedes encontrar atletas profesionales veganos. (lucy_talking)Son una minoría, sí, pero también lo son en la población global(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Creo que las personas comemos carne porque es parte del “ciclo de la vida”."],
 		["B", "(lau_listening)(lucy_talking)“El ciclo de la vida” es sólo un término creado para referirnos a cierto equilibrio que vemos en la naturaleza, pero no es una ley escrita en piedra."],
@@ -101,7 +101,7 @@ var EXCUSES = [
 		"text": "Las plantas sienten",
 		"debate": {
 			"question": "Pero las plantas también sienten, ¿no?",
-			"answer": "No. Según la ciencia actual se requiere un sistema nervioso centralizado para sentir conscientemente, y las plantas carecen de él.",
+			"answer": "No. Según la neurociencia actual se requiere de un sistema nervioso centralizado para sentir conscientemente, y las plantas carecen de él.",
 		}
 	},
 	{
@@ -121,7 +121,7 @@ var EXCUSES = [
 		"text": "Ciclo de la vida",
 		"debate": {
 			"question": "Es parte del “ciclo de la vida”.",
-			"answer": "“Ciclo de la vida” es sólo un término que inventamos para referirnos a cierto equilibrio que vemos en la naturaleza pero no es una ley escrita en piedra.",
+			"answer": "“Ciclo de la vida” es sólo un término que inventamos para referirnos a cierto equilibrio que vemos en la naturaleza, pero no es una ley escrita en piedra.",
 		}
 	},
 	{
@@ -160,7 +160,7 @@ var EXCUSES = [
 		"text": "Es legal",
 		"debate": {
 			"question": "Comer carne es legal.",
-			"answer": "Legal no significa moral. Poseer personas como propiedades ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
+			"answer": "Legal no significa moral. Poseer personas como propiedad también ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
 		}
 	},
 	{
@@ -224,6 +224,6 @@ const WIN_MSG_ANDROID = "¡Felicidades! Has completado el juego. Puedes apoyarno
 const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en App Store o compartiendo con tus amigos."
 const IOS_SCORE_US = "PUNTÚANOS"
 
-const REWARDED_MSG = "¡Consigue brócolis con el poder del marketing!"
+const REWARDED_MSG = "¡PATOFERTA!\nConsigue 2 brócolis por ver un anuncio"
 
 const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"
