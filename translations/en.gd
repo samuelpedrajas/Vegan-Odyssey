@@ -215,6 +215,7 @@ const GAME_OVER = "GAME OVER"
 const GAME_OVER_SCALE = 1.0
 const GAME_OVER_MSG = "No more moves available"
 const GAME_OVER_OR = "OR"
+const GAME_OVER_QUESTION = "Watch a video ad to earn broccoli?"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"

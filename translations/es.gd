@@ -216,6 +216,7 @@ const GAME_OVER = "HAS PERDIDO"
 const GAME_OVER_SCALE = 0.8
 const GAME_OVER_MSG = "No quedan movimientos disponibles"
 const GAME_OVER_OR = "O"
+const GAME_OVER_QUESTION = "¿Ver anuncio a cambio de brócoli?"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
