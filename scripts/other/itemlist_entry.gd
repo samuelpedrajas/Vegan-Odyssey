@@ -49,10 +49,6 @@ func set_lock():
 	$debate_disabled.show()
 
 
-func set_actual():
-	$text.modulate = Color(220.0 / 255, 200.0 / 255, 12.0 / 255, 1)
-
-
 func _on_excuse_pressed():
 	grandpa.token_clicked = self
 

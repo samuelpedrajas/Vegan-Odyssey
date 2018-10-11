@@ -14,8 +14,6 @@ func _ready():
 		var excuse_entry = v_box.get_node(str(i))
 		if i > game.highest_max:
 			excuse_entry.set_lock()
-		elif i == game.current_max:
-			excuse_entry.set_actual()
 
 	# add vertical scroll bar
 	var v_scroll = VScrollBar.new()
