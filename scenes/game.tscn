@@ -65,12 +65,12 @@ func _ready():
 	game.start_game()
 
 
-func _on_admob_timeout():
-	print(\"BANNER TIMEOUT: \", admob.is_banner_loaded)
-	if not admob.is_banner_loaded:
-		admob.loadBanner()
-	else:
-		$admob.stop()
+#func _on_admob_timeout():
+#	print(\"BANNER TIMEOUT: \", admob.is_banner_loaded)
+#	if not admob.is_banner_loaded:
+#		admob.loadBanner()
+#	else:
+#		$admob.stop()
 
 
 func rescale(s):
@@ -1722,7 +1722,7 @@ blend_times = [  ]
 process_mode = 1
 wait_time = 10.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="check_rescale" type="Timer" parent="."]
 process_mode = 1
@@ -1752,6 +1752,5 @@ autostart = false
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/broccoli" to="hud_layer" method="_on_broccoli_pressed"]
 [connection signal="pressed" from="hud_layer/hud/lower_buttons/black_bg" to="hud_layer/hud/lower_buttons/black_bg" method="_on_black_bg_pressed"]
 [connection signal="user_input" from="board_layer/board/input_handler" to="board_layer" method="move_tokens"]
-[connection signal="timeout" from="admob" to="." method="_on_admob_timeout"]
 [connection signal="timeout" from="check_rescale" to="." method="_on_check_rescale_timeout"]
 [connection signal="timeout" from="save_game" to="." method="_on_save_game_timeout"]

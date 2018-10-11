@@ -156,10 +156,10 @@ func start_game():
 		$"/root/stage/popup_layer/effects/black".hide()
 
 		# show banner or try again
-		if admob.is_banner_loaded:
-			admob.showBanner()
-		else:
-			$"/root/stage/admob".start()
+		#if admob.is_banner_loaded:
+		#	admob.showBanner()
+		#else:
+		#	$"/root/stage/admob".start()
 
 		# show post if needed
 		if not seen_tutorial["1"]:
