@@ -224,3 +224,5 @@ const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos pu
 const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡Consigue brócolis con el poder del marketing!"
+
+const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"

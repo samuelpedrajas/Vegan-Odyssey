@@ -223,3 +223,5 @@ const WIN_MSG_IOS = "Congratulations! You have completed the game! You can suppo
 const IOS_SCORE_US = "RATE US"
 
 const REWARDED_MSG = "Get broccolis with the power of marketing!"
+
+const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"

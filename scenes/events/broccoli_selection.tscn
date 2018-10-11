@@ -106,6 +106,7 @@ script/source = "extends Label
 
 func _ready():
 	set_right_pos()
+	set_text(game.lang.BROCCOLI_INSTRUCTIONS)
 
 
 func set_right_pos():
