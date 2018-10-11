@@ -34,6 +34,7 @@ func open():
 	.open()
 	yield($animation, "animation_finished")
 	game.hud_layer.glow_reset()
+	game.save_game()
 
 
 func _on_go_back_btn_pressed():
