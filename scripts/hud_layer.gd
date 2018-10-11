@@ -72,8 +72,8 @@ func _on_excuses_pressed():
 func _on_broccoli_pressed():
 	if game.event_layer.current_events.has("tutorial"):
 		game.event_layer.get_or_start("tutorial").unpost()
-	if not game.seen_tutorial["4"]:
-		game.event_layer.get_or_start("tutorial").post("4")
+	#if not game.seen_tutorial["4"]:
+	#	game.event_layer.get_or_start("tutorial").post("4")
 	game.sounds.play_audio("click")
 	game.event_layer.start("broccoli")
 

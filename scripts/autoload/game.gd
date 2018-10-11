@@ -43,8 +43,8 @@ var seen_intro = false
 var seen_tutorial = {
 	"1": false,
 	"2": false,
-	"3": false,
-	"4": false
+	"3": false
+#	"4": false
 }
 var seen_meme = false
 var seen_refutation = false
@@ -119,8 +119,8 @@ func restart_game(delete_progress=false):
 		seen_tutorial = {
 			"1": false,
 			"2": false,
-			"3": false,
-			"4": false
+			"3": false
+			#"4": false
 		}
 		seen_meme = false
 		seen_refutation = false
