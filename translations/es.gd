@@ -200,7 +200,7 @@ const EXIT_GAME = "SALIR DEL JUEGO"
 const EXIT_GAME_MSG = "¿Estás seguro?"
 
 const RESET_PROGRESS = "¿BORRAR PROGRESO?"
-const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será permanentemente borrado.\n\nNo perderás tus broccolis."
+const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será permanentemente borrado.\n\nNo perderás tus brócolis."
 
 const OFFLINE = "SIN CONEXIÓN"
 const OFFLINE_MSG = "¡Conéctate a Internet para conseguir brócolis y eliminar las fichas que te impiden avanzar!"
@@ -216,7 +216,7 @@ const GAME_OVER = "HAS PERDIDO"
 const GAME_OVER_SCALE = 0.8
 const GAME_OVER_MSG = "No quedan movimientos disponibles"
 const GAME_OVER_OR = "O"
-const GAME_OVER_QUESTION = "¿Ver anuncio a cambio de brócoli?"
+const GAME_OVER_QUESTION = "¿Ver anuncio a cambio de 3 brócolis?"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
