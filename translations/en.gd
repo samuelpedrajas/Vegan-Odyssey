@@ -7,7 +7,7 @@ var language = "en"
 var opening = [
 	["B", "(lucy_salutes)(lau_happy_listening)Laura! Wow! (lau_salutes)Long-time no see! It's so great to see you again."],
 	["A", "(lucy_smiling)Lucy! (lau_happy_talking)What’s new? I’ve heard you’ve gone vegan! Is that true(lau_happy_listening)?"],
-	["B", "(lau_happy_listening)(lucy_happy)You’ve heard correct. I researched about it and I realised we can live perfectly fine without using animals for our own benefit.(lucy_smiling)"],
+	["B", "(lau_happy_listening)(lucy_happy)You’ve heard correct. I researched about it and I realised we can live perfectly fine without eating or using animals(lucy_smiling)."],
 	["A", "(lau_happy_talking)What? That doesn’t make any sense(lucy_listening)(lau_proud)."],
 	["B", "(lucy_stand_talking)Why?(lucy_listening)"],
 	["A", "(lau_finger)Because... WHAT (music)IF YOU WERE IN A DESERTED ISLAND(lau_proud)(lucy_serious)?"]
@@ -33,7 +33,7 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)I think humans eat meat because it's just how “the circle of life” works."],
 		["B", "(lau_listening)(lucy_talking)Well, the term “circle of life” was created to refer to the general tendency towards the equilibrium we can see in the animal kingdom, but it's not a law that has been written in stone."],
 		["B", "Keeping animals in cages with no chance of freedom shouldn’t be part of any “circle of life”, neither can be genetically modifying them for human consumption."],
-		["B", "It's entirely up to you to go vegan, no law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
+		["B", "It's entirely up to you to go vegan, no natural law is forcing you to stop or keep consuming animal products. That means you've got a decision to make(lucy_smiling)."]
 	], [
 		["A", "(lucy_smiling)(lau_serious_talking)Bacon, though(lau_proud)(lucy_serious)."],
 		["B", "Uhm... (lucy_stand_talking)I don't think that even deserves an answer, but I'll ask you something:(lucy_talking_arm) do you support bullfighting?(lucy_listening)"],
@@ -44,10 +44,10 @@ var dialog_list = [
 		["A", "(lau_talking)(lucy_listening)I eat meat because lions eat meat. If they can do it, why can't I?(lau_proud)"],
 		["B", "(lucy_talking)Well, as far as we know you are not a lion... (lucy_happy)or are you? (lau_listening)"],
 		["B", "(lucy_talking)In the wild, lions often commit infanticide and, from a human perspective, other violent acts. What would you think if I picked any of these behaviors and said: “it's fine, lions do it too”?"],
-		["B", "They can't choose because it's in their nature, but we can. We are very different from them, (lucy_happy)don't you think so?(lucy_smiling)"]
+		["B", "They can't choose because their nature limit their options, but we can. We are very different from them, (lucy_happy)don't you think so?(lucy_smiling)"]
 	], [
 		["A", "(lau_talking)(lucy_listening)Cavemen ate meat, that's why I eat meat(lau_proud)."],
-		["B", "(lucy_talking)Ha! Are you really going to justify your actions on “what would cavemen do”?(lau_listening) Are you doing this with the rest of your life decisions? Why then use this concept for nutrition?"],
+		["B", "(lucy_talking)Ha! Are you really going to justify your actions on “what would cavemen do”?(lau_listening) Are you doing this with the rest of your life decisions? Why then use this for nutrition?"],
 		["B", "Cavemen ate whatever they could find in their environment. Also, they did not have a population of 7.6 billion, so our circumstances as species have changed."],
 		["B", "If it's health what concerns you, a vegan diet is perfectly suitable for your body even if you're a professional athlete. It's easy to find information about this(lucy_smiling)."]
 	], [
@@ -148,7 +148,7 @@ var EXCUSES = [
 		"text": "Caveman ate meat",
 		"debate": {
 			"question": "I eat meat because cavemen ate meat.",
-			"answer": "Ha! Are you really going to justify your actions on “what would cavemen do”? Are you doing this with the rest of your life decisions? Why use this concept for nutrition?",
+			"answer": "Ha! Are you really going to justify your actions on “what would cavemen do”? Are you doing this with the rest of your life decisions? Why then use this for nutrition?",
 		}
 	},
 	{
@@ -201,7 +201,7 @@ const RESET_PROGRESS = "DELETE PROGRESS?"
 const RESET_PROGRESS_MSG = "All the progress, including the board, will be permanently deleted.\n\nYou'll keep your broccolis."
 
 const OFFLINE = "YOU APPEAR OFFLINE"
-const OFFLINE_MSG = "Earn broccoli and support the developers by going online.\n\nAt this moment, ads are our only way to keep making awesome games like this one."
+const OFFLINE_MSG = "Go online and earn broccoli to remove the tokens that are getting in your way!"
 
 const EXCUSE_BOOK = "EXCUSES"
 const EXCUSE_BOOK_LEGEND = "CURRENT MAXIMUM"

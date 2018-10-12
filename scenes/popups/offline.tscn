@@ -130,9 +130,7 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "Earn broccoli and support the developers by going online.
-
-At this moment, ads are our only way to keep making awesome games like this one."
+text = "Go online and earn broccoli to remove the tokens that are getting in your way!"
 align = 1
 valign = 1
 autowrap = true

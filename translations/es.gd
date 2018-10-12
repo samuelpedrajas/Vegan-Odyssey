@@ -203,7 +203,7 @@ const RESET_PROGRESS = "¿BORRAR PROGRESO?"
 const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será permanentemente borrado.\n\nNo perderás tus broccolis."
 
 const OFFLINE = "SIN CONEXIÓN"
-const OFFLINE_MSG = "Conéctate a Internet para conseguir brócoli y apoyarnos.\n\nActualmente los anuncios son nuestra única forma de poder hacer juegos como este."
+const OFFLINE_MSG = "¡Conéctate a Internet para conseguir brócolis y eliminar las fichas que te impiden avanzar!"
 
 const EXCUSE_BOOK = "EXCUSAS"
 const EXCUSE_BOOK_LEGEND = "MÁXIMA ACTUAL"
