@@ -135,4 +135,5 @@ func _on_black_pressed():
 func rescale(s):
 	$go_back.set_scale(Vector2(s, s))
 	$go_back.set_right_pos()
-	$go_back/instructions.set_right_pos()
+	$instructions.set_scale(Vector2(s, s))
+	$instructions.set_right_pos()

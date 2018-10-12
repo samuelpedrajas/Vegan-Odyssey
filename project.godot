@@ -26,6 +26,10 @@ boot_splash/stretch_mode="cover"
 boot_splash/bg_color=Color( 0, 0, 0, 0 )
 config/icon="res://icon.png"
 
+[audio]
+
+driver="Android"
+
 [autoload]
 
 admob="*res://scripts/autoload/admob.gd"
