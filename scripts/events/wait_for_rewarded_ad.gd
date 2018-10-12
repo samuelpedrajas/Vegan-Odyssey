@@ -4,8 +4,7 @@ var priority = 7
 var back_button = false
 
 
-var ad_to_show
-var loaded = false
+var amount
 
 var music_playback_pos = -1
 var reward_amount = 0
@@ -13,13 +12,17 @@ var cancel = false
 var popup = false
 
 
-func start(ad_to_show):
+func start(_amount):
+	amount = _amount
 	if admob.admob_module != null:
 		admob.connect("rewarded_loaded", self, "on_rewarded_loaded")
 		admob.connect("rewarded_ad_closed", self, "on_rewarded_ad_closed")
 		admob.connect("rewarded", self, "on_rewarded")
 		admob.connect("rewarded_error", self, "failed_to_load")
-		admob.loadRewardedVideo(ad_to_show)
+		if admob.adIsLoaded:
+			admob.showRewardedVideo()
+		else:
+			admob.loadRewardedVideo()
 	else:
 		popup = true
 		game.event_layer.stop("wait_for_rewarded_ad")
@@ -38,7 +41,7 @@ func stop():
 func on_rewarded_loaded():
 	if cancel:
 		return
-	loaded = true
+	cancel = true
 	if game.settings.music_on:
 		music_playback_pos = game.music.get_playback_position()
 		game.music.stop()
@@ -55,7 +58,7 @@ func on_rewarded_ad_closed():
 		game.effects_layer.play_rewarded_effect(reward_amount)
 
 
-func on_rewarded(amount):
+func on_rewarded():
 	game.secretly_set_broccolis(game.broccolis + amount)
 	game.save_game()
 	if game.popup_layer.popup_exists("game_over"):
@@ -67,7 +70,7 @@ func on_rewarded(amount):
 
 
 func _on_timer_timeout():
-	if not loaded:
+	if not admob.adIsLoaded and not cancel:
 		cancel = true
 		popup = true
 		game.event_layer.stop("wait_for_rewarded_ad")

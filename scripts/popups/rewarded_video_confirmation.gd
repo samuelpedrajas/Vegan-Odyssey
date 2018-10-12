@@ -14,8 +14,7 @@ func setup(_broccoli_duck):
 
 
 func open():
-	var ad_to_show = broccoli_duck.ad_to_show
-	$"window/container/amount".set_text("+" + str(ad_to_show.amount))
+	$"window/container/amount".set_text("+" + str(broccoli_duck.ad_to_show))
 
 	open_anim = "open_window"
 	.open()
