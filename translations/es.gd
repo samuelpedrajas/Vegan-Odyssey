@@ -181,7 +181,7 @@ var EXCUSES = [
 const GO_BACK = "Volver"
 const NO_MORE_ADS_TITLE = "¡VAYA!"
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
-const CANNOT_REACH = "Parece no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
+const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
 const LOADING_AD = "Cargando anuncio"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
