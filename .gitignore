@@ -8,5 +8,4 @@ fonts/*.font
 .gitignore.swp
 GoogleMobileAds.framework/
 results/
-export_presets.cfg
 
