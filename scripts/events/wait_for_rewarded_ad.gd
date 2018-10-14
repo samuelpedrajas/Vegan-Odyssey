@@ -12,6 +12,15 @@ var cancel = false
 var popup = false
 
 
+func showRewardedVideo():
+	if game.settings.music_on:
+		music_playback_pos = game.music.get_playback_position()
+		game.music.stop()
+	$timer.stop()
+	hide()
+	admob.showRewardedVideo()
+
+
 func start(_amount):
 	amount = _amount
 	if admob.admob_module != null:
@@ -20,7 +29,7 @@ func start(_amount):
 		admob.connect("rewarded", self, "on_rewarded")
 		admob.connect("rewarded_error", self, "failed_to_load")
 		if admob.adIsLoaded:
-			admob.showRewardedVideo()
+			showRewardedVideo()
 		else:
 			admob.loadRewardedVideo()
 	else:
@@ -42,12 +51,7 @@ func on_rewarded_loaded():
 	if cancel:
 		return
 	cancel = true
-	if game.settings.music_on:
-		music_playback_pos = game.music.get_playback_position()
-		game.music.stop()
-	$timer.stop()
-	hide()
-	admob.showRewardedVideo()
+	showRewardedVideo()
 
 
 func on_rewarded_ad_closed():
