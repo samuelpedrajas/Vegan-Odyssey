@@ -222,6 +222,6 @@ const WIN_MSG_ANDROID = "Congratulations! You have completed the game! You can s
 const WIN_MSG_IOS = "Congratulations! You have completed the game! You can support us by rating it in the App Store or sharing it with friends."
 const IOS_SCORE_US = "RATE US"
 
-const REWARDED_MSG = "Get broccolis with the power of marketing!"
+const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"
 
 const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"

@@ -224,6 +224,6 @@ const WIN_MSG_ANDROID = "¡Felicidades! Has completado el juego. Puedes apoyarno
 const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en App Store o compartiendo con tus amigos."
 const IOS_SCORE_US = "PUNTÚANOS"
 
-const REWARDED_MSG = "¡PATOFERTA!\nConsigue 2 brócolis por ver un anuncio"
+const REWARDED_MSG = "¡PATOFERTA!\n\nConsigue 2 brócolis por ver un anuncio"
 
 const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"
