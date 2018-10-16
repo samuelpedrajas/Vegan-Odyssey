@@ -225,3 +225,5 @@ const IOS_SCORE_US = "RATE US"
 const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"
 
 const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"
+
+const ERROR9 = "We're getting no ads for you from the server.\n\nGo to Settings > Privacy > Advertising and make sure Limit Ad Tracking is off.\n\nTap the button below to get 1 free broccoli."

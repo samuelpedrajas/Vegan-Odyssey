@@ -35,6 +35,7 @@ func start():
 		$"c/broccoli_duck/stuff/wing".hide()
 		$"c/broccoli_duck/stuff/stick".hide()
 	$animation.play("flying")
+	game.error9_count_locked = false
 
 
 func stop():

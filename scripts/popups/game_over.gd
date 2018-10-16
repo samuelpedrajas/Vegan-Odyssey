@@ -38,11 +38,6 @@ func open():
 	game.save_game()
 
 
-func close():
-	game.error9_count_locked = true
-	.close()
-
-
 func _on_go_back_btn_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
