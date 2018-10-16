@@ -9,6 +9,10 @@ var current_max = 1 setget _set_current_max
 # items
 var broccolis = 3 setget _set_broccolis
 
+# free broccoli
+var error9_count = 0
+var error9_count_locked = true
+
 
 # child nodes
 var transition

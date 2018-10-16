@@ -102,7 +102,14 @@ func failed_to_load(errorCode):
 	else:
 		print("weird")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		if not game.error9_count_locked and game.error9_count >= 2:
+			game.popup_layer.open("error9")
+		elif not game.error9_count_locked:
+			game.error9_count += 1
+			game.error9_count_locked = true
+			game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		else:
+			game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func rescale(s):

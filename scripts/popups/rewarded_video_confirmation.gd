@@ -14,6 +14,7 @@ func setup(_broccoli_duck):
 
 
 func open():
+	game.error9_count_locked = false
 	$"window/container/amount".set_text("+" + str(broccoli_duck.ad_to_show))
 
 	open_anim = "open_window"
@@ -21,6 +22,7 @@ func open():
 
 
 func close():
+	game.error9_count_locked = true
 	broccoli_duck.show()
 
 	close_anim = "close_window"

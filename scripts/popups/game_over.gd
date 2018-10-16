@@ -33,8 +33,14 @@ func open():
 	open_anim = "game_over"
 	.open()
 	yield($animation, "animation_finished")
+	game.error9_count_locked = false
 	game.hud_layer.glow_reset()
 	game.save_game()
+
+
+func close():
+	game.error9_count_locked = true
+	.close()
 
 
 func _on_go_back_btn_pressed():

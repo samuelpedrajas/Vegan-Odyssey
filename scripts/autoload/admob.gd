@@ -48,6 +48,7 @@ func showRewardedVideo():
 
 func _on_rewarded_video_ad_loaded():
 	print("Rewarded loaded success")
+	game.error9_count = 0
 	adIsLoaded = true
 	emit_signal("rewarded_loaded")
 

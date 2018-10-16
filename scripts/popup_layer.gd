@@ -15,7 +15,8 @@ onready var popup_scene_dict = {
 	"offline": preload("res://scenes/popups/offline.tscn"),
 	"game_over": preload("res://scenes/popups/game_over.tscn"),
 	"debate_screen": preload("res://scenes/popups/debate_screen.tscn"),
-	"win": preload("res://scenes/popups/win.tscn")
+	"win": preload("res://scenes/popups/win.tscn"),
+	"error9": preload("res://scenes/popups/error9.tscn")
 }
 
 
