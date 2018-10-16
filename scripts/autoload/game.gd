@@ -195,7 +195,7 @@ func save_game():
 	else:
 		print("Saving encrypted")
 		savegame.open_encrypted_with_pass(
-			cfg.SAVE_GAME_PATH, File.WRITE, OS.get_unique_id()
+			cfg.SAVE_GAME_PATH, File.WRITE, "OS.get_unique_id()".md5_buffer()
 		)
 
 	var game_status = {
@@ -248,7 +248,7 @@ func get_translation_file_path():
 		else:
 			print("Loading encrypted")
 			savegame.open_encrypted_with_pass(
-				cfg.SAVE_GAME_PATH, File.READ, OS.get_unique_id()
+				cfg.SAVE_GAME_PATH, File.READ, "OS.get_unique_id()".md5_buffer()
 			)
 		savegame_data = parse_json(savegame.get_line())
 		return cfg.TRANSLATIONS[savegame_data['lang']]
