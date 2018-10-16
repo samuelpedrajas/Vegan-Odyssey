@@ -99,8 +99,7 @@ func failed_to_load(errorCode):
 		print("no more ads")
 
 		game.event_layer.stop("wait_for_rewarded_ad")
-		print(game.error9_count_locked)
-		print(game.error9_count)
+
 		if not game.error9_count_locked and game.error9_count >= 2 and game.given_gifts < 5 and game.broccolis < 5:
 			game.error9_count_locked = true
 			game.given_gifts += 1
