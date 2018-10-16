@@ -84,4 +84,9 @@ func on_resize():
 
 
 func getHeight():
+	if OS.get_name() == "iOS" and Engine.has_singleton("MobileTools"):
+		var mobile_tools = Engine.get_singleton("MobileTools")
+		if mobile_tools.theresSafeArea():
+			return 40.0 + mobile_tools.getSafeMarginBottom()
+
 	return 40.0
