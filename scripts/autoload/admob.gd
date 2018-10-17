@@ -5,7 +5,7 @@ extends Node2D
 var admob_module = null
 var isReal = true
 
-var adRewardedId = "ca-app-pub-1160358939410189/9596791523"
+var adRewardedId = "ca-app-pub-3940256099942544/1712485313"
 var adRewarded2 = 2
 var adRewarded3 = 3
 
