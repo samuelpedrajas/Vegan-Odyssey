@@ -89,4 +89,3 @@ func update_progress(low, high):
 				OS.set_screen_orientation(OS.SCREEN_ORIENTATION_SENSOR)
 				mobile_tools.attemptRotationToDeviceOrientation()
 		do_rotate = false
-		admob.start_ads()

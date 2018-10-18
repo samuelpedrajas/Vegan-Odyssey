@@ -3,9 +3,9 @@ extends Node2D
 #var is_banner_loaded = false
 
 var admob_module = null
-var isReal = true
+var isReal = false
 
-var adRewardedId = "ca-app-pub-3940256099942544/1712485313"
+var adRewardedId = "ca-app-pub-3940256099942544/5224354917"
 var adRewarded2 = 2
 var adRewarded3 = 3
 
@@ -18,11 +18,11 @@ signal rewarded_ad_closed
 signal rewarded
 
 
-func start_ads():
+func start_ads(lang):
 	if(Engine.has_singleton("AdMob")):
 		print("Starting AdMob")
 		admob_module = Engine.get_singleton("AdMob")
-		admob_module.init(isReal, get_instance_id())
+		admob_module.init(isReal, get_instance_id(), lang)
 		loadRewardedVideo()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
