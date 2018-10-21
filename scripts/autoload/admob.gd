@@ -23,7 +23,8 @@ func start_ads(lang):
 		print("Starting AdMob")
 		admob_module = Engine.get_singleton("AdMob")
 		admob_module.init(isReal, get_instance_id(), lang)
-		loadRewardedVideo()
+		# loadRewardedVideo()
+		admob_module.requestConsent()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
 		get_tree().connect("screen_resized", self, "on_resize")
@@ -91,3 +92,44 @@ func getHeight():
 			return 40.0 + mobile_tools.getSafeMarginBottom()
 
 	return 40.0
+
+
+# consent
+
+func requestConsent():
+	if admob_module != null:
+		admob_module.requestConsent()
+
+
+func loadConsentForm():
+	if admob_module != null:
+		admob_module.loadConsentForm()
+
+
+func showConsentForm():
+	if admob_module != null:
+		admob_module.showConsentForm()
+
+
+# consent callbacks
+
+func _on_consent_info_updated(status):
+	print("Consent status: ", status)
+	loadConsentForm()
+
+
+func _on_consent_failed_to_update(error_description):
+	print("Consent failed to update: ", error_description)
+
+
+func _on_consent_form_loaded():
+	print("Consent form loaded!!!!!!!!")
+	showConsentForm()
+
+
+func _on_consent_form_closed(status, user_prefers_ad_free):
+	print("Consent form closed: ", status, " ", user_prefers_ad_free)
+
+
+func _on_consent_form_error(error_description):
+	print("Consent form error: ", error_description)
