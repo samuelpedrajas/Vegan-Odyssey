@@ -10,6 +10,8 @@ var adRewarded2 = 2
 var adRewarded3 = 3
 
 var adIsLoaded = false
+var firstRequest = true
+var consentFormLoaded = false
 
 
 signal rewarded_error
@@ -30,8 +32,8 @@ func start_ads(lang):
 		admob_module = Engine.get_singleton("AdMob")
 		admob_module.init(isReal, get_instance_id(), lang)
 
-		if not game.purchased and game.personalized_ads != null:
-			loadRewardedVideo()
+		if not game.purchased:
+			requestConsent()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
 		get_tree().connect("screen_resized", self, "on_resize")
@@ -115,6 +117,7 @@ func loadConsentForm():
 
 func showConsentForm():
 	if admob_module != null:
+		consentFormLoaded = false
 		admob_module.showConsentForm()
 
 
@@ -129,7 +132,14 @@ func isRequestLocationInEeaOrUnknown():
 func _on_consent_info_updated(status):
 	print("Consent status: ", status)
 	var is_eea = isRequestLocationInEeaOrUnknown()
-	if status == "personalized" or not is_eea:
+	if firstRequest:
+		if is_eea and status == "unknown":
+			loadConsentForm()
+		else:
+			firstRequest = false
+			loadRewardedVideo()
+
+	elif status == "personalized" or not is_eea:
 		game.personalized_ads = true
 		game.save_game()
 		admob_module.setConsent(game.personalized_ads)
@@ -140,12 +150,18 @@ func _on_consent_info_updated(status):
 		admob_module.setConsent(game.personalized_ads)
 		emit_signal("consent_done")
 	else:
+		game.personalized_ads = null
+		game.save_game()
 		emit_signal("consent_unknown")
 
 
 func _on_consent_form_loaded():
 	print("Consent form loaded")
-	showConsentForm()
+	consentFormLoaded = true
+	if firstRequest:
+		firstRequest = false
+	else:
+		showConsentForm()
 
 
 func _on_consent_form_closed(status, user_prefers_ad_free):
@@ -169,4 +185,6 @@ func _on_consent_form_closed(status, user_prefers_ad_free):
 
 func _on_consent_error(error_description):
 	print("Consent error: ", error_description)
+	if firstRequest:
+		firstRequest = false
 	emit_signal("consent_error")

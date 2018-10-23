@@ -10,11 +10,15 @@ func _ready():
 
 
 func _on_manage_ads_pressed():
-	$"/root".set_disable_input(true)
-	$text.update_language()
-	$anim.play("set_black")
-	yield($anim, "animation_finished")
-	admob.requestConsent()
+	if not admob.firstRequest:
+		$"/root".set_disable_input(true)
+		$text.update_language()
+		$anim.play("set_black")
+		yield($anim, "animation_finished")
+		if admob.consentFormLoaded:
+			admob.showConsentForm()
+		else:
+			admob.requestConsent()
 
 
 func close():

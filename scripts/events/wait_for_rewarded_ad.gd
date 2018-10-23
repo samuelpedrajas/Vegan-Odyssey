@@ -23,7 +23,11 @@ func showRewardedVideo():
 
 func start(_amount):
 	amount = _amount
-	if admob.admob_module != null:
+	if admob.firstRequest:
+		game.event_layer.stop("wait_for_rewarded_ad")
+	elif admob.consentFormLoaded:
+		admob.showConsentForm()
+	elif admob.admob_module != null:
 		admob.connect("rewarded_loaded", self, "on_rewarded_loaded")
 		admob.connect("rewarded_ad_closed", self, "on_rewarded_ad_closed")
 		admob.connect("rewarded", self, "on_rewarded")
