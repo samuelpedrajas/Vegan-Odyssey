@@ -35,21 +35,31 @@ func on_consent_done():
 	if admob.isRequestLocationInEeaOrUnknown():
 		admob.loadConsentForm()
 	else:
-		print("Device not in EEA!")
+		print("Device not in EEA")
+		close()
+		yield($anim, "animation_finished")
+		game.popup_layer.open("not_eea")
 
 
 func on_consent_unknown():
 	if admob.isRequestLocationInEeaOrUnknown():
 		admob.loadConsentForm()
 	else:
-		print("Device not in EEA!")
+		print("Device not in EEA")
+		close()
+		yield($anim, "animation_finished")
+		game.popup_layer.open("not_eea")
 
 
 func on_consent_error():
-	print("ERROR!!!")
+	print("Consent error")
 	close()
+	yield($anim, "animation_finished")
+	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():
-	print("Prefers to pay!!!")
+	print("Prefers to ad free")
 	close()
+	yield($anim, "animation_finished")
+	game.popup_layer.open("purchase")

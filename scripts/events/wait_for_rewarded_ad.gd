@@ -73,13 +73,17 @@ func on_consent_unknown():
 
 
 func on_consent_error():
-	print("Consent error!!!")
+	print("Consent error")
+	popup = true
 	game.event_layer.stop("wait_for_rewarded_ad")
+	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():
-	print("prefers to pay!!")
+	print("prefers ad free")
+	popup = true
 	game.event_layer.stop("wait_for_rewarded_ad")
+	game.popup_layer.open("purchase")
 
 
 func stop():
