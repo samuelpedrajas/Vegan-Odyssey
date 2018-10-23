@@ -2,6 +2,10 @@ extends Node
 
 var savegame = File.new()
 
+# consent
+var purchased = false
+var personalized_ads = null  # null means unknown
+
 # game scores
 var highest_max = 1 setget _set_highest_max  # TODO: use cfg.MIN_HIGHEST_MAX
 var current_max = 1 setget _set_current_max
@@ -213,7 +217,9 @@ func save_game():
 		'lang': lang.language,
 		'seen_intro': seen_intro,
 		'seen_meme': seen_meme,
-		'seen_refutation': seen_refutation
+		'seen_refutation': seen_refutation,
+		'personalized_ads': personalized_ads,
+		'purchased': purchased
 	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
@@ -237,6 +243,8 @@ func load_game():
 	seen_excuses = parse_json(info['seen_excuses'])
 	seen_meme = info['seen_meme']
 	seen_refutation = info['seen_refutation']
+	personalized_ads = info['personalized_ads']
+	purchased = info['purchased']
 
 	savegame.close()
 
@@ -311,7 +319,6 @@ func game_over():
 
 	sounds.play_audio("game_over")
 	popup_layer.open("game_over")
-
 
 
 func _notification(what):

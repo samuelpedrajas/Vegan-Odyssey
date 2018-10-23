@@ -5,7 +5,7 @@ extends Node2D
 var admob_module = null
 var isReal = false
 
-var adRewardedId = "ca-app-pub-3940256099942544/1712485313"
+var adRewardedId = "ca-app-pub-3940256099942544/5224354917"
 var adRewarded2 = 2
 var adRewarded3 = 3
 
@@ -17,14 +17,19 @@ signal rewarded_loaded
 signal rewarded_ad_closed
 signal rewarded
 
+signal consent_done
+signal consent_error
+signal prefers2pay
+
 
 func start_ads(lang):
 	if(Engine.has_singleton("AdMob")):
 		print("Starting AdMob")
 		admob_module = Engine.get_singleton("AdMob")
 		admob_module.init(isReal, get_instance_id(), lang)
-		# loadRewardedVideo()
-		admob_module.requestConsent()
+
+		if not game.purchased and game.personalized_ads != null:
+			loadRewardedVideo()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
 		get_tree().connect("screen_resized", self, "on_resize")
@@ -36,7 +41,7 @@ func get_rewarded_ad_info():
 
 func loadRewardedVideo():
 	if admob_module != null and not adIsLoaded:
-		admob_module.loadRewardedVideo(adRewardedId)
+		admob_module.loadRewardedVideo(adRewardedId, game.personalized_ads)
 
 
 func showRewardedVideo():
@@ -111,25 +116,55 @@ func showConsentForm():
 		admob_module.showConsentForm()
 
 
+func isRequestLocationInEeaOrUnknown():
+	if admob_module != null:
+		return admob_module.isRequestLocationInEeaOrUnknown()
+	return false
+
+
 # consent callbacks
 
 func _on_consent_info_updated(status):
 	print("Consent status: ", status)
-	loadConsentForm()
-
-
-func _on_consent_failed_to_update(error_description):
-	print("Consent failed to update: ", error_description)
+	var is_eea = isRequestLocationInEeaOrUnknown()
+	if status == "personalized" or not is_eea:
+		game.personalized_ads = true
+		game.save_game()
+		admob_module.setConsent(game.personalized_ads)
+		emit_signal("consent_done")
+	elif status == "non_personalized":
+		game.personalized_ads = false
+		game.save_game()
+		admob_module.setConsent(game.personalized_ads)
+		emit_signal("consent_done")
+	else:
+		loadConsentForm()
 
 
 func _on_consent_form_loaded():
-	print("Consent form loaded!!!!!!!!")
+	print("Consent form loaded")
 	showConsentForm()
 
 
 func _on_consent_form_closed(status, user_prefers_ad_free):
 	print("Consent form closed: ", status, " ", user_prefers_ad_free)
 
+	if user_prefers_ad_free:
+		emit_signal("prefers2pay")
+	elif status == "personalized":
+		game.personalized_ads = true
+		game.save_game()
+		admob_module.setConsent(game.personalized_ads)
+		emit_signal("consent_done")
+	elif status == "non_personalized":
+		game.personalized_ads = false
+		game.save_game()
+		admob_module.setConsent(game.personalized_ads)
+		emit_signal("consent_done")
+	else:
+		emit_signal("consent_error")
 
-func _on_consent_form_error(error_description):
-	print("Consent form error: ", error_description)
+
+func _on_consent_error(error_description):
+	print("Consent error: ", error_description)
+	emit_signal("consent_error")

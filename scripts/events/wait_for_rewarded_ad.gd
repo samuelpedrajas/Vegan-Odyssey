@@ -28,14 +28,40 @@ func start(_amount):
 		admob.connect("rewarded_ad_closed", self, "on_rewarded_ad_closed")
 		admob.connect("rewarded", self, "on_rewarded")
 		admob.connect("rewarded_error", self, "failed_to_load")
-		if admob.adIsLoaded:
+
+		admob.connect("consent_done", self, "on_consent_done")
+		admob.connect("consent_error", self, "on_consent_error")
+		admob.connect("prefers2pay", self, "on_prefers2pay")
+
+		if game.personalized_ads == null:
+			admob.requestConsent()
+		elif admob.adIsLoaded:
 			showRewardedVideo()
 		else:
 			admob.loadRewardedVideo()
+			$timer.start()
 	else:
 		popup = true
 		game.event_layer.stop("wait_for_rewarded_ad")
 		game.popup_layer.open("offline")
+
+
+func on_consent_done():
+	if admob.adIsLoaded:
+		showRewardedVideo()
+	else:
+		admob.loadRewardedVideo()
+		$timer.start()
+
+
+func on_consent_error():
+	print("Consent error!!!")
+	game.event_layer.stop("wait_for_rewarded_ad")
+
+
+func on_prefers2pay():
+	print("prefers to pay!!")
+	game.event_layer.stop("wait_for_rewarded_ad")
 
 
 func stop():
