@@ -17,7 +17,9 @@ signal rewarded_loaded
 signal rewarded_ad_closed
 signal rewarded
 
+signal consent_form_done
 signal consent_done
+signal consent_unknown
 signal consent_error
 signal prefers2pay
 
@@ -138,7 +140,7 @@ func _on_consent_info_updated(status):
 		admob_module.setConsent(game.personalized_ads)
 		emit_signal("consent_done")
 	else:
-		loadConsentForm()
+		emit_signal("consent_unknown")
 
 
 func _on_consent_form_loaded():
@@ -155,12 +157,12 @@ func _on_consent_form_closed(status, user_prefers_ad_free):
 		game.personalized_ads = true
 		game.save_game()
 		admob_module.setConsent(game.personalized_ads)
-		emit_signal("consent_done")
+		emit_signal("consent_form_done")
 	elif status == "non_personalized":
 		game.personalized_ads = false
 		game.save_game()
 		admob_module.setConsent(game.personalized_ads)
-		emit_signal("consent_done")
+		emit_signal("consent_form_done")
 	else:
 		emit_signal("consent_error")
 

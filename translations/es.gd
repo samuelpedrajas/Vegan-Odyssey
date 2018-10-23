@@ -192,6 +192,8 @@ const LANGUAGE_SETTINGS = "Idioma:"
 const DELETE_PROGRESS_SETTINGS = "Borrar progreso"
 const EXIT_GAME_SETTINGS = "Salir del juego"
 const LOADING_LANGUAGE_SETTINGS = "Loading language"
+const MANAGE_ADS = "Manage Ads"
+const REQUESTING_CONSENT = "Cargando"
 
 const RESET_BOARD = "¿REINICIAR TABLERO?"
 const RESET_BOARD_MSG = "El estado actual del tablero se perderá"

@@ -29,7 +29,9 @@ func start(_amount):
 		admob.connect("rewarded", self, "on_rewarded")
 		admob.connect("rewarded_error", self, "failed_to_load")
 
+		admob.connect("consent_form_done", self, "on_consent_form_done")
 		admob.connect("consent_done", self, "on_consent_done")
+		admob.connect("consent_unknown", self, "on_consent_unknown")
 		admob.connect("consent_error", self, "on_consent_error")
 		admob.connect("prefers2pay", self, "on_prefers2pay")
 
@@ -52,6 +54,18 @@ func on_consent_done():
 	else:
 		admob.loadRewardedVideo()
 		$timer.start()
+
+
+func on_consent_form_done():
+	if admob.adIsLoaded:
+		showRewardedVideo()
+	else:
+		admob.loadRewardedVideo()
+		$timer.start()
+
+
+func on_consent_unknown():
+	admob.loadConsentForm()
 
 
 func on_consent_error():

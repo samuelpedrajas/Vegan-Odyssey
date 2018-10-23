@@ -190,6 +190,8 @@ const LANGUAGE_SETTINGS = "Language:"
 const DELETE_PROGRESS_SETTINGS = "Delete progress"
 const EXIT_GAME_SETTINGS = "Exit game"
 const LOADING_LANGUAGE_SETTINGS = "Cargando idioma"
+const MANAGE_ADS = "Manage Ads"
+const REQUESTING_CONSENT = "Loading"
 
 const RESET_BOARD = "RESET BOARD?"
 const RESET_BOARD_MSG = "The state of the board will be lost"
