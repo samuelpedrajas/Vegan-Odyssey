@@ -21,14 +21,19 @@ func _on_manage_ads_pressed():
 			admob.requestConsent()
 
 
-func close():
-	$anim.play("unset_black")
-	yield($anim, "animation_finished")
-	$"/root".set_disable_input(false)
+func close(instant):
+	if instant:
+		hide()
+		self_modulate.a = 0.0
+		$text.self_modulate.a = 0.0
+	else:
+		$anim.play("unset_black")
+		yield($anim, "animation_finished")
+		$"/root".set_disable_input(false)
 
 
 func on_consent_form_done():
-	close()
+	close(false)
 
 
 func on_consent_done():
@@ -36,8 +41,7 @@ func on_consent_done():
 		admob.loadConsentForm()
 	else:
 		print("Device not in EEA")
-		close()
-		yield($anim, "animation_finished")
+		close(true)
 		game.popup_layer.open("not_eea")
 
 
@@ -46,20 +50,17 @@ func on_consent_unknown():
 		admob.loadConsentForm()
 	else:
 		print("Device not in EEA")
-		close()
-		yield($anim, "animation_finished")
+		close(true)
 		game.popup_layer.open("not_eea")
 
 
 func on_consent_error():
 	print("Consent error")
-	close()
-	yield($anim, "animation_finished")
+	close(true)
 	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():
 	print("Prefers to ad free")
-	close()
-	yield($anim, "animation_finished")
+	close(true)
 	game.popup_layer.open("purchase")

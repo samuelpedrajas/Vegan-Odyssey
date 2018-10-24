@@ -159,7 +159,7 @@ func reset_progress():
 
 func start_game():
 	load_game()
-	admob.start_ads(lang.language)
+	admob.start_ads()
 
 	if not seen_intro:
 		popup_layer.open("debate_screen", -2)

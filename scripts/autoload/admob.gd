@@ -26,11 +26,11 @@ signal consent_error
 signal prefers2pay
 
 
-func start_ads(lang):
+func start_ads():
 	if(Engine.has_singleton("AdMob")):
 		print("Starting AdMob")
 		admob_module = Engine.get_singleton("AdMob")
-		admob_module.init(isReal, get_instance_id(), lang)
+		admob_module.init(isReal, get_instance_id())
 
 		if not game.purchased:
 			requestConsent()
@@ -112,7 +112,7 @@ func requestConsent():
 
 func loadConsentForm():
 	if admob_module != null:
-		admob_module.loadConsentForm()
+		admob_module.loadConsentForm(game.lang.language)
 
 
 func showConsentForm():

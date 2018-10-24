@@ -23,21 +23,23 @@ func showRewardedVideo():
 
 func start(_amount):
 	amount = _amount
+
+	admob.connect("rewarded_loaded", self, "on_rewarded_loaded")
+	admob.connect("rewarded_ad_closed", self, "on_rewarded_ad_closed")
+	admob.connect("rewarded", self, "on_rewarded")
+	admob.connect("rewarded_error", self, "failed_to_load")
+
+	admob.connect("consent_form_done", self, "on_consent_form_done")
+	admob.connect("consent_done", self, "on_consent_done")
+	admob.connect("consent_unknown", self, "on_consent_unknown")
+	admob.connect("consent_error", self, "on_consent_error")
+	admob.connect("prefers2pay", self, "on_prefers2pay")
+
 	if admob.firstRequest:
 		game.event_layer.stop("wait_for_rewarded_ad")
 	elif admob.consentFormLoaded:
 		admob.showConsentForm()
 	elif admob.admob_module != null:
-		admob.connect("rewarded_loaded", self, "on_rewarded_loaded")
-		admob.connect("rewarded_ad_closed", self, "on_rewarded_ad_closed")
-		admob.connect("rewarded", self, "on_rewarded")
-		admob.connect("rewarded_error", self, "failed_to_load")
-
-		admob.connect("consent_form_done", self, "on_consent_form_done")
-		admob.connect("consent_done", self, "on_consent_done")
-		admob.connect("consent_unknown", self, "on_consent_unknown")
-		admob.connect("consent_error", self, "on_consent_error")
-		admob.connect("prefers2pay", self, "on_prefers2pay")
 
 		if game.personalized_ads == null:
 			admob.requestConsent()
