@@ -134,6 +134,8 @@ func _on_consent_info_updated(status):
 	var is_eea = isRequestLocationInEeaOrUnknown()
 	if firstRequest:
 		if is_eea and status == "unknown":
+			game.personalized_ads = null
+			game.save_game()
 			loadConsentForm()
 		elif not is_eea:
 			firstRequest = false
