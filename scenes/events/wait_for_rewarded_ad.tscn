@@ -117,7 +117,7 @@ _sections_unfolded = [ "Custom Fonts", "Rect", "Visibility", "custom_colors", "c
 
 [node name="timer" type="Timer" parent="."]
 process_mode = 1
-wait_time = 15.0
+wait_time = 30.0
 one_shot = true
 autostart = false
 
