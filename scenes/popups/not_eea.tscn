@@ -22,7 +22,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Label
 
 func _ready():
-	set_text(game.lang.ERROR9)
+	set_text(game.lang.NOT_EEA)
 "
 
 [node name="not_eea" index="0" groups=[
@@ -99,6 +99,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 2 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script", "custom_fonts", "custom_fonts/font" ]
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script", "custom_fonts", "custom_fonts/font", "script" ]
 
 [connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]

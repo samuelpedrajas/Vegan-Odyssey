@@ -135,6 +135,12 @@ func _on_consent_info_updated(status):
 	if firstRequest:
 		if is_eea and status == "unknown":
 			loadConsentForm()
+		elif not is_eea:
+			firstRequest = false
+			game.personalized_ads = true
+			game.save_game()
+			admob_module.setConsent(game.personalized_ads)
+			loadRewardedVideo()
 		else:
 			firstRequest = false
 			loadRewardedVideo()
