@@ -899,6 +899,7 @@ stretch_mode = 0
 
 [node name="exit_button" type="TextureButton" parent="window" index="6"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
