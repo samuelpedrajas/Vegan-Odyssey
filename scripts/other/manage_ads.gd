@@ -1,5 +1,4 @@
-extends TextureRect
-
+extends TextureButton
 
 func _ready():
 	admob.connect("consent_form_done", self, "on_consent_form_done")
@@ -11,29 +10,16 @@ func _ready():
 
 func _on_manage_ads_pressed():
 	if not admob.firstRequest:
+		game.effects_layer.set_loading()
 		$"/root".set_disable_input(true)
-		$text.update_language()
-		$anim.play("set_black")
-		yield($anim, "animation_finished")
 		if admob.consentFormLoaded:
 			admob.showConsentForm()
 		else:
 			admob.requestConsent()
 
 
-func close(instant):
-	if instant:
-		hide()
-		self_modulate.a = 0.0
-		$text.self_modulate.a = 0.0
-	else:
-		$anim.play("unset_black")
-		yield($anim, "animation_finished")
-		$"/root".set_disable_input(false)
-
-
 func on_consent_form_done():
-	close(false)
+	game.effects_layer.unset_loading()
 
 
 func on_consent_done():
@@ -41,7 +27,7 @@ func on_consent_done():
 		admob.loadConsentForm()
 	else:
 		print("Device not in EEA")
-		close(true)
+		game.effects_layer.unset_loading()
 		game.popup_layer.open("not_eea")
 
 
@@ -50,17 +36,16 @@ func on_consent_unknown():
 		admob.loadConsentForm()
 	else:
 		print("Device not in EEA")
-		close(true)
+		game.effects_layer.unset_loading()
 		game.popup_layer.open("not_eea")
 
 
 func on_consent_error():
 	print("Consent error")
-	close(true)
+	game.effects_layer.unset_loading()
 	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():
 	print("Prefers to ad free")
-	close(true)
-	game.popup_layer.open("purchase")
+	game.popup_layer.open("purchase", self)

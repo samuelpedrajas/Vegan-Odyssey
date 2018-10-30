@@ -78,6 +78,11 @@ func _on_broccoli_pressed():
 	game.event_layer.start("broccoli")
 
 
+func _on_upgrade_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.open("purchase")
+
+
 ### ON CHANGE ACTIONS
 
 func set_broccoli_amount(n):

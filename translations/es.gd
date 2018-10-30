@@ -182,7 +182,6 @@ const GO_BACK = "Volver"
 const NO_MORE_ADS_TITLE = "¡VAYA!"
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
-const LOADING_AD = "Cargando anuncio"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
 const SETTINGS_HEADER_SCALE = 0.65
@@ -193,7 +192,7 @@ const DELETE_PROGRESS_SETTINGS = "Borrar progreso"
 const EXIT_GAME_SETTINGS = "Salir del juego"
 const LOADING_LANGUAGE_SETTINGS = "Loading language"
 const MANAGE_ADS = "Anuncios"
-const REQUESTING_CONSENT = "Cargando"
+const LOADING = "Cargando"
 
 const RESET_BOARD = "¿REINICIAR TABLERO?"
 const RESET_BOARD_MSG = "El estado actual del tablero se perderá"

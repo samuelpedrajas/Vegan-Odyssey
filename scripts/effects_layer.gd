@@ -49,3 +49,12 @@ func _process(delta):
 			s2 * 1.1 - s2 * 0.1 * ((acc_time - anim_time / 2.0) / (anim_time / 2.0))
 		)
 	acc_time += delta
+
+
+func set_loading():
+	$"/root/stage/transition_layer/loading".set_loading()
+
+
+func unset_loading():
+	$"/root/stage/transition_layer/loading".unset_loading()
+

@@ -11,6 +11,8 @@ var reward_amount = 0
 var cancel = false
 var popup = false
 
+var do_not_unset_loading = false
+
 
 func showRewardedVideo():
 	if game.settings.music_on:
@@ -34,6 +36,8 @@ func start(_amount):
 	admob.connect("consent_unknown", self, "on_consent_unknown")
 	admob.connect("consent_error", self, "on_consent_error")
 	admob.connect("prefers2pay", self, "on_prefers2pay")
+
+	game.effects_layer.set_loading()
 
 	if admob.firstRequest:
 		game.event_layer.stop("wait_for_rewarded_ad")
@@ -84,11 +88,15 @@ func on_consent_error():
 func on_prefers2pay():
 	print("prefers ad free")
 	popup = true
+	do_not_unset_loading = true
 	game.event_layer.stop("wait_for_rewarded_ad")
 	game.popup_layer.open("purchase")
 
 
 func stop():
+	if not do_not_unset_loading:
+		game.effects_layer.unset_loading()
+
 	if game.popup_layer.popup_exists("game_over") and not popup:
 		game.popup_layer.popup_stack.back().show()
 		game.popup_layer.get_node("effects/blur").show()

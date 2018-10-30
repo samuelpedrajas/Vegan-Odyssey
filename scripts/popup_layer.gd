@@ -37,13 +37,13 @@ func open(name, params=null):
 			get_tree().set_pause(true)
 
 		if popup.show_blur:
-			$"effects/blur".show()
+			show_blur()
 
 		# add popup
 		$popups.add_child(popup)
 		popup_stack.append(popup)
 		popup.set_pause_mode(Node2D.PAUSE_MODE_PROCESS)
-		if params:
+		if params != null:
 			popup.setup(params)
 
 		# multiscreen
@@ -55,6 +55,10 @@ func open(name, params=null):
 			$"/root".set_disable_input(false)
 	else:
 		$"/root".set_disable_input(false)
+
+
+func show_blur():
+	$"effects/blur".show()
 
 
 func popup_exists(name):

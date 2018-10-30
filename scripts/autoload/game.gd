@@ -194,7 +194,7 @@ func set_new_scene(scene_resource, translation_resource):
 
 
 func save_game():
-	if OS.get_name() == "X11":
+	if OS.get_name() == "X11" or OS.get_name() == "OSX":
 		savegame.open(
 			cfg.SAVE_GAME_PATH, File.WRITE
 		)
@@ -251,7 +251,7 @@ func load_game():
 
 func get_translation_file_path():
 	if savegame.file_exists(cfg.SAVE_GAME_PATH):
-		if OS.get_name() == "X11":
+		if OS.get_name() == "X11" or OS.get_name() == "OSX":
 			savegame.open(
 				cfg.SAVE_GAME_PATH, File.READ
 			)

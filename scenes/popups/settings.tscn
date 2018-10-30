@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/settings.gd" type="Script" id=2]
@@ -14,12 +14,12 @@
 [ext_resource path="res://images/popups/reset_progress_button_pressed.png" type="Texture" id=12]
 [ext_resource path="res://images/popups/manage_ads.png" type="Texture" id=13]
 [ext_resource path="res://images/popups/manage_ads_pressed.png" type="Texture" id=14]
-[ext_resource path="res://images/popups/wheel.png" type="Texture" id=15]
-[ext_resource path="res://images/popups/exit_button.png" type="Texture" id=16]
-[ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=17]
-[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=18]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=19]
-[ext_resource path="res://scripts/other/requesting_consent.gd" type="Script" id=20]
+[ext_resource path="res://scripts/other/manage_ads.gd" type="Script" id=15]
+[ext_resource path="res://images/popups/wheel.png" type="Texture" id=16]
+[ext_resource path="res://images/popups/exit_button.png" type="Texture" id=17]
+[ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=18]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=19]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
 
@@ -266,7 +266,7 @@ func _ready():
 
 
 func update_language():
-	set_text(game.lang.REQUESTING_CONSENT)
+	set_text(game.lang.LOADING_LANGUAGE_SETTINGS)
 "
 
 [sub_resource type="Animation" id=17]
@@ -324,91 +324,6 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( -2.23517e-08, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=19]
-
-length = 0.4
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.588235 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("text:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=20]
-
-resource_name = "unset_black"
-length = 0.4
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("text:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -847,6 +762,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 14 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="label" type="Label" parent="window/manage_ads" index="0" groups=[
@@ -894,7 +810,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 stretch_mode = 0
 
 [node name="exit_button" type="TextureButton" parent="window" index="6"]
@@ -919,8 +835,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
 script = SubResource( 12 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
@@ -952,7 +868,7 @@ max_lines_visible = -1
 script = SubResource( 13 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
-[node name="go_back" parent="." index="3" instance=ExtResource( 18 )]
+[node name="go_back" parent="." index="3" instance=ExtResource( 19 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -972,7 +888,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 7
 script = SubResource( 14 )
@@ -1018,71 +934,11 @@ anims/set_black = SubResource( 17 )
 anims/unset_black = SubResource( 18 )
 blend_times = [  ]
 
-[node name="requesting_consent" type="TextureRect" parent="." index="5"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 19 )
-expand = true
-stretch_mode = 7
-script = ExtResource( 20 )
-_sections_unfolded = [ "Margin", "Script", "Visibility", "texture" ]
-
-[node name="text" type="Label" parent="requesting_consent" index="0"]
-self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -540.0
-margin_top = -960.0
-margin_right = 540.0
-margin_bottom = 960.0
-rect_pivot_offset = Vector2( 540, 960 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 5
-custom_constants/shadow_offset_y = 5
-text = "Loading"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 16 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "Visibility" ]
-
-[node name="anim" type="AnimationPlayer" parent="requesting_consent" index="1"]
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/set_black = SubResource( 19 )
-anims/unset_black = SubResource( 20 )
-blend_times = [  ]
-
 [connection signal="toggled" from="window/audio/music_control/switch" to="." method="_on_switch_music_toggled"]
 [connection signal="toggled" from="window/audio/sound_control/switch" to="." method="_on_switch_sound_toggled"]
 [connection signal="pressed" from="window/lang/flags/en" to="." method="_on_en_pressed"]
 [connection signal="pressed" from="window/lang/flags/es" to="." method="_on_es_pressed"]
 [connection signal="pressed" from="window/reset_progress" to="." method="_on_reset_progress_pressed"]
-[connection signal="pressed" from="window/manage_ads" to="requesting_consent" method="_on_manage_ads_pressed"]
+[connection signal="pressed" from="window/manage_ads" to="window/manage_ads" method="_on_manage_ads_pressed"]
 [connection signal="pressed" from="window/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
