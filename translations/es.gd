@@ -179,7 +179,8 @@ var EXCUSES = [
 # OTHER CONTROLS
 
 const GO_BACK = "Volver"
-const NO_MORE_ADS_TITLE = "¡VAYA!"
+const OOPS_TITLE = "¡VAYA!"
+const CONGRATULATIONS = "¡YUJU!"
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
 const PURCHASE_SUCCESSFUL = "Tu compra ha sido realizada con éxito.\n\nAhora puedes disfrutar de la versión sin anuncios y de su contenido exclusivo."

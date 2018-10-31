@@ -164,9 +164,15 @@ func start_game(coming_from_app_store):
 
 	if coming_from_app_store != "no":
 		if coming_from_app_store == "yes_success":
-			popup_layer.open("oops_popup", lang.PURCHASE_SUCCESSFUL)
+			popup_layer.open("generic_popup", {
+				"title": lang.CONGRATULATIONS,
+				"text": lang.PURCHASE_SUCCESSFUL
+			})
 		else:
-			popup_layer.open("oops_popup", lang.PURCHASE_UNSUCCESSFUL)
+			popup_layer.open("generic_popup", {
+				"title": lang.OOPS_TITLE,
+				"text": lang.PURCHASE_UNSUCCESSFUL
+			})
 		yield(popup_layer, "popup_closed")
 
 	if not seen_intro:

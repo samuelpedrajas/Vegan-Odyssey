@@ -14,7 +14,7 @@ onready var popup_scene_dict = {
 	"excuse_book": preload("res://scenes/popups/excuse_book.tscn"),
 	"excuse_drawing": preload("res://scenes/popups/excuse_drawing.tscn"),
 	"rewarded_video_confirmation": preload("res://scenes/popups/rewarded_video_confirmation.tscn"),
-	"oops_popup": preload("res://scenes/popups/oops_popup.tscn"),
+	"generic_popup": preload("res://scenes/popups/generic_popup.tscn"),
 	"offline": preload("res://scenes/popups/offline.tscn"),
 	"game_over": preload("res://scenes/popups/game_over.tscn"),
 	"debate_screen": preload("res://scenes/popups/debate_screen.tscn"),

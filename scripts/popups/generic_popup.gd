@@ -12,8 +12,9 @@ func open():
 	.open()
 
 
-func setup(text):
-	$"window/text".set_text(text)
+func setup(params):
+	$"window/title".set_text(params["title"])
+	$"window/text".set_text(params["text"])
 
 
 func _on_ok_pressed():
