@@ -32,6 +32,7 @@ admob="*res://scripts/autoload/admob.gd"
 game="*res://scripts/autoload/game.gd"
 game_loader="*res://scripts/autoload/game_loader.gd"
 cfg="*res://scripts/autoload/cfg.gd"
+ios_iap="*res://scripts/autoload/ios_iap.gd"
 
 [debug]
 
@@ -159,4 +160,4 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 quality/filters/use_nearest_mipmap_filter=true
 quality/reflections/texture_array_reflections=false
-environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_clear_color=Color( 1, 1, 1, 1 )

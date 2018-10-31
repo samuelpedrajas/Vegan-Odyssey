@@ -182,6 +182,7 @@ const GO_BACK = "Volver"
 const NO_MORE_ADS_TITLE = "¡VAYA!"
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
+const PURCHASE_SUCCESSFUL = "Tu compra ha sido realizada con éxito.\n\nAhora puedes disfrutar de la versión sin anuncios y de su contenido exclusivo."
 const PURCHASE_UNSUCCESSFUL = "Ha habido un problema durante la compra.\n\nPulsa el botón de la esquina superior derecha en la pantalla principal para intentarlo de nuevo."
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"

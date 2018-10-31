@@ -157,21 +157,22 @@ func reset_progress():
 
 ### SAVE / LOAD FUNCTIONS ###
 
-func start_game():
+func start_game(coming_from_app_store):
 	load_game()
 	print("Purchase status: ", purchased)
 	admob.start_ads()
+
+	if coming_from_app_store != "no":
+		if coming_from_app_store == "yes_success":
+			popup_layer.open("oops_popup", lang.PURCHASE_SUCCESSFUL)
+		else:
+			popup_layer.open("oops_popup", lang.PURCHASE_UNSUCCESSFUL)
+		yield(popup_layer, "popup_closed")
 
 	if not seen_intro:
 		popup_layer.open("debate_screen", -2)
 	else:
 		$"/root/stage/popup_layer/effects/black".hide()
-
-		# show banner or try again
-		#if admob.is_banner_loaded:
-		#	admob.showBanner()
-		#else:
-		#	$"/root/stage/admob".start()
 
 		# show post if needed
 		if not seen_tutorial["1"]:
@@ -182,7 +183,7 @@ func start_game():
 	debate_layer.init(current_max)
 
 
-func set_new_scene(scene_resource, translation_resource):
+func set_new_scene(scene_resource, translation_resource, iap_status):
 	change_language('', translation_resource)
 	# remove old scene
 	var root = get_tree().get_root()
@@ -191,6 +192,7 @@ func set_new_scene(scene_resource, translation_resource):
 
 	# set new scene
 	var new_scene = scene_resource.instance()
+	new_scene.set_coming_from_app_store(iap_status)
 	get_node("/root").add_child(new_scene)
 
 

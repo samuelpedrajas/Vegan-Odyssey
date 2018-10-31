@@ -63,10 +63,17 @@ func _enter_tree():
 	game.setup()
 
 
+var coming_from_app_store = \"no\"
+
+
+func set_coming_from_app_store(v):
+	coming_from_app_store = v
+
+
 func _ready():
 	$save_game.set_wait_time(cfg.ANIMATION_TIME + 0.2)
 	game.resizer.rescale_all()
-	game.start_game()
+	game.start_game(coming_from_app_store)
 
 
 #func _on_admob_timeout():

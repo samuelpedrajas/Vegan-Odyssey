@@ -180,6 +180,7 @@ const GO_BACK = "Go back"
 const NO_MORE_ADS_TITLE = "Oops..."
 const NO_MORE_ADS = "It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
 const CANNOT_REACH = "It looks like we can\'t reach the server.\n\nPlease, try again in a few minutes."
+const PURCHASE_SUCCESSFUL = "Your purchase was successful.\n\nYou can enjoy now the ad free version and its exclusive content."
 const PURCHASE_UNSUCCESSFUL = "There was a problem while processing your purchase.\n\nYou can try again by tapping the upper-right button in the main screen."
 
 const SETTINGS_HEADER = "SETTINGS"

@@ -17,6 +17,8 @@ var translation_resource
 
 const stage_scene_path = "res://scenes/game.tscn"
 
+var iap_status = "no"
+
 
 signal purchase_transaction_finished
 
@@ -60,9 +62,8 @@ func _process(time):
 
 			if stop_the_snail:
 				yield(self, "purchase_transaction_finished")
-				game.set_new_scene(scene_resource, translation_resource)
-			else:
-				game.set_new_scene(scene_resource, translation_resource)
+
+			game.set_new_scene(scene_resource, translation_resource, iap_status)
 		else:
 			print("Translation script loaded")
 			translation_resource = loader.get_resource()
@@ -141,8 +142,11 @@ func on_purchase_success():
 		game.savegame_data["purchased"] = true
 		game.save_game(game.savegame_data)
 	stop_the_snail = false
+	iap_status = "yes_success"
 	emit_signal("purchase_transaction_finished")
 
 
 func on_purchase_error():
-	pass
+	stop_the_snail = false
+	iap_status = "yes_error"
+	emit_signal("purchase_transaction_finished")

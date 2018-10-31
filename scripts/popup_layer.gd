@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 
+signal popup_closed
+
+
 # POPUP MANAGMENT
 var popup_stack = []
 onready var popup_scene_dict = {
@@ -95,6 +98,8 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 
 	if not keep_input_disabled:
 		$"/root".set_disable_input(false)
+
+	emit_signal("popup_closed")
 
 
 func close_all():
