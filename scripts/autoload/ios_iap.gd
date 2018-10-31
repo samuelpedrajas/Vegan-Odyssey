@@ -13,6 +13,7 @@ signal purchase_error
 
 signal restore_purchases_success
 signal restore_purchases_error
+signal restore_purchases_not_owned
 
 
 func _ready():
@@ -46,8 +47,8 @@ func check_events():
 		elif event.type == "restore":
 			if event.result == "ok" and event.has("product_id"):
 				emit_signal("restore_purchases_success")
-			else:
-				emit_signal("restore_purchases_error")
+			elif event.result == "not_owned":
+				emit_signal("restore_purchases_not_owned")
 
 
 func request_product_info():

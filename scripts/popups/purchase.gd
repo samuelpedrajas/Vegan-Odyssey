@@ -29,6 +29,9 @@ func _ready():
 		ios_iap.connect(
 			"restore_purchases_error", self, "on_restore_purchases_error"
 		)
+		ios_iap.connect(
+			"restore_purchases_not_owned", self, "on_restore_purchases_not_owned"
+		)
 
 		ios_iap.request_product_info()
 
@@ -93,6 +96,14 @@ func on_restore_purchases_error():
 	game.effects_layer.unset_loading()
 	game.popup_layer.open("generic_popup", {
 		"title": game.lang.OOPS_TITLE, "text": game.lang.CANNOT_REACH
+	})
+
+
+func on_restore_purchases_not_owned():
+	close_anim = "close_form"
+	game.effects_layer.unset_loading()
+	game.popup_layer.open("generic_popup", {
+		"title": game.lang.OOPS_TITLE, "text": game.lang.NOT_OWNED
 	})
 
 
