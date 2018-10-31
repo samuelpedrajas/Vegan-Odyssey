@@ -58,7 +58,7 @@ func on_request_product_info_success(prices):
 		$"/root".set_disable_input(false)
 
 
-func request_product_info_error():
+func on_request_product_info_error():
 	game.popup_layer.close()
 	game.popup_layer.open("generic_popup", {
 		"title": game.lang.OOPS_TITLE, "text": game.lang.CANNOT_REACH

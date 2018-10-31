@@ -49,6 +49,8 @@ func check_events():
 				emit_signal("restore_purchases_success")
 			elif event.result == "not_owned":
 				emit_signal("restore_purchases_not_owned")
+			else:
+				emit_signal("restore_purchases_error")
 
 
 func request_product_info():
