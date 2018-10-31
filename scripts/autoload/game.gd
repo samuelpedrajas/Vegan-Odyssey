@@ -159,6 +159,7 @@ func reset_progress():
 
 func start_game():
 	load_game()
+	print("Purchase status: ", purchased)
 	admob.start_ads()
 
 	if not seen_intro:
@@ -193,7 +194,63 @@ func set_new_scene(scene_resource, translation_resource):
 	get_node("/root").add_child(new_scene)
 
 
-func save_game():
+func save_game_defaults(language, purchased):
+	var game_status = {
+		'tutorial': to_json({
+			"1": false,
+			"2": false,
+			"3": false
+		}),
+		'broccolis': 3,
+		'highest_max': 1,
+		'current_max': 1,
+		'matrix': to_json({}),
+		'settings': to_json({
+			"music_on":true, "sound_on":true
+		}),
+		'revived': false,
+		'win': false,
+		'seen_excuses': to_json([
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false},
+			{"picture_seen": false, "debate_seen": false}
+		]),
+		'lang': language,
+		'seen_intro': false,
+		'seen_meme': false,
+		'seen_refutation': false,
+		'personalized_ads': null,
+		'purchased': purchased
+	}
+	save_game(game_status)
+
+
+func save_game(game_status=null):
+	if game_status == null:
+		game_status = {
+			'tutorial': to_json(seen_tutorial),
+			'broccolis': broccolis,
+			'highest_max': highest_max,
+			'current_max': current_max,
+			'matrix': board_layer.save_info(),
+			'settings': settings.save_info(),
+			'revived': revived,
+			'win': win,
+			'seen_excuses': to_json(seen_excuses),
+			'lang': lang.language,
+			'seen_intro': seen_intro,
+			'seen_meme': seen_meme,
+			'seen_refutation': seen_refutation,
+			'personalized_ads': personalized_ads,
+			'purchased': purchased
+		}
+
 	if OS.get_name() == "X11" or OS.get_name() == "OSX":
 		savegame.open(
 			cfg.SAVE_GAME_PATH, File.WRITE
@@ -204,23 +261,6 @@ func save_game():
 			cfg.SAVE_GAME_PATH, File.WRITE, "OS.get_unique_id()".md5_buffer()
 		)
 
-	var game_status = {
-		'tutorial': to_json(seen_tutorial),
-		'broccolis': broccolis,
-		'highest_max': highest_max,
-		'current_max': current_max,
-		'matrix': board_layer.save_info(),
-		'settings': settings.save_info(),
-		'revived': revived,
-		'win': win,
-		'seen_excuses': to_json(seen_excuses),
-		'lang': lang.language,
-		'seen_intro': seen_intro,
-		'seen_meme': seen_meme,
-		'seen_refutation': seen_refutation,
-		'personalized_ads': personalized_ads,
-		'purchased': purchased
-	}
 	savegame.store_line(to_json(game_status))
 	savegame.close()
 

@@ -82,7 +82,7 @@ func on_consent_error():
 	print("Consent error")
 	popup = true
 	game.event_layer.stop("wait_for_rewarded_ad")
-	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+	game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():
@@ -136,7 +136,7 @@ func _on_timer_timeout():
 		cancel = true
 		popup = true
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func failed_to_load(errorCode):
@@ -144,11 +144,11 @@ func failed_to_load(errorCode):
 	if errorCode == 0:
 		print("ad server internal error")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 	elif errorCode == 1:
 		print("invalid request (ad unit id)")
 		game.event_layer.stop("wait_for_rewarded_ad")
-		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 	elif errorCode == 2:
 		print("network error")
 		game.event_layer.stop("wait_for_rewarded_ad")
@@ -165,9 +165,9 @@ func failed_to_load(errorCode):
 		elif not game.error9_count_locked:
 			game.error9_count += 1
 			game.error9_count_locked = true
-			game.popup_layer.open("no_more_ads", game.lang.NO_MORE_ADS)
+			game.popup_layer.open("oops_popup", game.lang.NO_MORE_ADS)
 		else:
-			game.popup_layer.open("no_more_ads", game.lang.NO_MORE_ADS)
+			game.popup_layer.open("oops_popup", game.lang.NO_MORE_ADS)
 
 
 func rescale(s):

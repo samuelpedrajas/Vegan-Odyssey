@@ -92,3 +92,10 @@ frame = 2
 playing = true
 _sections_unfolded = [ "Transform" ]
 
+[node name="timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

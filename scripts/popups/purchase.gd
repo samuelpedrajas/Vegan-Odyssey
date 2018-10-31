@@ -44,7 +44,7 @@ func on_request_product_info_success(prices):
 	hide_prev_popup_if_there_is()
 	if prices.size() < 1:
 		game.popup_layer.close()
-		game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+		game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 	else:
 		$window/ok.set_price(prices[0])
 		game.effects_layer.unset_loading()
@@ -55,7 +55,7 @@ func on_request_product_info_success(prices):
 
 func request_product_info_error():
 	game.popup_layer.close()
-	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+	game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func on_purchase_success():
@@ -70,7 +70,7 @@ func on_purchase_success():
 func on_purchase_error():
 	close_anim = "close_form"
 	game.effects_layer.unset_loading()
-	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+	game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func on_restore_purchases_success():
@@ -85,7 +85,7 @@ func on_restore_purchases_success():
 func on_restore_purchases_error():
 	close_anim = "close_form"
 	game.effects_layer.unset_loading()
-	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+	game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func open():

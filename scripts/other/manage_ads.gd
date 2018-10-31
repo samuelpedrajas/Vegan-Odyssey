@@ -43,7 +43,7 @@ func on_consent_unknown():
 func on_consent_error():
 	print("Consent error")
 	game.effects_layer.unset_loading()
-	game.popup_layer.open("no_more_ads", game.lang.CANNOT_REACH)
+	game.popup_layer.open("oops_popup", game.lang.CANNOT_REACH)
 
 
 func on_prefers2pay():

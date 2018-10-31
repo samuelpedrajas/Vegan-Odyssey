@@ -22,6 +22,8 @@ func _ready():
 
 # put this on a 1 second timer or something
 func check_events():
+	if iap == null:
+		return
 	while iap.get_pending_event_count() > 0:
 		var event = iap.pop_pending_event()
 		print("Popping event:")
@@ -49,6 +51,9 @@ func check_events():
 
 
 func request_product_info():
+	if iap == null:
+		emit_signal("request_product_info_error")
+		return
 	var result = iap.request_product_info( { "product_ids": [product_id] } )
 	if result == OK:
 		print("request_product_info ok!")
@@ -58,6 +63,9 @@ func request_product_info():
 
 
 func purchase():
+	if iap == null:
+		emit_signal("purchase_error")
+		return
 	var result = iap.purchase()
 	if result == OK:
 		print("purchase ok!")
@@ -67,9 +75,30 @@ func purchase():
 
 
 func restore_purchases():
+	if iap == null:
+		emit_signal("restore_purchases_error")
+		return
 	var result = iap.restore_purchases()
 	if result == OK:
 		print("restore ok!")
 	else:
 		print("restore not ok!")
 		emit_signal("restore_purchases_error")
+
+
+func coming_from_app_store():
+	if iap == null:
+		return false
+	return iap.coming_from_app_store()
+
+
+func continue_purchase():
+	if iap == null:
+		emit_signal("purchase_error")
+		return
+	var result = iap.continue_purchase()
+	if result == OK:
+		print("purchase ok!")
+	else:
+		print("purchase not ok!")
+		emit_signal("purchase_error")
