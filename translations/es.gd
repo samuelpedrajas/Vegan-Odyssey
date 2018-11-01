@@ -223,6 +223,8 @@ const GAME_OVER_SCALE = 0.8
 const GAME_OVER_MSG = "No quedan movimientos disponibles"
 const GAME_OVER_OR = "O"
 const GAME_OVER_QUESTION = "¿Ver anuncio a cambio de 3 brócolis?"
+const GAME_OVER_QUESTION_AD_FREE = "¿Quieres jugar a la ruleta para ganar brócolis?"
+const GAME_OVER_PLAY_ROULETTE = "¡Girar ruleta!"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"

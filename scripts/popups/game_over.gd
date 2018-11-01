@@ -13,7 +13,13 @@ func open():
 	add_to_show = admob.adRewarded3
 	$"window/video_button/n".set_text("+3")
 
-	if game.revived:
+	if game.purchased and game.revived:
+		game.event_layer.get_node("duck_ready").set_paused(true)
+		update2adfree()
+	elif game.purchased:
+		game.board_layer.movements = max(0, game.board_layer.movements - 15)
+		update2adfree()
+	elif game.revived:
 		# avoid the duck to appear until restarted
 		game.event_layer.get_node("duck_ready").set_paused(true)
 		$"window/video_button/used".show()
@@ -29,6 +35,7 @@ func open():
 		$"window/video_button/bg".show()
 		$"window/video_button/video_btn".set_disabled(false)
 		$"window/video_button/n".set_modulate(Color(0, 0.66, 0, 1))
+
 
 	open_anim = "game_over"
 	.open()
@@ -54,3 +61,12 @@ func _on_video_btn_pressed():
 
 func rescale(s):
 	$window.set_scale(Vector2(s, s))
+
+
+func update2adfree():
+	$window/video_button.hide()
+	if game.revived:
+		$window/subsubtitle.hide()
+		$window/play_minigame.set_disabled(true)
+	$window/play_minigame.show()
+	$window/subsubtitle.set_text(game.lang.GAME_OVER_QUESTION_AD_FREE)

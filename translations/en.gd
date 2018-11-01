@@ -221,6 +221,8 @@ const GAME_OVER_SCALE = 1.0
 const GAME_OVER_MSG = "No more moves available"
 const GAME_OVER_OR = "OR"
 const GAME_OVER_QUESTION = "Watch a video ad to earn 3 broccolis?"
+const GAME_OVER_QUESTION_AD_FREE = "Do you want to play the roulette to earn broccoli?"
+const GAME_OVER_PLAY_ROULETTE = "Play roulette!"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"
