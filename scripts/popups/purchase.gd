@@ -3,7 +3,7 @@ extends "popup.gd"
 
 var back_button = false
 var keep_input_disabled = true
-var keep_previous = true
+var keep_previous = false
 var show_blur = false
 
 
@@ -36,15 +36,8 @@ func _ready():
 		ios_iap.request_product_info()
 
 
-func hide_prev_popup_if_there_is():
-	var n_popups = game.popup_layer.popup_stack.size()
-	if n_popups > 1:
-		game.popup_layer.popup_stack[n_popups - 2].hide()
-
-
 func on_request_product_info_success(prices):
 	print("REQUEST PRODUCT SUCCESS")
-	hide_prev_popup_if_there_is()
 	if prices.size() < 1:
 		game.popup_layer.close()
 		game.popup_layer.open("generic_popup", {

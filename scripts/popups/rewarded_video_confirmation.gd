@@ -29,9 +29,7 @@ func close():
 
 func _on_ok_button_pressed():
 	game.event_layer.start("wait_for_rewarded_ad", broccoli_duck.ad_to_show)
-
 	game.sounds.play_audio("click")
-	game.popup_layer.close(true, true)
 
 
 func _on_cancel_button_pressed():

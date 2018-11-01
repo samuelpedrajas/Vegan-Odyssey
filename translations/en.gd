@@ -234,6 +234,8 @@ const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"
 
 const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"
 
-const ERROR9 = "We're getting no ads for you from the server.\n\nGo to Settings > Privacy > Advertising and make sure Limit Ad Tracking is off.\n\nTap the button below to get 1 free broccoli."
+const TAKE_A_LOOK = "Take a look"
+const FIRST_ERROR9 = "We're getting no ads for you from the server.\n\nWe have given you a free broccoli so you can keep playing.\n\nYou can buy the Ad Free version to get exclusive content and earn broccolis without having to watch ads."
+const ERROR9 = "We're getting no ads for you from the server.\n\n\nWe have given you one free broccoli so you can keep playing."
 
 const NOT_EEA = "This functionality is only available in the EEA (European Economic Area)."

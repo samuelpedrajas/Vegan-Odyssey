@@ -15,7 +15,6 @@ var broccolis = 3 setget _set_broccolis
 
 # free broccoli
 var error9_count = 0
-var error9_count_locked = true
 var given_gifts = 0
 
 

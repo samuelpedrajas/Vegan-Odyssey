@@ -77,9 +77,9 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 76.0
-margin_top = 57.0
+margin_top = 139.0
 margin_right = -75.0
-margin_bottom = -220.0
+margin_bottom = -233.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -92,9 +92,8 @@ custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
 text = "We're getting no ads for you from the server.
 
-Go to Settings > Privacy > Advertising and make sure Limit Ad Tracking is off.
 
-Tap the button below to get 1 free broccoli."
+We have given you one free broccoli so you can keep playing."
 align = 1
 valign = 1
 autowrap = true

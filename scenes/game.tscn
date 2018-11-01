@@ -698,6 +698,12 @@ func set_loading():
 
 
 func unset_loading():
+	if not game.popup_layer.popup_stack.empty():
+		game.popup_layer.popup_stack.back().show()
+		game.popup_layer.get_node(\"effects/blur\").show()
+	else:
+		get_tree().set_pause(false)
+
 	if loading:
 		if not loaded:
 			yield(self, \"load_screen_loaded\")
@@ -706,12 +712,6 @@ func unset_loading():
 		modulate.a = 0
 		$text.self_modulate.a = 1
 		hide()
-
-	if not game.popup_layer.popup_stack.empty():
-		game.popup_layer.popup_stack.back().show()
-		game.popup_layer.get_node(\"effects/blur\").show()
-	else:
-		get_tree().set_pause(false)
 "
 
 [sub_resource type="DynamicFont" id=22]

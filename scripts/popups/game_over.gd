@@ -40,7 +40,6 @@ func open():
 	open_anim = "game_over"
 	.open()
 	yield($animation, "animation_finished")
-	game.error9_count_locked = false
 	game.hud_layer.glow_reset()
 	game.save_game()
 
@@ -68,5 +67,6 @@ func update2adfree():
 	if game.revived:
 		$window/subsubtitle.hide()
 		$window/play_minigame.set_disabled(true)
+
 	$window/play_minigame.show()
 	$window/subsubtitle.set_text(game.lang.GAME_OVER_QUESTION_AD_FREE)

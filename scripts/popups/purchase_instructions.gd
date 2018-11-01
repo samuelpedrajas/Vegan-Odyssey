@@ -14,7 +14,14 @@ func open():
 
 func _on_ok_pressed():
 	game.sounds.play_audio("click")
-	game.popup_layer.close()
+	if game.popup_layer.popup_exists("game_over"):
+		game.revived = false
+		game.popup_layer.close_all()
+		game.popup_layer.open("game_over")
+	elif game.popup_layer.popup_exists("rewarded_video_confirmation"):
+		game.popup_layer.close_all()
+	else:
+		game.popup_layer.close()
 
 
 func rescale(s):

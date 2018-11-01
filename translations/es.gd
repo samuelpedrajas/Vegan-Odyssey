@@ -236,6 +236,8 @@ const REWARDED_MSG = "¡PATOFERTA!\n\nConsigue 2 brócolis por ver un anuncio"
 
 const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"
 
-const ERROR9 = "El servidor no parece tener anuncios en este momento.\n\nVe a Ajustes > Privacidad > Publicidad y asegúrate de que Limitar seguimiento está desactivado.\n\nPulsa el botón de abajo para recibir 1 brócoli gratis."
+const TAKE_A_LOOK = "Echar un vistazo"
+const FIRST_ERROR9 = "El servidor no parece tener anuncios en este momento.\n\nTe hemos dado un brócoli gratis para que puedas seguir jugando.\n\nSi quieres, puedes comprar la versión Sin Anuncios para recibir contenido exclusivo y conseguir brócolis sin ver anuncios."
+const ERROR9 = "El servidor no parece tener anuncios en este momento.\n\n\nTe hemos dado un brócoli gratis para que puedas seguir jugando."
 
 const NOT_EEA = "Esta funcionalidad sólo está disponible dentro de la EEE (Espacio Económico Europeo)."

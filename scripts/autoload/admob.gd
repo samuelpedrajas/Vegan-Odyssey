@@ -175,6 +175,8 @@ func _on_consent_form_closed(status, user_prefers_ad_free):
 	print("Consent form closed: ", status, " ", user_prefers_ad_free)
 
 	if user_prefers_ad_free:
+		game.personalized_ads = null
+		game.save_game()
 		emit_signal("prefers2pay")
 	elif status == "personalized":
 		game.personalized_ads = true

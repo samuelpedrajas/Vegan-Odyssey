@@ -126,6 +126,7 @@ func on_rewarded():
 		game.popup_layer.close(true, true)
 		game.revived = true
 	else:
+		game.popup_layer.close(true, true)
 		game.event_layer.stop("broccoli_duck")
 	reward_amount = amount
 
@@ -163,16 +164,12 @@ func failed_to_load(errorCode):
 
 		game.event_layer.stop("wait_for_rewarded_ad")
 
-		if not game.error9_count_locked and game.error9_count >= 2 and game.given_gifts < 5 and game.broccolis < 5:
-			game.error9_count_locked = true
+		if game.error9_count >= 1 and game.given_gifts < 5 and game.broccolis < 5:
 			game.given_gifts += 1
 			game.popup_layer.open("error9")
-		elif not game.error9_count_locked:
+		elif game.error9_count == 0 and game.given_gifts < 5 and game.broccolis < 5:
 			game.error9_count += 1
-			game.error9_count_locked = true
-			game.popup_layer.open("generic_popup", {
-				"title": game.lang.OOPS_TITLE, "text": game.lang.NO_MORE_ADS
-			})
+			game.popup_layer.open("no_more_ads")
 		else:
 			game.popup_layer.open("generic_popup", {
 				"title": game.lang.OOPS_TITLE, "text": game.lang.NO_MORE_ADS
