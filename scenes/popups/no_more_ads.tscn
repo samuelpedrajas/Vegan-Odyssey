@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/no_more_ads.gd" type="Script" id=2]
@@ -99,24 +99,6 @@ script/source = "extends Label
 
 func _ready():
 	set_text(game.lang.FIRST_ERROR9)
-"
-
-[sub_resource type="GDScript" id=6]
-
-script/source = "extends Node
-
-
-func _ready():
-	ios_iap.connect(\"purchase_success\", self, \"on_purchase_success\")
-	ios_iap.connect(\"restore_purchases_success\", self, \"on_restore_purchases_success\")
-
-
-func on_purchase_success():
-	pass
-
-
-func restore_purchases_success():
-	pass
 "
 
 [node name="no_more_ads" index="0" groups=[
@@ -237,11 +219,6 @@ anchor_top = 1.0
 anchor_right = 0.5
 margin_right = 0.0
 margin_bottom = 0.0
-
-[node name="purchase_listener" type="Node" parent="." index="3"]
-pause_mode = 2
-script = SubResource( 6 )
-_sections_unfolded = [ "Pause" ]
 
 [connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="window/go_back" to="." method="_on_go_back_pressed"]
