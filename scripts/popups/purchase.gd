@@ -72,6 +72,7 @@ func on_purchase_success():
 
 	close_anim = "close_form"
 	game.popup_layer.close()
+	game.popup_layer.open("purchase_instructions")
 
 
 func on_purchase_error():
@@ -89,6 +90,7 @@ func on_restore_purchases_success():
 
 	close_anim = "close_form"
 	game.popup_layer.close()
+	game.popup_layer.open("purchase_instructions")
 
 
 func on_restore_purchases_error():

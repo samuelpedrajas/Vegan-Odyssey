@@ -21,7 +21,8 @@ onready var popup_scene_dict = {
 	"win": preload("res://scenes/popups/win.tscn"),
 	"error9": preload("res://scenes/popups/error9.tscn"),
 	"not_eea": preload("res://scenes/popups/not_eea.tscn"),
-	"purchase": preload("res://scenes/popups/purchase.tscn")
+	"purchase": preload("res://scenes/popups/purchase.tscn"),
+	"purchase_instructions": preload("res://scenes/popups/purchase_instructions.tscn")
 }
 
 

@@ -186,6 +186,7 @@ const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de n
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
 const PURCHASE_SUCCESSFUL = "Tu compra ha sido realizada con éxito.\n\nAhora puedes disfrutar de la versión sin anuncios y de su contenido exclusivo."
 const PURCHASE_UNSUCCESSFUL = "Ha habido un problema durante la compra.\n\nPulsa el botón de la esquina superior derecha en la pantalla principal para intentarlo de nuevo."
+const PURCHASE_INSTRUCTIONS = "Tu compra ha sido realizada con éxito.\n\nYa no necesitas ver anuncios para conseguir brócoli. En su lugar, 2 minijuegos exclusivos han sido desbloqueados."
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
 const SETTINGS_HEADER_SCALE = 0.65
