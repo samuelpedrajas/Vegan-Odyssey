@@ -195,8 +195,25 @@ func update_language():
 
 script/source = "extends TextureButton
 
-func _ready():
+
+func purchase_reorder():
+	$\"../manage_ads\".hide()
 	if OS.get_name() == \"iOS\":
+		var audio = $\"../audio\"
+		audio.set_position(
+			audio.get_position() + Vector2(0, 30)
+		)
+
+		var reset_progress = $\"../reset_progress\"
+		reset_progress.set_position(
+			reset_progress.get_position() + Vector2(0, 110)
+		)
+	elif OS.get_name() == \"Android\":
+		var manage_ads = $\"../manage_ads\"
+		set_position(
+			manage_ads.get_position() + Vector2(0, 110)
+		)
+
 		var audio = $\"../audio\"
 		audio.set_position(
 			audio.get_position() + Vector2(0, 30)
@@ -204,7 +221,7 @@ func _ready():
 
 		var lang = $\"../lang\"
 		lang.set_position(
-			lang.get_position() + Vector2(0, 80)
+			lang.get_position() + Vector2(0, 60)
 		)
 
 		var reset_progress = $\"../reset_progress\"
@@ -212,12 +229,40 @@ func _ready():
 			reset_progress.get_position() + Vector2(0, 110)
 		)
 
+
+func _ready():
+	if OS.get_name() == \"iOS\":
+		var mult = 1.0
+
 		var manage_ads = $\"../manage_ads\"
-		manage_ads.set_position(
-			manage_ads.get_position() + Vector2(0, 110)
+		if not game.purchased:
+			manage_ads.set_position(
+				manage_ads.get_position() + Vector2(0, 110)
+			)
+
+		var audio = $\"../audio\"
+		audio.set_position(
+			audio.get_position() + Vector2(0, 30)
 		)
-	else:
+
+		var lang = $\"../lang\"
+		lang.set_position(
+			lang.get_position() + Vector2(0, 60)
+		)
+
+		var reset_progress = $\"../reset_progress\"
+		reset_progress.set_position(
+			reset_progress.get_position() + Vector2(0, 110)
+		)
+
+	elif OS.get_name() == \"Android\":
 		show()
+
+	if game.purchased:
+		purchase_reorder()
+	else:
+		ios_iap.connect(\"purchase_success\", self, \"purchase_reorder\")
+		ios_iap.connect(\"restore_purchases_success\", self, \"purchase_reorder\")
 "
 
 [sub_resource type="GDScript" id=13]
@@ -763,7 +808,7 @@ group = null
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 14 )
 script = ExtResource( 15 )
-_sections_unfolded = [ "Rect", "Textures" ]
+_sections_unfolded = [ "Pause", "Rect", "Script", "Textures" ]
 
 [node name="label" type="Label" parent="window/manage_ads" index="0" groups=[
 "translatable",
@@ -814,6 +859,7 @@ texture = ExtResource( 16 )
 stretch_mode = 0
 
 [node name="exit_button" type="TextureButton" parent="window" index="6"]
+pause_mode = 2
 editor/display_folded = true
 visible = false
 anchor_left = 0.5
@@ -838,7 +884,7 @@ group = null
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 18 )
 script = SubResource( 12 )
-_sections_unfolded = [ "Rect", "Textures" ]
+_sections_unfolded = [ "Pause", "Rect", "Textures" ]
 
 [node name="label" type="Label" parent="window/exit_button" index="0" groups=[
 "translatable",

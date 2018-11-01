@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://scripts/resizer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -204,6 +204,53 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 18 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=25]
+
+script/source = "extends TextureButton
+
+
+func _ready():
+	if not game.purchased:
+		show()
+		ios_iap.connect(\"restore_purchases_success\", self, \"hide_myself\")
+		ios_iap.connect(\"purchase_success\", self, \"hide_myself\")
+
+
+func hide_myself():
+	$anim.play(\"hide_myself\")
+"
+
+[sub_resource type="Animation" id=26]
+
+resource_name = "hide_myself"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -1091,6 +1138,8 @@ align = 1
 _sections_unfolded = [ "Visibility" ]
 
 [node name="upgrade" type="TextureButton" parent="dialog_layer/text"]
+pause_mode = 2
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1099,7 +1148,7 @@ margin_left = 905.0
 margin_top = 31.0
 margin_right = 1055.0
 margin_bottom = 181.0
-rect_pivot_offset = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 75, 75 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
@@ -1112,7 +1161,17 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 20 )
-_sections_unfolded = [ "Textures" ]
+script = SubResource( 25 )
+_sections_unfolded = [ "Pause", "Rect", "Textures", "Visibility" ]
+
+[node name="anim" type="AnimationPlayer" parent="dialog_layer/text/upgrade"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/hide_myself = SubResource( 26 )
+blend_times = [  ]
 
 [node name="hud_layer" type="CanvasLayer" parent="."]
 layer = 1

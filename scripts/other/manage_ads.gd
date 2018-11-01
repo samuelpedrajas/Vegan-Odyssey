@@ -1,11 +1,12 @@
 extends TextureButton
 
 func _ready():
-	admob.connect("consent_form_done", self, "on_consent_form_done")
-	admob.connect("consent_done", self, "on_consent_done")
-	admob.connect("consent_unknown", self, "on_consent_unknown")
-	admob.connect("consent_error", self, "on_consent_error")
-	admob.connect("prefers2pay", self, "on_prefers2pay")
+	if not game.purchased:
+		admob.connect("consent_form_done", self, "on_consent_form_done")
+		admob.connect("consent_done", self, "on_consent_done")
+		admob.connect("consent_unknown", self, "on_consent_unknown")
+		admob.connect("consent_error", self, "on_consent_error")
+		admob.connect("prefers2pay", self, "on_prefers2pay")
 
 
 func _on_manage_ads_pressed():
