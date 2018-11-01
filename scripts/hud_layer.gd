@@ -79,8 +79,9 @@ func _on_broccoli_pressed():
 
 
 func _on_upgrade_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.open("purchase")
+	if not game.purchased:
+		game.sounds.play_audio("click")
+		game.popup_layer.open("purchase")
 
 
 ### ON CHANGE ACTIONS

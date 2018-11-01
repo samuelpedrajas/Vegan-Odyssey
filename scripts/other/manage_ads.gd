@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_manage_ads_pressed():
-	if not admob.firstRequest:
+	if not admob.firstRequest and not game.purchased:
 		game.effects_layer.set_loading()
 		$"/root".set_disable_input(true)
 		if admob.consentFormLoaded:

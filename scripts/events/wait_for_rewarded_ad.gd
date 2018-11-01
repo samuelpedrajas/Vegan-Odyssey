@@ -26,7 +26,7 @@ func showRewardedVideo():
 func start(_amount):
 	game.effects_layer.set_loading()
 
-	if admob.firstRequest:
+	if admob.firstRequest or game.purchased:
 		game.event_layer.stop("wait_for_rewarded_ad")
 		return
 

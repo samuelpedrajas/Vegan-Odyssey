@@ -27,13 +27,12 @@ signal prefers2pay
 
 
 func start_ads():
-	if(Engine.has_singleton("AdMob")):
+	if(Engine.has_singleton("AdMob") and not game.purchased):
 		print("Starting AdMob")
 		admob_module = Engine.get_singleton("AdMob")
 		admob_module.init(isReal, get_instance_id())
 
-		if not game.purchased:
-			requestConsent()
+		requestConsent()
 
 	if not get_tree().is_connected("screen_resized", self, "on_resize"):
 		get_tree().connect("screen_resized", self, "on_resize")
