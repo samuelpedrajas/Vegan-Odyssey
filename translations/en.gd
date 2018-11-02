@@ -231,6 +231,7 @@ const WIN_MSG_IOS = "Congratulations! You have completed the game! You can suppo
 const IOS_SCORE_US = "RATE US"
 
 const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"
+const DUCK_GAME_MSG = "Quack an offer!\n\nPlay to earn broccoli."
 
 const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"
 

@@ -20,6 +20,7 @@ func _on_ok_pressed():
 		game.popup_layer.open("game_over")
 	elif game.popup_layer.popup_exists("rewarded_video_confirmation"):
 		game.popup_layer.close_all()
+		game.popup_layer.open("duck_popup", game.event_layer.get_or_start("broccoli_duck"))
 	else:
 		game.popup_layer.close()
 

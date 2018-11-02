@@ -14,8 +14,6 @@ func setup(_broccoli_duck):
 
 
 func open():
-	$"window/container/amount".set_text("+" + str(broccoli_duck.ad_to_show))
-
 	open_anim = "open_window"
 	.open()
 
@@ -28,7 +26,6 @@ func close():
 
 
 func _on_ok_button_pressed():
-	game.event_layer.start("wait_for_rewarded_ad", broccoli_duck.ad_to_show)
 	game.sounds.play_audio("click")
 
 

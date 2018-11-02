@@ -60,8 +60,11 @@ func _on_click_area_gui_input(event):
 				game.event_layer.get_or_start("tutorial").unpost()
 			unclicked = false
 			game.duck_counter = 0
-			ad_to_show = admob.get_rewarded_ad_info()
-			game.popup_layer.open("rewarded_video_confirmation", self)
+			if game.purchased:
+				game.popup_layer.open("duck_popup", self)
+			else:
+				ad_to_show = admob.get_rewarded_ad_info()
+				game.popup_layer.open("rewarded_video_confirmation", self)
 		elif game.event_layer.current_events.has("broccoli"):
 			game.event_layer.current_events["broccoli"].do_close()
 

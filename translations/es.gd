@@ -233,6 +233,7 @@ const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos pu
 const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡PATOFERTA!\n\nConsigue 2 brócolis por ver un anuncio"
+const DUCK_GAME_MSG = "¡PATOFERTA!\n\nJuega para conseguir brócolis"
 
 const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"
 
