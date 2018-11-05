@@ -8,7 +8,7 @@ var show_blur = false
 
 
 func _ready():
-	if OS.get_name() == "iOS":
+	if OS.get_name() == "iOS" or OS.get_name() == "Android":
 		iap_helper.connect(
 			"request_product_info_success", self, "on_request_product_info_success"
 		)

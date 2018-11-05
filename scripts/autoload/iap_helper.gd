@@ -1,8 +1,9 @@
 extends Node2D
 
-
+var payment
 var iap
 var product_id = "com.vegames.veganodyssey.adfree"
+
 
 
 signal request_product_info_success
@@ -17,7 +18,12 @@ signal restore_purchases_not_owned
 
 
 func _ready():
-	if OS.get_name() == "iOS":
+	if OS.get_name() == "Android":
+		payment = Engine.get_singleton("GodotPayments")
+		print("Godot Payments loaded ", payment)
+		payment.setPurchaseCallbackId(get_instance_id())
+		payment.setAutoConsume(false)
+	elif OS.get_name() == "iOS":
 		iap = Engine.get_singleton("InAppStore")
 
 
@@ -54,39 +60,47 @@ func check_events():
 
 
 func request_product_info():
-	if iap == null:
+	if iap == null and payment == null:
 		emit_signal("request_product_info_error")
-		return
-	var result = iap.request_product_info( { "product_ids": [product_id] } )
-	if result == OK:
-		print("request_product_info ok!")
+	elif iap != null:
+		var result = iap.request_product_info( { "product_ids": [product_id] } )
+		if result == OK:
+			print("request_product_info ok!")
+		else:
+			print("request_product_info not ok!")
+			emit_signal("request_product_info_error")
 	else:
-		print("request_product_info not ok!")
-		emit_signal("request_product_info_error")
+		print("Requesting product info!")
+		var sku_list = PoolStringArray([product_id])
+		payment.querySkuDetails(sku_list)
 
 
 func purchase():
-	if iap == null:
+	if iap == null and payment == null:
 		emit_signal("purchase_error")
-		return
-	var result = iap.purchase()
-	if result == OK:
-		print("purchase ok!")
+	elif iap != null:
+		var result = iap.purchase()
+		if result == OK:
+			print("purchase ok!")
+		else:
+			print("purchase not ok!")
+			emit_signal("purchase_error")
 	else:
-		print("purchase not ok!")
-		emit_signal("purchase_error")
+		payment.purchase(product_id, "veganodyssey_adfree")
 
 
 func restore_purchases():
-	if iap == null:
+	if iap == null and payment == null:
 		emit_signal("restore_purchases_error")
-		return
-	var result = iap.restore_purchases()
-	if result == OK:
-		print("restore ok!")
+	elif iap != null:
+		var result = iap.restore_purchases()
+		if result == OK:
+			print("restore ok!")
+		else:
+			print("restore not ok!")
+			emit_signal("restore_purchases_error")
 	else:
-		print("restore not ok!")
-		emit_signal("restore_purchases_error")
+		payment.requestPurchased()
 
 
 func coming_from_app_store():
@@ -98,10 +112,71 @@ func coming_from_app_store():
 func continue_purchase():
 	if iap == null:
 		emit_signal("purchase_error")
-		return
-	var result = iap.continue_purchase()
-	if result == OK:
-		print("purchase ok!")
 	else:
-		print("purchase not ok!")
-		emit_signal("purchase_error")
+		var result = iap.continue_purchase()
+		if result == OK:
+			print("purchase ok!")
+		else:
+			print("purchase not ok!")
+			emit_signal("purchase_error")
+
+### Android
+
+func has_purchased(receipt, signature, sku):
+	if sku == "":
+		print("has_purchased : nothing")
+		emit_signal("restore_purchases_not_owned")
+	else:
+		print("has_purchased : ", sku)
+		emit_signal("restore_purchases_success")
+
+
+func purchase_success(receipt, signature, sku):
+	print("purchase_success : ", sku)
+	emit_signal("purchase_success")
+
+
+func purchase_fail():
+	print("purchase_fail")
+	emit_signal("purchase_error")
+
+
+func purchase_cancel():
+	print("purchase_cancel")
+	emit_signal("purchase_error")
+
+
+func purchase_owned(sku):
+	print("purchase_owned : ", sku)
+	emit_signal("purchase_success")
+
+
+# detail info of IAP items
+# sku_details = {
+#     product_id (String) : {
+#         type (String),
+#         product_id (String),
+#         title (String),
+#         description (String),
+#         price (String),  # this can be used to display price for each country with their own currency
+#         price_currency_code (String),
+#         price_amount (float)
+#     },
+#     ...
+# }
+var sku_details = {}
+
+
+func sku_details_complete(result):
+	print("sku_details_complete : ", result)
+	var price = 0
+	for key in result.keys():
+		sku_details[key] = result[key]
+		price = (
+			str(result[key]["price_amount"]) + " " + result[key]["price_currency_code"]
+		)
+	emit_signal("request_product_info_success", [price])
+
+func sku_details_error(error_message):
+	print("error_sku_details = ", error_message)
+	emit_signal("request_product_info_error")
