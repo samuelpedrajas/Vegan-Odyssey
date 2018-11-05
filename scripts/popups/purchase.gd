@@ -9,31 +9,31 @@ var show_blur = false
 
 func _ready():
 	if OS.get_name() == "iOS":
-		ios_iap.connect(
+		iap_helper.connect(
 			"request_product_info_success", self, "on_request_product_info_success"
 		)
-		ios_iap.connect(
+		iap_helper.connect(
 			"request_product_info_error", self, "on_request_product_info_error"
 		)
 
-		ios_iap.connect(
+		iap_helper.connect(
 			"purchase_success", self, "on_purchase_success"
 		)
-		ios_iap.connect(
+		iap_helper.connect(
 			"purchase_error", self, "on_purchase_error"
 		)
 
-		ios_iap.connect(
+		iap_helper.connect(
 			"restore_purchases_success", self, "on_restore_purchases_success"
 		)
-		ios_iap.connect(
+		iap_helper.connect(
 			"restore_purchases_error", self, "on_restore_purchases_error"
 		)
-		ios_iap.connect(
+		iap_helper.connect(
 			"restore_purchases_not_owned", self, "on_restore_purchases_not_owned"
 		)
 
-		ios_iap.request_product_info()
+		iap_helper.request_product_info()
 
 
 func on_request_product_info_success(prices):
@@ -115,14 +115,14 @@ func _on_ok_pressed():
 	$"/root".set_disable_input(true)
 	game.sounds.play_audio("click")
 	game.effects_layer.set_loading()
-	ios_iap.purchase()
+	iap_helper.purchase()
 
 
 func _on_already_owned_pressed():
 	$"/root".set_disable_input(true)
 	game.sounds.play_audio("click")
 	game.effects_layer.set_loading()
-	ios_iap.restore_purchases()
+	iap_helper.restore_purchases()
 
 
 func rescale(s):
@@ -136,4 +136,4 @@ func _on_go_back_pressed():
 
 func _on_timer_timeout():
 	print("checking events...")
-	ios_iap.check_events()
+	iap_helper.check_events()

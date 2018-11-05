@@ -112,7 +112,7 @@ func in_between_instructions():
 func coming_from_app_store():
 	if OS.get_name() == "iOS":
 		var start_purchase = (
-			ios_iap.coming_from_app_store() and
+			iap_helper.coming_from_app_store() and
 			(game.savegame_data == null or
 			not game.savegame_data["purchased"])
 		)
@@ -120,9 +120,9 @@ func coming_from_app_store():
 			stop_the_snail = true
 			print("Coming from App Store!!")
 
-			ios_iap.connect("purchase_success", self, "on_purchase_success")
-			ios_iap.connect("purchase_error", self, "on_purchase_error")
-			ios_iap.continue_purchase()
+			iap_helper.connect("purchase_success", self, "on_purchase_success")
+			iap_helper.connect("purchase_error", self, "on_purchase_error")
+			iap_helper.continue_purchase()
 			purchase_request_started = true
 
 
@@ -130,7 +130,7 @@ var purchase_request_started = false
 
 func check_events():
 	if purchase_request_started:
-		ios_iap.check_events()
+		iap_helper.check_events()
 	elif translation_resource != null:
 		coming_from_app_store()
 

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [android]
 
-modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MobileTools"
+modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MobileTools,org/godotengine/godot/GodotPaymentV3"
 
 [application]
 
@@ -32,7 +32,7 @@ admob="*res://scripts/autoload/admob.gd"
 game="*res://scripts/autoload/game.gd"
 game_loader="*res://scripts/autoload/game_loader.gd"
 cfg="*res://scripts/autoload/cfg.gd"
-ios_iap="*res://scripts/autoload/ios_iap.gd"
+iap_helper="*res://scripts/autoload/iap_helper.gd"
 
 [debug]
 

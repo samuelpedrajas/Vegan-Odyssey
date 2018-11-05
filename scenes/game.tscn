@@ -213,8 +213,8 @@ script/source = "extends TextureButton
 
 
 func _ready():
-	ios_iap.connect(\"restore_purchases_success\", self, \"hide_myself\")
-	ios_iap.connect(\"purchase_success\", self, \"hide_myself\")
+	iap_helper.connect(\"restore_purchases_success\", self, \"hide_myself\")
+	iap_helper.connect(\"purchase_success\", self, \"hide_myself\")
 
 
 func hide_myself():
