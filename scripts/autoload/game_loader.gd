@@ -69,6 +69,10 @@ func _process(time):
 			translation_resource = loader.get_resource()
 			loader = ResourceLoader.load_interactive(stage_scene_path)
 
+			if OS.get_name() == "Android" and (game.savegame_data == null or not game.savegame_data["purchased"]):
+				iap_helper.connect("restore_purchases_success", self, "on_has_purchased")
+				iap_helper.restore_purchases()
+
 
 	elif err == OK:
 		if translation_resource == null:
@@ -133,6 +137,14 @@ func check_events():
 		iap_helper.check_events()
 	elif translation_resource != null:
 		coming_from_app_store()
+
+
+func on_has_purchased():
+	if game.savegame_data == null:
+		game.save_game_defaults(translation_resource.lang, true)
+	else:
+		game.savegame_data["purchased"] = true
+		game.save_game(game.savegame_data)
 
 
 func on_purchase_success():

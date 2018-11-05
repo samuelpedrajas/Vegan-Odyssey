@@ -235,6 +235,7 @@ func save_game_defaults(language, purchased):
 		'personalized_ads': null,
 		'purchased': purchased
 	}
+	savegame_data = game_status
 	save_game(game_status)
 
 
@@ -245,8 +246,8 @@ func save_game(game_status=null):
 			'broccolis': broccolis,
 			'highest_max': highest_max,
 			'current_max': current_max,
-			'matrix': board_layer.save_info(),
-			'settings': settings.save_info(),
+			'matrix': to_json(board_layer.save_info()),
+			'settings': to_json(settings.save_info()),
 			'revived': revived,
 			'win': win,
 			'seen_excuses': to_json(seen_excuses),
@@ -284,8 +285,8 @@ func load_game():
 	current_max = info['current_max']
 	revived = info['revived']
 	self.broccolis = info['broccolis']
-	settings.load_info(info['settings'], seen_intro)
-	board_layer.load_info(info['matrix'])
+	settings.load_info(parse_json(info['settings']), seen_intro)
+	board_layer.load_info(parse_json(info['matrix']))
 	win = info['win']
 	seen_excuses = parse_json(info['seen_excuses'])
 	seen_meme = info['seen_meme']
