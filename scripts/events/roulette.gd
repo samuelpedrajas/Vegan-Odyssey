@@ -10,7 +10,6 @@ var roulette_ready = false
 
 var speed = 2.0 * PI  # rotation per second
 var acc_delta = 0.0
-var complete_rotation = 2.0 * PI
 
 
 func _process(delta):
