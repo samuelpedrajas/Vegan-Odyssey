@@ -9,7 +9,8 @@ onready var event_scene_dict = {
 	"broccoli_duck": preload("res://scenes/events/broccoli_duck.tscn"),
 	"wait_for_rewarded_ad": preload("res://scenes/events/wait_for_rewarded_ad.tscn"),
 	"win": preload("res://scenes/events/win.tscn"),
-	"tutorial": preload("res://scenes/events/tutorial.tscn")
+	"tutorial": preload("res://scenes/events/tutorial.tscn"),
+	"roulette": preload("res://scenes/events/roulette.tscn")
 }
 
 

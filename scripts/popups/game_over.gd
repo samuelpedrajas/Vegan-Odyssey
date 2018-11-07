@@ -70,3 +70,11 @@ func update2adfree():
 
 	$window/play_minigame.show()
 	$window/subsubtitle.set_text(game.lang.GAME_OVER_QUESTION_AD_FREE)
+
+
+func _on_play_minigame_pressed():
+	$"/root".set_disable_input(true)
+	game.revived = true
+	game.sounds.play_audio("click")
+	game.popup_layer.close()
+	game.event_layer.start("roulette")

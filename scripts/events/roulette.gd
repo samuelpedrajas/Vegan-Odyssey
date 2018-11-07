@@ -8,6 +8,7 @@ var back_button = false
 var still_rolling = true
 var roulette_ready = false
 var bouncing = false
+var prev_closest = null
 
 var complete_round = 2.0 * PI
 var speed = 1.8 * PI  # rotation per second
@@ -90,7 +91,12 @@ func _process(delta):
 		roulette_texture.set_rotation(rot)
 
 		var closest = _get_closest_rot(rot)
+		if prev_closest != closest:
+			game.sounds.play_audio("tick")
+		prev_closest = closest
+
 		_update_arrow(rot, closest, _get_smallest_distance(prev_rot, rot) * arrow_amplitude)
+
 	elif still_rolling:
 		var rot = roulette_texture.get_rotation()
 		if final_rot == null:
@@ -107,7 +113,7 @@ func _process(delta):
 		if acc_delta > 3.0:
 			still_rolling = false
 			set_process(false)
-
+			game.event_layer.stop("roulette")
 
 func start():
 	_calculate_final_rots()
@@ -115,17 +121,19 @@ func start():
 
 
 func stop():
-	queue_free()
+	$anim.play("disappear")
 
 
 func _on_stop_pressed():
 	if roulette_ready:
-		#game.sounds.play_audio("click")
+		game.sounds.play_audio("click")
 		bouncing = true
-		#game.event_layer.stop("roulette")
+		$"/root".set_disable_input(true)
 
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "appear":
 		roulette_ready = true
 		$"/root".set_disable_input(false)
+	elif anim_name == "disappear":
+		queue_free()

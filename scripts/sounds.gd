@@ -30,7 +30,8 @@ func play_audio(name):
 		$fireworks.play()
 	elif name == "prewin":
 		$prewin.play()
-
+	elif name == "tick":
+		$tick.play()
 
 func update_settings():
 	silenced = not game.settings.sound_on
