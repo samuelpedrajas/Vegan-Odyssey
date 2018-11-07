@@ -249,7 +249,6 @@ editor/display_folded = true
 position = Vector2( -34, -300 )
 frames = SubResource( 7 )
 animation = "default"
-frame = 23
 playing = true
 _sections_unfolded = [ "Transform", "frames" ]
 
