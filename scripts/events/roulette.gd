@@ -57,21 +57,18 @@ func _update_arrow(rot, closest, amp):
 	var roll_offset = bounce_amplitude / 2.0
 	var left_pole = closest - bounce_amplitude / 2.0
 	var right_pole = closest + bounce_amplitude / 2.0
+
 	if rot < closest:
 		if rot > left_pole + roll_offset:
 			new_rot = 0.0
 		else:
 			var mult = 1.0 - abs(_get_smallest_distance(rot, left_pole)) / roll_offset
-			if mult > 1.8:
-				print("FIRST: ", mult)
 			new_rot = mult * amp
 	else:
 		if rot < right_pole - roll_offset:
 			new_rot = 0.0
 		else:
 			var mult = abs(_get_smallest_distance(rot, right_pole - roll_offset)) / roll_offset
-			if mult > 1.08:
-				print("SECOND: ", mult)
 			new_rot = mult * amp
 
 	arrow_texture.set_rotation(
