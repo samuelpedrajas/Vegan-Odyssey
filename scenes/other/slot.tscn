@@ -8,7 +8,7 @@
 resource_name = "roll"
 length = 2.0
 loop = true
-step = 0.5
+step = 0.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("slot1:position")
 tracks/0/interp = 1
@@ -40,8 +40,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.17086, 0.498592, 0.831631, 1.17161, 1.49943, 1.83292 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.17086, 0.498592, 0.831631, 1.17161, 1.49943, 1.83292, 1.99953 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "set_two"
@@ -50,7 +50,7 @@ tracks/2/keys = {
 "method": "set_three"
 }, {
 "args": [  ],
-"method": "set_one"
+"method": "set_slot2"
 }, {
 "args": [  ],
 "method": "set_two"
@@ -60,6 +60,9 @@ tracks/2/keys = {
 }, {
 "args": [  ],
 "method": "set_one"
+}, {
+"args": [  ],
+"method": "set_slot1"
 } ]
 }
 
@@ -102,3 +105,12 @@ anims/roll = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
+[node name="tween" type="Tween" parent="."]
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]

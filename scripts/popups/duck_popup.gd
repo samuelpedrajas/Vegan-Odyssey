@@ -26,7 +26,11 @@ func close():
 
 
 func _on_ok_button_pressed():
+	$"/root".set_disable_input(true)
 	game.sounds.play_audio("click")
+	game.event_layer.stop("broccoli_duck")
+	game.popup_layer.close()
+	game.event_layer.start("broccolitron")
 
 
 func _on_cancel_button_pressed():
