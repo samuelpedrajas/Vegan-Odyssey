@@ -123,6 +123,7 @@ func _process(delta):
 			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
 			game.effects_layer.play_rewarded_effect(final_rot.amount)
 			game.save_game()
+			game.hud_layer.glow_broccoli()
 
 
 func start():
