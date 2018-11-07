@@ -1,0 +1,334 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://scripts/events/broccolitron.gd" type="Script" id=1]
+[ext_resource path="res://images/events/roulette/title.png" type="Texture" id=2]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://images/events/broccolitron/broccolitron.png" type="Texture" id=4]
+[ext_resource path="res://scenes/other/slot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/events/duck/stand/stand-0.png" type="Texture" id=6]
+[ext_resource path="res://images/events/duck/stand/stand-1.png" type="Texture" id=7]
+[ext_resource path="res://images/events/duck/stand/stand-2.png" type="Texture" id=8]
+[ext_resource path="res://images/events/duck/stand/stand-3.png" type="Texture" id=9]
+[ext_resource path="res://images/events/duck/stand/stand-4.png" type="Texture" id=10]
+[ext_resource path="res://images/events/duck/stand/stand-5.png" type="Texture" id=11]
+[ext_resource path="res://images/events/duck/stand/stand-6.png" type="Texture" id=12]
+[ext_resource path="res://images/events/duck/stand/stand-7.png" type="Texture" id=13]
+[ext_resource path="res://images/events/duck/stand/stand-8.png" type="Texture" id=14]
+[ext_resource path="res://images/events/duck/stand/stand-9.png" type="Texture" id=15]
+[ext_resource path="res://images/events/duck/stand/stand-10.png" type="Texture" id=16]
+[ext_resource path="res://images/events/duck/stand/stand-11.png" type="Texture" id=17]
+[ext_resource path="res://images/events/duck/stand/stand-12.png" type="Texture" id=18]
+[ext_resource path="res://images/events/duck/stand/stand-13.png" type="Texture" id=19]
+[ext_resource path="res://images/events/duck/stand/stand-14.png" type="Texture" id=20]
+[ext_resource path="res://images/events/duck/stand/stand-15.png" type="Texture" id=21]
+[ext_resource path="res://images/events/duck/stand/stand-16.png" type="Texture" id=22]
+[ext_resource path="res://images/events/duck/stand/stand-17.png" type="Texture" id=23]
+[ext_resource path="res://images/events/duck/stand/stand-18.png" type="Texture" id=24]
+[ext_resource path="res://images/events/duck/stand/stand-19.png" type="Texture" id=25]
+[ext_resource path="res://images/events/duck/stand/stand-20.png" type="Texture" id=26]
+[ext_resource path="res://images/events/duck/stand/stand-21.png" type="Texture" id=27]
+[ext_resource path="res://images/events/duck/stand/stand-22.png" type="Texture" id=28]
+[ext_resource path="res://images/events/duck/stand/stand-23.png" type="Texture" id=29]
+[ext_resource path="res://images/events/duck/stand/stand-24.png" type="Texture" id=30]
+[ext_resource path="res://images/events/broccolitron/nest_back.png" type="Texture" id=31]
+[ext_resource path="res://images/events/broccolitron/nest.png" type="Texture" id=32]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=33]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=34]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=35]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 60
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 55
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 35 )
+_sections_unfolded = [ "Font", "Settings", "font_data" ]
+
+[sub_resource type="Animation" id=3]
+
+length = 0.5
+loop = false
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "disappear"
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="broccolitron" type="Control" groups=[
+"event",
+"resizable",
+]]
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Script", "Transform", "Visibility", "Z Index" ]
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="title" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -528.0
+margin_top = -810.0
+margin_right = 529.0
+margin_bottom = -574.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="text" type="Label" parent="title"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 285.0
+margin_right = -285.0
+margin_bottom = -51.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "BroccoliTron"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
+
+[node name="broccolitron" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="texture" type="Sprite" parent="broccolitron"]
+texture = ExtResource( 4 )
+offset = Vector2( 2, 0 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="slots" type="Control" parent="broccolitron/texture"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -840.0
+margin_top = -493.0
+margin_right = -87.0
+margin_bottom = -75.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="slot1" parent="broccolitron/texture/slots" instance=ExtResource( 5 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 0.0
+margin_top = -158.5
+margin_right = 211.0
+margin_bottom = 158.5
+
+[node name="slot2" parent="broccolitron/texture/slots" instance=ExtResource( 5 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.5
+margin_top = -158.5
+margin_right = 105.5
+margin_bottom = 158.5
+
+[node name="slot3" parent="broccolitron/texture/slots" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -211.0
+margin_top = -158.5
+margin_right = 0.0
+margin_bottom = 158.5
+
+[node name="duck" type="AnimatedSprite" parent="broccolitron"]
+editor/display_folded = true
+position = Vector2( -34, -300 )
+frames = SubResource( 7 )
+animation = "default"
+frame = 23
+playing = true
+_sections_unfolded = [ "Transform", "frames" ]
+
+[node name="nest_back" type="Sprite" parent="broccolitron/duck"]
+show_behind_parent = true
+position = Vector2( 35, 27 )
+texture = ExtResource( 31 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="nest" type="Sprite" parent="broccolitron/duck"]
+position = Vector2( 35, 61 )
+texture = ExtResource( 32 )
+
+[node name="stop" type="TextureButton" parent="."]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = 529.0
+margin_right = 130.0
+margin_bottom = 652.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 34 )
+_sections_unfolded = [ "Mouse", "Rect", "Textures" ]
+
+[node name="text" type="Label" parent="stop"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Stop!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Mouse", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("..")
+autoplay = "appear"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/appear = SubResource( 3 )
+anims/disappear = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.6
+one_shot = true
+autostart = false
+
+[connection signal="pressed" from="stop" to="." method="_on_stop_pressed"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
