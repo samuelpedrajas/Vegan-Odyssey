@@ -18,22 +18,28 @@ var arrow_amplitude = 20.0
 
 var bounce_offset = 0.0
 var final_rot = null
-var final_rots = []
+var final_rots = [
+	{ "rot": 0.19635, "amount": 2 },
+	{ "rot": 0.589049, "amount": 2 },
+	{ "rot": 0.981748, "amount": 3 },
+	{ "rot": 1.374447, "amount": 3 },
+	{ "rot": 1.767146, "amount": 2 },
+	{ "rot": 2.159845, "amount": 2 },
+	{ "rot": 2.552544, "amount": 4 },
+	{ "rot": 2.945243, "amount": 4 },
+	{ "rot": 3.337942, "amount": 1 },
+	{ "rot": 3.730641, "amount": 1 },
+	{ "rot": 4.12334, "amount": 5 },
+	{ "rot": 4.516039, "amount": 5 },
+	{ "rot": 4.908739, "amount": 2 },
+	{ "rot": 5.301438, "amount": 2 },
+	{ "rot": 5.694137, "amount": 3 },
+	{ "rot": 6.086836, "amount": 3 }
+]
 
 onready var roulette_texture = $roulette/roulette_texture
 onready var arrow_texture = $roulette/arrow_texture
 
-
-func _ready():
-	_calculate_final_rots()
-
-
-func _calculate_final_rots():
-	var offset = complete_round / 16.0
-	var acc = offset / 2.0
-	for i in range(16):
-		final_rots.append(acc)
-		acc += offset
 
 func _get_smallest_distance(target, source):
 	var a = target - source
@@ -45,7 +51,7 @@ func _get_closest_rot(rot):
 	var closest_dist = complete_round
 
 	for _final_rot in final_rots:
-		var dist = abs(_get_smallest_distance(_final_rot, rot))
+		var dist = abs(_get_smallest_distance(_final_rot.rot, rot))
 		if dist < closest_dist:
 			closest_dist = dist
 			closest = _final_rot
@@ -90,7 +96,7 @@ func _process(delta):
 		var rot = acc_delta * speed
 		roulette_texture.set_rotation(rot)
 
-		var closest = _get_closest_rot(rot)
+		var closest = _get_closest_rot(rot).rot
 		if prev_closest != closest:
 			game.sounds.play_audio("tick")
 		prev_closest = closest
@@ -105,18 +111,21 @@ func _process(delta):
 
 		var mult = pow(e, -acc_delta * 2.0) * sin(complete_round * acc_delta * 2.0)
 		var offset = mult * bounce_amplitude
-		rot = final_rot - offset
+		rot = final_rot.rot - offset
 		roulette_texture.set_rotation(rot)
 
-		_update_arrow(rot, final_rot, _get_smallest_distance(prev_rot, rot) * arrow_amplitude)
+		_update_arrow(rot, final_rot.rot, _get_smallest_distance(prev_rot, rot) * arrow_amplitude)
 
-		if acc_delta > 3.0:
+		if acc_delta > 2.2:
 			still_rolling = false
 			set_process(false)
 			game.event_layer.stop("roulette")
+			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
+			game.effects_layer.play_rewarded_effect(final_rot.amount)
+			game.save_game()
+
 
 func start():
-	_calculate_final_rots()
 	$anim.play("appear")
 
 
