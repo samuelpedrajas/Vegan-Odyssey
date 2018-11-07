@@ -14,6 +14,10 @@ var results = []
 var current_slot = 0
 
 
+func _ready():
+	randomize()
+
+
 func start():
 	$anim.play("appear")
 
@@ -47,8 +51,22 @@ func _on_stop_pressed():
 			game.save_game()
 
 
+func get_shuffled(l):
+	var aux_list = []
+	for elem in l:
+		aux_list.append(elem)
+
+	var shuffled_list = []
+	while not aux_list.empty():
+		var i = randi() % len(aux_list)
+		shuffled_list.append(aux_list[i])
+		aux_list.remove(i)
+
+	return shuffled_list
+
+
 func start_rolling():
-	for slot in slots:
+	for slot in get_shuffled(slots):
 		$timer.start()
 		yield($timer, "timeout")
 		slot.start()

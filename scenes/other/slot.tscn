@@ -40,8 +40,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.17086, 0.498592, 0.831631, 1.17161, 1.49943, 1.83292, 1.99953 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.17086, 0.498592, 0.831631, 1.17161, 1.49943, 1.83292 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "set_two"
@@ -57,9 +57,6 @@ tracks/2/keys = {
 }, {
 "args": [  ],
 "method": "set_three"
-}, {
-"args": [  ],
-"method": "set_one"
 }, {
 "args": [  ],
 "method": "set_slot1"
@@ -85,12 +82,13 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Animation", "Offset", "Rect", "Region" ]
 
 [node name="slot1" type="Sprite" parent="."]
+position = Vector2( 0, -0.30125 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "texture" ]
 
 [node name="slot2" type="Sprite" parent="."]
-position = Vector2( 0, -953 )
+position = Vector2( 0, 952.802 )
 texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "texture" ]
@@ -100,7 +98,7 @@ root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 1.0
+playback_speed = 1.4
 anims/roll = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
