@@ -19,8 +19,8 @@ var bounce_offset = 0.0
 var final_rot = null
 var final_rots = []
 
-onready var roulette_texture = $roulette/texture
-onready var arrow_texture = $arrow/texture
+onready var roulette_texture = $roulette/roulette_texture
+onready var arrow_texture = $roulette/arrow_texture
 
 
 func _ready():
