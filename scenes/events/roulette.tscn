@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/events/roulette.gd" type="Script" id=1]
-[ext_resource path="res://images/arrows.png" type="Texture" id=2]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=4]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://images/events/roulette/roulette.png" type="Texture" id=2]
+[ext_resource path="res://images/events/roulette/arrow.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=5]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -13,7 +14,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings", "font_data" ]
 
 [sub_resource type="Animation" id=2]
@@ -51,7 +52,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Pause", "Script", "Transform", "Visibility", "Z Index" ]
 
 [node name="roulette" type="Control" parent="."]
 anchor_left = 0.5
@@ -62,6 +63,7 @@ margin_left = -20.0
 margin_top = -67.0
 margin_right = 20.0
 margin_bottom = -27.0
+rect_rotation = 11.25
 rect_pivot_offset = Vector2( 20, 20 )
 rect_clip_content = false
 mouse_filter = 0
@@ -75,11 +77,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -327.0
-margin_top = -324.5
-margin_right = 327.0
-margin_bottom = 324.5
-rect_pivot_offset = Vector2( 327, 324 )
+margin_left = -459.5
+margin_top = -459.5
+margin_right = 459.5
+margin_bottom = 459.5
+rect_pivot_offset = Vector2( 459, 459 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
@@ -87,7 +89,26 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "texture" ]
+
+[node name="arrow" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -540.0
+margin_right = 47.0
+margin_bottom = -456.0
+rect_pivot_offset = Vector2( 47, 10 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
 
 [node name="stop" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -109,9 +130,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-_sections_unfolded = [ "Rect", "Textures" ]
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+_sections_unfolded = [ "Mouse", "Rect", "Textures" ]
 
 [node name="text" type="Label" parent="stop"]
 anchor_left = 0.0
@@ -136,16 +157,17 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Mouse", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
-autoplay = ""
+autoplay = "appear"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/appear = SubResource( 2 )
 blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
 [connection signal="pressed" from="stop" to="." method="_on_stop_pressed"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
