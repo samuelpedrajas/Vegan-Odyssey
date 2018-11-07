@@ -19,6 +19,9 @@ var bounce_offset = 0.0
 var final_rot = null
 var final_rots = []
 
+onready var roulette_texture = $roulette/texture
+onready var arrow_texture = $arrow/texture
+
 
 func _ready():
 	_calculate_final_rots()
@@ -71,13 +74,13 @@ func _update_arrow(rot, closest, amp):
 				print("SECOND: ", mult)
 			new_rot = mult * amp
 
-	$arrow.set_rotation(
-		$arrow.get_rotation() * 0.75 + new_rot * 0.25
+	arrow_texture.set_rotation(
+		arrow_texture.get_rotation() * 0.75 + new_rot * 0.25
 	)
 
 
 func _process(delta):
-	var prev_rot = $roulette.get_rotation()
+	var prev_rot = roulette_texture.get_rotation()
 
 	acc_delta += delta
 
@@ -87,12 +90,12 @@ func _process(delta):
 			prev_rot -= complete_round
 
 		var rot = acc_delta * speed
-		$roulette.set_rotation(rot)
+		roulette_texture.set_rotation(rot)
 
 		var closest = _get_closest_rot(rot)
 		_update_arrow(rot, closest, _get_smallest_distance(prev_rot, rot) * arrow_amplitude)
 	elif still_rolling:
-		var rot = $roulette.get_rotation()
+		var rot = roulette_texture.get_rotation()
 		if final_rot == null:
 			acc_delta = 0.0
 			final_rot = _get_closest_rot(rot)
@@ -100,7 +103,7 @@ func _process(delta):
 		var mult = pow(e, -acc_delta * 2.0) * sin(complete_round * acc_delta * 2.0)
 		var offset = mult * bounce_amplitude
 		rot = final_rot - offset
-		$roulette.set_rotation(rot)
+		roulette_texture.set_rotation(rot)
 
 		_update_arrow(rot, final_rot, _get_smallest_distance(prev_rot, rot) * arrow_amplitude)
 

@@ -59,12 +59,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -67.0
-margin_right = 20.0
-margin_bottom = -27.0
-rect_rotation = 11.25
-rect_pivot_offset = Vector2( 20, 20 )
+margin_top = -47.0
+margin_bottom = -47.0
+rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -72,43 +69,30 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Grow Direction", "Rect" ]
 
-[node name="texture" type="TextureRect" parent="roulette"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -459.5
-margin_top = -459.5
-margin_right = 459.5
-margin_bottom = 459.5
-rect_pivot_offset = Vector2( 459, 459 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+[node name="texture" type="Sprite" parent="roulette"]
+rotation = 0.197222
 texture = ExtResource( 2 )
-stretch_mode = 0
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "texture" ]
+_sections_unfolded = [ "Grow Direction", "Hint", "Offset", "Rect", "Transform", "texture" ]
 
-[node name="arrow" type="TextureRect" parent="."]
+[node name="arrow" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -47.0
 margin_top = -540.0
-margin_right = 47.0
-margin_bottom = -456.0
-rect_pivot_offset = Vector2( 47, 10 )
+margin_bottom = -540.0
+rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
-stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
+
+[node name="texture" type="Sprite" parent="arrow"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, 32 )
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="stop" type="TextureButton" parent="."]
 anchor_left = 0.5
