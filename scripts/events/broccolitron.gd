@@ -33,24 +33,6 @@ func _get_broccoli_amount():
 	return smallest
 
 
-func _on_stop_pressed():
-	if broccolitron_ready:
-		game.sounds.play_audio("click")
-		var slot = slots[current_slot]
-		var res = slot.stop()
-		results.append(res)
-		current_slot += 1
-
-		if current_slot > 2:
-			broccolitron_ready = true
-			yield(slot, "slot_stopped")
-			var reward = _get_broccoli_amount()
-			game.event_layer.stop("broccolitron")
-			game.secretly_set_broccolis(game.broccolis + reward)
-			game.effects_layer.play_rewarded_effect(reward)
-			game.save_game()
-
-
 func get_shuffled(l):
 	var aux_list = []
 	for elem in l:
@@ -75,6 +57,7 @@ func start_rolling():
 	yield($timer, "timeout")
 	broccolitron_ready = true
 	$"/root".set_disable_input(false)
+	$stop/anim.play("appear")
 
 
 func _on_anim_animation_finished(anim_name):
@@ -82,3 +65,24 @@ func _on_anim_animation_finished(anim_name):
 		start_rolling()
 	elif anim_name == "disappear":
 		queue_free()
+
+
+func _on_btn_pressed():
+	if broccolitron_ready:
+		game.sounds.play_audio("click")
+		var slot = slots[current_slot]
+		var res = slot.stop()
+		results.append(res)
+		current_slot += 1
+
+		if current_slot > 2:
+			$"/root".set_disable_input(true)
+			$stop.set_disabled(true)
+			$stop/anim.play("disappear")
+			broccolitron_ready = false
+			yield(slot, "slot_stopped")
+			var reward = _get_broccoli_amount()
+			game.event_layer.stop("broccolitron")
+			game.secretly_set_broccolis(game.broccolis + reward)
+			game.effects_layer.play_rewarded_effect(reward)
+			game.save_game()
