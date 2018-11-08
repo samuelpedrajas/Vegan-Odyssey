@@ -11,7 +11,6 @@ func _ready():
 
 func _set_index(v):
 	index = v
-	$id.set_text(str(index) + ".")
 
 
 func set_data(record):

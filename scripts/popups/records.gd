@@ -17,7 +17,6 @@ func open():
 
 
 func close():
-	close_anim = "close_records"
 	.close()
 
 
