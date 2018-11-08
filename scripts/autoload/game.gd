@@ -385,15 +385,20 @@ func get_current_record():
 	if start_time == null:
 		return prev_game_stats
 	var elapsed_time = (OS.get_unix_time() - start_time)
-	return {
+	var record = {
 		"time": elapsed_time + prev_game_stats.time,
 		"used_broccolis": used_broccolis + prev_game_stats.used_broccolis
 	}
+	if record.time < 0:
+		return { "time": 0, "used_broccolis": 0 }
+	return record
 
 
 func set_records():
 	var new_record_pos = 0
 	var new_record = get_current_record()
+	if new_record.time == 0:
+		return
 	for record in records:
 		if record.time == null or record.time > new_record.time:
 			records.pop_back()
