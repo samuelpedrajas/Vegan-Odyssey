@@ -42,11 +42,6 @@ func _on_switch_music_toggled(b):
 	game.sounds.play_audio("click")
 
 
-func _on_exit_button_pressed():
-	game.sounds.play_audio("click")
-	game.popup_layer.open("exit_confirmation")
-
-
 func _on_reset_progress_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.open("reset_progress_confirmation")
@@ -82,3 +77,26 @@ func _on_go_back_pressed():
 func _on_records_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.open("records")
+
+
+func purchase_reorder():
+	$"window/manage_ads".hide()
+
+	var records = $"window/records"
+	records.set_position(
+		records.get_position() + Vector2(0, 60)
+	)
+
+	var reset_progress = $"window/reset_progress"
+	reset_progress.set_position(
+		reset_progress.get_position() - Vector2(0, 60)
+	)
+
+
+func _ready():
+	if game.purchased:
+		purchase_reorder()
+	else:
+		iap_helper.connect("purchase_success", self, "purchase_reorder")
+		iap_helper.connect("restore_purchases_success", self, "purchase_reorder")
+
