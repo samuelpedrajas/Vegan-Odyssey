@@ -1,0 +1,228 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/popups/records.gd" type="Script" id=2]
+[ext_resource path="res://images/popups/common_popup.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/ornament.png" type="Texture" id=4]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/other/table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "close_records"
+length = 0.12
+loop = false
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("window/go_back")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disappear"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "open_records"
+length = 0.12
+loop = false
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("window:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("window/go_back")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "appear"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 70
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 42
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.RECORDS_NO_RECORDS)
+"
+
+[node name="records" index="0" groups=[
+"resizable",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Mouse", "Pause", "Script", "Transform" ]
+
+[node name="animation" parent="." index="0"]
+anims/close_records = SubResource( 1 )
+anims/open_records = SubResource( 2 )
+
+[node name="clickable_space" parent="." index="1"]
+visible = false
+
+[node name="window" parent="." index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -410.0
+margin_top = -409.0
+margin_right = 410.0
+margin_bottom = 442.0
+rect_pivot_offset = Vector2( 410, 425 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility" ]
+
+[node name="title" type="TextureRect" parent="window" index="0"]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -291.0
+margin_top = 59.0
+margin_right = 292.0
+margin_bottom = 183.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+
+[node name="text" type="Label" parent="window/title" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.0
+margin_top = -68.0
+margin_right = 158.0
+margin_bottom = 4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "TOP 5"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="table" parent="window" index="1" instance=ExtResource( 6 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -232.0
+margin_right = 350.0
+margin_bottom = 328.0
+
+[node name="no_records" type="Label" parent="window" index="2"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 132.0
+margin_right = -131.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "No records yet.
+
+This option will be available after completing the game."
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 5 )
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="go_back" parent="window" index="3" instance=ExtResource( 8 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+margin_right = 0.0
+margin_bottom = 0.0
+
+[connection signal="pressed" from="window/go_back" to="." method="_on_go_back_pressed"]

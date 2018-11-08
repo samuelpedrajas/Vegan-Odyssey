@@ -64,6 +64,17 @@ var win = false
 
 var savegame_data = null
 
+var start_time = null
+var used_broccolis = 0
+var prev_game_stats = { "time": 0, "used_broccolis": 0 }
+var records = [
+	{ "time": null, "used_broccolis": null },
+	{ "time": null, "used_broccolis": null },
+	{ "time": null, "used_broccolis": null },
+	{ "time": null, "used_broccolis": null },
+	{ "time": null, "used_broccolis": null }
+]
+
 
 func _ready():
 	# prevent quitting using back button
@@ -116,6 +127,10 @@ func restart_game(delete_progress=false):
 	win = false
 	self.current_max = 1
 
+	start_time = null
+	used_broccolis = 0
+	prev_game_stats = { "time": 0, "used_broccolis": 0 }
+
 	popup_layer.close_all()
 	game.event_layer.stop("win")
 
@@ -130,6 +145,13 @@ func restart_game(delete_progress=false):
 			"3": false
 			#"4": false
 		}
+		records = [
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null }
+		]
 		seen_meme = false
 		seen_refutation = false
 		self.highest_max = cfg.MIN_HIGHEST_MAX
@@ -203,6 +225,16 @@ func set_new_scene(scene_resource, translation_resource, iap_status):
 
 func save_game_defaults(language, purchased):
 	var game_status = {
+		'records': to_json([
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null },
+			{ "time": null, "used_broccolis": null }
+		]),
+		'prev_game_stats': to_json({
+			"time": 0, "used_broccolis": 0
+		}),
 		'tutorial': to_json({
 			"1": false,
 			"2": false,
@@ -242,6 +274,8 @@ func save_game_defaults(language, purchased):
 func save_game(game_status=null):
 	if game_status == null:
 		game_status = {
+			'records': to_json(records),
+			'prev_game_stats': to_json(get_current_record()),
 			'tutorial': to_json(seen_tutorial),
 			'broccolis': broccolis,
 			'highest_max': highest_max,
@@ -293,6 +327,8 @@ func load_game():
 	seen_refutation = info['seen_refutation']
 	personalized_ads = info['personalized_ads']
 	purchased = info['purchased']
+	prev_game_stats = parse_json(info['prev_game_stats'])
+	records = parse_json(info['records'])
 
 	savegame.close()
 
@@ -345,8 +381,38 @@ func secretly_set_broccolis(amount):
 ### WIN / LOSE ###
 
 
+func get_current_record():
+	if start_time == null:
+		return prev_game_stats
+	var elapsed_time = (OS.get_unix_time() - start_time)
+	return {
+		"time": elapsed_time + prev_game_stats.time,
+		"used_broccolis": used_broccolis + prev_game_stats.used_broccolis
+	}
+
+
+func set_records():
+	var new_record_pos = 0
+	var new_record = get_current_record()
+	for record in records:
+		if record.time == null or record.time > new_record.time:
+			records.pop_back()
+			records.insert(new_record_pos, new_record)
+			break
+		elif record.time == new_record.time and record.used_broccolis >= new_record.used_broccolis:
+			records.pop_back()
+			records.insert(new_record_pos, new_record)
+			break
+		else:
+			new_record_pos += 1
+
+	# true if new record
+	return new_record_pos == 0
+
+
 func victory():
 	$"/root".set_disable_input(true)
+	set_records()
 	win = true
 	sounds.play_audio("prewin")
 	game.music.set_volume_db(-80)

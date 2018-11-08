@@ -77,6 +77,9 @@ func token_selected(token, direction):
 	back_button = false
 
 	# use broccoli
+	game.used_broccolis += 1
+	if game.start_time == null:
+		game.start_time = OS.get_unix_time()
 	game.broccolis -= 1
 	game.hud_layer.glow_stop()
 

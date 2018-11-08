@@ -58,6 +58,8 @@ func move_tokens(direction):
 		# - game over
 		# - new excuse
 		if not game.win:
+			if game.start_time == null:
+				game.start_time = OS.get_unix_time()
 			var moves_available = check_moves_available()
 			# win, game over, tutorial
 			if game.current_max == cfg.GOAL:

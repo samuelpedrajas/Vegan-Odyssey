@@ -240,3 +240,8 @@ const FIRST_ERROR9 = "We're getting no ads for you from the server.\n\nWe have g
 const ERROR9 = "We're getting no ads for you from the server.\n\n\nWe have given you one free broccoli so you can keep playing."
 
 const NOT_EEA = "This functionality is only available in the EEA (European Economic Area)."
+
+const RECORDS = "Records"
+const RECORDS_TIME = "Time"
+const RECORDS_USED_BROCCOLIS = "Used broccolis"
+const RECORDS_NO_RECORDS = "No records yet.\n\nThis option will be available after completing the game."

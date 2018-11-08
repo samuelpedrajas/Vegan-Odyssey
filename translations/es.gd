@@ -242,3 +242,8 @@ const FIRST_ERROR9 = "El servidor no parece tener anuncios en este momento.\n\nT
 const ERROR9 = "El servidor no parece tener anuncios en este momento.\n\n\nTe hemos dado un brócoli gratis para que puedas seguir jugando."
 
 const NOT_EEA = "Esta funcionalidad sólo está disponible dentro de la EEE (Espacio Económico Europeo)."
+
+const RECORDS = "Récords"
+const RECORDS_TIME = "Tiempo"
+const RECORDS_USED_BROCCOLIS = "Brócolis usados"
+const RECORDS_NO_RECORDS = "Aún no hay récords.\n\nEsta opción estará disponible después de haber completado el juego."

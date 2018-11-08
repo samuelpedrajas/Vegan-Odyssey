@@ -77,3 +77,8 @@ func rescale(s):
 func _on_go_back_pressed():
 	game.sounds.play_audio("click")
 	game.popup_layer.close()
+
+
+func _on_records_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.open("records")
