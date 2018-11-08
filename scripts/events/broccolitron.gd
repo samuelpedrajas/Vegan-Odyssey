@@ -19,6 +19,7 @@ func _ready():
 
 
 func start():
+	game.go_back_manually_disabled = true
 	$anim.play("appear")
 
 
@@ -83,6 +84,7 @@ func _on_btn_pressed():
 			yield(slot, "slot_stopped")
 			var reward = _get_broccoli_amount()
 			game.event_layer.stop("broccolitron")
+			game.go_back_manually_disabled = false
 			game.secretly_set_broccolis(game.broccolis + reward)
 			game.effects_layer.play_rewarded_effect(reward)
 			game.save_game()

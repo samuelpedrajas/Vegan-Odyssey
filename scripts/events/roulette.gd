@@ -120,6 +120,7 @@ func _process(delta):
 			still_rolling = false
 			set_process(false)
 			game.event_layer.stop("roulette")
+			game.go_back_manually_disabled = false
 			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
 			game.effects_layer.play_rewarded_effect(final_rot.amount)
 			game.save_game()
@@ -127,6 +128,7 @@ func _process(delta):
 
 
 func start():
+	game.go_back_manually_disabled = true
 	$anim.play("appear")
 
 

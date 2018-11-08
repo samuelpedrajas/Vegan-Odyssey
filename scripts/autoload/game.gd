@@ -369,9 +369,12 @@ func game_over():
 	popup_layer.open("game_over")
 
 
+var go_back_manually_disabled = false
+
+
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
-		if $"/root".is_input_disabled():
+		if $"/root".is_input_disabled() or go_back_manually_disabled:
 			return
 		elif popup_layer.closeable():
 			sounds.play_audio("click")
