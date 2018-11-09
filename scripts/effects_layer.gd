@@ -12,14 +12,15 @@ func play_rewarded_effect(n):
 	var shadow_broccolis = game.broccolis - n
 	var timer = $"rewarded_animation/timer"
 	var initial_delay = 0.5
-	var between_delay = 0.3
+	var broccoli_delay = 2.0 / 3.0
 
-	timer.set_wait_time(initial_delay)
-	timer.start()
-	yield(timer, "timeout")
-
-	timer.set_wait_time(between_delay)
+	timer.set_wait_time(broccoli_delay)
 	for i in range(1, n + 1):
+		emit_broccoli(broccoli_delay)
+
+		timer.start()
+		yield(timer, "timeout")
+
 		print("Playing rewarded effect")
 		if real_n == game.broccolis:
 			game.hud_layer.set_broccoli_amount(shadow_broccolis + i)
@@ -31,8 +32,6 @@ func play_rewarded_effect(n):
 
 		game.sounds.play_audio("bubble")
 		set_process(true)
-		timer.start()
-		yield(timer, "timeout")
 
 
 var anim_time = 0.2
@@ -74,3 +73,36 @@ func play_new_record():
 func stop_new_record():
 	$new_record/anim.stop()
 	$new_record.hide()
+
+
+onready var source = $rewarded_animation/source
+onready var source_timer = $rewarded_animation/source/timer
+
+var broccoli_scene = preload("res://scenes/other/broccoli_unit.tscn")
+
+
+func check_direction(p, line):
+	return p.x * line.y - p.y * line.x > 0.0
+
+
+func get_intensity(p, line):
+	var mult = 1.0
+	if check_direction(p, line):
+		mult = -1.0
+	return mult * (line.y * p.x - line.x * p.y) / line.length()
+
+
+func emit_broccoli(t):
+	var broccoli_btn = $"../hud_layer/hud/lower_buttons/broccoli"
+	var dest = (
+		broccoli_btn.get_position() - source.get_position() + broccoli_btn.get_size() / 2.0
+	)
+	var source_size = source.get_size()
+	var source_pos = Vector2(
+		fmod(randi(), source_size.x), fmod(randi(), source_size.y)
+	)
+	var broccoli = broccoli_scene.instance()
+	var intensity = get_intensity(source_pos, source_size)
+	source.add_child(broccoli)
+
+	broccoli.start(source_pos, dest, intensity, t)

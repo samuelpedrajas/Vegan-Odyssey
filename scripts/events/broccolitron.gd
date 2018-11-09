@@ -1,6 +1,6 @@
 extends Control
 
-var priority = 9
+var priority = 6
 var back_button = false
 
 var broccolitron_ready = false

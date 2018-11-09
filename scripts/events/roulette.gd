@@ -2,7 +2,7 @@ extends Control
 
 const e = 2.718282
 
-var priority = 9
+var priority = 6
 var back_button = false
 
 var still_rolling = true
@@ -35,6 +35,8 @@ var final_rots = [
 	{ "rot": half_bounce_amplitude * 29.0, "amount": 1 },
 	{ "rot": half_bounce_amplitude * 31.0, "amount": 4 }
 ]
+
+var broccolis_emited = false
 
 onready var roulette_texture = $roulette/roulette_texture
 onready var arrow_texture = $roulette/arrow_texture
@@ -132,10 +134,13 @@ func _process(delta):
 				set_process(false)
 				game.event_layer.stop("roulette")
 				game.go_back_manually_disabled = false
-				game.secretly_set_broccolis(game.broccolis + final_rot.amount)
-				game.effects_layer.play_rewarded_effect(final_rot.amount)
+
 				game.save_game()
-				game.hud_layer.glow_broccoli()
+		elif acc_delta > 2.0 and not broccolis_emited:
+			broccolis_emited = true
+			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
+			game.effects_layer.play_rewarded_effect(final_rot.amount)
+			game.hud_layer.glow_broccoli()
 
 
 func start():

@@ -27,6 +27,10 @@ func _ready():
 		iap = Engine.get_singleton("InAppStore")
 
 
+func consume_unconsumed():
+	payment.consumeUnconsumedPurchases()
+
+
 # put this on a 1 second timer or something
 func check_events():
 	if iap == null:

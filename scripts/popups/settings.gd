@@ -75,6 +75,8 @@ func _on_go_back_pressed():
 
 
 func _on_records_pressed():
+	if cfg.DEV_MODE:
+		game.event_layer.start("broccoli_duck")
 	game.sounds.play_audio("click")
 	game.popup_layer.open("records")
 

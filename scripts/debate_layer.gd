@@ -48,6 +48,9 @@ func update_text(i):
 
 
 func _on_debate_btn_pressed():
+	if cfg.DEV_MODE:
+		iap_helper.consume_unconsumed()
+		game.purchased = false
 	if current > 0:
 		game.sounds.play_audio("click")
 		game.popup_layer.open("debate_screen", current)
