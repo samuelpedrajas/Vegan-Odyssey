@@ -64,3 +64,13 @@ func set_loading():
 func unset_loading():
 	$"/root/stage/transition_layer/loading".unset_loading()
 
+
+func play_new_record():
+	$new_record.show()
+	$new_record/anim.play("blinking")
+	game.sounds.play_audio("new_record")
+
+
+func stop_new_record():
+	$new_record/anim.stop()
+	$new_record.hide()

@@ -412,12 +412,12 @@ func set_records():
 			new_record_pos += 1
 
 	# true if new record
-	return new_record_pos == 0
+	return new_record_pos == 0 and records[1].time != null
 
 
 func victory():
 	$"/root".set_disable_input(true)
-	set_records()
+	var is_new_record = set_records()
 	win = true
 	sounds.play_audio("prewin")
 	game.music.set_volume_db(-80)
@@ -426,6 +426,14 @@ func victory():
 	t.set_wait_time(2.0)
 	t.start()
 	yield(t, "timeout")
+
+	if is_new_record:
+		game.effects_layer.play_new_record()
+		t.set_wait_time(2.0)
+		t.start()
+		yield(t, "timeout")
+		game.effects_layer.stop_new_record()
+
 	popup_layer.open("win")
 
 

@@ -32,6 +32,8 @@ func play_audio(name):
 		$prewin.play()
 	elif name == "tick":
 		$tick.play()
+	elif name == "new_record":
+		$new_record.play()
 
 func update_settings():
 	silenced = not game.settings.sound_on

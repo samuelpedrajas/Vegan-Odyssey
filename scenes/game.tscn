@@ -1,58 +1,60 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://scripts/resizer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
 [ext_resource path="res://scripts/sounds.gd" type="Script" id=3]
 [ext_resource path="res://audio/click.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/tick.wav" type="AudioStream" id=5]
-[ext_resource path="res://audio/merge.wav" type="AudioStream" id=6]
-[ext_resource path="res://audio/bubble.wav" type="AudioStream" id=7]
-[ext_resource path="res://audio/boom.wav" type="AudioStream" id=8]
-[ext_resource path="res://audio/quack.wav" type="AudioStream" id=9]
-[ext_resource path="res://audio/game_over.wav" type="AudioStream" id=10]
-[ext_resource path="res://audio/win.wav" type="AudioStream" id=11]
-[ext_resource path="res://audio/prewin.wav" type="AudioStream" id=12]
-[ext_resource path="res://audio/fireworks.wav" type="AudioStream" id=13]
-[ext_resource path="res://audio/arcade_game.ogg" type="AudioStream" id=14]
-[ext_resource path="res://scripts/music.gd" type="Script" id=15]
-[ext_resource path="res://images/background.png" type="Texture" id=16]
-[ext_resource path="res://scripts/event_layer.gd" type="Script" id=17]
-[ext_resource path="res://images/events/debate/dialog.png" type="Texture" id=18]
-[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=20]
-[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=21]
-[ext_resource path="res://scripts/hud_layer.gd" type="Script" id=22]
-[ext_resource path="res://images/bottom_border.png" type="Texture" id=23]
-[ext_resource path="res://images/lower_buttons/menu_button.png" type="Texture" id=24]
-[ext_resource path="res://images/lower_buttons/menu_button_pressed.png" type="Texture" id=25]
-[ext_resource path="res://images/lower_buttons/restart_button.png" type="Texture" id=26]
-[ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=27]
-[ext_resource path="res://images/lower_buttons/button_glow.png" type="Texture" id=28]
-[ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=29]
-[ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=30]
-[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=31]
-[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=32]
-[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=33]
-[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=34]
-[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=35]
-[ext_resource path="res://images/black_screen.png" type="Texture" id=36]
-[ext_resource path="res://scripts/board_layer.gd" type="Script" id=37]
-[ext_resource path="res://images/board_bg.png" type="Texture" id=38]
-[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=39]
-[ext_resource path="res://scripts/input_handler.gd" type="Script" id=40]
-[ext_resource path="res://scripts/debate_layer.gd" type="Script" id=41]
-[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=42]
-[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=43]
-[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=44]
-[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=45]
-[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=46]
-[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=47]
-[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=48]
-[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=49]
-[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=50]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=51]
-[ext_resource path="res://scripts/other/loading_transition.gd" type="Script" id=52]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=53]
+[ext_resource path="res://audio/new_record.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/merge.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/bubble.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/boom.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/quack.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/game_over.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/win.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/prewin.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/fireworks.wav" type="AudioStream" id=14]
+[ext_resource path="res://audio/arcade_game.ogg" type="AudioStream" id=15]
+[ext_resource path="res://scripts/music.gd" type="Script" id=16]
+[ext_resource path="res://images/background.png" type="Texture" id=17]
+[ext_resource path="res://scripts/event_layer.gd" type="Script" id=18]
+[ext_resource path="res://images/events/debate/dialog.png" type="Texture" id=19]
+[ext_resource path="res://fonts/msg.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://images/popups/ok_button.png" type="Texture" id=21]
+[ext_resource path="res://images/popups/ok_button_pressed.png" type="Texture" id=22]
+[ext_resource path="res://scripts/hud_layer.gd" type="Script" id=23]
+[ext_resource path="res://images/bottom_border.png" type="Texture" id=24]
+[ext_resource path="res://images/lower_buttons/menu_button.png" type="Texture" id=25]
+[ext_resource path="res://images/lower_buttons/menu_button_pressed.png" type="Texture" id=26]
+[ext_resource path="res://images/lower_buttons/restart_button.png" type="Texture" id=27]
+[ext_resource path="res://images/lower_buttons/restart_button_pressed.png" type="Texture" id=28]
+[ext_resource path="res://images/lower_buttons/button_glow.png" type="Texture" id=29]
+[ext_resource path="res://images/lower_buttons/book.png" type="Texture" id=30]
+[ext_resource path="res://images/lower_buttons/book_pressed.png" type="Texture" id=31]
+[ext_resource path="res://images/lower_buttons/broccoli.png" type="Texture" id=32]
+[ext_resource path="res://images/lower_buttons/broccoli_pressed.png" type="Texture" id=33]
+[ext_resource path="res://images/lower_buttons/broccoli_disabled.png" type="Texture" id=34]
+[ext_resource path="res://images/lower_buttons/n_broccolis.png" type="Texture" id=35]
+[ext_resource path="res://fonts/numbers.ttf" type="DynamicFontData" id=36]
+[ext_resource path="res://images/black_screen.png" type="Texture" id=37]
+[ext_resource path="res://scripts/board_layer.gd" type="Script" id=38]
+[ext_resource path="res://images/board_bg.png" type="Texture" id=39]
+[ext_resource path="res://tileset/tileset.tres" type="TileSet" id=40]
+[ext_resource path="res://scripts/input_handler.gd" type="Script" id=41]
+[ext_resource path="res://scripts/debate_layer.gd" type="Script" id=42]
+[ext_resource path="res://images/events/debate/laura.png" type="Texture" id=43]
+[ext_resource path="res://images/events/debate/laura_eyes_closed.png" type="Texture" id=44]
+[ext_resource path="res://images/events/debate/laura_speaking.png" type="Texture" id=45]
+[ext_resource path="res://images/events/debate/laura_speaking_eyes_closed.png" type="Texture" id=46]
+[ext_resource path="res://images/events/debate/lucy.png" type="Texture" id=47]
+[ext_resource path="res://images/events/debate/lucy_eyes_closed.png" type="Texture" id=48]
+[ext_resource path="res://images/events/debate/lucy_speaking.png" type="Texture" id=49]
+[ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=50]
+[ext_resource path="res://scripts/effects_layer.gd" type="Script" id=51]
+[ext_resource path="res://fonts/new_record.ttf" type="DynamicFontData" id=52]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=53]
+[ext_resource path="res://scripts/other/loading_transition.gd" type="Script" id=54]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=55]
 
 [sub_resource type="GDScript" id=1]
 
@@ -205,7 +207,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 19 )
+font_data = ExtResource( 20 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="GDScript" id=4]
@@ -308,7 +310,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 35 )
+font_data = ExtResource( 36 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="Animation" id=9]
@@ -435,12 +437,12 @@ func rescale(s):
 [sub_resource type="SpriteFrames" id=14]
 
 animations = [ {
-"frames": [ ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 42 ), ExtResource( 43 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 43 ), ExtResource( 44 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 45 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 45 ), ExtResource( 45 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "talking",
 "speed": 3.0
@@ -449,12 +451,12 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=15]
 
 animations = [ {
-"frames": [ ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ), ExtResource( 46 ) ],
+"frames": [ ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "default",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 48 ), ExtResource( 48 ), ExtResource( 48 ) ],
+"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 49 ), ExtResource( 49 ), ExtResource( 49 ) ],
 "loop": true,
 "name": "talking",
 "speed": 3.0
@@ -549,15 +551,44 @@ func rescale(s):
 
 [sub_resource type="DynamicFont" id=18]
 
+size = 220
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 52 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=19]
+
+resource_name = "blinking"
+length = 1.6
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=20]
+
 size = 60
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 53 )
+font_data = ExtResource( 55 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=21]
 
 length = 1.0
 loop = true
@@ -575,7 +606,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=22]
 
 length = 0.4
 loop = false
@@ -607,7 +638,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=23]
 
 length = 0.4
 loop = false
@@ -637,7 +668,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=24]
 
 length = 0.4
 loop = false
@@ -715,8 +746,17 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="merge" type="AudioStreamPlayer" parent="sounds"]
+[node name="new_record" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="merge" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 7 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -725,7 +765,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="bubble" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
@@ -734,7 +774,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="boom" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -743,7 +783,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="quack" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -15.0
 pitch_scale = 1.0
 autoplay = false
@@ -752,7 +792,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="game_over" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
@@ -761,15 +801,6 @@ mix_target = 0
 bus = "Master"
 
 [node name="win" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 11 )
-volume_db = -5.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
-
-[node name="prewin" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 12 )
 volume_db = -5.0
 pitch_scale = 1.0
@@ -778,8 +809,17 @@ stream_paused = false
 mix_target = 0
 bus = "Master"
 
-[node name="fireworks" type="AudioStreamPlayer" parent="sounds"]
+[node name="prewin" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 13 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="fireworks" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 14 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -790,14 +830,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 volume_db = -7.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="bg_layer" type="CanvasLayer" parent="."]
@@ -818,14 +858,14 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Offset", "Rect", "Transform", "Visibility", "Z Index" ]
 
 [node name="event_layer" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="broccoli_duck_timer" type="Timer" parent="event_layer"]
@@ -882,7 +922,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 stretch_mode = 0
 _sections_unfolded = [ "Offset", "Rect", "Transform" ]
 
@@ -1014,8 +1054,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 21 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
 script = SubResource( 4 )
 _sections_unfolded = [ "Pause", "Rect", "Textures", "Visibility" ]
 
@@ -1034,7 +1074,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 22 )
+script = ExtResource( 23 )
 
 [node name="hud" type="Control" parent="hud_layer"]
 anchor_left = 0.0
@@ -1064,7 +1104,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 stretch_mode = 0
 _sections_unfolded = [ "Mouse", "Offset", "Rect", "Transform" ]
 
@@ -1110,8 +1150,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 25 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Script", "Textures" ]
 
 [node name="reset" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
@@ -1134,15 +1174,15 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 27 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 28 )
 _sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/reset"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.193203 )
 material = SubResource( 7 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 centered = false
 offset = Vector2( -5, -8 )
 _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility", "material" ]
@@ -1167,15 +1207,15 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 29 )
-texture_pressed = ExtResource( 30 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 31 )
 _sections_unfolded = [ "Rect", "Script", "Textures" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/excuses"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.193203 )
 material = SubResource( 7 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 centered = false
 offset = Vector2( -5, -8 )
 _sections_unfolded = [ "Material", "Offset", "Pause", "Visibility" ]
@@ -1200,16 +1240,16 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 31 )
-texture_pressed = ExtResource( 32 )
-texture_disabled = ExtResource( 33 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_disabled = ExtResource( 34 )
 _sections_unfolded = [ "Rect", "Script", "Textures", "Visibility" ]
 
 [node name="glow" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.193203 )
 material = SubResource( 7 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 centered = false
 offset = Vector2( -5, -8 )
 _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
@@ -1217,7 +1257,7 @@ _sections_unfolded = [ "Material", "Offset", "Transform", "Visibility" ]
 [node name="circle" type="Sprite" parent="hud_layer/hud/lower_buttons/broccoli"]
 pause_mode = 2
 position = Vector2( 141.724, 24.5668 )
-texture = ExtResource( 34 )
+texture = ExtResource( 35 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="n_broccolis" type="Label" parent="hud_layer/hud/lower_buttons/broccoli/circle"]
@@ -1278,7 +1318,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 36 )
+texture_normal = ExtResource( 37 )
 expand = true
 stretch_mode = 6
 script = SubResource( 10 )
@@ -1299,7 +1339,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 37 )
+script = ExtResource( 38 )
 
 [node name="board" type="TextureRect" parent="board_layer"]
 editor/display_folded = true
@@ -1317,7 +1357,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 38 )
+texture = ExtResource( 39 )
 stretch_mode = 0
 script = SubResource( 12 )
 _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibility", "Z Index", "texture" ]
@@ -1325,7 +1365,7 @@ _sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Transform", "Visibi
 [node name="tilemap" type="TileMap" parent="board_layer/board"]
 position = Vector2( 30, 27 )
 mode = 0
-tile_set = ExtResource( 39 )
+tile_set = ExtResource( 40 )
 cell_size = Vector2( 340, 340 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -1371,7 +1411,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 40 )
+script = ExtResource( 41 )
 _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="debate_layer" type="CanvasLayer" parent="." groups=[
@@ -1382,7 +1422,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 41 )
+script = ExtResource( 42 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="girls" type="Container" parent="debate_layer"]
@@ -1458,10 +1498,11 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 50 )
+script = ExtResource( 51 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="rewarded_animation" type="Control" parent="effects_layer"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1497,13 +1538,54 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Mouse", "Rect" ]
 
+[node name="new_record" type="Label" parent="effects_layer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = -170.0
+margin_right = 488.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 976, 342 )
+rect_scale = Vector2( 0, 0 )
+rect_pivot_offset = Vector2( 488, 171 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "New Record"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
+
+[node name="anim" type="AnimationPlayer" parent="effects_layer/new_record"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/blinking = SubResource( 19 )
+blend_times = [  ]
+
 [node name="popup_layer" type="CanvasLayer" parent="."]
 layer = 8
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 51 )
+script = ExtResource( 53 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="effects" type="Control" parent="popup_layer"]
@@ -1532,7 +1614,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 36 )
+texture = ExtResource( 37 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility" ]
 
@@ -1548,7 +1630,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 36 )
+texture = ExtResource( 37 )
 stretch_mode = 7
 _sections_unfolded = [ "Material", "Mouse", "Offset", "Rect", "Transform", "Visibility", "texture" ]
 
@@ -1600,7 +1682,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 36 )
+texture = ExtResource( 37 )
 expand = true
 stretch_mode = 7
 _sections_unfolded = [ "Mouse", "Rect", "Transform", "Visibility" ]
@@ -1621,7 +1703,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 52 )
+script = ExtResource( 54 )
 _sections_unfolded = [ "Pause", "Script", "Visibility" ]
 
 [node name="text" type="Label" parent="transition_layer/loading"]
@@ -1635,7 +1717,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -1655,8 +1737,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/loading = SubResource( 19 )
-anims/set_loading = SubResource( 20 )
+anims/loading = SubResource( 21 )
+anims/set_loading = SubResource( 22 )
 blend_times = [  ]
 
 [node name="transition" type="AnimationPlayer" parent="."]
@@ -1666,8 +1748,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close = SubResource( 21 )
-anims/open = SubResource( 22 )
+anims/close = SubResource( 23 )
+anims/open = SubResource( 24 )
 blend_times = [  ]
 
 [node name="save_game" type="Timer" parent="."]
