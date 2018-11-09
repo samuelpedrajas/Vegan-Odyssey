@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/events/roulette.gd" type="Script" id=1]
 [ext_resource path="res://images/events/roulette/title.png" type="Texture" id=2]
@@ -9,9 +9,10 @@
 [ext_resource path="res://images/events/roulette/arrow.png" type="Texture" id=7]
 [ext_resource path="res://images/popups/go_back.png" type="Texture" id=8]
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=9]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://images/popups/go_back_disabled.png" type="Texture" id=10]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 
 size = 60
 outline_size = 0
@@ -21,14 +22,14 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 
 size = 55
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings", "font_data" ]
 
 [sub_resource type="Animation" id=3]
@@ -134,7 +135,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -149,7 +150,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="roulette" type="Control" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -175,6 +175,7 @@ _sections_unfolded = [ "Grow Direction", "Hint", "Offset", "Rect", "Transform", 
 [node name="axis" type="Sprite" parent="roulette"]
 rotation = 0.197222
 texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="arrow_texture" type="Sprite" parent="roulette"]
 position = Vector2( 0, -493 )
@@ -183,7 +184,6 @@ offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="stop" type="TextureButton" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -205,6 +205,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
 _sections_unfolded = [ "Mouse", "Rect", "Textures" ]
 
 [node name="text" type="Label" parent="stop"]
@@ -218,7 +219,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
