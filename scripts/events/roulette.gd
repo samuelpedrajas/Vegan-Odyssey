@@ -136,7 +136,7 @@ func _process(delta):
 				game.go_back_manually_disabled = false
 
 				game.save_game()
-		elif acc_delta > 2.0 and not broccolis_emited:
+		elif acc_delta > 2.0 and not broccolis_emited and final_rot.amount > 0:
 			broccolis_emited = true
 			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
 			game.effects_layer.play_rewarded_effect(final_rot.amount)
