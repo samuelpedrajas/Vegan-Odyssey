@@ -1,8 +1,8 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scripts/events/broccolitron.gd" type="Script" id=1]
-[ext_resource path="res://images/events/roulette/title.png" type="Texture" id=2]
-[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://images/events/broccolitron/broccolitron_en.png" type="Texture" id=2]
+[ext_resource path="res://images/events/broccolitron/broccolitron_aura.png" type="Texture" id=3]
 [ext_resource path="res://images/events/broccolitron/broccolitron.png" type="Texture" id=4]
 [ext_resource path="res://scenes/other/slot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://images/events/duck/stand/stand-0.png" type="Texture" id=6]
@@ -36,17 +36,20 @@
 [ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=34]
 [ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=35]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="GDScript" id=7]
 
-size = 60
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+script/source = "extends TextureRect
 
-[sub_resource type="SpriteFrames" id=2]
+
+var es_texture = preload(\"res://images/events/broccolitron/broccolitron_es.png\")
+
+
+func _ready():
+	if game.lang.language == \"es\":
+		set_texture(es_texture)
+"
+
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
@@ -55,7 +58,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 size = 55
 outline_size = 0
@@ -65,7 +68,15 @@ use_filter = true
 font_data = ExtResource( 35 )
 _sections_unfolded = [ "Font", "Settings", "font_data" ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.STOP)
+"
+
+[sub_resource type="Animation" id=3]
 
 resource_name = "appear"
 length = 0.1
@@ -108,7 +119,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource_name = "disappear"
 length = 0.1
@@ -151,7 +162,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 length = 0.5
 loop = false
@@ -169,7 +180,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 length = 1.0
 loop = false
@@ -224,10 +235,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -528.0
+margin_left = -532.0
 margin_top = -810.0
-margin_right = 529.0
-margin_bottom = -574.0
+margin_right = 532.0
+margin_bottom = -566.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -236,35 +247,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
+script = SubResource( 7 )
 _sections_unfolded = [ "Rect" ]
-
-[node name="text" type="Label" parent="title"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 285.0
-margin_right = -285.0
-margin_bottom = -51.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "BroccoliTron"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="broccolitron" type="Control" parent="."]
 anchor_left = 0.5
@@ -278,6 +262,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
+
+[node name="aura" type="Sprite" parent="broccolitron"]
+texture = ExtResource( 3 )
 
 [node name="texture" type="Sprite" parent="broccolitron"]
 texture = ExtResource( 4 )
@@ -333,7 +320,7 @@ margin_bottom = 158.5
 [node name="duck" type="AnimatedSprite" parent="broccolitron"]
 editor/display_folded = true
 position = Vector2( -34, -300 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "default"
 frame = 20
 playing = true
@@ -403,7 +390,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -415,6 +402,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 8 )
 _sections_unfolded = [ "Mouse", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="anim" type="AnimationPlayer" parent="stop"]
@@ -423,8 +411,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/appear = SubResource( 4 )
-anims/disappear = SubResource( 5 )
+anims/appear = SubResource( 3 )
+anims/disappear = SubResource( 4 )
 blend_times = [  ]
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -433,8 +421,8 @@ autoplay = "appear"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/appear = SubResource( 6 )
-anims/disappear = SubResource( 7 )
+anims/appear = SubResource( 5 )
+anims/disappear = SubResource( 6 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 

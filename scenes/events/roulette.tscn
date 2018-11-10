@@ -1,26 +1,28 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/events/roulette.gd" type="Script" id=1]
-[ext_resource path="res://images/events/roulette/title.png" type="Texture" id=2]
-[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://images/events/roulette/roulette_aura.png" type="Texture" id=4]
-[ext_resource path="res://images/events/roulette/roulette.png" type="Texture" id=5]
-[ext_resource path="res://images/events/roulette/roulette_center.png" type="Texture" id=6]
-[ext_resource path="res://images/events/roulette/arrow.png" type="Texture" id=7]
-[ext_resource path="res://images/popups/go_back.png" type="Texture" id=8]
-[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=9]
-[ext_resource path="res://images/popups/go_back_disabled.png" type="Texture" id=10]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://images/events/roulette/roulette_titol_en.png" type="Texture" id=2]
+[ext_resource path="res://images/events/roulette/roulette_aura.png" type="Texture" id=3]
+[ext_resource path="res://images/events/roulette/roulette.png" type="Texture" id=4]
+[ext_resource path="res://images/events/roulette/roulette_center.png" type="Texture" id=5]
+[ext_resource path="res://images/events/roulette/arrow.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/go_back.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/go_back_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/go_back_disabled.png" type="Texture" id=9]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=10]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="GDScript" id=6]
 
-size = 60
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+script/source = "extends TextureRect
+
+
+var es_texture = preload(\"res://images/events/roulette/roulette_titol_es.png\")
+
+
+func _ready():
+	if game.lang.language == \"es\":
+		set_texture(es_texture)
+"
 
 [sub_resource type="DynamicFont" id=2]
 
@@ -29,8 +31,16 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Font", "Settings", "font_data" ]
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Label
+
+func _ready():
+	set_text(game.lang.STOP)
+"
 
 [sub_resource type="Animation" id=3]
 
@@ -102,15 +112,14 @@ size_flags_vertical = 1
 color = Color( 0, 0, 0, 0.588235 )
 
 [node name="title" type="TextureRect" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -528.0
+margin_left = -532.0
 margin_top = -810.0
-margin_right = 529.0
-margin_bottom = -574.0
+margin_right = 532.0
+margin_bottom = -566.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -119,35 +128,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
+script = SubResource( 6 )
 _sections_unfolded = [ "Rect" ]
-
-[node name="text" type="Label" parent="title"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 285.0
-margin_right = -285.0
-margin_bottom = -51.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "Roulette of Fortune"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="roulette" type="Control" parent="."]
 anchor_left = 0.5
@@ -165,21 +147,21 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Grow Direction", "Rect" ]
 
 [node name="aura" type="Sprite" parent="roulette"]
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="roulette_texture" type="Sprite" parent="roulette"]
 rotation = 0.197222
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Grow Direction", "Hint", "Offset", "Rect", "Transform", "texture" ]
 
 [node name="axis" type="Sprite" parent="roulette"]
 rotation = 0.197222
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="arrow_texture" type="Sprite" parent="roulette"]
 position = Vector2( 0, -493 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, 32 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
@@ -203,9 +185,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_disabled = ExtResource( 10 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 9 )
 _sections_unfolded = [ "Mouse", "Rect", "Textures" ]
 
 [node name="text" type="Label" parent="stop"]
@@ -231,6 +213,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = SubResource( 5 )
 _sections_unfolded = [ "Mouse", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="anim" type="AnimationPlayer" parent="."]
