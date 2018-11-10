@@ -87,4 +87,6 @@ func _on_btn_pressed():
 			game.go_back_manually_disabled = false
 			game.secretly_set_broccolis(game.broccolis + reward)
 			game.effects_layer.play_rewarded_effect(reward)
+			if not game.board_layer.check_moves_available():
+				game.hud_layer.glow_broccoli()
 			game.save_game()
