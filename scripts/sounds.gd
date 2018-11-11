@@ -34,6 +34,27 @@ func play_audio(name):
 		$tick.play()
 	elif name == "new_record":
 		$new_record.play()
+	elif name == "cling":
+		$cling.play()
+	elif name == "slot_stop":
+		$slot_stop.play()
+	elif name == "lucky":
+		$lucky.play()
+
 
 func update_settings():
 	silenced = not game.settings.sound_on
+
+
+func play_minigame_music():
+	if not game.settings.music_on:
+		return
+	game.music.set_volume_db(-80)
+	$minigame.play()
+
+
+func stop_minigame_music():
+	if not game.settings.music_on:
+		return
+	$minigame.stop()
+	game.music.set_volume_db(cfg.MUSIC_VOLUME)

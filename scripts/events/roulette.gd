@@ -137,6 +137,8 @@ func _process(delta):
 
 				game.save_game()
 		elif acc_delta > 2.0 and not broccolis_emited and final_rot.amount > 0:
+			if final_rot.amount > 3:
+				game.sounds.play_audio("lucky")
 			broccolis_emited = true
 			game.secretly_set_broccolis(game.broccolis + final_rot.amount)
 			game.effects_layer.play_rewarded_effect(final_rot.amount)
@@ -144,11 +146,13 @@ func _process(delta):
 
 
 func start():
+	game.sounds.play_minigame_music()
 	game.go_back_manually_disabled = true
 	$anim.play("appear")
 
 
 func stop():
+	game.sounds.stop_minigame_music()
 	$anim.play("disappear")
 
 

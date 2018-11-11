@@ -19,6 +19,7 @@ func _ready():
 
 
 func start():
+	game.sounds.play_minigame_music()
 	game.go_back_manually_disabled = true
 	$anim.play("appear")
 
@@ -65,12 +66,13 @@ func _on_anim_animation_finished(anim_name):
 	if anim_name == "appear":	
 		start_rolling()
 	elif anim_name == "disappear":
+		game.sounds.stop_minigame_music()
 		queue_free()
 
 
 func _on_btn_pressed():
 	if broccolitron_ready:
-		game.sounds.play_audio("click")
+		game.sounds.play_audio("slot_stop")
 		var slot = slots[current_slot]
 		var res = slot.stop()
 		results.append(res)
@@ -83,6 +85,8 @@ func _on_btn_pressed():
 			broccolitron_ready = false
 			yield(slot, "slot_stopped")
 			var reward = _get_broccoli_amount()
+			if reward > 2:
+				game.sounds.play_audio("lucky")
 			game.event_layer.stop("broccolitron")
 			game.go_back_manually_disabled = false
 			game.secretly_set_broccolis(game.broccolis + reward)

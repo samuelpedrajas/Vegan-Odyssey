@@ -29,6 +29,7 @@ func _process(delta):
 
 
 func start():
+	game.sounds.play_audio("cling")
 	$anim.play("roll")
 
 
