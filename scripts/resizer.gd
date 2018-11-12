@@ -1,7 +1,7 @@
 extends Node
 
 
-var _f = 1.00
+var _f = 1.40
 var s
 var mobile_tools
 

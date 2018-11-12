@@ -12,8 +12,6 @@ var n_particles = 20
 var sparkle_scene = preload("res://scenes/other/sparkle.tscn")
 var last_sparkle = null
 
-var last_sparkle_removed = false
-
 
 onready var _texture = $texture
 
@@ -23,10 +21,6 @@ func _ready():
 
 
 var acc_delta = 0.0
-
-
-func last_sparkle_finished():
-	last_sparkle_removed = true
 
 
 func set_particle():
@@ -40,9 +34,7 @@ func set_particle():
 	var sparkle = sparkle_scene.instance()
 	sparkle.set_position(pos + Vector2(dest_x, dest_y))
 	add_child(sparkle)
-	if particle_counter == n_particles:
-			last_sparkle = sparkle
-			sparkle.connect("tree_exited", self, "last_sparkle_finished")
+	last_sparkle = sparkle
 	particle_counter += 1
 
 
@@ -55,7 +47,7 @@ func _process(delta):
 	if acc_delta > 1.0:
 		set_process(false)
 		_texture.hide()
-		if not last_sparkle_removed:
+		if get_child_count() > 2:
 			yield(last_sparkle, "tree_exited")
 		print("Destroying broccoli missile")
 		queue_free()
