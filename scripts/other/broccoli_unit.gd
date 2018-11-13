@@ -13,10 +13,12 @@ var sparkle_scene = preload("res://scenes/other/sparkle.tscn")
 var last_sparkle = null
 
 
-onready var _texture = $texture
+onready var _container = $container
+onready var _texture = $container/texture
 
 
 func _ready():
+	rescale(game.resizer.s)
 	set_process(false)
 
 
@@ -30,7 +32,7 @@ func set_particle():
 	var tex_size = _texture.texture.get_size()
 	var dest_x = randf() * tex_size.x
 	var dest_y = randf() * tex_size.y
-	var pos = _texture.get_position() - tex_size / 2.0
+	var pos = _container.get_position()
 	var sparkle = sparkle_scene.instance()
 	sparkle.set_position(pos + Vector2(dest_x, dest_y))
 	add_child(sparkle)
@@ -46,13 +48,13 @@ func _process(delta):
 
 	if acc_delta > 1.0:
 		set_process(false)
-		_texture.hide()
+		_container.hide()
 		if get_child_count() > 2:
 			yield(last_sparkle, "tree_exited")
 		print("Destroying broccoli missile")
 		queue_free()
 	else:
-		_texture.set_position(curve.interpolate(0, acc_delta))
+		_container.set_position(curve.interpolate(0, acc_delta))
 
 
 func get_out_control(origin, dest, intensity):
@@ -63,7 +65,7 @@ func get_out_control(origin, dest, intensity):
 
 
 func start(origin, dest, intensity, anim_time):
-	_texture.set_position(origin)
+	_container.set_position(origin)
 
 	$anim.play("appear")
 
@@ -77,3 +79,7 @@ func start(origin, dest, intensity, anim_time):
 	self.anim_time = anim_time
 
 	set_process(true)
+
+
+func rescale(s):
+	_container.set_scale(Vector2(s, s))

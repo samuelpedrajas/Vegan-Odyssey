@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://images/sparkle.png" type="Texture" id=1]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="GDScript" id=1]
 
-resource_name = "blink"
+script/source = "extends Sprite
+
+
+func _ready():
+	rescale(game.resizer.s)
+
+func rescale(s):
+	set_scale(Vector2(s, s))
+"
+
+[sub_resource type="Animation" id=2]
+
 length = 0.3
 loop = false
 step = 0.05
@@ -47,9 +58,12 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="sparkle" type="Sprite"]
+[node name="sparkle" type="Sprite" groups=[
+"resizable",
+]]
 modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 1 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Animation", "Region", "Transform", "Visibility", "Z Index", "frames", "normal_map" ]
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -58,7 +72,7 @@ autoplay = "blink"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/blink = SubResource( 1 )
+anims/blink = SubResource( 2 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 

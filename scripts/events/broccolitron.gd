@@ -80,7 +80,7 @@ func _on_btn_pressed():
 
 		if current_slot > 2:
 			$"/root".set_disable_input(true)
-			$stop.set_disabled(true)
+			$stop/btn.set_disabled(true)
 			$stop/anim.play("disappear")
 			broccolitron_ready = false
 			yield(slot, "slot_stopped")
@@ -94,3 +94,10 @@ func _on_btn_pressed():
 			if not game.board_layer.check_moves_available():
 				game.hud_layer.glow_broccoli()
 			game.save_game()
+
+
+func rescale(s):
+	var s2 = Vector2(s, s)
+	$title.set_scale(s2)
+	$broccolitron.set_scale(s2)
+	$stop.set_scale(s2)

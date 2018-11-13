@@ -171,3 +171,10 @@ func _on_anim_animation_finished(anim_name):
 		$"/root".set_disable_input(false)
 	elif anim_name == "disappear":
 		queue_free()
+
+
+func rescale(s):
+	var s2 = Vector2(s, s)
+	$title.set_scale(s2)
+	$roulette.set_scale(s2)
+	$stop.set_scale(s2)
