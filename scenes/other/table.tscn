@@ -8,7 +8,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 42
+size = 30
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -86,10 +86,11 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -180.0
-margin_right = 100.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 280, 160 )
+margin_left = -94.0
+margin_top = 70.0
+margin_right = 186.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 280, 70 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -102,6 +103,7 @@ custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Time"
 align = 1
+valign = 1
 autowrap = true
 clip_text = true
 percent_visible = 1.0
@@ -111,14 +113,14 @@ script = SubResource( 2 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="icon" type="TextureRect" parent="table/header/header1"]
-anchor_left = 0.5
+anchor_left = 0.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.0
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -10.0
-margin_right = 30.0
-margin_bottom = 57.0
+margin_left = 27.0
+margin_top = -33.0
+margin_right = 87.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -134,9 +136,11 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -300.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 300, 144 )
+margin_left = -256.0
+margin_top = 70.0
+margin_right = 59.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 300, 70 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -149,6 +153,7 @@ custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Used broccolis"
 align = 1
+valign = 1
 autowrap = true
 clip_text = true
 percent_visible = 1.0
@@ -158,14 +163,13 @@ script = SubResource( 3 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
 [node name="icon" type="TextureRect" parent="table/header/header2"]
-anchor_left = 0.5
+anchor_left = 0.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.0
 anchor_bottom = 0.5
-margin_left = -30.0
-margin_top = -10.0
-margin_right = 30.0
-margin_bottom = 57.0
+margin_top = -33.5
+margin_right = 60.0
+margin_bottom = 33.5
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -184,7 +188,7 @@ anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 148.0
 margin_right = 700.0
-margin_bottom = 228.0
+margin_bottom = 268.0
 
 [node name="table_row2" parent="table" instance=ExtResource( 5 )]
 anchor_left = 0.0
@@ -192,9 +196,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 232.0
+margin_top = 272.0
 margin_right = 700.0
-margin_bottom = 312.0
+margin_bottom = 392.0
 index = 2
 
 [node name="table_row3" parent="table" instance=ExtResource( 5 )]
@@ -203,9 +207,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 316.0
+margin_top = 396.0
 margin_right = 700.0
-margin_bottom = 396.0
+margin_bottom = 516.0
 index = 3
 
 [node name="table_row4" parent="table" instance=ExtResource( 5 )]
@@ -214,9 +218,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 400.0
+margin_top = 520.0
 margin_right = 700.0
-margin_bottom = 480.0
+margin_bottom = 640.0
 index = 4
 
 [node name="table_row5" parent="table" instance=ExtResource( 5 )]
@@ -225,8 +229,8 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 484.0
+margin_top = 644.0
 margin_right = 700.0
-margin_bottom = 564.0
+margin_bottom = 764.0
 index = 5
 

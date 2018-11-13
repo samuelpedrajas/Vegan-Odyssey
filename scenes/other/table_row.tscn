@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/other/table_row.gd" type="Script" id=1]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/popups/records/star_1.png" type="Texture" id=3]
+[ext_resource path="res://images/popups/records/star_2.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/records/star_3.png" type="Texture" id=5]
+[ext_resource path="res://images/popups/records/yellow_ribbon.png" type="Texture" id=6]
+[ext_resource path="res://images/popups/records/place1.png" type="Texture" id=7]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://images/popups/records/place2.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 
 size = 60
 outline_size = 0
@@ -13,18 +20,28 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=2]
+
+size = 45
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
+
 [node name="table_row" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -890.0
-margin_top = -1000.0
+margin_top = -1020.0
 margin_right = -190.0
-margin_bottom = -920.0
-rect_min_size = Vector2( 700, 80 )
+margin_bottom = -900.0
+rect_min_size = Vector2( 700, 120 )
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -38,9 +55,9 @@ anchor_left = 0.0
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-margin_top = -44.0
+margin_top = -64.0
 margin_right = 120.0
-margin_bottom = 36.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 120, 80 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -48,36 +65,123 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "1."
+text = "1"
 align = 1
 valign = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts/font" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="time" type="Label" parent="."]
-anchor_left = 0.5
+[node name="star1" type="TextureRect" parent="id"]
+visible = false
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="star2" type="TextureRect" parent="id"]
+visible = false
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="star3" type="TextureRect" parent="id"]
+visible = false
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="bg" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -180.0
-margin_top = -44.0
-margin_right = 100.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 280, 80 )
+margin_left = -449.0
+margin_top = -71.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="place1" type="TextureRect" parent="bg"]
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_top = -40.0
+margin_right = 257.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 7 )
+stretch_mode = 0
+
+[node name="time" type="Label" parent="bg/place1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1.0
+rect_min_size = Vector2( 232, 80 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -90,22 +194,41 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="used_broccolis" type="Label" parent="."]
+[node name="place2" type="TextureRect" parent="bg"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -300.0
+margin_left = -169.0
+margin_top = -43.0
+margin_right = -28.0
+margin_bottom = 43.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 9 )
+stretch_mode = 0
+
+[node name="used_broccolis" type="Label" parent="bg/place2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -142.0
 margin_top = -44.0
+margin_right = -2.0
 margin_bottom = 36.0
-rect_min_size = Vector2( 300, 80 )
+rect_min_size = Vector2( 140, 80 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2

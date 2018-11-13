@@ -1,12 +1,22 @@
-tool
 extends Control
 
 
 export(int) var index = 1 setget _set_index
 
 
+func prepare():
+	$id.set_text(str(index))
+	if index == 1:
+		$id/star1.show()
+		$bg.self_modulate.a = 1.0
+	elif index == 2:
+		$id/star2.show()
+	elif index == 3:
+		$id/star3.show()
+
+
 func _ready():
-	$id.set_text(str(index) + ".")
+	prepare()
 
 
 func _set_index(v):
@@ -24,5 +34,5 @@ func set_data(record):
 	m = m if m.length() > 1 else "0" + m
 	s = s if s.length() > 1 else "0" + s
 
-	$time.set_text(h + ":" + m + ":" + s)
-	$used_broccolis.set_text(str(record.used_broccolis))
+	$bg/place1/time.set_text(h + ":" + m + ":" + s)
+	$bg/place2/used_broccolis.set_text(str(record.used_broccolis))
