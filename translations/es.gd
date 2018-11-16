@@ -187,6 +187,9 @@ const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrue
 const PURCHASE_SUCCESSFUL = "Tu compra ha sido realizada con éxito.\n\nAhora puedes disfrutar de la versión sin anuncios y de su contenido exclusivo."
 const PURCHASE_UNSUCCESSFUL = "Ha habido un problema durante la compra.\n\nPulsa el botón de la esquina superior derecha en la pantalla principal para intentarlo de nuevo."
 const PURCHASE_INSTRUCTIONS = "Tu compra ha sido realizada con éxito.\n\nYa no necesitas ver anuncios para conseguir brócoli. En su lugar, 2 minijuegos exclusivos han sido desbloqueados."
+const PURCHASE_PRICE = "Obtener por "
+const ALREADY_OWNED = "Ya lo he comprado"
+const PROMOTION_MSG = "Descubre nuevas formas de conseguir brócoli sin tener que ver anuncios"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
 const SETTINGS_HEADER_SCALE = 0.65

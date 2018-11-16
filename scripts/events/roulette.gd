@@ -60,31 +60,6 @@ func _get_closest_rot(rot):
 	return closest
 
 
-func _update_arrow(rot, closest, amp):
-	var new_rot = null
-	var roll_offset = half_bounce_amplitude
-	var left_pole = closest - half_bounce_amplitude
-	var right_pole = closest + half_bounce_amplitude
-
-	if rot < closest:
-		if rot > left_pole + roll_offset:
-			new_rot = 0.0
-		else:
-			var mult = 1.0 - abs(_get_smallest_distance(rot, left_pole)) / roll_offset
-			new_rot = mult * amp
-
-	else:
-		if rot < right_pole - roll_offset:
-			new_rot = 0.0
-		else:
-			var mult = abs(_get_smallest_distance(rot, right_pole - roll_offset)) / roll_offset
-			new_rot = mult * amp
-
-	arrow_texture.set_rotation(
-		arrow_texture.get_rotation() * 0.75 + new_rot * 0.25
-	)
-
-
 func _process(delta):
 	var prev_rot = roulette_texture.get_rotation()
 
@@ -104,8 +79,8 @@ func _process(delta):
 			pass
 		prev_closest = closest
 
-		var amp = PI * _get_smallest_distance(prev_rot, rot) / half_bounce_amplitude
-		_update_arrow(rot, closest, amp)
+		var ideal_rotation = -PI / 4.0 + PI / 8.0 * sin(acc_delta * complete_round * 16.0)
+		arrow_texture.set_rotation(arrow_texture.get_rotation() * 0.75 + ideal_rotation * 0.25)
 
 	elif still_rolling:
 		var rot = roulette_texture.get_rotation()
@@ -118,8 +93,9 @@ func _process(delta):
 		rot = final_rot.rot - offset
 		roulette_texture.set_rotation(rot)
 
-		var amp = PI * _get_smallest_distance(prev_rot, rot) / half_bounce_amplitude
-		_update_arrow(rot, final_rot.rot, amp)
+		arrow_texture.set_rotation(
+			(final_rot.rot - rot) * 1.0 + arrow_texture.get_rotation() * 0.5
+		)
 
 		if acc_delta > 3.0:
 			if final_rot.amount == 0:

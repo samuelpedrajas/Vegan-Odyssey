@@ -22,6 +22,7 @@ func close():
 
 func rescale(s):
 	$window.set_scale(Vector2(s, s))
+	$window/go_back.set_right_pos()
 
 
 func _on_go_back_pressed():
