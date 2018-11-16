@@ -180,7 +180,7 @@ var EXCUSES = [
 
 const GO_BACK = "Volver"
 const OOPS_TITLE = "¡VAYA!"
-const CONGRATULATIONS = "¡YUJU!"
+const CONGRATULATIONS = "¡FELICIDADES!"
 const NOT_OWNED = "Parece que no podemos verificar tu compra.\n\nSi has comprado el producto antes, envíanos un e-mail a vegamescontact@gmail.com."
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
