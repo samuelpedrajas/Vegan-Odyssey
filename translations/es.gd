@@ -189,7 +189,7 @@ const PURCHASE_UNSUCCESSFUL = "Ha habido un problema durante la compra.\n\nPulsa
 const PURCHASE_INSTRUCTIONS = "Tu compra ha sido realizada con éxito.\n\nYa no necesitas ver anuncios para conseguir brócoli. En su lugar, 2 minijuegos exclusivos han sido desbloqueados."
 const PURCHASE_PRICE = "Obtener por "
 const ALREADY_OWNED = "Ya lo he comprado"
-const PROMOTION_MSG = "Descubre nuevas formas de conseguir brócoli sin tener que ver anuncios"
+const PROMOTION_MSG = "Y descubre nuevas formas de conseguir brócoli sin tener que ver anuncios"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
 const SETTINGS_HEADER_SCALE = 0.65

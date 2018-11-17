@@ -186,8 +186,8 @@ const PURCHASE_SUCCESSFUL = "Your purchase was successful.\n\nYou can enjoy now 
 const PURCHASE_UNSUCCESSFUL = "There was a problem while processing your purchase.\n\nYou can try again by tapping the upper-right button in the main screen."
 const PURCHASE_INSTRUCTIONS = "Your purchase was successful.\n\nNow you don't have to watch ads to earn broccoli. Instead, 2 exclusive minigames have been unlocked."
 const PURCHASE_PRICE = "Get for "
-const ALREADY_OWNED = "I already bought this"
-const PROMOTION_MSG = "Discover new ways of getting broccoli without having to watch ads"
+const ALREADY_OWNED = "I already bought it"
+const PROMOTION_MSG = "And discover new ways of getting broccoli without having to watch ads"
 
 const SETTINGS_HEADER = "SETTINGS"
 const SETTINGS_HEADER_SCALE = 1.0
