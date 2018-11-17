@@ -210,7 +210,7 @@ const RESET_PROGRESS = "DELETE PROGRESS?"
 const RESET_PROGRESS_MSG = "All the progress, including the board, will be permanently deleted.\n\nYou'll keep your broccolis."
 
 const OFFLINE = "YOU APPEAR OFFLINE"
-const OFFLINE_MSG = "Go online and earn broccoli to remove the tokens that are getting in your way!"
+const OFFLINE_MSG = "Go online to earn broccoli and remove the tokens that are getting in your way!"
 
 const EXCUSE_BOOK = "EXCUSES"
 const EXCUSE_BOOK_LEGEND = "CURRENT MAXIMUM"
