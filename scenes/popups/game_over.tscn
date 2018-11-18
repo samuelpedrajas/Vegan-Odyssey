@@ -105,28 +105,9 @@ func _ready():
 		$used_en.show()
 "
 
-[sub_resource type="DynamicFont" id=9]
-
-size = 55
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 5 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="GDScript" id=10]
-
-script/source = "extends Label
-
-
-func _ready():
-	set_text(game.lang.GAME_OVER_PLAY_ROULETTE)
-"
-
 [sub_resource type="DynamicFont" id=11]
 
-size = 40
+size = 55
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -138,8 +119,28 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 script/source = "extends Label
 
+
 func _ready():
-	set_text(game.lang.GAME_OVER_OR)
+	set_text(game.lang.GAME_OVER_PLAY_ROULETTE)
+"
+
+[sub_resource type="DynamicFont" id=14]
+
+size = 55
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=15]
+
+script/source = "extends Label
+
+
+func _ready():
+	set_text(game.lang.GAME_OVER_PLAY_ROULETTE)
 "
 
 [sub_resource type="GDScript" id=13]
@@ -180,10 +181,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -465.0
-margin_top = -387.0
-margin_right = 443.0
-margin_bottom = -262.0
+margin_left = -456.0
+margin_top = -408.0
+margin_right = 452.0
+margin_bottom = -276.0
 rect_pivot_offset = Vector2( 454, 62.5 )
 rect_clip_content = false
 mouse_filter = 2
@@ -266,7 +267,6 @@ script = SubResource( 6 )
 _sections_unfolded = [ "Rect", "Script", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="video_button" type="Container" parent="window" index="3"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -362,6 +362,34 @@ rotation = -0.587862
 texture = ExtResource( 12 )
 _sections_unfolded = [ "Visibility" ]
 
+[node name="or" type="Label" parent="window/video_button" index="5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = 132.0
+margin_right = 54.0
+margin_bottom = 232.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "OR"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 12 )
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
 [node name="play_minigame" type="TextureButton" parent="window" index="4"]
 visible = false
 anchor_left = 0.5
@@ -400,7 +428,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -412,18 +440,18 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 10 )
+script = SubResource( 15 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Script" ]
 
-[node name="or" type="Label" parent="window" index="5"]
+[node name="or" type="Label" parent="window/play_minigame" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -50.0
-margin_top = 129.0
+margin_top = 83.0
 margin_right = 50.0
-margin_bottom = 229.0
+margin_bottom = 183.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -443,7 +471,7 @@ max_lines_visible = -1
 script = SubResource( 12 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="go_back_btn" type="TextureButton" parent="window" index="6"]
+[node name="go_back_btn" type="TextureButton" parent="window" index="5"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -478,7 +506,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2

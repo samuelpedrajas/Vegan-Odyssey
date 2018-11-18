@@ -179,7 +179,7 @@ var EXCUSES = [
 const GO_BACK = "Go back"
 const OOPS_TITLE = "Oops..."
 const CONGRATULATIONS = "CONGRATS!"
-const NOT_OWNED = "It seems that we cannot find your purchase.\n\nIf you purchased the product before, please email us at vegamescontact@gmail.com."
+const NOT_OWNED = "It seems that we cannot find your purchase.\n\nIf you purchased the product before, please email us at vegamescontact@gmail.com"
 const NO_MORE_ADS = "It looks like our ad inventory is empty.\n\nPlease, try again in a few minutes."
 const CANNOT_REACH = "It looks like we can\'t reach the server.\n\nPlease, try again in a few minutes."
 const PURCHASE_SUCCESSFUL = "Your purchase was successful.\n\nYou can enjoy now the ad free version and its exclusive content."
@@ -207,7 +207,7 @@ const EXIT_GAME = "EXIT GAME"
 const EXIT_GAME_MSG = "Are you sure?"
 
 const RESET_PROGRESS = "DELETE PROGRESS?"
-const RESET_PROGRESS_MSG = "All the progress, including the board, will be permanently deleted.\n\nYou'll keep your broccolis."
+const RESET_PROGRESS_MSG = "All the progress, including the board and records, will be permanently deleted.\n\nYou'll keep your broccolis."
 
 const OFFLINE = "YOU APPEAR OFFLINE"
 const OFFLINE_MSG = "Go online to earn broccoli and remove the tokens that are getting in your way!"

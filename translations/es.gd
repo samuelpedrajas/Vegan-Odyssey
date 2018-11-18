@@ -181,7 +181,7 @@ var EXCUSES = [
 const GO_BACK = "Volver"
 const OOPS_TITLE = "¡VAYA!"
 const CONGRATULATIONS = "¡FELICIDADES!"
-const NOT_OWNED = "Parece que no podemos verificar tu compra.\n\nSi has comprado el producto antes, envíanos un e-mail a vegamescontact@gmail.com."
+const NOT_OWNED = "Parece que no podemos verificar tu compra.\n\nSi has comprado el producto antes, envíanos un e-mail a vegamescontact@gmail.com"
 const NO_MORE_ADS = "Parece que no hay más anuncios disponibles.\n\nPrueba de nuevo en unos minutos."
 const CANNOT_REACH = "Parece que no podemos conectarnos con el servidor.\n\nPrueba de nuevo en unos minutos."
 const PURCHASE_SUCCESSFUL = "Tu compra ha sido realizada con éxito.\n\nAhora puedes disfrutar de la versión sin anuncios y de su contenido exclusivo."
@@ -209,7 +209,7 @@ const EXIT_GAME = "SALIR DEL JUEGO"
 const EXIT_GAME_MSG = "¿Estás seguro?"
 
 const RESET_PROGRESS = "¿BORRAR PROGRESO?"
-const RESET_PROGRESS_MSG = "Todo el progreso incluyendo el tablero actual será permanentemente borrado.\n\nNo perderás tus brócolis."
+const RESET_PROGRESS_MSG = "Todo el progreso será permanentemente borrado, incluyendo el tablero actual y los récords.\n\nNo perderás tus brócolis."
 
 const OFFLINE = "SIN CONEXIÓN"
 const OFFLINE_MSG = "Conéctate a Internet para conseguir brócolis y eliminar las fichas que te impiden avanzar"
