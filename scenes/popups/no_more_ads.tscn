@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/no_more_ads.gd" type="Script" id=2]
 [ext_resource path="res://images/popups/common_popup.png" type="Texture" id=3]
-[ext_resource path="res://images/popups/exit_button.png" type="Texture" id=4]
-[ext_resource path="res://images/popups/exit_button_pressed.png" type="Texture" id=5]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=7]
+[ext_resource path="res://images/popups/purchased/button.png" type="Texture" id=4]
+[ext_resource path="res://images/popups/purchased/button_pressed.png" type="Texture" id=5]
+[ext_resource path="res://fonts/price.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -93,7 +94,17 @@ func _ready():
 	set_text(game.lang.TAKE_A_LOOK)
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="DynamicFont" id=5]
+
+size = 42
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="GDScript" id=6]
 
 script/source = "extends Label
 
@@ -132,9 +143,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -195.0
-margin_top = 223.0
-margin_right = 207.0
+margin_left = -257.0
+margin_top = 210.0
+margin_right = 259.0
 margin_bottom = 349.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -164,11 +175,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.113725, 0.513726, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.627451 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "Take a look"
+text = "AD-FREE VERSION"
 align = 1
 valign = 1
 autowrap = true
@@ -177,7 +187,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 4 )
-_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font", "custom_styles" ]
 
 [node name="text" type="Label" parent="window" index="1"]
 anchor_left = 0.0
@@ -194,7 +204,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
@@ -210,10 +220,10 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 5 )
+script = SubResource( 6 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
-[node name="go_back" parent="window" index="2" instance=ExtResource( 7 )]
+[node name="go_back" parent="window" index="2" instance=ExtResource( 8 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

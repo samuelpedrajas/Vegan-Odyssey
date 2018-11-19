@@ -72,7 +72,7 @@ func on_purchase_error():
 	close_anim = "close_form"
 	game.effects_layer.unset_loading()
 	game.popup_layer.open("generic_popup", {
-		"title": game.lang.OOPS_TITLE, "text": game.lang.CANNOT_REACH
+		"title": game.lang.OOPS_TITLE, "text": game.lang.PURCHASE_UNSUCCESSFUL2
 	})
 
 
