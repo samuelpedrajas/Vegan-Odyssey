@@ -19,8 +19,10 @@ func _ready():
 
 	if game.lang.language == "es":
 		$window/content/title/title_es.show()
+		$window/content/title/title_es/anim.play("glow")
 	else:
 		$window/content/title/title_en.show()
+		$window/content/title/title_en/anim.play("glow")
 
 
 func open():
