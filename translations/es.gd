@@ -192,7 +192,7 @@ const ALREADY_OWNED = "Ya lo he comprado"
 const PROMOTION_MSG = "Y descubre nuevas formas de conseguir brócoli sin tener que ver anuncios"
 
 const SETTINGS_HEADER = "CONFIGURACIÓN"
-const SETTINGS_HEADER_SCALE = 0.65
+const SETTINGS_HEADER_SCALE = 0.75
 const MUSIC_SETTINGS = "Música:"
 const SOUND_SETTINGS = "Sonido:"
 const LANGUAGE_SETTINGS = "Idioma:"
@@ -231,8 +231,8 @@ const GAME_OVER_PLAY_ROULETTE = "¡Girar ruleta!"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
-const WIN_MSG_ANDROID = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en Google Play o compartiendo con tus amigos."
-const WIN_MSG_IOS = "¡Felicidades! Has completado el juego. Puedes apoyarnos puntuando en App Store o compartiendo con tus amigos."
+const WIN_MSG_ANDROID = "¡Has completado el juego! Ahora puedes seguir jugando para batir tus propios récords.\n\nPuedes apoyarnos puntuando en Google Play o compartiendo con tus amigos."
+const WIN_MSG_IOS = "¡Has completado el juego! Ahora puedes seguir jugando para batir tus propios récords.\n\nPuedes apoyarnos puntuando en App Store o compartiendo con tus amigos."
 const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡PATOFERTA!\n\nConsigue 2 brócolis por ver un anuncio"

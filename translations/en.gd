@@ -229,8 +229,8 @@ const GAME_OVER_PLAY_ROULETTE = "Play roulette!"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"
-const WIN_MSG_ANDROID = "Congratulations! You have completed the game! You can support us by rating it in Google Play or sharing it with friends."
-const WIN_MSG_IOS = "Congratulations! You have completed the game! You can support us by rating it in the App Store or sharing it with friends."
+const WIN_MSG_ANDROID = "You have completed the game! Now you can play to beat your own records.\n\nYou can support us by rating in Google Play or sharing with friends."
+const WIN_MSG_IOS = "You have completed the game! Now you can play to beat your own records.\n\nYou can support us by rating in App Store or sharing with friends."
 const IOS_SCORE_US = "RATE US"
 
 const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"

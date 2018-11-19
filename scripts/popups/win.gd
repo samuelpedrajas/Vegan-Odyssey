@@ -14,6 +14,14 @@ func _ready():
 	if Engine.has_singleton("MobileTools"):
 		mobile_tools = Engine.get_singleton("MobileTools")
 
+	if OS.get_name() != "Android":
+		$window/content/box/rate_us.hide()
+
+	if game.lang.language == "es":
+		$window/content/title/title_es.show()
+	else:
+		$window/content/title/title_en.show()
+
 
 func open():
 	game.popup_layer.open("debate_screen", -1)
@@ -57,8 +65,7 @@ func _on_share_pressed():
 
 
 func _on_rate_us_pressed():
-	if mobile_tools != null:
-		mobile_tools.rateInAppStore()
+	OS.shell_open("https://play.google.com/store/apps/details?id=com.vegames.veganodyssey")
 
 
 func rescale(s):

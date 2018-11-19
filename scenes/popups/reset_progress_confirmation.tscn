@@ -3,9 +3,9 @@
 [ext_resource path="res://scenes/popups/popup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/popups/reset_progress_confirmation.gd" type="Script" id=2]
 [ext_resource path="res://images/popups/common_popup.png" type="Texture" id=3]
-[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://images/popups/ornament.png" type="Texture" id=5]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://images/popups/ornament.png" type="Texture" id=6]
 [ext_resource path="res://images/popups/cancel_button.png" type="Texture" id=7]
 [ext_resource path="res://images/popups/cancel_button_pressed.png" type="Texture" id=8]
 [ext_resource path="res://images/popups/ok_button.png" type="Texture" id=9]
@@ -13,7 +13,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 70
+size = 50
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -26,17 +26,17 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Label
 
 func _ready():
-	set_text(game.lang.RESET_PROGRESS)
+	set_text(game.lang.RESET_PROGRESS_MSG)
 "
 
 [sub_resource type="DynamicFont" id=3]
 
-size = 50
+size = 65
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="GDScript" id=4]
@@ -44,7 +44,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 script/source = "extends Label
 
 func _ready():
-	set_text(game.lang.RESET_PROGRESS_MSG)
+	set_text(game.lang.RESET_PROGRESS)
 "
 
 [node name="reset_progress_confirmation" index="0" groups=[
@@ -65,15 +65,15 @@ rect_pivot_offset = Vector2( 410, 425 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Pause", "Rect", "Transform", "Visibility", "texture" ]
 
-[node name="title" type="Label" parent="window" index="0"]
+[node name="msg" type="Label" parent="window" index="0"]
 anchor_left = 0.0
-anchor_top = 0.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = 162.0
-margin_top = 50.0
-margin_right = -162.0
-margin_bottom = 185.0
+anchor_bottom = 0.5
+margin_left = 96.0
+margin_top = -185.0
+margin_right = -94.0
+margin_bottom = 190.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -84,7 +84,9 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
-text = "ARE YOU SURE?"
+text = "All the progress, including the board and records, will be permanently deleted.
+
+You'll keep your broccolis."
 align = 1
 valign = 1
 autowrap = true
@@ -92,6 +94,35 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 2 )
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Styles" ]
+
+[node name="title" type="Label" parent="window" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 50.0
+margin_right = -7.0
+margin_bottom = 185.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "DELETE PROGRESS?"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 4 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
 [node name="ornament" type="TextureRect" parent="window/title" index="0"]
@@ -109,40 +140,9 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
-
-[node name="msg" type="Label" parent="window" index="1"]
-anchor_left = 0.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 96.0
-margin_top = -185.0
-margin_right = -94.0
-margin_bottom = 190.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 3
-custom_constants/shadow_offset_y = 3
-text = "All the progress, including the board and records, will be permanently deleted.
-
-You'll keep your broccolis."
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = SubResource( 4 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Styles" ]
 
 [node name="buttons" type="Control" parent="window" index="2"]
 anchor_left = 0.5

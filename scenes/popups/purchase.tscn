@@ -127,9 +127,9 @@ func set_price(price):
 	$text.set_text(game.lang.PURCHASE_PRICE + str(price))
 "
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=11]
 
-size = 42
+size = 40
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -338,10 +338,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -201.0
-margin_top = 255.0
-margin_right = 218.0
-margin_bottom = 382.0
+margin_left = -248.0
+margin_top = 247.0
+margin_right = 268.0
+margin_bottom = 386.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -363,8 +363,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -44.0
-margin_right = 45.0
+margin_left = -56.0
+margin_right = 33.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -372,12 +372,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.631373 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "Get for"
+text = "GET FOR 2.30 USD"
 align = 1
 valign = 1
 autowrap = true
