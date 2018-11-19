@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://scripts/resizer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -56,9 +56,10 @@
 [ext_resource path="res://images/events/debate/lucy_speaking_eyes_closed.png" type="Texture" id=54]
 [ext_resource path="res://scripts/effects_layer.gd" type="Script" id=55]
 [ext_resource path="res://fonts/new_record.ttf" type="DynamicFontData" id=56]
-[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=57]
-[ext_resource path="res://scripts/other/loading_transition.gd" type="Script" id=58]
-[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=59]
+[ext_resource path="res://images/events/roulette/title_light.png" type="Texture" id=57]
+[ext_resource path="res://scripts/popup_layer.gd" type="Script" id=58]
+[ext_resource path="res://scripts/other/loading_transition.gd" type="Script" id=59]
+[ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=60]
 
 [sub_resource type="GDScript" id=1]
 
@@ -592,7 +593,7 @@ func rescale(s):
 
 [sub_resource type="DynamicFont" id=19]
 
-size = 220
+size = 200
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -602,20 +603,32 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Animation" id=20]
 
-length = 1.6
+length = 2.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("light:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 300.0 ]
 }
 
 [sub_resource type="DynamicFont" id=21]
@@ -625,7 +638,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 59 )
+font_data = ExtResource( 60 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="Animation" id=22]
@@ -1655,6 +1668,7 @@ autostart = false
 
 [node name="new_record" type="Label" parent="effects_layer"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1664,7 +1678,6 @@ margin_top = -170.0
 margin_right = 488.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 976, 342 )
-rect_scale = Vector2( 0, 0 )
 rect_pivot_offset = Vector2( 488, 171 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1694,13 +1707,33 @@ playback_speed = 1.0
 anims/blinking = SubResource( 20 )
 blend_times = [  ]
 
+[node name="light" type="TextureRect" parent="effects_layer/new_record"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -178.0
+margin_top = -179.0
+margin_right = 178.0
+margin_bottom = 179.0
+rect_pivot_offset = Vector2( 178, 179 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 57 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect", "Visibility" ]
+
 [node name="popup_layer" type="CanvasLayer" parent="."]
 layer = 8
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 57 )
+script = ExtResource( 58 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="effects" type="Control" parent="popup_layer"]
@@ -1817,7 +1850,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 58 )
+script = ExtResource( 59 )
 _sections_unfolded = [ "Pause", "Script", "Visibility" ]
 
 [node name="text" type="Label" parent="transition_layer/loading"]
