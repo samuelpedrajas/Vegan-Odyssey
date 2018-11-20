@@ -54,7 +54,7 @@ var dialog_list = [
 		["B", "Si es la salud lo que te preocupa, una dieta vegana es muy recomendable incluso si eres un atleta profesional. Hay mucha información al respecto(lucy_smiling)."]
 	], [
 		["A", "(lau_talking)(lucy_listening)Comer carne es legal. (lau_listening) "],
-		["B", "(lucy_talking)Hay una cosa que debes saber y es que legal no quiere decir moral. La esclavitud ha sido legal durante casi toda la historia de la civilización."],
+		["B", "(lucy_talking)Hay una cosa que debes saber y es que legal no quiere decir ético. La esclavitud ha sido legal durante casi toda la historia de la civilización."],
 		["B", "También, no hace mucho tiempo, las mujeres no éramos personas ante la ley. Éramos propiedad de nuestros maridos, lo cual era legal pero obviamente injusto e inmoral."],
 		["B", "Las leyes las escriben personas, por lo que muchas veces son erróneas. Por ello, nuestra ambición de querer mejorar tiene que estar por encima de cualquier ley(lucy_smiling)."]
 		
@@ -160,7 +160,7 @@ var EXCUSES = [
 		"text": "Es legal",
 		"debate": {
 			"question": "Comer carne es legal.",
-			"answer": "Legal no significa moral. Poseer personas como propiedad también ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
+			"answer": "Legal no significa ético. Poseer personas como propiedad también ha sido legal durante casi toda la historia. Apelar a la legalidad no es suficiente.",
 		}
 	},
 	{
