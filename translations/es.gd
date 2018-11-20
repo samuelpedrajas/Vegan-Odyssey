@@ -253,3 +253,5 @@ const RECORDS_USED_BROCCOLIS = "Brócolis usados"
 const RECORDS_NO_RECORDS = "Aún no hay récords.\n\nEsta opción estará disponible después de haber completado el juego."
 
 const STOP = "Parar"
+
+const NEW_RECORD = "¡Nuevo Récord!"
