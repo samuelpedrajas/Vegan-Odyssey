@@ -466,14 +466,21 @@ func _notification(what):
 			popup_layer.open("exit_confirmation")
 
 
+signal language_changed
+
+
 func change_language(lang_label, lang_resource):
 	if lang_resource != null:
 		lang = lang_resource.new()
 	elif lang != null and lang_label == lang.language:
+		emit_signal("language_changed")
 		return
 	elif lang != null:
 		lang.queue_free()
+		yield(get_tree().create_timer(.5), "timeout")
 		lang = load(cfg.TRANSLATIONS[lang_label]).new()
+		yield(get_tree().create_timer(.5), "timeout")
 
 	for translatable in get_tree().get_nodes_in_group("translatable"):
 		translatable.update_language()
+	emit_signal("language_changed")

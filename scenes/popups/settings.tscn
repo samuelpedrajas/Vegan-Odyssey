@@ -157,7 +157,7 @@ func update_language():
 	set_text(game.lang.LANGUAGE_SETTINGS)
 "
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 
 size = 50
 outline_size = 0
@@ -167,7 +167,7 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=11]
+[sub_resource type="GDScript" id=10]
 
 script/source = "extends Label
 
@@ -179,7 +179,7 @@ func update_language():
 	set_text(game.lang.RECORDS)
 "
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=11]
 
 script/source = "extends Label
 
@@ -191,7 +191,7 @@ func update_language():
 	set_text(game.lang.MANAGE_ADS)
 "
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=12]
 
 script/source = "extends Label
 
@@ -203,7 +203,7 @@ func update_language():
 	set_text(game.lang.DELETE_PROGRESS_SETTINGS)
 "
 
-[sub_resource type="GDScript" id=14]
+[sub_resource type="GDScript" id=13]
 
 script/source = "extends TextureRect
 
@@ -213,12 +213,13 @@ func set_loading(lang_label):
 	$anim.play(\"set_black\")
 	yield($anim, \"animation_finished\")
 	game.change_language(lang_label, null)
+	yield(game, \"language_changed\")
 	$anim.play(\"unset_black\")
 	yield($anim, \"animation_finished\")
 	$\"/root\".set_disable_input(false)
 "
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=14]
 
 size = 60
 outline_size = 0
@@ -228,7 +229,7 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="GDScript" id=16]
+[sub_resource type="GDScript" id=15]
 
 script/source = "extends Label
 
@@ -240,7 +241,7 @@ func update_language():
 	set_text(game.lang.LOADING_LANGUAGE_SETTINGS)
 "
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 
 length = 0.4
 loop = false
@@ -270,7 +271,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 
 length = 0.3
 loop = false
@@ -698,7 +699,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -709,7 +710,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 11 )
+script = SubResource( 10 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "custom_fonts/font" ]
 
 [node name="manage_ads" type="TextureButton" parent="window" index="5"]
@@ -754,7 +755,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -766,7 +767,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 12 )
+script = SubResource( 11 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "Script", "custom_fonts", "custom_fonts/font" ]
 
 [node name="wheel" type="TextureRect" parent="window/manage_ads/label" index="0"]
@@ -825,7 +826,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
@@ -836,7 +837,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 13 )
+script = SubResource( 12 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="go_back" parent="." index="3" instance=ExtResource( 19 )]
@@ -862,7 +863,7 @@ size_flags_vertical = 1
 texture = ExtResource( 20 )
 expand = true
 stretch_mode = 7
-script = SubResource( 14 )
+script = SubResource( 13 )
 _sections_unfolded = [ "Margin", "Script", "Visibility", "texture" ]
 
 [node name="text" type="Label" parent="loading_language" index="0"]
@@ -880,7 +881,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -892,7 +893,7 @@ clip_text = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 16 )
+script = SubResource( 15 )
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "Rect", "Visibility" ]
 
 [node name="anim" type="AnimationPlayer" parent="loading_language" index="1"]
@@ -901,8 +902,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/set_black = SubResource( 17 )
-anims/unset_black = SubResource( 18 )
+anims/set_black = SubResource( 16 )
+anims/unset_black = SubResource( 17 )
 blend_times = [  ]
 
 [connection signal="toggled" from="window/audio/music_control/switch" to="." method="_on_switch_music_toggled"]
