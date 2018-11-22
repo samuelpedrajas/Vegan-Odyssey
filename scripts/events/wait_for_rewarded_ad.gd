@@ -169,6 +169,7 @@ func failed_to_load(errorCode):
 			game.popup_layer.open("error9")
 		elif game.error9_count == 0 and game.given_gifts < 5 and game.broccolis < 5:
 			game.error9_count += 1
+			game.given_gifts += 1
 			game.popup_layer.open("no_more_ads")
 		else:
 			game.popup_layer.open("generic_popup", {
