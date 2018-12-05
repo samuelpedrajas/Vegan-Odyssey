@@ -28,5 +28,15 @@ func set_walking_with_hat():
 		anim.play("walking_with_hat")
 
 
+func set_stand_to_fly():
+	if anim.get_current_animation() != "stand_to_fly":
+		anim.play("stand_to_fly")
+
+
+func set_fly_to_stand():
+	if anim.get_current_animation() != "stand_to_fly":
+		anim.play_backwards("stand_to_fly")
+
+
 func quack():
 	game.sounds.play_audio("quack")

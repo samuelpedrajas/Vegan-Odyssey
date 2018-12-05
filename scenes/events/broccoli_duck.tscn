@@ -1,68 +1,7 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/events/broccoli_duck.gd" type="Script" id=1]
-[ext_resource path="res://images/events/duck/duck-0.png" type="Texture" id=2]
-[ext_resource path="res://images/events/duck/duck-1.png" type="Texture" id=3]
-[ext_resource path="res://images/events/duck/duck-2.png" type="Texture" id=4]
-[ext_resource path="res://images/events/duck/duck-3.png" type="Texture" id=5]
-[ext_resource path="res://images/events/duck/duck-4.png" type="Texture" id=6]
-[ext_resource path="res://images/events/duck/duck-5.png" type="Texture" id=7]
-[ext_resource path="res://images/events/duck/duck-6.png" type="Texture" id=8]
-[ext_resource path="res://images/events/duck/duck-7.png" type="Texture" id=9]
-[ext_resource path="res://images/events/duck/duck-8.png" type="Texture" id=10]
-[ext_resource path="res://images/events/duck/duck-9.png" type="Texture" id=11]
-[ext_resource path="res://images/events/duck/duck-10.png" type="Texture" id=12]
-[ext_resource path="res://images/events/duck/duck-11.png" type="Texture" id=13]
-[ext_resource path="res://images/events/duck/duck-12.png" type="Texture" id=14]
-[ext_resource path="res://images/events/duck/duck-13.png" type="Texture" id=15]
-[ext_resource path="res://images/events/duck/duck-14.png" type="Texture" id=16]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-0.png" type="Texture" id=17]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-1.png" type="Texture" id=18]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-2.png" type="Texture" id=19]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-3.png" type="Texture" id=20]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-4.png" type="Texture" id=21]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-5.png" type="Texture" id=22]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-6.png" type="Texture" id=23]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-7.png" type="Texture" id=24]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-8.png" type="Texture" id=25]
-[ext_resource path="res://images/events/duck/fly_to_stand/fly_to_stand-9.png" type="Texture" id=26]
-[ext_resource path="res://images/events/duck/stand/stand-0.png" type="Texture" id=27]
-[ext_resource path="res://images/events/duck/stand/stand-1.png" type="Texture" id=28]
-[ext_resource path="res://images/events/duck/stand/stand-2.png" type="Texture" id=29]
-[ext_resource path="res://images/events/duck/stand/stand-3.png" type="Texture" id=30]
-[ext_resource path="res://images/events/duck/stand/stand-4.png" type="Texture" id=31]
-[ext_resource path="res://images/events/duck/stand/stand-5.png" type="Texture" id=32]
-[ext_resource path="res://images/events/duck/stand/stand-6.png" type="Texture" id=33]
-[ext_resource path="res://images/events/duck/stand/stand-7.png" type="Texture" id=34]
-[ext_resource path="res://images/events/duck/stand/stand-8.png" type="Texture" id=35]
-[ext_resource path="res://images/events/duck/stand/stand-9.png" type="Texture" id=36]
-[ext_resource path="res://images/events/duck/stand/stand-10.png" type="Texture" id=37]
-[ext_resource path="res://images/events/duck/stand/stand-11.png" type="Texture" id=38]
-[ext_resource path="res://images/events/duck/stand/stand-12.png" type="Texture" id=39]
-[ext_resource path="res://images/events/duck/stand/stand-13.png" type="Texture" id=40]
-[ext_resource path="res://images/events/duck/stand/stand-14.png" type="Texture" id=41]
-[ext_resource path="res://images/events/duck/stand/stand-15.png" type="Texture" id=42]
-[ext_resource path="res://images/events/duck/stand/stand-16.png" type="Texture" id=43]
-[ext_resource path="res://images/events/duck/stand/stand-17.png" type="Texture" id=44]
-[ext_resource path="res://images/events/duck/stand/stand-18.png" type="Texture" id=45]
-[ext_resource path="res://images/events/duck/stand/stand-19.png" type="Texture" id=46]
-[ext_resource path="res://images/events/duck/stand/stand-20.png" type="Texture" id=47]
-[ext_resource path="res://images/events/duck/stand/stand-21.png" type="Texture" id=48]
-[ext_resource path="res://images/events/duck/stand/stand-22.png" type="Texture" id=49]
-[ext_resource path="res://images/events/duck/stand/stand-23.png" type="Texture" id=50]
-[ext_resource path="res://images/events/duck/stand/stand-24.png" type="Texture" id=51]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-0.png" type="Texture" id=52]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-1.png" type="Texture" id=53]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-2.png" type="Texture" id=54]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-3.png" type="Texture" id=55]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-4.png" type="Texture" id=56]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-5.png" type="Texture" id=57]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-6.png" type="Texture" id=58]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-7.png" type="Texture" id=59]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-8.png" type="Texture" id=60]
-[ext_resource path="res://images/events/duck/stand_to_fly/stand_to_fly-9.png" type="Texture" id=61]
-[ext_resource path="res://images/events/duck/stand/wing.png" type="Texture" id=62]
-[ext_resource path="res://images/events/duck/stand/stick.png" type="Texture" id=63]
+[ext_resource path="res://scenes/other/duck.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -70,49 +9,13 @@ resource_name = "flying"
 length = 22.0
 loop = false
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("c/broccoli_duck:frame")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("c/broccoli_duck:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("c/broccoli_duck:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 5.5, 6, 19, 19.5, 22 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1193, -159 ), Vector2( 30, -159 ), Vector2( -30, -92 ), Vector2( -30, -92 ), Vector2( -50, -159 ), Vector2( -1193, -159 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 4, 4.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -123,78 +26,56 @@ tracks/3/keys = {
 "method": "quack"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("c/broccoli_duck:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 5.5, 6, 19, 19.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ "default", "fly_to_stand", "stand", "stand_to_fly", "default" ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("c/broccoli_duck/stuff:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 6, 19 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("c/broccoli_duck/stuff:rect_rotation")
-tracks/6/interp = 2
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 6, 7.5, 10.5, 13.5, 16.5, 18 ),
+tracks/1/type = "value"
+tracks/1/path = NodePath("c/broccoli_duck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5.5, 6, 19, 19.5, 22 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -2.0, 2.0, -2.0, 2.0, 0.0 ]
+"values": [ Vector2( 1232, -125 ), Vector2( 80, -125 ), Vector2( 10, -50 ), Vector2( 10, -50 ), Vector2( -10, -125 ), Vector2( -1153, -125 ) ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("c/broccoli_duck:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("c/broccoli_duck:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 21.5, 22 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-
-[sub_resource type="SpriteFrames" id=3]
-
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "default",
-"speed": 11.0
+tracks/3/type = "method"
+tracks/3/path = NodePath("c/broccoli_duck")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5.5, 6, 19, 19.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_flying"
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "fly_to_stand",
-"speed": 11.0
+"args": [  ],
+"method": "set_fly_to_stand"
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ) ],
-"loop": true,
-"name": "stand",
-"speed": 11.0
+"args": [  ],
+"method": "set_standing"
 }, {
-"frames": [ ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
-"loop": false,
-"name": "stand_to_fly",
-"speed": 11.0
+"args": [  ],
+"method": "set_stand_to_fly"
+}, {
+"args": [  ],
+"method": "set_flying"
 } ]
+}
 
 [node name="broccoli_duck" type="Control" groups=[
 "event",
@@ -235,42 +116,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="broccoli_duck" type="AnimatedSprite" parent="c"]
+[node name="broccoli_duck" parent="c" instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 1193, -159 )
-frames = SubResource( 3 )
-animation = "default"
-frame = 11
-playing = true
-_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
-
-[node name="stuff" type="Container" parent="c/broccoli_duck"]
-visible = false
-show_behind_parent = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
-rect_rotation = -0.776463
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect", "Visibility" ]
-
-[node name="wing" type="Sprite" parent="c/broccoli_duck/stuff"]
-position = Vector2( 13, 38 )
-texture = ExtResource( 62 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="stick" type="Sprite" parent="c/broccoli_duck/stuff"]
-position = Vector2( 41.9999, -7.00012 )
-rotation = 0.523599
-texture = ExtResource( 63 )
+position = Vector2( 1232, -125 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="click_area" type="Control" parent="c/broccoli_duck"]
@@ -279,10 +127,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -106.0
-margin_top = -65.0
-margin_right = 122.0
-margin_bottom = 113.0
+margin_left = -147.0
+margin_top = -105.0
+margin_right = 81.0
+margin_bottom = 55.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

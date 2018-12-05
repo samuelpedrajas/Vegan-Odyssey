@@ -28,12 +28,6 @@ func unset_gray():
 func start():
 	if game.event_layer.current_events.has("broccoli"):
 		set_gray()
-	if game.duck_counter >= 1:
-		$"c/broccoli_duck/stuff/wing".show()
-		$"c/broccoli_duck/stuff/stick".show()
-	else:
-		$"c/broccoli_duck/stuff/wing".hide()
-		$"c/broccoli_duck/stuff/stick".hide()
 	$animation.play("flying")
 
 
