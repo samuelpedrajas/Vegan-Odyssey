@@ -13,9 +13,12 @@ func set_flying():
 		anim.play("flying")
 
 
-func set_standing():
-	if anim.get_current_animation() != "standing":
-		anim.play("standing")
+func set_standing(with_post=false):
+	if anim.get_current_animation() != "standing" and anim.get_current_animation() != "standing_with_post":
+		if with_post and game.duck_counter >= 1:
+			anim.play("standing_with_post")
+		else:
+			anim.play("standing")
 
 
 func set_standing_with_hat():
