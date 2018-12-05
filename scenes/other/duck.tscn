@@ -1203,10 +1203,10 @@ tracks/44/loop_wrap = true
 tracks/44/imported = false
 tracks/44/enabled = true
 tracks/44/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, false ]
 }
 tracks/45/type = "value"
 tracks/45/path = NodePath("neck/head/right_eye_open/right_eye_closed:visible")
@@ -1215,10 +1215,10 @@ tracks/45/loop_wrap = true
 tracks/45/imported = false
 tracks/45/enabled = true
 tracks/45/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, false ]
 }
 tracks/46/type = "value"
 tracks/46/path = NodePath("wing:visible")
@@ -3779,6 +3779,30 @@ tracks/40/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/41/type = "value"
+tracks/41/path = NodePath("neck/head/right_eye_open/right_eye_closed:visible")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("neck/head/left_eye_open/left_eye_closed:visible")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 
@@ -4474,7 +4498,8 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="wing_flying" type="Sprite" parent="."]
 visible = false
-position = Vector2( 4.60041, -5.99821 )
+position = Vector2( 4.60041, 0.465205 )
+rotation = 0.113793
 texture = ExtResource( 9 )
 offset = Vector2( 2.02101, -23.0696 )
 _sections_unfolded = [ "Transform", "Visibility" ]
