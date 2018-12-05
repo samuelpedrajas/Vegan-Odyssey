@@ -1,20 +1,21 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://images/events/duck_parts/body.png" type="Texture" id=1]
-[ext_resource path="res://images/events/duck_parts/tail.png" type="Texture" id=2]
-[ext_resource path="res://images/events/duck_parts/leg_upper.png" type="Texture" id=3]
-[ext_resource path="res://images/events/duck_parts/leg_lower.png" type="Texture" id=4]
-[ext_resource path="res://images/events/duck_parts/foot.png" type="Texture" id=5]
-[ext_resource path="res://images/events/duck_parts/wing.png" type="Texture" id=6]
-[ext_resource path="res://images/events/duck_parts/wing_flying.png" type="Texture" id=7]
-[ext_resource path="res://images/events/duck_parts/neck.png" type="Texture" id=8]
-[ext_resource path="res://images/events/duck_parts/head.png" type="Texture" id=9]
-[ext_resource path="res://images/events/duck_parts/left_eye_open.png" type="Texture" id=10]
-[ext_resource path="res://images/events/duck_parts/left_eye_closed.png" type="Texture" id=11]
-[ext_resource path="res://images/events/duck_parts/beak_bottom.png" type="Texture" id=12]
-[ext_resource path="res://images/events/duck_parts/beak_top.png" type="Texture" id=13]
-[ext_resource path="res://images/events/duck_parts/right_eye_open.png" type="Texture" id=14]
-[ext_resource path="res://images/events/duck_parts/right_eye_closed.png" type="Texture" id=15]
+[ext_resource path="res://scripts/other/duck.gd" type="Script" id=1]
+[ext_resource path="res://images/events/duck_parts/body.png" type="Texture" id=2]
+[ext_resource path="res://images/events/duck_parts/tail.png" type="Texture" id=3]
+[ext_resource path="res://images/events/duck_parts/leg_upper.png" type="Texture" id=4]
+[ext_resource path="res://images/events/duck_parts/leg_lower.png" type="Texture" id=5]
+[ext_resource path="res://images/events/duck_parts/foot.png" type="Texture" id=6]
+[ext_resource path="res://images/events/duck_parts/wing.png" type="Texture" id=7]
+[ext_resource path="res://images/events/duck_parts/wing_flying.png" type="Texture" id=8]
+[ext_resource path="res://images/events/duck_parts/neck.png" type="Texture" id=9]
+[ext_resource path="res://images/events/duck_parts/head.png" type="Texture" id=10]
+[ext_resource path="res://images/events/duck_parts/left_eye_open.png" type="Texture" id=11]
+[ext_resource path="res://images/events/duck_parts/left_eye_closed.png" type="Texture" id=12]
+[ext_resource path="res://images/events/duck_parts/beak_bottom.png" type="Texture" id=13]
+[ext_resource path="res://images/events/duck_parts/beak_top.png" type="Texture" id=14]
+[ext_resource path="res://images/events/duck_parts/right_eye_open.png" type="Texture" id=15]
+[ext_resource path="res://images/events/duck_parts/right_eye_closed.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 
@@ -2859,10 +2860,11 @@ tracks/39/keys = {
 
 [node name="duck" type="Node2D"]
 position = Vector2( 0.463936, -0.115982 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="body" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_bone_": true,
@@ -2872,7 +2874,7 @@ __meta__ = {
 [node name="tail" type="Sprite" parent="body"]
 show_behind_parent = true
 position = Vector2( 34.6412, -16.5628 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 offset = Vector2( 0.35878, -8.43723 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
@@ -2887,7 +2889,7 @@ __meta__ = {
 
 [node name="leg_upper" type="Sprite" parent="."]
 position = Vector2( 0, 24 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_bone_": true,
@@ -2899,7 +2901,7 @@ show_behind_parent = true
 position = Vector2( 1, 10 )
 rotation = -0.101089
 scale = Vector2( 1, 1.01695 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_bone_": true
@@ -2907,7 +2909,7 @@ __meta__ = {
 
 [node name="foot" type="Sprite" parent="leg_upper/leg_lower"]
 position = Vector2( 0.09095, 10.1418 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( -9.09095, 0.858246 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -2925,7 +2927,7 @@ __meta__ = {
 [node name="leg_upper2" type="Sprite" parent="."]
 show_behind_parent = true
 position = Vector2( -8, 22 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_bone_": true,
@@ -2936,7 +2938,7 @@ __meta__ = {
 show_behind_parent = true
 position = Vector2( 1, 10 )
 rotation = -0.122689
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_bone_": true
@@ -2944,7 +2946,7 @@ __meta__ = {
 
 [node name="foot" type="Sprite" parent="leg_upper2/leg_lower"]
 position = Vector2( 0.09095, 10.1418 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( -9.09095, 0.858246 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -2961,7 +2963,7 @@ __meta__ = {
 
 [node name="wing" type="Sprite" parent="."]
 position = Vector2( -8, -4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 14.1995, 6.57166 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -2969,14 +2971,14 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 show_behind_parent = true
 position = Vector2( -6, -10 )
 rotation = -0.253024
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 14.1995, 6.57166 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="wing_flying" type="Sprite" parent="."]
 visible = false
 position = Vector2( 4.60041, -5.99821 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 2.02101, -23.0696 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
@@ -2984,13 +2986,13 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 visible = false
 show_behind_parent = true
 position = Vector2( -9.98069, 4.33983 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -0.0768814, -21.9727 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="neck" type="Sprite" parent="."]
 position = Vector2( -26.5514, -16.5401 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 offset = Vector2( 0.551422, -15.4599 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -3000,7 +3002,7 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="neck"]
 position = Vector2( 1.42187, -24.3011 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 offset = Vector2( -3.3545, -25.7333 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -3010,29 +3012,29 @@ __meta__ = {
 
 [node name="left_eye_open" type="Sprite" parent="neck/head"]
 position = Vector2( -30.3545, -19.7333 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="left_eye_closed" type="Sprite" parent="neck/head/left_eye_open"]
 visible = false
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="beak_bottom" type="Sprite" parent="neck/head"]
 position = Vector2( -24.3545, -0.733307 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 _sections_unfolded = [ "texture" ]
 
 [node name="beak_top" type="Sprite" parent="neck/head"]
 position = Vector2( -32.3545, -9.73331 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="right_eye_open" type="Sprite" parent="neck/head"]
 position = Vector2( -12.3545, -18.7333 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="right_eye_closed" type="Sprite" parent="neck/head/right_eye_open"]
 visible = false
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="endpoint" type="Position2D" parent="neck/head"]
