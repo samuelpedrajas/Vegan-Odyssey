@@ -38,7 +38,7 @@ func win():
 	$go_back.appear_instantly()
 	$clickable_space.show()
 	game.event_layer.start("win")
-	$"window/content/duck/broccoli_duck/anim".play("duck")
+	$"window/content/duck/broccoli_duck/anim2".play("duck")
 
 
 func close():
