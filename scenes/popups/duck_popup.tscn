@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 3, 4, 8.5, 10, 16, 17 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 25, -366 ), Vector2( 25, -366 ), Vector2( -120, -366 ), Vector2( -120, -366 ), Vector2( 100, -366 ), Vector2( 100, -366 ), Vector2( 25, -366 ) ]
+"values": [ Vector2( 32, -366 ), Vector2( 32, -366 ), Vector2( -120, -366 ), Vector2( -120, -366 ), Vector2( 100, -366 ), Vector2( 100, -366 ), Vector2( 32, -366 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("../../..")
@@ -190,7 +190,7 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
 [node name="duck" parent="window/content" index="0" instance=ExtResource( 5 )]
-position = Vector2( 25, -366 )
+position = Vector2( 32, -366 )
 
 [node name="anim2" type="AnimationPlayer" parent="window/content/duck" index="9"]
 root_node = NodePath("..")
