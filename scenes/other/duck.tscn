@@ -1776,7 +1776,7 @@ tracks/47/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 
 resource_name = "standing_with_hat"
 length = 4.0
@@ -2371,7 +2371,7 @@ tracks/48/keys = {
 "values": [ Vector2( -11.3504, -65.0278 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 
 resource_name = "standing_with_post"
 length = 4.0
@@ -2627,7 +2627,7 @@ tracks/20/keys = {
 "times": PoolRealArray( 0, 1, 2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 9.2012, 8.0, 9.2, 8.0 ]
+"values": [ 9.2012, 0.0, 9.2, 0.0 ]
 }
 tracks/21/type = "value"
 tracks/21/path = NodePath("leg_upper/leg_lower:position")
@@ -2963,7 +2963,7 @@ tracks/48/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -9.32847, -47.0787 ) ]
+"values": [ Vector2( -2.32847, -57.0787 ) ]
 }
 tracks/49/type = "value"
 tracks/49/path = NodePath("post:rotation_degrees")
@@ -3548,7 +3548,7 @@ tracks/46/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.979986 ), Vector2( 1, 1 ), Vector2( 1, 0.98 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 resource_name = "walking_with_hat"
 length = 1.0
@@ -4137,7 +4137,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="post" type="Sprite" parent="."]
 visible = false
-position = Vector2( -9.32847, -47.0787 )
+position = Vector2( -2.32847, -57.0787 )
 rotation = 0.588349
 scale = Vector2( 0.808578, 0.808578 )
 texture = ExtResource( 2 )
@@ -4329,9 +4329,9 @@ playback_speed = 1.0
 anims/flying = SubResource( 1 )
 anims/stand_to_fly = SubResource( 2 )
 anims/standing = SubResource( 3 )
-anims/standing_with_hat = SubResource( 7 )
-anims/standing_with_post = SubResource( 9 )
+anims/standing_with_hat = SubResource( 4 )
+anims/standing_with_post = SubResource( 5 )
 anims/walking = SubResource( 6 )
-anims/walking_with_hat = SubResource( 8 )
+anims/walking_with_hat = SubResource( 7 )
 blend_times = [  ]
 
