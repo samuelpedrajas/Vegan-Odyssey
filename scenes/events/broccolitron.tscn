@@ -323,12 +323,12 @@ position = Vector2( 7.46204, -260.213 )
 
 [node name="nest_back" type="Sprite" parent="broccolitron/duck"]
 show_behind_parent = true
-position = Vector2( -6.46204, -12.7866 )
+position = Vector2( -5.46204, -12.7866 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="nest" type="Sprite" parent="broccolitron/duck"]
-position = Vector2( -6.46204, 21.2134 )
+position = Vector2( -5.46204, 21.2134 )
 texture = ExtResource( 9 )
 
 [node name="stop" type="Control" parent="."]
