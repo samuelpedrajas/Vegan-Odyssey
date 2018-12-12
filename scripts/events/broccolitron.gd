@@ -5,17 +5,76 @@ var back_button = false
 
 var broccolitron_ready = false
 
-onready var slot1 = $broccolitron/texture/slots/slot1
-onready var slot2 = $broccolitron/texture/slots/slot2
-onready var slot3 = $broccolitron/texture/slots/slot3
-onready var slots = [slot1, slot2, slot3]
-
-var results = []
-var current_slot = 0
+const e = 2.718282
+var complete_round = 2.0 * PI
 
 
 func _ready():
 	randomize()
+
+
+onready var broccolitron = [
+	{
+		"texture_rect": $broccolitron/big,
+		"speed": 1.0 * PI, "started": false,
+		"acc_delta": 0.0
+	},
+	{
+		"texture_rect": $broccolitron/medium,
+		"speed": -1.5 * PI, "started": false,
+		"acc_delta": 0.0
+	},
+	{
+		"texture_rect": $broccolitron/small,
+		"speed": 2.0 * PI, "started": false,
+		"acc_delta": 0.0
+	}
+]
+
+
+var bounce_amplitude = complete_round / 6.0
+var final_rots = [
+	{ "rot": -complete_round, "broccoli": true },
+	{ "rot": bounce_amplitude * -5.0, "broccoli": false },
+	{ "rot": bounce_amplitude * -4.0, "broccoli": false },
+	{ "rot": bounce_amplitude * -3.0, "broccoli": false },
+	{ "rot": bounce_amplitude * -2.0, "broccoli": false },
+	{ "rot": bounce_amplitude * -1.0, "broccoli": false },
+	{ "rot": bounce_amplitude * 0.0, "broccoli": true },
+	{ "rot": bounce_amplitude * 1.0, "broccoli": false },
+	{ "rot": bounce_amplitude * 2.0, "broccoli": false },
+	{ "rot": bounce_amplitude * 3.0, "broccoli": false },
+	{ "rot": bounce_amplitude * 4.0, "broccoli": false },
+	{ "rot": bounce_amplitude * 5.0, "broccoli": false },
+	{ "rot": complete_round, "broccoli": true },
+]
+
+
+func _get_closest_rot(rot):
+	var closest = null
+	var closest_dist = complete_round
+
+	for _final_rot in final_rots:
+		var dist = abs(_final_rot.rot - rot)
+		if dist < closest_dist:
+			closest_dist = dist
+			closest = _final_rot
+
+	return closest
+
+
+func _process(delta):
+	for brocco in broccolitron:
+		if brocco.started:
+			brocco.acc_delta += delta
+
+			if brocco.acc_delta > complete_round / brocco.speed:
+				brocco.acc_delta = fmod(
+					brocco.acc_delta, complete_round / brocco.speed
+				)
+
+			var rot = brocco.acc_delta * brocco.speed
+			brocco.texture_rect.set_rotation(rot)
 
 
 func start():
@@ -26,13 +85,6 @@ func start():
 
 func stop():
 	$anim.play("disappear")
-
-
-func _get_broccoli_amount():
-	var smallest = 3
-	for result in results:
-		smallest = min(result, smallest)
-	return smallest
 
 
 func get_shuffled(l):
@@ -50,10 +102,11 @@ func get_shuffled(l):
 
 
 func start_rolling():
-	for slot in get_shuffled(slots):
+	for brocco in broccolitron:
 		$timer.start()
 		yield($timer, "timeout")
-		slot.start()
+		game.sounds.play_audio("cling")
+		brocco.started = true
 
 	$timer.start()
 	yield($timer, "timeout")
@@ -63,37 +116,33 @@ func start_rolling():
 
 
 func _on_anim_animation_finished(anim_name):
-	if anim_name == "appear":	
+	if anim_name == "appear":
 		start_rolling()
 	elif anim_name == "disappear":
 		game.sounds.stop_minigame_music()
 		queue_free()
 
 
+var current_wheel = 0
+
 func _on_btn_pressed():
 	if broccolitron_ready:
 		game.sounds.play_audio("slot_stop")
-		var slot = slots[current_slot]
-		var res = slot.stop()
-		results.append(res)
-		current_slot += 1
-
-		if current_slot > 2:
-			$"/root".set_disable_input(true)
-			$stop/btn.set_disabled(true)
-			$stop/anim.play("disappear")
-			broccolitron_ready = false
-			yield(slot, "slot_stopped")
-			var reward = _get_broccoli_amount()
-			if reward > 2:
-				game.sounds.play_audio("lucky")
+		var brocco = broccolitron[current_wheel]
+		brocco.started = false
+		var t = brocco.texture_rect
+		var final_rot = _get_closest_rot(t.get_rotation())
+		print("rot=", t.get_rotation())
+		print("closest=", _get_closest_rot(t.get_rotation()))
+		$tween.interpolate_method(
+			t, "set_rotation", t.get_rotation(), final_rot.rot,
+			1.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0.0
+		)
+	
+		$tween.start()
+		current_wheel += 1
+		if current_wheel >= 3:
 			game.event_layer.stop("broccolitron")
-			game.go_back_manually_disabled = false
-			game.secretly_set_broccolis(game.broccolis + reward)
-			game.effects_layer.play_rewarded_effect(reward)
-			if not game.board_layer.check_moves_available():
-				game.hud_layer.glow_broccoli()
-			game.save_game()
 
 
 func rescale(s):
