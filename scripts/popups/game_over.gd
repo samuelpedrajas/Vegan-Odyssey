@@ -63,9 +63,10 @@ func rescale(s):
 
 
 func update2adfree():
+	$window/play_minigame/go_back_btn.appear()
 	$window/video_button.hide()
 	if game.revived:
-		$window/subsubtitle.hide()
+		$window/subsubtitle/used.show()
 		$window/play_minigame.set_disabled(true)
 
 	$window/play_minigame.show()

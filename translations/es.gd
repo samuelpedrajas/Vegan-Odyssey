@@ -227,8 +227,8 @@ const GAME_OVER_SCALE = 0.8
 const GAME_OVER_MSG = "No quedan movimientos disponibles"
 const GAME_OVER_OR = "O"
 const GAME_OVER_QUESTION = "¿Ver anuncio a cambio de 3 brócolis?"
-const GAME_OVER_QUESTION_AD_FREE = "¿Quieres jugar a la ruleta para ganar brócolis?"
-const GAME_OVER_PLAY_ROULETTE = "¡Girar ruleta!"
+const GAME_OVER_QUESTION_AD_FREE = "Juega a Brócoli Fiesta para conseguir brócolis.\n\nOBJETIVO: Pulsa el botón PARAR para frenar al instante la ruleta. Ten cuidado, tendrás que ser rápido."
+const GAME_OVER_PLAY_ROULETTE = "¡JUGAR!"
 
 const WIN1 = "¡HAS"
 const WIN2 = "GANADO!"
@@ -237,7 +237,7 @@ const WIN_MSG_IOS = "¡Has completado el juego! Ahora puedes seguir jugando para
 const IOS_SCORE_US = "PUNTÚANOS"
 
 const REWARDED_MSG = "¡PATOFERTA!\n\nConsigue 2 brócolis por ver un anuncio"
-const DUCK_GAME_MSG = "¡PATOFERTA!\n\nJuega para conseguir brócolis"
+const DUCK_GAME_MSG = "Juega a Brocolitrón para conseguir brócolis\n\nOBJETIVO: Frena cada círculo y coloca los brócolis dentro de la región resaltada."
 
 const BROCCOLI_INSTRUCTIONS = "Pulsa sobre una ficha para eliminarla"
 

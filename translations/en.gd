@@ -225,8 +225,8 @@ const GAME_OVER_SCALE = 1.0
 const GAME_OVER_MSG = "No more moves available"
 const GAME_OVER_OR = "OR"
 const GAME_OVER_QUESTION = "Watch a video ad to earn 3 broccolis?"
-const GAME_OVER_QUESTION_AD_FREE = "Do you want to play the roulette to earn broccoli?"
-const GAME_OVER_PLAY_ROULETTE = "Play roulette!"
+const GAME_OVER_QUESTION_AD_FREE = "\nPlay Broccoli Fiesta to earn broccolis.\n\nGOAL: Press the STOP button to instantly stop the wheel. Be careful, you have to be quick."
+const GAME_OVER_PLAY_ROULETTE = "PLAY!"
 
 const WIN1 = "YOU"
 const WIN2 = "WON!"
@@ -235,7 +235,7 @@ const WIN_MSG_IOS = "You have completed the game! Now you can play to beat your 
 const IOS_SCORE_US = "RATE US"
 
 const REWARDED_MSG = "Quack an offer!\n\nEarn 2 broccolis by watching an ad"
-const DUCK_GAME_MSG = "Quack an offer!\n\nPlay to earn broccoli."
+const DUCK_GAME_MSG = "Play Broccolitron to earn broccoli.\n\nGOAL: Stop each circle and try to place all broccolis in the highlighted region."
 
 const BROCCOLI_INSTRUCTIONS = "Tap on a token to remove it"
 
