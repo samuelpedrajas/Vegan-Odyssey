@@ -17,17 +17,17 @@ onready var broccolitron = [
 	{
 		"texture_rect": $broccolitron/big,
 		"speed": 1.0 * PI, "started": false,
-		"acc_delta": 0.0
+		"acc_delta": 0.0, "broccoli": null
 	},
 	{
 		"texture_rect": $broccolitron/medium,
 		"speed": -1.5 * PI, "started": false,
-		"acc_delta": 0.0
+		"acc_delta": 0.0, "broccoli": null
 	},
 	{
 		"texture_rect": $broccolitron/small,
 		"speed": 2.0 * PI, "started": false,
-		"acc_delta": 0.0
+		"acc_delta": 0.0, "broccoli": null
 	}
 ]
 
@@ -101,8 +101,15 @@ func get_shuffled(l):
 	return shuffled_list
 
 
+func set_speed(brocco):
+	var m = 2.0 * PI * pow(-1, randi() % 2)
+	var offset = 0.5 * PI * randf() * pow(-1, randi() % 2)
+	brocco.speed = m + offset
+
+
 func start_rolling():
 	for brocco in broccolitron:
+		set_speed(brocco)
 		$timer.start()
 		yield($timer, "timeout")
 		game.sounds.play_audio("cling")
@@ -113,6 +120,8 @@ func start_rolling():
 	broccolitron_ready = true
 	$"/root".set_disable_input(false)
 	$stop/anim.play("appear")
+	broccolitron[1].texture_rect.get_node("anim").play("lock")
+	broccolitron[2].texture_rect.get_node("anim").play("lock")
 
 
 func _on_anim_animation_finished(anim_name):
@@ -124,25 +133,28 @@ func _on_anim_animation_finished(anim_name):
 
 
 var current_wheel = 0
+var broccolis = 0
 
 func _on_btn_pressed():
 	if broccolitron_ready:
+		$"/root".set_disable_input(true)
+		$stop/btn.set_disabled(true)
 		game.sounds.play_audio("slot_stop")
+
 		var brocco = broccolitron[current_wheel]
 		brocco.started = false
 		var t = brocco.texture_rect
 		var final_rot = _get_closest_rot(t.get_rotation())
-		print("rot=", t.get_rotation())
-		print("closest=", _get_closest_rot(t.get_rotation()))
+
+		brocco.broccoli = final_rot.broccoli
+
 		$tween.interpolate_method(
 			t, "set_rotation", t.get_rotation(), final_rot.rot,
-			1.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0.0
+			0.4, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0.0
 		)
 	
 		$tween.start()
 		current_wheel += 1
-		if current_wheel >= 3:
-			game.event_layer.stop("broccolitron")
 
 
 func rescale(s):
@@ -150,3 +162,31 @@ func rescale(s):
 	$title.set_scale(s2)
 	$broccolitron.set_scale(s2)
 	$stop.set_scale(s2)
+
+
+func finish_minigame():
+	game.event_layer.stop("broccolitron")
+	game.go_back_manually_disabled = false
+
+	if broccolis > 0:
+		if broccolis > 2:
+			game.sounds.play_audio("lucky")
+		game.secretly_set_broccolis(game.broccolis + broccolis)
+		game.effects_layer.play_rewarded_effect(broccolis)
+		if not game.board_layer.check_moves_available():
+			game.hud_layer.glow_broccoli()
+		game.save_game()
+	else:
+		game.sounds.play_audio("game_over")
+
+
+func _on_tween_tween_completed(object, key):
+	if broccolitron[current_wheel - 1].broccoli:
+		broccolis += 1
+
+	if current_wheel < 3:
+		broccolitron[current_wheel].texture_rect.get_node("anim").play_backwards("lock")
+		$"/root".set_disable_input(false)
+		$stop/btn.set_disabled(false)
+	else:
+		finish_minigame()
