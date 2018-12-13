@@ -12,7 +12,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 50
+size = 42
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
@@ -146,10 +146,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -297.0
-margin_top = -376.0
-margin_right = 295.0
-margin_bottom = 221.0
+margin_left = -254.0
+margin_top = -378.0
+margin_right = 252.0
+margin_bottom = 219.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -170,7 +170,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 2 )
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts" ]
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
 [node name="content" type="Container" parent="window" index="2"]
 anchor_left = 0.5
