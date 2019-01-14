@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 func _ready():
 	if not game.purchased:

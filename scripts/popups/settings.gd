@@ -84,16 +84,6 @@ func _on_records_pressed():
 func purchase_reorder():
 	$"window/manage_ads".hide()
 
-	var records = $"window/records"
-	records.set_position(
-		records.get_position() + Vector2(0, 60)
-	)
-
-	var reset_progress = $"window/reset_progress"
-	reset_progress.set_position(
-		reset_progress.get_position() - Vector2(0, 60)
-	)
-
 
 func _ready():
 	if game.purchased:
@@ -102,3 +92,8 @@ func _ready():
 		iap_helper.connect("purchase_success", self, "purchase_reorder")
 		iap_helper.connect("restore_purchases_success", self, "purchase_reorder")
 
+
+
+func _on_instructions_pressed():
+	game.sounds.play_audio("click")
+	game.popup_layer.open("game_instructions")

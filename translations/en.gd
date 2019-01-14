@@ -253,3 +253,4 @@ const RECORDS_NO_RECORDS = "No records yet.\n\nThis option will be available aft
 const STOP = "Stop!"
 
 const NEW_RECORD = "New Record!"
+const INSTRUCTIONS_BUTTON = "Instructions"
