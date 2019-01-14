@@ -6,12 +6,12 @@
 [ext_resource path="res://fonts/polygon.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/effloresce.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://images/excuses/en/desertedisland.png" type="Texture" id=6]
-[ext_resource path="res://images/popups/left.png" type="Texture" id=7]
-[ext_resource path="res://images/popups/left_pressed.png" type="Texture" id=8]
-[ext_resource path="res://images/popups/left_blocked.png" type="Texture" id=9]
-[ext_resource path="res://images/popups/right.png" type="Texture" id=10]
-[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=11]
-[ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=12]
+[ext_resource path="res://images/popups/right.png" type="Texture" id=7]
+[ext_resource path="res://images/popups/right_pressed.png" type="Texture" id=8]
+[ext_resource path="res://images/popups/right_blocked.png" type="Texture" id=9]
+[ext_resource path="res://images/popups/left.png" type="Texture" id=10]
+[ext_resource path="res://images/popups/left_pressed.png" type="Texture" id=11]
+[ext_resource path="res://images/popups/left_blocked.png" type="Texture" id=12]
 [ext_resource path="res://scenes/other/go_back.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=4]
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("window/go_back")
+tracks/1/path = NodePath("go_back")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,18 +97,26 @@ anims/close_instructions = SubResource( 4 )
 anims/open_instructions = SubResource( 3 )
 
 [node name="window" parent="." index="2"]
-modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -519.0
+margin_top = -835.0
+margin_right = 519.0
+margin_bottom = 917.0
 mouse_filter = 2
-_sections_unfolded = [ "Mouse", "Pause", "Transform", "Visibility" ]
+_sections_unfolded = [ "Mouse", "Pause", "Rect", "Transform", "Visibility" ]
 
 [node name="items" type="HBoxContainer" parent="window" index="0"]
 anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 3084.0
-margin_bottom = -280.0
-rect_min_size = Vector2( 4164, 1640 )
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_top = -742.0
+margin_right = 3122.0
+margin_bottom = 678.0
+rect_min_size = Vector2( 3114, 1420 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -118,14 +126,30 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Columns", "Grow Direction", "Margin", "Rect" ]
 
-[node name="texture_rect" type="TextureRect" parent="window/items" index="0"]
+[node name="item1" type="Control" parent="window/items" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1080.0
-margin_bottom = 1640.0
-rect_min_size = Vector2( 1080, 0 )
+margin_right = 1038.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 1420 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="texture_rect" type="TextureRect" parent="window/items/item1" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1038.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -133,10 +157,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 4
-_sections_unfolded = [ "Rect", "texture" ]
+stretch_mode = 3
+_sections_unfolded = [ "Grow Direction", "Rect", "texture" ]
 
-[node name="title" type="Label" parent="window/items/texture_rect" index="0"]
+[node name="title" type="Label" parent="window/items/item1/texture_rect" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -163,7 +187,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="goal_description" type="Label" parent="window/items/texture_rect" index="1"]
+[node name="goal_description" type="Label" parent="window/items/item1/texture_rect" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -193,7 +217,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="excuse" type="TextureRect" parent="window/items/texture_rect" index="2"]
+[node name="excuse" type="TextureRect" parent="window/items/item1/texture_rect" index="2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -213,7 +237,7 @@ texture = ExtResource( 6 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="items" type="Control" parent="window/items/texture_rect" index="3"]
+[node name="items" type="Control" parent="window/items/item1/texture_rect" index="3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -230,31 +254,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="prev" type="TextureButton" parent="window/items/texture_rect/items" index="0"]
-anchor_left = 0.0
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-margin_top = -71.0
-margin_right = 143.0
-margin_bottom = 71.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_disabled = ExtResource( 9 )
-_sections_unfolded = [ "Textures" ]
-
-[node name="next" type="TextureButton" parent="window/items/texture_rect/items" index="1"]
+[node name="next" type="TextureButton" parent="window/items/item1/texture_rect/items" index="0"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -273,40 +273,36 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 9 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="close_button" type="TextureButton" parent="window/items/texture_rect" index="4"]
+[node name="item2" type="Control" parent="window/items" index="1"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 1042.0
+margin_right = 2080.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 1420 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Rect" ]
 
-[node name="texture_rect2" type="TextureRect" parent="window/items" index="1"]
+[node name="texture_rect2" type="TextureRect" parent="window/items/item2" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1084.0
-margin_right = 2164.0
-margin_bottom = 1640.0
-rect_min_size = Vector2( 1080, 0 )
+margin_right = 1038.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -314,10 +310,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 4
+stretch_mode = 3
 _sections_unfolded = [ "Rect", "texture" ]
 
-[node name="vbox" type="VBoxContainer" parent="window/items/texture_rect2" index="0"]
+[node name="vbox" type="VBoxContainer" parent="window/items/item2/texture_rect2" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -335,7 +331,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="tip1" type="Label" parent="window/items/texture_rect2/vbox" index="0"]
+[node name="tip1" type="Label" parent="window/items/item2/texture_rect2/vbox" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -362,7 +358,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip2" type="Label" parent="window/items/texture_rect2/vbox" index="1"]
+[node name="tip2" type="Label" parent="window/items/item2/texture_rect2/vbox" index="1"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -390,7 +386,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip3" type="Label" parent="window/items/texture_rect2/vbox" index="2"]
+[node name="tip3" type="Label" parent="window/items/item2/texture_rect2/vbox" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -418,7 +414,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip4" type="Label" parent="window/items/texture_rect2/vbox" index="3"]
+[node name="tip4" type="Label" parent="window/items/item2/texture_rect2/vbox" index="3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -446,7 +442,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="items" type="Control" parent="window/items/texture_rect2" index="1"]
+[node name="items" type="Control" parent="window/items/item2/texture_rect2" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -463,7 +459,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="prev" type="TextureButton" parent="window/items/texture_rect2/items" index="0"]
+[node name="prev" type="TextureButton" parent="window/items/item2/texture_rect2/items" index="0"]
 anchor_left = 0.0
 anchor_top = 0.5
 anchor_right = 0.0
@@ -482,12 +478,12 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_disabled = ExtResource( 9 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_disabled = ExtResource( 12 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="next" type="TextureButton" parent="window/items/texture_rect2/items" index="1"]
+[node name="next" type="TextureButton" parent="window/items/item2/texture_rect2/items" index="1"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -506,20 +502,36 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_disabled = ExtResource( 9 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="texture_rect3" type="TextureRect" parent="window/items" index="2"]
+[node name="item3" type="Control" parent="window/items" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 2168.0
-margin_right = 3248.0
-margin_bottom = 1640.0
-rect_min_size = Vector2( 1080, 0 )
+margin_left = 2084.0
+margin_right = 3122.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 1420 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="texture_rect3" type="TextureRect" parent="window/items/item3" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1038.0
+margin_bottom = 1420.0
+rect_min_size = Vector2( 1038, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -527,10 +539,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 4
+stretch_mode = 3
 _sections_unfolded = [ "Rect", "texture" ]
 
-[node name="vbox" type="VBoxContainer" parent="window/items/texture_rect3" index="0"]
+[node name="vbox" type="VBoxContainer" parent="window/items/item3/texture_rect3" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -548,7 +560,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="tip1" type="Label" parent="window/items/texture_rect3/vbox" index="0"]
+[node name="tip1" type="Label" parent="window/items/item3/texture_rect3/vbox" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -575,7 +587,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip2" type="Label" parent="window/items/texture_rect3/vbox" index="1"]
+[node name="tip2" type="Label" parent="window/items/item3/texture_rect3/vbox" index="1"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -603,7 +615,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip3" type="Label" parent="window/items/texture_rect3/vbox" index="2"]
+[node name="tip3" type="Label" parent="window/items/item3/texture_rect3/vbox" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -631,7 +643,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="items" type="Control" parent="window/items/texture_rect3" index="1"]
+[node name="items" type="Control" parent="window/items/item3/texture_rect3" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -648,7 +660,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
 
-[node name="prev" type="TextureButton" parent="window/items/texture_rect3/items" index="0"]
+[node name="prev" type="TextureButton" parent="window/items/item3/texture_rect3/items" index="0"]
 anchor_left = 0.0
 anchor_top = 0.5
 anchor_right = 0.0
@@ -667,36 +679,20 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_disabled = ExtResource( 9 )
-_sections_unfolded = [ "Textures" ]
-
-[node name="next" type="TextureButton" parent="window/items/texture_rect3/items" index="1"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -142.0
-margin_top = -71.0
-margin_bottom = 71.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_disabled = ExtResource( 12 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="go_back" parent="window" index="1" instance=ExtResource( 13 )]
+[node name="tween" type="Tween" parent="window" index="1"]
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="go_back" parent="." index="3" instance=ExtResource( 13 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -704,4 +700,9 @@ margin_right = 0.0
 margin_bottom = 0.0
 initially_visible = true
 
-[connection signal="pressed" from="window/go_back" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="window/items/item1/texture_rect/items/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="window/items/item2/texture_rect2/items/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="window/items/item2/texture_rect2/items/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="window/items/item3/texture_rect3/items/prev" to="." method="_on_prev_pressed"]
+[connection signal="tween_completed" from="window/tween" to="." method="_on_tween_tween_completed"]
+[connection signal="pressed" from="go_back" to="." method="_on_go_back_pressed"]
