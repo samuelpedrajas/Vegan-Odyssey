@@ -8,6 +8,7 @@ var show_blur = true
 
 var current = 0
 var total = 3
+var coming_from_start = false
 
 onready var tween = $window/tween
 onready var items = $window/items
@@ -17,8 +18,8 @@ func _ready():
 	total = items.get_child_count()
 
 
-func setup():
-	pass
+func setup(coming_from_start):
+	self.coming_from_start = coming_from_start
 
 
 func open():
@@ -72,3 +73,7 @@ func _on_next_pressed():
 
 func _on_tween_tween_completed(object, key):
 	$"/root".set_disable_input(false)
+
+
+func _on_game_instructions_tree_exiting():
+	game.event_layer.get_or_start("tutorial").post("1")

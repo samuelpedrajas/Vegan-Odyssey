@@ -18,6 +18,9 @@ var n_string = \"1\"
 
 
 func set_post(n):
+	if n == \"1\":
+		hide()
+		return
 	var lang_label = game.lang.language
 	n_string = n
 	if lang_label == \"es\":

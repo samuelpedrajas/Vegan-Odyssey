@@ -396,7 +396,7 @@ signal unpost_tutorial
 
 
 func unpost(n):
-	if n != \"4\":
+	if n != \"4\" and n != \"1\":
 		# hide aura
 		for btn in btns:
 			if btn.get_name() == \"excuses\":
@@ -406,7 +406,7 @@ func unpost(n):
 		var lower_buttons = get_parent()
 		lower_buttons.move_child(self, lower_buttons.get_child_count())
 		btns = []
-		hide()
+	hide()
 
 
 func _move_btns():
@@ -423,14 +423,17 @@ func show_bg(n):
 		var btn = game.hud_layer.get_node(\"hud/lower_buttons/excuses\")
 		btns = [btn]
 		game.hud_layer.glow_excuses()
+		$black_anim.play(\"open\")
 	elif n == \"3\":
 		btns = [
 			game.hud_layer.get_node(\"hud/lower_buttons/reset\"),
 			game.hud_layer.get_node(\"hud/lower_buttons/broccoli\")
 		]
+		$black_anim.play(\"open\")
+	elif n == \"1\":
+		modulate.a = 0.0
 	_move_btns()
 	show()
-	$black_anim.play(\"open\")
 
 
 func _on_black_bg_pressed():
@@ -1418,7 +1421,6 @@ blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
 [node name="black_bg" type="TextureButton" parent="hud_layer/hud/lower_buttons"]
-editor/display_folded = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0.745098 )

@@ -158,6 +158,7 @@ func restart_game(delete_progress=false):
 		for excuse in seen_excuses:
 			excuse.picture_seen = false
 			excuse.debate_seen = false
+		game.popup_layer.open("game_instructions", true)
 		game.popup_layer.open("debate_screen", -2)
 		debate_layer.init(1)
 	else:
@@ -197,6 +198,7 @@ func start_game(coming_from_app_store):
 		yield(popup_layer, "popup_closed")
 
 	if not seen_intro:
+		game.popup_layer.open("game_instructions", true)
 		popup_layer.open("debate_screen", -2)
 	else:
 		$"/root/stage/popup_layer/effects/black".hide()

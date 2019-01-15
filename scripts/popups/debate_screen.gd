@@ -215,7 +215,6 @@ func _on_next_pressed():
 		#	admob.showBanner()
 		game.seen_intro = true
 		game.save_game()
-		game.event_layer.get_or_start("tutorial").post("1")
 		game.sounds.play_audio("click")
 		game.popup_layer.close()
 	elif token_index < game.highest_max and not token_index < 0:
