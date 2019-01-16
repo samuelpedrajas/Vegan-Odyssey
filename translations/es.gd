@@ -255,4 +255,4 @@ const RECORDS_NO_RECORDS = "Aún no hay récords.\n\nEsta opción estará dispon
 const STOP = "Parar"
 
 const NEW_RECORD = "¡Nuevo Récord!"
-const INSTRUCTIONS_BUTTON = "Instrucciones"
+const INSTRUCTIONS_BUTTON = "Cómo Jugar"

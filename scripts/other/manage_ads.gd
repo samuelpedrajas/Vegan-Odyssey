@@ -1,4 +1,5 @@
-extends Button
+extends Control
+
 
 func _ready():
 	if not game.purchased:
@@ -9,7 +10,7 @@ func _ready():
 		admob.connect("prefers2pay", self, "on_prefers2pay")
 
 
-func _on_manage_ads_pressed():
+func managed_pressed():
 	if not admob.firstRequest and not game.purchased:
 		game.effects_layer.set_loading()
 		if admob.consentFormLoaded:
@@ -52,3 +53,11 @@ func on_consent_error():
 func on_prefers2pay():
 	print("Prefers to ad free")
 	game.popup_layer.open("purchase", self)
+
+
+func _on_manage_ads_label_btn_pressed():
+	managed_pressed()
+
+
+func _on_wheel_pressed():
+	managed_pressed()

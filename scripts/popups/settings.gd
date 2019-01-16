@@ -82,7 +82,7 @@ func _on_records_pressed():
 
 
 func purchase_reorder():
-	$"window/manage_ads".hide()
+	$"window/center/manage_ads".hide()
 
 
 func _ready():
