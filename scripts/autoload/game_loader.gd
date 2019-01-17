@@ -141,7 +141,7 @@ func check_events():
 
 func on_has_purchased():
 	if game.savegame_data == null:
-		game.save_game_defaults(translation_resource.lang, true)
+		game.save_game_defaults(translation_resource.language, true)
 	else:
 		game.savegame_data["purchased"] = true
 		game.save_game(game.savegame_data)
@@ -149,7 +149,7 @@ func on_has_purchased():
 
 func on_purchase_success():
 	if game.savegame_data == null:
-		game.save_game_defaults(translation_resource.lang, true)
+		game.save_game_defaults(translation_resource.language, true)
 	else:
 		game.savegame_data["purchased"] = true
 		game.save_game(game.savegame_data)

@@ -1,7 +1,7 @@
 extends Node
 
 
-var language = "en"
+const language = "en"
 
 
 var opening = [
