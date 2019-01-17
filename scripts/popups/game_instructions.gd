@@ -20,7 +20,8 @@ func _ready():
 
 func setup(coming_from_start):
 	self.coming_from_start = coming_from_start
-
+	$go_back.set_custom_text(game.lang.GAME_OVER_PLAY_ROULETTE)
+	$clickable_space.hide()
 
 func open():
 	open_anim = "open_instructions"
@@ -76,4 +77,5 @@ func _on_tween_tween_completed(object, key):
 
 
 func _on_game_instructions_tree_exiting():
-	game.event_layer.get_or_start("tutorial").post("1")
+	if coming_from_start:
+		game.event_layer.get_or_start("tutorial").post("1")

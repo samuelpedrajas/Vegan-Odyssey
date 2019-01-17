@@ -21,6 +21,10 @@ func _ready():
 		set_right_pos()
 
 
+func set_custom_text(t):
+	$btn/text.set_text(t)
+
+
 func appear_instantly():
 	set_right_pos()
 	$btn.set_position($btn.get_size() / -2.0)
