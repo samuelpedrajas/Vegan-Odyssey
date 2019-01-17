@@ -256,3 +256,18 @@ const STOP = "Parar"
 
 const NEW_RECORD = "¡Nuevo Récord!"
 const INSTRUCTIONS_BUTTON = "Cómo Jugar"
+
+const GOAL = "OBJETIVO:"
+const GOAL_DESCRIPTION = "Junta excusas con el mismo número hasta llegar a la novena.\n\nCada excusa representa algún argumento contra el veganismo."
+
+const TIP1_1 = "Las excusas con el mismo número se juntarán"
+const TIP1_2 = "¡Las excusas con diferente número no!"
+const TIP1_3 = "Cada vez que las excusas son movidas aparecerá una nueva en una posición aleatoria"
+const TIP1_4 = "Todas las excusas del tablero se moverán hacia la dirección que indiques al deslizar."
+
+const TIP2_1 = "Mientras más te acerques a la novena excusa, menos espacio tendrás, y por lo tanto el juego se hará más difícil."
+const TIP2_2 = "Usa BRÓCOLIS para eliminar las fichas que te obstaculizan"
+const TIP2_3 = "La partida se pierde cuando el tablero está lleno, no quedan brócolis y no hay al menos 2 excusas que se puedan juntar."
+
+const EXCUSES_NAME = "nombre de la excusa"
+const EXCUSES_NUMBER = "número de la excusa"

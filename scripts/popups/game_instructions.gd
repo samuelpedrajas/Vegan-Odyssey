@@ -17,6 +17,21 @@ onready var items = $window/items
 func _ready():
 	total = items.get_child_count()
 
+	# translate
+	$window/items/item1/texture_rect/title.set_text(game.lang.GOAL)
+	$window/items/item1/texture_rect/goal_description.set_text(game.lang.GOAL_DESCRIPTION)
+	$window/items/item1/texture_rect/text_arrow_up.set_text(game.lang.EXCUSES_NAME)
+	$window/items/item1/texture_rect/text_arrow_down.set_text(game.lang.EXCUSES_NUMBER)
+
+	$window/items/item2/texture_rect2/vbox/tip1.set_text(game.lang.TIP1_1)
+	$window/items/item2/texture_rect2/vbox/tip2.set_text(game.lang.TIP1_2)
+	$window/items/item2/texture_rect2/vbox/tip3.set_text(game.lang.TIP1_3)
+	$window/items/item2/texture_rect2/vbox/tip4.set_text(game.lang.TIP1_4)
+
+	$window/items/item3/texture_rect3/vbox/tip1.set_text(game.lang.TIP2_1)
+	$window/items/item3/texture_rect3/vbox/tip2.set_text(game.lang.TIP2_2)
+	$window/items/item3/texture_rect3/vbox/tip3.set_text(game.lang.TIP2_3)
+
 
 func setup(coming_from_start):
 	self.coming_from_start = coming_from_start

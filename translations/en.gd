@@ -254,3 +254,18 @@ const STOP = "Stop!"
 
 const NEW_RECORD = "New Record!"
 const INSTRUCTIONS_BUTTON = "How To Play"
+
+const GOAL = "GOAL:"
+const GOAL_DESCRIPTION = "Join excuses with the same number and get to the ninth one!\n\nAn excuse represents some typical argument against veganism."
+
+const TIP1_1 = "Excuses with equal number will merge"
+const TIP1_2 = "Excuses with different number won't!"
+const TIP1_3 = "A new excuse will appear in a random position every time the excuses are moved"
+const TIP1_4 = "All excuses in the board move to the direction you slide."
+
+const TIP2_1 = "The closer you get to the ninth excuse, the less room you'll have to merge excuses, hence the harder the game will get."
+const TIP2_2 = "Use BROCCOLIS to remove excuses that are in your way"
+const TIP2_3 = "GAME OVER occurs when the board is full, you've got no BROCCOLIS and no excuses can be merged."
+
+const EXCUSES_NAME = "excuse's name"
+const EXCUSES_NUMBER = "excuse's number"
