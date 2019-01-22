@@ -265,7 +265,7 @@ const TIP1_4 = "All excuses in the board move to the direction you slide."
 
 const TIP2_1 = "The closer you get to the ninth excuse, the less room you'll have to merge excuses, hence the harder the game will get."
 const TIP2_2 = "Use BROCCOLIS to remove excuses that are in your way"
-const TIP2_3 = "GAME OVER occurs when the board is full, you've got no BROCCOLIS and no excuses can be merged."
+const TIP2_3 = "\nGAME OVER occurs when the board is full, you've got no BROCCOLIS and no excuses can be merged.\n\nWill you able to unlock all 9 excuses?"
 
 const EXCUSES_NAME = "excuse's name"
 const EXCUSES_NUMBER = "excuse's number"

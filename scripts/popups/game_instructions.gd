@@ -81,6 +81,8 @@ func _on_prev_pressed():
 	if current - 1 < 0:
 		return
 	current -= 1
+	if current == 1 and coming_from_start:
+		$go_back.click_me_stop()
 	do_move()
 
 
@@ -88,6 +90,8 @@ func _on_next_pressed():
 	if current + 1 > total:
 		return
 	current += 1
+	if current == 2 and coming_from_start:
+		$go_back.click_me()
 	do_move()
 
 

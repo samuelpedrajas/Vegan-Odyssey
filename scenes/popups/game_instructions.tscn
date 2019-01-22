@@ -96,7 +96,7 @@ use_filter = true
 font_data = ExtResource( 14 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="game_instructions" index="0" groups=[
+[node name="game_instructions" groups=[
 "resizable",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -433,9 +433,9 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 81.0
-margin_top = 120.0
+margin_top = 47.0
 margin_right = -39.0
-margin_bottom = -590.0
+margin_bottom = -197.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -445,13 +445,40 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="tip1" type="Label" parent="window/items/item2/texture_rect2/vbox" index="0"]
+[node name="tip4" type="Label" parent="window/items/item2/texture_rect2/vbox" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 918.0
-margin_bottom = 82.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 918, 164 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "All excuses in the board move to the direction you slide."
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
+
+[node name="tip1" type="Label" parent="window/items/item2/texture_rect2/vbox" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 168.0
+margin_right = 918.0
+margin_bottom = 250.0
 rect_min_size = Vector2( 918, 82 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -471,14 +498,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="fake_board" type="Control" parent="window/items/item2/texture_rect2/vbox" index="1"]
+[node name="fake_board" type="Control" parent="window/items/item2/texture_rect2/vbox" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 86.0
+margin_top = 254.0
 margin_right = 918.0
-margin_bottom = 306.0
+margin_bottom = 474.0
 rect_min_size = Vector2( 918, 220 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -500,14 +527,14 @@ margin_bottom = 170.0
 rect_scale = Vector2( 0.6, 0.6 )
 rect_pivot_offset = Vector2( 514, 170 )
 
-[node name="tip2" type="Label" parent="window/items/item2/texture_rect2/vbox" index="2"]
+[node name="tip2" type="Label" parent="window/items/item2/texture_rect2/vbox" index="3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 310.0
+margin_top = 478.0
 margin_right = 918.0
-margin_bottom = 392.0
+margin_bottom = 560.0
 rect_min_size = Vector2( 918, 82 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -527,14 +554,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="fake_board2" type="Control" parent="window/items/item2/texture_rect2/vbox" index="3"]
+[node name="fake_board2" type="Control" parent="window/items/item2/texture_rect2/vbox" index="4"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 396.0
+margin_top = 564.0
 margin_right = 918.0
-margin_bottom = 616.0
+margin_bottom = 784.0
 rect_min_size = Vector2( 918, 220 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -557,14 +584,14 @@ rect_scale = Vector2( 0.6, 0.6 )
 rect_pivot_offset = Vector2( 514, 170 )
 current_anim = 1
 
-[node name="tip3" type="Label" parent="window/items/item2/texture_rect2/vbox" index="4"]
+[node name="tip3" type="Label" parent="window/items/item2/texture_rect2/vbox" index="5"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 620.0
+margin_top = 788.0
 margin_right = 918.0
-margin_bottom = 784.0
+margin_bottom = 952.0
 rect_min_size = Vector2( 918, 164 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -584,32 +611,35 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip4" type="Label" parent="window/items/item2/texture_rect2/vbox" index="5"]
+[node name="fake_board3" type="Control" parent="window/items/item2/texture_rect2/vbox" index="6"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 788.0
+margin_top = 956.0
 margin_right = 918.0
-margin_bottom = 952.0
-rect_min_size = Vector2( 918, 164 )
+margin_bottom = 1176.0
+rect_min_size = Vector2( 918, 220 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-text = "All excuses in the board move to the direction you slide."
-align = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="hboard" parent="window/items/item2/texture_rect2/vbox/fake_board3" index="0" instance=ExtResource( 18 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -514.0
+margin_top = -170.0
+margin_right = 514.0
+margin_bottom = 170.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 514, 170 )
+current_anim = 2
 
 [node name="items" type="Control" parent="window/items/item2/texture_rect2" index="1"]
 anchor_left = 0.5
@@ -717,9 +747,9 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 81.0
-margin_top = 120.0
+margin_top = 137.0
 margin_right = -39.0
-margin_bottom = -590.0
+margin_bottom = -395.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -782,14 +812,44 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/font" ]
 
-[node name="tip3" type="Label" parent="window/items/item3/texture_rect3/vbox" index="2"]
+[node name="fake_board4" type="Control" parent="window/items/item3/texture_rect3/vbox" index="2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 418.0
 margin_right = 918.0
-margin_bottom = 664.0
+margin_bottom = 638.0
+rect_min_size = Vector2( 918, 220 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="hboard" parent="window/items/item3/texture_rect3/vbox/fake_board4" index="0" instance=ExtResource( 18 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -514.0
+margin_top = -170.0
+margin_right = 514.0
+margin_bottom = 170.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 514, 170 )
+current_anim = 3
+
+[node name="tip3" type="Label" parent="window/items/item3/texture_rect3/vbox" index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 642.0
+margin_right = 918.0
+margin_bottom = 1143.0
 rect_min_size = Vector2( 918, 246 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -801,7 +861,12 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "GAME OVER occurs when the board is full, you've got no BROCCOLIS and no excuses can be merged"
+text = "
+GAME OVER occurs when the board is full, you've got no BROCCOLIS and no excuses can be merged.
+
+Will you able to unlock all 9 excuses?
+
+"
 align = 1
 autowrap = true
 percent_visible = 1.0

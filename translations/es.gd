@@ -267,7 +267,7 @@ const TIP1_4 = "Todas las excusas del tablero se moverán hacia la dirección qu
 
 const TIP2_1 = "Mientras más te acerques a la novena excusa, menos espacio tendrás, y por lo tanto el juego se hará más difícil."
 const TIP2_2 = "Usa BRÓCOLIS para eliminar las fichas que te obstaculizan"
-const TIP2_3 = "La partida se pierde cuando el tablero está lleno, no quedan brócolis y no hay al menos 2 excusas que se puedan juntar."
+const TIP2_3 = "\nLa partida se pierde cuando el tablero está lleno, no quedan brócolis y no hay al menos 2 excusas que se puedan juntar.\n\n¿Conseguirás desbloquear las 9 excusas?"
 
 const EXCUSES_NAME = "nombre de la excusa"
 const EXCUSES_NUMBER = "número de la excusa"

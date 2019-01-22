@@ -9,6 +9,10 @@ var speed = Vector2(400.0, -1200.0)
 var is_dying = false
 
 
+func set_small():
+	token.set_scale(Vector2())
+
+
 func _ready():
 	set_process(false)
 	if game.lang.language == "es":
@@ -28,9 +32,19 @@ func _process(delta):
 			set_process(false)
 			queue_free()
 
+
+func selection():
+	animation.play("selection")
+
+
 func die():
 	is_dying = true
+	animation.stop()
 	set_process(true)
+
+
+func spawn():
+	animation.play("spawn")
 
 
 func merge():
