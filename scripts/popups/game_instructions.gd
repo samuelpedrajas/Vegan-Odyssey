@@ -23,6 +23,10 @@ func _ready():
 	$window/items/item1/texture_rect/text_arrow_up.set_text(game.lang.EXCUSES_NAME)
 	$window/items/item1/texture_rect/text_arrow_down.set_text(game.lang.EXCUSES_NUMBER)
 
+	if game.lang.language == "es":
+		$window/items/item1/texture_rect/excuse/excuse_en.hide()
+		$window/items/item1/texture_rect/excuse/excuse_es.show()
+
 	$window/items/item2/texture_rect2/vbox/tip1.set_text(game.lang.TIP1_1)
 	$window/items/item2/texture_rect2/vbox/tip2.set_text(game.lang.TIP1_2)
 	$window/items/item2/texture_rect2/vbox/tip3.set_text(game.lang.TIP1_3)
