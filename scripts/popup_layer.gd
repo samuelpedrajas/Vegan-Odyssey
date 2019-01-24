@@ -58,9 +58,10 @@ func open(name, params=null):
 		popup.rescale(game.resizer.s)
 		popup.open()
 
-		yield(popup.animation, "animation_finished")
-		if not popup.keep_input_disabled:
-			$"/root".set_disable_input(false)
+		if popup.yield_animation:
+			yield(popup.animation, "animation_finished")
+			if not popup.keep_input_disabled:
+				$"/root".set_disable_input(false)
 	else:
 		$"/root".set_disable_input(false)
 
@@ -99,7 +100,10 @@ func close(keep_input_disabled=false, keep_tree_paused=false):
 	# this is done in the end for smoother animation
 	if popup_to_close != null:
 		popup_to_close.close()
-		yield(popup_to_close, "tree_exited")
+		if popup_to_close.wait_until_tree_exited:
+			yield(popup_to_close, "tree_exited")
+		else:
+			yield(popup_to_close, "waiting4removal")
 
 	if not keep_input_disabled:
 		$"/root".set_disable_input(false)

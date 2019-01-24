@@ -13,8 +13,11 @@ var coming_from_start = false
 onready var tween = $window/tween
 onready var items = $window/items
 
+signal waiting4removal
+
 
 func _ready():
+	wait_until_tree_exited = false
 	total = items.get_child_count()
 
 	# translate
@@ -39,6 +42,7 @@ func _ready():
 
 func setup(coming_from_start):
 	self.coming_from_start = coming_from_start
+	yield_animation = false
 	$go_back.set_custom_text(game.lang.GAME_OVER_PLAY_ROULETTE)
 	$clickable_space.hide()
 
@@ -48,8 +52,19 @@ func open():
 
 
 func close():
-	close_anim = "close_window"
-	.close()
+	close_anim = "close_game_instructions"
+	animation.play(close_anim)
+	yield(animation, "animation_finished")
+	if coming_from_start:
+		game.event_layer.get_or_start("tutorial").post("1")
+	hide()
+	emit_signal("waiting4removal")
+	for hboard in get_tree().get_nodes_in_group("hboards"):
+		hboard.externally_stopped = true
+	for hboard in get_tree().get_nodes_in_group("hboards"):
+		if not hboard.ready2delete:
+			yield(hboard, "ready_to_delete")
+	queue_free()
 
 
 func rescale(s):
@@ -80,6 +95,7 @@ func do_move():
 func _on_prev_pressed():
 	if current - 1 < 0:
 		return
+	game.sounds.play_audio("click")
 	current -= 1
 	if current == 1 and coming_from_start:
 		$go_back.click_me_stop()
@@ -89,16 +105,16 @@ func _on_prev_pressed():
 func _on_next_pressed():
 	if current + 1 > total:
 		return
+	game.sounds.play_audio("click")
 	current += 1
 	if current == 2 and coming_from_start:
 		$go_back.click_me()
 	do_move()
 
+func hide_goback():
+	if coming_from_start:
+		$go_back.disappear()
+
 
 func _on_tween_tween_completed(object, key):
 	$"/root".set_disable_input(false)
-
-
-func _on_game_instructions_tree_exiting():
-	if coming_from_start:
-		game.event_layer.get_or_start("tutorial").post("1")

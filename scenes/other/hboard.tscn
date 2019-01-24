@@ -8,6 +8,8 @@ script/source = "extends Control
 
 
 var fake_token_scene = preload(\"res://scenes/other/fake_token.tscn\")
+var externally_stopped = false
+var ready2delete = false
 
 onready var hole1 = $hboard/hole1
 onready var hole2 = $hboard/hole2
@@ -19,6 +21,8 @@ enum anims {
 	MERGING, COLLIDING, SPAWNING, BROCCOLING
 }
 export(anims) var current_anim = MERGING
+
+signal ready_to_delete
 
 
 func _ready():
@@ -60,7 +64,12 @@ func start_merging_animation():
 	yield(timer, \"timeout\")
 
 	t2.queue_free()
-	start_merging_animation()
+
+	if not externally_stopped:
+		start_merging_animation()
+	else:
+		ready2delete = true
+		emit_signal(\"ready_to_delete\")
 
 
 func start_collision_animation():
@@ -87,7 +96,12 @@ func start_collision_animation():
 
 	t1.queue_free()
 	t2.queue_free()
-	start_collision_animation()
+
+	if not externally_stopped:
+		start_collision_animation()
+	else:
+		ready2delete = true
+		emit_signal(\"ready_to_delete\")
 
 
 func start_spawning_animation():
@@ -116,7 +130,12 @@ func start_spawning_animation():
 
 	t1.queue_free()
 	t2.queue_free()
-	start_spawning_animation()
+
+	if not externally_stopped:
+		start_spawning_animation()
+	else:
+		ready2delete = true
+		emit_signal(\"ready_to_delete\")
 
 
 func start_broccoling_animation():
@@ -143,14 +162,20 @@ func start_broccoling_animation():
 	t1.queue_free()
 	t3.queue_free()
 
-	start_broccoling_animation()
+	if not externally_stopped:
+		start_broccoling_animation()
+	else:
+		ready2delete = true
+		emit_signal(\"ready_to_delete\")
 
 
 func start_dying_animation():
 	$hole1/fake_token.die()
 "
 
-[node name="hboard" type="Control"]
+[node name="hboard" type="Control" groups=[
+"hboards",
+]]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

@@ -5,6 +5,8 @@ onready var animation = $"animation"
 
 var open_anim = "open_window"
 var close_anim = "close_window"
+var wait_until_tree_exited = true
+var yield_animation = true
 
 
 func close():

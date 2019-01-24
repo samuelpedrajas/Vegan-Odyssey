@@ -23,6 +23,7 @@ func post(n):
 	game.seen_tutorial[n] = true
 	if n == "1":
 		$arrows.show()
+		$arrows/anim.play("down")
 	post = post_scene.instance()
 	post.set_post(n)
 	$post.add_child(post)
@@ -45,6 +46,7 @@ func unpost():
 
 		black_bg.unpost(n)
 		$arrows.hide()
+		$arrows/hand.set_position(Vector2(305, 24))
 
 		if check_finished():
 			$timer.start()
