@@ -309,28 +309,43 @@ func save_game(game_status=null):
 	savegame.close()
 
 
+func get_or_default(info, key, default):
+	if info.has(key):
+		return info[key]
+	return default
+
+
+func get_or_default_json(info, key, default):
+	if info.has(key):
+		return parse_json(info[key])
+	return default
+
+
 func load_game():
 	if savegame_data == null:
 		return
 	var info = savegame_data
 
-	seen_tutorial = parse_json(info['tutorial'])
-	seen_intro = info['seen_intro']
+	seen_tutorial = get_or_default_json(info, 'tutorial', seen_tutorial)
+	seen_intro = get_or_default(info, 'seen_intro', seen_intro)
 
-	highest_max = info['highest_max']
-	current_max = info['current_max']
-	revived = info['revived']
-	self.broccolis = info['broccolis']
-	settings.load_info(parse_json(info['settings']), seen_intro)
-	board_layer.load_info(parse_json(info['matrix']))
-	win = info['win']
-	seen_excuses = parse_json(info['seen_excuses'])
-	seen_meme = info['seen_meme']
-	seen_refutation = info['seen_refutation']
-	personalized_ads = info['personalized_ads']
-	purchased = info['purchased']
-	prev_game_stats = parse_json(info['prev_game_stats'])
-	records = parse_json(info['records'])
+	highest_max = get_or_default(info, 'highest_max', highest_max)
+	current_max = get_or_default(info, 'current_max', current_max)
+	revived = get_or_default(info, 'revived', revived)
+	self.broccolis = get_or_default(info, 'broccolis', broccolis)
+	settings.load_info(get_or_default_json(info, 'settings', {
+		'music_on': true,
+		'sound_on': true
+	}), seen_intro)
+	board_layer.load_info(get_or_default_json(info, 'matrix', {}))
+	win = get_or_default(info, 'win', win)
+	seen_excuses = get_or_default_json(info, 'seen_excuses', seen_excuses)
+	seen_meme = get_or_default(info, 'seen_meme', seen_meme)
+	seen_refutation = get_or_default(info, 'seen_refutation', seen_refutation)
+	personalized_ads = get_or_default(info, 'personalized_ads', personalized_ads)
+	purchased = get_or_default(info, 'purchased', purchased)
+	prev_game_stats = get_or_default_json(info, 'prev_game_stats', prev_game_stats)
+	records = get_or_default_json(info, 'records', records)
 
 	savegame.close()
 
