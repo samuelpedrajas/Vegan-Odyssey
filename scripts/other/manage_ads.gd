@@ -2,7 +2,9 @@ extends Control
 
 
 func _ready():
-	if not game.purchased:
+	if not admob.isRequestLocationInEeaOrUnknown():
+		get_parent().hide()
+	elif not game.purchased:
 		admob.connect("consent_form_done", self, "on_consent_form_done")
 		admob.connect("consent_done", self, "on_consent_done")
 		admob.connect("consent_unknown", self, "on_consent_unknown")
