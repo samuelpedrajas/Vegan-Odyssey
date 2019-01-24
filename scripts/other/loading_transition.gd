@@ -5,6 +5,7 @@ var loading = false
 
 
 func set_loading():
+	$"/root".set_disable_input(true)
 	print("LOADING!!!")
 	if not loading:
 		loading = true
@@ -38,3 +39,4 @@ func unset_loading():
 		game.popup_layer.get_node("effects/blur").show()
 	else:
 		get_tree().set_pause(false)
+	$"/root".set_disable_input(false)
