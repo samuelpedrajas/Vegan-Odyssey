@@ -75,6 +75,8 @@ var records = [
 	{ "time": null, "used_broccolis": null }
 ]
 
+var release_number = 2
+
 
 func _ready():
 	# prevent quitting using back button
@@ -180,7 +182,7 @@ func reset_progress():
 ### SAVE / LOAD FUNCTIONS ###
 
 func start_game(coming_from_app_store):
-	load_game()
+	var updated = load_game()
 	print("Purchase status: ", purchased)
 	admob.start_ads()
 
@@ -206,8 +208,10 @@ func start_game(coming_from_app_store):
 		# show post if needed
 		if not seen_tutorial["1"]:
 			event_layer.get_or_start("tutorial").post("1")
-
-		$"/root".set_disable_input(false)
+		if updated:
+			popup_layer.open("updates")
+		else:
+			$"/root".set_disable_input(false)
 
 	debate_layer.init(current_max)
 
@@ -267,7 +271,8 @@ func save_game_defaults(language, purchased):
 		'seen_meme': false,
 		'seen_refutation': false,
 		'personalized_ads': null,
-		'purchased': purchased
+		'purchased': purchased,
+		'release_number': release_number
 	}
 	savegame_data = game_status
 	save_game(game_status)
@@ -292,7 +297,8 @@ func save_game(game_status=null):
 			'seen_meme': seen_meme,
 			'seen_refutation': seen_refutation,
 			'personalized_ads': personalized_ads,
-			'purchased': purchased
+			'purchased': purchased,
+			'release_number': release_number
 		}
 
 	if OS.get_name() == "X11" or OS.get_name() == "OSX":
@@ -348,6 +354,8 @@ func load_game():
 	records = get_or_default_json(info, 'records', records)
 
 	savegame.close()
+
+	return release_number != get_or_default(info, 'release_number', -1)
 
 
 func get_translation_file_path():

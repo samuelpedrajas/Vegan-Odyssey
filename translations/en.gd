@@ -269,3 +269,6 @@ const TIP2_3 = "\nGAME OVER occurs when the board is full, you've got no BROCCOL
 
 const EXCUSES_NAME = "excuse's name"
 const EXCUSES_NUMBER = "excuse's number"
+
+const UPDATES_TITLE = "GAME UPDATED"
+const UPDATES_TEXT = "RELEASE NOTES:\n\n- \"How To Play\" button added in the settings menu.\n\n- Several minor fixes."

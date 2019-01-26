@@ -26,7 +26,8 @@ onready var popup_scene_dict = {
 	"no_more_ads": preload("res://scenes/popups/no_more_ads.tscn"),
 	"duck_popup": preload("res://scenes/popups/duck_popup.tscn"),
 	"records": preload("res://scenes/popups/records.tscn"),
-	"game_instructions": preload("res://scenes/popups/game_instructions.tscn")
+	"game_instructions": preload("res://scenes/popups/game_instructions.tscn"),
+	"updates": preload("res://scenes/popups/updates.tscn")
 }
 
 

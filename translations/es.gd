@@ -271,3 +271,6 @@ const TIP2_3 = "\nLa partida se pierde cuando el tablero está lleno, no quedan 
 
 const EXCUSES_NAME = "nombre de la excusa"
 const EXCUSES_NUMBER = "número de la excusa"
+
+const UPDATES_TITLE = "JUEGO ACTUALIZADO"
+const UPDATES_TEXT = "NOVEDADES:\n\n- Botón de instrucciones en el menú de configuración.\n\n- Arreglos menores varios."
