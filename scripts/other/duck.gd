@@ -43,6 +43,19 @@ func set_fly_to_stand():
 		anim.play_backwards("stand_to_fly")
 
 
+func set_hand():
+	$hand.show()
+
+
+func hide_hand():
+	if $hand.is_visible():
+		$hand.hide()
+
+
+func hand_fade_out():
+	$hand/anim2.play("fade_out")
+
+
 func quack():
 	game.sounds.play_audio("quack")
 

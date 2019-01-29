@@ -29,6 +29,8 @@ func start():
 	if game.event_layer.current_events.has("broccoli"):
 		set_gray()
 	$c/broccoli_duck.connect("duck_tapped", self, "on_duck_clicked")
+	if not game.seen_duck:
+		$c/broccoli_duck.set_hand()
 	$animation.play("flying")
 
 
@@ -47,6 +49,10 @@ func _is_clickable():
 
 func on_duck_clicked():
 	if _is_clickable():
+		if not game.seen_duck:
+			game.seen_duck = true
+			game.save_game()
+			$c/broccoli_duck.hide_hand()
 		# can't click if removing tokens
 		if not grayed_out:
 			if game.event_layer.current_events.has("tutorial"):

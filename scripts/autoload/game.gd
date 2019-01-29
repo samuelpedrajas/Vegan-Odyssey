@@ -56,6 +56,7 @@ var seen_tutorial = {
 }
 var seen_meme = false
 var seen_refutation = false
+var seen_duck = false
 
 
 var lang = null
@@ -141,6 +142,7 @@ func restart_game(delete_progress=false):
 	if delete_progress:
 		music.stop()
 		seen_intro = false
+		seen_duck = false
 		seen_tutorial = {
 			"1": false,
 			"2": false,
@@ -272,7 +274,8 @@ func save_game_defaults(language, purchased):
 		'seen_refutation': false,
 		'personalized_ads': null,
 		'purchased': purchased,
-		'release_number': release_number
+		'release_number': release_number,
+		'seen_duck': seen_duck
 	}
 	savegame_data = game_status
 	save_game(game_status)
@@ -298,7 +301,8 @@ func save_game(game_status=null):
 			'seen_refutation': seen_refutation,
 			'personalized_ads': personalized_ads,
 			'purchased': purchased,
-			'release_number': release_number
+			'release_number': release_number,
+			'seen_duck': seen_duck
 		}
 
 	if OS.get_name() == "X11" or OS.get_name() == "OSX":
@@ -352,6 +356,7 @@ func load_game():
 	purchased = get_or_default(info, 'purchased', purchased)
 	prev_game_stats = get_or_default_json(info, 'prev_game_stats', prev_game_stats)
 	records = get_or_default_json(info, 'records', records)
+	seen_duck = get_or_default(info, 'seen_duck', seen_duck)
 
 	savegame.close()
 
