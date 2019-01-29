@@ -272,3 +272,5 @@ const EXCUSES_NUMBER = "excuse's number"
 
 const UPDATES_TITLE = "GAME UPDATED"
 const UPDATES_TEXT = "RELEASE NOTES:\n\n- \"How To Play\" button added in the settings menu.\n\n- Several minor fixes."
+
+const TAP_ON_ME = "TAP ON ME!"

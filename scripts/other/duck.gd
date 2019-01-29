@@ -3,6 +3,8 @@ extends Node2D
 
 onready var anim = $anim
 
+signal duck_tapped
+
 func set_walking():
 	if anim.get_current_animation() != "walking":
 		anim.play("walking")
@@ -16,9 +18,9 @@ func set_flying():
 func set_standing(with_post=false):
 	if anim.get_current_animation() != "standing" and anim.get_current_animation() != "standing_with_post":
 		if with_post and game.duck_counter >= 1:
-			anim.play("standing_with_post")
+			anim.play("standing_with_post_and_bubble")
 		else:
-			anim.play("standing")
+			anim.play("standing_with_post")
 
 
 func set_standing_with_hat():
@@ -43,3 +45,8 @@ func set_fly_to_stand():
 
 func quack():
 	game.sounds.play_audio("quack")
+
+
+func _on_click_area_gui_input(event):
+	if event.is_action_pressed("click"):
+		emit_signal("duck_tapped")

@@ -121,24 +121,4 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1232, -125 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="click_area" type="Control" parent="c/broccoli_duck"]
-modulate = Color( 1, 0, 0, 0 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -147.0
-margin_top = -105.0
-margin_right = 81.0
-margin_bottom = 55.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_styles" ]
-
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
-[connection signal="gui_input" from="c/broccoli_duck/click_area" to="." method="_on_click_area_gui_input"]

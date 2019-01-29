@@ -274,3 +274,5 @@ const EXCUSES_NUMBER = "número de la excusa"
 
 const UPDATES_TITLE = "JUEGO ACTUALIZADO"
 const UPDATES_TEXT = "NOVEDADES:\n\n- Botón de instrucciones en el menú de configuración.\n\n- Arreglos menores varios."
+
+const TAP_ON_ME = "TOCA AQUÍ"

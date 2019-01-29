@@ -28,6 +28,7 @@ func unset_gray():
 func start():
 	if game.event_layer.current_events.has("broccoli"):
 		set_gray()
+	$c/broccoli_duck.connect("duck_tapped", self, "on_duck_clicked")
 	$animation.play("flying")
 
 
@@ -39,15 +40,13 @@ func quack():
 	game.sounds.play_audio("quack")
 
 
-func _is_clickable(event):
-	if event.is_action_pressed("click"):
-		var width = get_viewport().get_visible_rect().size.x
-		return width - $"c/broccoli_duck".get_global_position().x > 130
-	return false
+func _is_clickable():
+	var width = get_viewport().get_visible_rect().size.x
+	return width - $"c/broccoli_duck".get_global_position().x > 130
 
 
-func _on_click_area_gui_input(event):
-	if _is_clickable(event):
+func on_duck_clicked():
+	if _is_clickable():
 		# can't click if removing tokens
 		if not grayed_out:
 			if game.event_layer.current_events.has("tutorial"):
